@@ -14,10 +14,7 @@
 		"ghcr.io/jckimble/devcontainer-features/ngrok:3": {}
 	},
 
-	"containerEnv": {
-		"JAVA_HOME": "development",
-		"NODE_OPTIONS": "--max-old-space-size=4096"
-	},
+	"containerEnv": {},
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
@@ -26,9 +23,7 @@
 	"forwardPorts": [ 3000 ],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": [
-		"yarn install"
-	],
+	"postCreateCommand": [ "yarn install" ],
 
 	// Configure tool-specific properties.
 	"customizations": {
