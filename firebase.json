@@ -14,26 +14,9 @@
         "node_modules",
         ".git",
         "firebase-debug.log",
-<<<<<<< Updated upstream
-        "firebase-debug.*.log",
-        "package-lock.json"
-      ],
-      "runtime": "nodejs16"
-    },
-    {
-      "source": "apps",
-      "codebase": "codebase",
-      "ignore": [
-        "node_modules",
-        ".git",
-        "firebase-debug.log",
-        "firebase-debug.*.log"
-      ],
-=======
         "firebase-debug.*.log"
       ],
       "runtime": "nodejs16",
->>>>>>> Stashed changes
       "predeploy": [
         "npm --prefix \"$RESOURCE_DIR\" run lint",
         "npm --prefix \"$RESOURCE_DIR\" run build"
@@ -41,24 +24,11 @@
     }
   ],
   "hosting": {
-<<<<<<< Updated upstream
-    "public": "deploy",
-=======
     "public": "public",
->>>>>>> Stashed changes
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-<<<<<<< Updated upstream
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-=======
->>>>>>> Stashed changes
     ]
   },
   "storage": {
