@@ -17,4 +17,4 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_COS301_MINIPROJECT }}'
           channelId: live
-          projectId: <REPLACE_ME>
+          projectId: cos301-miniproject-2023-b1f6d
