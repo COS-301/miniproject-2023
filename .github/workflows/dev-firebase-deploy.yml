@@ -1,0 +1,40 @@
+name: "Dev: Firebase Deploy on Merge"
+'on':
+  push:
+    branches:
+      - development
+jobs:
+  build_and_deploy:
+    environment: development
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      # do .env creation
+      - name: '.env creation'
+        run: |
+          touch .env
+          echo NX_ENVIRONMENT="production" >> .env
+          echo NX_FIREBASE_AUTH_DOMAIN='${{secrets.NX_FIREBASE_AUTH_DOMAIN}}' >> .env
+          echo NX_FIREBASE_DATABASE_URL='${{ secrets.NX_FIREBASE_DATABASE_URL }}' >> .env
+          echo NX_FIREBASE_PROJECT_ID='${{secrets.NX_FIREBASE_PROJECT_ID}}' >> .env
+          echo NX_FIREBASE_STORAGE_BUCKET='${{secrets.NX_FIREABASE_STORAGE_BUCKET}}' >> .env
+          echo NX_FIREBASE_MESSAGING_SENDER_ID='${{ secrets.NX_FIREBASE_MESSAGING_SENDER_ID }}' >> .env
+          echo NX_FIREBASE_APP_ID='${{ secrets.NX_FIREBASE_APP_ID }}' >> .env
+          echo NX_FIREBASE_MEASUREMENT_ID='${{ secrets.NX_FIREBASE_MEASUREMENT_ID }}' >> .env
+          echo NX_FIREBASE_API_KEY='${{ secrets.NX_FIREBASE_API_KEY }}' >> .env
+          cat .env.prod
+      # do .firebasesc creation
+      - name: '.firebasesc creation'
+      - uses: "finnp/create-file-action@master"
+        env:
+          FILE_NAME: ".firebasesc"
+          FILE_DATA: "${{secrets.FIREBASESC}}"
+      # Install files and dependencies
+      - run: yarn install --frozen-lockfile && yarn build:app:dev
+      # Deploy onto Firebase
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_COS301_MINIPROJECT_DEV }}'
+          channelId: live
+          projectId: '${{secrets.NX_FIREBASE_PROJECT_ID}}'

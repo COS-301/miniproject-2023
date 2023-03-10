@@ -1,7 +1,1 @@
-{
-  "projects": {
-    "default": "<REPLACE_ME>",
-    "production": "<REPLACE_ME>",
-    "development": "<REPLACE_ME>"
-  }
-}
+{"projects":{"default":"cos301-miniproject-dev","production":"cos301-miniproject-dev","development":"cos301-miniproject-dev"}}
