@@ -40,12 +40,12 @@ jobs:
 
           echo "cat .env"
 
-      # - name: Install deps and build
-      #   run: yarn install --frozen-lockfile && yarn build:app:dev
+      - name: Install deps and build
+        run: yarn install --frozen-lockfile && yarn build:app:dev
 
-      # - name: Deploy and host
-      #   uses: FirebaseExtended/action-hosting-deploy@v0
-      #     repoToken: '${{ secrets.GITHUB_TOKEN }}'
-      #     firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
-      #     channelId: live
-      #     projectId: '${{ secrets.NX_FIREBASE_PROJECT_ID }}'
+      - name: Deploy and host
+        uses: FirebaseExtended/action-hosting-deploy@v0
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+          channelId: live
+          projectId: '${{ secrets.NX_FIREBASE_PROJECT_ID }}'
