@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title>Login</ion-title>
+    <ion-title class="text">Login</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -16,8 +16,8 @@
 
   <form [formGroup]="loginForm" ngxsForm="login.loginForm" (submit)="login()">
     <ion-list class="ion-padding-vertical">
-      <ion-item>
-        <ion-label position="floating" class="required">Email</ion-label>
+      <ion-item color="medium">
+        <ion-label position="floating" class="required text">Email</ion-label>
         <ion-input
           type="email"
           minlength="6"
@@ -33,8 +33,8 @@
         color="danger">
         <small>{{ emailError }}</small>
       </ion-text>
-      <ion-item>
-        <ion-label position="floating" class="required">Password</ion-label>
+      <ion-item color="medium">
+        <ion-label position="floating" class="required text">Password</ion-label>
         <ion-input
           [type]="showPassword ? 'text' : 'password'"
           minlength="6"
@@ -63,7 +63,8 @@
           <ion-button
             expand="block"
             [disabled]="!this.loginForm.valid || (busy$ | async)"
-            type="submit">
+            type="submit"
+            color="secondary">
             <ion-spinner *ngIf="busy$ | async"></ion-spinner>
             <ion-text>Login</ion-text>
           </ion-button>
@@ -71,17 +72,17 @@
       </ion-row>
       <ion-row class="ion-padding-top">
         <ion-col class="ion-text-center">
-          Having trouble?
+          <p class="text">Having trouble?</p>
           <ion-nav-link routerLink="/forgot">
-            <ion-text color="primary">Forgot Password</ion-text>
+            <ion-text color="primary" class="forgot-register">Forgot Password</ion-text>
           </ion-nav-link>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col class="ion-text-center">
-          Don't have an account?
+          <p class="text">Don't have an account?</p>
           <ion-nav-link routerLink="/register">
-            <ion-text color="primary">Register</ion-text>
+            <ion-text color="primary" class="forgot-register">Register</ion-text>
           </ion-nav-link>
         </ion-col>
       </ion-row>
