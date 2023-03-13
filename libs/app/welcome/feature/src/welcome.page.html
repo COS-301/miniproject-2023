@@ -15,14 +15,14 @@
       <ion-row>
         <ion-col>
           <ion-nav-link [routerLink]="['login']">
-            <ion-button expand="block" class="welcome-btns">Login</ion-button>
+            <ion-button expand="block">Login</ion-button>
           </ion-nav-link>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
           <ion-nav-link [routerLink]="['register']">
-            <ion-button expand="block" class="welcome-btns">Register</ion-button>
+            <ion-button expand="block">Register</ion-button>
           </ion-nav-link>
         </ion-col>
       </ion-row>
@@ -38,7 +38,7 @@
               expand="block"
               fill="outline"
               color="dark"
-              (click)="continueWithGoogle()" class="welcome-btns">
+              (click)="continueWithGoogle()">
               <ion-icon name="logo-google"></ion-icon>
               <ion-text style="padding-left: 5px">
                 Continue with Google
