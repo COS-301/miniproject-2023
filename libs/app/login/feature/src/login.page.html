@@ -12,17 +12,20 @@
   <div class="background-image"></div>
 
   <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Login</ion-title>
+    <ion-toolbar color="none">
+      <ion-buttons slot="start">
+        <ion-back-button color="light" text="Welcome Page" defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title size="large" color="light" class="ion-text-end">Login</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-list class="logo">
     <ion-item color="none" lines="none">
-      <ion-img src="../../../../assets/Design_icons/Login-page-background-and-images/Memory-lane-logo.png"/>
+      <!-- <ion-img src="../../../../assets/Design_icons/Login-page-background-and-images/Memory-lane-logo.png"></ion-img> -->
     </ion-item>
     <ion-item color="none" lines="none" class="logo-title">
-      <h1>Memory Lane</h1>
+      <!-- <ion-img src="../../../../assets/Design_icons/Login-page-background-and-images/Memory-lane-logo.png"></ion-img> -->
     </ion-item>
   </ion-list>
 
@@ -43,7 +46,7 @@
         *ngIf="email?.invalid && (email?.dirty || email?.touched)"
         class="ion-padding-start"
         color="danger">
-        <small>{{ emailError }}</small>
+        <small class="error-text">{{ emailError }}</small>
       </ion-text>
       <ion-item color="medium">
         <ion-label position="floating" class="required">Password</ion-label>
@@ -65,7 +68,7 @@
         *ngIf="password?.invalid && (password?.dirty || password?.touched)"
         class="ion-padding-start"
         color="danger">
-        <small>{{ passwordError }}</small>
+        <small class="error-text">{{ passwordError }}</small>
       </ion-text>
     </ion-list>
 
@@ -84,17 +87,15 @@
       </ion-row>
       <ion-row class="ion-padding-top">
         <ion-col class="ion-text-center">
-          <p class="text">Having trouble?</p>
           <ion-nav-link routerLink="/forgot">
-            <ion-text color="primary" class="forgot">Forgot Password</ion-text>
+            <ion-text color="light">Forgot Password?</ion-text>
           </ion-nav-link>
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col class="ion-text-center">
-          <p class="text">Don't have an account?</p>
+        <ion-col class="ion-text-center ion-padding-top">
           <ion-nav-link routerLink="/register">
-            <ion-text color="primary" class="register">Register</ion-text>
+            <ion-text color="light">Don't have an account?</ion-text>
           </ion-nav-link>
         </ion-col>
       </ion-row>
@@ -103,11 +104,5 @@
 </ion-content>
 
 <ion-footer collapse="condense" class="ion-padding ion-text-center">
-  <ion-toolbar color="none ion-padding-bottom" >
-    <ion-buttons slot="start">
-      <ion-back-button color="light" text="Welcome Page" defaultHref="/"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
   <ms-copyright-component></ms-copyright-component>
 </ion-footer>
