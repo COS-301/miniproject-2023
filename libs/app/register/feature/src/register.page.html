@@ -20,12 +20,21 @@
     </ion-toolbar>
   </ion-header>
 
+  <ion-list class="logo">
+    <ion-item color="none" lines="none">
+      <!-- <ion-img src="../../../../assets/Design_icons/Login-page-background-and-images/Memory-lane-logo.png"></ion-img> -->
+    </ion-item>
+    <ion-item color="none" lines="none" class="logo-title">
+      <!-- <ion-img src="../../../../assets/Design_icons/Login-page-background-and-images/Memory-lane-logo.png"></ion-img> -->
+    </ion-item>
+  </ion-list>
+
   <form
     [formGroup]="registerForm"
     ngxsForm="register.registerForm"
     (submit)="register()">
     <ion-list class="ion-padding-vertical">
-      <ion-item>
+      <ion-item color="medium">
         <ion-label position="floating" class="required">Email</ion-label>
         <ion-input
           type="email"
@@ -42,7 +51,7 @@
         color="danger">
         <small>{{ emailError }}</small>
       </ion-text>
-      <ion-item>
+      <ion-item color="medium">
         <ion-label position="floating" class="required">Password</ion-label>
         <ion-input
           [type]="showPassword ? 'text' : 'password'"
