@@ -21,7 +21,7 @@ git clone https://github.com/SwagDemons69
 
 ```sh
 cd path/to/project
-yarn
+yarn install
 ```
 
 2. Add Firebase configurations
