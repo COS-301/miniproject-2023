@@ -25,7 +25,7 @@ git clone git@github.com:<ACCOUNT>/<PROJECT NAME>.git <PROJECT LOCAL NAME>
 
 ```sh
 cd path/to/project
-yarn
+yarn install
 ```
 
 4. Add Firebase configurations
