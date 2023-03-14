@@ -49,7 +49,7 @@
         *ngIf="email?.invalid && (email?.dirty || email?.touched)"
         class="ion-padding-start"
         color="danger">
-        <small>{{ emailError }}</small>
+        <small class="error-text">{{ emailError }}</small>
       </ion-text>
       <ion-item color="medium">
         <ion-label position="floating" class="required">Password</ion-label>
@@ -71,7 +71,7 @@
         *ngIf="password?.invalid && (password?.dirty || password?.touched)"
         class="ion-padding-start"
         color="danger">
-        <small>{{ passwordError }}</small>
+        <small class="error-text">{{ passwordError }}</small>
       </ion-text>
     </ion-list>
 
@@ -81,7 +81,8 @@
           <ion-button
             expand="block"
             [disabled]="!this.registerForm.valid || (busy$ | async)"
-            type="submit">
+            type="submit"
+            color="secondary">
             <ion-spinner *ngIf="busy$ | async"></ion-spinner>
             <ion-text>Register</ion-text>
           </ion-button>
