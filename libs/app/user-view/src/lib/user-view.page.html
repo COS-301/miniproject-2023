@@ -1,7 +1,11 @@
 <ion-header>
-    <ion-toolbar color="dark">
-        <ion-back-button slot="start" color="light" defaultHref="/home/search" text="Search"></ion-back-button>
-        <ion-title>Memory Lane</ion-title>
+    <ion-toolbar [ngStyle]="{'--background':'#161616'}">
+        <ion-back-button ngClass="back-button" slot="start" color="light" defaultHref="/home/search" text="Search"></ion-back-button>
+        <ion-title ngClass="title">Memory Lane</ion-title>
         <small slot="end">22h:52m:11s</small>
     </ion-toolbar>
 </ion-header>
+
+<ion-content color="dark">
+
+</ion-content>
