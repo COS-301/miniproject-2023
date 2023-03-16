@@ -17,3 +17,29 @@
 .profile-info {
     margin: 0px;
 }
+
+//--------------<app-user-info>---------------------------
+.heading-grid {
+    background-color: #ffffff;
+}
+.heading-grid-row {
+    color: #000000;
+    height:75px;
+}
+.heading-grid-row-col1,
+.heading-grid-row-col2 {
+    margin-top: 15px;
+}
+.heading-grid-row-col1-title,
+.heading-grid-row-col2-title {
+    font-weight: bold;
+    font-size:20px;
+}
+
+//---------------<app-user-memories>------------------------------
+.friend-req-btn {
+    background-color: #686868;
+    padding: 0 5px;
+    margin-top:5px;
+    border-radius: 10px;
+}

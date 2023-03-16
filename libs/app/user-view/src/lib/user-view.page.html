@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-toolbar [ngStyle]="{'--background':'#161616'}">
+    <ion-toolbar ngClass="menu-toolbar" [ngStyle]="{'--background':'#161616'}">
         <ion-back-button ngClass="back-button" slot="start" color="light" defaultHref="/home/search" text="Search"></ion-back-button>
         <ion-title ngClass="title">Memory Lane</ion-title>
         <small slot="end" ngClass="account-time">22h:52m:11s</small>
@@ -9,18 +9,18 @@
 <ion-content color="dark">
     <!-- <app-user-info></app-user-info> -->
     <!-- CODE BELOW WILL BE GENERATER BY ABOVE ELEMENT, REQUIRES ROUTING-->
-    <ion-grid [ngStyle]="{'background-color': 'white'}">
-        <ion-row [ngStyle]="{'color':'black','height':'75px'}" class="ion-text-center">
-            <ion-col [ngStyle]="{'margin-top': '15px'}">
-                <ion-text [ngStyle]="{'font-weight': 'bold','font-size':'20px'}">Friends</ion-text><br>
+    <ion-grid ngClass="heading-grid">
+        <ion-row ngClass="heading-grid-row" class="ion-text-center">
+            <ion-col ngClass="heading-grid-row-col1">
+                <ion-text ngClass="heading-grid-row-col1-title">Friends</ion-text><br>
                 <ion-text>100</ion-text>
             </ion-col>
             <ion-col>
                 <ion-img src=""></ion-img><br>
                 <ion-text>@username</ion-text>
             </ion-col>
-            <ion-col [ngStyle]="{'margin-top': '20px'}">
-                <ion-text [ngStyle]="{'font-weight': 'bold','font-size':'20px'}">Memories</ion-text><br>
+            <ion-col ngClass="heading-grid-row-col2">
+                <ion-text ngClass="heading-grid-row-col2-title">Memories</ion-text><br>
                 <ion-text>100</ion-text>
             </ion-col>
         </ion-row>
@@ -28,7 +28,7 @@
     <!----------------------------------------------------------------------->
 
     <ion-buttons class="ion-justify-content-center">
-        <ion-button [ngStyle]="{'background-color':'#686868','padding':'0 5px','margin-top':'5px','border-radius':'10px'}">
+        <ion-button ngClass="friend-req-btn">
             <ion-icon slot="end" name="add"></ion-icon>
             Send friend request
         </ion-button>
