@@ -1,0 +1,32 @@
+name: name: Continous Development of Production on Merge (CD)
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_deploy:
+    enviroment: Production
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Create Temporary .env.prod
+        uses: "finnp/create-file-action@action@master"
+        env:
+          FILE_NAME: ".env.prod"
+          FILE_DATA: "${{ secrets.ENV_PROD_FILE }}"
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile 
+        
+      - name: Build Application
+        run: yarn build:app:dev
+
+      - name: Deploy Production Version
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_COS301_MINIPROJECT }}'
+          channelId: live
+          projectId: cos301-miniproject-2023-b1f6d

@@ -1,0 +1,32 @@
+name: Continous Development of Develop on PR (CD)
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  build_and_preview:
+    if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
+    enviroment: Development
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Create Temporary .env
+        uses: "finnp/create-file-action@action@master"
+        env:
+          FILE_NAME: ".env"
+          FILE_DATA: "${{ secrets.ENV_FILE }}"
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile 
+        
+      - name: Build Application
+        run: yarn build:app:dev
+
+      - name: Preview Development Version
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_COS301_MINIPROJECT }}'
+          projectId: cos301-miniproject-2023-b1f6d
