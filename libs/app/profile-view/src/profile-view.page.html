@@ -1,1 +1,24 @@
-<p>profile-view works!</p>
+<ion-content ngClass="view-page">
+    <ion-toolbar ngClass="top-bar"> 
+        <ion-buttons slot="start">
+            <ion-icon name="add" color="light" ngClass="add-btn"></ion-icon>
+        </ion-buttons>      
+        <ion-buttons slot="end">
+            <ion-menu-button ngClass="burger-menu" auto-hide="false"></ion-menu-button>
+        </ion-buttons>
+        <ion-title ngClass="title">Memory Lane</ion-title>
+    </ion-toolbar>
+
+    <ion-grid>
+        <ion-row ngClass="details-row">
+            <ion-col ngClass="details-row-item">Friends <br/> 34</ion-col>
+            <ion-col ngClass="details-row-item">
+                <ion-avatar>
+                    <img alt="" src="/apps/app/src/assets/images/The Empty Valley by Ash Thorp (Star Wars) [3840x2160].png"/>
+                </ion-avatar>
+            </ion-col>
+            <ion-col ngClass="details-row-item">Memories <br/> 26</ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+

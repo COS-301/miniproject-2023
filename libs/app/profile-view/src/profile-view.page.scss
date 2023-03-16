@@ -1,0 +1,42 @@
+$greyish: #D9D9D9; //global color
+
+.burger-menu{
+    font-size: 50px;
+    color: $greyish;
+}
+
+.title {
+    font-family: 'Pattaya';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 36px;  
+    color: #ffffff;
+    text-align: center;
+}
+
+.top-bar{
+    --background: #000000;
+}
+
+.view-page{
+    --background: #262626;
+}
+
+.add-btn{
+    border: 2px solid $greyish;
+    font-size: 25px;
+}
+
+.details-row{
+    color: #ffffff;
+}
+
+.details-row-item{
+    display: flex;
+    justify-content: center;
+}
+
+.avatar{
+    background-color: none;
+}
