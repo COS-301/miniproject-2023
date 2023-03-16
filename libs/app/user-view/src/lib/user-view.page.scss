@@ -46,20 +46,30 @@
 //---------------<app-user-memories>------------------------------
 .memory-list {
     background-color: transparent;
+    padding-left: 10px;
 }
 .memory-card {
-    // background: url("");
     border: 3px solid #686868;
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 25px;
+    background-image: url("https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8&w=1000&q=80");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 280px;
+    width: 330px;
+}
+.memory-img {
+    
+
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
 }
 .memory-card-title {
-    // font-family: 'Lato';
+    font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     font-size: 22px;
-
-    color: #FFFFFF;
 }
 .memory-card-desc {
     font-family: 'Inter';
