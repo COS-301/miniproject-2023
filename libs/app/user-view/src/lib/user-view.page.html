@@ -16,7 +16,7 @@
                 <ion-text>100</ion-text>
             </ion-col>
             <ion-col>
-                <ion-img src=""></ion-img><br>
+                <ion-img src="/apps/app/src/assets/Design_icons/Design icons/Login page background and images/Big person.png"></ion-img><br>
                 <ion-text>@username</ion-text>
             </ion-col>
             <ion-col ngClass="heading-grid-row-col2">
@@ -36,11 +36,15 @@
 
     <!----------------------------------------------------------------------->
 
-    <ion-list [ngStyle]="{'background-color':'transparent'}">
-        <ion-card>
+    <ion-list ngClass="memory-list">
+        <ion-card ngClass="memory-card">
             <ion-card-header>
-                <ion-card-title>Last day of highschool</ion-card-title>
+                <ion-card-title ngClass="memory-card-title">Last day of highschool</ion-card-title>
+                <ion-card-subTitle ngClass="memory-card-desc">Some description of memory</ion-card-subTitle>
             </ion-card-header>
+            <ion-card-content>
+                <ion-text ngClass="memory-date">14 November 2020</ion-text>
+            </ion-card-content>
         </ion-card>
     </ion-list>
 </ion-content>

@@ -18,6 +18,13 @@
     margin: 0px;
 }
 
+.friend-req-btn {
+    background-color: #686868;
+    padding: 0 5px;
+    margin-top:5px;
+    border-radius: 10px;
+}
+
 //--------------<app-user-info>---------------------------
 .heading-grid {
     background-color: #ffffff;
@@ -37,9 +44,32 @@
 }
 
 //---------------<app-user-memories>------------------------------
-.friend-req-btn {
-    background-color: #686868;
-    padding: 0 5px;
-    margin-top:5px;
-    border-radius: 10px;
+.memory-list {
+    background-color: transparent;
+}
+.memory-card {
+    // background: url("");
+    border: 3px solid #686868;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+}
+.memory-card-title {
+    // font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+
+    color: #FFFFFF;
+}
+.memory-card-desc {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 12px;
+}
+.memory-date {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
 }
