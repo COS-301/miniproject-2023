@@ -86,6 +86,7 @@
       "@mp/app/updates/feature": ["libs/app/updates/feature/src/index.ts"],
       "@mp/app/updates/util": ["libs/app/updates/util/src/index.ts"],
       "@mp/app/user-view": ["libs/app/user-view/src/index.ts"],
+      "@mp/app/user-view/ui": ["libs/app/user-view/ui/src/index.ts"],
       "@mp/app/user/data-access": ["libs/app/user/data-access/src/index.ts"],
       "@mp/app/user/feature": ["libs/app/user/feature/src/index.ts"],
       "@mp/app/user/util": ["libs/app/user/util/src/index.ts"],
