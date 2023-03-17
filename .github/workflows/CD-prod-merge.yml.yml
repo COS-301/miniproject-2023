@@ -1,4 +1,4 @@
-name: name: Continous Development of Production on Merge (CD)
+name: Continous Development of Production on Merge (CD)
 on:
   push:
     branches:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   build_and_deploy:
-    enviroment: Production
+    environment: Production
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
