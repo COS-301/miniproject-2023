@@ -50,7 +50,6 @@ import { NgxsModule } from '@ngxs/store';
 import { MomentModule } from 'ngx-moment';
 import { CoreRouting } from './core.routing';
 import { CoreShell } from './core.shell';
-import { NavBarComponent, AppNavbarFeatureModule } from '@mp/app/navbar/feature';
 
 let resolvePersistenceEnabled: (enabled: boolean) => void;
 
@@ -90,7 +89,6 @@ const FIREBASE_OPTIONS: FirebaseOptions = {
     BrowserModule,
     IonicModule.forRoot(),
     CoreRouting,
-    AppNavbarFeatureModule,
     provideRemoteConfig(() => getRemoteConfig()),
     provideAnalytics(() => getAnalytics()),
     provideMessaging(() => getMessaging()),
@@ -161,6 +159,6 @@ const FIREBASE_OPTIONS: FirebaseOptions = {
     ErrorsModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
-  bootstrap: [CoreShell, NavBarComponent],
+  bootstrap: [CoreShell],
 })
 export class CoreModule {}
