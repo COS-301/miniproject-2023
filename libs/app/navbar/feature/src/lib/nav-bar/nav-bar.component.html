@@ -1,6 +1,6 @@
-<ion-tabs *nfIf="showNavbar">
+<ion-tabs *ngIf="showNavbar">
     <ion-tab-bar slot="bottom">
-      <ion-tab-button (click)="navigate('/home')" [ngClass]="{'active':hasRoute('/home')}" tab="home">
+      <ion-tab-button (click)="navigate('/home')" [ngClass]="{'active':hasRoute('/login')}" tab="home">
         <ion-icon name="heart"></ion-icon>
         Home
       </ion-tab-button>
