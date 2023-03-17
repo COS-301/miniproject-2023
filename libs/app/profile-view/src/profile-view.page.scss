@@ -5,6 +5,28 @@ $greyish: #D9D9D9; //global color
     color: $greyish;
 }
 
+ion-menu::part(backdrop) {
+    background-color: rgb(0, 0, 0); 
+    
+    .nav-bar{
+        opacity: 0.5;
+    }
+}
+  
+ion-menu::part(container) {
+    border-radius: 0 20px 20px 0;
+
+    box-shadow: 4px 0px 16px rgba(0, 0, 0, 0.488);
+}
+
+.menu-heading{
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid $greyish;
+    padding: 5px;
+}
+
 .title {
     font-family: 'Pattaya';
     font-style: normal;
@@ -17,6 +39,7 @@ $greyish: #D9D9D9; //global color
 
 .top-bar{
     --background: #000000;
+    position: fixed;
 }
 
 .view-page{
@@ -28,13 +51,48 @@ $greyish: #D9D9D9; //global color
     font-size: 25px;
 }
 
-.details-row{
+// <---------Header Details-----------> //
+.heading-grid {
+    background-color: #222428;
+    margin-top: 20px;
+}
+.heading-grid-row {
     color: #ffffff;
+    height:130px;
+}
+.heading-grid-row-col1,
+.heading-grid-row-col2,
+.heading-grid-row-col3 {
+    margin-top: 15px;
+}
+.heading-grid-row-col1,
+.heading-grid-row-col3 {
+    padding-top: 35px;
+}
+.heading-grid-row-col3 {
+    margin-left: 5px;
 }
 
-.details-row-item{
-    display: flex;
-    justify-content: center;
+.heading-grid-row-col1-title,
+.heading-grid-row-col3-title {
+    font-weight: bold;
+    font-family: "Lato";
+    opacity: 0.6;
+    font-size:15px;
+}
+.user-profile-img {
+    height: 100px;
+    width: 100px;
+    margin: auto;
+}
+.username {
+    font-size: 20px;
+    font-family: "Lato";
+}
+.friend-memories-count {
+    font-family: "Lato";
+    font-size: 25px;
+    font-weight: bold;
 }
 
 .memory-list {
@@ -46,6 +104,8 @@ $greyish: #D9D9D9; //global color
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 25px;
     height: 280px;
+    color:#ffffff;
+    // text-align: center;
 }
 .memory-img {
     position: absolute;
@@ -66,6 +126,7 @@ $greyish: #D9D9D9; //global color
     font-size: 22px;
     position: absolute;
     top: 20px;
+    left: 40px;
 }
 .memory-card-desc {
     font-family: 'Inter';
@@ -78,6 +139,32 @@ $greyish: #D9D9D9; //global color
     left: 40px;
     top: 40px;
 }
+.memory-card-timer{ 
+    font-family: 'Lato';
+    color:#ff0000;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    position: absolute;
+    padding: 2px;
+    top: 100px;
+    margin-top: 60px;
+    right: 20px; 
+    background-color: #dddddd;
+    border-radius: 5px;
+}
+.btn-add-time{ 
+    font-family: 'Lato';
+    color:#ffffff;
+    font-style: normal;
+    font-weight: bolder;
+    font-size: 25px;
+    position: absolute;
+    // width: 97px;
+    top: 95px;
+    margin-top: 60px;
+    right: 85px;
+}
 .memory-date {
     font-family: 'Lato';
     font-style: normal;
@@ -87,5 +174,6 @@ $greyish: #D9D9D9; //global color
     width: 212px;
     height: 68px;
     top: 100px;
-    margin-top: 60px;
+    margin-top: 70px;
+    right: 0;
 }
