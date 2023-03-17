@@ -5,4 +5,10 @@ import { Component } from '@angular/core';
   templateUrl: './user-view.page.html',
   styleUrls: ['./user-view.page.scss'],
 })
-export class UserViewPageComponent {}
+export class UserViewPageComponent {
+  added = false;
+
+  addedNewFriend() {
+    this.added = true;
+  }
+}

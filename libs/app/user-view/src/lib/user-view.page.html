@@ -30,9 +30,9 @@
     <!----------------------------------------------------------------------->
 
     <ion-buttons class="ion-justify-content-center">
-        <ion-button ngClass="friend-req-btn">
-            <ion-icon slot="end" name="add"></ion-icon>
-            <div class="wrapper" slot="end"> 
+        <ion-button ngClass="friend-req-btn" (click)="addedNewFriend()">
+            <ion-icon *ngIf="!added" slot="end" name="add"></ion-icon>
+            <div *ngIf="added" class="wrapper" slot="end"> 
                 <svg class="checkmark"
                     xmlns="http://www.w3.org/2000/svg" 
                     viewBox="0 0 52 52"
