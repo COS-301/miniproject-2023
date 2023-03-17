@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-user-view',
@@ -12,7 +12,7 @@ export class UserViewPageComponent {
   handlerMessage = '';
   roleMessage = ''
   
-  constructor(private alertController: AlertController) {}
+  constructor(private alertController: AlertController, private toastController : ToastController) {}
 
   async presentAlert() {
     const alert = await this.alertController.create({
@@ -30,6 +30,8 @@ export class UserViewPageComponent {
           role: 'confirm',
           handler: () => {
             this.handlerMessage = 'Unfriened <user name>';
+            this.presentToast('top');
+            this.removeFriend();
           },
         },
       ],
@@ -39,6 +41,17 @@ export class UserViewPageComponent {
 
     const { role } = await alert.onDidDismiss();
     this.roleMessage = `Dismissed with role: ${role}`;
+  }
+
+  async presentToast(position: 'top' | 'middle' | 'bottom') {
+    const toast = await this.toastController.create({
+      message: 'Unfriended <user name>',
+      duration: 1600,
+      position: position,
+      color: 'danger'
+    });
+
+    await toast.present();
   }
 
   addedNewFriend() {
