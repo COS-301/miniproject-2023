@@ -1,7 +1,7 @@
 .background-image {
     width: 100%;
     height: 100%;
-    background-image: url("../../../../assets/Design_icons/Login-page-background-and-images/Background.png");
+    background-image: url("../../../../../apps/app/src/assets/Design_icons/Login-page-background-and-images/Background.png");
     position: absolute;
     background-size: cover;                 
     background-repeat: no-repeat;
@@ -10,41 +10,41 @@
 
 form ion-item {
     border-radius: 20px;
-    margin: 5px 25px;
+    margin: auto;
+    margin-bottom: 15px;
+    width: 85%;
+    height: 60px;
 }
 
 ion-list {
     background: transparent;
 }
 
-.logo {
-    margin-bottom: 30px;
+.profile-img{
+    margin: auto;
+    height: 150px;
+    width: 150px;
+}
+.app-logo {
+    margin:auto;
+    height: 220px;
+    width: 220px;
 }
 
-.text {
-    color: #ffffff;
-}
-
-.forgot {
-    color: #ff0000;
-    font-weight: bold;
-}
-
-.register {
-    color: #00ff00;
-    font-weight: bold;
-}
-
-.logo-title h1 {
-    color: white;
-    font-weight: bold;
-}
-
-.logo-title {
+.app-logo {
     justify-content: center;
 }
 
 .error-text {
     font-weight: bold;
     font-size: medium;
+}
+
+.login-btn {
+    border: 3px solid #ffffff;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    width: 200px;
+    margin: auto;
 }

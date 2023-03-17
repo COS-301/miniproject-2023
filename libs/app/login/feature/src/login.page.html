@@ -1,12 +1,3 @@
-<!-- <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header> -->
-
 <ion-content [fullscreen]="true">
   
   <div class="background-image"></div>
@@ -20,12 +11,12 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-list class="logo">
+  <ion-list>
     <ion-item color="none" lines="none">
-      <!-- <ion-img src="../../../../assets/Design_icons/Login-page-background-and-images/Memory-lane-logo.png"></ion-img> -->
+      <ion-img ngClass="app-logo" src="../../../../../assets/Design_icons/Login-page-background-and-images/Memory-lane-logo.png"></ion-img>
     </ion-item>
-    <ion-item color="none" lines="none" class="logo-title">
-      <!-- <ion-img src="../../../../assets/Design_icons/Login-page-background-and-images/Memory-lane-logo.png"></ion-img> -->
+    <ion-item color="none" lines="none">
+      <ion-img ngClass="profile-img" src="../../../../../assets/Design_icons/Login-page-background-and-images/Big-person.png"></ion-img>
     </ion-item>
   </ion-list>
 
@@ -79,9 +70,10 @@
             expand="block"
             [disabled]="!this.loginForm.valid || (busy$ | async)"
             type="submit"
-            color="secondary">
+            ngClass="login-btn"
+            color="none">
             <ion-spinner *ngIf="busy$ | async"></ion-spinner>
-            <ion-text>Login</ion-text>
+            <ion-text color="light">Login</ion-text>
           </ion-button>
         </ion-col>
       </ion-row>
