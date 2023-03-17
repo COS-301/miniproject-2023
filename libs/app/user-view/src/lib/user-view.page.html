@@ -55,7 +55,7 @@
         <ion-button 
             *ngIf="added"
             ngClass="unfriend-btn"
-            (click)="removeFriend()"    
+            (click)="presentAlert()"   
         >
             <ion-icon ngClass="unfriend-icon" color="dark" name="close-circle-outline" slot="end"></ion-icon>
             Unfriend
