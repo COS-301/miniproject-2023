@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Create Temporary .env.prod
-        uses: "finnp/create-file-action@action@master"
+        uses: finnp/create-file-action@action@master
         env:
           FILE_NAME: ".env.prod"
           FILE_DATA: "${{ secrets.ENV_PROD_FILE }}"
