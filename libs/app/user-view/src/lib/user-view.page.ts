@@ -7,8 +7,10 @@ import { Component } from '@angular/core';
 })
 export class UserViewPageComponent {
   added = false;
+  btn_text = "Send friend request";
 
   addedNewFriend() {
     this.added = true;
+    this.btn_text = "You are friends";
   }
 }

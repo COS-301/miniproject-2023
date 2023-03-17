@@ -14,11 +14,20 @@
     padding-right: 5px;
 }
 
-.friend-req-btn {
+.friend-req-btn-not-added {
     background-color: #686868;
     padding: 0 5px;
     margin-top:20px;
     border-radius: 10px;
+    color: #fff;
+}
+.friend-req-btn-added {
+    background-color: #08FF03;
+    padding: 0 5px;
+    margin-top:20px;
+    border-radius: 10px;
+    transition: 0.25s;
+    color: #000;
 }
 
 //--------------<app-user-info>---------------------------
@@ -136,7 +145,7 @@
     stroke-dashoffset: 166;
     stroke-width: 2;
     stroke-miterlimit: 10;
-    stroke: #08FF03;
+    stroke: #000;
     fill: none;
     animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards
 }
@@ -145,11 +154,11 @@
     height: 25px;
     border-radius: 50%;
     display: block;
-    stroke-width: 2;
-    stroke: #000;
+    stroke-width: 5;
+    stroke: #08FF03;
     stroke-miterlimit: 10;
     margin: 10% auto;
-    box-shadow: inset 0px 0px 0px #08FF03;
+    box-shadow: inset 0px 0px 0px #000;
     animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both
 }
 .checkmark__check{
@@ -166,5 +175,5 @@
     50%{transform: scale3d(1.1, 1.1, 1)}
 }
 @keyframes fill{
-    100%{box-shadow: inset 0px 0px 0px 30px #08FF03}
+    100%{box-shadow: inset 0px 0px 0px 30px #000000}
 }
