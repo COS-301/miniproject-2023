@@ -14,14 +14,10 @@
     padding-right: 5px;
 }
 
-.profile-info {
-    margin: 0px;
-}
-
 .friend-req-btn {
     background-color: #686868;
     padding: 0 5px;
-    margin-top:5px;
+    margin-top:20px;
     border-radius: 10px;
 }
 
@@ -31,16 +27,41 @@
 }
 .heading-grid-row {
     color: #ffffff;
-    height:75px;
+    height:130px;
 }
 .heading-grid-row-col1,
-.heading-grid-row-col2 {
+.heading-grid-row-col2,
+.heading-grid-row-col3 {
     margin-top: 15px;
 }
+.heading-grid-row-col1,
+.heading-grid-row-col3 {
+    padding-top: 35px;
+}
+.heading-grid-row-col3 {
+    margin-left: 5px;
+}
+
 .heading-grid-row-col1-title,
-.heading-grid-row-col2-title {
+.heading-grid-row-col3-title {
     font-weight: bold;
-    font-size:20px;
+    font-family: "Lato";
+    opacity: 0.6;
+    font-size:15px;
+}
+.user-profile-img {
+    height: 100px;
+    width: 100px;
+    margin: auto;
+}
+.username {
+    font-size: 20px;
+    font-family: "Lato";
+}
+.friend-memories-count {
+    font-family: "Lato";
+    font-size: 25px;
+    font-weight: bold;
 }
 
 //---------------<app-user-memories>------------------------------
@@ -64,7 +85,7 @@
     height: 100%;
 
     filter: blur(8px);
-    -webkit-filter: blur(8px);
+    -webkit-filter: blur(20px);
 }
 .memory-card-title {
     font-family: 'Lato';
