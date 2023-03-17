@@ -52,6 +52,14 @@
             </div>
             {{ btn_text }}
         </ion-button>
+        <ion-button 
+            *ngIf="added"
+            ngClass="unfriend-btn"
+            (click)="removeFriend()"    
+        >
+            <ion-icon ngClass="unfriend-icon" color="dark" name="close-circle-outline" slot="end"></ion-icon>
+            Unfriend
+        </ion-button>
     </ion-buttons>
 
     <!----------------------------------------------------------------------->

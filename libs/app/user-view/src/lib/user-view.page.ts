@@ -13,4 +13,9 @@ export class UserViewPageComponent {
     this.added = true;
     this.btn_text = "You are friends";
   }
+
+  removeFriend() {
+    this.added = false;
+    this.btn_text = "Send friend request";
+  }
 }

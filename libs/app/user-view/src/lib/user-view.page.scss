@@ -20,6 +20,7 @@
     margin-top:20px;
     border-radius: 10px;
     color: #fff;
+    transition: 0.1s;
 }
 .friend-req-btn-added {
     background-color: #08FF03;
@@ -28,6 +29,19 @@
     border-radius: 10px;
     transition: 0.25s;
     color: #000;
+}
+.unfriend-btn {
+    background-color: #ff0000;
+    padding: 0 5px;
+    margin-top:20px;
+    margin-left: 20px;
+    border-radius: 10px;
+    color: #000;
+    transition: 0.25;
+}
+.unfriend-icon {
+    width: 30px;
+    height: 30px;
 }
 
 //--------------<app-user-info>---------------------------
