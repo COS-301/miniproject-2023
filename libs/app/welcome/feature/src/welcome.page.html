@@ -1,24 +1,21 @@
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" scroll-y="false">
 
-  <!-- <div class="background-image"></div> -->
+  <div class="background-image"></div>
 
   <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large" color="dark" class="ion-text-center">Welcome</ion-title>
+    <ion-toolbar color="none">
+      <ion-title color="light" size="large" class="ion-text-center">Welcome</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <div class="center-container ion-align-items-center">
     <ion-grid>
-      <ion-row>
-        <ion-col offset="2" size="8">
-          <!-- <img
+      <ion-row ngClass="page-logo">
+        <ion-col size="12">
+          <img
             class="logo logo-light"
-            src="/assets/logos/schadre-logo-full.png" /> -->
-          <!-- <img
-            class="logo logo-dark"
-            src="/assets/logos/schadre-logo-full-white.png"
-          /> -->
+            ngClass="logo-img"
+            src="/assets/Design_icons/Login-page-background-and-images/Memory-lane-logo.png" />
         </ion-col>
       </ion-row>
       <ion-row>
