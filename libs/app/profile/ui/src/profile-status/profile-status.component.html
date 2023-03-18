@@ -2,7 +2,7 @@
   <ion-card>
     <ion-card-header>
       <ion-card-title class="ion-align-items-center" style="display: flex">
-        Profile
+        Profile Settings
         <ng-container *ngIf="profile">
           <ion-icon
             *ngIf="profile.status == 'Incomplete'"
@@ -79,12 +79,15 @@
         Occupation Details <ion-icon name="alert-circle-outline"></ion-icon>
       </ion-chip>
     </ion-card-content>
-    <ion-button
+    <ion-nav-link [routerLink]="['profile']">
+      <ion-button
       fill="clear"
       class="ion-float-right"
-      [routerLink]="['/', 'home', 'profile']">
-      Open Profile
+      >
+      Open Profile Settings
     </ion-button>
+    </ion-nav-link>
+    
   </ion-card>
 </ng-container>
 <ng-template #loading>
