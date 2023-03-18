@@ -34,7 +34,12 @@
     ngxsForm="register.registerForm"
     (submit)="register()">
     <ion-list class="ion-padding-vertical">
-      <ion-item color="medium">
+      <ion-item 
+        color="medium"
+        [ngClass]="{
+          'valid-input': email?.value && !(email?.invalid && (email?.dirty || email?.touched)),
+          'invalid-input': email?.invalid && (email?.dirty || email?.touched)
+        }">
         <ion-label position="floating" class="required">Email</ion-label>
         <ion-input
           type="email"
@@ -51,7 +56,13 @@
         color="danger">
         <small class="error-text">{{ emailError }}</small>
       </ion-text>
-      <ion-item color="medium">
+      <ion-item 
+        color="medium"
+        [ngClass]="{
+          'valid-input': password?.value && !(password?.invalid && (password?.dirty || password?.touched)),
+          'invalid-input': password?.invalid && (password?.dirty || password?.touched)
+        }"
+        >
         <ion-label position="floating" class="required">Password</ion-label>
         <ion-input
           [type]="showPassword ? 'text' : 'password'"
