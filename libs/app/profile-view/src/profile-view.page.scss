@@ -95,6 +95,19 @@ ion-menu::part(container) {
     font-weight: bold;
 }
 
+.account-time{
+    text-align: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.account-time-text{
+    font-family: 'Inter';
+    font-size: 26px;
+    font-weight: 600;
+    color:#ffffff
+}
+
 .memory-list {
     background-color: transparent;
     padding-right: 8px;
