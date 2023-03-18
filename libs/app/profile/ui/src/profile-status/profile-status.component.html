@@ -79,7 +79,7 @@
         Occupation Details <ion-icon name="alert-circle-outline"></ion-icon>
       </ion-chip>
     </ion-card-content>
-    <ion-nav-link [routerLink]="['profile']">
+    <ion-nav-link [routerLink]="['profile']" [queryParams]="{ from: 'Dashboard'}">
       <ion-button
       fill="clear"
       class="ion-float-right"

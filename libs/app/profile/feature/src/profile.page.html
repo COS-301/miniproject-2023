@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="dark">
-    <ion-back-button text="back" defaultHref="/profile-view" color="light" slot="start"></ion-back-button>
+    <ion-back-button [text]="previousPageName" defaultHref="/profile-view" color="light" slot="start"></ion-back-button>
     <ion-title color="light" class="ion-align-items-center">
       Profile Settings
       <ng-container *ngIf="(profile$ | async) as profile;">
