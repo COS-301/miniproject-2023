@@ -9,13 +9,15 @@
             </ion-header>          
             <ion-list ngClass="menu-list">
                 <ion-item routerLink="Dashboard" ngClass="menu-list-item" lines="none">
-                    <ion-icon slot="start" name="home"></ion-icon>
+                    <ion-icon color="dark" slot="start" name="home"></ion-icon>
                     <ion-text ngClass="menu-list-item-text">Dashboard</ion-text>
                 </ion-item>
-                <ion-item routerLink="profile" ngClass="menu-list-item" lines="none">
-                    <ion-icon slot="start" name="settings"></ion-icon>
-                    <ion-text ngClass="menu-list-item-text">Settings</ion-text>
-                </ion-item>
+                <ion-nav-link [routerLink]="['profile']">
+                    <ion-item ngClass="menu-list-item" lines="none">
+                        <ion-icon slot="start" name="settings"></ion-icon>
+                        <ion-text ngClass="menu-list-item-text">Settings</ion-text>
+                    </ion-item>
+                </ion-nav-link>
                 <ion-item ngClass="menu-list-item" lines="none">
                     <ion-icon slot="start" name="cloud-upload"></ion-icon>
                     <ion-text ngClass="menu-list-item-text">Revive Memory</ion-text>
