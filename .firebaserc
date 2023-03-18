@@ -1,7 +1,7 @@
 {
   "projects": {
-    "default": "<REPLACE_ME>",
-    "production": "<REPLACE_ME>",
-    "development": "<REPLACE_ME>"
+    "default": "twenty4-f9f8e",
+    "production": "twenty4-f9f8e",
+    "development": "twenty4-f9f8e"
   }
 }
