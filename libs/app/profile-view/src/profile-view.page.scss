@@ -19,6 +19,10 @@ ion-menu::part(container) {
     box-shadow: 4px 0px 16px rgba(0, 0, 0, 0.488);
 }
 
+.menu-sidebar{
+    --background: #383a3e;
+}
+
 .menu-heading{
     display: flex;
     justify-content: space-between;
@@ -31,13 +35,18 @@ ion-menu::part(container) {
 }
 
 .btn-menu-exit{
-    background-color: rgb(19, 19, 88);
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #000000;
     border-radius: 5px;
 }
 
 .menu-heading-text{
     font-size: 25px;
+    color: #ffffff;
+}
+
+.menu-list{
+    border-radius: 5px;
 }
 
 .menu-list-item{
@@ -46,6 +55,10 @@ ion-menu::part(container) {
     justify-content: space-evenly;
     border-bottom: 2px solid $greyish;
     margin-bottom: 10px;
+}
+
+.menu-list-item:last-child{
+    margin-bottom: 0px;
 }
 .menu-list-item-text{
     font-size: 20px;
