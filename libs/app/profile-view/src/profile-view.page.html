@@ -6,7 +6,21 @@
                 <ion-menu-button ngClass="btn-menu-exit">
                     <ion-icon name="close" ngClass="btn-menu-exit-text"></ion-icon>
                 </ion-menu-button>
-            </ion-header>
+            </ion-header>          
+            <ion-list ngClass="menu-list">
+                <ion-item ngClass="menu-list-item" lines="none">
+                    <ion-icon slot="start" name="home"></ion-icon>
+                    <ion-text ngClass="menu-list-item-text">Dashboard</ion-text>
+                </ion-item>
+                <ion-item ngClass="menu-list-item" lines="none">
+                    <ion-icon slot="start" name="settings"></ion-icon>
+                    <ion-text ngClass="menu-list-item-text">Settings</ion-text>
+                </ion-item>
+                <ion-item ngClass="menu-list-item" lines="none">
+                    <ion-icon slot="start" name="cloud-upload"></ion-icon>
+                    <ion-text ngClass="menu-list-item-text">Revive Memory</ion-text>
+                </ion-item>
+            </ion-list>
         </ion-content>
     </ion-menu>
     <div class="ion-page" id="main-content">      

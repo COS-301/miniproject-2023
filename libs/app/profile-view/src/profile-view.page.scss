@@ -27,6 +27,7 @@ ion-menu::part(container) {
     font-weight: bold;
     border-bottom: 2px solid $greyish;
     padding: 5px;
+    margin-bottom: 20px;
 }
 
 .btn-menu-exit{
@@ -37,6 +38,17 @@ ion-menu::part(container) {
 
 .menu-heading-text{
     font-size: 25px;
+}
+
+.menu-list-item{
+    // position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 2px solid $greyish;
+    margin-bottom: 10px;
+}
+.menu-list-item-text{
+    font-size: 20px;
 }
 
 .title {
