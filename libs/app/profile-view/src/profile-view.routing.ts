@@ -13,6 +13,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('@mp/app/dashboard/feature').then((m) => m.DashboardModule),
   },
+  {
+    path: 'profile',
+    loadChildren: () =>
+      import('@mp/app/profile/feature').then((m) => m.ProfileModule),
+  },
 ];
 
 @NgModule({
