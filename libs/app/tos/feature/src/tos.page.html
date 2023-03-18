@@ -1,17 +1,18 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="none">
+    <ion-buttons slot="start">
+      <ion-back-button color="light" text="Welcome Page" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title size="medium" slot="end">Terms of Service</ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content [fullscreen]="true" ngClass="page-content">
-
-  <ion-header [translucent]="true">
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button color="light" text="Welcome Page" defaultHref="/"></ion-back-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
-
-  <ion-header collapse="condense">
+  <ion-header collapse="condense" class="ion-text-center">
     <ion-toolbar color="none">
       <ion-title size="large" class="ion-text-center" color="light">Terms of Service</ion-title>
     </ion-toolbar>
+    <small class="last-updated">Last updated: 2023-03-18, 16:00 (GMT +2)</small>
   </ion-header>
   <ion-list class="ion-padding" ngClass="tos-items">
     <ion-text ngClass="terms-of-service-text">
@@ -73,7 +74,7 @@
       <h4>Thank you for using Memory Lane, and we hope you enjoy your trip down memory lane!</h4>
     </ion-text>
   </ion-list>
-  <ion-footer collapse="condense" class="ion-padding ion-text-center">
+  <ion-footer collapse="condense" class="ion-text-center">
     <ms-copyright-component></ms-copyright-component>
   </ion-footer>
 </ion-content>
