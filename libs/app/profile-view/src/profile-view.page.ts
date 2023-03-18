@@ -5,4 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './profile-view.page.html',
   styleUrls: ['./profile-view.page.scss'],
 })
-export class ProfileViewPage {}
+export class ProfileViewPageComponent {}

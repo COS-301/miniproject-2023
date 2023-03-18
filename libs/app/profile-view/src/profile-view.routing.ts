@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProfileViewPage } from './profile-view.page';
+import { ProfileViewPageComponent } from './profile-view.page';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: ProfileViewPage
+    component: ProfileViewPageComponent
   },
 ];
 
