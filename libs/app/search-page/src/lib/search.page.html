@@ -6,15 +6,15 @@
 </ion-header>
 
 <ion-content color="dark">
-    <ion-toolbar color="none" ngClass="searchbar-toolbar">
+    <ion-toolbar color="none">
         <ion-searchbar
             color="medium" 
-            [ngClass]="{'searchbar': true, 'searchbar-focus': searchFocus}"
+            ngClass="searchbar"
             [(ngModel)]="searchValue"
             (ionFocus)="onSearchFocus()"
             (ionBlur)="onSearchBlur()"
+            show-cancel-button="focus"
         ></ion-searchbar>
-        <ion-button color="none" ngClass="cancel-search" slot="end" *ngIf="searchFocus">Cancel</ion-button>
     </ion-toolbar>
     <ion-list ngClass="memory-list">
         <ion-card ngClass="memory-card" color="none"> 

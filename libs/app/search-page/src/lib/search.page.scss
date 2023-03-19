@@ -21,26 +21,8 @@
 .searchbar {
     padding: 0 10px;
     color: #ffffff;
-    opacity: 0.7;
     transition: 0.2;
     height: 50px;
-}
-.searchbar-focus {
-    transition: 0.2s;
-    height: 50px;
-}
-.searchbar-toolbar {
-    display: flex;
-    flex-direction: row;
-}
-.cancel-search {
-    // transition: 0.2s;
-    height: 33px;
-    background-color: transparent;
-    border: 2px solid #fff;
-    border-radius: 10px;
-    margin-top: 9px;
-    margin-right: 10px;
 }
 
 .memory-list {
