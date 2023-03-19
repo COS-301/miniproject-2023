@@ -8,8 +8,16 @@ import { ProfileImageService } from '../ProfileImageService';
   styleUrls: ['./edit-profile-photo.page.scss'],
 })
 export class EditProfilePhotoPageComponent {
+  previousUrl: string;
 
-  constructor(public modalController: ModalController, private alertCtrl: AlertController, private profileImageService: ProfileImageService) {}
+  constructor(public modalController: ModalController, private alertCtrl: AlertController, private profileImageService: ProfileImageService) {
+    this.previousUrl = '';
+
+    if (this.getProfileImageUrl() !== ''){ 
+      this.previousUrl = this.getProfileImageUrl();     
+      this.setProfileImage(''); 
+    }
+  }
 
   async onFileSelected(event: any) {
     const file: File = event.target.files[0];
@@ -42,6 +50,9 @@ export class EditProfilePhotoPageComponent {
   }
 
   async cancel() {
+    if (this.previousUrl !== ''){
+      this.setProfileImage(this.previousUrl);
+    }
     await this.modalController.dismiss();
   }
 
