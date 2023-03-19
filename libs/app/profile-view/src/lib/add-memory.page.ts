@@ -11,15 +11,29 @@ export class AddMemoryPageComponent {
   memory: Memory = {
     title:'',
     description: '',
-    image: '',
+    imageUrl: '',
     date: '',
   };
 
   currentDate: string;
+  
+  // imageUrl: string;
 
   constructor(public modalController: ModalController){
     this.currentDate = new Date().toISOString();
+    // this.imageUrl = '';
    }
+
+   onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      if (reader.result !== null) {
+        this.memory.imageUrl = reader.result.toString();
+      }
+    };
+  }
 
   save() {
     const dateObj = new Date();
@@ -38,7 +52,7 @@ export class AddMemoryPageComponent {
     const newMemory: Memory = {
       title: this.memory.title,
       description: this.memory.description,
-      image: this.memory.image,
+      imageUrl: this.memory.imageUrl,
       date: formattedDate,
     };
 
@@ -47,5 +61,5 @@ export class AddMemoryPageComponent {
 
   cancel() {
     this.modalController.dismiss();
-  }
+  }  
 }
