@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-edit-profile-photo',
@@ -10,19 +10,38 @@ export class EditProfilePhotoPageComponent {
 
   profileImageUrl: string;
 
-  constructor(private modalController: ModalController) {
+  constructor(public modalController: ModalController, private alertCtrl: AlertController) {
     this.profileImageUrl = '';
   }
 
-  onFileSelected(event: any) {
+  async onFileSelected(event: any) {
     const file: File = event.target.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      if (reader.result !== null) {
-        this.profileImageUrl = reader.result.toString();
-      }
-    };
+    if (!file || !file.type.match(/image\/*/) ) {
+      const alert = await this.alertCtrl.create({
+        cssClass: 'file-select-alert',
+        header: 'Invalid file selected',
+        subHeader: 'Only images are allowed',
+        buttons: [{
+          text: 'OK',
+          handler: () => {
+            console.log('Alert dismissed')
+          }
+        }]
+      });
+      
+      event.target.value = null;
+      this.profileImageUrl = '';
+      await alert.present();
+    }
+    else {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        if (reader.result !== null) {
+          this.profileImageUrl = reader.result.toString();
+        }
+      };
+    }
   }
 
   cancel() {
@@ -30,6 +49,10 @@ export class EditProfilePhotoPageComponent {
   }
 
   save() {
-    this.modalController.dismiss();
+    this.modalController.dismiss(this.profileImageUrl);
+  }
+
+  getProfileImageUrl(): string {
+    return this.profileImageUrl;
   }
 }
