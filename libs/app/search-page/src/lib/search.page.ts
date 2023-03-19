@@ -29,6 +29,9 @@ export class SearchPageComponent {
   onSearchBlur() {
     this.searchFocus = false;
   }
+  onInputChange() {
+    this.showFilters = false;
+  }
   onSearch(searchTerm: string) {
     // Add search term to the beginning of the array
     if(searchTerm != '') {
