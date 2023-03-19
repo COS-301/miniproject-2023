@@ -10,7 +10,7 @@
             <input type="file" (change)="onFileSelected($event)">
         </ion-item>        
         <ion-item color="dark" ngClass="modal-list-item">
-            <ion-label>Selected image</ion-label>
+            <ion-label>No image to display</ion-label>
             <ion-img [src]="profileImageUrl" *ngIf="profileImageUrl"></ion-img>
         </ion-item>
     </ion-list>
