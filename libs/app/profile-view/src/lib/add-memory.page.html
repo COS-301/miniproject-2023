@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="dark">
       <ion-title>Add Memory</ion-title>
       <ion-buttons slot="end">
         <ion-button (click)="cancel()">Cancel</ion-button>
@@ -8,23 +8,23 @@
     </ion-toolbar>
   </ion-header>
   
-  <ion-content>
-    <ion-list>
-      <ion-item>
-        <ion-label>Title</ion-label>
-        <ion-input [(ngModel)]="memory.title"></ion-input>
+  <ion-content color="dark">
+    <ion-list ngClass="modal-list">
+      <ion-item color="dark" ngClass="modal-list-item">
+        <ion-label>Title: </ion-label>
+        <ion-input ngClass="modal-list-input" [(ngModel)]="memory.title"></ion-input>
       </ion-item>
-      <ion-item>
-        <ion-label>Description</ion-label>
-        <ion-textarea [(ngModel)]="memory.description"></ion-textarea>
+      <ion-item color="dark" ngClass="modal-list-item">
+        <ion-label>Description: </ion-label>
+        <ion-textarea ngClass="modal-list-input" [(ngModel)]="memory.description"></ion-textarea>
       </ion-item>
-      <ion-item>
-        <ion-label>Image</ion-label>
-        <ion-input [(ngModel)]="memory.image"></ion-input>
+      <ion-item color="dark" ngClass="modal-list-item">
+        <ion-label>Image URL: </ion-label>
+        <ion-input ngClass="modal-list-input" [(ngModel)]="memory.image"></ion-input>
       </ion-item>
-      <ion-item>
-        <ion-label>Date:</ion-label>
-        <ion-input slot="end" [readonly]="true" [value]="currentDate | date: 'dd MMMM yyyy'"></ion-input>
+      <ion-item ngClass="date" lines="none" color="dark">
+        <ion-label>Date: </ion-label>
+        <ion-input ngClass="date-display" slot="end" [readonly]="true" [value]="currentDate | date: 'dd MMMM yyyy'"></ion-input>
       </ion-item>
     </ion-list>
   </ion-content>
