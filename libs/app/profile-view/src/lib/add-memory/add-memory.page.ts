@@ -17,11 +17,8 @@ export class AddMemoryPageComponent {
 
   currentDate: string;
 
-  // imageUrl: string;
-
   constructor(public modalController: ModalController, private alertCtrl: AlertController) {
     this.currentDate = new Date().toISOString();
-    // this.imageUrl = '';
   }
 
   onFileSelected(event: any) {
