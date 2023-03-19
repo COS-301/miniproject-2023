@@ -8,8 +8,11 @@ import { Component } from '@angular/core';
 export class SearchPageComponent {  
   searchValue = '';
   searchFocus = false;
+  showFilters = false;
+  currentFilter = 'Top';
+
   recentSearches: string[] = ['1','2','3','4','5']; //first 7 recents are shown
-  searchUsers: string[] = [
+  searchResults: string[] = [
     '@user1',
     '@user2exa',
     '@user3',
@@ -28,16 +31,51 @@ export class SearchPageComponent {
   }
   onSearch(searchTerm: string) {
     // Add search term to the beginning of the array
-    if(searchTerm != '') this.recentSearches.unshift(searchTerm);
+    if(searchTerm != '') {
+      this.recentSearches.unshift(searchTerm);
+      this.showFilters = true;
+    }
     //fetch user accounts based on search value and populate searchUsers array
   }  
 
   get RecentSearches() {
     return this.recentSearches;
   }
-  get SearchedUsers() {
-    return this.searchUsers.filter(user => {
+  get SearchResults() {
+    return this.searchResults.filter(user => {
       return user.toLowerCase().includes(this.searchValue.toLowerCase());
     });
+  }
+
+  //filter search results
+  setFilter(filter: string) {
+    this.currentFilter = filter;
+    this.filterResults();
+  }
+
+  filterResults() {
+    if (this.currentFilter === 'Top') {
+      this.searchResults = this.getTopResults();
+    } else if (this.currentFilter === 'Accounts') {
+      this.searchResults = this.getAccountResults();
+    } else if (this.currentFilter === 'Tags') {
+      this.searchResults = this.getTagResults();
+    }
+  }
+
+  //######FIX code below to filter searchResults array
+  getTopResults(): string[] {
+    // Return the top search results
+    return this.searchResults;
+  }
+
+  getAccountResults(): string[] {
+    // Return the search results for accounts
+    return this.searchResults;    
+  }
+
+  getTagResults(): string[] {
+    // Return the search results for tags
+    return this.searchResults;
   }
 }
