@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { Memory } from './Memory';
+import { Memory } from '../Memory';
 
 @Component({
   selector: 'app-add-memory',
@@ -9,22 +9,22 @@ import { Memory } from './Memory';
 })
 export class AddMemoryPageComponent {
   memory: Memory = {
-    title:'',
+    title: '',
     description: '',
     imageUrl: '',
     date: '',
   };
 
   currentDate: string;
-  
+
   // imageUrl: string;
 
-  constructor(public modalController: ModalController){
+  constructor(public modalController: ModalController) {
     this.currentDate = new Date().toISOString();
     // this.imageUrl = '';
-   }
+  }
 
-   onFileSelected(event: any) {
+  onFileSelected(event: any) {
     const file: File = event.target.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -46,7 +46,7 @@ export class AddMemoryPageComponent {
     const formattedDate = localDate.toLocaleDateString(navigator.language, {
       day: 'numeric',
       month: 'long',
-      year: 'numeric'
+      year: 'numeric',
     });
 
     const newMemory: Memory = {
@@ -61,5 +61,5 @@ export class AddMemoryPageComponent {
 
   cancel() {
     this.modalController.dismiss();
-  }  
+  }
 }

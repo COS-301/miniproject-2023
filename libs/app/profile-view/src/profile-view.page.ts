@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { AddMemoryPageComponent } from './lib/add-memory.page';
+import { AddMemoryPageComponent } from './lib/add-memory/add-memory.page';
 import { Memory } from './lib/Memory';
 
 @Component({
@@ -8,7 +8,6 @@ import { Memory } from './lib/Memory';
   templateUrl: './profile-view.page.html',
   styleUrls: ['./profile-view.page.scss'],
 })
-
 export class ProfileViewPageComponent {
   memories: Memory[] = [];
 
@@ -16,16 +15,15 @@ export class ProfileViewPageComponent {
 
   async addMemory() {
     const modal = await this.modalController.create({
-      component: AddMemoryPageComponent
+      component: AddMemoryPageComponent,
     });
 
     await modal.present();
     // <{ memory: Memory; formattedDate: string }>
-    const {data} = await modal.onDidDismiss();
+    const { data } = await modal.onDidDismiss();
     // && data.memory
     if (data) {
       this.memories.unshift(data);
     }
   }
-  
 }
