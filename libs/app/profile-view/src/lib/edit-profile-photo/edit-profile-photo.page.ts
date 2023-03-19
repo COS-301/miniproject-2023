@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
+import { ProfileImage } from '../ProfileImage';
+import { ProfileImageService } from '../ProfileImageService';
 
 @Component({
   selector: 'app-edit-profile-photo',
@@ -8,11 +10,7 @@ import { AlertController, ModalController } from '@ionic/angular';
 })
 export class EditProfilePhotoPageComponent {
 
-  profileImageUrl: string;
-
-  constructor(public modalController: ModalController, private alertCtrl: AlertController) {
-    this.profileImageUrl = '';
-  }
+  constructor(public modalController: ModalController, private alertCtrl: AlertController, private profileImageService: ProfileImageService) {}
 
   async onFileSelected(event: any) {
     const file: File = event.target.files[0];
@@ -30,7 +28,7 @@ export class EditProfilePhotoPageComponent {
       });
       
       event.target.value = null;
-      this.profileImageUrl = '';
+      this.setProfileImage(''); 
       await alert.present();
     }
     else {
@@ -38,21 +36,29 @@ export class EditProfilePhotoPageComponent {
       reader.readAsDataURL(file);
       reader.onload = () => {
         if (reader.result !== null) {
-          this.profileImageUrl = reader.result.toString();
+          this.setProfileImage(reader.result.toString());
         }
       };
     }
   }
 
-  cancel() {
-    this.modalController.dismiss();
+  async cancel() {
+    await this.modalController.dismiss();
   }
 
-  save() {
-    this.modalController.dismiss(this.profileImageUrl);
+  async save() {
+    // const newProfileImageUrl: ProfileImage = {
+    //   profileImageUrl: this.profileImage.profileImageUrl
+    // }
+
+    await this.modalController.dismiss();
   }
 
   getProfileImageUrl(): string {
-    return this.profileImageUrl;
+    return this.profileImageService.imageUrl;
+  }
+
+  setProfileImage(url: string) {
+    this.profileImageService.imageUrl = url;
   }
 }

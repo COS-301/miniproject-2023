@@ -1,18 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { AddMemoryPageComponent } from './lib/add-memory/add-memory.page';
 import { EditProfilePhotoPageComponent } from './lib/edit-profile-photo/edit-profile-photo.page';
 import { Memory } from './lib/Memory';
+import { ProfileImage } from './lib/ProfileImage';
+import { ProfileImageService } from './lib/ProfileImageService';
 
 @Component({
   selector: 'app-profile-view',
   templateUrl: './profile-view.page.html',
   styleUrls: ['./profile-view.page.scss'],
 })
-export class ProfileViewPageComponent {
+export class ProfileViewPageComponent implements OnInit {
   memories: Memory[] = [];
+  profileImage: ProfileImage;
 
-  constructor(public modalController: ModalController) {}
+  constructor(public modalController: ModalController, private profileImageService: ProfileImageService) {
+    this.profileImage = profileImageService.profileImage;
+  }
+
+  ngOnInit(): void {
+      this.profileImage = this.profileImageService.profileImage;
+  }
+  
 
   async addMemory() {
     const modal = await this.modalController.create({
