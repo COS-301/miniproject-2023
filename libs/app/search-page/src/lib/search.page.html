@@ -1,12 +1,14 @@
-<ion-header>
-    <ion-toolbar ngClass="menu-toolbar" [ngStyle]="{'--background':'#161616'}">
+<ion-header ngClass="header" color="none" >
+    <ion-toolbar color="none">
         <ion-title ngClass="title">Memory Lane</ion-title>
         <small slot="end" ngClass="account-time">22h:52m:11s</small>
     </ion-toolbar>
-    <ion-searchbar ngClass="searchbar"></ion-searchbar>
+    <ion-searchbar color="dark" ngClass="searchbar"></ion-searchbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="dark">
+    <ion-searchbar color="medium" ngClass="searchbar"></ion-searchbar>
+
     <ion-list ngClass="memory-list">
         <ion-card ngClass="memory-card" color="none"> 
             <div ngClass="memory-img"></div>               
