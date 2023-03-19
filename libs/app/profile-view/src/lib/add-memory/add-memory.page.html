@@ -13,11 +13,7 @@
         <ion-item color="dark" ngClass="modal-list-item description">
             <ion-label>Description: </ion-label>
             <ion-textarea maxlength="130" placeholder="Type a description" [autoGrow]="true" ngClass="modal-list-input description-text" [(ngModel)]="memory.description"></ion-textarea>
-        </ion-item>
-        <!-- <ion-item color="dark" ngClass="modal-list-item">
-            <ion-label>Image URL: </ion-label>
-            <ion-input placeholder="Enter the image url" ngClass="modal-list-input" [(ngModel)]="memory.image"></ion-input>
-        </ion-item> -->        
+        </ion-item>       
         <ion-item color="dark" ngClass="modal-list-item">
             <ion-label>Choose an image</ion-label>
             <input type="file" (change)="onFileSelected($event)">
