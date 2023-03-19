@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditProfilePhotoPage } from './edit-profile-photo.page';
+import { EditProfilePhotoPageComponent } from './edit-profile-photo.page';
 
-describe('EditProfilePhotoPage', () => {
-  let component: EditProfilePhotoPage;
-  let fixture: ComponentFixture<EditProfilePhotoPage>;
+describe('EditProfilePhotoPageComponent', () => {
+  let component: EditProfilePhotoPageComponent;
+  let fixture: ComponentFixture<EditProfilePhotoPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [EditProfilePhotoPage],
+      declarations: [EditProfilePhotoPageComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(EditProfilePhotoPage);
+    fixture = TestBed.createComponent(EditProfilePhotoPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
