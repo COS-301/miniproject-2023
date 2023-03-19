@@ -1,1 +1,24 @@
-<p>edit-profile-photo works!</p>
+<ion-header>
+    <ion-toolbar color="dark">
+        <ion-title>Edit Profile Photo</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+    <ion-list ngClass="modal-list">      
+        <ion-item color="dark" ngClass="modal-list-item">
+            <ion-label>Choose an image</ion-label>
+            <input type="file" (change)="onFileSelected($event)">
+        </ion-item>        
+        <ion-item color="dark" ngClass="modal-list-item">
+            <ion-label>Selected image</ion-label>
+            <ion-img [src]="profileImageUrl" *ngIf="profileImageUrl"></ion-img>
+        </ion-item>
+    </ion-list>
+    <ion-item ngClass="buttons" color="none">
+        <ion-button slot="start" ngClass="button-cancel" color="light" (click)="cancel()">Cancel</ion-button>
+        <ion-button slot="end" ngClass="button-save" color="light" (click)="save()">Save</ion-button>
+    </ion-item>
+      
+</ion-content>
+  
