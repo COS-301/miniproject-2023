@@ -11,7 +11,7 @@
         </ion-item>        
         <ion-item color="dark" ngClass="modal-list-item">
             <ion-label>No image to display</ion-label>
-            <ion-img [src]="profileImageUrl" *ngIf="profileImageUrl"></ion-img>
+            <ion-img [src]="getProfileImageUrl()" *ngIf="getProfileImageUrl()"></ion-img>
         </ion-item>
     </ion-list>
     <ion-item ngClass="buttons" color="none">
