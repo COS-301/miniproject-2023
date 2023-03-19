@@ -25,6 +25,14 @@ export class Register {
   ) {}
 }
 
+export class ForgotPassword {
+  static readonly type = '[Auth] ForgotPassword';
+  constructor(
+    public readonly email: string,
+    public readonly password: string
+  ) {}
+}
+
 export class ContinueWithGoogle {
   static readonly type = '[Auth] ContinueWithGoogle';
 }
