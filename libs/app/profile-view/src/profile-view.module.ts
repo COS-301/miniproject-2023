@@ -5,6 +5,7 @@ import { ProfileViewPageComponent } from './profile-view.page';
 import { ProfileViewRouting } from './profile-view.routing';
 import { AddMemoryPageComponent } from './lib/add-memory/add-memory.page';
 import { FormsModule } from '@angular/forms';
+import { EditProfilePhotoPageComponent } from './lib/edit-profile-photo/edit-profile-photo.page';
 
 @NgModule({
   imports: [CommonModule, ProfileViewRouting, IonicModule, FormsModule],
@@ -12,7 +13,12 @@ import { FormsModule } from '@angular/forms';
     ProfileViewPageComponent,
     AddMemoryPageComponent,
     AddMemoryPageComponent,
+    EditProfilePhotoPageComponent,
   ],
-  exports: [ProfileViewPageComponent, AddMemoryPageComponent,],
+  exports: [
+    ProfileViewPageComponent,
+    AddMemoryPageComponent,
+    EditProfilePhotoPageComponent,
+  ],
 })
 export class ProfileViewModule {}
