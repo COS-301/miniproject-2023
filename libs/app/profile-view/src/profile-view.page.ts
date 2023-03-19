@@ -20,8 +20,9 @@ export class ProfileViewPageComponent {
     });
 
     await modal.present();
-    const {data} = await modal.onWillDismiss();
-    
+    // <{ memory: Memory; formattedDate: string }>
+    const {data} = await modal.onDidDismiss();
+    // && data.memory
     if (data) {
       this.memories.unshift(data);
     }

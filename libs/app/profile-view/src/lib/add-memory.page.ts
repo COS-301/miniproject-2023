@@ -15,12 +15,14 @@ export class AddMemoryPageComponent {
     date: '',
   };
 
-  constructor(public modalController: ModalController){}
+  constructor(public modalController: ModalController){ }
 
-  async save() {
-    const dateObj = new Date(this.memory.date);
+  save() {
+    const dateObj = new Date();
+
     // mulitply timezone offset with 60000 to get offset in milliseconds
     const timezoneOffset = dateObj.getTimezoneOffset() * 60000;
+
     // subtract it from original date to get the local date and time
     const localDate = new Date(dateObj.getTime() - timezoneOffset);
     const formattedDate = localDate.toLocaleDateString(navigator.language, {
@@ -33,15 +35,13 @@ export class AddMemoryPageComponent {
       title: this.memory.title,
       description: this.memory.description,
       image: this.memory.image,
-      date: formattedDate
-    }
+      date: formattedDate,
+    };
 
-
-
-    await this.modalController.dismiss(this.memory);
+    this.modalController.dismiss(newMemory);
   }
 
-  async cancel() {
-    await this.modalController.dismiss();
+  cancel() {
+    this.modalController.dismiss();
   }
 }
