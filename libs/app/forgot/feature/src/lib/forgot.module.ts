@@ -5,7 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { CopyrightModule } from '@mp/app/copyright/ui';
 import { ForgotPasswordModule as ForgotPasswordDataAccessModule } from '@mp/app/forgot/data-access';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
-import { ForgotPage } from './forgot.page';
+import { ForgotPasswordPage } from './forgot.page';
 import { ForgotPasswordRouting } from './forgot.routing';
 
 @NgModule({
@@ -18,6 +18,6 @@ import { ForgotPasswordRouting } from './forgot.routing';
     ForgotPasswordRouting,
     CopyrightModule,
   ],
-  declarations: [ForgotPage],
+  declarations: [ForgotPasswordPage],
 })
 export class ForgotPasswordModule {}

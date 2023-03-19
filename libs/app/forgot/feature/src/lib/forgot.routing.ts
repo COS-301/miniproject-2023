@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ForgotPage } from './forgot.page';
+import { ForgotPasswordPage } from './forgot.page';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: ForgotPage,
+    component: ForgotPasswordPage,
   },
 ];
 
