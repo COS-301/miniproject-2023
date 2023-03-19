@@ -5,7 +5,6 @@ import { ProfileViewPageComponent } from './profile-view.page';
 import { ProfileViewRouting } from './profile-view.routing';
 import { AddMemoryPageComponent } from './lib/add-memory/add-memory.page';
 import { FormsModule } from '@angular/forms';
-import { ReviveMemoryPage } from './lib/revive-memory/revive-memory.page';
 
 @NgModule({
   imports: [CommonModule, ProfileViewRouting, IonicModule, FormsModule],
@@ -13,8 +12,7 @@ import { ReviveMemoryPage } from './lib/revive-memory/revive-memory.page';
     ProfileViewPageComponent,
     AddMemoryPageComponent,
     AddMemoryPageComponent,
-    ReviveMemoryPage,
   ],
-  exports: [ProfileViewPageComponent, AddMemoryPageComponent, ReviveMemoryPage],
+  exports: [ProfileViewPageComponent, AddMemoryPageComponent,],
 })
 export class ProfileViewModule {}
