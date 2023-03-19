@@ -1,31 +1,31 @@
 <ion-header>
     <ion-toolbar color="dark">
-      <ion-title>Add Memory</ion-title>
-      <ion-buttons slot="end">
-        <ion-button (click)="cancel()">Cancel</ion-button>
-        <ion-button (click)="save()">Save</ion-button>
-      </ion-buttons>
+        <ion-title>Add Memory</ion-title>
     </ion-toolbar>
-  </ion-header>
-  
-  <ion-content color="dark">
+</ion-header>
+
+<ion-content color="dark">
     <ion-list ngClass="modal-list">
-      <ion-item color="dark" ngClass="modal-list-item">
-        <ion-label>Title: </ion-label>
-        <ion-input ngClass="modal-list-input" [(ngModel)]="memory.title"></ion-input>
-      </ion-item>
-      <ion-item color="dark" ngClass="modal-list-item">
-        <ion-label>Description: </ion-label>
-        <ion-textarea ngClass="modal-list-input" [(ngModel)]="memory.description"></ion-textarea>
-      </ion-item>
-      <ion-item color="dark" ngClass="modal-list-item">
-        <ion-label>Image URL: </ion-label>
-        <ion-input ngClass="modal-list-input" [(ngModel)]="memory.image"></ion-input>
-      </ion-item>
-      <ion-item ngClass="date" lines="none" color="dark">
-        <ion-label>Date: </ion-label>
-        <ion-input ngClass="date-display" slot="end" [readonly]="true" [value]="currentDate | date: 'dd MMMM yyyy'"></ion-input>
-      </ion-item>
+        <ion-item color="dark" ngClass="modal-list-item">
+            <ion-label>Title: </ion-label>
+            <ion-input maxlength="23" ngClass="modal-list-input" placeholder="Enter a title" [(ngModel)]="memory.title"></ion-input>
+        </ion-item>
+        <ion-item color="dark" ngClass="modal-list-item description">
+            <ion-label>Description: </ion-label>
+            <ion-textarea maxlength="130" placeholder="Type a description" [autoGrow]="true" ngClass="modal-list-input description-text" [(ngModel)]="memory.description"></ion-textarea>
+        </ion-item>
+        <ion-item color="dark" ngClass="modal-list-item">
+            <ion-label>Image URL: </ion-label>
+            <ion-input placeholder="Enter the image url" ngClass="modal-list-input" [(ngModel)]="memory.image"></ion-input>
+        </ion-item>
+        <ion-item ngClass="date" lines="none" color="dark">
+            <ion-label>Date: </ion-label>
+            <ion-input ngClass="date-display" slot="end" [readonly]="true" [value]="currentDate | date: 'dd MMMM yyyy'"></ion-input>
+        </ion-item>
     </ion-list>
-  </ion-content>
+    <ion-item ngClass="buttons" color="none">
+        <ion-button slot="start" ngClass="button-cancel" color="light" (click)="cancel()">Cancel</ion-button>
+        <ion-button slot="end" ngClass="button-add" color="light" (click)="save()">Save</ion-button>
+    </ion-item>
+</ion-content>
   

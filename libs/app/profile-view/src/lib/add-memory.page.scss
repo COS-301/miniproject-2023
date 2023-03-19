@@ -13,12 +13,31 @@
 .modal-list-input{
     background-color: #ffffff;
     border-radius: 5px;
-    font-size: 20px;
+    font-size: 18px;
+    color: #000000;
+    margin-left: 5px;
+    --padding-start: 10px;
+    --padding-end: 10px;
+}
+
+.description{
+    display: flex;
+    justify-content: space-around;
+    height: 200px;
+}
+
+.description-text{
+    margin: auto;
+    position: absolute;
+    left: 0;
+    height: 120px;
+    top: 30%;
+    --padding-start: 10px;
+    --padding-end: 10px;
 }
 
 
-
-.date-display{
+.date-display, .buttons{
     background-color: transparent;
 }
 
@@ -28,3 +47,10 @@
     color: gray;
     margin-top: 50px;
 }
+
+.button-add, .button-cancel{
+    font-size: 25px;
+    margin-top: 20px;
+    height: 40px;
+}
+
