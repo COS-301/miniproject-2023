@@ -1,0 +1,15 @@
+.button-save, .button-cancel{
+    font-size: 25px;
+    margin-top: 20px;
+    height: 40px;
+    color: #ffffff;
+    width: 100px;
+}
+
+.button-save {
+    --background: #08ff08cd;
+}
+
+.button-cancel {
+    --background: #ff0000;
+}
