@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { AddMemoryPageComponent } from './lib/add-memory/add-memory.page';
+import { EditProfilePhotoPageComponent } from './lib/edit-profile-photo/edit-profile-photo.page';
 import { Memory } from './lib/Memory';
 
 @Component({
@@ -25,5 +26,15 @@ export class ProfileViewPageComponent {
     if (data) {
       this.memories.unshift(data);
     }
+  }
+
+  async editProfilePhoto() {
+    const modal = await this.modalController.create({
+      component: EditProfilePhotoPageComponent,
+    });
+
+    await modal.present();
+
+    const { data } = await modal.onDidDismiss();
   }
 }
