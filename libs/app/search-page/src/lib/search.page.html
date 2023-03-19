@@ -63,14 +63,27 @@
     <ion-text *ngIf="searchFocus && !searchValue" size="medium">
         Recent
     </ion-text>
-    <ion-list *ngIf="searchFocus && !searchValue">
-        <ion-item *ngFor="let search of RecentSearches | slice:0:7">
+    <ion-list 
+        *ngIf="searchFocus && !searchValue"
+        ngClass="search-list">
+        <ion-item 
+            color="none" 
+            *ngFor="let search of RecentSearches | slice:0:7"
+            ngClass="search-item"
+        >
             <ion-text>{{search}}</ion-text>
         </ion-item>
     </ion-list>
     <!-- Show list of accounts from a search -->
-    <ion-list *ngIf="searchValue">
-        <ion-item *ngFor="let user of SearchedUsers">
+    <ion-list 
+        *ngIf="searchValue"
+        ngClass="search-list"
+        >
+        <ion-item 
+            color="none" 
+            *ngFor="let user of SearchedUsers"
+            ngClass="search-item"
+        >
             <ion-text>{{user}}</ion-text>
         </ion-item>
     </ion-list>
