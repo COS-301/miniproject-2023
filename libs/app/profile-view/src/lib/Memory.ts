@@ -1,6 +1,6 @@
 export interface Memory{
     title: string;
     description: string;
-    image: string;
+    imageUrl: string;
     date: string;
 }
