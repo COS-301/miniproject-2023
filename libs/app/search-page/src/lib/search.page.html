@@ -14,9 +14,10 @@
             (ionFocus)="onSearchFocus()"
             (ionBlur)="onSearchBlur()"
             show-cancel-button="focus"
+            (keyup.enter)="onSearch(searchValue)"
         ></ion-searchbar>
     </ion-toolbar>
-    <ion-list ngClass="memory-list">
+    <ion-list ngClass="memory-list" *ngIf="!searchFocus">
         <ion-card ngClass="memory-card" color="none"> 
             <div ngClass="memory-img"></div>               
             <ion-card-header>
@@ -57,5 +58,20 @@
                 <ion-text class="ion-padding-top" ngClass="memory-date">14 November 2020</ion-text>
             </ion-card-content>
         </ion-card>
+    </ion-list>
+    <!-- Show list of recent searches -->
+    <ion-text *ngIf="searchFocus && !searchValue" size="medium">
+        Recent
+    </ion-text>
+    <ion-list *ngIf="searchFocus && !searchValue">
+        <ion-item *ngFor="let search of RecentSearches | slice:0:7">
+            <ion-text>{{search}}</ion-text>
+        </ion-item>
+    </ion-list>
+    <!-- Show list of accounts from a search -->
+    <ion-list *ngIf="searchValue">
+        <ion-item *ngFor="let user of SearchedUsers">
+            <ion-text>{{user}}</ion-text>
+        </ion-item>
     </ion-list>
 </ion-content>
