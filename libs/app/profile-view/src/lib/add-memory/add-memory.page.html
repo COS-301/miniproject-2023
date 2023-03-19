@@ -13,17 +13,17 @@
         <ion-item color="dark" ngClass="modal-list-item description">
             <ion-label>Description: </ion-label>
             <ion-textarea maxlength="130" placeholder="Type a description" [autoGrow]="true" ngClass="modal-list-input description-text" [(ngModel)]="memory.description"></ion-textarea>
-        </ion-item>       
+        </ion-item>  
+        <ion-item ngClass="date" lines="none" color="dark">
+            <ion-label>Date: </ion-label>
+            <ion-input ngClass="date-display" slot="end" [readonly]="true" [value]="currentDate | date: 'dd MMMM yyyy'"></ion-input>
+        </ion-item>     
         <ion-item color="dark" ngClass="modal-list-item">
             <input id="fileInput" type="file" accept="image/*" (change)="onFileSelected($event)">
         </ion-item>        
         <ion-item color="dark" ngClass="modal-list-item">
             <ion-label for="fileInput" >No image to display</ion-label>
             <ion-img [src]="memory.imageUrl" *ngIf="memory.imageUrl"></ion-img>
-        </ion-item>
-        <ion-item ngClass="date" lines="none" color="dark">
-            <ion-label>Date: </ion-label>
-            <ion-input ngClass="date-display" slot="end" [readonly]="true" [value]="currentDate | date: 'dd MMMM yyyy'"></ion-input>
         </ion-item>
     </ion-list>
     <ion-item ngClass="buttons" color="none">
