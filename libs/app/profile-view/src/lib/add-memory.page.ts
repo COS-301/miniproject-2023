@@ -15,7 +15,11 @@ export class AddMemoryPageComponent {
     date: '',
   };
 
-  constructor(public modalController: ModalController){ }
+  currentDate: string;
+
+  constructor(public modalController: ModalController){
+    this.currentDate = new Date().toISOString();
+   }
 
   save() {
     const dateObj = new Date();

@@ -22,6 +22,10 @@
         <ion-label>Image</ion-label>
         <ion-input [(ngModel)]="memory.image"></ion-input>
       </ion-item>
+      <ion-item>
+        <ion-label>Date:</ion-label>
+        <ion-input slot="end" [readonly]="true" [value]="currentDate | date: 'dd MMMM yyyy'"></ion-input>
+      </ion-item>
     </ion-list>
   </ion-content>
   
