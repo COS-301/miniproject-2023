@@ -16,6 +16,15 @@ form ion-item {
     height: 60px;
 }
 
+.back-btn {
+    left: 20px;
+    position: absolute;
+}
+.back-icon {
+    width: 30px;
+    height: 30px;
+}
+
 ion-list {
     background: transparent;
 }
