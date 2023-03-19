@@ -52,5 +52,14 @@
     font-size: 25px;
     margin-top: 20px;
     height: 40px;
+    width: 100px;
+    color: #ffffff;
 }
 
+.button-add {
+    --background: #08ff08cd;
+}
+
+.button-cancel {
+    --background: #ff0000;
+}
