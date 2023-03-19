@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
-import { exit } from 'process';
 import { Memory } from '../Memory';
 
 @Component({
