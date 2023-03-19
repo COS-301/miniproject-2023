@@ -29,7 +29,7 @@
     </ion-menu>
     <div class="ion-page" id="main-content">      
         <ion-toolbar ngClass="top-bar"> 
-            <ion-buttons slot="start">
+            <ion-buttons (click)="addMemory()" slot="start">
                 <ion-icon name="add" color="light" ngClass="add-btn"></ion-icon>
             </ion-buttons>      
             <ion-buttons slot="end">

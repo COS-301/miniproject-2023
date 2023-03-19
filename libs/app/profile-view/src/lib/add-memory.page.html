@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Add Memory</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="cancel()">Cancel</ion-button>
+        <ion-button (click)="save()">Save</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-list>
+      <ion-item>
+        <ion-label>Title</ion-label>
+        <ion-input [(ngModel)]="memory.title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Description</ion-label>
+        <ion-textarea [(ngModel)]="memory.description"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label>Image</ion-label>
+        <ion-input [(ngModel)]="memory.image"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Date</ion-label>
+        <ion-datetime [(ngModel)]="memory.date"></ion-datetime>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  
