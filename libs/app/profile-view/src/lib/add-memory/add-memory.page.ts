@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
+import { exit } from 'process';
 import { Memory } from '../Memory';
 
 @Component({
@@ -21,15 +22,33 @@ export class AddMemoryPageComponent {
     this.currentDate = new Date().toISOString();
   }
 
-  onFileSelected(event: any) {
+  async onFileSelected(event: any) {
     const file: File = event.target.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      if (reader.result !== null) {
-        this.memory.imageUrl = reader.result.toString();
-      }
-    };
+    if (!file || !file.type.match(/image\/*/) ) {
+      const alert = await this.alertCtrl.create({
+        cssClass: 'file-select-alert',
+        header: 'Invalid file selected',
+        subHeader: 'Only images are allowed',
+        buttons: [{
+          text: 'OK',
+          handler: () => {
+            console.log('Alert dismissed')
+          }
+        }]
+      });
+      
+      event.target.value = null;
+      await alert.present();
+    }
+    else {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        if (reader.result !== null) {
+          this.memory.imageUrl = reader.result.toString();
+        }
+      };
+    }
   }
 
   async add() {
