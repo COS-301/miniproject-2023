@@ -18,7 +18,7 @@
             <input id="fileInput" type="file" accept="image/*" (change)="onFileSelected($event)">
         </ion-item>        
         <ion-item color="dark" ngClass="modal-list-item">
-            <ion-label for="fileInput" >Selected image</ion-label>
+            <ion-label for="fileInput" >No image to display</ion-label>
             <ion-img [src]="memory.imageUrl" *ngIf="memory.imageUrl"></ion-img>
         </ion-item>
         <ion-item ngClass="date" lines="none" color="dark">
