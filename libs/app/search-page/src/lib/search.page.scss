@@ -14,15 +14,21 @@
     color: #7b7b7b;
     padding-right: 5px;
 }
-.header {
+.menu-toolbar {
     background-color: #161616;
 }
 
 .searchbar {
     padding: 0 10px;
-    color: #fff;
+    color: #ffffff;
     opacity: 0.7;
 }
+.fixed {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+  }
 
 .memory-list {
     background-color: transparent;
