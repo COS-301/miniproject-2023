@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { Memory } from './Memory';
 
 @Component({
   selector: 'app-add-memory',
@@ -7,7 +8,7 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./add-memory.page.scss'],
 })
 export class AddMemoryPageComponent {
-  memory = {
+  memory: Memory = {
     title:'',
     description: '',
     image: '',
