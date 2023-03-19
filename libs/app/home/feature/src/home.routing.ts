@@ -18,6 +18,11 @@ const routes: Routes = [
           import('@mp/app/profile/feature').then((m) => m.ProfileModule),
       },
       {
+        path: 'search-page',
+        loadChildren: () =>
+          import('@mp/app/search-page').then((m) => m.SearchPageModule),
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: '/home/dashboard',
