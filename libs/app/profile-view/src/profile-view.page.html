@@ -63,7 +63,19 @@
 
     <ion-list ngClass="memory-list">
         <ion-card *ngFor="let memory of memories" ngClass="memory-card" color="none"> 
-            <div ngClass="memory-img"></div>               
+            <div ngClass="memory-img">
+                <img style="
+                    position: absolute;
+                    background-image: url('{{ memory.image }}');
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    width: 100%;
+                    height: 100%;
+
+                    filter: blur(8px);
+                    -webkit-filter: blur(8px);">
+            </div>               
             <ion-card-header>
                 <ion-card-title ngClass="memory-card-title">{{ memory.title }}</ion-card-title>
             </ion-card-header>
