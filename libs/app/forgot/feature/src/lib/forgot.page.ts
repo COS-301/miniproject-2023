@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { NavigationEnd, Router } from '@angular/router';
 import { ForgotPassword } from '@mp/app/forgot/util';
 import {
     ActionsExecuting,
@@ -55,8 +56,17 @@ export class ForgotPasswordPage {
 
   constructor(
     private readonly fb: FormBuilder,
-    private readonly store: Store
+    private readonly store: Store,
+    private readonly router: Router
   ) {}
+
+  ngOnInit() {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.forgotPasswordForm.reset();
+      }
+    });
+  }
 
   forgotPassword() {
     if (this.forgotPasswordForm.valid) {
