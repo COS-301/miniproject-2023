@@ -35,7 +35,7 @@ export class AddMemoryPageComponent {
     };
   }
 
-  async save() {
+  async add() {
     const dateObj = new Date();
 
     // mulitply timezone offset with 60000 to get offset in milliseconds
