@@ -7,7 +7,7 @@
 <ion-content color="dark">
     <ion-list ngClass="modal-list">      
         <ion-item color="dark" ngClass="modal-list-item">
-            <input id="fileInput" type="file" (change)="onFileSelected($event)">
+            <input id="fileInput" type="file" accept="image/*" (change)="onFileSelected($event)">
         </ion-item>        
         <ion-item color="dark" ngClass="modal-list-item">
             <ion-label>No image to display</ion-label>
