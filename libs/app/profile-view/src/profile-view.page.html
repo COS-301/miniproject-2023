@@ -85,7 +85,7 @@
                     <ion-text color="light" ngClass="btn-add-time">+</ion-text>
                 </ion-buttons>  
                 <p ngClass="memory-card-timer">0d:0h:4min</p>
-                <ion-text class="ion-padding-top" ngClass="memory-date"color="light">{{ memory.date }}</ion-text>
+                <ion-text class="ion-padding-top" ngClass="memory-date"color="light">{{ memory.date | date:'dd MMMM yyyy' }}</ion-text>
             </ion-card-content>
         </ion-card>
     </ion-list>      
