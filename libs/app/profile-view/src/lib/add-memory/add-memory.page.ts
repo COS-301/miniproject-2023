@@ -38,6 +38,7 @@ export class AddMemoryPageComponent {
       });
       
       event.target.value = null;
+      this.memory.imageUrl = '';
       await alert.present();
     }
     else {
