@@ -1,1 +1,1 @@
-export * from './li./forgot-feature';
+export * from './lib/forgot.page';
