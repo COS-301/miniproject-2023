@@ -15,10 +15,10 @@
             <ion-textarea maxlength="130" placeholder="Type a description" [autoGrow]="true" ngClass="modal-list-input description-text" [(ngModel)]="memory.description"></ion-textarea>
         </ion-item>       
         <ion-item color="dark" ngClass="modal-list-item">
-            <input type="file" (change)="onFileSelected($event)">
+            <input id="fileInput" type="file" accept="image/*" (change)="onFileSelected($event)">
         </ion-item>        
         <ion-item color="dark" ngClass="modal-list-item">
-            <ion-label>Selected image</ion-label>
+            <ion-label for="fileInput" >Selected image</ion-label>
             <ion-img [src]="memory.imageUrl" *ngIf="memory.imageUrl"></ion-img>
         </ion-item>
         <ion-item ngClass="date" lines="none" color="dark">
