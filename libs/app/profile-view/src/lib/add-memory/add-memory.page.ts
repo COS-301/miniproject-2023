@@ -58,6 +58,7 @@ export class AddMemoryPageComponent {
 
     if (!this.memory.title && !this.memory.description && !this.memory.imageUrl){
       const alert = await this.alertCtrl.create({
+        cssClass: 'add-memory-alert',
         header: 'Invalid input received',
         subHeader: 'Please fill in all fields.',
         buttons: [{
