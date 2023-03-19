@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, AlertController } from '@ionic/angular';
 import { Memory } from '../Memory';
 
 @Component({
@@ -19,7 +19,7 @@ export class AddMemoryPageComponent {
 
   // imageUrl: string;
 
-  constructor(public modalController: ModalController) {
+  constructor(public modalController: ModalController, private alertCtrl: AlertController) {
     this.currentDate = new Date().toISOString();
     // this.imageUrl = '';
   }
@@ -35,7 +35,7 @@ export class AddMemoryPageComponent {
     };
   }
 
-  save() {
+  async save() {
     const dateObj = new Date();
 
     // mulitply timezone offset with 60000 to get offset in milliseconds
@@ -56,7 +56,24 @@ export class AddMemoryPageComponent {
       date: formattedDate,
     };
 
-    this.modalController.dismiss(newMemory);
+    if (!this.memory.title && !this.memory.description && !this.memory.imageUrl){
+      const alert = await this.alertCtrl.create({
+        header: 'Invalid input received',
+        subHeader: 'Please fill in all fields.',
+        buttons: [{
+          text: 'OK',
+          handler: () => {
+            console.log('Alert dismissed')
+          }
+        }]
+      });
+      
+      await alert.present();
+    }
+    else{
+      this.modalController.dismiss(newMemory);
+    }
+
   }
 
   cancel() {
