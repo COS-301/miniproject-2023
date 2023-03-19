@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
-import { ProfileImage } from '../ProfileImage';
 import { ProfileImageService } from '../ProfileImageService';
 
 @Component({
@@ -47,10 +46,6 @@ export class EditProfilePhotoPageComponent {
   }
 
   async save() {
-    // const newProfileImageUrl: ProfileImage = {
-    //   profileImageUrl: this.profileImage.profileImageUrl
-    // }
-
     await this.modalController.dismiss();
   }
 
