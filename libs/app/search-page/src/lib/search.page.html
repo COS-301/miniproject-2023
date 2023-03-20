@@ -79,7 +79,7 @@
     </ion-list>
     <ion-list 
         *ngIf="searchValue"
-        [ngClass]="{'search-list-searched': showFilters, 'search-list': !showFilters}"
+        ngClass="search-list"
         >
         <!-- Change ion-item to user-view component; this way we can send the inputs of the search result down to the user-view component -->
         <ion-item
