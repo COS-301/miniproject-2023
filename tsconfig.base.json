@@ -80,6 +80,7 @@
       "@mp/app/reset/feature": ["libs/app/reset/feature/src/index.ts"],
       "@mp/app/reset/util": ["libs/app/reset/util/src/index.ts"],
       "@mp/app/search-page": ["libs/app/search-page/src/index.ts"],
+      "@mp/app/search-results": ["libs/app/search-results/src/index.ts"],
       "@mp/app/tos/feature": ["libs/app/tos/feature/src/index.ts"],
       "@mp/app/updates/data-access": [
         "libs/app/updates/data-access/src/index.ts"
