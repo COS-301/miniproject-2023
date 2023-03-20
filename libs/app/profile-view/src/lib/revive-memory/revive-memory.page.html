@@ -26,10 +26,7 @@
                 <ion-card-title ngClass="memory-card-title">{{ element.title }}</ion-card-title>
             </ion-card-header>
             <ion-card-content>
-                <p ngClass="memory-card-desc">{{ element.description }}</p>
-                <ion-buttons slot="start">
-                    <ion-text color="light" ngClass="btn-add-time">+</ion-text>
-                </ion-buttons>  
+                <p ngClass="memory-card-desc">{{ element.description }}</p>  
                 <p ngClass="memory-card-timer">0d:0h:4min</p>
                 <ion-text class="ion-padding-top" ngClass="memory-date"color="light">{{ element.date | date:'dd MMMM yyyy' }}</ion-text>
             </ion-card-content>

@@ -12,19 +12,22 @@ export class ReviveMemoryPageComponent {
     { id: 1,
       title: 'Element 1', 
       description: 'Description 1', 
-      imageUrl: '', date: 'Date 1', 
+      imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YWJzdHJhY3R8ZW58MHx8MHx8&auto=format&fit=crop&w=1000&q=60',
+      date: 'Date 1', 
       selected: false
      },
      { id: 2,
       title: 'Element 2', 
       description: 'Description 2', 
-      imageUrl: '', date: 'Date 2', 
+      imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YWJzdHJhY3R8ZW58MHx8MHx8&auto=format&fit=crop&w=1000&q=60', 
+      date: 'Date 2', 
       selected: false
      },
      { id: 3,
       title: 'Element 3', 
       description: 'Description 3', 
-      imageUrl: '', date: 'Date 3', 
+      imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YWJzdHJhY3R8ZW58MHx8MHx8&auto=format&fit=crop&w=1000&q=60', 
+      date: 'Date 3', 
       selected: false
      },
   ];
