@@ -78,7 +78,7 @@
         </ion-item>
     </ion-list>
     <!-- Show filters when searched i.e. pressed Enter -->
-    <ion-tabs *ngIf="showFilters && searchValue" color="none" ngClass="filter-tabs">
+    <!-- <ion-tabs *ngIf="showFilters && searchValue" color="none" ngClass="filter-tabs">
         <ion-tab-bar slot="top" ngClass="filter-tab" color="none">
           <ion-tab-button (click)="setFilter('Top')" [ngClass]="{'filter-tab-btn': currentFilter==='Top'}">
             <ion-label>Top</ion-label>
@@ -90,7 +90,7 @@
             <ion-label>Tags</ion-label>
           </ion-tab-button>
         </ion-tab-bar>
-    </ion-tabs>
+    </ion-tabs> -->
     <!-- Show list of accounts from a search -->
     <ion-list 
         *ngIf="searchValue"

@@ -3,10 +3,7 @@
         <ion-title ngClass="title">Memory Lane</ion-title>
         <small slot="end" ngClass="account-time">22h:52m:11s</small>
     </ion-toolbar>
-</ion-header>
-
-<ion-content color="dark">
-    <ion-toolbar color="none">
+    <ion-toolbar color="dark" lines="none" class="ion-padding-top">
         <ion-buttons slot="start">
             <ion-back-button ngClass="back-btn" defaultHref="/search-page" text=""></ion-back-button>
           </ion-buttons>
@@ -14,9 +11,12 @@
             color="medium" 
             ngClass="searchbar"
             [(ngModel)]="searchValue"
-            readonly
+            disabled="true"
         ></ion-searchbar>
     </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
     <ion-list ngClass="memory-list" *ngIf="currentFilter==='Memories'">
         <ion-card ngClass="memory-card" color="none"> 
             <div ngClass="memory-img"></div>               
@@ -60,7 +60,7 @@
         </ion-card>
     </ion-list>
     <!-- Show filters when searched i.e. pressed Enter -->
-    <ion-tabs *ngIf="searchValue" color="none" ngClass="filter-tabs">
+    <ion-tabs color="none" ngClass="filter-tabs">
         <ion-tab-bar slot="top" ngClass="filter-tab" color="none">
           <ion-tab-button (click)="setFilter('Top')" [ngClass]="{'filter-tab-btn': currentFilter==='Top'}">
             <ion-label>Top</ion-label>
