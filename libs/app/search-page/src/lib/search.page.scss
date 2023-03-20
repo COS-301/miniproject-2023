@@ -95,6 +95,10 @@
 .search-item {
     border-bottom: 1px solid #686868;
 }
+.search-item ion-text:hover {
+    cursor: pointer;
+    background-color: #434343;
+}
 
 .filter-tabs {
     margin-top: 50px;
@@ -106,8 +110,8 @@
 }
 .filter-tab-btn {
     border-bottom: 3px solid #fff;
-    color:#0011ff;
-    transition: 0.3s;
+    color:#ff009d;
+    font-weight: bold;
 }
 
 .no-results {

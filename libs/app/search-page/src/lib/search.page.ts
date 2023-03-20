@@ -32,17 +32,24 @@ export class SearchPageComponent {
   }
   onInputChange() {
     this.showFilters = false;
+    this.onSearchFocus();
     this.tempSearchResults = this.SearchResults;
   }
   onSearch(searchTerm: string) {
     // Add search term to the beginning of the array
-    if(searchTerm != '' && this.tempSearchResults.length != 0) {
+    if(searchTerm != '') {
       this.recentSearches.unshift(searchTerm);
+    }
+    if (searchTerm != '' && this.tempSearchResults.length != 0){
       this.showFilters = true;
-      this.searchFocus = false;
     }
     //fetch user accounts based on search value and populate searchUsers array
   } 
+  chosenRecentSearch(event: MouseEvent, search: string){
+    event.stopPropagation();
+    this.searchValue = search;
+    alert(event);
+  }
 
   get RecentSearches() {
     return this.recentSearches;
