@@ -22,6 +22,7 @@ export class SearchPageComponent {
     '@user7test',
     '@user8',
     '@user9sport'];
+  tempSearchResults: string[] = [];
 
   onSearchFocus() {
     this.searchFocus = true;
@@ -31,6 +32,7 @@ export class SearchPageComponent {
   }
   onInputChange() {
     this.showFilters = false;
+    this.tempSearchResults = this.SearchResults;
   }
   onSearch(searchTerm: string) {
     // Add search term to the beginning of the array
@@ -39,7 +41,7 @@ export class SearchPageComponent {
       this.showFilters = true;
     }
     //fetch user accounts based on search value and populate searchUsers array
-  }  
+  } 
 
   get RecentSearches() {
     return this.recentSearches;

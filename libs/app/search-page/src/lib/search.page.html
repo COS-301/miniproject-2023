@@ -18,7 +18,8 @@
             (keyup.enter)="onSearch(searchValue)"
         ></ion-searchbar>
     </ion-toolbar>
-    <ion-list ngClass="memory-list" *ngIf="!searchFocus">
+    <ion-list ngClass="memory-list" *ngIf="!searchFocus && !searchValue">
+        <ion-text ngClass="popular-memories-text">Most Popular Memories</ion-text>
         <ion-card ngClass="memory-card" color="none"> 
             <div ngClass="memory-img"></div>               
             <ion-card-header>
@@ -94,12 +95,21 @@
         *ngIf="searchValue"
         ngClass="search-list"
         >
-        <ion-item 
+        <ion-item
             color="none" 
             *ngFor="let result of SearchResults"
             ngClass="search-item"
         >
             <ion-text>{{result}}</ion-text>
+        </ion-item>
+        <ion-item 
+            color="none"
+            ngClass="no-results"
+            *ngIf="!tempSearchResults.length"
+            lines="none"
+        >
+            <ion-icon class="ion-padding-right" color="danger" slot="start" name="alert-circle-outline"></ion-icon>
+            <ion-text color="medium">No Results</ion-text>
         </ion-item>
     </ion-list>
 </ion-content>

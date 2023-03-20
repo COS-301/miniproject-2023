@@ -19,10 +19,14 @@
 }
 
 .searchbar {
-    padding: 0 10px;
+    padding: 0 10px 0 0;
     color: #ffffff;
     transition: 0.2;
     height: 50px;
+}
+
+.popular-memories-text {
+    margin-left: 10px;
 }
 
 .memory-list {
@@ -95,4 +99,18 @@
 .filter-tab {
     color: #fff;
     border-bottom: #fff;
+}
+
+.no-results {
+    border: 3px solid #ff0000;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 0;
+}
+.no-results ion-card-content {
+    font-size: 25px;
+}
+.no-results ion-icon {
+    width: 50px;
+    height: 50px;
 }
