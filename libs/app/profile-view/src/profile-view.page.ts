@@ -5,6 +5,7 @@ import { EditProfilePhotoPageComponent } from './lib/edit-profile-photo/edit-pro
 import { Memory } from './lib/Memory';
 import { ProfileImage } from './lib/ProfileImage';
 import { ProfileImageService } from './lib/ProfileImageService';
+import { ReviveMemoryPageComponent } from './lib/revive-memory/revive-memory.page';
 
 @Component({
   selector: 'app-profile-view',
@@ -41,6 +42,16 @@ export class ProfileViewPageComponent implements OnInit {
   async editProfilePhoto() {
     const modal = await this.modalController.create({
       component: EditProfilePhotoPageComponent,
+    });
+
+    await modal.present();
+
+    const { data } = await modal.onDidDismiss();
+  }
+
+  async revive() {
+    const modal = await this.modalController.create({
+      component: ReviveMemoryPageComponent,
     });
 
     await modal.present();

@@ -1,1 +1,43 @@
-<p>revive-memory works!</p>
+<ion-header>
+    <ion-toolbar color="dark">
+        <ion-title>Revive Memory</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content color="dark">
+    <ion-list ngClass="memory-list">
+        <ion-card *ngFor="let element of elements"
+                (click)="selectedImage(element)"
+                [ngClass]="{ 'selected': element.selected }"
+                > 
+            <div ngClass="memory-img">
+                <img style="
+                    position: absolute;
+                    background-image: url('{{ element.imageUrl }}');
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    width: 100%;
+                    height: 100%;
+
+                    filter: blur(8px);
+                    -webkit-filter: blur(8px);">
+            </div>               
+            <ion-card-header>
+                <ion-card-title ngClass="memory-card-title">{{ element.title }}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <p ngClass="memory-card-desc">{{ element.description }}</p>
+                <ion-buttons slot="start">
+                    <ion-text color="light" ngClass="btn-add-time">+</ion-text>
+                </ion-buttons>  
+                <p ngClass="memory-card-timer">0d:0h:4min</p>
+                <ion-text class="ion-padding-top" ngClass="memory-date"color="light">{{ element.date | date:'dd MMMM yyyy' }}</ion-text>
+            </ion-card-content>
+        </ion-card>
+    </ion-list>  
+    <ion-item ngClass="buttons" color="none">
+        <ion-button slot="start" ngClass="button-cancel" (click)="cancel()">Cancel</ion-button>
+        <ion-button slot="end" ngClass="button-add" (click)="revive()">Add</ion-button>
+    </ion-item>
+</ion-content>
+
