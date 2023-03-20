@@ -51,6 +51,13 @@ export class AddMemoryPageComponent {
     }
   }
 
+  setTitleText(){
+    this.memory.title = this.memory.title[0].toLocaleUpperCase(); 
+  }
+  setDescriptionText(){
+    this.memory.description = this.memory.description[0].toLocaleUpperCase(); 
+  }
+
   async add() {
     const dateObj = new Date();
 

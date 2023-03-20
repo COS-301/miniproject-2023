@@ -8,11 +8,11 @@
     <ion-list ngClass="modal-list">
         <ion-item color="dark" ngClass="modal-list-item">
             <ion-label>Title: </ion-label>
-            <ion-input maxlength="23" ngClass="modal-list-input" placeholder="Enter a title" [(ngModel)]="memory.title"></ion-input>
+            <ion-input maxlength="23" ngClass="modal-list-input" placeholder="Enter a title" [(ngModel)]="memory.title" (ionChange)="setTitleText()"></ion-input>
         </ion-item>
         <ion-item color="dark" ngClass="modal-list-item description">
             <ion-label>Description: </ion-label>
-            <ion-textarea maxlength="130" placeholder="Type a description" [autoGrow]="true" ngClass="modal-list-input description-text" [(ngModel)]="memory.description"></ion-textarea>
+            <ion-textarea maxlength="130" placeholder="Type a description" [autoGrow]="true" ngClass="modal-list-input description-text" [(ngModel)]="memory.description" (ionChange)="setDescriptionText()"></ion-textarea>
         </ion-item>  
         <ion-item ngClass="date" lines="none" color="dark">
             <ion-label>Date: </ion-label>
