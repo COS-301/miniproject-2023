@@ -11,6 +11,16 @@ export class SearchResultsPageComponent {
   showFilters = false;
   currentFilter = 'Top Accounts';
 
+  memoriesArray: any[] = [
+    {
+      username: '@username',
+      imgUrl: "",
+      title: "Last day of Highschool",
+      description: "Example of a description for the memory",
+      comments: [{}],
+      date: '14 November 2020'
+    }
+  ];
   recentSearches: string[] = ['1','2','3','4','5']; //first 7 recents are shown
   searchResults: string[] = [
     '@user1',
@@ -58,6 +68,9 @@ export class SearchResultsPageComponent {
     return this.searchResults.filter(user => {
       return user.toLowerCase().includes(this.searchValue.toLowerCase());
     });
+  }
+  get Memories() {
+    return this.memoriesArray;
   }
 
   //filter search results
