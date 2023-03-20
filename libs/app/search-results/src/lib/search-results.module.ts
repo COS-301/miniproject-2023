@@ -15,5 +15,5 @@ import { FormsModule } from '@angular/forms';
   ],
   declarations: [SearchResultsPageComponent],
 })
-export class SearchPageModule {}
+export class SearchResultsPageModule {}
 
