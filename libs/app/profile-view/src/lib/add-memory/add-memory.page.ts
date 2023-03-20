@@ -52,10 +52,14 @@ export class AddMemoryPageComponent {
   }
 
   setTitleText(){
-    this.memory.title = this.memory.title[0].toLocaleUpperCase(); 
+    if (this.memory.title !== ''){
+      this.memory.title = this.memory.title[0].toUpperCase() + this.memory.title.substring(1);
+    }
   }
   setDescriptionText(){
-    this.memory.description = this.memory.description[0].toLocaleUpperCase(); 
+    if (this.memory.description !== ''){
+      this.memory.description = this.memory.description[0].toUpperCase() + this.memory.description.substring(1);
+    } 
   }
 
   async add() {
