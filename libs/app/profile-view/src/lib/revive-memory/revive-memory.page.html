@@ -8,6 +8,7 @@
         <ion-card *ngFor="let element of elements"
                 (click)="selectedImage(element)"
                 [ngClass]="{ 'selected': element.selected }"
+                ngClass="memory-card"
                 > 
             <div ngClass="memory-img">
                 <img style="

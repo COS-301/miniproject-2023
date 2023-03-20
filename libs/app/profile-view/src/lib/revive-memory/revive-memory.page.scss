@@ -74,5 +74,10 @@
 }
 
 .selected {
-    --background: #a0fcffc5;
+    border: 3px solid #686868;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+    height: 280px;
+    color:#ffffff;
+    // text-align: center;
 }
