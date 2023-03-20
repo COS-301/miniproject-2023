@@ -17,7 +17,7 @@
 </ion-header>
 
 <ion-content color="dark">
-    <ion-list ngClass="memory-list" *ngIf="currentFilter==='Memories'">
+    <ion-list ngClass="memory-list" *ngIf="currentFilter==='Memories' || currentFilter==='Date'">
         <ion-card ngClass="memory-card" color="none"> 
             <div ngClass="memory-img"></div>               
             <ion-card-header>
@@ -62,14 +62,14 @@
     <!-- Show filters when searched i.e. pressed Enter -->
     <ion-tabs color="none" ngClass="filter-tabs">
         <ion-tab-bar slot="top" ngClass="filter-tab" color="none">
-          <ion-tab-button (click)="setFilter('Top')" [ngClass]="{'filter-tab-btn': currentFilter==='Top'}">
-            <ion-label>Top</ion-label>
+          <ion-tab-button (click)="setFilter('Top Accounts')" [ngClass]="{'filter-tab-btn': currentFilter==='Top Accounts'}">
+            <ion-label>Top Accounts</ion-label>
           </ion-tab-button>
-          <ion-tab-button (click)="setFilter('Accounts')" [ngClass]="{'filter-tab-btn': currentFilter==='Accounts'}">
-            <ion-label>Accounts</ion-label>
+          <ion-tab-button (click)="setFilter('Memories')" [ngClass]="{'filter-tab-btn': currentFilter==='Memories'}">
+            <ion-label>Memories</ion-label>
           </ion-tab-button>
-          <ion-tab-button (click)="setFilter('Tags')" [ngClass]="{'filter-tab-btn': currentFilter==='Tags'}">
-            <ion-label>Tags</ion-label>
+          <ion-tab-button (click)="setFilter('Date')" [ngClass]="{'filter-tab-btn': currentFilter==='Date'}">
+            <ion-label>Date</ion-label>
           </ion-tab-button>
         </ion-tab-bar>
     </ion-tabs>

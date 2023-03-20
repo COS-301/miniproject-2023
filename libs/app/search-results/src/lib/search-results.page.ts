@@ -9,7 +9,7 @@ export class SearchResultsPageComponent {
   searchValue = '';
   searchFocus = false;
   showFilters = false;
-  currentFilter = 'Top';
+  currentFilter = 'Top Accounts';
 
   recentSearches: string[] = ['1','2','3','4','5']; //first 7 recents are shown
   searchResults: string[] = [
@@ -67,12 +67,12 @@ export class SearchResultsPageComponent {
   }
 
   filterResults() {
-    if (this.currentFilter === 'Top') {
+    if (this.currentFilter === 'Top Accounts') {
       this.searchResults = this.getTopResults();
-    } else if (this.currentFilter === 'Accounts') {
-      this.searchResults = this.getAccountResults();
-    } else if (this.currentFilter === 'Tags') {
-      this.searchResults = this.getTagResults();
+    } else if (this.currentFilter === 'Memories') {
+      this.searchResults = this.getMemoriesResults();
+    } else if (this.currentFilter === 'Date') {
+      this.searchResults = this.getDateResults();
     }
   }
 
@@ -82,13 +82,13 @@ export class SearchResultsPageComponent {
     return this.searchResults;
   }
 
-  getAccountResults(): string[] {
-    // Return the search results for accounts
+  getMemoriesResults(): string[] {
+    // Return the search results for memories
     return this.searchResults;    
   }
 
-  getTagResults(): string[] {
-    // Return the search results for tags
+  getDateResults(): string[] {
+    // Return the search results for date
     return this.searchResults;
   }
 }
