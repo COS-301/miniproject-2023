@@ -83,7 +83,7 @@ export class AddMemoryPageComponent {
       date: formattedDate,
     };
 
-    if (!this.memory.title && !this.memory.description && !this.memory.imageUrl){
+    if (!this.memory.title || !this.memory.description || !this.memory.imageUrl){
       const alert = await this.alertCtrl.create({
         cssClass: 'add-memory-alert',
         header: 'Invalid input received',
