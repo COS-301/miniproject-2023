@@ -1,1 +1,119 @@
-<p>search-results works!</p>
+<ion-header color="none" >
+    <ion-toolbar color="none" [ngClass]="'menu-toolbar'">
+        <ion-title ngClass="title">Memory Lane</ion-title>
+        <small slot="end" ngClass="account-time">22h:52m:11s</small>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+    <ion-toolbar color="none">
+        <ion-searchbar
+            color="medium" 
+            ngClass="searchbar"
+            [(ngModel)]="searchValue"
+            (ionFocus)="onSearchFocus()"
+            (ionBlur)="onSearchBlur()"
+            (ionChange)="onInputChange()"
+            show-cancel-button="focus"
+            (keyup.enter)="onSearch(searchValue)"
+        ></ion-searchbar>
+    </ion-toolbar>
+    <ion-list ngClass="memory-list" *ngIf="!searchFocus && !searchValue">
+        <ion-text ngClass="popular-memories-text">Most Popular Memories</ion-text>
+        <ion-card ngClass="memory-card" color="none"> 
+            <div ngClass="memory-img"></div>               
+            <ion-card-header>
+                <ion-card-title ngClass="memory-card-title">Last day of highschool</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <p ngClass="memory-card-desc">Example text for what a user might write about their memory. The text is only limited to display about this much...</p>
+                <ion-text class="ion-padding-top" ngClass="memory-date">14 November 2020</ion-text>
+            </ion-card-content>
+        </ion-card>
+        <ion-card ngClass="memory-card" color="none"> 
+            <div ngClass="memory-img"></div>               
+            <ion-card-header>
+                <ion-card-title ngClass="memory-card-title">Last day of highschool</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <p ngClass="memory-card-desc">Example text for what a user might write about their memory. The text is only limited to display about this much...</p>
+                <ion-text class="ion-padding-top" ngClass="memory-date">14 November 2020</ion-text>
+            </ion-card-content>
+        </ion-card>
+        <ion-card ngClass="memory-card" color="none"> 
+            <div ngClass="memory-img"></div>               
+            <ion-card-header>
+                <ion-card-title ngClass="memory-card-title">Last day of highschool</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <p ngClass="memory-card-desc">Example text for what a user might write about their memory. The text is only limited to display about this much...</p>
+                <ion-text class="ion-padding-top" ngClass="memory-date">14 November 2020</ion-text>
+            </ion-card-content>
+        </ion-card>
+        <ion-card ngClass="memory-card" color="none"> 
+            <div ngClass="memory-img"></div>               
+            <ion-card-header>
+                <ion-card-title ngClass="memory-card-title">Last day of highschool</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <p ngClass="memory-card-desc">Example text for what a user might write about their memory. The text is only limited to display about this much...</p>
+                <ion-text class="ion-padding-top" ngClass="memory-date">14 November 2020</ion-text>
+            </ion-card-content>
+        </ion-card>
+    </ion-list>
+    <!-- Show list of recent searches -->
+    <ion-text *ngIf="searchFocus && !searchValue" size="medium">
+        Recent
+    </ion-text>
+    <ion-list 
+        *ngIf="searchFocus && !searchValue"
+        ngClass="search-list">
+        <ion-item 
+            color="none" 
+            *ngFor="let search of RecentSearches | slice:0:7"
+            ngClass="search-item"
+            (click)="chosenRecentSearch($event, search)"
+        >
+            <ion-text>{{search}}</ion-text>
+        </ion-item>
+    </ion-list>
+    <!-- Show filters when searched i.e. pressed Enter -->
+    <ion-tabs *ngIf="showFilters && searchValue" color="none" ngClass="filter-tabs">
+        <ion-tab-bar slot="top" ngClass="filter-tab" color="none">
+          <ion-tab-button (click)="setFilter('Top')" [ngClass]="{'filter-tab-btn': currentFilter==='Top'}">
+            <ion-label>Top</ion-label>
+          </ion-tab-button>
+          <ion-tab-button (click)="setFilter('Accounts')" [ngClass]="{'filter-tab-btn': currentFilter==='Accounts'}">
+            <ion-label>Accounts</ion-label>
+          </ion-tab-button>
+          <ion-tab-button (click)="setFilter('Tags')" [ngClass]="{'filter-tab-btn': currentFilter==='Tags'}">
+            <ion-label>Tags</ion-label>
+          </ion-tab-button>
+        </ion-tab-bar>
+    </ion-tabs>
+    <!-- Show list of accounts from a search -->
+    <ion-list 
+        *ngIf="searchValue"
+        [ngClass]="{'search-list-searched': showFilters, 'search-list': !showFilters}"
+        >
+        <!-- Change ion-item to user-view component; this way we can send the inputs of the search result down to the user-view component -->
+        <ion-item
+            color="none" 
+            *ngFor="let result of SearchResults"
+            ngClass="search-item"
+            routerLink="/user-view"
+        >
+            <ion-text>{{result}}</ion-text>
+        </ion-item>
+        <ion-item 
+            color="none"
+            ngClass="no-results"
+            *ngIf="!tempSearchResults.length"
+            lines="none"
+            routerLink="/user-view"
+        >
+            <ion-icon class="ion-padding-right" color="danger" slot="start" name="alert-circle-outline"></ion-icon>
+            <ion-text color="medium">No Results</ion-text>
+        </ion-item>
+    </ion-list>
+</ion-content>

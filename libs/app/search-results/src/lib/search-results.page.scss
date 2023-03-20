@@ -1,0 +1,129 @@
+.back-button {
+    opacity: 0.7;
+}
+.title {
+    font-family: 'Pattaya';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 36px;  
+    color: #ffffff;
+    text-align: center;
+}
+.account-time {
+    color: #7b7b7b;
+    padding-right: 5px;
+}
+.menu-toolbar {
+    background-color: #161616;
+}
+
+.searchbar {
+    padding: 0 10px 0 0;
+    color: #ffffff;
+    transition: 0.2;
+    height: 50px;
+}
+
+.popular-memories-text {
+    margin-left: 10px;
+}
+
+.memory-list {
+    background-color: transparent;
+    padding-right: 8px;
+}
+.memory-card {
+    border: 3px solid #686868;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+    height: 280px;
+}
+.memory-img {
+    position: absolute;
+    background-image: url("https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8&w=1000&q=80");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+
+    filter: blur(8px);
+    -webkit-filter: blur(20px);
+}
+.memory-card-title {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    position: absolute;
+    top: 20px;
+}
+.memory-card-desc {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 12px;
+    position: absolute;
+    width: 212px;
+    height: 68px;
+    left: 40px;
+    top: 40px;
+}
+.memory-date {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    position: absolute;
+    width: 212px;
+    height: 68px;
+    top: 100px;
+    margin-top: 60px;
+}
+
+.search-list {
+    margin-top: 10px;
+    color: #fff;
+    background-color: transparent;
+}
+.search-list-searched {
+    margin-top: 30px;
+    color: #fff;
+    background-color: transparent;
+}
+.search-item {
+    border-bottom: 1px solid #686868;
+}
+.search-item ion-text:hover {
+    cursor: pointer;
+    background-color: #434343;
+}
+
+.filter-tabs {
+    margin-top: 50px;
+    height: 30px;
+    background-color: transparent;
+}
+.filter-tab {
+    color: #fff;
+}
+.filter-tab-btn {
+    border-bottom: 3px solid #fff;
+    color:#ff009d;
+    font-weight: bold;
+}
+
+.no-results {
+    border: 3px solid #ff0000;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 0;
+}
+.no-results ion-card-content {
+    font-size: 25px;
+}
+.no-results ion-icon {
+    width: 50px;
+    height: 50px;
+}
