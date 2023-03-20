@@ -7,19 +7,17 @@
 
 <ion-content color="dark">
     <ion-toolbar color="none">
+        <ion-buttons slot="start">
+            <ion-back-button ngClass="back-btn" defaultHref="/search-page" text=""></ion-back-button>
+          </ion-buttons>
         <ion-searchbar
             color="medium" 
             ngClass="searchbar"
             [(ngModel)]="searchValue"
-            (ionFocus)="onSearchFocus()"
-            (ionBlur)="onSearchBlur()"
-            (ionChange)="onInputChange()"
-            show-cancel-button="focus"
-            (keyup.enter)="onSearch(searchValue)"
+            readonly
         ></ion-searchbar>
     </ion-toolbar>
-    <ion-list ngClass="memory-list" *ngIf="!searchFocus && !searchValue">
-        <ion-text ngClass="popular-memories-text">Most Popular Memories</ion-text>
+    <ion-list ngClass="memory-list" *ngIf="currentFilter==='Memories'">
         <ion-card ngClass="memory-card" color="none"> 
             <div ngClass="memory-img"></div>               
             <ion-card-header>
@@ -60,25 +58,9 @@
                 <ion-text class="ion-padding-top" ngClass="memory-date">14 November 2020</ion-text>
             </ion-card-content>
         </ion-card>
-    </ion-list>
-    <!-- Show list of recent searches -->
-    <ion-text *ngIf="searchFocus && !searchValue" size="medium">
-        Recent
-    </ion-text>
-    <ion-list 
-        *ngIf="searchFocus && !searchValue"
-        ngClass="search-list">
-        <ion-item 
-            color="none" 
-            *ngFor="let search of RecentSearches | slice:0:7"
-            ngClass="search-item"
-            (click)="chosenRecentSearch($event, search)"
-        >
-            <ion-text>{{search}}</ion-text>
-        </ion-item>
     </ion-list>
     <!-- Show filters when searched i.e. pressed Enter -->
-    <ion-tabs *ngIf="showFilters && searchValue" color="none" ngClass="filter-tabs">
+    <ion-tabs *ngIf="searchValue" color="none" ngClass="filter-tabs">
         <ion-tab-bar slot="top" ngClass="filter-tab" color="none">
           <ion-tab-button (click)="setFilter('Top')" [ngClass]="{'filter-tab-btn': currentFilter==='Top'}">
             <ion-label>Top</ion-label>
@@ -93,7 +75,7 @@
     </ion-tabs>
     <!-- Show list of accounts from a search -->
     <ion-list 
-        *ngIf="searchValue"
+        *ngIf="currentFilter==='Top Accounts' && searchValue"
         [ngClass]="{'search-list-searched': showFilters, 'search-list': !showFilters}"
         >
         <!-- Change ion-item to user-view component; this way we can send the inputs of the search result down to the user-view component -->
@@ -104,16 +86,6 @@
             routerLink="/user-view"
         >
             <ion-text>{{result}}</ion-text>
-        </ion-item>
-        <ion-item 
-            color="none"
-            ngClass="no-results"
-            *ngIf="!tempSearchResults.length"
-            lines="none"
-            routerLink="/user-view"
-        >
-            <ion-icon class="ion-padding-right" color="danger" slot="start" name="alert-circle-outline"></ion-icon>
-            <ion-text color="medium">No Results</ion-text>
         </ion-item>
     </ion-list>
 </ion-content>

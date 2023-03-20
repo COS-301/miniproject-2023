@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-search',
@@ -24,6 +25,8 @@ export class SearchPageComponent {
     '@user9sport'];
   tempSearchResults: string[] = [];
 
+  constructor(private navCtrl: NavController) {}
+
   onSearchFocus() {
     this.searchFocus = true;
   }
@@ -43,6 +46,7 @@ export class SearchPageComponent {
     if (searchTerm != '' && this.tempSearchResults.length != 0){
       this.showFilters = true;
     }
+    this.navCtrl.navigateForward('/search-results');
     //fetch user accounts based on search value and populate searchUsers array
   } 
   chosenRecentSearch(event: MouseEvent, search: string){
