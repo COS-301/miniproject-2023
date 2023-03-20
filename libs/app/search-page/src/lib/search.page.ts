@@ -36,9 +36,10 @@ export class SearchPageComponent {
   }
   onSearch(searchTerm: string) {
     // Add search term to the beginning of the array
-    if(searchTerm != '') {
+    if(searchTerm != '' && this.tempSearchResults.length != 0) {
       this.recentSearches.unshift(searchTerm);
       this.showFilters = true;
+      this.searchFocus = false;
     }
     //fetch user accounts based on search value and populate searchUsers array
   } 

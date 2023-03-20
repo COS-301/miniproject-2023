@@ -78,14 +78,14 @@
     </ion-list>
     <!-- Show filters when searched i.e. pressed Enter -->
     <ion-tabs *ngIf="showFilters && searchValue" color="none" ngClass="filter-tabs">
-        <ion-tab-bar slot="top" ngClass="filter-tab">
-          <ion-tab-button (click)="setFilter('Top')">
+        <ion-tab-bar slot="top" ngClass="filter-tab" color="none">
+          <ion-tab-button (click)="setFilter('Top')" [ngClass]="{'filter-tab-btn': currentFilter==='Top'}">
             <ion-label>Top</ion-label>
           </ion-tab-button>
-          <ion-tab-button (click)="setFilter('Accounts')">
+          <ion-tab-button (click)="setFilter('Accounts')" [ngClass]="{'filter-tab-btn': currentFilter==='Accounts'}">
             <ion-label>Accounts</ion-label>
           </ion-tab-button>
-          <ion-tab-button (click)="setFilter('Tags')">
+          <ion-tab-button (click)="setFilter('Tags')" [ngClass]="{'filter-tab-btn': currentFilter==='Tags'}">
             <ion-label>Tags</ion-label>
           </ion-tab-button>
         </ion-tab-bar>
@@ -93,12 +93,14 @@
     <!-- Show list of accounts from a search -->
     <ion-list 
         *ngIf="searchValue"
-        ngClass="search-list"
+        [ngClass]="{'search-list-searched': showFilters, 'search-list': !showFilters}"
         >
+        <!-- Change ion-item to user-view component; this way we can send the inputs of the search result down to the user-view component -->
         <ion-item
             color="none" 
             *ngFor="let result of SearchResults"
             ngClass="search-item"
+            routerLink="/user-view"
         >
             <ion-text>{{result}}</ion-text>
         </ion-item>
