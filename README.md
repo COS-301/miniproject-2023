@@ -1,67 +1,62 @@
-# Mini-Project 2023
 
-## Requirements
+# TimeShare (Mini Project 2023)
 
-The following items are required to run this project:
+Description
 
-- Node 16: Used for the app, api and cli (Tip: use NVM)
-- Java: used by the Firebase emulators (Make sure that JAVA_HOME is set. Tip: use JENV)
-- You need to create a firebase project (See: https://console.firebase.google.com - You will need to config for your firebase project in the .env files, .firestorerc)
-- Firebase CLI (See: https://firebase.google.com/docs/cli)
 
-## Get Started
+## Documentation
 
-1. Fork the repo
+- [System Documentation](https://linktodocumentation)
+- [Design Documentation](https://linktodocumentation)
+- [Integration Documentation](https://linktodocumentation)
+- [Data Design Documentation](https://linktodocumentation)
 
-Go to: https://github.com/COS-301/miniproject-2023/fork
 
-2. Clone your fork
+## Features
 
-```sh
-git clone git@github.com:<ACCOUNT>/<PROJECT NAME>.git <PROJECT LOCAL NAME>
-```
+- Features
 
-3. Install dependencies
 
-```sh
-cd path/to/project
-yarn
-```
+## Tech Stack
 
-4. Add Firebase configurations
+**Client:** Angular, TypeScript, NGXS
 
-See files:
+**Server:** Firebase Auth, Firebase Firestore, Firebase Storage, Firebase Functions
 
-- .firebaserc
-- .env
-- .env.pod
 
-and find and replace "<REPLACE_ME>"
+## Development Team
 
-5. Run the stack:
+#### Project Manager
+- [Ryan Trickett](https://linktoprofile)
 
-Run these commands in separate terminals:
+#### Business Analysts
+- [Azola Lukhozi](https://linktoprofile)
+- [Jaimen Govender](https://linktoprofile)
 
-```sh
-yarn start:api:dev
-yarn start:emulators
-yarn start:app:dev
-```
+#### UI Engineers
+- [Azola Lukhozi](https://linktoprofile)
+- [Eaziey <Surname>](https://linktoprofile)
+- [Jaimen Govender](https://linktoprofile)
+- [Jonathan Robinson](https://linktoprofile)
 
-6. CLI:
+#### Integration Engineers
+- [Ayaaz Street](https://linktoprofile)
+- [Jake Mahloko](https://linktoprofile)
+- [Simphiwe Nonabe](https://linktoprofile)
 
-If you want to run the cli for admin, scripts, migrations etc.
+#### Service Engineers
+- [Daniel van Zyl](https://linktoprofile)
+- [Israel Bango](https://linktoprofile)
+- [Nathan Opperman](https://linktoprofile)
+- [Thuthuka Khumalo](https://linktoprofile)
 
-```sh
-yarn build:cli:prod
-GOOGLE_APPLICATION_CREDENTIALS=.keys/<REPLACE ME WITH SERVICE ACCOUNT KEY.json> FIRESTORE_EMULATOR_HOST=localhost:5003 node dist/apps/cli/main.js <REPLACE ME WITH COMMAND>
-```
+#### Data Engineers
+- [Ethan de Beer](https://linktoprofile)
+- [Emilee Da Cruz](https://linktoprofile)
 
-## Emulators:
+#### Testers
+- [Eaziey <Surname>](https://linktoprofile)
+- [Jake Mahloko](https://linktoprofile)
 
-Once the emulators are up, please go to http://localhost:5001 to see the Emulator UI
-
-## Notes!!:
-
-- When creating your Firebase authentication, hosting, storage, functions. Make sure to use the same location throughout. (MAKE SURE TO SET "Default GCP resource location" in Project Settings in Firebase Console. If you do not do this, the app will not work)
-- The app is built to be a PWA. (See: So if you deploy it to prod, you can install the app on iOS by adding to home screen or using Android by installing through Chrome)
+#### DevOps
+- [Ryan Trickett](https://linktoprofile)
