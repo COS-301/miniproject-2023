@@ -20,54 +20,41 @@
     </ion-toolbar>
     <ion-list ngClass="memory-list" *ngIf="!searchFocus && !searchValue">
         <ion-text ngClass="popular-memories-text">Most Popular Memories</ion-text>
-        <div *ngIf="!showExpandedView">
             <ion-card 
-                ngClass="memory-card" 
+                [ngClass]="{'memory-card': !showExpandedView, 'memory-card-expanded':showExpandedView}" 
                 color="none" 
                 *ngFor="let memory of Memories"
             > 
-                <img ngClass="memory-img" style="background-image: url('{{ memory.imgUrl }}');" />             
+                <img *ngIf="!showExpandedView" ngClass="memory-img" style="background-image: url('{{ memory.imgUrl }}');" />             
                 <ion-card-header>
-                    <div class="memory-avatar-username">
+                    <div [ngClass]="{'memory-avatar-username': !showExpandedView, 'memory-avatar-username-expanded': showExpandedView}">
                         <ion-avatar slot="start">
-                            <img src="{{ memory.profileUrl }}" ngClass="memory-card-profileImage" routerLink="/user-view"/>
+                            <img src="{{ memory.profileUrl }}" 
+                                [ngClass]="{'memory-card-profileImage': !showExpandedView, 'memory-card-profileImage-expanded': showExpandedView}" 
+                                routerLink="/user-view"/>
                         </ion-avatar>
-                        <ion-card-title ngClass="memory-card-username" routerLink="/user-view">{{ memory.username }}</ion-card-title>
-                        <ion-text ngClass="memory-card-time-ago">{{ calculateHowLongAgo(memory.timePosted) }}</ion-text>
+                        <ion-card-title 
+                            [ngClass]="{'memory-card-username': !showExpandedView, 'memory-card-username-expanded': showExpandedView}" 
+                            routerLink="/user-view"
+                            >{{ memory.username }}</ion-card-title>
+                        <ion-text 
+                            [ngClass]="{'memory-card-time-ago': !showExpandedView, 'memory-card-time-ago-expanded': showExpandedView}"
+                            >{{ calculateHowLongAgo(memory.timePosted) }}</ion-text>
                     </div>
                 </ion-card-header>
-                <ion-card-content>
-                    <ion-card-title ngClass="memory-card-title">{{ memory.title }}</ion-card-title>
-                    <p ngClass="memory-card-desc">{{ memory.description }}</p>
-                    <ion-text class="ion-padding-top" ngClass="memory-date">{{ convertTimePostedToDate(memory.timePosted) }}</ion-text>
-                    <ion-text ngClass="memory-show-more">{{ !showExpandedView ? 'Show More' : 'Show Less' }}</ion-text>
-                </ion-card-content>
-            </ion-card>
-            <ion-card
-                ngClass="memory-card-expanded" 
-                color="none" 
-                *ngFor="let memory of Memories"
-            >
-                <ion-card-header>
-                    <div class="memory-avatar-username-expanded">
-                        <ion-avatar slot="start">
-                            <img src="{{ memory.profileUrl }}" ngClass="memory-card-profileImage-expanded" routerLink="/user-view"/>
-                        </ion-avatar>
-                        <ion-card-title ngClass="memory-card-username-expanded" routerLink="/user-view">{{ memory.username }}</ion-card-title>
-                        <ion-text ngClass="memory-card-time-ago-expanded">{{ calculateHowLongAgo(memory.timePosted) }}</ion-text>
-                    </div>
-                </ion-card-header>
-                <ion-content color="none" scroll-y="false">                    
-                    <ion-img ngClass="memory-img-expanded" src="{{ memory.imgUrl }}"></ion-img>
-                    <p ngClass="memory-card-desc-expanded">{{ memory.description }}</p>
-                    <div class="commentIcon-viewAll">
+                <ion-card-content scroll-y="false" [ngClass]="{'ion-card-content-expanded': showExpandedView}">
+                    <ion-card-title *ngIf="!showExpandedView" ngClass="memory-card-title">{{ memory.title }}</ion-card-title>
+                    <ion-img *ngIf="showExpandedView" ngClass="memory-img-expanded" src="{{ memory.imgUrl }}"></ion-img>
+                    <p [ngClass]="{'memory-card-desc': !showExpandedView, 'memory-card-desc-expanded': showExpandedView}">{{ memory.description }}</p>
+                    <ion-text *ngIf="!showExpandedView" class="ion-padding-top" ngClass="memory-date">{{ convertTimePostedToDate(memory.timePosted) }}</ion-text>
+                    <div *ngIf="showExpandedView" class="commentIcon-viewAll">
                         <div class="memory-comment-and-icon">
                             <ion-icon ngClass="memory-comment-icon" name="chatbox-outline"></ion-icon>
                             <ion-label ngClass="memory-comment-text">Comment</ion-label>
                         </div>
                         <ion-text ngClass="comment-viewAll">View all comments <b>5000</b></ion-text>
                     </div>
-                    <div ngClass="comment-profileImg-username">
+                    <div *ngIf="showExpandedView" ngClass="comment-profileImg-username">
                         <ion-avatar ngClass="memory-avatar-expanded">
                             <img src="{{ memory.profileUrl }}" ngClass="memory-comment-profileImg" routerLink="/user-view"/>
                         </ion-avatar>
@@ -76,10 +63,9 @@
                             <ion-text ngClass="memory-comment-usercomment">Wow bro this post looks AMAZING!! jskdcn jks skjdnkcjsdcn</ion-text>
                         </div>
                     </div>
-                    <ion-text ngClass="memory-show-more">{{ !showExpandedView ? 'Show Less' : 'Show More' }}</ion-text>
-                </ion-content>
+                    <ion-text (click)="changeMemoryView()" ngClass="memory-show-more">{{ !showExpandedView ? 'Show More' : 'Show Less' }}</ion-text>
+                </ion-card-content>
             </ion-card>
-        </div>
     </ion-list>
     <!-- Show list of recent searches -->
     <ion-text *ngIf="searchFocus && !searchValue" size="medium">

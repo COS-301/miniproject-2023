@@ -39,6 +39,7 @@
     border-radius: 25px;
     height: 280px;
     width: 350px;
+    transition: 0.5s;
 }
 .memory-img {
     position: absolute;
@@ -109,6 +110,9 @@ ion-card-header {
     border-radius: 5px;
     padding: 2px 5px;
 }
+.ion-card-content-expanded {
+    padding: 0;
+}
 .memory-card-expanded {
     border: 3px solid #686868;
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -116,6 +120,7 @@ ion-card-header {
     height: 500px;
     width: 350px;
     background-color: #434343;
+    transition: 0.5s;
 }
 .memory-img-expanded {
     width: 350px;
