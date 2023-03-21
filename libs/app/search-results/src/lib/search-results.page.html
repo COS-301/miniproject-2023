@@ -19,7 +19,7 @@
 <ion-content color="dark">
     <ion-list ngClass="memory-list" *ngIf="currentFilter==='Memories' || currentFilter==='Date'">
         <ion-card ngClass="memory-card" color="none" *ngFor="let memory of Memories"> 
-            <div ngClass="memory-img"></div>               
+            <img ngClass="memory-img" style="background-image: url('{{ memory.imgUrl }}');" />             
             <ion-card-header>
                 <ion-card-title ngClass="memory-card-title">{{ memory.title }}</ion-card-title>
             </ion-card-header>
