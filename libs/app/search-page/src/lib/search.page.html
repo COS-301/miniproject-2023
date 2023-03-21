@@ -28,7 +28,7 @@
                         <img src="{{ memory.profileUrl }}" ngClass="memory-card-profileImage" />
                     </ion-avatar>
                     <ion-card-title ngClass="memory-card-username">{{ memory.username }}</ion-card-title>
-                    <ion-text ngClass="memory-card-time-ago">2h ago</ion-text>
+                    <ion-text ngClass="memory-card-time-ago">{{ calculateHowLongAgo(memory.timePosted) }}</ion-text>
                 </div>
             </ion-card-header>
             <ion-card-content>
