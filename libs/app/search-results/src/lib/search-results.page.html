@@ -21,9 +21,15 @@
         <ion-card ngClass="memory-card" color="none" *ngFor="let memory of Memories"> 
             <img ngClass="memory-img" style="background-image: url('{{ memory.imgUrl }}');" />             
             <ion-card-header>
-                <ion-card-title ngClass="memory-card-title">{{ memory.title }}</ion-card-title>
+                <div class="memory-avatar-username">
+                    <ion-avatar slot="start">
+                        <img src="{{ memory.profileUrl }}" ngClass="memory-card-profileImage" />
+                    </ion-avatar>
+                    <ion-card-title ngClass="memory-card-username">{{ memory.username }}</ion-card-title>
+                </div>
             </ion-card-header>
             <ion-card-content>
+                <ion-card-title ngClass="memory-card-title">{{ memory.title }}</ion-card-title>
                 <p ngClass="memory-card-desc">{{ memory.description }}</p>
                 <ion-text class="ion-padding-top" ngClass="memory-date">{{ memory.date }}</ion-text>
             </ion-card-content>
