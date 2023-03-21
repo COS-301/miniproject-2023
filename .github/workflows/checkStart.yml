@@ -1,0 +1,14 @@
+#name: emulators
+
+#on: push
+#  branches : dev
+
+#jobs: 
+#  test_push
+#    runs-on: ubuntu-latest
+#    steps:
+#    - uses: actions/checkout@vs
+#    - uses: actions/setup-node@v1
+#      with:
+#        node-version: 18
+#    -run: yarn start:emulators
