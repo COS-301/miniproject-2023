@@ -20,23 +20,30 @@
     </ion-toolbar>
     <ion-list ngClass="memory-list" *ngIf="!searchFocus && !searchValue">
         <ion-text ngClass="popular-memories-text">Most Popular Memories</ion-text>
-        <ion-card ngClass="memory-card" color="none" *ngFor="let memory of Memories"> 
-            <img ngClass="memory-img" style="background-image: url('{{ memory.imgUrl }}');" />             
-            <ion-card-header>
-                <div class="memory-avatar-username">
-                    <ion-avatar slot="start">
-                        <img src="{{ memory.profileUrl }}" ngClass="memory-card-profileImage" routerLink="/user-view"/>
-                    </ion-avatar>
-                    <ion-card-title ngClass="memory-card-username" routerLink="/user-view">{{ memory.username }}</ion-card-title>
-                    <ion-text ngClass="memory-card-time-ago">{{ calculateHowLongAgo(memory.timePosted) }}</ion-text>
-                </div>
-            </ion-card-header>
-            <ion-card-content>
-                <ion-card-title ngClass="memory-card-title">{{ memory.title }}</ion-card-title>
-                <p ngClass="memory-card-desc">{{ memory.description }}</p>
-                <ion-text class="ion-padding-top" ngClass="memory-date">{{ convertTimePostedToDate(memory.timePosted) }}</ion-text>
-            </ion-card-content>
-        </ion-card>
+        <div *ngIf="!showExpandedView">
+            <ion-card 
+                ngClass="memory-card" 
+                color="none" 
+                *ngFor="let memory of Memories"
+            > 
+                <img ngClass="memory-img" style="background-image: url('{{ memory.imgUrl }}');" />             
+                <ion-card-header>
+                    <div class="memory-avatar-username">
+                        <ion-avatar slot="start">
+                            <img src="{{ memory.profileUrl }}" ngClass="memory-card-profileImage" routerLink="/user-view"/>
+                        </ion-avatar>
+                        <ion-card-title ngClass="memory-card-username" routerLink="/user-view">{{ memory.username }}</ion-card-title>
+                        <ion-text ngClass="memory-card-time-ago">{{ calculateHowLongAgo(memory.timePosted) }}</ion-text>
+                    </div>
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-card-title ngClass="memory-card-title">{{ memory.title }}</ion-card-title>
+                    <p ngClass="memory-card-desc">{{ memory.description }}</p>
+                    <ion-text class="ion-padding-top" ngClass="memory-date">{{ convertTimePostedToDate(memory.timePosted) }}</ion-text>
+                    <ion-text ngClass="memory-show-more">{{ !showExpandedView ? 'Show More' : 'Show Less' }}</ion-text>
+                </ion-card-content>
+            </ion-card>
+        </div>
     </ion-list>
     <!-- Show list of recent searches -->
     <ion-text *ngIf="searchFocus && !searchValue" size="medium">

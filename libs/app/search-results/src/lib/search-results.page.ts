@@ -10,6 +10,7 @@ export class SearchResultsPageComponent {
   searchValue = '';
   searchFocus = false;
   showFilters = false;
+  showExpandedView = false;
   currentFilter = 'Top Accounts';
 
   memoriesArray: any[] = [
@@ -61,6 +62,9 @@ export class SearchResultsPageComponent {
     event.stopPropagation();
     this.searchValue = search;
     alert(event);
+  }
+  changeMemoryView() {
+    this.showExpandedView = !this.showExpandedView;
   }
 
   get RecentSearches() {

@@ -100,6 +100,15 @@ ion-card-header {
     color: #fff;
     opacity: 0.7;
 }
+.memory-show-more {
+    position: fixed;
+    right: 15px;
+    color: #fff;
+    opacity: 0.7;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    padding: 2px 5px;
+}
 
 .search-list {
     margin-top: 10px;

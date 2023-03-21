@@ -11,6 +11,7 @@ export class SearchPageComponent {
   searchValue = '';
   searchFocus = false;
   currentFilter = 'Top';
+  showExpandedView = false;
 
   memoriesArray: any[] = [
     {
@@ -60,6 +61,9 @@ export class SearchPageComponent {
     event.stopPropagation();
     this.searchValue = search;
     alert(event);
+  }
+  changeMemoryView() {
+    this.showExpandedView = !this.showExpandedView;
   }
 
   get RecentSearches() {
