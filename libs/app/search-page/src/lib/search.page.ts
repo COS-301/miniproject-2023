@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
@@ -19,7 +20,7 @@ export class SearchPageComponent {
       title: "Last day of Highschool",
       description: "Example of a description for the memory",
       comments: [{}],
-      date: '14 November 2020'
+      timePosted: '2020-11-14T10:30:00.000-07:00'
     }
   ];
   recentSearches: string[] = ['1','2','3','4','5']; //first 7 recents are shown
@@ -72,5 +73,11 @@ export class SearchPageComponent {
 
   get Memories() {
     return this.memoriesArray;
+  }
+
+  //function to covert timePosted to dd MMMM yyyy
+  convertTimePostedToDate(timePosted: string) : string {
+    const date = new Date(timePosted);
+    return formatDate(date, 'dd MMMM yyyy', 'en-US');
   }
 }

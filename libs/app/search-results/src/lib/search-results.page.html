@@ -31,7 +31,7 @@
             <ion-card-content>
                 <ion-card-title ngClass="memory-card-title">{{ memory.title }}</ion-card-title>
                 <p ngClass="memory-card-desc">{{ memory.description }}</p>
-                <ion-text class="ion-padding-top" ngClass="memory-date">{{ memory.date }}</ion-text>
+                <ion-text class="ion-padding-top" ngClass="memory-date">{{ convertTimePostedToDate(memory.timePosted) }}</ion-text>
             </ion-card-content>
         </ion-card>
     </ion-list>
