@@ -1,1 +1,21 @@
-<p>feed works!</p>
+<ion-header color="none">
+    <ion-toolbar color="none" [ngClass]="'menu-toolbar'">
+        <!-- <ion-buttons ngClass="add-btn"></ion-buttons> -->
+        <ion-title ngClass="title">Memory Lane</ion-title>
+        <small slot="end" ngClass="account-time">22h:52m:11s</small>
+    </ion-toolbar>
+</ion-header>
+<ion-content color="dark">
+    <ion-list ngClass="memory-list">
+        <ion-card ngClass="memory-card" color="none" *ngFor="let memory of Memories"> 
+            <div ngClass="memory-img"></div>               
+            <ion-card-header>
+                <ion-card-title ngClass="memory-card-title">{{ memory.title }}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <p ngClass="memory-card-desc">{{ memory.description }}</p>
+                <ion-text class="ion-padding-top" ngClass="memory-date">{{ memory.date }}</ion-text>
+            </ion-card-content>
+        </ion-card>
+    </ion-list>
+</ion-content>
