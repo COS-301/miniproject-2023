@@ -54,11 +54,11 @@
                     </div>
                     <div *ngIf="showExpandedView" ngClass="comment-profileImg-username">
                         <ion-avatar ngClass="memory-avatar-expanded">
-                            <img src="{{ memory.profileUrl }}" ngClass="memory-comment-profileImg" routerLink="/user-view"/>
+                            <img src="{{ memory.comments[0].profileImgUrl }}" ngClass="memory-comment-profileImg" routerLink="/user-view"/>
                         </ion-avatar>
                         <div ngClass="memory-username-and-comment">
-                            <ion-text ngClass="memory-comment-username" routerLink="/user-view">{{ memory.username }}</ion-text>
-                            <ion-text ngClass="memory-comment-usercomment">Wow bro this post looks AMAZING!! jskdcn jks skjdnkcjsdcn</ion-text>
+                            <ion-text ngClass="memory-comment-username" routerLink="/user-view">{{ memory.comments[0].username }}</ion-text>
+                            <ion-text ngClass="memory-comment-usercomment">{{ memory.comments[0].comment }}</ion-text>
                         </div>
                     </div>
                     <ion-text (click)="changeMemoryView()" ngClass="memory-show-more">{{ !showExpandedView ? 'Show More' : 'Show Less' }}</ion-text>
