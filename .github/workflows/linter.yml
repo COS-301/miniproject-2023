@@ -13,6 +13,7 @@ jobs:
         uses: github/super-linter@v4
         env:
           DEFAULT_BRANCH: workflow/testing
-          VALIDATE_ALL_CODEBASE: false
+          DEFAULT_WORKSPACE: 
+          #VALIDATE_ALL_CODEBASE: false
           VALIDATE_HTML: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
