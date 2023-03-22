@@ -1,0 +1,17 @@
+name: Deploy Develop Cloud Functions (CD)
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Deploy Production Functions
+        uses: chrissank/deploy-firebase-functions@1.0.0
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          TARGET: development
