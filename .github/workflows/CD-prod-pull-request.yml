@@ -12,11 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Create Temporary .env
-        uses: "finnp/create-file-action@action@master"
-        env:
-          FILE_NAME: ".env.prod"
-          FILE_DATA: "${{ secrets.ENV_PROD_FILE }}"
+      - name: Create Temporary .env.prod
+        run: |
+          touch .env.prod
+          echo ${{ secrets.ENV_PROD_FILE }} >> .env.prod
 
       - name: Install Dependencies
         run: yarn install --frozen-lockfile 
