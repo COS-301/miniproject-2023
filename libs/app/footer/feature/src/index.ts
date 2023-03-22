@@ -1,1 +1,4 @@
-export * from './app-footer-feature.module';
+export * from './footer.component';
+export * from './footer.module';
+
+
