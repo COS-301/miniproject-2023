@@ -10,8 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       # do .env creation
-      - name: '.env creation'
-        run: |
+      - name: "ENV Creation"
+      - run: |
           touch .env.prod
           echo NX_ENVIRONMENT="production" >> .env.prod
           echo NX_FIREBASE_AUTH_DOMAIN='${{secrets.NX_FIREBASE_AUTH_DOMAIN}}' >> .env.prod
