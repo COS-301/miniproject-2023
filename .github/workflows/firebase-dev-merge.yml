@@ -53,12 +53,8 @@ jobs:
         with:
           name: dist-artifact
           path: dist
+          retention-days: 1
 
-      # - name: Archive .env Artifact
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: env-artifact
-      #     path: .env
   dev_deploy:
     name: Deploy
     environment: development
@@ -73,12 +69,6 @@ jobs:
         with:
           name: dist-artifact
           path: dist
-
-      # - name: Download .env Artifact
-      #   uses: actions/download-artifact@master
-      #   with:
-      #     name: env-artifact
-      #     path: .env
 
       - name: Deploy and Host
         uses: FirebaseExtended/action-hosting-deploy@v0
