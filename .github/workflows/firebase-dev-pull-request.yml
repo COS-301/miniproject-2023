@@ -27,12 +27,14 @@ jobs:
         with:
           name: coverage-fail-artifact
           path: coverage
+          retention-days: 2
           
       - name: Archive Coverage Artifact
         uses: actions/upload-artifact@v3
         with:
           name: coverage-artifact
           path: coverage
+          retention-days: 2
 
   dev_build_pr:
     name: Build
@@ -84,12 +86,7 @@ jobs:
         with:
           name: dist-artifact
           path: dist
-      
-      # - name: Archive .env Artifact
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: env-artifact
-      #     path: .env
+          retention-days: 1
 
   dev_deploy_pr:
     name: Deploy
@@ -106,11 +103,6 @@ jobs:
           name: dist-artifact
           path: dist
 
-      # - name: Download .env Artifact
-      #   uses: actions/download-artifact@master
-      #   with:
-      #     name: env-artifact
-      #     path: .env
       - name: Deploy and Preview
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
