@@ -6,19 +6,24 @@
   <ion-grid>
     <ion-card class="card1">
       <ion-card-content>
-          <ion-item class="first">
-            <ion-thumbnail slot="start">
+        <ion-grid>
+          <ion-row class="ry">
+            <ion-col class="foto" size="auto">
               <ion-img class="matchphoto" src="./assets/images/photo2.jpeg"></ion-img>
-            </ion-thumbnail>
-            <ion-label>A new match was made!</ion-label>
-          </ion-item>
+            </ion-col>
+            <ion-col class="label">
+              <ion-label class="meet">A new match was made!</ion-label>
+            </ion-col>
+          </ion-row>
+        </ion-grid> 
+          
       </ion-card-content>
     </ion-card>
   </ion-grid>
 
   <ion-grid>
     <ion-card class="card2">
-      <ion-card-content>
+      <ion-card-content class="fonty">
         Your daily time has been awarded.
       </ion-card-content>
     </ion-card>
@@ -26,7 +31,7 @@
 
   <ion-grid>
     <ion-card class="card2">
-      <ion-card-content>
+      <ion-card-content class="fonty">
         Your time is running out!
       </ion-card-content>
     </ion-card>
