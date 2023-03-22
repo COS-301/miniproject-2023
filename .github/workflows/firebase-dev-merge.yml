@@ -1,13 +1,13 @@
-name: [DEV] Build and Deploy
+name: (DEV) Build and Deploy
 'on':
   push:
     branches:
       - dev
-
+      
+jobs:
   dev_build:
     name: Build
     environment: development
-    needs: dev_lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
