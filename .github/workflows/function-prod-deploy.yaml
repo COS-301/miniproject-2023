@@ -30,6 +30,6 @@ jobs:
         run: yarn build:api:prod
 
       - name: Deploy Cloud Functions
-        run: yarn deploy:api:prod
+        run: npx firebase-tools deploy --only=functions
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
