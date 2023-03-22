@@ -3,9 +3,4 @@ export interface Chat{
     unread: boolean;
     name: string;
 }
-
-export interface profile{
-    name: string;
-    age: number;
-    interests: string[];
-}
+//This interface will 100% have to be changed to match the data you are getting from the database

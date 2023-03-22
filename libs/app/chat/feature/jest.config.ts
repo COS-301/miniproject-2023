@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'app-messages-feature',
+  displayName: 'app-chat-feature',
   preset: '../../../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -11,5 +11,5 @@ export default {
     '^.+\\.[tj]s$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../../../coverage/libs/app/messages/feature',
+  coverageDirectory: '../../../../coverage/libs/app/chat/feature',
 };

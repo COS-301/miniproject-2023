@@ -1,3 +1,2 @@
-export * from './messages.module';
-export * from './messages.page';
-export * from './messages.routing';
+export * from './lib/messages.module';
+export * from './lib/messages.page';

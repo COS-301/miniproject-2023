@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Chat } from './Chat.interface';
+import { Chat } from '../Chat.interface';
 
 @Component({
   selector: 'mp-messages',
