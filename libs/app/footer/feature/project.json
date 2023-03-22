@@ -1,10 +1,26 @@
 {
   "name": "app-footer-feature",
-  "$schema": "../node_modules/nx/schemas/project-schema.json",
-  "projectType": "library",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/app/footer/feature/src",
-  "prefix": "mp",
+  "projectType": "library",
   "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/app/footer/feature",
+        "main": "libs/app/footer/feature/src/index.ts",
+        "tsConfig": "libs/app/footer/feature/tsconfig.lib.json",
+        "assets": ["libs/app/footer/feature/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/app/footer/feature/**/*.ts"]
+      }
+    },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
@@ -17,16 +33,6 @@
           "ci": true,
           "codeCoverage": true
         }
-      }
-    },
-    "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": [
-          "libs/app/footer/feature/**/*.ts",
-          "libs/app/footer/feature/**/*.html"
-        ]
       }
     }
   },
