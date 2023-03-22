@@ -36,6 +36,11 @@ const routes: Routes = [
       import('@mp/app/home/feature').then((m) => m.HomeModule),
   },
   {
+    path: 'messages',
+    loadChildren: () =>
+      import('@mp/app/messages/feature').then((m) => m.MessagesModule),
+  },
+  {
     path: 'tos',
     loadChildren: () => import('@mp/app/tos/feature').then((m) => m.TosModule),
   },

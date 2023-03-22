@@ -91,6 +91,7 @@
       "@mp/app/verify/data-access": [
         "libs/app/verify/data-access/src/index.ts"
       ],
+      "@mp/app/messages/feature":["libs/app/user/util/src/index.ts"],
       "@mp/app/verify/feature": ["libs/app/verify/feature/src/index.ts"],
       "@mp/app/verify/util": ["libs/app/verify/util/src/index.ts"],
       "@mp/app/version/ui": ["libs/app/version/ui/src/index.ts"],
