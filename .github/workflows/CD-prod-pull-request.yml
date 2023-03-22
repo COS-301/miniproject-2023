@@ -21,7 +21,7 @@ jobs:
         run: yarn install --frozen-lockfile 
         
       - name: Build Application
-        run: yarn build:app:dev
+        run: yarn build:app:prod
 
       - name: Preview Production Version
         uses: FirebaseExtended/action-hosting-deploy@v0
