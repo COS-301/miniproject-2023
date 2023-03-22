@@ -13,7 +13,6 @@ import { ReviveMemoryPageComponent } from './lib/revive-memory/revive-memory.pag
   declarations: [
     ProfileViewPageComponent,
     AddMemoryPageComponent,
-    AddMemoryPageComponent,
     EditProfilePhotoPageComponent,
     ReviveMemoryPageComponent,
   ],
