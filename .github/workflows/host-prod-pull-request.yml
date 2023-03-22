@@ -16,6 +16,13 @@ jobs:
           touch .env.prod
           echo ${{ secrets.ENV_PROD_FILE }} >> .env.prod
 
+      - name: Cache Dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
       - name: Install Dependencies
         run: yarn install --frozen-lockfile 
         
