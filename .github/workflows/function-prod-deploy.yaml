@@ -6,9 +6,30 @@ on:
 
 jobs:
   build_and_deploy:
+    environment: Production
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
-      - name: Deploy Production Functions
-        run: npx firebase-tools use development && npx firebase-tools deploy --only=functions --token "${{ secrets.FIREBASE_TOKEN }}"
+      - name: Create Temporary .env.prod
+        run: |
+          touch .env.prod
+          echo ${{ secrets.ENV_PROD_FILE }} >> .env.prod
+
+      - name: Cache Dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile 
+        
+      - name: Build API
+        run: yarn build:api:prod
+
+      - name: Deploy Cloud Functions
+        run: yarn deploy:api:prod
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

@@ -2,13 +2,34 @@ name: Deploy Develop Cloud Functions (CD)
 on:
   push:
     branches:
-      - main
+      - develop
 
 jobs:
   build_and_deploy:
+    environment: Development
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
-      - name: Deploy Production Functions
-        run: npx firebase-tools use development && npx firebase-tools deploy --only=functions --token "${{ secrets.FIREBASE_TOKEN }}"
+      - name: Create Temporary .env
+        run: |
+          touch .env
+          echo ${{secrets.ENV_FILE}} >> .env
+
+      - name: Cache Dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile 
+        
+      - name: Build API
+        run: yarn build:api:dev
+
+      - name: Deploy Cloud Functions
+        run: yarn deploy:api:dev
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
