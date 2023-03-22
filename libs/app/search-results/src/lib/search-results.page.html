@@ -18,6 +18,7 @@
 
 <ion-content color="dark">
     <ion-list ngClass="memory-list" *ngIf="currentFilter==='Memories' || currentFilter==='Date'">
+        <app-memory-card *ngFor="let memory of Memories" [memory]="memory"></app-memory-card>
         <ion-card 
                 [ngClass]="{'memory-card': !showExpandedView, 'memory-card-expanded':showExpandedView}" 
                 color="none" 

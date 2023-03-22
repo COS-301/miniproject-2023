@@ -20,6 +20,7 @@
     </ion-toolbar>
     <ion-list ngClass="memory-list" *ngIf="!searchFocus && !searchValue">
         <ion-text ngClass="popular-memories-text">Most Popular Memories</ion-text>
+            <app-memory-card *ngFor="let memory of Memories" [memory]="memory"></app-memory-card>
             <ion-card 
                 [ngClass]="{'memory-card': !showExpandedView, 'memory-card-expanded':showExpandedView}" 
                 color="none" 
