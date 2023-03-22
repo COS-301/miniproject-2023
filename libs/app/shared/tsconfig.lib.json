@@ -13,5 +13,5 @@
     "jest.config.ts",
     "src/**/*.test.ts"
   ],
-  "include": ["src/**/*.ts", "../app-models/src/lib/Memory.ts", "../shared/src/lib/Memory.ts"]
+  "include": ["src/**/*.ts"]
 }

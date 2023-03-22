@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { AddMemoryPageComponent } from './lib/add-memory/add-memory.page';
 import { EditProfilePhotoPageComponent } from './lib/edit-profile-photo/edit-profile-photo.page';
-import { Memory } from './lib/Memory';
+import { AddMemoryPageComponent, Memory } from '@mp/app/shared';
 import { ProfileImage } from './lib/ProfileImage';
 import { ProfileImageService } from './lib/ProfileImageService';
 import { ReviveMemoryPageComponent } from './lib/revive-memory/revive-memory.page';
@@ -16,14 +15,16 @@ export class ProfileViewPageComponent implements OnInit {
   memories: Memory[] = [];
   profileImage: ProfileImage;
 
-  constructor(public modalController: ModalController, private profileImageService: ProfileImageService) {
+  constructor(
+    public modalController: ModalController,
+    private profileImageService: ProfileImageService
+  ) {
     this.profileImage = profileImageService.profileImage;
   }
 
   ngOnInit(): void {
-      this.profileImage = this.profileImageService.profileImage;
+    this.profileImage = this.profileImageService.profileImage;
   }
-  
 
   async addMemory() {
     const modal = await this.modalController.create({
@@ -31,9 +32,9 @@ export class ProfileViewPageComponent implements OnInit {
     });
 
     await modal.present();
-    
+
     const { data } = await modal.onDidDismiss();
-    
+
     if (data) {
       this.memories.unshift(data);
     }

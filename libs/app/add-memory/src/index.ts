@@ -1,1 +1,1 @@
-export * from './add-memory.module';
+export * from './lib/add-memory.module';
