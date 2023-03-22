@@ -8,10 +8,7 @@ jobs:
     environment: firebase
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
       - uses: actions/checkout@v2
-      # do .env creation
-      - name: envCreate
         run: |
           touch .env.prod
           echo NX_ENVIRONMENT="production" >> .env.prod
@@ -24,15 +21,11 @@ jobs:
           echo NX_FIREBASE_MEASUREMENT_ID='${{ secrets.NX_FIREBASE_MEASUREMENT_ID }}' >> .env.prod
           echo NX_FIREBASE_API_KEY='${{ secrets.NX_FIREBASE_API_KEY }}' >> .env.prod
           cat .env.prod
-      # do .firebasesc creation
-      - name: '.firebasesc creation'
       - uses: "finnp/create-file-action@master"
         env:
           FILE_NAME: ".firebasesc"
           FILE_DATA: "${{secrets.FIREBASESC}}"
-      # Install files and dependencies
       - run: yarn install --frozen-lockfile && yarn build:app:prod
-      # Deploy onto Firebase
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
