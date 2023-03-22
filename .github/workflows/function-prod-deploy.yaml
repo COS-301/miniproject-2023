@@ -32,4 +32,4 @@ jobs:
       - name: Deploy Cloud Functions
         run: npx firebase-tools use production && npx firebase-tools deploy --only=functions
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_COS301_MINIPROJECT_2023_B1F6D }}
