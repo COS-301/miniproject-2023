@@ -1,4 +1,4 @@
-name: "Main: Firebase Deploy on Merge"
+name: "Dev: Firebase Deploy on Merge"
 'on':
   push:
     branches:
