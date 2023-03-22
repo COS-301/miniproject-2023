@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        run: |
+      - run: |
           touch .env.prod
           echo NX_ENVIRONMENT="production" >> .env.prod
           echo NX_FIREBASE_AUTH_DOMAIN='${{secrets.NX_FIREBASE_AUTH_DOMAIN}}' >> .env.prod
