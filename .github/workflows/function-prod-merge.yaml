@@ -6,7 +6,6 @@ on:
 
 jobs:
   build_and_deploy:
-    environment: Development
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -15,4 +14,4 @@ jobs:
         run: echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_COS301_MINIPROJECT_2023_B1F6D }}' > $HOME/gcloud.json
 
       - name: Deploy Develop Cloud Functions
-        run: export GOOGLE_APPLICATION_CREDENTIALS=$HOME/gcloud.json && npx firebase-tools deploy --only functions --json
+        run: npx firebase-tools use production && export GOOGLE_APPLICATION_CREDENTIALS=$HOME/gcloud.json && npx firebase-tools deploy --only functions --json
