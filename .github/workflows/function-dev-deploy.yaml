@@ -11,4 +11,4 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Deploy Production Functions
-        run: npx firebase-tools use development && npx firebase-tools deploy -only=functions --token "${{ secrets.FIREBASE_TOKEN }}"
+        run: npx firebase-tools use development && npx firebase-tools deploy --only=functions --token "${{ secrets.FIREBASE_TOKEN }}"
