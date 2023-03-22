@@ -1,3 +1,5 @@
+//yarn start:app:dev
+
 import { NgModule } from '@angular/core';
 import {
     AuthGuard,
@@ -45,6 +47,12 @@ const routes: Routes = [
       import('@mp/app/privacy/feature').then((m) => m.PrivacyModule),
   },
   // {
+  //   path: 'notifications',
+  //   loadChildren: () =>
+  //     import('@mp/app/notification/feature').then((m) => m.AppNotificationFeatureModule)
+  //     ,
+  // },
+  
   //   path: 'verify',
   //   pathMatch: 'full',
   //   canActivate: [AuthGuard],
