@@ -5,18 +5,16 @@ import { Timestamp } from 'firebase-admin/firestore';
 export class User extends AggregateRoot implements IUser {
   constructor(
     public id: string,
+    public time: number | null | undefined,
     public email?: string | null | undefined,
     public displayName?: string | null | undefined,
     public photoURL?: string | null | undefined,
     public phoneNumber?: string | null | undefined,
     public customClaims?: { [key: string]: any } | null | undefined,
     public created?: Timestamp | null | undefined, 
-
-    public time?:number | null | undefined,
-    public login?: Timestamp | null | undefined, 
     public memoryCount?:number | null | undefined, 
-    public friendCount?: number | null | undefined, 
-    public friendList?: string[] | null | undefined
+    public friendList?: string[] | null | undefined,
+    public friendCount?: number | null | undefined
   ) {
     super();
   }
@@ -24,17 +22,18 @@ export class User extends AggregateRoot implements IUser {
   static fromData(user: IUser): User {
     const instance = new User(
       user.id,
+      user.time,
       user.email,
       user.displayName,
       user.photoURL,
       user.phoneNumber,
       user.customClaims,
       user.created,
-      user.time,
-      user.login,
+     // user.login,
       user.memoryCount,
-      user.friendCount,
-      user.friendList
+      //user.time,
+      user.friendList,
+      user.friendCount
     );
     return instance;
   }
@@ -46,16 +45,17 @@ export class User extends AggregateRoot implements IUser {
   toJSON(): IUser {
     return {
       id: this.id,
+      time: this.time,
       email: this.email,
       displayName: this.displayName,
       photoURL: this.photoURL,
       phoneNumber: this.phoneNumber,
       customClaims: this.customClaims,
       created: this.created, 
-      time:this.time,
-      login:this.login,
-      friendCount:this.friendCount, 
-      friendList:this.friendList
+      //login:this.login,
+      //time:this.time, 
+      friendList:this.friendList,
+      friendCount:this.friendCount
     };
   }
 }
