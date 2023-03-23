@@ -1,7 +1,7 @@
-/*import { CoreModule } from './core.module';
+import { CoreModule } from './core.module';
 
-describe('appCoreUi', () => {
+describe('CoreModule', () => {
   it('should work', () => {
-    expect(CoreModule()).toEqual('app-core-ui');
+    expect(CoreModule).toEqual('app-core-ui');
   });
-});*/
+});

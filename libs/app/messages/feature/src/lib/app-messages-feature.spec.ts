@@ -1,7 +1,7 @@
-/*import { MessagesModule } from './messages.module';
+import { MessagesModule } from './messages.module';
 
 describe('appMessagesFeature', () => {
   it('should work', () => {
-    expect(MessagesModule()).toEqual('app-messages-feature');
+    expect(MessagesModule).toEqual('app-messages-feature');
   });
-});*/
+});
