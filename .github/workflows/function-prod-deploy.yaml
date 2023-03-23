@@ -30,6 +30,4 @@ jobs:
         run: yarn build:api:prod
 
       - name: Deploy Cloud Functions
-        run: npx firebase-tools use production && npx firebase-tools deploy --only=functions
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_COS301_MINIPROJECT_2023_B1F6D }}
+        run: npx firebase-tools use production && GOOGLE_APPLICATION_CREDENTIALS=${{ secrets.FIREBASE_SERVICE_ACCOUNT_COS301_MINIPROJECT_2023_B1F6D }} npx firebase-tools deploy --only=functions
