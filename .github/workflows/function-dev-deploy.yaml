@@ -29,5 +29,8 @@ jobs:
       - name: Build API
         run: yarn build:api:dev
 
+      - name: Set Enviroment Variable
+        run: export GOOGLE_APPLICATION_CREDENTIALS=${{ secrets.FIREBASE_SERVICE_ACCOUNT_COS301_MINIPROJECT_GR9_D_46DED }}
+
       - name: Deploy Cloud Functions
-        run: npx firebase-tools use develop && GOOGLE_APPLICATION_CREDENTIALS=${{ secrets.FIREBASE_SERVICE_ACCOUNT_COS301_MINIPROJECT_GR9_D_46DED }} npx firebase-tools deploy --only=functions
+        run: npx firebase-tools use develop && npx firebase-tools deploy --only=functions
