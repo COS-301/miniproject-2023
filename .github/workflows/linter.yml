@@ -15,5 +15,5 @@ jobs:
         env:
           DEFAULT_BRANCH: main
           VALIDATE_ALL_CODEBASE: false
-          make lint-fix: true 
+          make lint-fix: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
