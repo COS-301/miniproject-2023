@@ -1,0 +1,47 @@
+/* Center the image and text */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Set the size of the image */
+.loading-logo {
+  width: 50px;
+  height: 50px;
+  animation: rotate 1s linear infinite;
+}
+
+/* Add a CSS animation to rotate the image */
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Style the loading text */
+.loading-text {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 16px;
+}
+
+/* Add a CSS animation to the loading text */
+@keyframes blink {
+  0% { opacity: 0.2; }
+  20% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+
+/* Apply the blink animation to the loading dots */
+.loading-dot {
+  animation: blink 1s infinite;
+  animation-delay: 0ms;
+}
+.loading-dot:nth-child(2) {
+  animation-delay: 333ms;
+}
+.loading-dot:nth-child(3) {
+  animation-delay: 666ms;
+}
