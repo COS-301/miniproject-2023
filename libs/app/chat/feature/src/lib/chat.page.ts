@@ -12,6 +12,7 @@ export class ChatPage {
   id!: number;
   me!: string;
   outgoingMessage = '';
+  color = 'bronze';
 
   constructor(
     private router:Router,

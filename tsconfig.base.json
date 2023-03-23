@@ -46,6 +46,7 @@
       "@mp/app/chat/feature": ["libs/app/chat/feature/src/index.ts"],
       "@mp/app/copyright/ui": ["libs/app/copyright/ui/src/index.ts"],
       "@mp/app/core/feature": ["libs/app/core/feature/src/index.ts"],
+      "@mp/app/core/ui": ["libs/app/core/ui/src/index.ts"],
       "@mp/app/dashboard/data-access": [
         "libs/app/dashboard/data-access/src/index.ts"
       ],
