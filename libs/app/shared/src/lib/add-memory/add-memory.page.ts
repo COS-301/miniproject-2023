@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
-import { Memory } from '@mp/app/shared'
+import { Memory } from '../Memory'
 
 @Component({
   selector: 'app-add-memory',
