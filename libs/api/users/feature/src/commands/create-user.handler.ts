@@ -18,6 +18,12 @@ export class CreateUserHandler implements ICommandHandler<CreateUserCommand> {
       phoneNumber: request.auth.phoneNumber,
       customClaims: request.auth.customClaims,
       created: request.auth.created,
+
+      time: 120, 
+      login:request.auth.created,
+      memoryCount:0,
+      friendCount:0,
+      friendList:[]
     };
     const user = this.publisher.mergeObjectContext(User.fromData(data));
 

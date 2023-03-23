@@ -10,7 +10,7 @@ export class Auth extends AggregateRoot implements IAuth {
     public photoURL?: string | null | undefined,
     public phoneNumber?: string | null | undefined,
     public customClaims?: { [key: string]: any } | null | undefined,
-    public created?: Timestamp | null | undefined
+    public created?: Timestamp | null | undefined 
   ) {
     super();
   }
