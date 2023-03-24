@@ -14,4 +14,32 @@ export class SettingsPage {
   {
     this.r.navigate(['/account']);
   }
+
+  LoadEditProfilePage()
+  {
+    this.r.navigate(['/edit-profile']);
+  }
+
+  LoadPrivacyPage()
+  {
+    this.r.navigate(['/privacy']);
+  }
+
+  LoadShopPage()
+  {
+    this.r.navigate(['/shop']);
+  }
+
+  LoadAboutPage()
+  {
+    this.r.navigate(['/about']);
+  }
+
+  LogOut()
+  {
+    this.r.navigate(['/login']);
+  }
+
+
+
 }
