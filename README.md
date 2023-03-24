@@ -1,6 +1,9 @@
 
 # TimeShare (Mini Project 2023)
 
+[![codecov](https://codecov.io/github/ryanbasiltrickett/cos301-miniproject-gr9/branch/develop/graph/badge.svg?token=1jTA7rirTi)](https://codecov.io/github/ryanbasiltrickett/cos301-miniproject-gr9)
+[![CI/CD](https://github.com/ryanbasiltrickett/cos301-miniproject-gr9/actions/workflows/host-prod-merge.yml/badge.svg)](https://github.com/ryanbasiltrickett/cos301-miniproject-gr9/actions/workflows/host-prod-merge.yml)
+
 Description
 
 
