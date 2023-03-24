@@ -1,0 +1,42 @@
+name: Production Continous Integration (CI)
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test_and_build:
+    environment: Production
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Create Temporary .env.prod
+        run: |
+          touch .env.prod
+          echo ${{ secrets.ENV_PROD_FILE }} >> .env.prod
+
+      - name: Cache Dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile 
+        
+      - name: Lint All Projects
+        run: yarn nx run-many --target=lint
+
+      - name: Test All Projects
+        run: yarn nx run-many --target=test
+
+      - name: Build Application
+        run: yarn app:build:prod
+
+      - name: Build API
+        run: yarn api:build:prod
+
+      - name: Build CLI
+        run: yarn cli:build:prod

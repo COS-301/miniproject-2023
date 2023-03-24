@@ -1,0 +1,42 @@
+name: Development Continous Integration (CI)
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test_and_build:
+    environment: Development
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Create Temporary .env
+        run: |
+          touch .env
+          echo ${{ secrets.ENV_FILE }} >> .env
+
+      - name: Cache Dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile 
+        
+      - name: Lint All Projects
+        run: yarn nx run-many --target=lint
+
+      - name: Test All Projects
+        run: yarn nx run-many --target=test
+
+      - name: Build Application
+        run: yarn app:build:dev
+
+      - name: Build API
+        run: yarn api:build:dev
+
+      - name: Build CLI
+        run: yarn cli:build:dev
