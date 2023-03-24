@@ -29,8 +29,13 @@ jobs:
       - name: Lint All Projects
         run: yarn nx run-many --target=lint
 
-      - name: Test All Projects
-        run: yarn nx run-many --target=test --configuration=ci
+      - name: Run Tests and Create Coverage Report
+        run: yarn test:ci
+
+      - name: Upload Coverage Report
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Application
         run: yarn app:build:prod
