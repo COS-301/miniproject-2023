@@ -4,6 +4,8 @@ import * as admin from 'firebase-admin';
 
 @Injectable()
 export class PostRepository {
+
+  /*Examples from profile
   async findOne(profile: IPost) {
     return await admin
       .firestore()
@@ -37,4 +39,5 @@ export class PostRepository {
       .doc(profile.userId)
       .set(profile, { merge: true });
   }
+  */
 }
