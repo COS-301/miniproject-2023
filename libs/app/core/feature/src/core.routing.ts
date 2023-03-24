@@ -119,6 +119,15 @@ const routes: Routes = [
     loadChildren: () =>
       import('@mp/app/shop/feature').then((m) => m.ShopPageModule),
   },
+
+  {
+    path: 'about',
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectLoggedIn },
+    loadChildren: () =>
+      import('@mp/app/about/feature').then((m) => m.AboutPageModule),
+  },
 ];
 
 @NgModule({
