@@ -6,7 +6,7 @@ import { ICommand, ofType, Saga } from '@nestjs/cqrs';
 import { map, Observable } from 'rxjs';
 
 @Injectable()
-export class ProfilesSagas {
+export class PostSagas {
  
 
   /*

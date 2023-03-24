@@ -23,4 +23,4 @@ export const EventHandlers = [
   ],
   exports: [PostService],
 })
-export class ProfilesModule {}
+export class PostModule {}

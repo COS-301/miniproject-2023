@@ -19,7 +19,7 @@ import { Injectable } from '@nestjs/common';
 import { CommandBus } from '@nestjs/cqrs';
 
 @Injectable()
-export class ProfilesService {
+export class PostService {
   constructor(private readonly commandBus: CommandBus) {}
 
   /*

@@ -5,4 +5,5 @@ export enum Hashtag {
   MUSIC = '#music',
   SPORTS = '#sports',
   FOOD = '#food',
+  OTHER = '#other'
 }

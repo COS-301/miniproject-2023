@@ -1,5 +1,5 @@
-import { IProfile } from '../interfaces';
+import { IPost } from '../interfaces';
 
 export class ProfileCreatedEvent {
-  constructor(public readonly profile: IProfile) {}
+  constructor(public readonly profile: IPost) {}
 }
