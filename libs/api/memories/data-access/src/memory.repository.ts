@@ -4,12 +4,9 @@ import *  as admin from 'firebase-admin';
 
 @Injectable()
 export class MemoryRepository{ 
+   //TODO implement
    async createMemory(memory : IMemory){ 
-    //  return await admin()
-    //               .firestore() 
-    //               .collection('memories') 
-    //               .doc(userId)
-    //               .create()
+    
     return null;  
    }
 }
