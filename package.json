@@ -107,6 +107,7 @@
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-plugin-cypress": "^2.10.3",
+    "glob": "^9.3.2",
     "http-server": "^14.1.1",
     "jest": "28.1.1",
     "jest-environment-jsdom": "28.1.1",
