@@ -34,9 +34,9 @@ jobs:
         run: yarn test:ci
 
       - name: Upload Coverage Report
-        uses: coverallsapp/github-action@master
+        uses: codecov/codecov-action@v3
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          files: coverage/lcov.info
 
       - name: Build Application
         run: yarn build:app:dev
