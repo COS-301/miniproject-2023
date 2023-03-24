@@ -1,1 +1,25 @@
-<p>comp-name works!</p>
+<body>
+
+    <ion-button class = "back_button" color = "light" (click) = "LoadSettingsPage()">
+      <ion-icon class = "back-icon" slot = "icon-only" name = "arrow-back-outline"></ion-icon>
+    </ion-button>
+    
+    <ion-label class = "page_name">Profile Details</ion-label>
+    
+    <div class = "img-container">
+        <div class = "img">
+            <ion-button class="add_picture_btn">Add profile picture</ion-button>
+        </div>
+    </div>
+
+   <ion-item class = "bio">
+      <ion-label class = "label_bio" position = "stacked" ><b>Bio</b></ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+
+    <ion-label class = "label_interests">Interests</ion-label>
+    <ion-button class="interests_btn">Interests</ion-button>
+   
+    
+    </body>
+    
