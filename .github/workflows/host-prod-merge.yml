@@ -1,13 +1,12 @@
-name: Continous Development of Production on PR (CD)
+name: Host Production on Merge (CD)
 on:
-  pull_request:
+  push:
     branches:
       - main
 
 jobs:
-  build_and_preview:
-    if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
-    enviroment: Production
+  build_and_deploy:
+    environment: Production
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -17,15 +16,24 @@ jobs:
           touch .env.prod
           echo ${{ secrets.ENV_PROD_FILE }} >> .env.prod
 
+      - name: Cache Dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
       - name: Install Dependencies
         run: yarn install --frozen-lockfile 
         
       - name: Build Application
-        run: yarn build:app:dev
+        run: yarn build:app:prod
 
-      - name: Preview Production Version
+      - name: Deploy Production Version
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_COS301_MINIPROJECT }}'
+          firebaseServiceAccount: >-
+            ${{ secrets.FIREBASE_SERVICE_ACCOUNT_COS301_MINIPROJECT_2023_B1F6D }}
+          channelId: live
           projectId: cos301-miniproject-2023-b1f6d

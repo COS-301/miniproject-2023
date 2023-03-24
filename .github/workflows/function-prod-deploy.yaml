@@ -1,0 +1,36 @@
+name: Deploy Production Cloud Functions (CD)
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_deploy:
+    environment: Production
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Create Temporary .env.prod
+        run: |
+          touch .env.prod
+          echo ${{ secrets.ENV_PROD_FILE }} >> .env.prod
+
+      - name: Cache Dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile 
+        
+      - name: Build API
+        run: yarn build:api:prod
+
+      - name: Set Enviroment Variable
+        run: export GOOGLE_APPLICATION_CREDENTIALS=${{ secrets.FIREBASE_SERVICE_ACCOUNT_COS301_MINIPROJECT_2023_B1F6D }}
+
+      - name: Deploy Cloud Functions
+        run: npx firebase-tools use production && npx firebase-tools deploy --only=functions

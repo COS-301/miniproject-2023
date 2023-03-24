@@ -1,0 +1,48 @@
+name: Development Continous Integration (CI)
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  test_and_build:
+    environment: Development
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Create Temporary .env
+        run: |
+          touch .env
+          echo ${{ secrets.ENV_FILE }} >> .env
+
+      - name: Cache Dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile 
+        
+      - name: Lint All Projects
+        run: yarn nx run-many --target=lint
+
+      - name: Run Tests and Create Coverage Report
+        run: yarn test:ci
+
+      - name: Upload Coverage Report
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build Application
+        run: yarn build:app:dev
+
+      - name: Build API
+        run: yarn build:api:dev
+
+      - name: Build CLI
+        run: yarn build:cli:dev
