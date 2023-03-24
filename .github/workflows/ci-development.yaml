@@ -38,10 +38,10 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Application
-        run: yarn app:build:dev
+        run: yarn build:app:dev
 
       - name: Build API
-        run: yarn api:build:dev
+        run: yarn build:api:dev
 
       - name: Build CLI
-        run: yarn cli:build:dev
+        run: yarn build:cli:dev
