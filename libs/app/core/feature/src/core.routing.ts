@@ -87,10 +87,19 @@ const routes: Routes = [
   {
     path: 'settings',
     pathMatch: 'full',
-    // canActivate: [AuthGuard],
-    // data: { authGuardPipe: redirectLoggedIn },
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectLoggedIn },
     loadChildren: () =>
       import('@mp/app/settings/feature').then((m) => m.SettingsPageModule),
+  },
+
+  {
+    path: 'account',
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectLoggedIn },
+    loadChildren: () =>
+      import('@mp/app/account/feature').then((m) => m.AccountPageModule),
   },
 ];
 

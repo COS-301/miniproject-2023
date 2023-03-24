@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mp-settings',
@@ -6,6 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./settings.page.scss']
 })
 export class SettingsPage {
-  constructor ()
+  constructor (public r : Router)
   {}
+
+  LoadAccountPage()
+  {
+    this.r.navigate(['/account']);
+  }
 }
