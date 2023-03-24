@@ -30,7 +30,7 @@ jobs:
         run: yarn nx run-many --target=lint
 
       - name: Test All Projects
-        run: yarn nx run-many --target=test
+        run: yarn nx run-many --target=test --configuration=ci
 
       - name: Build Application
         run: yarn app:build:prod
