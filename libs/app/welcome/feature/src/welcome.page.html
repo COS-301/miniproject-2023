@@ -1,67 +1,58 @@
-<ion-content [fullscreen]="true">
-  <div class="center-container ion-align-items-center">
-    <ion-grid>
-      <ion-row>
-        <ion-col offset="2" size="8">
-          <!-- <img
-            class="logo logo-light"
-            src="/assets/logos/schadre-logo-full.png" /> -->
-          <!-- <img
-            class="logo logo-dark"
-            src="/assets/logos/schadre-logo-full-white.png"
-          /> -->
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-nav-link [routerLink]="['login']">
-            <ion-button expand="block">Login</ion-button>
-          </ion-nav-link>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-nav-link [routerLink]="['register']">
-            <ion-button expand="block">Register</ion-button>
-          </ion-nav-link>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col class="ion-text-center">
-          <ion-text color="medium">or</ion-text>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-nav-link>
-            <ion-button
-              expand="block"
-              fill="outline"
-              color="dark"
-              (click)="continueWithGoogle()">
-              <ion-icon name="logo-google"></ion-icon>
-              <ion-text style="padding-left: 5px">
-                Continue with Google
-              </ion-text>
-            </ion-button>
-          </ion-nav-link>
-        </ion-col>
-      </ion-row>
-      <ion-row class="ion-padding-top">
-        <ion-col style="display: flex" class="ion-justify-content-center">
-          <ion-nav-link [routerLink]="['tos']">
-            <ion-button fill="clear"> Terms of Service </ion-button>
-          </ion-nav-link>
-          <ion-nav-link [routerLink]="['privacy']">
-            <ion-button fill="clear"> Privacy Policy </ion-button>
-          </ion-nav-link>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
-</ion-content>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome</title>
 
-<ion-footer collapse="condense" class="ion-padding ion-text-center">
-  <ms-version-component></ms-version-component><br />
-  <ms-copyright-component></ms-copyright-component>
-</ion-footer>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./logo.png" type="image/png" sizes="16x16">
+
+  <style>
+    /* Center the image and text */
+    .loading-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+
+    footer {
+      background-color: #f2f2f2;
+      padding: 10px;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Style the loading text */
+    .loading-text {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 16px;
+    }
+
+    /* Add a CSS animation to the loading text */
+    @keyframes blink {
+      0% { opacity: 0.2; }
+      20% { opacity: 1; }
+      100% { opacity: 0.2; }
+    }
+    
+  </style>
+</head>
+<body>
+<div class="loading-container">
+  <img src="./logo.png" alt="Logo" class="loading-logo">
+  <p class="loading-text">It's about time you joined!</p>
+
+</div>
+
+</body>
+<footer>
+  <p>© 2020 Schadre</p>
+  <p>version 0.0.1</p>
+</footer>
+</html>
