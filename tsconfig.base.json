@@ -32,6 +32,11 @@
       ],
       "@mp/api/history/feature": ["libs/api/history/feature/src/index.ts"],
       "@mp/api/history/util": ["libs/api/history/util/src/index.ts"],
+      "@mp/api/postss/data-access": [
+        "libs/api/postss/data-access/src/index.ts"
+      ],
+      "@mp/api/postss/feature": ["libs/api/postss/feature/src/index.ts"],
+      "@mp/api/postss/util": ["libs/api/postss/util/src/index.ts"],
       "@mp/api/profiles/data-access": [
         "libs/api/profiles/data-access/src/index.ts"
       ],
@@ -64,6 +69,16 @@
       "@mp/app/login/data-access": ["libs/app/login/data-access/src/index.ts"],
       "@mp/app/login/feature": ["libs/app/login/feature/src/index.ts"],
       "@mp/app/login/util": ["libs/app/login/util/src/index.ts"],
+      "@mp/app/postss/data-access": [
+        "libs/app/postss/data-access/src/index.ts"
+      ],
+      "@mp/app/postss/data-feature": [
+        "libs/app/postss/data-feature/src/index.ts"
+      ],
+      "@mp/app/postss/data-util": ["libs/app/postss/data-util/src/index.ts"],
+      "@mp/app/postss/feature": ["libs/app/postss/feature/src/index.ts"],
+      "@mp/app/postss/ui": ["libs/app/postss/ui/src/index.ts"],
+      "@mp/app/postss/util": ["libs/app/postss/util/src/index.ts"],
       "@mp/app/privacy/feature": ["libs/app/privacy/feature/src/index.ts"],
       "@mp/app/profile/data-access": [
         "libs/app/profile/data-access/src/index.ts"
@@ -99,7 +114,8 @@
       ],
       "@mp/app/welcome/feature": ["libs/app/welcome/feature/src/index.ts"],
       "@mp/app/welcome/util": ["libs/app/welcome/util/src/index.ts"],
-      "@mp/cli/core/feature": ["libs/cli/core/feature/src/index.ts"]
+      "@mp/cli/core/feature": ["libs/cli/core/feature/src/index.ts"],
+      "@mp/feature": ["libs/feature/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
