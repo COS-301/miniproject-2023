@@ -45,4 +45,11 @@ describe('SearchPageComponent', () => {
 
     expect(component.searchFocus).toBeTruthy();
   });
+
+  it('should set the variable "searchFocus" to false when clicking "Cancel" to cancel a search i.e. changing searchbar from focus to blur', () => {
+    //test if the searchFocus variable changed from false to true when setting the focus of the search bar to true
+    component.onSearchBlur();
+
+    expect(component.searchFocus).toBeFalsy();
+  });
 });
