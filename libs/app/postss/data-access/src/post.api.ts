@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { doc, docData, Firestore } from '@angular/fire/firestore';
+import { collection, collectionData, doc, docData, Firestore, query, where } from '@angular/fire/firestore';
 import { Functions, httpsCallable } from '@angular/fire/functions';
 import {
   IPost,
@@ -26,6 +26,25 @@ export class PostApi {
     });
     return docData(docRef, { idField: 'postID' });
   }
+
+  async getPostByUserId(userId: string): Promise<IPost[]> {
+    const postsQuery = query(
+      collection(this.firestore, 'posts'),
+      where('createdBy', '==', userId)
+    ).withConverter<IPost>({
+      fromFirestore: (snapshot) => {
+        return {
+          ...snapshot.data(),
+          postID: snapshot.id,
+        } as IPost;
+      },
+      toFirestore: (it: IPost) => it,
+    });
+    
+    const posts = await collectionData<IPost>(postsQuery, { idField: 'postID' }).toPromise();
+    return posts ??[];
+  }
+ 
 
   /*
   Example for real-time read
