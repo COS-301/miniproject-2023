@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'api-memories-utils',
+  displayName: 'api-memories-util',
   preset: '../../../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -8,8 +8,8 @@ export default {
     },
   },
   transform: {
-    '^.+\\.[tj]sx?$': 'ts-jest',
+    '^.+\\.[tj]s$': 'ts-jest',
   },
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../../../coverage/libs/api/memories/utils',
+  moduleFileExtensions: ['ts', 'js', 'html'],
+  coverageDirectory: '../../../../coverage/libs/api/memories/util',
 };

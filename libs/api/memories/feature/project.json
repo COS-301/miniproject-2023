@@ -4,6 +4,16 @@
   "sourceRoot": "libs/api/memories/feature/src",
   "projectType": "library",
   "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/api/memories/feature",
+        "main": "libs/api/memories/feature/src/index.ts",
+        "tsConfig": "libs/api/memories/feature/tsconfig.lib.json",
+        "assets": ["libs/api/memories/feature/*.md"]
+      }
+    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],

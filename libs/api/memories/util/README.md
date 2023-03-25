@@ -1,11 +1,11 @@
-# api-memories-utils
+# api-memories-util
 
 This library was generated with [Nx](https://nx.dev).
 
+## Building
+
+Run `nx build api-memories-util` to build the library.
+
 ## Running unit tests
 
-Run `nx test api-memories-utils` to execute the unit tests via [Jest](https://jestjs.io).
-
-## Running lint
-
-Run `nx lint api-memories-utils` to execute the lint via [ESLint](https://eslint.org/).
+Run `nx test api-memories-util` to execute the unit tests via [Jest](https://jestjs.io).
