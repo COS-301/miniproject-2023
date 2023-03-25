@@ -5,7 +5,8 @@
   <ion-header collapse="condense">
     <ion-toolbar color="none">
       <ion-buttons slot="start">
-        <ion-back-button color="light" text="Welcome Page" defaultHref="/"></ion-back-button>
+        <ion-icon ngClass="back-icon" slot="start" color="light" name="chevron-back-outline" routerLink="/" routerDirection="back"></ion-icon>
+        <ion-button ngClass="back-btn" color="light" routerLink="/" routerDirection="back">Welcome Page</ion-button>
       </ion-buttons>
       <ion-title size="large" color="light" class="ion-text-end">Login</ion-title>
     </ion-toolbar>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Register } from '@mp/app/register/util';
 import { NavigationEnd, Router } from '@angular/router';
+import { ForgotPassword } from '@mp/app/forgot/util';
 import {
     ActionsExecuting,
     actionsExecuting
@@ -10,14 +10,13 @@ import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'ms-register-page',
-  templateUrl: './register.page.html',
-  styleUrls: ['./register.page.scss'],
+  selector: 'forgot',
+  templateUrl: './forgot.page.html',
+  styleUrls: ['./forgot.page.scss'],
 })
-export class RegisterPage {
-  @Select(actionsExecuting([Register]))
-  busy$!: Observable<ActionsExecuting>;
-  registerForm = this.fb.group({
+export class ForgotPasswordPage {
+  @Select(actionsExecuting([ForgotPassword])) busy$!: Observable<ActionsExecuting>;
+  forgotPasswordForm = this.fb.group({
     email: [
       '',
       [Validators.email, Validators.minLength(6), Validators.maxLength(64)],
@@ -27,11 +26,11 @@ export class RegisterPage {
   showPassword = false;
 
   get email() {
-    return this.registerForm.get('email');
+    return this.forgotPasswordForm.get('email');
   }
 
   get password() {
-    return this.registerForm.get('password');
+    return this.forgotPasswordForm.get('password');
   }
 
   get emailError(): string {
@@ -64,14 +63,14 @@ export class RegisterPage {
   ngOnInit() {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.registerForm.reset();
+        this.forgotPasswordForm.reset();
       }
     });
   }
 
-  register() {
-    if (this.registerForm.valid) {
-      this.store.dispatch(new Register());
+  forgotPassword() {
+    if (this.forgotPasswordForm.valid) {
+      this.store.dispatch(new ForgotPassword());
     }
   }
 
