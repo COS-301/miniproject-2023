@@ -15,7 +15,10 @@ export class SetPost {
   constructor(public post: IPost) { }
 }
 
-
+export class GetPostByUserId {
+  static readonly type = '[Post] Get Post By User Id';
+  constructor(public userId: string) {}
+}
 /*
 Example
 export class UpdateAccountDetails {

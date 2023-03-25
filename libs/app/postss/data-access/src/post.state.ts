@@ -11,7 +11,8 @@ import { SetError } from '@mp/app/errors/util';
 import { Timestamp } from 'firebase-admin/firestore';
 import {
   SetPosts,
-  SetPost
+  SetPost,
+  GetPostByUserId
 } from '@mp/app/postss/util';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import produce from 'immer';
@@ -20,10 +21,6 @@ import { PostApi } from './post.api';
 import { SubscribeToPost } from '@mp/app/postss/util';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export class GetPostByUserId {
-  static readonly type = '[Post] Get Post By User Id';
-  constructor(public userId: string) {}
-}
 
 /*
 Individual Post State Model
@@ -38,9 +35,7 @@ export interface PostStateModel {
       ownedBy: string | null | undefined;
       createdAt?: Timestamp | null | undefined;
       content?: string | null | undefined;
-      content?: string | null | undefined;
       hashtag?: Hashtag | null | undefined;
-      caption?: string | null | undefined;
       caption?: string | null | undefined;
       totalTime?: number | null | undefined
       ownerGainedTime?: number | null | undefined
@@ -108,7 +103,7 @@ export interface PostsStateModel {
   }
 })
 @Injectable()
-export class PostState { /* changed from 'PostsState' to 'PostState' */
+export class PostsState { /* changed from 'PostsState' to 'PostState' */
   constructor(
     private readonly postApi: PostApi,
     private readonly store: Store
@@ -134,15 +129,6 @@ export class PostState { /* changed from 'PostsState' to 'PostState' */
     }
   }
 
-  @Action(GetPostByUserId)
-  async getPostByUserId(ctx: StateContext<PostsStateModel>, action: GetPostByUserId) {
-    try {
-      const posts = await this.postApi.getPostByUserId(action.userId);
-      ctx.patchState({ posts: { posts } });
-    } catch (error) {
-      ctx.dispatch(new SetError((error as Error).message));
-    }
-  }
 
 //This function will subscribe to the current posts that are loaded
   @Action(SubscribeToPost)
