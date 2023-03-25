@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
-import { ProfileImageService } from '../ProfileImageService';
+import { ProfileImageService } from '@mp/app/services';
 
 @Component({
   selector: 'app-edit-profile-photo',
