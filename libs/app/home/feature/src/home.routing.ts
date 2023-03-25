@@ -8,14 +8,10 @@ const routes: Routes = [
     component: HomePage,
     children: [
       {
-        path: 'dashboard',
+        path: 'feed',
         loadChildren: () =>
-          import('@mp/app/dashboard/feature').then((m) => m.DashboardModule),
-      },
-      {
-        path: 'profile',
-        loadChildren: () =>
-          import('@mp/app/profile/feature').then((m) => m.ProfileModule),
+          // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+          import('@mp/app/feed').then((m) => m.FeedModule),
       },
       {
         path: 'profile-view',
@@ -26,14 +22,14 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: '/home/dashboard',
+        redirectTo: '/home/feed',
       },
     ],
   },
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/home/dashboard',
+    redirectTo: '/home/feed',
   },
 ];
 

@@ -57,6 +57,7 @@
       ],
       "@mp/app/errors/feature": ["libs/app/errors/feature/src/index.ts"],
       "@mp/app/errors/util": ["libs/app/errors/util/src/index.ts"],
+      "@mp/app/feed": ["libs/app/feed/src/index.ts"],
       "@mp/app/forgot/data-access": [
         "libs/app/forgot/data-access/src/index.ts"
       ],
