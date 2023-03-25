@@ -33,6 +33,7 @@ export interface PostStateModel {
       postID: string;
       createdBy: string;
       ownedBy: string | null | undefined;
+      likes: number;
       createdAt?: Timestamp | null | undefined;
       content?: string | null | undefined;
       hashtag?: Hashtag | null | undefined;
@@ -87,10 +88,11 @@ export interface PostsStateModel {
       model: {
         postID: '',
         createdBy: '',
-        ownedBy: null,
+        ownedBy: '',
+        likes:0, //fixed like left out  before
         createdAt: null,
         content: '',
-        hashtag: null,
+        hashtag: Hashtag.OTHER,
         caption: '',
         totalTime: 0,
         ownerGainedTime: 0,

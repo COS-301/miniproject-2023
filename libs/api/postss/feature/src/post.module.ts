@@ -1,6 +1,7 @@
 import { PostModule as PostDataAccessModule } from '@mp/api/postss/data-access';
 import { Module } from '@nestjs/common';
-import { CqrsModule } from '@nestjs/cqrs';
+import { AggregateRoot, CqrsModule } from '@nestjs/cqrs';
+import { IPost, IPosts } from '../../util/src/interfaces';
 // import {
 // } from './commands';
 // import {
@@ -10,7 +11,7 @@ import { PostService } from './post.service';
 export const CommandHandlers = [
 ];
 export const EventHandlers = [
-  
+
 ];
 
 @Module({
@@ -23,4 +24,17 @@ export const EventHandlers = [
   ],
   exports: [PostService],
 })
-export class PostModule {}
+export class PostModule extends AggregateRoot implements IPosts {
+  constructor(public posts: IPost[] | null) {
+    super();
+  }
+
+  
+
+  toJSON():IPosts{
+    return {
+      posts: this.posts
+    }
+  }
+
+}
