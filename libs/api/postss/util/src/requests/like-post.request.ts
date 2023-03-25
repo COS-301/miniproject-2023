@@ -1,5 +1,5 @@
 import { IPost } from '../interfaces/post.interface';
 
-export interface ICreatePostRequest {
+export interface ILikePostRequest {
   post: IPost;
 }

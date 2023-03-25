@@ -1,5 +1,5 @@
 import { IPost } from '../interfaces';
 
-export interface ICreatePostResponse {
+export interface ILikePostResponse {
   post: IPost;
 }
