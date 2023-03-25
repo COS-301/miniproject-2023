@@ -1,0 +1,62 @@
+body {
+    background-color: #fde0e0;
+}
+
+ion-button {
+    margin-top: 5%;
+    color: grey;
+    --background: white;
+    margin-left: 7%;
+    margin-right: 7%;
+}
+
+.card1 {
+    background-color: #f3c1c0;
+    color: black;
+    text-size-adjust: 100%;
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 65px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.first {
+    padding-top: -2%;
+}
+
+.label {
+    padding-top: -5%;
+    align-self: center;
+    font-size: 105%;
+}
+
+.foto {
+    margin-top: -5%;
+    padding-top: 0%;
+}
+
+.matchphoto {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 1px 5px rgba(0, 0, 0, 0.2);
+    height: 50px;
+    width: 55px;
+    margin-top: 15%;
+    margin-left: -30%;
+    object-fit: fill;
+}
+
+.card2 {
+    background-color: #f3c1c0;
+    color: black;
+    text-align: center;
+    height: 65px;
+    margin-top: -5%;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.fonty {
+    font-size: 125%;
+}
+
+.komaan {
+    padding-top: 3%;
+}

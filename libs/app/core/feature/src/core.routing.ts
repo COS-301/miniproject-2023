@@ -7,6 +7,7 @@ import {
     redirectUnauthorizedTo
 } from '@angular/fire/auth-guard';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { CoreModule as NavComponent } from '@mp/app/core/ui';
 
 const redirectLoggedOut = () => redirectUnauthorizedTo(['']);
 const redirectLoggedIn = () => redirectLoggedInTo(['home']);
@@ -46,12 +47,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('@mp/app/privacy/feature').then((m) => m.PrivacyModule),
   },
-  // {
-  //   path: 'notifications',
-  //   loadChildren: () =>
-  //     import('@mp/app/notification/feature').then((m) => m.AppNotificationFeatureModule)
-  //     ,
-  // },
+  {
+    path: 'notificationss',
+    loadChildren: () =>
+      import('@mp/app/notificationss/feature').then((m) => m.notificationsPageModule)
+      ,
+  },
   
   //   path: 'verify',
   //   pathMatch: 'full',
