@@ -16,5 +16,4 @@ export interface IPost {
   totalTime? : number | null | undefined
   ownerGainedTime?: number | null | undefined;
   listing? : number | null | undefined;
-  comments?:(string | Comment)[]
 }

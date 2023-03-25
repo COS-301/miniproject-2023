@@ -5,15 +5,7 @@ import * as admin from 'firebase-admin';
 @Injectable()
 export class PostRepository {
 
-  
-  
-
-  
-  
-
-  
   async findOne(post: IPost) {
-  async findOne(profile: IPost) {
     return await admin
       .firestore()
       .collection('posts')

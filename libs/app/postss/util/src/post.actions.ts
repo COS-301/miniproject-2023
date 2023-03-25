@@ -25,26 +25,24 @@ export class PostTrendingGet {
 }
 
 export class GetPostByHashtag {
-  static readonly type = '[Post] Get Post By Hashtag';
+  static readonly type = '[Posts] Get Post By Hashtag';
   constructor(public hashtag: Hashtag) { }
 }
 
 export class LikePost {
   static readonly type = '[Post] Like Post';
-  constructor(public postID: string) { }
+  constructor(public postID: string) {}
 }
 
 export class CommentOnPost {
-  static readonly type = '[Post] Comment On Post';
-  constructor(public postId: string, public comment: string) { }
+  static readonly type = '[Post] Comment on Post';
+  constructor(public postId: string, public comment: string) {}
 }
 
 export class BuyPost {
   static readonly type = '[Post] Buy Post';
-  constructor(public postId: string, public buyerID: string) { } 
+  constructor(public postId: string, public amount: number, public buyerID: string) {}
 }
-
-
 /*
 Example
 export class UpdateAccountDetails {

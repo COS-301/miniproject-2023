@@ -248,7 +248,6 @@ export class PostState { /* changed from 'PostsState' to 'PostState' */
       ctx.dispatch(new SetError((error as Error).message));
     }
   }
- 
 
 
 

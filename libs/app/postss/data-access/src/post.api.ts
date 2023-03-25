@@ -7,9 +7,12 @@ import {
   IGetPostRequest,
   IGetPostResponse,
   IPost,
-  IPosts
+  IPosts,
+  Hashtag
+
 } from '@mp/api/postss/util';
 import { PostState } from './post.state';
+import { ICommand } from '@nestjs/cqrs';
 
 @Injectable()
 export class PostApi {
@@ -86,40 +89,38 @@ export class PostApi {
     return { posts: posts ?? [] };
   }
 
-
-
-  /*
-  Example for real-time read
-  profile$(id: string) {
+  async likePost(postID: string) {
     const docRef = doc(
       this.firestore,
       `posts/${postID}`
-    ).withConverter<IPost>({
+      ).withConverter<IPost>({
       fromFirestore: (snapshot) => {
-        return {
-          ...snapshot.data(),
-          postID: snapshot.id,
-        } as IPost;
+      return {
+      ...snapshot.data(),
+      postID: snapshot.id,
+      } as IPost;
       },
       toFirestore: (it: IPost) => it,
-    })
-  
-    const post = await docData(docRef).toPromise();
-    if (!post) {
-      throw new Error(`Post with ID ${postID} not found`);
-    }
-    const newLikeCount = post.likes + 1;
+      })
+      
+      const post = await docData(docRef).toPromise();
 
-    await updateDoc(docRef, { likes: newLikeCount } ); 
-  
-    return { ...post, likes: newLikeCount };
+      if (!post) {
+    throw new Error(`Post with ID ${postID} not found`);
+  }
+      const newLikeCount = post.likes + 1;
+      
+      // await docRef.update();
+      await updateDoc(docRef, { likes: newLikeCount })
+      
+      return { ...post, likes: newLikeCount };
   }
 
-  async commentOnPost(postID: string, comment: string): Promise<IPost> {
+  async commentOnPost(postID: string, comment: any): Promise<IPost> { //will change the comment type later
     const postRef = doc(this.firestore, `posts/${postID}`);
     const postSnapshot = await getDoc(postRef);
   
-    if (postSnapshot.exists()) {
+    if(postSnapshot.exists()) {
       const post = postSnapshot.data() as IPost;
       const newCommentList = [...post.comments ?? [], comment];
   
