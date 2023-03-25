@@ -22,13 +22,23 @@ class FirestoreMock {
 
   get() {
     // Mock data for testing purposes
-    return of([{ postID: '1', content: 'Test content' }]);
+    return of([{
+        postID: "1",
+        createdBy: "u1",
+        likes: 0,
+        content: "Test content"
+      }
+      ]);
   }
 }
 
 class FunctionsMock {
   httpsCallable(name: string) {
-    return () => of([{ postID: '1', content: 'Test content' }]);
+    return () => of([{ 
+        postID: '1', 
+        createdBy: "u1",
+        likes: 0,
+        content: 'Test content' }]);
   }
 }
 
