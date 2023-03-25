@@ -2,6 +2,7 @@ import { Timestamp } from 'firebase-admin/firestore';
 import { Hashtag } from '../enums';
 
 export interface IPost {
+  buyerID?: string| null;
   postID: string;
   createdBy: string;
   ownedBy: string | null | undefined;
@@ -11,6 +12,7 @@ export interface IPost {
   hashtag?: Hashtag | null |undefined;
   caption? : string | null | undefined;
   totalTime? : number | null | undefined
-  ownerGainedTime?: number | null | undefined
-  listing? : number | null | undefined
+  ownerGainedTime?: number | null | undefined;
+  listing? : number | null | undefined;
+  comments?:(string | Comment)[]
 }

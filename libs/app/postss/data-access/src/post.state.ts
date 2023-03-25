@@ -12,10 +12,13 @@ import { Timestamp } from 'firebase-admin/firestore';
 import {
   SetPosts,
   SetPost,
-  GetPostByUserId
+  GetPostByUserId,
+  CommentOnPost,
+  LikePost,
+  BuyPost
 } from '@mp/app/postss/util';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
-import produce from 'immer';
+import produce, {createDraft} from 'immer';
 import { tap } from 'rxjs';
 import { PostApi } from './post.api';
 import { SubscribeToPost } from '@mp/app/postss/util';
@@ -105,7 +108,7 @@ export interface PostsStateModel {
   }
 })
 @Injectable()
-export class PostsState { /* changed from 'PostsState' to 'PostState' */
+export class PostState { /* changed from 'PostsState' to 'PostState' */
   constructor(
     private readonly postApi: PostApi,
     private readonly store: Store
@@ -136,7 +139,7 @@ export class PostsState { /* changed from 'PostsState' to 'PostState' */
 //This function will subscribe to the current posts that are loaded
   @Action(SubscribeToPost)
   subscribeToPosts(ctx: StateContext<PostsStateModel>) {
-    const postsToLook = this.store.selectSnapshot(PostsState.posts);
+    const postsToLook = this.store.selectSnapshot(PostState.posts);
     if (!postsToLook || postsToLook.posts == null) return ctx.dispatch(new SetError('Posts not Set'));
 
     // Subscribe to changes in each post
@@ -157,7 +160,7 @@ export class PostsState { /* changed from 'PostsState' to 'PostState' */
             return updatedPost;
           }),
           tap((updatedPost: IPost) => {
-            const postState = this.store.selectSnapshot(PostsState.post);
+            const postState = this.store.selectSnapshot(PostState.post);
             if (postState && postState.postID === updatedPost.postID) {
               ctx.dispatch(new SetPost(updatedPost));
             }
@@ -166,13 +169,15 @@ export class PostsState { /* changed from 'PostsState' to 'PostState' */
         .subscribe();
     });
 
+    return;
+
   }
 
   @Action(SetPosts)
   setPosts(ctx: StateContext<PostsStateModel>, { posts }: SetPosts) {
     return ctx.setState(
       produce((draft) => {
-        draft.posts = posts;
+        draft.posts = createDraft(posts);
       })
     );
   }
@@ -181,10 +186,46 @@ export class PostsState { /* changed from 'PostsState' to 'PostState' */
   setPost(ctx: StateContext<PostStateModel>, { post }: SetPost) {
     return ctx.setState(
       produce((draft) => {
-        draft.post = post;
+        draft.post = createDraft(post);
       })
     );
   }
+
+  /**
+   * NB!!! NB!!! The below code is erroneous, needs mending.
+   * @param ctx 
+   * @param action 
+   */
+  @Action(LikePost)
+  async likePost(ctx: StateContext<PostStateModel>, action: LikePost) { 
+    try {
+      const post = await this.postApi.likePost(action.postID);
+      ctx.dispatch(new SetPost(post));
+    } catch (error) {
+      ctx.dispatch(new SetError((error as Error).message));
+    }
+  }
+
+  @Action(CommentOnPost)
+  async commentOnPost(ctx: StateContext<PostStateModel>, action: CommentOnPost) {
+    try {
+      const post = await this.postApi.commentOnPost(action.postId, action.comment);
+      ctx.dispatch(new SetPost(post));
+    } catch (error) {
+      ctx.dispatch(new SetError((error as Error).message));
+    }
+  }
+
+  @Action(BuyPost)
+  async buyPost(ctx: StateContext<PostStateModel>, action: BuyPost) {
+    try {
+      const post = await this.postApi.buyPost(action.postId, action.buyerID);
+      ctx.dispatch(new SetPost(post));
+    } catch (error) {
+      ctx.dispatch(new SetError((error as Error).message));
+    }
+  }
+ 
 
 
 
