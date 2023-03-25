@@ -24,20 +24,9 @@ import { PostApi } from './post.api';
 import { NOTIMP } from 'dns';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-
-/*
-Array of Post objects
-*/
-export interface PostsStateModel {
-  posts: IPosts | null;
-  postsDetailsForm: {
-    model: {
-      posts: IPost[] | null
-    };
-    dirty: false;
-    status: string;
-    errors: object;
-  };
+export class GetPostByUserId {
+  static readonly type = '[Post] Get Post By User Id';
+  constructor(public userId: string) {}
 }
 
 /*
@@ -52,13 +41,29 @@ export interface PostStateModel {
       createdBy: string;
       ownedBy: string | null | undefined;
       createdAt?: Timestamp | null | undefined;
-      content?: String | null | undefined;
+      content?: string | null | undefined;
       hashtag?: Hashtag | null | undefined;
-      caption?: String | null | undefined;
+      caption?: string | null | undefined;
       totalTime?: number | null | undefined
       ownerGainedTime?: number | null | undefined
       listing?: number | null | undefined
 
+    };
+    dirty: false;
+    status: string;
+    errors: object;
+  };
+}
+
+
+/*
+Array of Post objects
+*/
+export interface PostsStateModel {
+  posts: IPosts | null;
+  postsDetailsForm: {
+    model: {
+      posts: IPost[] | null
     };
     dirty: false;
     status: string;
@@ -105,7 +110,7 @@ export interface PostStateModel {
   }
 })
 @Injectable()
-export class PostsState {
+export class PostState { /* changed from 'PostsState' to 'PostState' */
   constructor(
     private readonly postApi: PostApi,
     private readonly store: Store
@@ -119,6 +124,16 @@ export class PostsState {
   @Selector()
   static post(state: PostStateModel) {
     return state.post;
+  }
+
+  @Action(GetPostByUserId)
+  async getPostByUserId(ctx: StateContext<PostsStateModel>, action: GetPostByUserId) {
+    try {
+      const posts = await this.postApi.getPostByUserId(action.userId);
+      ctx.patchState({ posts: { posts } });
+    } catch (error) {
+      ctx.dispatch(new SetError((error as Error).message));
+    }
   }
 
   
