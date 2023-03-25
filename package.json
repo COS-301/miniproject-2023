@@ -26,7 +26,8 @@
     "shipit:prod": "yarn build:app:prod && yarn build:api:prod && yarn deploy:prod",
     "generate:pwa:assets:icons": "pwa-asset-generator apps/app/src/assets/logos/schadre-logo-only.png apps/app/src/assets/pwa --favicon --icon-only --padding \"20px\" --mstile --maskable --manifest apps/app/src/manifest.webmanifest",
     "generate:pwa:assets:splashes": "pwa-asset-generator apps/app/src/assets/logos/schadre-logo-only.png apps/app/src/assets/pwa --favicon --splash-only --padding \"150px\" --mstile --maskable --manifest apps/app/src/manifest.webmanifest",
-    "host:app": "http-server dist/apps/app"
+    "host:app": "http-server dist/apps/app",
+    "test-api":"jest "
   },
   "private": true,
   "dependencies": {
@@ -110,7 +111,7 @@
     "jest": "28.1.1",
     "jest-environment-jsdom": "28.1.1",
     "jest-preset-angular": "~12.2.3",
-    "nx": "15.7.1",
+    "nx": "^15.8.9",
     "prettier": "^2.6.2",
     "pwa-asset-generator": "^6.2.1",
     "ts-jest": "28.0.5",
