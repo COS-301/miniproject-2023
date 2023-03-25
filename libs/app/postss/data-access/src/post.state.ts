@@ -13,7 +13,8 @@ import { Timestamp } from 'firebase-admin/firestore';
 import {
   SetPosts,
   SetPost,
-  GetPostByUserId
+  GetPostByUserId,
+  PostTrendingGet
 } from '@mp/app/postss/util';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import produce from 'immer';
@@ -189,7 +190,15 @@ export class PostsState { /* changed from 'PostsState' to 'PostState' */
     );
   }
 
-
+  @Action(PostTrendingGet)
+  async postTrendingGet(ctx: StateContext<PostsStateModel>) {
+    try {
+      const posts = await this.postApi.postTrendingGet();
+      ctx.patchState({ posts: { posts } });
+    } catch (error) {
+      ctx.dispatch(new SetError((error as Error).message));
+    }
+  }
 
   /*
 

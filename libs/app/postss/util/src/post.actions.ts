@@ -19,6 +19,10 @@ export class GetPostByUserId {
   static readonly type = '[Post] Get Post By User Id';
   constructor(public userId: string) {}
 }
+
+export class PostTrendingGet {
+  static readonly type = '[Posts] Post Trending Get';
+}
 /*
 Example
 export class UpdateAccountDetails {

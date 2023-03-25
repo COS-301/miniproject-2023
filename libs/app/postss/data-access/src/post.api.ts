@@ -8,6 +8,7 @@ import {
   IPosts
 } from '@mp/api/postss/util';
 import { PostsState } from './post.state';
+import { PostTrendingGetQuery } from '@mp/api/postss/util';
 
 @Injectable()
 export class PostApi {
@@ -48,6 +49,19 @@ export class PostApi {
     const posts = await collectionData<IPost>(postsQuery, { idField: 'postID' }).toPromise();
     return { posts: posts ?? [] };
   } 
+
+  /*
+  Returns an array of IPost[] objects that are "trending"
+  */
+  async postTrendingGet(): Promise<IPost[]>{
+     const callable = httpsCallable<undefined, IPost[]>(
+      this.functions,
+      "postTrendingGet"
+     );
+
+     const result = await callable(undefined);
+     return result.data;
+  }
 
 
 
