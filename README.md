@@ -82,11 +82,21 @@ yarn nx generate @nrwl/js:library feature --unitTestRunner=jest --directory=api/
 yarn nx generate @nrwl/js:library data-access --unitTestRunner=jest --directory=api/<REPLACE_WITH_MODULE_NAME> --no-interactive
 yarn nx generate @nrwl/js:library util --unitTestRunner=jest --directory=api/<REPLACE_WITH_MODULE_NAME> --no-interactive
 ```
-When creating the rest of the directory structure for the feature, delete the automatically created lib folders before continuing.
+When creating the rest of the directory structure for the feature, rename the automatically created lib folders to testing, and update the index files to reflect the change before continuing.
 
 #### util
 
 In util, you will define your templates. Use the other features as reference.
+Create the folders:
+
+- commands
+- enums
+- events
+- interfaces
+- requests
+- responses
+
+export everything from these folders in the index file.
 
 #### data-access
 
@@ -97,7 +107,7 @@ Create the files:
 
 The repository should be be a injectable class which accesses the Firestore database.
 The module should be a module that exports and provides the repository.
-Add both of these files as exports in the `index.ts`
+Add both of these files as exports in the `index.ts` if they contain data.
 
 ####  feature
 
@@ -113,6 +123,8 @@ And the directories:
 - events
 - models
 
+Export everyhting from these folders in the index file.
+
 Fill commands with all the command handlers required for the feature. They should follow the naming scheme: `<REPLACE_WITH_COMMAND_NAME>.handler.ts`.
 Each file should be implement the `@CommandHandler` interface. Then create a `index.ts` file and export all the classes from all of the files in this directory.
 
@@ -121,8 +133,6 @@ Fill events in the same way that you filled commands with all event handlers req
 Create a file called `<REPLACE_WITH_COLLECTIVE_INTERFACE_NAME>.model.ts` in the models directory. This file should implement a AggrigateRoot that contains all the interfaces defined in the util directory and provide methods that commands can call to create events.
 
 > If you suspect that part of the interfaces are not directly related to each other, you may need to create two AggrigateRoots, before doing this, consult with the rest of the team.
-
-Then create a index file and export the files in this directory.
 
 In the main src directory:
 
@@ -182,6 +192,8 @@ Then provide all `ComandHandlers`, `EventHandlers`, `Services`, and `Sagas`. The
 })
 export class ProfilesModule {}
 ```
+
+Export all of these in the index file if they contain anything.
 
 #### Adding the feature to core.
 
