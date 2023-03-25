@@ -10,6 +10,9 @@ export class PostRepository {
 
   
   async findOne(profile: IPost) {
+    if(profile.postID == ""){
+      throw Error("No PostID");
+    }
     return await admin
       .firestore()
       .collection('posts')
