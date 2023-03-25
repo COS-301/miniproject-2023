@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Login } from '@mp/app/login/util';
+import { NavigationEnd, Router } from '@angular/router';
 import {
     ActionsExecuting,
     actionsExecuting
@@ -55,8 +56,17 @@ export class LoginPage {
 
   constructor(
     private readonly fb: FormBuilder,
-    private readonly store: Store
+    private readonly store: Store,
+    private readonly router: Router
   ) {}
+
+  ngOnInit() {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.loginForm.reset();
+      }
+    });
+  }
 
   login() {
     if (this.loginForm.valid) {

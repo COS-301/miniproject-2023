@@ -60,14 +60,14 @@ const routes: Routes = [
   //   loadChildren: () =>
   //     import('./reset/reset.module').then((m) => m.ResetPageModule),
   // },
-  // {
-  //   path: 'forgot',
-  //   pathMatch: 'full',
-  //   canActivate: [AuthGuard],
-  //   data: { authGuardPipe: redirectLoggedIn },
-  //   loadChildren: () =>
-  //     import('./forgot/forgot.module').then((m) => m.ForgotPageModule),
-  // },
+  {
+    path: 'forgot',
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectLoggedIn },
+    loadChildren: () =>
+      import('@mp/app/forgot/feature').then((m) => m.ForgotPasswordModule),
+  },
   {
     path: 'register',
     pathMatch: 'full',

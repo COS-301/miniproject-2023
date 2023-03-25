@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-toolbar color="dark">
+        <ion-title>Edit Profile Photo</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+    <ion-list ngClass="modal-list">      
+        <ion-item color="dark" ngClass="modal-list-item">
+            <input id="fileInput" type="file" accept="image/*" (change)="onFileSelected($event)">
+        </ion-item>        
+        <ion-item color="dark" ngClass="modal-list-item">
+            <ion-label>No image to display</ion-label>
+            <ion-img [src]="getProfileImageUrl()" *ngIf="getProfileImageUrl()"></ion-img>
+        </ion-item>
+    </ion-list>
+    <ion-item ngClass="buttons" color="none">
+        <ion-button slot="start" ngClass="button-cancel" (click)="cancel()">Cancel</ion-button>
+        <ion-button slot="end" ngClass="button-save" (click)="save()">Save</ion-button>
+    </ion-item>
+      
+</ion-content>
+  
