@@ -28,7 +28,23 @@ export class FeedPageComponent {
     }
   ];
 
+  memories: Memory[] = [];
+
   constructor(private modalController: ModalController) {}
+
+  async addMemory() {
+    const modal = await this.modalController.create({
+      component: AddMemoryPageComponent,
+    });
+
+    await modal.present();
+
+    const { data } = await modal.onDidDismiss();
+
+    if (data) {
+      this.memories.unshift(data);
+    }
+  }
 
   changeMemoryView() {
     this.showExpandedView = !this.showExpandedView;
@@ -75,11 +91,5 @@ export class FeedPageComponent {
     else {
       return `${seconds} second${seconds > 1 ? 's' : ''} ago`;
     }
-  }
-
-  async addMemory() {
-    const modal = await this.modalController.create({
-      component: AddMemoryPageComponent,
-    });
   }
 }

@@ -1,3 +1,5 @@
+$greyish: #D9D9D9; //global color
+
 .title {
     font-family: 'Pattaya';
     font-style: normal;
@@ -10,6 +12,10 @@
 .account-time {
     color: #7b7b7b;
     padding-right: 5px;
+}
+.add-btn{
+    border: 2px solid $greyish;
+    font-size: 25px;
 }
 .menu-toolbar {
     background-color: #161616;
