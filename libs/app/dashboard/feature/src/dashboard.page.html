@@ -1,29 +1,51 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Dashboard</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleSearchbar()">
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon name="notifications-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
+
+  <ion-searchbar placeholder="Search" *ngIf="isSearchbarVisible"></ion-searchbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Dashboard</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-infinite-scroll (ionInfinite)="loadData($event)">
+  <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
+</ion-infinite-scroll>
 
-  <ng-container *ngIf="(profile$ | async) as profile; else noProfile">
-    <ms-profile-status-component></ms-profile-status-component>
-  </ng-container>
-  <ng-template #noProfile>
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <ngx-skeleton-loader
-            count="1"
-            [theme]="{height: '150px'}"
-            appearance="line"></ngx-skeleton-loader>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ng-template>
+<ion-row>
+  <ion-col>
+    <h3>TRENDING</h3>
+  </ion-col>
+</ion-row>
+
+<ion-list>
+<ion-item *ngFor="let item of trending">
+
+  <ion-row>
+    <ion-col>
+      <img [src]="item.img">
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-label stacked>
+        <h2>{{item.title}}</h2>
+        <p>{{item.desc}}</p>
+      </ion-label>
+    </ion-col>
+  </ion-row>
+
+</ion-item>
+</ion-list>
+
 </ion-content>
