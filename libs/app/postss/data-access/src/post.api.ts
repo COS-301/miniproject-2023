@@ -5,7 +5,8 @@ import {
   IGetPostRequest,
   IGetPostResponse,
   IPost,
-  IPosts
+  IPosts,
+  Hashtag
 } from '@mp/api/postss/util';
 import { PostsState } from './post.state';
 import { PostTrendingGetQuery } from '@mp/api/postss/util';
@@ -14,15 +15,6 @@ import { PostTrendingGetQuery } from '@mp/api/postss/util';
 //     Hashtag
 //   } from './api/postss/util';
 
-export enum Hashtag {
-  NATURE = '#nature',
-  FUNNY = '#funny',
-  OPINION = '#opinion',
-  MUSIC = '#music',
-  SPORTS = '#sports',
-  FOOD = '#food',
-  OTHER = '#other'
-}
 
 @Injectable()
 export class PostApi {
