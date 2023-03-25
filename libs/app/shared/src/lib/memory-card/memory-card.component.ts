@@ -7,7 +7,33 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./memory-card.component.scss'],
 })
 export class MemoryCardComponent {
-  @Input() memory!: any;
+  @Input() memory: {
+    username: string,
+    profileUrl: string,
+    imgUrl: string,
+    title: string,
+    description: string,
+    comments: [{
+      username: string,
+      profileImgUrl: string,
+      comment: string
+    }],
+    timePosted: string
+  } = {
+    username: '@username',
+    profileUrl: 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1000&q=60', 
+    imgUrl: "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8&w=1000&q=80",
+    title: "Last day of Highschool",
+    description: "Example of a description for the memory",
+    comments: [
+      {
+        username: '@commentedUsername',
+        profileImgUrl: 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1000&q=60',
+        comment: 'This is an example comment. The idea of this comment is to show you what a comment on a memory looks like. And that it can overflow.' 
+      }
+    ],
+    timePosted: '2020-11-14T10:30:00.000-07:00'
+  };
 
   showExpandedView = false;
 
