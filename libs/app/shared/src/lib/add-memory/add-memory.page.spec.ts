@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddMemoryPage } from './add-memory.page';
+import { AddMemoryPageComponent } from './add-memory.page';
 
-describe('AddMemoryPage', () => {
-  let component: AddMemoryPage;
-  let fixture: ComponentFixture<AddMemoryPage>;
+describe('AddMemoryPageComponent', () => {
+  let component: AddMemoryPageComponent;
+  let fixture: ComponentFixture<AddMemoryPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AddMemoryPage],
+      declarations: [AddMemoryPageComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(AddMemoryPage);
+    fixture = TestBed.createComponent(AddMemoryPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
