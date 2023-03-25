@@ -1,17 +1,9 @@
 import { IPost, IPosts } from '@mp/api/postss/util';
 
-// import {
-//     Hashtag
-//   } from '@mp/libs/api/postss/util/src/enums/hashtag.enum'; <-- this does not work :( so explicit representation below for now
-export enum Hashtag {
-  NATURE = '#nature',
-  FUNNY = '#funny',
-  OPINION = '#opinion',
-  MUSIC = '#music',
-  SPORTS = '#sports',
-  FOOD = '#food',
-  OTHER = '#other'
-}
+import {
+    Hashtag
+  } from '@mp/api/postss/util'; //<-- this does not work :( so explicit representation below for now
+  //fixed, it's weird, you don't have to include libs or src
 
 
 
