@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { EditProfilePhotoPageComponent } from './lib/edit-profile-photo/edit-profile-photo.page';
-import { AddMemoryPageComponent, Memory } from '@mp/app/shared';
-import { ProfileImage } from './lib/ProfileImage';
-import { ProfileImageService } from './lib/ProfileImageService';
+import { AddMemoryPageComponent, Memory, ProfileImage } from '@mp/app/shared';
 import { ReviveMemoryPageComponent } from './lib/revive-memory/revive-memory.page';
-import { MenubarService } from '@mp/app/services'
+import { MenubarService, ProfileImageService } from '@mp/app/services';
 
 @Component({
   selector: 'app-profile-view',
