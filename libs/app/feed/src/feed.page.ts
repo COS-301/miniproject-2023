@@ -1,5 +1,7 @@
 import { formatDate } from '@angular/common';
 import { Component } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { AddMemoryPageComponent, Memory } from '@mp/app/shared';
 
 @Component({
   selector: 'app-feed',
@@ -25,6 +27,8 @@ export class FeedPageComponent {
       timePosted: '2020-11-14T10:30:00.000-07:00'
     }
   ];
+
+  constructor(private modalController: ModalController) {}
 
   changeMemoryView() {
     this.showExpandedView = !this.showExpandedView;
@@ -71,5 +75,11 @@ export class FeedPageComponent {
     else {
       return `${seconds} second${seconds > 1 ? 's' : ''} ago`;
     }
+  }
+
+  async addMemory() {
+    const modal = await this.modalController.create({
+      component: AddMemoryPageComponent,
+    });
   }
 }
