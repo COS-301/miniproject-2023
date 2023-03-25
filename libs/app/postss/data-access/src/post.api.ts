@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { collection, collectionData, doc, docData, Firestore, query, where } from '@angular/fire/firestore';
 import { Functions, httpsCallable } from '@angular/fire/functions';
 import {
+  IGetPostRequest,
+  IGetPostResponse,
   IPost,
   IPosts
 } from '@mp/api/postss/util';
@@ -27,7 +29,9 @@ export class PostApi {
     return docData(docRef, { idField: 'postID' });
   }
 
-  async getPostByUserId(userId: string): Promise<IPost[]> {
+  /* Query for posts by userId -> read only */
+  /* returns an array of the fetched IPost objects */
+  async getPostByUserId(userId: string): Promise<IPosts> {
     const postsQuery = query(
       collection(this.firestore, 'posts'),
       where('createdBy', '==', userId)
@@ -42,9 +46,10 @@ export class PostApi {
     });
     
     const posts = await collectionData<IPost>(postsQuery, { idField: 'postID' }).toPromise();
-    return posts ??[];
-  }
- 
+    return { posts: posts ?? [] };
+  } 
+
+
 
   /*
   Example for real-time read
@@ -63,7 +68,7 @@ export class PostApi {
   */
 
   /*
-  Example for Request Response API
+  Example for Request Response API 
   async updateAccountDetails(request: IUpdateAccountDetailsRequest) {
     return await httpsCallable<
       IUpdateAccountDetailsRequest,

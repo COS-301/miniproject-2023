@@ -119,11 +119,12 @@ export class PostsState { /* changed from 'PostsState' to 'PostState' */
     return state.post;
   }
 
+  //This function will set the posts to the state
   @Action(GetPostByUserId)
   async getPostByUserId(ctx: StateContext<PostsStateModel>, action: GetPostByUserId) {
     try {
       const posts = await this.postApi.getPostByUserId(action.userId);
-      ctx.patchState({ posts: { posts } });
+      ctx.patchState({ posts: posts });
     } catch (error) {
       ctx.dispatch(new SetError((error as Error).message));
     }
