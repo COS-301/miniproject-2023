@@ -72,6 +72,9 @@
       "@mp/app/notifications/feature": [
         "libs/app/notifications/feature/src/index.ts"
       ],
+      "@mp/app/notificationss/feature": [
+        "libs/app/notificationss/feature/src/index.ts"
+      ],
       "@mp/app/privacy/feature": ["libs/app/privacy/feature/src/index.ts"],
       "@mp/app/profile/data-access": [
         "libs/app/profile/data-access/src/index.ts"
