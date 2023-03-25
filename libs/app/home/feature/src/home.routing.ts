@@ -16,14 +16,14 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: '/home/dashboard',
+        redirectTo: '/home/feed',
       },
     ],
   },
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/home/dashboard',
+    redirectTo: '/home/feed',
   },
 ];
 
