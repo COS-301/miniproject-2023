@@ -3,7 +3,8 @@ import { map } from 'rxjs/operators';
 import {
   Hashtag,
   IPost,
-  IPosts
+  IPosts,
+  IComment
 } from '@mp/api/postss/util';
 import { AuthState } from '@mp/app/auth/data-access';
 import { Logout as AuthLogout } from '@mp/app/auth/util';
@@ -34,6 +35,7 @@ export interface PostStateModel {
       createdBy: string;
       ownedBy: string | null | undefined;
       likes: number;
+      comments: IComment[] | null;
       createdAt?: Timestamp | null | undefined;
       content?: string | null | undefined;
       hashtag?: Hashtag | null | undefined;
@@ -90,6 +92,7 @@ export interface PostsStateModel {
         createdBy: '',
         ownedBy: '',
         likes:0, //fixed like left out  before
+        comments: null,
         createdAt: null,
         content: '',
         hashtag: Hashtag.OTHER,

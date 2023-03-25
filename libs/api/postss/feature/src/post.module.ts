@@ -1,7 +1,7 @@
 import { PostModule as PostDataAccessModule } from '@mp/api/postss/data-access';
 import { Module } from '@nestjs/common';
 import { AggregateRoot, CqrsModule } from '@nestjs/cqrs';
-import { IPost, IPosts } from '../../util/src/interfaces';
+import { IPost, IPosts } from '@mp/api/postss/util';
 // import {
 // } from './commands';
 // import {
