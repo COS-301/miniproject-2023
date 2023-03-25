@@ -20,6 +20,11 @@ const routes: Routes = [
           import('@mp/app/profile-view').then((m) => m.ProfileViewModule),
       },
       {
+        path: 'search-page',
+        loadChildren: () =>
+          import('@mp/app/search-page').then((m) => m.SearchPageModule),
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: '/home/feed',

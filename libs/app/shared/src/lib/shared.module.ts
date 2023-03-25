@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
-import { AddMemoryPageComponent } from './add-memory/add-memory.page';
+import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
+import { MemoryCardComponent } from './memory-card/memory-card.component';
+import { AddMemoryPageComponent } from './add-memory/add-memory.page';
 
 @NgModule({
   imports: [CommonModule, IonicModule, FormsModule],
-  declarations: [
-    AddMemoryPageComponent
-  ]
+  declarations: [MemoryCardComponent, AddMemoryPageComponent],
+  exports: [MemoryCardComponent]
 })
 export class SharedModule {}
