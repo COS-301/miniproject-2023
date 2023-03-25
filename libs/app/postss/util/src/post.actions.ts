@@ -1,18 +1,4 @@
-import { IPost, IPosts } from '@mp/api/postss/util';
-
-// import {
-//     Hashtag
-//   } from '@mp/libs/api/postss/util/src/enums/hashtag.enum'; <-- this does not work :( so explicit representation below for now
-export enum Hashtag {
-  NATURE = '#nature',
-  FUNNY = '#funny',
-  OPINION = '#opinion',
-  MUSIC = '#music',
-  SPORTS = '#sports',
-  FOOD = '#food',
-  OTHER = '#other'
-}
-
+import { Hashtag, IPost, IPosts } from '@mp/api/postss/util';
 
 
 export class SubscribeToPost {
@@ -21,7 +7,7 @@ export class SubscribeToPost {
 
 export class SetPosts {
   static readonly type = '[Posts] SetPosts';
-  constructor(public readonly posts: IPosts | null) {}
+  constructor(public readonly posts: IPosts) {}
 }
 
 export class SetPost {
@@ -45,6 +31,21 @@ export class GetPostByHashtag {
 
 export class CreatePost {
   static readonly type = '[Posts] CreatePost';
+}
+
+export class LikePost {
+  static readonly type = '[Post] Like Post';
+  constructor(public postID: string) {}
+}
+
+export class CommentOnPost {
+  static readonly type = '[Post] Comment on Post';
+  constructor(public postId: string, public comment: string) {}
+}
+
+export class BuyPost {
+  static readonly type = '[Post] Buy Post';
+  constructor(public postId: string, public amount: number, public buyerID: string) {}
 }
 /*
 Example

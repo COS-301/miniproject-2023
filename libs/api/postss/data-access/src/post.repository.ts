@@ -66,14 +66,15 @@ export class PostRepository {
 
   async createProfile(profile: IPost) {
     // Remove password field if present
-    delete profile.accountDetails?.password;
+    // delete profile.accountDetails?.password;
     return await admin
       .firestore()
-      .collection('profiles')
-      .doc(profile.userId)
-      .create(profile);
+      .collection('posts')
+      .doc(post.postID)
+      .create(post);
   }
 
+  /*
   async updateProfile(profile: IPost) {
     // Remove password field if present
     delete profile.accountDetails?.password;

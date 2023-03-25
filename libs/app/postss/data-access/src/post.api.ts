@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
 import { collection, collectionData, doc, docData, Firestore, query, where } from '@angular/fire/firestore';
 import { Functions, httpsCallable } from '@angular/fire/functions';
+import { updateDoc, getDoc } from "firebase/firestore";
+
 import {
   ICreatePostRequest,
   ICreatePostResponse,
   IGetPostRequest,
   IGetPostResponse,
   IPost,
-  IPosts
+  IPosts,
+  Hashtag
+
 } from '@mp/api/postss/util';
 import { PostsState } from './post.state';
 import { PostTrendingGetQuery } from '@mp/api/postss/util';
@@ -29,6 +33,8 @@ export enum Hashtag {
 
 @Injectable()
 export class PostApi {
+ 
+  
   constructor(
     private readonly firestore: Firestore,
     private readonly functions: Functions
@@ -65,6 +71,7 @@ export class PostApi {
 
     const posts = await collectionData<IPost>(postsQuery, { idField: 'postID' }).toPromise();
     return { posts: posts ?? [] };
+  }
   }
 
   /*
@@ -114,30 +121,71 @@ export class PostApi {
   /*
   Example for real-time read
   profile$(id: string) {
+  async likePost(postID: string) {
     const docRef = doc(
       this.firestore,
-      `profiles/${id}`
-    ).withConverter<IProfile>({
+      `posts/${postID}`
+      ).withConverter<IPost>({
       fromFirestore: (snapshot) => {
-        return snapshot.data() as IProfile;
+      return {
+      ...snapshot.data(),
+      postID: snapshot.id,
+      } as IPost;
       },
-      toFirestore: (it: IProfile) => it,
-    });
-    return docData(docRef, { idField: 'id' });
-  }
-  */
+      toFirestore: (it: IPost) => it,
+      })
+      
+      const post = await docData(docRef).toPromise();
 
-  /*
-  Example for Request Response API
-  async updateAccountDetails(request: IUpdateAccountDetailsRequest) {
-    return await httpsCallable<
-      IUpdateAccountDetailsRequest,
-      IUpdateAccountDetailsResponse
-    >(
-      this.functions,
-      'updateAccountDetails'
-    )(request);
+      if (!post) {
+    throw new Error(`Post with ID ${postID} not found`);
   }
-  */
+      const newLikeCount = post.likes + 1;
+      
+      // await docRef.update();
+      await updateDoc(docRef, { likes: newLikeCount })
+      
+      return { ...post, likes: newLikeCount };
+  }
+
+  async commentOnPost(postID: string, comment: any): Promise<IPost> { //will change the comment type later
+    const postRef = doc(this.firestore, `posts/${postID}`);
+    const postSnapshot = await getDoc(postRef);
+  
+    if(postSnapshot.exists()) {
+      const post = postSnapshot.data() as IPost;
+      const newCommentList = [...post.comments ?? [], comment];
+  
+      await updateDoc( postRef, { comments: newCommentList });
+  
+      return { ...post, comments: newCommentList };
+    } else {
+      throw new Error(`Post with ID ${postID} does not exist`);
+    }
+  }
+
+  async buyPost(postID: string, buyerID: string): Promise<IPost> {
+    const postRef = doc(this.firestore, `posts/${postID}`);
+    const postSnapshot = await getDoc(postRef);
+  
+    if (postSnapshot.exists()) {
+      const post = postSnapshot.data() as IPost;
+  
+      if (post.buyerID === null) {
+        const updatedPost = {
+          ...post,
+          buyerID: buyerID,
+          boughtAt: new Date(),
+        };
+
+        await updateDoc( postRef, updatedPost);
+        return updatedPost;
+      } else {
+        throw new Error(`Post with ID ${postID} has already been bought`); // this will need further discussion
+      }
+    } else {
+      throw new Error(`Post with ID ${postID} does not exist`);
+    }
+  }
 
 }

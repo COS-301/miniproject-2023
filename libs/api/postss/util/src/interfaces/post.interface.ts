@@ -3,6 +3,7 @@ import { Hashtag } from '../enums';
 import {IComment} from './comment.interface';
 
 export interface IPost {
+  buyerID?: string| null;
   postID: string;
   createdBy: string;
   ownedBy: string | null | undefined;
@@ -13,6 +14,6 @@ export interface IPost {
   hashtag?: Hashtag | null |undefined;
   caption? : string | null | undefined;
   totalTime? : number | null | undefined
-  ownerGainedTime?: number | null | undefined
-  listing? : number | null | undefined
+  ownerGainedTime?: number | null | undefined;
+  listing? : number | null | undefined;
 }

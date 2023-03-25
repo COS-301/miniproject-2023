@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IProfile } from '@mp/api/profiles/util';
-import { ProfileState } from '@mp/app/profile/data-access';
+import { IPost } from '@mp/api/postss/util';
+import { PostState } from '@mp/app/postss/data-access';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
+import { Store } from '@ngxs/store';
 
 @Component({
   selector: 'ms-dashboard-page',
@@ -10,5 +11,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage {
-  @Select(ProfileState.profile) profile$!: Observable<IProfile | null>;
+  @Select(PostState.posts) posts$!: Observable<IPost[]>;
+
 }
