@@ -8,6 +8,11 @@ const routes: Routes = [
     pathMatch: 'full',
     component: DashboardPage,
   },
+  {
+    path: 'profile',
+    loadChildren: () =>
+      import('@mp/app/profile/feature').then((m) => m.ProfileModule),
+  },
 ];
 
 @NgModule({
