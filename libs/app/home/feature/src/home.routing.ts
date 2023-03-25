@@ -18,6 +18,12 @@ const routes: Routes = [
           import('@mp/app/profile/feature').then((m) => m.ProfileModule),
       },
       {
+        path: 'profile-view',
+        loadChildren: () =>
+          // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+          import('@mp/app/profile-view').then((m) => m.ProfileViewModule),
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: '/home/dashboard',
