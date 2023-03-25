@@ -5,6 +5,7 @@ import { AddMemoryPageComponent, Memory } from '@mp/app/shared';
 import { ProfileImage } from './lib/ProfileImage';
 import { ProfileImageService } from './lib/ProfileImageService';
 import { ReviveMemoryPageComponent } from './lib/revive-memory/revive-memory.page';
+import { MenubarService } from '@mp/app/services'
 
 @Component({
   selector: 'app-profile-view',
@@ -17,13 +18,18 @@ export class ProfileViewPageComponent implements OnInit {
 
   constructor(
     public modalController: ModalController,
-    private profileImageService: ProfileImageService
+    private profileImageService: ProfileImageService,
+    private menubarService: MenubarService
   ) {
     this.profileImage = profileImageService.profileImage;
   }
 
   ngOnInit(): void {
     this.profileImage = this.profileImageService.profileImage;
+  }
+
+  toggleMenuStatus() {
+    this.menubarService.menuStatus = !this.menubarService.menuStatus;
   }
 
   async addMemory() {

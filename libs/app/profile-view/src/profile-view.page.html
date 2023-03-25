@@ -3,7 +3,7 @@
         <ion-content ngClass="menu-sidebar" class="ion-padding">
             <ion-header ngClass="menu-heading">
                 <ion-text ngClass="menu-heading-text">Menu</ion-text>
-                <ion-menu-button ngClass="btn-menu-exit">
+                <ion-menu-button ngClass="btn-menu-exit" (click)="toggleMenuStatus()">
                     <ion-icon name="close" ngClass="btn-menu-exit-text"></ion-icon>
                 </ion-menu-button>
             </ion-header>          
@@ -36,7 +36,7 @@
             <ion-buttons (click)="addMemory()" slot="start">
                 <ion-icon name="add" color="light" ngClass="add-btn"></ion-icon>
             </ion-buttons>      
-            <ion-buttons slot="end">
+            <ion-buttons slot="end" (click)="toggleMenuStatus()">
                 <ion-menu-button ngClass="burger-menu" auto-hide="false"></ion-menu-button>
             </ion-buttons>
             <ion-title ngClass="title">Memory Lane</ion-title>

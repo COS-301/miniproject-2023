@@ -1,5 +1,5 @@
-<ion-tabs>
-  <ion-tab-bar slot="bottom" ngClass="nav-bar">
+<ion-tabs >
+  <ion-tab-bar slot="bottom" ngClass="nav-bar" *ngIf="getMenuStatus()==false">
     <ion-tab-button tab="dashboard">
       <ion-icon name="home-outline"></ion-icon>
     </ion-tab-button>
