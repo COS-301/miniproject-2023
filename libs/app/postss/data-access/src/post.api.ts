@@ -53,7 +53,44 @@ export class PostApi {
     return { posts: posts ?? [] };
   }
 
-  async likePost(postID: string): Promise<IPost> {
+  /*
+  Returns an array of IPost[] objects that are "trending"
+  */
+  async postTrendingGet(): Promise<IPost[]>{
+     const callable = httpsCallable<undefined, IPost[]>(
+      this.functions,
+      "postTrendingGet"
+     );
+
+     const result = await callable(undefined);
+     return result.data;
+  }
+
+  /* Query for posts by hashtag -> read only */
+  /* returns an array of the fetched IPost objects filtered by hashtag */
+  async getPostByHashtag(hashtag: Hashtag): Promise<IPosts> {
+    const postsQuery = query(
+      collection(this.firestore, 'posts'),
+      where('hashtag', '==', hashtag)
+    ).withConverter<IPost>({
+      fromFirestore: (snapshot) => {
+        return {
+          ...snapshot.data(),
+          postID: snapshot.id,
+        } as IPost;
+      },
+      toFirestore: (it: IPost) => it,
+    });
+
+    const posts = await collectionData<IPost>(postsQuery, { idField: 'postID' }).toPromise();
+    return { posts: posts ?? [] };
+  }
+
+
+
+  /*
+  Example for real-time read
+  profile$(id: string) {
     const docRef = doc(
       this.firestore,
       `posts/${postID}`

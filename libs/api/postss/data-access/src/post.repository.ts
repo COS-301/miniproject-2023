@@ -13,6 +13,7 @@ export class PostRepository {
 
   
   async findOne(post: IPost) {
+  async findOne(profile: IPost) {
     return await admin
       .firestore()
       .collection('posts')
@@ -55,6 +56,21 @@ export class PostRepository {
     return topPosts;
   }
 
+  async createPost(post: IPost) {
+    return await admin
+      .firestore()
+      .collection('post')
+      .doc(post.postID)
+      .create(post);
+  }
+
+  async updateLikes(profile: IPost) {
+    return await admin
+      .firestore()
+      .collection('profiles')
+      .doc(profile.postID)
+      .set(profile, { merge: true });
+  }
   /*Examples from profile
 
   async createProfile(profile: IPost) {

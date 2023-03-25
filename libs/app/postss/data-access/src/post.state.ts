@@ -3,7 +3,8 @@ import { map } from 'rxjs/operators';
 import {
   Hashtag,
   IPost,
-  IPosts
+  IPosts,
+  IComment
 } from '@mp/api/postss/util';
 import { AuthState } from '@mp/app/auth/data-access';
 import { Logout as AuthLogout } from '@mp/app/auth/util';
@@ -13,6 +14,8 @@ import {
   SetPosts,
   SetPost,
   GetPostByUserId,
+  PostTrendingGet,
+  GetPostByHashtag,
   CommentOnPost,
   LikePost,
   BuyPost
@@ -37,6 +40,7 @@ export interface PostStateModel {
       createdBy: string;
       ownedBy: string | null | undefined;
       likes: number;
+      comments: IComment[] | null;
       createdAt?: Timestamp | null | undefined;
       content?: string | null | undefined;
       hashtag?: Hashtag | null | undefined;
@@ -93,6 +97,7 @@ export interface PostsStateModel {
         createdBy: '',
         ownedBy: '',
         likes:0, //fixed like left out  before
+        comments: null,
         createdAt: null,
         content: '',
         hashtag: Hashtag.OTHER,
@@ -129,6 +134,16 @@ export class PostState { /* changed from 'PostsState' to 'PostState' */
   async getPostByUserId(ctx: StateContext<PostsStateModel>, action: GetPostByUserId) {
     try {
       const posts = await this.postApi.getPostByUserId(action.userId);
+      ctx.patchState({ posts: posts });
+    } catch (error) {
+      ctx.dispatch(new SetError((error as Error).message));
+    }
+  }
+
+  @Action(GetPostByHashtag)
+  async getPostByHashtag(ctx: StateContext<PostsStateModel>, action: GetPostByHashtag) {
+    try {
+      const posts = await this.postApi.getPostByHashtag(action.hashtag);
       ctx.patchState({ posts: posts });
     } catch (error) {
       ctx.dispatch(new SetError((error as Error).message));
@@ -191,7 +206,15 @@ export class PostState { /* changed from 'PostsState' to 'PostState' */
     );
   }
 
-  /**
+  @Action(PostTrendingGet)
+  async postTrendingGet(ctx: StateContext<PostsStateModel>) {
+    try {
+      const posts = await this.postApi.postTrendingGet();
+      ctx.patchState({ posts: { posts } });
+    } catch (error) {
+      ctx.dispatch(new SetError((error as Error).message));
+    }
+  }  /**
    * NB!!! NB!!! The below code is erroneous, needs mending.
    * @param ctx 
    * @param action 
