@@ -5,4 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './add-memory.page.html',
   styleUrls: ['./add-memory.page.scss'],
 })
-export class AddMemoryPage {}
+export class AddMemoryPageComponent {}
