@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { AngularDelegate, ModalController } from '@ionic/angular';
 import { EditProfilePhotoPageComponent } from './edit-profile-photo.page';
 
 describe('EditProfilePhotoPageComponent', () => {
@@ -9,6 +9,7 @@ describe('EditProfilePhotoPageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [EditProfilePhotoPageComponent],
+      providers: [ModalController, AngularDelegate],
     }).compileComponents();
 
     fixture = TestBed.createComponent(EditProfilePhotoPageComponent);

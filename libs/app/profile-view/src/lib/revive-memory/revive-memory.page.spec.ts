@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { AngularDelegate, ModalController } from '@ionic/angular';
 import { ReviveMemoryPageComponent } from './revive-memory.page';
 
 describe('ReviveMemoryPage', () => {
@@ -9,6 +9,7 @@ describe('ReviveMemoryPage', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ReviveMemoryPageComponent],
+      providers: [ModalController, AngularDelegate],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ReviveMemoryPageComponent);
