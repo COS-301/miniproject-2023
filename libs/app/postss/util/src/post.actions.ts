@@ -11,8 +11,8 @@ export class SetPosts {
 }
 
 export class SetPost {
-  static readonly type = '[Post] SetPost';
-  constructor(public readonly post: IPost | null) {}
+  static readonly type = '[Post] Set Post';
+  constructor(public post: IPost) { }
 }
 
 

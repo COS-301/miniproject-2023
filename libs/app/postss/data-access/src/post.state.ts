@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
 import {
   Hashtag,
   IPost,
@@ -8,20 +9,15 @@ import { AuthState } from '@mp/app/auth/data-access';
 import { Logout as AuthLogout } from '@mp/app/auth/util';
 import { SetError } from '@mp/app/errors/util';
 import { Timestamp } from 'firebase-admin/firestore';
-// import {
-//   SetPost
-//   //SubscribeToPost,
-//   // UpdateAccountDetails,
-//   // UpdateAddressDetails,
-//   // UpdateContactDetails,
-//   // UpdateOccupationDetails,
-//   // UpdatePersonalDetails
-// } from '@mp/app/post/util';
+import {
+  SetPosts,
+  SetPost
+} from '@mp/app/postss/util';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import produce from 'immer';
 import { tap } from 'rxjs';
 import { PostApi } from './post.api';
-import { NOTIMP } from 'dns';
+import { SubscribeToPost } from '@mp/app/postss/util';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 
@@ -52,9 +48,9 @@ export interface PostStateModel {
       createdBy: string;
       ownedBy: string | null | undefined;
       createdAt?: Timestamp | null | undefined;
-      content?: String | null | undefined;
+      content?: string | null | undefined;
       hashtag?: Hashtag | null | undefined;
-      caption?: String | null | undefined;
+      caption?: string | null | undefined;
       totalTime?: number | null | undefined
       ownerGainedTime?: number | null | undefined
       listing?: number | null | undefined
@@ -121,22 +117,60 @@ export class PostsState {
     return state.post;
   }
 
-  
-  /*
+//This function will subscribe to the current posts that are loaded
   @Action(SubscribeToPost)
-  subscribeToPost(ctx: StateContext<PostStateModel>) {
-    const user = this.store.selectSnapshot(AuthState.user);
-    if (!user) return ctx.dispatch(new SetError('User not set'));
-    
-    return "Not implemented yet";
-   
-    Example from profile
-    return this.profileApi
-      .profile$(user.uid)
-      .pipe(tap((profile: IProfile) => ctx.dispatch(new SetProfile(profile))));
-      
+  subscribeToPosts(ctx: StateContext<PostsStateModel>) {
+    const postsToLook = this.store.selectSnapshot(PostsState.posts);
+    if (!postsToLook || postsToLook.posts == null) return ctx.dispatch(new SetError('Posts not Set'));
+
+    // Subscribe to changes in each post
+    postsToLook.posts.forEach((post: IPost) => {
+      this.postApi
+        .post$(post.postID)
+        .pipe(
+          map((updatedPost: IPost) => {
+            // Update the PostsState and internal PostState
+            const postsInt = ctx.getState().posts;
+            if (postsInt && postsInt.posts != null) {
+              const index = postsInt.posts.findIndex(p => p.postID === updatedPost.postID);
+              if (index !== -1) {
+                postsInt.posts[index] = updatedPost;
+                ctx.patchState({ posts: postsInt });
+              }
+            }
+            return updatedPost;
+          }),
+          tap((updatedPost: IPost) => {
+            const postState = this.store.selectSnapshot(PostsState.post);
+            if (postState && postState.postID === updatedPost.postID) {
+              ctx.dispatch(new SetPost(updatedPost));
+            }
+          })
+        )
+        .subscribe();
+    });
+
   }
-  */
+
+  @Action(SetPosts)
+  setPosts(ctx: StateContext<PostsStateModel>, { posts }: SetPosts) {
+    return ctx.setState(
+      produce((draft) => {
+        draft.posts = posts;
+      })
+    );
+  }
+
+  @Action(SetPost)
+  setPost(ctx: StateContext<PostStateModel>, { post }: SetPost) {
+    return ctx.setState(
+      produce((draft) => {
+        draft.post = post;
+      })
+    );
+  }
+
+
 
   /*
 

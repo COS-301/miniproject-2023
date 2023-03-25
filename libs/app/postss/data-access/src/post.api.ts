@@ -2,16 +2,30 @@ import { Injectable } from '@angular/core';
 import { doc, docData, Firestore } from '@angular/fire/firestore';
 import { Functions, httpsCallable } from '@angular/fire/functions';
 import {
-    IPost,
-    IPosts
+  IPost,
+  IPosts
 } from '@mp/api/postss/util';
+import { PostsState } from './post.state';
 
 @Injectable()
 export class PostApi {
   constructor(
     private readonly firestore: Firestore,
     private readonly functions: Functions
-  ) {}
+  ) { }
+
+  post$(id: string) {
+    const docRef = doc(
+      this.firestore,
+      `posts/${id}`
+    ).withConverter<IPost>({
+      fromFirestore: (snapshot) => {
+        return snapshot.data() as IPost;
+      },
+      toFirestore: (it: IPost) => it,
+    });
+    return docData(docRef, { idField: 'postID' });
+  }
 
   /*
   Example for real-time read
