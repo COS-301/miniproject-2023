@@ -13,7 +13,8 @@ import { Timestamp } from 'firebase-admin/firestore';
 import {
   SetPosts,
   SetPost,
-  GetPostByUserId
+  GetPostByUserId,
+  GetPostByHashtag
 } from '@mp/app/postss/util';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import produce from 'immer';
@@ -129,6 +130,16 @@ export class PostsState { /* changed from 'PostsState' to 'PostState' */
   async getPostByUserId(ctx: StateContext<PostsStateModel>, action: GetPostByUserId) {
     try {
       const posts = await this.postApi.getPostByUserId(action.userId);
+      ctx.patchState({ posts: posts });
+    } catch (error) {
+      ctx.dispatch(new SetError((error as Error).message));
+    }
+  }
+
+  @Action(GetPostByHashtag)
+  async getPostByHashtag(ctx: StateContext<PostsStateModel>, action: GetPostByHashtag) {
+    try {
+      const posts = await this.postApi.getPostByHashtag(action.hashtag);
       ctx.patchState({ posts: posts });
     } catch (error) {
       ctx.dispatch(new SetError((error as Error).message));

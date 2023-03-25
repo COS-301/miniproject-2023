@@ -9,6 +9,20 @@ import {
 } from '@mp/api/postss/util';
 import { PostsState } from './post.state';
 
+// import {
+//     Hashtag
+//   } from './api/postss/util';
+
+export enum Hashtag {
+  NATURE = '#nature',
+  FUNNY = '#funny',
+  OPINION = '#opinion',
+  MUSIC = '#music',
+  SPORTS = '#sports',
+  FOOD = '#food',
+  OTHER = '#other'
+}
+
 @Injectable()
 export class PostApi {
   constructor(
@@ -48,6 +62,26 @@ export class PostApi {
     const posts = await collectionData<IPost>(postsQuery, { idField: 'postID' }).toPromise();
     return { posts: posts ?? [] };
   } 
+
+  /* Query for posts by hashtag -> read only */
+  /* returns an array of the fetched IPost objects filtered by hashtag */
+  async getPostByHashtag(hashtag: Hashtag): Promise<IPosts> {
+    const postsQuery = query(
+      collection(this.firestore, 'posts'),
+      where('hashtag', '==', hashtag)
+    ).withConverter<IPost>({
+      fromFirestore: (snapshot) => {
+        return {
+          ...snapshot.data(),
+          postID: snapshot.id,
+        } as IPost;
+      },
+      toFirestore: (it: IPost) => it,
+    });
+
+    const posts = await collectionData<IPost>(postsQuery, { idField: 'postID' }).toPromise();
+    return { posts: posts ?? [] };
+  }
 
 
 
