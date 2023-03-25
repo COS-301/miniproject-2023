@@ -42,6 +42,10 @@ export class GetPostByHashtag {
   static readonly type = '[Posts] Get Post By Hashtag';
   constructor(public hashtag: Hashtag) { }
 }
+
+export class CreatePost {
+  static readonly type = '[Posts] CreatePost';
+}
 /*
 Example
 export class UpdateAccountDetails {

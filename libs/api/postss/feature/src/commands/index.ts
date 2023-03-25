@@ -1,4 +1,2 @@
-/*
-Example
-export * from './create-profile.handler';
-*/
+export * from './create-post.handler';
+

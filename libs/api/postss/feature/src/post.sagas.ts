@@ -1,7 +1,7 @@
 import {
   CreatePostCommand,
   GetPostCommand,
-  ProfileCreatedEvent,
+  PostCreatedEvent,
   PostGetEvent
 } from '@mp/api/postss/util';
 import { Injectable } from '@nestjs/common';
@@ -11,6 +11,18 @@ import { map, Observable } from 'rxjs';
 @Injectable()
 export class PostSagas {
 
+  @Saga()
+  onCreatePost = (
+    events$: Observable<any>
+  ): Observable<ICommand> => {
+    return events$.pipe(
+      ofType(PostCreatedEvent),
+      map(
+        (event: PostCreatedEvent) =>
+          new CreatePostCommand({ post: event.profile })
+      )
+    );
+  };
 
   /*
   Example

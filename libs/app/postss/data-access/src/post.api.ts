@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { collection, collectionData, doc, docData, Firestore, query, where } from '@angular/fire/firestore';
 import { Functions, httpsCallable } from '@angular/fire/functions';
 import {
+  ICreatePostRequest,
+  ICreatePostResponse,
   IGetPostRequest,
   IGetPostResponse,
   IPost,
@@ -9,6 +11,7 @@ import {
 } from '@mp/api/postss/util';
 import { PostsState } from './post.state';
 import { PostTrendingGetQuery } from '@mp/api/postss/util';
+import { ICreateAuthRequest } from '@mp/api/auth/util';
 
 // import {
 //     Hashtag
@@ -59,10 +62,10 @@ export class PostApi {
       },
       toFirestore: (it: IPost) => it,
     });
-    
+
     const posts = await collectionData<IPost>(postsQuery, { idField: 'postID' }).toPromise();
     return { posts: posts ?? [] };
-  } 
+  }
 
   /*
   Returns an array of IPost[] objects that are "trending"
@@ -97,6 +100,15 @@ export class PostApi {
     return { posts: posts ?? [] };
   }
 
+  async createPost(request: ICreatePostRequest) {
+    return await httpsCallable<
+      ICreatePostRequest,
+      ICreatePostResponse
+    >(
+      this.functions,
+      'createPost'
+    )(request);
+  }
 
 
   /*
@@ -116,7 +128,7 @@ export class PostApi {
   */
 
   /*
-  Example for Request Response API 
+  Example for Request Response API
   async updateAccountDetails(request: IUpdateAccountDetailsRequest) {
     return await httpsCallable<
       IUpdateAccountDetailsRequest,
