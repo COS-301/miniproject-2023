@@ -14,6 +14,7 @@ import {
   SetPosts,
   SetPost,
   GetPostByUserId,
+  PostTrendingGet,
   GetPostByHashtag
 } from '@mp/app/postss/util';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
@@ -200,7 +201,15 @@ export class PostsState { /* changed from 'PostsState' to 'PostState' */
     );
   }
 
-
+  @Action(PostTrendingGet)
+  async postTrendingGet(ctx: StateContext<PostsStateModel>) {
+    try {
+      const posts = await this.postApi.postTrendingGet();
+      ctx.patchState({ posts: { posts } });
+    } catch (error) {
+      ctx.dispatch(new SetError((error as Error).message));
+    }
+  }
 
   /*
 

@@ -34,6 +34,10 @@ export class GetPostByUserId {
   constructor(public userId: string) {}
 }
 
+export class PostTrendingGet {
+  static readonly type = '[Posts] Post Trending Get';
+}
+
 export class GetPostByHashtag {
   static readonly type = '[Posts] Get Post By Hashtag';
   constructor(public hashtag: Hashtag) { }
