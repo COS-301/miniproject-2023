@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Register } from '@mp/app/register/util';
+import { NavigationEnd, Router } from '@angular/router';
 import {
     ActionsExecuting,
     actionsExecuting
@@ -56,8 +57,17 @@ export class RegisterPage {
 
   constructor(
     private readonly fb: FormBuilder,
-    private readonly store: Store
+    private readonly store: Store,
+    private readonly router: Router
   ) {}
+
+  ngOnInit() {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.registerForm.reset();
+      }
+    });
+  }
 
   register() {
     if (this.registerForm.valid) {
