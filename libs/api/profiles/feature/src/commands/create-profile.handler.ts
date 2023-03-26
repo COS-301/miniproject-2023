@@ -1,16 +1,10 @@
-import {
-    CreateProfileCommand,
-    IProfile,
-    ProfileStatus
-} from '@mp/api/profiles/util';
+import { CreateProfileCommand, IProfile, ProfileStatus } from '@mp/api/profiles/util';
 import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs';
 import { Timestamp } from 'firebase-admin/firestore';
 import { Profile } from '../models';
 
 @CommandHandler(CreateProfileCommand)
-export class CreateProfileHandler
-  implements ICommandHandler<CreateProfileCommand>
-{
+export class CreateProfileHandler implements ICommandHandler<CreateProfileCommand> {
   constructor(private publisher: EventPublisher) {}
 
   async execute(command: CreateProfileCommand) {

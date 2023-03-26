@@ -1,10 +1,8 @@
-import {Module} from '@nestjs/common'; 
-import { CommentRepository } from './comment.repository'; 
+import { Module } from '@nestjs/common';
+import { CommentRepository } from './comment.repository';
 
-@Module ({ 
-   
-    providers : [CommentRepository], 
-    exports : [CommentRepository]
-
-}) 
-export class CommentModule{}
+@Module({
+  providers: [CommentRepository],
+  exports: [CommentRepository],
+})
+export class CommentModule {}

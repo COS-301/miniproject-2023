@@ -1,5 +1,5 @@
-import { IFriendRequest } from "../interfaces"; 
+import { IFriendRequest } from '../interfaces';
 
-export class FriendRequest{ 
-    constructor(public readonly:IFriendRequest){}
+export class FriendRequest {
+  constructor(public readonly: IFriendRequest) {}
 }

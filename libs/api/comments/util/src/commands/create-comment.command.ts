@@ -1,5 +1,5 @@
-import { IComment } from "../interfaces";
+import { IComment } from '../interfaces';
 
-export class CreateCommentCommand{ 
-    constructor(public readonly :IComment){}
+export class CreateCommentCommand {
+  constructor(public readonly: IComment) {}
 }

@@ -11,8 +11,8 @@ export interface IUser {
   created?: Timestamp | null | undefined;
 
   //login?:Timestamp | null | undefined;
-  memoryCount?:  number | null | undefined; 
-  //time: number | null | undefined; 
-  friendList?: string[]| null | undefined;
+  memoryCount?: number | null | undefined;
+  //time: number | null | undefined;
+  friendList?: string[] | null | undefined;
   friendCount?: number | null | undefined;
 }

@@ -20,7 +20,7 @@ export class CreateAuthHandler implements ICommandHandler<CreateAuthCommand> {
       customClaims: request.userRecord.customClaims,
       created: Timestamp.fromDate(new Date()),
     };
-   const auth = this.publisher.mergeObjectContext(Auth.fromData(data));
+    const auth = this.publisher.mergeObjectContext(Auth.fromData(data));
 
     auth.create();
     auth.commit();

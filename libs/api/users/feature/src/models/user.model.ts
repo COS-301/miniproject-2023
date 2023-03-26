@@ -11,10 +11,10 @@ export class User extends AggregateRoot implements IUser {
     public photoURL?: string | null | undefined,
     public phoneNumber?: string | null | undefined,
     public customClaims?: { [key: string]: any } | null | undefined,
-    public created?: Timestamp | null | undefined, 
-    public memoryCount?:number | null | undefined, 
+    public created?: Timestamp | null | undefined,
+    public memoryCount?: number | null | undefined,
     public friendList?: string[] | null | undefined,
-    public friendCount?: number | null | undefined
+    public friendCount?: number | null | undefined,
   ) {
     super();
   }
@@ -29,11 +29,11 @@ export class User extends AggregateRoot implements IUser {
       user.phoneNumber,
       user.customClaims,
       user.created,
-     // user.login,
+      // user.login,
       user.memoryCount,
       //user.time,
       user.friendList,
-      user.friendCount
+      user.friendCount,
     );
     return instance;
   }
@@ -51,11 +51,11 @@ export class User extends AggregateRoot implements IUser {
       photoURL: this.photoURL,
       phoneNumber: this.phoneNumber,
       customClaims: this.customClaims,
-      created: this.created, 
+      created: this.created,
       //login:this.login,
-      //time:this.time, 
-      friendList:this.friendList,
-      friendCount:this.friendCount
+      //time:this.time,
+      friendList: this.friendList,
+      friendCount: this.friendCount,
     };
   }
 }

@@ -1,5 +1,5 @@
-export enum Status{ 
-    ACCEPTED ='accepted', 
-    REJECTED='rejected',
-    PENDING='pending',
+export enum Status {
+  ACCEPTED = 'accepted',
+  REJECTED = 'rejected',
+  PENDING = 'pending',
 }

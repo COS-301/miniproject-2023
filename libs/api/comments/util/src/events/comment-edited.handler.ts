@@ -1,5 +1,5 @@
-import { IComment } from "../interfaces"; 
+import { IComment } from '../interfaces';
 
-export class CommentEditedEvent{ 
-    constructor(public readonly: IComment) {};
+export class CommentEditedEvent {
+  constructor(public readonly: IComment) {}
 }

@@ -1,5 +1,5 @@
-import { IMemory } from "../interfaces"; 
+import { IMemory } from '../interfaces';
 
-export class MemoryCreatedEvent{ 
-    constructor(public readonly : IMemory) {};
+export class MemoryCreatedEvent {
+  constructor(public readonly: IMemory) {}
 }
