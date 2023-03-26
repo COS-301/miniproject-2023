@@ -15,5 +15,6 @@ export interface IPost {
    caption? : string | null | undefined;
    totalTime? : number | null | undefined;
    ownerGainedTime?: number | null | undefined;
-   listing? : number | null | undefined;
+   listing? : number | null | undefined
+   sold?: boolean
 }
