@@ -4,7 +4,15 @@ import * as admin from 'firebase-admin';
 
 @Injectable()
 export class PostRepository {
-  async findOne(post: IPost) {
+
+  
+  
+
+  
+  async findOne(profile: IPost) {
+    if(profile.postID == ""){
+      throw Error("No PostID");
+    }
     return await admin
       .firestore()
       .collection('posts')

@@ -21,15 +21,6 @@ import { ICreateAuthRequest } from '@mp/api/auth/util';
 //     Hashtag
 //   } from './api/postss/util';
 
-export enum Hashtag {
-  NATURE = '#nature',
-  FUNNY = '#funny',
-  OPINION = '#opinion',
-  MUSIC = '#music',
-  SPORTS = '#sports',
-  FOOD = '#food',
-  OTHER = '#other'
-}
 
 @Injectable()
 export class PostApi {
