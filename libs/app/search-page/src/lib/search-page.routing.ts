@@ -7,14 +7,6 @@ const routes: Routes = [
     path: '',
     pathMatch: 'full',
     component: SearchPageComponent,
-    children: [
-      {
-        path: 'user-view',
-        loadChildren: () =>
-          // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-          import('@mp/app/user-view').then((m) => m.UserViewModule),
-      },
-    ],
   },
 ];
 

@@ -1,12 +1,13 @@
 import { formatDate } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-memory-card',
   templateUrl: './memory-card.component.html',
   styleUrls: ['./memory-card.component.scss'],
 })
-export class MemoryCardComponent {
+export class MemoryCardComponent{
   @Input() memory: {
     username: string,
     profileUrl: string,
@@ -36,6 +37,9 @@ export class MemoryCardComponent {
   };
 
   showExpandedView = false;
+  previousPageName ='';
+
+  constructor(private navCtrl: NavController) {}
 
   changeMemoryView() {
     this.showExpandedView = !this.showExpandedView;
@@ -78,5 +82,9 @@ export class MemoryCardComponent {
     else {
       return `${seconds} second${seconds > 1 ? 's' : ''} ago`;
     }
+  }
+
+  openUserProfile() {
+    this.navCtrl.navigateForward('/user-view');
   }
 }
