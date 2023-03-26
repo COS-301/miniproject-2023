@@ -11,9 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: "echo ${{ secrets.DOTENVFILE }} > .env"
+      - run: "echo ${{ secrets.DOTENVDOTPRODFILE }} > .env.prod"
+      - run: "echo ${{ secrets.DOTFIREBASERCFILE }} > .firebaserc"
       - run: yarn install --frozen-lockfile && yarn build:app:prod
-      - run: "echo ${{ secrets.GITHUB_TOKEN }} > .env"
-      - run: "echo ${{ secrets.GITHUB_TOKEN }} > .env.prod"
       - run: "yarn eslint"
       - run: "yarn jest"
       - uses: FirebaseExtended/action-hosting-deploy@v0
