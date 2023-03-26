@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'ms-login-page',
   templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  styleUrls: ['./login.page.scss','./login.page.css','./login.page.style.css'],
 })
 export class LoginPage {
   @Select(actionsExecuting([Login])) busy$!: Observable<ActionsExecuting>;

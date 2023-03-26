@@ -1,94 +1,166 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title>Login</ion-title>
+    <ion-title class="login-text-large">Login</ion-title>
   </ion-toolbar>
+  
+</ion-header> -->
+
+<ion-header [translucent]="true">
+  <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+    </style>
+    <style data-tag="default-style-sheet">
+      html, ion-content{
+        font-family: Inter;
+        font-size: 16px;
+      }
+
+      body,ion-content {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&amp;display=swap"
+      data-tag="font"
+    />
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" >
+  <div class="login-container">
+  <div class="login-login">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Login</ion-title>
     </ion-toolbar>
   </ion-header>
-
+  <ion-img
+        src="assets/logos/ellipse241344-uom8-200h.png"
+        alt="Ellipse241344"
+        class="login-ellipse24"
+      ></ion-img>
+      <ion-img
+        src="assets/logos/ellipse251345-91l-200h.png"
+        alt="Ellipse251345"
+        class="login-ellipse25"
+      ></ion-img>
+  <div class="login-text-large">
+    <span class="login-text04 headlinemedium">
+      <span>Welcome to TimeHive</span>
+    </span>
+  </div>
   <form [formGroup]="loginForm" ngxsForm="login.loginForm" (submit)="login()">
-    <ion-list class="ion-padding-vertical">
-      <ion-item>
-        <ion-label position="floating" class="required">Email</ion-label>
+      <div class="login-frame4">
+        <!--<ion-label position="floating" class="required">Email</ion-label> -->
+        
+        
+        <ion-img
+          src="assets/images/rectangle11347-su2g-200h.png"
+          alt="Rectangle11347"
+          class="login-rectangle1"
+        ></ion-img>
+        <span class="login-text08 BodyRegular">
         <ion-input
           type="email"
           minlength="6"
           maxlength="64"
-          placeholder="Enter email"
+          placeholder="Enter email or username"
           required="true"
+          class="login-input"
           autocomplete="email"
           formControlName="email"></ion-input>
-      </ion-item>
+          </span>
+           <ion-img src="assets/icons/person.svg"
+          alt="personFILL1wght400GRAD0opsz4811349" class="login-person-fill1wght400grad0opsz481"></ion-img> 
+      </div>
       <ion-text
         *ngIf="email?.invalid && (email?.dirty || email?.touched)"
         class="ion-padding-start"
         color="danger">
         <small>{{ emailError }}</small>
       </ion-text>
-      <ion-item>
-        <ion-label position="floating" class="required">Password</ion-label>
+      <div class="login-frame3">
+        <ion-img
+        src="assets/images/rectangle21352-duwp-200h.png"
+        alt="Rectangle21352"
+        class="login-rectangle2"></ion-img>
+        <span class="login-text10 BodyRegular">
         <ion-input
           [type]="showPassword ? 'text' : 'password'"
           minlength="6"
           maxlength="64"
-          placeholder="Enter password"
+          placeholder="Password"
           required="true"
           autocomplete="password"
-          formControlName="password"></ion-input>
+          formControlName="password"
+          class="login-input"></ion-input>
         <ion-icon
           [name]="showPassword ? 'eye-outline' : 'eye-off-outline'"
           slot="end"
           class="ion-align-self-center"
           (click)="toggleShowPassword()"></ion-icon>
-      </ion-item>
+        </span>
+         <ion-img src="assets/icons/lock.svg"
+          alt="personFILL1wght400GRAD0opsz4811349" class="login-person-fill1wght400grad0opsz481"></ion-img> 
+      </div>
       <ion-text
         *ngIf="password?.invalid && (password?.dirty || password?.touched)"
         class="ion-padding-start"
         color="danger">
         <small>{{ passwordError }}</small>
-      </ion-text>
-    </ion-list>
-
-    <ion-grid class="ion-padding">
-      <ion-row>
-        <ion-col>
-          <ion-button
-            expand="block"
+      </ion-text>  
+    <button
             [disabled]="!this.loginForm.valid || (busy$ | async)"
-            type="submit">
+            type="submit"
+            class="login-button">
             <ion-spinner *ngIf="busy$ | async"></ion-spinner>
-            <ion-text>Login</ion-text>
-          </ion-button>
-        </ion-col>
-      </ion-row>
-      <ion-row class="ion-padding-top">
-        <ion-col class="ion-text-center">
-          Having trouble?
+            <span class="login-text labellarge">Login</span>
+    </button>
+    <div class="login-text-medium" routerLink="/forgot">
+          <span class="login-tex02 labelmedium" routerLink="/forgot">
           <ion-nav-link routerLink="/forgot">
-            <ion-text color="primary">Forgot Password</ion-text>
+            Forgot Password?
           </ion-nav-link>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col class="ion-text-center">
-          Don't have an account?
+          </span>
+    </div>  
+    <button class="login-button1" routerLink="/register">
+            <ion-label class="login-text06 labellarge">
           <ion-nav-link routerLink="/register">
-            <ion-text color="primary">Register</ion-text>
+            <span>Create account</span>
           </ion-nav-link>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+          </ion-label>
+    </button>
+        
+      
   </form>
-</ion-content>
+</div>  
+</div>
 
+</ion-content>
+<!--
 <ion-footer collapse="condense" class="ion-padding ion-text-center">
   <ms-copyright-component></ms-copyright-component>
-</ion-footer>
+</ion-footer> -->
+
+<!-- Converted code-->
