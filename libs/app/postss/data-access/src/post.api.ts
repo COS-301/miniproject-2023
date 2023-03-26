@@ -24,8 +24,8 @@ import { ICreateAuthRequest } from '@mp/api/auth/util';
 
 @Injectable()
 export class PostApi {
- 
-  
+
+
   constructor(
     private readonly firestore: Firestore,
     private readonly functions: Functions
@@ -63,7 +63,7 @@ export class PostApi {
     const posts = await collectionData<IPost>(postsQuery, { idField: 'postID' }).toPromise();
     return { posts: posts ?? [] };
   }
-  }
+
 
   /*
   Returns an array of IPost[] objects that are "trending"
@@ -107,7 +107,7 @@ export class PostApi {
       'createPost'
     )(request);
   }
-
+}
 
   /*
   Example for real-time read
@@ -125,30 +125,30 @@ export class PostApi {
       },
       toFirestore: (it: IPost) => it,
       })
-      
+
       const post = await docData(docRef).toPromise();
 
       if (!post) {
     throw new Error(`Post with ID ${postID} not found`);
   }
       const newLikeCount = post.likes + 1;
-      
+
       // await docRef.update();
       await updateDoc(docRef, { likes: newLikeCount })
-      
+
       return { ...post, likes: newLikeCount };
   }
 
   async commentOnPost(postID: string, comment: any): Promise<IPost> { //will change the comment type later
     const postRef = doc(this.firestore, `posts/${postID}`);
     const postSnapshot = await getDoc(postRef);
-  
+
     if(postSnapshot.exists()) {
       const post = postSnapshot.data() as IPost;
       const newCommentList = [...post.comments ?? [], comment];
-  
+
       await updateDoc( postRef, { comments: newCommentList });
-  
+
       return { ...post, comments: newCommentList };
     } else {
       throw new Error(`Post with ID ${postID} does not exist`);
@@ -158,10 +158,10 @@ export class PostApi {
   async buyPost(postID: string, buyerID: string): Promise<IPost> {
     const postRef = doc(this.firestore, `posts/${postID}`);
     const postSnapshot = await getDoc(postRef);
-  
+
     if (postSnapshot.exists()) {
       const post = postSnapshot.data() as IPost;
-  
+
       if (post.buyerID === null) {
         const updatedPost = {
           ...post,
@@ -180,3 +180,4 @@ export class PostApi {
   }
 
 }
+*/
