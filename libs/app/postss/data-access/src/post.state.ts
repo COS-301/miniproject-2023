@@ -214,11 +214,9 @@ export class PostState { /* changed from 'PostsState' to 'PostState' */
     } catch (error) {
       ctx.dispatch(new SetError((error as Error).message));
     }
-  }  /**
-   * NB!!! NB!!! The below code is erroneous, needs mending.
-   * @param ctx 
-   * @param action 
-   */
+  }  
+
+  
   @Action(LikePost)
   async likePost(ctx: StateContext<PostStateModel>, action: LikePost) { 
     try {

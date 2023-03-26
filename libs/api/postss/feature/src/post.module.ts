@@ -25,5 +25,5 @@ export const EventHandlers = [
   exports: [PostService],
 })
 export class PostModule {
-  constructor(public posts: any) {}
+  
 }
