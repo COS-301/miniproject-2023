@@ -79,6 +79,12 @@
       "@mp/app/reset/data-access": ["libs/app/reset/data-access/src/index.ts"],
       "@mp/app/reset/feature": ["libs/app/reset/feature/src/index.ts"],
       "@mp/app/reset/util": ["libs/app/reset/util/src/index.ts"],
+      "@mp/app/search": ["libs/app/search/src/index.ts"],
+      "@mp/app/search/data-access": [
+        "libs/app/search/data-access/src/index.ts"
+      ],
+      "@mp/app/search/feature": ["libs/app/search/feature/src/index.ts"],
+      "@mp/app/search/util": ["libs/app/search/util/src/index.ts"],
       "@mp/app/tos/feature": ["libs/app/tos/feature/src/index.ts"],
       "@mp/app/updates/data-access": [
         "libs/app/updates/data-access/src/index.ts"
