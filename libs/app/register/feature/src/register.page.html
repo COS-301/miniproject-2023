@@ -1,95 +1,46 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Register</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Register</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <form
-    [formGroup]="registerForm"
-    ngxsForm="register.registerForm"
-    (submit)="register()">
-    <ion-list class="ion-padding-vertical">
-      <ion-item>
-        <ion-label position="floating" class="required">Email</ion-label>
-        <ion-input
-          type="email"
-          minlength="6"
-          maxlength="64"
-          placeholder="Enter email"
-          required="true"
-          autocomplete="email"
-          formControlName="email"></ion-input>
-      </ion-item>
-      <ion-text
-        *ngIf="email?.invalid && (email?.dirty || email?.touched)"
-        class="ion-padding-start"
-        color="danger">
-        <small>{{ emailError }}</small>
-      </ion-text>
-      <ion-item>
-        <ion-label position="floating" class="required">Password</ion-label>
-        <ion-input
-          [type]="showPassword ? 'text' : 'password'"
-          minlength="6"
-          maxlength="64"
-          placeholder="Enter password"
-          required="true"
-          autocomplete="password"
-          formControlName="password"></ion-input>
-        <ion-icon
-          [name]="showPassword ? 'eye-outline' : 'eye-off-outline'"
-          slot="end"
-          class="ion-align-self-center"
-          (click)="toggleShowPassword()"></ion-icon>
-      </ion-item>
-      <ion-text
-        *ngIf="password?.invalid && (password?.dirty || password?.touched)"
-        class="ion-padding-start"
-        color="danger">
-        <small>{{ passwordError }}</small>
-      </ion-text>
-    </ion-list>
+  <div class="createaccount-container">
+    <div class="createaccount-createaccount">
+      <div class="createaccount-text-large">
+        <span class="createaccount-text02">
+          <span>Register for TimeHive</span>
+        </span>
+      </div>
+      <ion-nav-link routerLink="/login" routerDirection="forward">
+        <ion-button class="createaccount-button1" color="white">
+          <ion-label class="createaccount-text04">
+            <span>Go back to login</span>
+          </ion-label>
+        </ion-button>
+      </ion-nav-link>
+      <img src="assets/logos/TimeHive.png" alt="Ellipse251870" class="createaccount-ellipse25" />
+      <form (submit)="register()">
+      <div class="createaccount-frame5">
+         <img src="assets/images/rectangle11872-u3hc-200h.png" alt="Rectangle11872" class="createaccount-rectangle1" />
+            <ion-input class="createaccount-text06" type="text" placeholder="Email or Username"></ion-input>
+          <ion-icon src="assets/images/personfill1wght400grad0opsz4811874-ncdg.svg" alt="personFILL1wght400GRAD0opsz4811874" class="createaccount-person-fill1wght400grad0opsz481"></ion-icon>
+        </div>
+        <div class="createaccount-frame51">
+          <img src="assets/images/rectangle21877-2o5q-200h.png" alt="Rectangle21877" class="createaccount-rectangle2" />
+          <ion-input class="createaccount-text08" type="Password" placeholder="Password"></ion-input>
+          <ion-icon src="assets/images/lockfill1wght400grad0opsz48111879-8ali.svg" alt="lockFILL1wght400GRAD0opsz48111879" class="createaccount-lock-fill1wght400grad0opsz4811"></ion-icon>
+        </div>
+        <div class="createaccount-frame3">
+          <img src="assets/images/rectangle21882-ch35-200h.png" alt="Rectangle21882" class="createaccount-rectangle21" />
+          <ion-input class="createaccount-text10" type="Password" placeholder="Confirm Password"></ion-input>
+          <ion-icon src="assets/images/lockfill1wght400grad0opsz48111884-ehl.svg" alt="lockFILL1wght400GRAD0opsz48111884" class="createaccount-lock-fill1wght400grad0opsz48111"></ion-icon>
+        </div>
+        <ion-button id="createaccount-button" color="white">
+          <ion-label class="createaccount-text">
+            <span>Create account</span>
+          </ion-label>
+        </ion-button>
+      </form>
+    </div>
+  </div>
 
-    <ion-grid class="ion-padding">
-      <ion-row>
-        <ion-col>
-          <ion-button
-            expand="block"
-            [disabled]="!this.registerForm.valid || (busy$ | async)"
-            type="submit">
-            <ion-spinner *ngIf="busy$ | async"></ion-spinner>
-            <ion-text>Register</ion-text>
-          </ion-button>
-        </ion-col>
-      </ion-row>
-      <ion-row class="ion-padding-top">
-        <ion-col class="ion-text-center">
-          Already have an account?
-          <ion-nav-link routerLink="/login">
-            <ion-text color="primary">Login</ion-text>
-          </ion-nav-link>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col class="ion-text-center">
-          Having trouble?
-          <ion-nav-link routerLink="/forgot">
-            <ion-text color="primary">Forgot Password</ion-text>
-          </ion-nav-link>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </form>
+
 </ion-content>
 
 <ion-footer collapse="condense" class="ion-padding ion-text-center">
