@@ -1,5 +1,5 @@
 import {describe, expect, test} from '@jest/globals';
-import { CreateMemory } from './../src/functions/memories.functions'
+import { createMemory } from './../src/functions/memories.functions'
 import {MemoriesService} from '@mp/api/memories/feature';
 import {
     ICreateMemoryRequest,
@@ -24,6 +24,6 @@ describe('Tesing Cloud Function: memories.functions -- with a null memory',()=>{
         const createMemoryResponse:ICreateMemoryRequest={
             memory:memory
         }
-        CreateMemory(createMemoryRequest,createMemoryResponse)
+        createMemory(createMemoryRequest, createMemoryResponse)
     })
 })

@@ -13,7 +13,7 @@ import { CommandBus } from '@nestjs/cqrs';
 export class MemoriesService {
   constructor(private readonly commandBus: CommandBus) {}
 
-  async CreateMemory(
+  async createMemory(
     request: ICreateMemoryRequest
   ): Promise<ICreateMemoryResponse> {
     return await this.commandBus.execute<

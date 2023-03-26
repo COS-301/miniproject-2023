@@ -7,13 +7,13 @@ import { NestFactory } from '@nestjs/core';
 import * as functions from 'firebase-functions';
 import { CoreModule } from '../core.module';
 
-export const CreateMemory = functions.https.onCall(
+export const createMemory = functions.https.onCall(
     async (
       request: ICreateMemoryRequest
     ): Promise<ICreateMemoryResponse> => {
       const app = await NestFactory.createApplicationContext(CoreModule);
       const service = app.get(MemoriesService);
-      return service.CreateMemory(request);
+      return service.createMemory(request);
     }
   );
   
