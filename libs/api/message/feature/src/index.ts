@@ -1,1 +1,1 @@
-export * from './tests/api-post-feature';
+export * from './tests/api-message-feature;
