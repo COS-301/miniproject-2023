@@ -13,3 +13,41 @@ ion-card-title > ion-icon {
 ion-icon {
   padding-left: 5px;
 }
+
+ion-card {
+  background-color: transparent;
+  width: 100%;
+  box-shadow: none;
+}
+
+ion-avatar {
+  margin: auto;
+}
+
+.kronos {
+  color: #606060;
+  margin-bottom: 0.8em;
+}
+
+.username {
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 0.6em;
+}
+
+.statsNumber {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.statsTitle {
+  font-size: 0.8em; 
+}
+
+.bio {
+  margin-top: 2em;
+  padding: 0px 5%;
+  color: #606060;
+  font-size: 0.8em;
+}
