@@ -5,7 +5,14 @@ import * as admin from 'firebase-admin';
 @Injectable()
 export class PostRepository {
 
-  async findOne(post: IPost) {
+  
+  
+
+  
+  async findOne(profile: IPost) {
+    if(profile.postID == ""){
+      throw Error("No PostID");
+    }
     return await admin
       .firestore()
       .collection('posts')
@@ -56,12 +63,12 @@ export class PostRepository {
       .create(post);
   }
 
-  async updateLikes(profile: IPost) {
+  async updateLikes(post: IPost) {
     return await admin
       .firestore()
-      .collection('profiles')
-      .doc(profile.postID)
-      .set(profile, { merge: true });
+      .collection('post')
+      .doc(post.postID)
+      .update({post : { likes: admin.firestore.FieldValue.increment(1)}});
   }
   /*Examples from profile
 
