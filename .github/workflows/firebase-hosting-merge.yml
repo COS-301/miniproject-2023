@@ -15,5 +15,5 @@ jobs:
       - run: "echo ${{ secrets.DOTENVDOTPRODFILE }} > .env.prod"
       - run: "echo ${{ secrets.DOTFIREBASERCFILE }} > .firebaserc"
       - run: yarn install --frozen-lockfile && yarn build:app:prod
-      - run: "yarn eslint"
-      - run: "yarn jest"
+      - run: yarn eslint
+      - run: yarn jest
