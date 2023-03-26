@@ -20,7 +20,7 @@
       <ion-card-content>
         <ion-list>
           <ion-item class="ion-no-padding">
-            <ion-label position="floating" class="required"
+            <ion-label position="floating" class="required edit-profile-text"
               >Display name</ion-label
             >
             <ion-input
@@ -43,7 +43,7 @@
             <small>{{ displayNameError }}</small>
           </ion-text>
           <ion-item class="ion-no-padding">
-            <ion-label position="floating" class="required">Email</ion-label>
+            <ion-label position="floating" class="required edit-profile-text">Email</ion-label>
             <ion-input
               type="email"
               minlength="4"
@@ -61,7 +61,7 @@
             <small>{{ emailError }}</small>
           </ion-text>
           <ion-item class="ion-no-padding">
-            <ion-label position="floating" class="required">
+            <ion-label position="floating" class="required edit-profile-text">
               Password
             </ion-label>
             <ion-input
@@ -81,16 +81,18 @@
           </ion-text>
         </ion-list>
       </ion-card-content>
-      <ion-button
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12" class="ion-text-center">
+      <ion-button class="logout-profile-button"
         fill="clear"
-        class="ion-float-left"
         type="button"
         (click)="logout()">
         Logout
       </ion-button>
-      <ion-button fill="clear" class="ion-float-right" type="submit"
-        >Save</ion-button
-      >
+      <ion-button fill="clear" class="edit-profile-button ion-margin" type="submit"
+        >Save</ion-button>
+      </ion-col>
+    </ion-row>
     </ion-card>
   </form>
 </ng-container>

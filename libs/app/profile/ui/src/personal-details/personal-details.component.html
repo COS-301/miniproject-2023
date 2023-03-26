@@ -20,7 +20,7 @@
       <ion-card-content>
         <ion-list>
           <ion-item class="ion-no-padding">
-            <ion-label position="floating" class="required">Age</ion-label>
+            <ion-label position="floating" class="required edit-profile-text">Age</ion-label>
             <ion-input
               type="text"
               minlength="4"
@@ -37,7 +37,7 @@
             <small>{{ ageError }}</small>
           </ion-text>
           <ion-item class="ion-no-padding">
-            <ion-label position="floating" class="required">Gender</ion-label>
+            <ion-label position="floating" class="required edit-profile-text">Gender</ion-label>
             <ion-input
               type="text"
               minlength="4"
@@ -54,7 +54,7 @@
             <small>{{ genderError }}</small>
           </ion-text>
           <ion-item class="ion-no-padding">
-            <ion-label position="floating" class="required">
+            <ion-label position="floating" class="required edit-profile-text">
               Ethnicity
             </ion-label>
             <ion-input
@@ -76,9 +76,11 @@
           </ion-text>
         </ion-list>
       </ion-card-content>
-      <ion-button fill="clear" class="ion-float-right" type="submit"
-        >Save</ion-button
-      >
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12" class="ion-text-center">
+          <ion-button fill="clear" class="edit-profile-button ion-margin-bottom" type="submit">Save</ion-button>
+        </ion-col>
+      </ion-row>
     </ion-card>
   </form>
 </ng-container>
