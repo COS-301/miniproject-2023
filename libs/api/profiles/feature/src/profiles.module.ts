@@ -2,22 +2,22 @@ import { ProfilesModule as ProfilesDataAccessModule } from '@mp/api/profiles/dat
 import { Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
 import {
-    CreateProfileHandler,
-    UpdateAccountDetailsHandler,
-    UpdateAddressDetailsHandler,
-    UpdateContactDetailsHandler,
-    UpdateOccupationDetailsHandler,
-    UpdatePersonalDetailsHandler,
-    UpdateProfileStatusHandler
+  CreateProfileHandler,
+  UpdateAccountDetailsHandler,
+  UpdateAddressDetailsHandler,
+  UpdateContactDetailsHandler,
+  UpdateOccupationDetailsHandler,
+  UpdatePersonalDetailsHandler,
+  UpdateProfileStatusHandler,
 } from './commands';
 import {
-    AccountDetailsUpdatedHandler,
-    AddressDetailsUpdatedHandler,
-    ContactDetailsUpdatedHandler,
-    OccupationDetailsUpdatedHandler,
-    PersonalDetailsUpdatedHandler,
-    ProfileCreatedHandler,
-    ProfileStatusUpdatedHandler
+  AccountDetailsUpdatedHandler,
+  AddressDetailsUpdatedHandler,
+  ContactDetailsUpdatedHandler,
+  OccupationDetailsUpdatedHandler,
+  PersonalDetailsUpdatedHandler,
+  ProfileCreatedHandler,
+  ProfileStatusUpdatedHandler,
 } from './events';
 import { ProfilesSagas } from './profiles.sagas';
 import { ProfilesService } from './profiles.service';
@@ -42,12 +42,7 @@ export const EventHandlers = [
 
 @Module({
   imports: [CqrsModule, ProfilesDataAccessModule],
-  providers: [
-    ProfilesService,
-    ...CommandHandlers,
-    ...EventHandlers,
-    ProfilesSagas,
-  ],
+  providers: [ProfilesService, ...CommandHandlers, ...EventHandlers, ProfilesSagas],
   exports: [ProfilesService],
 })
 export class ProfilesModule {}
