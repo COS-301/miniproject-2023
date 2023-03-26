@@ -1,8 +1,5 @@
 import { IProfile } from '../interfaces';
 
-export interface IUpdateAccountDetailsRequest {
+export interface IUpdateAccountVisibilityRequest {
   profile: IProfile;
 }
-
-
-

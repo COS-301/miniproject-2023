@@ -1,19 +1,22 @@
 import { ProfilesService } from '@mp/api/profiles/feature';
 import {
     IUpdateAccountDetailsRequest,
-    IUpdateAccountDetailsResponse,
-    IUpdateAddressDetailsRequest,
-    IUpdateAddressDetailsResponse,
+    IUpdateAccountDetailsResponse,  
+    IUpdateAccountVisibilityRequest, 
+    IUpdateAccountVisibilityResponse, 
+    // IUpdateAddressDetailsRequest, //
+    // IUpdateAddressDetailsResponse, //
     IUpdateContactDetailsRequest,
     IUpdateContactDetailsResponse,
-    IUpdateOccupationDetailsRequest,
-    IUpdateOccupationDetailsResponse,
+    // IUpdateOccupationDetailsRequest, //
+    // IUpdateOccupationDetailsResponse, //
     IUpdatePersonalDetailsRequest,
     IUpdatePersonalDetailsResponse
 } from '@mp/api/profiles/util';
 import { NestFactory } from '@nestjs/core';
 import * as functions from 'firebase-functions';
 import { CoreModule } from '../core.module';
+
 
 export const updateAccountDetails = functions.https.onCall(
   async (
@@ -25,15 +28,16 @@ export const updateAccountDetails = functions.https.onCall(
   }
 );
 
-export const updateAddressDetails = functions.https.onCall(
-  async (
-    request: IUpdateAddressDetailsRequest
-  ): Promise<IUpdateAddressDetailsResponse> => {
-    const app = await NestFactory.createApplicationContext(CoreModule);
-    const service = app.get(ProfilesService);
-    return service.updateAddressDetails(request);
-  }
-);
+// may not be needed
+// export const updateAddressDetails = functions.https.onCall(
+//   async (
+//     request: IUpdateAddressDetailsRequest
+//   ): Promise<IUpdateAddressDetailsResponse> => {
+//     const app = await NestFactory.createApplicationContext(CoreModule);
+//     const service = app.get(ProfilesService);
+//     return service.updateAddressDetails(request);
+//   }
+// );
 
 export const updateContactDetails = functions.https.onCall(
   async (
@@ -55,12 +59,24 @@ export const updatePersonalDetails = functions.https.onCall(
   }
 );
 
-export const updateOccupationDetails = functions.https.onCall(
+
+export const updateAccountVisibility =  functions.https.onCall(
   async (
-    request: IUpdateOccupationDetailsRequest
-  ): Promise<IUpdateOccupationDetailsResponse> => {
-    const app = await NestFactory.createApplicationContext(CoreModule);
-    const service = app.get(ProfilesService);
-    return service.updateOccupationDetails(request);
+    request:IUpdateAccountVisibilityRequest
+  ): Promise<IUpdateAccountVisibilityResponse> => {
+    // Update Account visibility code to be done here
+    //...
   }
-);
+); 
+
+
+// may not be needed
+// export const updateOccupationDetails = functions.https.onCall(
+//   async (
+//     request: IUpdateOccupationDetailsRequest
+//   ): Promise<IUpdateOccupationDetailsResponse> => {
+//     const app = await NestFactory.createApplicationContext(CoreModule);
+//     const service = app.get(ProfilesService);
+//     return service.updateOccupationDetails(request);
+//   }
+// );

@@ -1,19 +1,22 @@
 import {
     IUpdateAccountDetailsRequest,
     IUpdateAccountDetailsResponse,
-    IUpdateAddressDetailsRequest,
-    IUpdateAddressDetailsResponse,
+    IUpdateAccountVisibilityRequest,
+    IUpdateAccountVisibilityResponse,
+    // IUpdateAddressDetailsRequest, //
+    // IUpdateAddressDetailsResponse, //
     IUpdateContactDetailsRequest,
     IUpdateContactDetailsResponse,
-    IUpdateOccupationDetailsRequest,
-    IUpdateOccupationDetailsResponse,
+    // IUpdateOccupationDetailsRequest, //
+    // IUpdateOccupationDetailsResponse,//
     IUpdatePersonalDetailsRequest,
     IUpdatePersonalDetailsResponse,
     UpdateAccountDetailsCommand,
-    UpdateAddressDetailsCommand,
+    // UpdateAddressDetailsCommand, //
     UpdateContactDetailsCommand,
-    UpdateOccupationDetailsCommand,
+    // UpdateOccupationDetailsCommand, //
     UpdatePersonalDetailsCommand
+
 } from '@mp/api/profiles/util';
 import { Injectable } from '@nestjs/common';
 import { CommandBus } from '@nestjs/cqrs';
@@ -31,14 +34,16 @@ export class ProfilesService {
     >(new UpdateAccountDetailsCommand(request));
   }
 
-  async updateAddressDetails(
-    request: IUpdateAddressDetailsRequest
-  ): Promise<IUpdateAddressDetailsResponse> {
-    return await this.commandBus.execute<
-      UpdateAddressDetailsCommand,
-      IUpdateAddressDetailsResponse
-    >(new UpdateAddressDetailsCommand(request));
-  }
+
+   /// may be removed
+  // async updateAddressDetails(
+  //   request: IUpdateAddressDetailsRequest
+  // ): Promise<IUpdateAddressDetailsResponse> {
+  //   return await this.commandBus.execute<
+  //     UpdateAddressDetailsCommand,
+  //     IUpdateAddressDetailsResponse
+  //   >(new UpdateAddressDetailsCommand(request));
+  // }
 
   async updateContactDetails(
     request: IUpdateContactDetailsRequest
@@ -58,12 +63,21 @@ export class ProfilesService {
     >(new UpdatePersonalDetailsCommand(request));
   }
 
-  async updateOccupationDetails(
-    request: IUpdateOccupationDetailsRequest
-  ): Promise<IUpdateOccupationDetailsResponse> {
-    return await this.commandBus.execute<
-      UpdateOccupationDetailsCommand,
-      IUpdateOccupationDetailsResponse
-    >(new UpdateOccupationDetailsCommand(request));
-  }
+  async updateAccountVisibility (
+      request:IUpdateAccountVisibilityRequest
+    ): Promise<IUpdateAccountVisibilityResponse> {
+      // Update Account visibility code to be done here
+      //...
+    }
+
+
+  //may be removed
+  // async updateOccupationDetails(
+  //   request: IUpdateOccupationDetailsRequest
+  // ): Promise<IUpdateOccupationDetailsResponse> {
+  //   return await this.commandBus.execute<
+  //     UpdateOccupationDetailsCommand,
+  //     IUpdateOccupationDetailsResponse
+  //   >(new UpdateOccupationDetailsCommand(request));
+  // }
 }
