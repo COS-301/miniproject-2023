@@ -35,7 +35,38 @@ export class DashboardPage {
   ]
 
   isSearchbarVisible = false;
-  kronos = "06:09:42"
+  // deathTime = 3132079200
+  deathTime = Date.now() / 1000 + 10;
+  kronos = ""
+
+  kronosTimer = setInterval(() => {
+    const counter = this.deathTime - Date.now()/1000;
+    this.kronos = this.displayKronos(counter);
+  }, 1000)
+
+  // Convert a unix timestamp to a kronos string
+  displayKronos(timeDelta : number) {
+    if (timeDelta < 0)
+    {
+      return "DEAD xP";
+    }
+
+    const [years, days, hours, minutes, seconds] = [
+      Math.floor( timeDelta / (60*60*24*365)),
+      Math.floor((timeDelta % (60*60*24*365)) / 86400).toString().padStart(3, '0'),
+      Math.floor((timeDelta % (60*60*24)) / 3600).toString().padStart(2, '0'),
+      Math.floor((timeDelta % (60*60)) / 60).toString().padStart(2, '0'),
+      Math.floor( timeDelta % (60)).toString().padStart(2, '0'),
+    ];
+
+    // YY:DD:HH:MM:SS
+    if (years < 1) {
+      return `${days}:${hours}:${minutes}:${seconds}`
+    }
+    else {
+      return `${years}:${days}:${hours}:${minutes}:${seconds}`
+    }
+  }
 
   toggleSearchbar() {
     this.isSearchbarVisible = !this.isSearchbarVisible;
