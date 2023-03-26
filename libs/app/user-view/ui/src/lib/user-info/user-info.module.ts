@@ -4,16 +4,9 @@ import { UserInfoComponent } from './user-info.component';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
-
 @NgModule({
   declarations: [UserInfoComponent],
-  imports: [
-    CommonModule,
-    IonicModule,
-    RouterModule
-  ],
-  exports: [
-    UserInfoComponent
-  ]
+  imports: [CommonModule, IonicModule, RouterModule],
+  exports: [UserInfoComponent],
 })
-export class UserInfoModule { }
+export class UserInfoModule {}

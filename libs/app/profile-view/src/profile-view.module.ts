@@ -10,16 +10,7 @@ import { SharedModule } from '@mp/app/shared';
 
 @NgModule({
   imports: [CommonModule, ProfileViewRouting, IonicModule, FormsModule, SharedModule],
-  declarations: [
-    ProfileViewPageComponent,
-    EditProfilePhotoPageComponent,
-    ReviveMemoryPageComponent,
-    
-  ],
-  exports: [
-    ProfileViewPageComponent,
-    EditProfilePhotoPageComponent,
-    ReviveMemoryPageComponent,
-  ],
+  declarations: [ProfileViewPageComponent, EditProfilePhotoPageComponent, ReviveMemoryPageComponent],
+  exports: [ProfileViewPageComponent, EditProfilePhotoPageComponent, ReviveMemoryPageComponent],
 })
 export class ProfileViewModule {}

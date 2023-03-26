@@ -8,11 +8,11 @@ import { AlertController, ToastController } from '@ionic/angular';
 })
 export class UserViewPageComponent {
   added = false;
-  btn_text = "Send friend request";
+  btn_text = 'Send friend request';
   handlerMessage = '';
-  roleMessage = ''
-  
-  constructor(private alertController: AlertController, private toastController : ToastController) {}
+  roleMessage = '';
+
+  constructor(private alertController: AlertController, private toastController: ToastController) {}
 
   async presentAlert() {
     const alert = await this.alertController.create({
@@ -48,7 +48,7 @@ export class UserViewPageComponent {
       message: 'Unfriended <user name>',
       duration: 1600,
       position: position,
-      color: 'danger'
+      color: 'danger',
     });
 
     await toast.present();
@@ -56,11 +56,11 @@ export class UserViewPageComponent {
 
   addedNewFriend() {
     this.added = true;
-    this.btn_text = "You are friends";
+    this.btn_text = 'You are friends';
   }
 
   removeFriend() {
     this.added = false;
-    this.btn_text = "Send friend request";
+    this.btn_text = 'Send friend request';
   }
 }

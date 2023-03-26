@@ -1,2 +1,2 @@
-export * from "./user-info.module"
-export * from "./user-info.component"
+export * from './user-info.module';
+export * from './user-info.component';

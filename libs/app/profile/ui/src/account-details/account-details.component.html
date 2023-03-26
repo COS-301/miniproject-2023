@@ -1,28 +1,21 @@
 <ng-container *ngIf="profile$ | async as profile; else loading">
-  <form
-    [formGroup]="accountDetailsForm"
-    ngxsForm="profile.accountDetailsForm"
-    (submit)="updateAccountDetails()">
+  <form [formGroup]="accountDetailsForm" ngxsForm="profile.accountDetailsForm" (submit)="updateAccountDetails()">
     <ion-card *ngIf="profile.accountDetails as accountDetails">
       <ion-card-header>
         <ion-card-title class="ion-align-items-center">
           Account Details
-          <ion-icon
-            *ngIf="accountDetails.status == 'Incomplete'"
-            color="danger"
-            name="alert-circle-outline"></ion-icon>
+          <ion-icon *ngIf="accountDetails.status == 'Incomplete'" color="danger" name="alert-circle-outline"></ion-icon>
           <ion-icon
             *ngIf="accountDetails.status == 'Complete'"
             color="success"
-            name="checkmark-circle-outline"></ion-icon>
+            name="checkmark-circle-outline"
+          ></ion-icon>
         </ion-card-title>
       </ion-card-header>
       <ion-card-content>
         <ion-list>
           <ion-item class="ion-no-padding">
-            <ion-label position="floating" class="required"
-              >Display name</ion-label
-            >
+            <ion-label position="floating" class="required">Display name</ion-label>
             <ion-input
               type="text"
               minlength="4"
@@ -31,15 +24,14 @@
               placeholder="Enter display name"
               formControlName="displayName"
               [value]="accountDetails.displayName"
-              autocomplete="name"></ion-input>
+              autocomplete="name"
+            ></ion-input>
           </ion-item>
           <ion-text
-            *ngIf="
-              displayName?.invalid &&
-              (displayName?.dirty || displayName?.touched)
-            "
+            *ngIf="displayName?.invalid && (displayName?.dirty || displayName?.touched)"
             class="ion-padding-start"
-            color="danger">
+            color="danger"
+          >
             <small>{{ displayNameError }}</small>
           </ion-text>
           <ion-item class="ion-no-padding">
@@ -52,18 +44,14 @@
               placeholder="Enter email"
               formControlName="email"
               [value]="accountDetails.email"
-              autocomplete="email"></ion-input>
+              autocomplete="email"
+            ></ion-input>
           </ion-item>
-          <ion-text
-            *ngIf="email?.invalid && (email?.dirty || email?.touched)"
-            class="ion-padding-start"
-            color="danger">
+          <ion-text *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="ion-padding-start" color="danger">
             <small>{{ emailError }}</small>
           </ion-text>
           <ion-item class="ion-no-padding">
-            <ion-label position="floating" class="required">
-              Password
-            </ion-label>
+            <ion-label position="floating" class="required"> Password </ion-label>
             <ion-input
               type="password"
               minlength="4"
@@ -71,27 +59,22 @@
               placeholder="Enter password"
               required="true"
               formControlName="password"
-              autocomplete="password"></ion-input>
+              autocomplete="password"
+            ></ion-input>
           </ion-item>
           <ion-text
             *ngIf="password?.invalid && (password?.dirty || password?.touched)"
             class="ion-padding-start"
-            color="danger">
+            color="danger"
+          >
             <small>{{ passwordError }}</small>
           </ion-text>
         </ion-list>
       </ion-card-content>
-      <ion-button
-        fill="clear"
-        class="ion-float-left"
-        type="button"
-        (click)="logout()"
-        color="danger">
+      <ion-button fill="clear" class="ion-float-left" type="button" (click)="logout()" color="danger">
         Logout
       </ion-button>
-      <ion-button fill="clear" class="ion-float-right" type="submit"
-        >Save</ion-button
-      >
+      <ion-button fill="clear" class="ion-float-right" type="submit">Save</ion-button>
     </ion-card>
   </form>
 </ng-container>
@@ -99,10 +82,7 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ngx-skeleton-loader
-          count="1"
-          [theme]="{ height: '150px' }"
-          appearance="line"></ngx-skeleton-loader>
+        <ngx-skeleton-loader count="1" [theme]="{ height: '150px' }" appearance="line"></ngx-skeleton-loader>
       </ion-col>
     </ion-row>
   </ion-grid>

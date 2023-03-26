@@ -6,7 +6,6 @@ import { IonicModule } from '@ionic/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ActivatedRoute } from '@angular/router';
 
-
 describe('SearchResultsPage', () => {
   let component1: SearchResultsPageComponent;
   let component2: SearchPageComponent;
@@ -35,7 +34,7 @@ describe('SearchResultsPage', () => {
     }).compileComponents();
   });
 
-  beforeEach( () => {
+  beforeEach(() => {
     fixture1 = TestBed.createComponent(SearchResultsPageComponent);
     fixture2 = TestBed.createComponent(SearchPageComponent);
     component1 = fixture1.componentInstance;
@@ -45,24 +44,24 @@ describe('SearchResultsPage', () => {
   });
 
   it('should change current filter to "Memories" when calling the setFilter("Memories") function', () => {
-    component2.onSearch('example');//we first need to navigate to the search-results page to run unit tests
+    component2.onSearch('example'); //we first need to navigate to the search-results page to run unit tests
 
     component1.setFilter('Memories');
 
-    expect(component1.currentFilter).toEqual("Memories");
+    expect(component1.currentFilter).toEqual('Memories');
   });
 
   it('should change the variable showExpandedView to true when calling the changeMemoryView() function for the first time', () => {
-    component2.onSearch('example');//we first need to navigate to the search-results page to run unit tests
-    
+    component2.onSearch('example'); //we first need to navigate to the search-results page to run unit tests
+
     component1.changeMemoryView();
 
     expect(component1.showExpandedView).toBeTruthy();
   });
 
   it('should toggle the variable showExpandedView to true and then to false when calling changeMemoryView() twice', () => {
-    component2.onSearch('example');//we first need to navigate to the search-results page to run unit tests
-    
+    component2.onSearch('example'); //we first need to navigate to the search-results page to run unit tests
+
     component1.changeMemoryView();
     component1.changeMemoryView();
 

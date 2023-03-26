@@ -6,6 +6,5 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [CommonModule, SharedModule, IonicModule, FormsModule],
-
 })
 export class AddMemoryModule {}

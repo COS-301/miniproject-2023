@@ -26,12 +26,11 @@ describe('SearchPageComponent', () => {
   //   expect(component).toBeTruthy();
   // });
 
-
   //my tests (Reuben Jooste u21457060)
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [SearchPageComponent],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SearchPageComponent);

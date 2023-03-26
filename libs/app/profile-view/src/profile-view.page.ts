@@ -17,7 +17,7 @@ export class ProfileViewPageComponent implements OnInit {
   constructor(
     public modalController: ModalController,
     private profileImageService: ProfileImageService,
-    private menubarService: MenubarService
+    private menubarService: MenubarService,
   ) {
     this.profileImage = profileImageService.profileImage;
   }

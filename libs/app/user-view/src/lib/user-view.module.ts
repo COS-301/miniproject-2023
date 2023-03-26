@@ -5,11 +5,7 @@ import { UserViewRouting } from './user-view.routing';
 import { IonicModule } from '@ionic/angular';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    UserViewRouting,
-    IonicModule
-  ],
+  imports: [CommonModule, UserViewRouting, IonicModule],
   declarations: [UserViewPageComponent],
 })
 export class UserViewModule {}
