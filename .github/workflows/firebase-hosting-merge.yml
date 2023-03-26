@@ -11,6 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: "echo ${{ secrets.GITHUB_TOKEN }} > .env"
+      - run: "echo ${{ secrets.GITHUB_TOKEN }} > .env.prod"
+      - run: "yarn eslint"
+      - run: "yarn jest"
       - run: yarn install --frozen-lockfile && yarn build:app:prod
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
