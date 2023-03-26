@@ -22,6 +22,7 @@ const routes: Routes = [
       {
         path: 'search-page',
         loadChildren: () =>
+          // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
           import('@mp/app/search-page').then((m) => m.SearchPageModule),
       },
       {

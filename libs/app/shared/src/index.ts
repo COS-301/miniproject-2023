@@ -7,3 +7,5 @@ export * from './lib/Memory';
 export * from './lib/add-memory/add-memory.page';
 
 export * from './lib/ProfileImage';
+
+export * from './lib/memory-card/memory-card.routing';

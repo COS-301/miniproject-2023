@@ -8,11 +8,11 @@
             <ion-avatar slot="start">
                 <img src="{{ memory.profileUrl }}" 
                     [ngClass]="{'memory-card-profileImage': !showExpandedView, 'memory-card-profileImage-expanded': showExpandedView}" 
-                    routerLink="/user-view"/>
+                    (click)="openUserProfile()"/>
             </ion-avatar>
             <ion-card-title 
                 [ngClass]="{'memory-card-username': !showExpandedView, 'memory-card-username-expanded': showExpandedView}" 
-                routerLink="/user-view"
+                (click)="openUserProfile()"
                 >{{ memory.username }}</ion-card-title>
             <ion-text 
                 [ngClass]="{'memory-card-time-ago': !showExpandedView, 'memory-card-time-ago-expanded': showExpandedView}"
