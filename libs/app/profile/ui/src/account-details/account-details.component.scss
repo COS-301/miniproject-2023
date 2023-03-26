@@ -46,6 +46,10 @@
     --dl-space-space-oneandhalfunits: 24px;
 }
 
+header {
+    color: rgba(9, 15, 28, 1);
+}
+
 .edit-profile-button {
     width: 262px;
     height: 40px;
@@ -70,4 +74,13 @@
     border-width: 2px;
     border-radius: 30px;
     background-color: rgba(255, 255, 255, 1);
+}
+
+.edit-profile-text {
+    color: rgba(79, 130, 181, 1);
+    align-self: auto;
+    font-style: Medium;
+    text-align: left;
+    font-stretch: normal;
+    text-decoration: none;
 }
