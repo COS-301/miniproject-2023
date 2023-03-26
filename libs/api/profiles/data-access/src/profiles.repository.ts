@@ -1,5 +1,5 @@
 import { IProfile } from '@mp/api/profiles/util';
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotImplementedException } from '@nestjs/common';
 import * as admin from 'firebase-admin';
 
 @Injectable()
@@ -36,5 +36,9 @@ export class ProfilesRepository {
       .collection('profiles')
       .doc(profile.userId)
       .set(profile, { merge: true });
+  }
+
+  async getProfile(profile: IProfile) {
+    return NotImplementedException;
   }
 }
