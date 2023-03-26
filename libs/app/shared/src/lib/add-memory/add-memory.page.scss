@@ -1,0 +1,135 @@
+.modal-list {
+  background-color: transparent;
+}
+
+.modal-list-item {
+  border: 1px solid #ffffff;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  width: 99%;
+}
+
+.modal-list-input {
+  background-color: #ffffff;
+  border-radius: 5px;
+  font-size: 18px;
+  color: #000000;
+  margin-left: 5px;
+  --padding-start: 10px;
+  --padding-end: 10px;
+}
+
+.description {
+  display: flex;
+  justify-content: space-around;
+  height: 200px;
+}
+
+.description-text {
+  margin: auto;
+  position: absolute;
+  left: 0;
+  height: 120px;
+  top: 30%;
+  --padding-start: 10px;
+  --padding-end: 10px;
+}
+
+.date-display,
+.buttons {
+  background-color: transparent;
+}
+
+.date,
+.preview {
+  font-size: 20px;
+  font-weight: bold;
+  color: gray;
+  margin: 40px 0px;
+}
+
+.button-add,
+.button-cancel {
+  font-size: 25px;
+  margin-top: 20px;
+  height: 40px;
+  width: 100px;
+  color: #ffffff;
+}
+
+.button-add {
+  --background: #08ff08cd;
+}
+
+.button-cancel {
+  --background: #ff0000;
+}
+
+.memory-card {
+  border: 3px solid #686868;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+  height: 280px;
+  color: #ffffff;
+  // text-align: center;
+}
+.memory-card-title {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  position: absolute;
+  top: 20px;
+  left: 40px;
+}
+.memory-card-desc {
+  font-family: 'Inter';
+  font-style: normal;
+  letter-spacing: 1px;
+  font-weight: 600;
+  font-size: 15px;
+  position: absolute;
+  width: 212px;
+  height: 68px;
+  left: 40px;
+  top: 40px;
+}
+.memory-card-timer {
+  font-family: 'Lato';
+  color: #000000;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  position: absolute;
+  padding: 2px;
+  top: 100px;
+  margin-top: 60px;
+  right: 20px;
+  background-color: #dddddd;
+  border-radius: 5px;
+}
+.btn-add-time {
+  font-family: 'Lato';
+  color: #ffffff;
+  font-style: normal;
+  font-weight: bolder;
+  font-size: 25px;
+  position: absolute;
+  // width: 97px;
+  top: 95px;
+  margin-top: 60px;
+  right: 85px;
+}
+.memory-date {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  position: absolute;
+  width: 212px;
+  height: 68px;
+  top: 100px;
+  margin-top: 70px;
+  right: 0;
+}

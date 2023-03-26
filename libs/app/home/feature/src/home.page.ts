@@ -4,6 +4,7 @@ import { ProfileState } from '@mp/app/profile/data-access';
 import { SubscribeToProfile } from '@mp/app/profile/util';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
+import { MenubarService } from '@mp/app/services';
 
 @Component({
   selector: 'ms-home-page',
@@ -13,7 +14,15 @@ import { Observable } from 'rxjs';
 export class HomePage {
   @Select(ProfileState.profile) profile$!: Observable<IProfile | null>;
 
-  constructor(private readonly store: Store) {}
+  menuShown: boolean;
+
+  constructor(private readonly store: Store, private menubarService: MenubarService) {
+    this.menuShown = this.menubarService.menuStatus;
+  }
+
+  getMenuStatus() {
+    return this.menubarService.menuStatus;
+  }
 
   ionViewWillEnter() {
     this.store.dispatch(new SubscribeToProfile());

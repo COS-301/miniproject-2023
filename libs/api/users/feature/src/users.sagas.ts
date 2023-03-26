@@ -10,7 +10,7 @@ export class UsersSagas {
   onAuthCreated = (events$: Observable<any>): Observable<ICommand> => {
     return events$.pipe(
       ofType(AuthCreatedEvent),
-      map((event) => new CreateUserCommand({ auth: event.auth }))
+      map((event) => new CreateUserCommand({ auth: event.auth })),
     );
   };
 }
