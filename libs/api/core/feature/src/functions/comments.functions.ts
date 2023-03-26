@@ -15,7 +15,7 @@ export const CreateComment = functions.https.onCall(
     ): Promise<ICreateCommentResponse> => {
       const app = await NestFactory.createApplicationContext(CoreModule);
       const service = app.get(CommentsService);
-      return service.CreateComment(request);
+      return service.createComment(request);
     }
   );
 
@@ -25,6 +25,6 @@ export const CreateComment = functions.https.onCall(
     ): Promise<IEditCommentResponse> => {
       const app = await NestFactory.createApplicationContext(CoreModule);
       const service = app.get(CommentsService);
-      return service.EditComment(request);
+      return service.editComment(request);
     }
   );

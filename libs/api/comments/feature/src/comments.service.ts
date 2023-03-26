@@ -12,10 +12,10 @@ import { Injectable } from '@nestjs/common';
 import { CommandBus } from '@nestjs/cqrs';
 
 @Injectable()
-export class CommentService {
+export class CommentsService {
 constructor(private readonly commandBus: CommandBus) {}
 
-async CreateComment(
+async createComment(
 request: ICreateCommentRequest
 ): Promise<ICreateCommentResponse> {
 return await this.commandBus.execute<
@@ -24,7 +24,7 @@ return await this.commandBus.execute<
 >(new CommentCreatedEvent(request.comment));
 }
 
-async EditComment(
+async editComment(
     request: IEditCommentRequest
     ): Promise<IEditCommentResponse> {
     return await this.commandBus.execute<

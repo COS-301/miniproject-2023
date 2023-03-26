@@ -2,17 +2,17 @@ import { CommentModule as CommentDataAccessModule } from '@mp/api/comments/data-
 import { Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
 import {
-    CreateCommentHanlder,
+    CreateCommentHandler,
 } from './commands';
 import {
     CommentCreatedHandler,
     
 } from './events';
 import { CommentsSagas } from './comments.sagas';
-import { CommentService } from './comments.service';
+import { CommentsService } from './comments.service';
 
 export const CommandHandlers = [
-  CreateCommentHanlder,
+  CreateCommentHandler,
 ];
 export const EventHandlers = [
   CommentCreatedHandler,
@@ -21,11 +21,11 @@ export const EventHandlers = [
 @Module({
   imports: [CqrsModule, CommentDataAccessModule],
   providers: [
-    CommentService,
+    CommentsService,
     ...CommandHandlers,
     ...EventHandlers,
     CommentsSagas,
   ],
-  exports: [CommentService],
+  exports: [CommentsService],
 })
 export class CommentsModule {}

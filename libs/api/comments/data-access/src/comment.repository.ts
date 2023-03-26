@@ -10,7 +10,7 @@ export class CommentRepository{
     return null;  
    }
 
-   async editComent(comment: IComment){
+   async editComment(comment: IComment){
     
     return null;
    }

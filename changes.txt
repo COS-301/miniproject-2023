@@ -1,0 +1,183 @@
+diff --git a/libs/api/comments/data-access/src/comment.repository.ts b/libs/api/comments/data-access/src/comment.repository.ts
+index d7661dd..ea6bdba 100644
+--- a/libs/api/comments/data-access/src/comment.repository.ts
++++ b/libs/api/comments/data-access/src/comment.repository.ts
+@@ -10,7 +10,7 @@ export class CommentRepository{
+     return null;  
+    }
+ 
+-   async editComent(comment: IComment){
++   async editComment(comment: IComment){
+     
+     return null;
+    }
+diff --git a/libs/api/comments/feature/src/commands/create-comment.handler.ts b/libs/api/comments/feature/src/commands/create-comment.handler.ts
+index 8b3ef76..8742841 100644
+--- a/libs/api/comments/feature/src/commands/create-comment.handler.ts
++++ b/libs/api/comments/feature/src/commands/create-comment.handler.ts
+@@ -3,7 +3,7 @@ import { CommandHandler,ICommandHandler,EventPublisher } from "@nestjs/cqrs";
+ import { Comment } from "../../../../comments/feature/src/models";
+ 
+ @CommandHandler(CreateCommentCommand)
+-export class CreateCommentHanlder implements ICommandHandler<CommentCreatedEvent>{
++export class CreateCommentHandler implements ICommandHandler<CommentCreatedEvent>{
+     constructor(private publisher:EventPublisher){}
+ 
+     //TODO implement
+diff --git a/libs/api/comments/feature/src/commands/edit-comment.handler.ts b/libs/api/comments/feature/src/commands/edit-comment.handler.ts
+index 7a642a7..3680526 100644
+--- a/libs/api/comments/feature/src/commands/edit-comment.handler.ts
++++ b/libs/api/comments/feature/src/commands/edit-comment.handler.ts
+@@ -3,7 +3,7 @@ import { CommandHandler,ICommandHandler,EventPublisher } from "@nestjs/cqrs";
+ import { Comment } from "../../../../comments/feature/src/models";
+ 
+ @CommandHandler(CreateCommentCommand)
+-export class EditCommentHanlder implements ICommandHandler<CommentEditedEvent>{
++export class EditCommentHandler implements ICommandHandler<CommentEditedEvent>{
+     constructor(private publisher:EventPublisher){}
+ 
+     //TODO implement
+diff --git a/libs/api/comments/feature/src/comments.module.ts b/libs/api/comments/feature/src/comments.module.ts
+index bdfb518..8025a2e 100644
+--- a/libs/api/comments/feature/src/comments.module.ts
++++ b/libs/api/comments/feature/src/comments.module.ts
+@@ -2,17 +2,17 @@ import { CommentModule as CommentDataAccessModule } from '@mp/api/comments/data-
+ import { Module } from '@nestjs/common';
+ import { CqrsModule } from '@nestjs/cqrs';
+ import {
+-    CreateCommentHanlder,
++    CreateCommentHandler,
+ } from './commands';
+ import {
+     CommentCreatedHandler,
+     
+ } from './events';
+ import { CommentsSagas } from './comments.sagas';
+-import { CommentService } from './comments.service';
++import { CommentsService } from './comments.service';
+ 
+ export const CommandHandlers = [
+-  CreateCommentHanlder,
++  CreateCommentHandler,
+ ];
+ export const EventHandlers = [
+   CommentCreatedHandler,
+@@ -21,11 +21,11 @@ export const EventHandlers = [
+ @Module({
+   imports: [CqrsModule, CommentDataAccessModule],
+   providers: [
+-    CommentService,
++    CommentsService,
+     ...CommandHandlers,
+     ...EventHandlers,
+     CommentsSagas,
+   ],
+-  exports: [CommentService],
++  exports: [CommentsService],
+ })
+ export class CommentsModule {}
+\ No newline at end of file
+diff --git a/libs/api/comments/feature/src/comments.service.ts b/libs/api/comments/feature/src/comments.service.ts
+index 9eeb72e..41023d8 100644
+--- a/libs/api/comments/feature/src/comments.service.ts
++++ b/libs/api/comments/feature/src/comments.service.ts
+@@ -12,10 +12,10 @@ import { Injectable } from '@nestjs/common';
+ import { CommandBus } from '@nestjs/cqrs';
+ 
+ @Injectable()
+-export class CommentService {
++export class CommentsService {
+ constructor(private readonly commandBus: CommandBus) {}
+ 
+-async CreateComment(
++async createComment(
+ request: ICreateCommentRequest
+ ): Promise<ICreateCommentResponse> {
+ return await this.commandBus.execute<
+@@ -24,7 +24,7 @@ return await this.commandBus.execute<
+ >(new CommentCreatedEvent(request.comment));
+ }
+ 
+-async EditComment(
++async editComment(
+     request: IEditCommentRequest
+     ): Promise<IEditCommentResponse> {
+     return await this.commandBus.execute<
+diff --git a/libs/api/comments/util/src/index.ts b/libs/api/comments/util/src/index.ts
+index 48620f5..41f14b2 100644
+--- a/libs/api/comments/util/src/index.ts
++++ b/libs/api/comments/util/src/index.ts
+@@ -1,6 +1,6 @@
+ export * from './lib/api-comments-util';
+ export * from './commands';
+ export * from './interfaces';
+-export * from './responces';
++export * from './responses';
+ export * from './events';
+ export * from './requests';
+\ No newline at end of file
+diff --git a/libs/api/comments/util/src/responces/create-comment.response.ts b/libs/api/comments/util/src/responces/create-comment.response.ts
+deleted file mode 100644
+index 50edd67..0000000
+--- a/libs/api/comments/util/src/responces/create-comment.response.ts
++++ /dev/null
+@@ -1,5 +0,0 @@
+-import { IComment} from '../interfaces';
+-
+-export interface ICreateCommentResponse {
+-  comment: IComment;
+-}
+diff --git a/libs/api/comments/util/src/responces/edit-comment.response.ts b/libs/api/comments/util/src/responces/edit-comment.response.ts
+deleted file mode 100644
+index 47e1488..0000000
+--- a/libs/api/comments/util/src/responces/edit-comment.response.ts
++++ /dev/null
+@@ -1,5 +0,0 @@
+-import { IComment} from '../interfaces';
+-
+-export interface IEditCommentResponse {
+-  comment: IComment;
+-}
+diff --git a/libs/api/comments/util/src/responces/index.ts b/libs/api/comments/util/src/responces/index.ts
+deleted file mode 100644
+index 834fcc2..0000000
+--- a/libs/api/comments/util/src/responces/index.ts
++++ /dev/null
+@@ -1,2 +0,0 @@
+-export * from './create-comment.response';
+-export * from './edit-comment.response';
+\ No newline at end of file
+diff --git a/libs/api/core/feature/src/functions/comments.functions.ts b/libs/api/core/feature/src/functions/comments.functions.ts
+index 98f1551..7b9540d 100644
+--- a/libs/api/core/feature/src/functions/comments.functions.ts
++++ b/libs/api/core/feature/src/functions/comments.functions.ts
+@@ -15,7 +15,7 @@ export const CreateComment = functions.https.onCall(
+     ): Promise<ICreateCommentResponse> => {
+       const app = await NestFactory.createApplicationContext(CoreModule);
+       const service = app.get(CommentsService);
+-      return service.CreateComment(request);
++      return service.createComment(request);
+     }
+   );
+ 
+@@ -25,6 +25,6 @@ export const CreateComment = functions.https.onCall(
+     ): Promise<IEditCommentResponse> => {
+       const app = await NestFactory.createApplicationContext(CoreModule);
+       const service = app.get(CommentsService);
+-      return service.EditComment(request);
++      return service.editComment(request);
+     }
+   );
+\ No newline at end of file
+diff --git a/libs/api/memories/feature/tsconfig.lib.json b/libs/api/memories/feature/tsconfig.lib.json
+index 5cb5f92..18f2d37 100644
+--- a/libs/api/memories/feature/tsconfig.lib.json
++++ b/libs/api/memories/feature/tsconfig.lib.json
+@@ -5,6 +5,6 @@
+     "declaration": true,
+     "types": ["node"]
+   },
+-  "include": ["src/**/*.ts", "../../comments/feature/src/commands/create-comment.handler.ts"],
++  "include": ["src/**/*.ts"],
+   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
+ }
