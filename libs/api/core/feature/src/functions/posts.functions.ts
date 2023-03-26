@@ -6,6 +6,7 @@ import {
  } from '@mp/api/postss/util';
 import { QueryBus } from '@nestjs/cqrs';
 import { IPost } from '@mp/api/postss/util';
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { PostService, CommentService, BuyService} from '@mp/api/postss/feature';
 
 /*

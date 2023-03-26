@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IProfile } from '@mp/api/profiles/util';
-import { PostsState } from '@mp/app/postss/data-access';
+import { PostState } from '@mp/app/postss/data-access';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 
@@ -10,5 +10,5 @@ import { Observable } from 'rxjs';
   styleUrls: ['./post.component.scss'],
 })
 export class PostComponent {
-  @Select(PostsState.post) profile$!: Observable<IProfile | null>;
+  @Select(PostState.post) profile$!: Observable<IProfile | null>;
 }

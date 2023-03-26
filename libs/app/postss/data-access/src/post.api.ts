@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { collection, collectionData, doc, docData, Firestore, query, where } from '@angular/fire/firestore';
+import { collection, collectionData, doc, docData, Firestore, getDocs, query, where } from '@angular/fire/firestore';
 import { Functions, httpsCallable } from '@angular/fire/functions';
 import { updateDoc, getDoc } from "firebase/firestore";
 
@@ -10,12 +10,18 @@ import {
   IGetPostResponse,
   IPost,
   IPosts,
-  Hashtag
+  Hashtag,
+  ICommentOnPostRequest,
+  ICommentOnPostResponse,
+  IBuyPostRequest,
+  IBuyPostResponse,
+  IComment
 
 } from '@mp/api/postss/util';
-import { PostsState } from './post.state';
+import { PostState } from './post.state';
 import { PostTrendingGetQuery } from '@mp/api/postss/util';
 import { ICreateAuthRequest } from '@mp/api/auth/util';
+import { update } from 'firebase/database';
 
 // import {
 //     Hashtag
@@ -107,7 +113,115 @@ export class PostApi {
       'createPost'
     )(request);
   }
-}
+
+  async likePost(postID: string): Promise<IPost> {
+    //another of doing it is to import PostRepositoy and use the UpdateLikes function. 
+    const docRef = doc(
+    this.firestore,
+    `posts/${postID}`
+    ).withConverter<IPost>({
+    fromFirestore: (snapshot) => {
+    return {
+    ...snapshot.data(),
+    postID: snapshot.id,
+    } as IPost;
+    },
+    toFirestore: (it: IPost) => it,
+    })
+    
+    const post = await docData(docRef).toPromise();
+    if (!post) {
+      throw new Error(`Post with ID ${postID} not found`);
+    }
+    const newLikeCount = post.likes + 1;
+    
+    await updateDoc(docRef, { likes: newLikeCount })
+    
+    return { ...post, likes: newLikeCount };
+    }
+
+    async commentOnPost(postID: string, comment: string): Promise<IPost> {
+      const docRef = doc(
+        this.firestore,
+        `posts/${postID}`
+      ).withConverter<IPost>({
+        fromFirestore: (snapshot) => {
+          return {
+            ...snapshot.data(),
+            postID: snapshot.id,
+          } as IPost;
+        },
+        toFirestore: (it: IPost) => it,
+      });
+    
+      const post = await docData(docRef).toPromise();
+      if (!post) {
+        throw new Error(`Post with ID ${postID} not found`);
+      }
+    
+      const newComment: IComment = {
+        creatorID : "1",
+        comment: comment,
+      }
+    
+      const newComments = [...post.comments ?? [], newComment];
+    
+      await updateDoc(docRef, { comments: newComments });
+    
+      return { ...post, comments: newComments };
+    }
+
+    /**
+     * 
+     * @param postID 
+     * @param userID 
+     * @returns the updated post meta-data.
+     */
+
+    async buyPost(postID: string, userID: string): Promise<IPost> {
+      const docRef = doc(
+        this.firestore,
+        `posts/${postID}`
+      ).withConverter<IPost>({
+        fromFirestore: (snapshot) => {
+          return {
+            ...snapshot.data(),
+            postID: snapshot.id,
+          } as IPost;
+        },
+        toFirestore: (it: IPost) => it,
+      });
+    
+      const post = await docData(docRef).toPromise();
+      if (!post) {
+        throw new Error(`Post with ID ${postID} not found`);
+      }
+
+      if(!post.listing) {
+        throw new Error(`Post with the ID ${postID} is not listed`)
+      }
+
+      const userRef = doc(this.firestore, 'users', userID);
+      const docSnap = await getDoc(userRef);
+      
+      if (!docSnap.exists()) {
+        throw new Error(`User with ID ${userID} not found`);
+      }
+
+      const userData = docSnap.data();
+    
+      if (post.listing > userData['balance']) {
+        throw new Error(`Insufficient balance to buy post with ID ${postID}`);
+      }
+    
+      const newBalance = userData['balance'] - post.listing;
+    
+      await updateDoc(docRef, { sold: true });
+      await updateDoc(userRef, { balance: newBalance });
+      return { ...post, sold: true };
+    }
+  }
+
 
   /*
   Example for real-time read

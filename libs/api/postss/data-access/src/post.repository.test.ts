@@ -13,7 +13,7 @@ describe('Trending Posts Repository Test', () => {
         const repository = new PostRepository;
         const result = repository.findTrendingByLikes();
 
-        let post: IPost = {
+        const post: IPost = {
             postID: "123",
             createdBy: "",
             ownedBy: "",
@@ -21,7 +21,7 @@ describe('Trending Posts Repository Test', () => {
 
         };
 
-        let posts: IPost[] = [post];
+        const posts: IPost[] = [post];
 
         expect(typeof(await result) == typeof(posts)).toBe(true);
     })
@@ -38,7 +38,7 @@ describe('Find One Repository Test', () => {
 
     it("Should be a async function promise ", async ()=>{
         const repository = new PostRepository;
-        let post: IPost = {
+        const post: IPost = {
             postID: "123",
             createdBy: "",
             ownedBy: "",
@@ -51,7 +51,7 @@ describe('Find One Repository Test', () => {
 
     it("Should throw an error if missing PostID ", async ()=>{
         const repository = new PostRepository;
-        let post: IPost = {
+        const post: IPost = {
             postID: "",
             createdBy: "",
             ownedBy: "",

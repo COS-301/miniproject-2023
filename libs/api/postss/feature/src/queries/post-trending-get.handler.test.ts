@@ -2,6 +2,7 @@ import { PostTrendingGetQuery } from "@mp/api/postss/util";
 import {PostTrendingGetQueryHandler} from "./post-trending-get.handler";
 import { QueryBus } from '@nestjs/cqrs';
 import { NestFactory } from "@nestjs/core";
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import {CoreModule} from "@mp/api/core/feature";
 import { IPost } from "@mp/api/postss/util";
 
@@ -19,7 +20,7 @@ describe('Trending Posts Retrieval Handler', () => {
 
         };
 
-        let posts: IPost[] = [post];
+        const posts: IPost[] = [post];
 
         expect(postModule.posts == typeof(posts)).toBe(true);
 

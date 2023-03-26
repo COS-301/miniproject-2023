@@ -9,8 +9,8 @@ export class PostRepository {
   
 
   
-  async findOne(profile: IPost) {
-    if(profile.postID == ""){
+  async findOne(post: IPost) {
+    if(post.postID == ""){
       throw Error("No PostID");
     }
     return await admin
@@ -70,6 +70,8 @@ export class PostRepository {
       .doc(post.postID)
       .update({post : { likes: admin.firestore.FieldValue.increment(1)}});
   }
+
+  
   /*Examples from profile
 
   async createProfile(profile: IPost) {
