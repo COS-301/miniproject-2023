@@ -1,3 +1,4 @@
 import exp from 'constants';
 
-export * from './tests/api-message-data-access;
+export * from "./message.module";
+export * from "./message.repository";
