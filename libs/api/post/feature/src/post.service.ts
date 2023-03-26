@@ -1,20 +1,20 @@
-import {
-    // IUpdateAccountDetailsRequest,
-    // IUpdateAccountDetailsResponse,
-    // IUpdateAddressDetailsRequest,
-    // IUpdateAddressDetailsResponse,
-    // IUpdateContactDetailsRequest,
-    // IUpdateContactDetailsResponse,
-    // IUpdateOccupationDetailsRequest,
-    // IUpdateOccupationDetailsResponse,
-    // IUpdatePersonalDetailsRequest,
-    // IUpdatePersonalDetailsResponse,
-    // UpdateAccountDetailsCommand,
-    // UpdateAddressDetailsCommand,
-    // UpdateContactDetailsCommand,
-    // UpdateOccupationDetailsCommand,
-    // UpdatePersonalDetailsCommand
-} from '@mp/api/post/util';
+// import {
+//     // IUpdateAccountDetailsRequest,
+//     // IUpdateAccountDetailsResponse,
+//     // IUpdateAddressDetailsRequest,
+//     // IUpdateAddressDetailsResponse,
+//     // IUpdateContactDetailsRequest,
+//     // IUpdateContactDetailsResponse,
+//     // IUpdateOccupationDetailsRequest,
+//     // IUpdateOccupationDetailsResponse,
+//     // IUpdatePersonalDetailsRequest,
+//     // IUpdatePersonalDetailsResponse,
+//     // UpdateAccountDetailsCommand,
+//     // UpdateAddressDetailsCommand,
+//     // UpdateContactDetailsCommand,
+//     // UpdateOccupationDetailsCommand,
+//     // UpdatePersonalDetailsCommand
+// } from '@mp/api/post/util';
 import { Injectable } from '@nestjs/common';
 import { CommandBus } from '@nestjs/cqrs';
 

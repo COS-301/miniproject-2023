@@ -4,7 +4,8 @@ import {
   Hashtag,
   IPost,
   IPosts,
-  IComment
+  IComment,
+  ICreatePostRequest
 } from '@mp/api/postss/util';
 import { AuthState } from '@mp/app/auth/data-access';
 import { Logout as AuthLogout } from '@mp/app/auth/util';
@@ -13,6 +14,7 @@ import { Timestamp } from 'firebase-admin/firestore';
 import {
   SetPosts,
   SetPost,
+  CreatePost,
   GetPostByUserId,
   PostTrendingGet,
   GetPostByHashtag,
@@ -25,6 +27,8 @@ import produce, {createDraft} from 'immer';
 import { tap } from 'rxjs';
 import { PostApi } from './post.api';
 import { SubscribeToPost } from '@mp/app/postss/util';
+import { firebaseApp$ } from '@angular/fire/app';
+import { firestore } from 'firebase-admin';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 
@@ -214,11 +218,9 @@ export class PostState { /* changed from 'PostsState' to 'PostState' */
     } catch (error) {
       ctx.dispatch(new SetError((error as Error).message));
     }
-  }  /**
-   * NB!!! NB!!! The below code is erroneous, needs mending.
-   * @param ctx 
-   * @param action 
-   */
+  }  
+
+  
   @Action(LikePost)
   async likePost(ctx: StateContext<PostStateModel>, action: LikePost) { 
     try {
@@ -249,7 +251,61 @@ export class PostState { /* changed from 'PostsState' to 'PostState' */
     }
   }
 
+  @Action(SubscribeToPost)
+  subscribeToProfile(ctx: StateContext<PostStateModel>) {
+    const user = this.store.selectSnapshot(AuthState.user);
+    if (!user) return ctx.dispatch(new SetError('User not set'));
 
+    return this.postApi
+      .post$(user.uid)
+      .pipe(tap((profile: IPost) => ctx.dispatch(new SetPost(profile))));
+  }
+  @Action(SetPost)
+  setProfile(ctx: StateContext<PostStateModel>, { post }: SetPost) {
+    return ctx.setState(
+      produce((draft) => {
+        draft.post = post;
+      })
+    );
+  }
+  @Action(CreatePost)
+  async createPost(ctx: StateContext<PostStateModel>) {
+    try {
+      const state = ctx.getState();
+      const createdBy = state.post?.createdBy;
+      const ownedBy = state.post?.createdBy;
+      const content = state.post?.content;
+      const caption = state.post?.caption;
+      const hashtag = state.post?.hashtag;
+      const postID = state.post?.createdBy+"1";
+      const likes = 0;
+      const createdAt=firestore.Timestamp.now();
+      if (!createdBy || !content || !caption || !hashtag)
+        return ctx.dispatch(
+          new SetError(
+            'UserId or display name or email or photo URL or password not set'
+          )
+        );
+
+      const request: ICreatePostRequest = {
+        post: {
+          postID,
+          createdBy,
+          ownedBy,
+          likes,
+          createdAt,
+          content,
+          hashtag,
+          caption,
+        },
+      };
+      const responseRef = await this.postApi.createPost(request);
+      const response = responseRef.data;
+      return ctx.dispatch(new SetPost(response.post));
+    } catch (error) {
+      return ctx.dispatch(new SetError((error as Error).message));
+    }
+  }
 
   /*
 

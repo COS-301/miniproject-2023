@@ -9,6 +9,6 @@ export class PostTrendingGetQueryHandler implements IQueryHandler<PostTrendingGe
 
   async execute(query: PostTrendingGetQuery): Promise<PostModule> {
     const posts = await this.postRepository.findTrendingByLikes();
-    return new PostModule(posts);
+    return new PostModule();
   }
 }

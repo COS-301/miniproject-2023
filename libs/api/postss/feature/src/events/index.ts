@@ -1,4 +1,2 @@
-/*
-Example
-export * from './account-details-updated.handler';
-*/
+export * from './post-created.handler';
+

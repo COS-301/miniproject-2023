@@ -29,6 +29,10 @@ export class GetPostByHashtag {
   constructor(public hashtag: Hashtag) { }
 }
 
+export class CreatePost {
+  static readonly type = '[Posts] CreatePost';
+}
+
 export class LikePost {
   static readonly type = '[Post] Like Post';
   constructor(public postID: string) {}
