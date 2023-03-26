@@ -1,5 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+
     <ion-title class="ion-align-items-center">
       Profile
       <ng-container *ngIf="(profile$ | async) as profile;">
@@ -13,8 +14,11 @@
           name="checkmark-circle-outline"></ion-icon>
       </ng-container>
     </ion-title>
+
   </ion-toolbar>
 </ion-header>
+
+
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -41,6 +45,7 @@
     <ms-profile-address-details-component></ms-profile-address-details-component>
     <ms-profile-occupation-details-component></ms-profile-occupation-details-component>
   </ng-container>
+
   <ng-template #noProfile>
     <ion-grid>
       <ion-row>
@@ -53,4 +58,5 @@
       </ion-row>
     </ion-grid>
   </ng-template>
+
 </ion-content>

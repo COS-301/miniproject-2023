@@ -2,18 +2,18 @@
 // http://ionicframework.com/docs/theming/
 
 @font-face {
-  font-family: 'Roboto-Regular';
+  font-family: 'Roboto';
   src: url('../assets/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
 }
 
 // Ionic CSS Variables
 $font-family-base:    "Roboto-Regular", "Helvetica Neue", sans-serif;
-$font-family-md-base: "Roboto-Regular", "Helvetica Neue", sans-serif;
-$font-family-wp-base: "Roboto-Regular", "Helvetica Neue", sans-serif;
+// $font-family-md-base: "Roboto-Regular", "Helvetica Neue", sans-serif;
+// $font-family-wp-base: "Roboto-Regular", "Helvetica Neue", sans-serif;
 
 /** Ionic CSS Variables **/
 :root {
-  --ion-font-family: "Roboto-Regular", "Helvetica Neue", sans-serif;
+  --ion-font-family: "Roboto", "Helvetica Neue", sans-serif;
 
   --ion-color-primary: #20265f;
   --ion-color-primary-rgb: 32, 38, 95;
@@ -139,7 +139,7 @@ $font-family-wp-base: "Roboto-Regular", "Helvetica Neue", sans-serif;
   }
 
   .md body {
-    --ion-background-color: linear-gradient(0deg, #000000 0%, #101010 30%, #101010 70%, #000000 100%);
+    --ion-background-color: linear-gradient(0deg, #000000 0%, #080808 30%, #080808 70%, #000000 100%);
     --ion-background-color-rgb: 18, 18, 18;
 
     --ion-text-color: #ffffff;

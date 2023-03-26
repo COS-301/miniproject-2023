@@ -1,9 +1,13 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Home</ion-title>
+
+    <div *ngIf="!isSearchbarVisible">
+        <ion-title class="title">
+          <span>Home</span>
+          <span style="float: right">{{kronos}}</span>
+        </ion-title>
+    </div>
+
     <ion-buttons slot="end">
       <ion-button (click)="toggleSearchbar()">
         <ion-icon name="search-outline"></ion-icon>
@@ -12,40 +16,93 @@
         <ion-icon name="notifications-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-  </ion-toolbar>
 
   <ion-searchbar placeholder="Search" *ngIf="isSearchbarVisible"></ion-searchbar>
+
+  </ion-toolbar>
 </ion-header>
 
+
 <ion-content [fullscreen]="true">
-<ion-infinite-scroll (ionInfinite)="loadData($event)">
-  <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
-</ion-infinite-scroll>
 
-<ion-row>
-  <ion-col>
-    <h3>TRENDING</h3>
-  </ion-col>
-</ion-row>
+  <!-- RECOMMENDED -->
+  <h3 class="sectionTitle">RECOMMENDED FOR YOU</h3>
+  <div>
+    <!-- <ion-slides [options]="{ slidesPerView: 'auto', zoom: true, grabCursor: true }"> -->
+    <ion-slides>
 
-<ion-list>
-<ion-item *ngFor="let item of trending">
+      <ion-slide *ngFor="let item of recommended">
+        <ion-col>
+          <ion-img [src]="item.img"></ion-img>
+          <div class="overlay">
+            <ion-label>{{item.title}}</ion-label>
+          </div>
+        </ion-col>
+      </ion-slide>
 
-  <ion-row>
-    <ion-col>
-      <img [src]="item.img">
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>
+    </ion-slides>
+  </div>
+
+  <br /><br />
+
+  <!-- GRAVEYARD -->
+  <h3 id="graveyardTitle" class="sectionTitle">TODAY'S GRAVEYARD</h3>
+  <div class="graveyard">
+    <ion-avatar class="gravestone">
+      <img alt="Avatar" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+    </ion-avatar>
+  </div>
+
+  <br /><br />
+
+  <!-- TRENDING list -->
+  <h3 class="sectionTitle">TRENDING</h3>
+  <ion-list>
+
+  <!-- <ion-infinite-scroll (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="circular" loadingText="Foraging...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll> -->
+
+  <div class="trendingPost" *ngFor="let item of trending">
+    <ion-card class="trendingItem">
+
+      <div class="image">
+        <img [src]="item.img">
+      </div>
+
       <ion-label stacked>
-        <h2>{{item.title}}</h2>
-        <p>{{item.desc}}</p>
-      </ion-label>
-    </ion-col>
-  </ion-row>
+        <ion-grid>
+          <ion-row>
 
-</ion-item>
-</ion-list>
+            <!-- Title + Description -->
+            <ion-col class="subtext" size="9">
+              <h2>{{item.title}}</h2>
+              <br/>
+              <h4>{{item.desc}}</h4>
+            </ion-col>
+
+            <!-- Profile, Time posted, Reactions -->
+            <!-- TODO: Clean this up -->
+            <ion-col class="actions">
+              <ion-grid>
+                <ion-row class="profile">
+                    <span style="padding-right: 0.1em;">Hello world</span> 
+                    <ion-avatar style="display: inline; width: 5vw; height: 5vw">
+                      <img alt="Avatar" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                    </ion-avatar>
+                </ion-row>
+              </ion-grid>
+                <!-- <ion-label>Item Avatar</ion-label> -->
+            </ion-col>
+
+          </ion-row>
+        </ion-grid>
+      </ion-label>
+    </ion-card>
+    <hr />
+  </div>
+
+  </ion-list>
 
 </ion-content>
