@@ -9,7 +9,7 @@
     "start:app:dev": "yarn run env-cmd -f .env nx run app:serve --configuration=development",
     "start:api:dev": "yarn run env-cmd -f .env nx run api:serve --configuration=development",
     "start:cli:dev": "yarn run env-cmd -f .env nx run cli:serve --configuration=development",
-    "start:emulators": "firebase emulators:start",
+    "start:emulators": "firebase emulators:start --project=demo-project",
     "start:emulators:imported": "firebase emulators:start --import .emulators",
     "build:app:dev": "yarn run env-cmd -f .env nx run app:build --configuration=development",
     "build:app:prod": "yarn run env-cmd -f .env.prod nx run app:build --configuration=production",

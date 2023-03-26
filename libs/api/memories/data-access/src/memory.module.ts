@@ -7,4 +7,4 @@ import { MemoryRepository } from './memory.repository';
     exports : [MemoryRepository]
 
 }) 
-export class MemoryModule{};
+export class MemoryModule{}
