@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'mp-portfolio',
   templateUrl: './portfolio.page.html',
   styleUrls: ['./portfolio.page.scss'],
 })
 export class PortfolioPage implements OnInit {
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() { }
+
+  toHomePage() {
+    this.router.navigate(["/home"]);
+  }
 }
