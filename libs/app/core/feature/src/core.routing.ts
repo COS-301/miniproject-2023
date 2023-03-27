@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import {
-    AuthGuard,
-    redirectLoggedInTo,
-    redirectUnauthorizedTo
+  AuthGuard,
+  redirectLoggedInTo,
+  redirectUnauthorizedTo
 } from '@angular/fire/auth-guard';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
@@ -38,7 +38,12 @@ const routes: Routes = [
   {
     path: 'create',
     loadChildren: () =>
-      import('@mp/app/create/feature').then((m) => m.CreatePageModule),
+      import('@mp/app/create/feature').then((m) => m.CreateModule),
+  },
+  {
+    path: 'comment',
+    loadChildren: () =>
+      import('@mp/app/comment/feature').then((m) => m.CommentModule),
   },
   {
     path: 'tos',
@@ -97,4 +102,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class CoreRouting {}
+export class CoreRouting { }

@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CommentPageRoutingModule } from './comment-routing.module';
+import { CommentPageRoutingModule } from './comment.routing';
 
 import { CommentPage } from './comment.page';
 
@@ -12,4 +12,4 @@ import { CommentPage } from './comment.page';
   imports: [CommonModule, FormsModule, IonicModule, CommentPageRoutingModule],
   declarations: [CommentPage],
 })
-export class CommentPageModule {}
+export class CommentModule {}
