@@ -1,9 +1,3 @@
-#filter-container {
-  width: 100%;
-  height: 42px;
-  overflow-x: scroll;
-}
-
 ion-col{
   display: flex;
   place-items: center;
@@ -36,4 +30,21 @@ height: 100%;
 
 ion-grid{
   height: 100%;
+}
+
+#filters-container{
+  height: 50px;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+
+.filter{
+  min-width: fit-content;
+  position: relative;
+  white-space: nowrap;
 }

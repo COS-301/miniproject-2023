@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'mp-feed',
@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./feed.page.scss']
 })
 export class FeedPage {
-
 }
