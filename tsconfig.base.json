@@ -44,7 +44,7 @@
       "@mp/app/auth/feature": ["libs/app/auth/feature/src/index.ts"],
       "@mp/app/auth/util": ["libs/app/auth/util/src/index.ts"],
       "@mp/app/comment/feature": ["libs/app/comment/feature/src/index.ts"],
-      "@mp/app/portfolio/feature": ["libs/app/portfolio/feature/src/index.ts"],
+      "@mp/app/search/feature": ["libs/app/search/feature/src/index.ts"],
       "@mp/app/copyright/ui": ["libs/app/copyright/ui/src/index.ts"],
       "@mp/app/core/feature": ["libs/app/core/feature/src/index.ts"],
       "@mp/app/create/feature": ["libs/app/create/feature/src/index.ts"],
@@ -70,6 +70,7 @@
       "@mp/app/notifications/feature": [
         "libs/app/notifications/feature/src/index.ts"
       ],
+      "@mp/app/portfolio/feature": ["libs/app/portfolio/feature/src/index.ts"],
       "@mp/app/privacy/feature": ["libs/app/privacy/feature/src/index.ts"],
       "@mp/app/profile/data-access": [
         "libs/app/profile/data-access/src/index.ts"
