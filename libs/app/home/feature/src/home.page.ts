@@ -4,6 +4,7 @@ import { ProfileState } from '@mp/app/profile/data-access';
 import { SubscribeToProfile } from '@mp/app/profile/util';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ms-home-page',
@@ -13,9 +14,25 @@ import { Observable } from 'rxjs';
 export class HomePage {
   @Select(ProfileState.profile) profile$!: Observable<IProfile | null>;
 
-  constructor(private readonly store: Store) {}
+  constructor(private readonly store: Store, private router: Router) {}
 
   ionViewWillEnter() {
     this.store.dispatch(new SubscribeToProfile());
+  }
+
+  toHomePage() {
+    this.router.navigate(["/home"]);
+  }
+  toSearchPage() {
+    this.router.navigate(["/search"]);
+  }
+  toCreatePage() {
+    this.router.navigate(["/create"]);
+  }
+  toPortfolioPage() {
+    this.router.navigate(["/portfolio"]);
+  }
+  toProfilePage() {
+    this.router.navigate(["/profile-page"]);
   }
 }
