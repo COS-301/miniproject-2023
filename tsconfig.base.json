@@ -50,11 +50,14 @@
       ],
       "@mp/app/dashboard/feature": ["libs/app/dashboard/feature/src/index.ts"],
       "@mp/app/dashboard/util": ["libs/app/dashboard/util/src/index.ts"],
+      "@mp/app/demo/feature": ["libs/app/demo/feature/src/index.ts"],
       "@mp/app/errors/data-access": [
         "libs/app/errors/data-access/src/index.ts"
       ],
       "@mp/app/errors/feature": ["libs/app/errors/feature/src/index.ts"],
       "@mp/app/errors/util": ["libs/app/errors/util/src/index.ts"],
+      "@mp/app/feed/feature": ["libs/app/feed/feature/src/index.ts"],
+      "@mp/app/feed/ui": ["libs/app/feed/ui/src/index.ts"],
       "@mp/app/footer/feature": ["libs/app/footer/feature/src/index.ts"],
       "@mp/app/forgot/data-access": [
         "libs/app/forgot/data-access/src/index.ts"
