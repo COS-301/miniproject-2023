@@ -1,16 +1,19 @@
 import { PostModule as PostDataAccessModule } from '@mp/api/post/data-access';
 import { Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
-// import {
-// } from './commands';
-// import {
-// } from './events';
+import {
+  CreatePostHandler,
+} from './commands';
+import {
+  PostCreatedHandler,
+} from './events';
 import { PostSagas } from './post.sagas';
 import { PostService } from './post.service';
 export const CommandHandlers = [
+  CreatePostHandler,
 ];
 export const EventHandlers = [
-  
+  PostCreatedHandler,
 ];
 
 @Module({

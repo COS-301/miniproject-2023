@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { NgxsModule, Store } from '@ngxs/store';
 import { PostApi } from '../post.api';
-import { PostsState, PostsStateModel, PostStateModel } from '../post.state';
+import { PostState, PostsStateModel, PostStateModel } from '../post.state';
 import {
   GetPostByUserId,
   GetPostByHashtag,
@@ -47,7 +47,7 @@ describe('PostsState', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [NgxsModule.forRoot([PostsState])],
+      imports: [NgxsModule.forRoot([PostState])],
       providers: [{ provide: PostApi, useValue: mockPostApi }]
     });
 
@@ -64,7 +64,7 @@ describe('PostsState', () => {
 
     await store.dispatch(new GetPostByUserId('user1')).toPromise();
 
-    const postsState: PostsStateModel = store.selectSnapshot(PostsState);
+    const postsState: PostsStateModel = store.selectSnapshot(PostState);
     expect(postsState).toEqual(mockPosts);
   });
 
@@ -73,14 +73,14 @@ describe('PostsState', () => {
 
     await store.dispatch(new GetPostByHashtag(Hashtag.OTHER)).toPromise();
 
-    const postsState: PostsStateModel = store.selectSnapshot(PostsState);
+    const postsState: PostsStateModel = store.selectSnapshot(PostState);
     expect(postsState).toEqual(mockPosts);
   });
 
   it('should set posts to the state', () => {
     store.dispatch(new SetPosts(mockPosts));
-  
-    const postsState: PostsStateModel = store.selectSnapshot(PostsState);
+
+    const postsState: PostsStateModel = store.selectSnapshot(PostState);
     expect(postsState.posts).toEqual(mockPosts);
   });
 
@@ -96,7 +96,7 @@ describe('PostsState', () => {
 
     store.dispatch(new SetPost(post));
 
-    const postState: PostStateModel = store.selectSnapshot(PostsState);
+    const postState: PostStateModel = store.selectSnapshot(PostState);
     expect(postState.post).toEqual(post);
   });
 
@@ -104,7 +104,7 @@ describe('PostsState', () => {
     mockPostApi.postTrendingGet.mockReturnValue(Promise.resolve(mockPosts.posts));
 
     await store.dispatch(new PostTrendingGet()).toPromise();
-    const postsState: PostsStateModel = store.selectSnapshot(PostsState);
+    const postsState: PostsStateModel = store.selectSnapshot(PostState);
 expect(postsState).toEqual(mockPosts);
   });
 
@@ -117,22 +117,22 @@ expect(postsState).toEqual(mockPosts);
     createdAt: null,
     hashtag: Hashtag.OTHER
     };
-    
+
     mockPostApi.post$.mockReturnValue(of(updatedPost));
 
     store.dispatch(new SetPosts(mockPosts));
     store.dispatch(new SubscribeToPost());
-    
+
     // Wait for the state to update
     setTimeout(() => {
-      const postState: PostStateModel = store.selectSnapshot(PostsState);
-      const postsState: PostsStateModel = store.selectSnapshot(PostsState);
-    
+      const postState: PostStateModel = store.selectSnapshot(PostState);
+      const postsState: PostsStateModel = store.selectSnapshot(PostState);
+
       expect(postState.post).toEqual(updatedPost);
       if(postsState.posts != null && postsState.posts.posts != null)
         expect(postsState.posts.posts[0]).toEqual(updatedPost);
-      
-    
+
+
       done();
     }, 100);
 });
