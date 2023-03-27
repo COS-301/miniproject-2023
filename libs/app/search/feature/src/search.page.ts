@@ -19,4 +19,17 @@ export class SearchPage implements OnInit {
     console.log(category);
    var searchBar=document.getElementById("searchBar")?.setAttribute("value", category);
   }
+
+  toSearchPage() {
+    this.router.navigate(["/search"]);
+  }
+  toCreatePage() {
+    this.router.navigate(["/create"]);
+  }
+  toPortfolioPage() {
+    this.router.navigate(["/portfolio"]);
+  }
+  toProfilePage() {
+    this.router.navigate(["/profile-page"]);
+  }
 }
