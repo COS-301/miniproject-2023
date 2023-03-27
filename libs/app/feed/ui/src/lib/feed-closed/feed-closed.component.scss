@@ -1,0 +1,39 @@
+#filter-container {
+  width: 100%;
+  height: 42px;
+  overflow-x: scroll;
+}
+
+ion-col{
+  display: flex;
+  place-items: center;
+  height: 100%;
+}
+
+ion-card{
+  padding: 0px;
+  margin: 0px;
+}
+
+ion-card-content{
+  overflow: hidden;
+
+}
+
+ion-row{
+  height: 100%;
+}
+
+#post-preview-content-container{
+height: 100%;
+}
+
+
+
+#post-preview-container{
+  height: 250px;
+  }
+
+ion-grid{
+  height: 100%;
+}
