@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mp-create',
@@ -6,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create.page.scss'],
 })
 export class CreatePage implements OnInit {
-  constructor() {}
+  constructor(private router: Router) { }
 
   ngOnInit() {}
+
+  toDashboard() {
+    this.router.navigate(["/home"]);
+  }
 }
