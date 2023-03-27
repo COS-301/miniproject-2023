@@ -21,6 +21,10 @@ export class Post extends AggregateRoot implements IPost {
         super();
     }
 
+    // create() {
+    //   this.apply(new LikesUpdatedEvent(this.toJSON()));
+    // }
+
     static fromData(post: IPost): Post {
         const instance = new Post(      
             post.postID,
@@ -56,4 +60,10 @@ export class Post extends AggregateRoot implements IPost {
           listing: this.listing,
         };
       }
+
+      //  updatelikes(post: IPost) {
+
+      //   this.likes = post.likse + 1;
+      //   this.apply(new LikesUpdatedEvent(this.toJSON()))
+      // }
 }

@@ -1,4 +1,5 @@
-import { IPost } from '@mp/api/postss/util';
+import { IComment, IPost } from '@mp/api/postss/util';
+import { IUser } from '@mp/api/users/util';
 import { Injectable } from '@nestjs/common';
 import * as admin from 'firebase-admin';
 
@@ -69,7 +70,45 @@ export class PostRepository {
       .collection('post')
       .doc(post.postID)
       .update({post : { likes: admin.firestore.FieldValue.increment(1)}});
+
   }
+
+  async commentOnPost(post: IPost, comment: IComment) {
+    try {
+      const postRef = admin.firestore().collection('posts').doc(post.postID);
+      await postRef.update({
+        comments: admin.firestore.FieldValue.arrayUnion(comment)
+      });
+      return { success: true };
+    } catch (error: unknown) {
+      console.error('Error commenting on post:', error);
+
+      if(error instanceof Error)
+      return { success: false, message: error.message };
+      else {
+        return { success: false, message: error };
+      }
+    }
+  }
+
+  async buyPost(post: IPost, buyer: IUser) {
+  try {
+    const postRef = admin.firestore().collection('posts').doc(post.postID);
+    await postRef.update({
+      Sold: true,
+      OwnedBy: buyer,
+    });
+    return { success: true };
+  } catch (error) {
+    
+    if(error instanceof Error)
+    return { success: false, message: error.message };
+    else {
+      return { success: false, message: error };
+    }
+  }
+    }
+
 
   
   /*Examples from profile
