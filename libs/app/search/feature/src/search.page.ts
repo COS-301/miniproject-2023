@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mp-search',
@@ -6,7 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.page.scss'],
 })
 export class SearchPage implements OnInit {
-  constructor() {}
+  constructor(private router: Router) { }
+
 
   ngOnInit() {}
+
+  toHomePage(){
+    this.router.navigate(["/home"]);
+  }
+  fillBar(category: string){
+    console.log(category);
+   var searchBar=document.getElementById("searchBar")?.setAttribute("value", category);
+  }
 }
