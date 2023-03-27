@@ -6,7 +6,7 @@ name: Deploy Test Branch Code To Firebase Hosting
   push:
     branches:
       - '*test*'
-      - main
+      - retrieve-posts
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
