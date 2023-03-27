@@ -63,3 +63,33 @@ describe('Find One Repository Test', () => {
     })
     
 })
+
+/*describe("updateLikes Repository Test", () => {
+
+  beforeEach(() => {
+    post: IPost = {
+      postID: "123",
+      createdBy: "",
+      ownedBy: "",
+      likes: 0
+    };
+    postID = post.postID;
+    updateSpy = jest.spyOn(admin.firestore().collection('post').doc(postID), 'update');
+  });
+
+  afterEach(() => {
+    updateSpy.mockRestore();
+  });
+
+  it('should call firestore update with post and increment likes by 1', async () => {
+    await updateLikes(post);
+    expect(updateSpy).toHaveBeenCalledWith({
+      post: { likes: admin.firestore.FieldValue.increment(1) }
+    });
+  });
+
+  it('should increment likes by 1', async () => {
+    await updateLikes(post);
+    expect(post.likes).toBe(1);
+  });
+});*/
