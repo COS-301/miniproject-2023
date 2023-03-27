@@ -85,9 +85,9 @@ const routes: Routes = [
       import('@mp/app/login/feature').then((m) => m.LoginModule),
   },
   {
-    path:'settings',
+    path: 'settings',
     loadChildren: () =>
-      import('@mp/app/settings/feature').then((m)=>m.SettingsModule),
+      import ('@mp/app/settings/feature').then((m)=>m.SettingsModule),
   },
 ];
 
