@@ -12,4 +12,4 @@ import { CreatePage } from './create.page';
   imports: [CommonModule, FormsModule, IonicModule, CreatePageRoutingModule],
   declarations: [CreatePage],
 })
-export class CreatePageModule {}
+export class CreateModule { }
