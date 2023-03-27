@@ -15,7 +15,7 @@ jobs:
       - run: echo "${{ secrets.DOTENVFILE }}" > .env
       - run: echo "${{ secrets.DOTENVDOTPRODFILE }}" > .env.prod
       - run: echo "${{ secrets.DOTFIREBASERCFILE }}" > .firebaserc
-      - run: 'yarn install --frozen-lockfile && yarn build:app:prod'
+      - run: 'yarn install && yarn build:app:prod'
       - run: 'yarn eslint'
       - run: 'yarn jest'
       - uses: FirebaseExtended/action-hosting-deploy@v0
