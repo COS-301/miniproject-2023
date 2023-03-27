@@ -1,11 +1,11 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" [ngClass]="{'deus': deus, 'normal': !deus && !dead, 'dead': dead}">
 <!-- Profile pic & Name -->
     <ion-avatar>
         <!-- If private and not friends -->
-        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        <img *ngIf="private && !friends"  alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
 
         <!-- If not private OR if private and friends -->
-        <img alt="User's profile picture" src="user image variable from api" />
+        <img *ngIf="!private || (private && friends)"  alt="User's profile picture" src="user image variable from api" />
     </ion-avatar>
     <ion-text>
         <h2>Jon Snow</h2>
@@ -21,10 +21,10 @@
 <!-- Time left -->
     <ion-text>
         <!-- If not private OR if private and friends -->
-        <h3>10:00:30</h3>
+        <h3 *ngIf="!private || (private && friends)" >10:00:30</h3>
 
         <!-- If private and not friends -->
-        <h3>__:__:__</h3>
+        <h3 *ngIf="private && !friends" >__:__:__</h3>
     </ion-text>
 <!-- Message Button --><!-- Friend Button - Dropdown? / perhaps ion-action-sheet -->
 <ion-button>Message</ion-button>
@@ -36,13 +36,16 @@
     </ion-toolbar>
     <!-- OR  -->
     <ion-tabs>
-        <ion-tab-bar slot="top">
 
-        </ion-tab-bar>
+        <ion-router-outlet></ion-router-outlet>
+        <ion-tab-button tab="home">
+            <ion-icon name="play-circle"></ion-icon>
+            Listen Now
+        </ion-tab-button>
     </ion-tabs>
 
     <!-- if user private and they are not friends -->
-    <ion-content>
+    <ion-content *ngIf="private && !friends">
         <ion-text color="warning">
             <h3>This account is private</h3>
         </ion-text>
@@ -51,26 +54,28 @@
 
 
     <!-- If user not private OR if user is private and they are friends -->
-    <!-- METERS -->
-    <ion-content>
-        <!-- ngFor to display all the meters -->
-        <!-- Meter title -->
-        <!-- Progress bar -->
-        <!-- Meter value -->
-    </ion-content>
-
-    <!-- BADGES -->
-    <ion-content>
-        <!-- ngFor to display all disciplines where the user has badges -->
-        <!-- within discipline ngFor to display badge icons -->
-    </ion-content>
-
-    <!-- POSTS -->
-    <ion-content>
-        <ion-grid>
-            <!-- ngFors to loop through number of posts -->
-            <!-- User ngIfs to limit number of cols per row -->
-        </ion-grid>
+    <ion-content *ngIf="!private || (private && friends)" >
+        <!-- METERS -->
+        <ion-content>
+            <!-- ngFor to display all the meters -->
+            <!-- Meter title -->
+            <!-- Progress bar -->
+            <!-- Meter value -->
+        </ion-content>
+    
+        <!-- BADGES -->
+        <ion-content>
+            <!-- ngFor to display all disciplines where the user has badges -->
+            <!-- within discipline ngFor to display badge icons -->
+        </ion-content>
+    
+        <!-- POSTS -->
+        <ion-content>
+            <ion-grid>
+                <!-- ngFors to loop through number of posts -->
+                <!-- User ngIfs to limit number of cols per row -->
+            </ion-grid>
+        </ion-content>
     </ion-content>
 </ion-content>
 
