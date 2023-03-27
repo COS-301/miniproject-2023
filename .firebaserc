@@ -1,7 +1,7 @@
 {
   "projects": {
     "default": "cos301-mp-grp3",
-    "production": "<REPLACE_ME>",
+    "production": "cos301-mp-grp3",
     "development": "cos301-mp-grp3"
   }
 }
