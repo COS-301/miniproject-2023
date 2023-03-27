@@ -36,6 +36,11 @@ const routes: Routes = [
       import('@mp/app/home/feature').then((m) => m.HomeModule),
   },
   {
+    path: 'create',
+    loadChildren: () =>
+      import('@mp/app/create/feature').then((m) => m.CreatePageModule),
+  },
+  {
     path: 'tos',
     loadChildren: () => import('@mp/app/tos/feature').then((m) => m.TosModule),
   },

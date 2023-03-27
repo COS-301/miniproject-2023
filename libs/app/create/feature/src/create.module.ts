@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CreatePageRoutingModule } from './create-routing.module';
+import { CreatePageRoutingModule } from './create.routing';
 
 import { CreatePage } from './create.page';
 
