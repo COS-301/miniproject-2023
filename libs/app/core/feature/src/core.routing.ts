@@ -46,6 +46,11 @@ const routes: Routes = [
       import('@mp/app/comment/feature').then((m) => m.CommentModule),
   },
   {
+    path: 'notifications',
+    loadChildren: () =>
+      import('@mp/app/notifications/feature').then((m) => m.NotificationsModule),
+  },
+  {
     path: 'tos',
     loadChildren: () => import('@mp/app/tos/feature').then((m) => m.TosModule),
   },
