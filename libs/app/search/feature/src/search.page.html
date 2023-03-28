@@ -3,7 +3,8 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-          <ion-searchbar id = "searchBar" search-icon="search-outline" class="searchBar" placeholder="Search"></ion-searchbar>
+          <ion-searchbar id="searchBar" search-icon="search-outline" class="searchBar"
+            placeholder="Search"></ion-searchbar>
         </ion-col>
         <ion-col size="auto">
           <ion-badge class="timer">134:20:00</ion-badge>
@@ -25,7 +26,7 @@
         </ion-col>
         <ion-col></ion-col>
         <ion-col></ion-col>
-        
+
       </ion-row>
       <ion-row>
 
@@ -42,7 +43,7 @@
       </ion-row>
     </ion-grid>
   </div>
- 
+
   <div class="categoryWrapper" (click)="fillBar('#funny')">
     <ion-grid>
       <ion-row>
@@ -69,7 +70,7 @@
       </ion-row>
     </ion-grid>
   </div>
- 
+
   <div class="categoryWrapper" (click)="fillBar('#opinion')">
     <ion-grid>
       <ion-row>
@@ -96,7 +97,7 @@
       </ion-row>
     </ion-grid>
   </div>
- 
+
   <div class="categoryWrapper" (click)="fillBar('#sports')">
     <ion-grid>
       <ion-row>
@@ -123,7 +124,7 @@
       </ion-row>
     </ion-grid>
   </div>
- 
+
   <div class="categoryWrapper" (click)="fillBar('#music')">
     <ion-grid>
       <ion-row>
@@ -150,7 +151,7 @@
       </ion-row>
     </ion-grid>
   </div>
- 
+
   <div class="categoryWrapper" (click)="fillBar('#food')">
     <ion-grid>
       <ion-row>
@@ -177,33 +178,35 @@
       </ion-row>
     </ion-grid>
   </div>
- 
+
 </ion-content>
 
-<ion-tabs class="tabWrapper">
-  <ion-tab-bar class="bottomTabs" slot="bottom" color="secondary">
+<ion-toolbar>
 
-    <ion-tab-button class="bottomBarButton" (click)="toHomePage()">
-      <ion-icon name="home-outline" color="primary" size="small"></ion-icon>
-    </ion-tab-button>
+  <ion-tabs class="tabWrapper">
+    <ion-tab-bar class="bottomTabs" slot="bottom" color="secondary">
 
-    <ion-tab-button class="bottomBarButton" (click)="toSearchPage()">
-      <ion-icon name="search-outline" color="primary" size="small"></ion-icon>
-    </ion-tab-button>
+      <ion-tab-button class="bottomBarButton" (click)="toHomePage()">
+        <ion-icon name="home-outline" color="primary" size="small"></ion-icon>
+      </ion-tab-button>
 
-    <ion-tab-button class="bottomBarButton" (click)= "toCreatePage()">
-      <ion-icon name="add-circle" color="primary"></ion-icon>
-    </ion-tab-button>
+      <ion-tab-button class="bottomBarButton" (click)="toSearchPage()">
+        <ion-icon name="search-outline" color="primary" size="small"></ion-icon>
+      </ion-tab-button>
 
-    <ion-tab-button class="bottomBarButton" (click)="toPortfolioPage()">
-      <ion-icon name="cash-outline" color="primary" size="small"></ion-icon>
-    </ion-tab-button>
+      <ion-tab-button class="bottomBarButton" (click)="toCreatePage()">
+        <ion-icon name="add-circle" color="primary"></ion-icon>
+      </ion-tab-button>
 
-    <ion-tab-button class="bottomBarButton" (click)="toProfilePage()">
-      <ion-icon name="person" color="primary" size="small"></ion-icon>
-    </ion-tab-button>
+      <ion-tab-button class="bottomBarButton" (click)="toPortfolioPage()">
+        <ion-icon name="cash-outline" color="primary" size="small"></ion-icon>
+      </ion-tab-button>
 
-  </ion-tab-bar>
-</ion-tabs>
+      <ion-tab-button class="bottomBarButton" (click)="toProfilePage()">
+        <ion-icon name="person" color="primary" size="small"></ion-icon>
+      </ion-tab-button>
 
+    </ion-tab-bar>
+  </ion-tabs>
 
+</ion-toolbar>
