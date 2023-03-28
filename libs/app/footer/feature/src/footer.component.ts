@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'ms-footer-component',
+  selector: 'mp-footer-component',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
 })

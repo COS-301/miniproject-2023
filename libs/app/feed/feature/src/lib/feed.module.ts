@@ -4,10 +4,11 @@ import { IonicModule } from '@ionic/angular';
 import { FeedPage } from './feed.page';
 import { FeedRouting } from './feed.routing';
 import { FeedUIModule } from '@mp/app/feed/ui';
+import { FooterModule } from '@mp/app/footer/feature';
 
 
 @NgModule({
-  imports: [CommonModule, IonicModule, FeedRouting, FeedUIModule],
+  imports: [CommonModule, IonicModule, FeedRouting, FeedUIModule, FooterModule],
   declarations: [FeedPage],
   //exports: [FeedPage],
 })
