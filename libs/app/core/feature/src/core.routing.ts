@@ -61,6 +61,11 @@ const routes: Routes = [
       import('@mp/app/search/feature').then((m) => m.SearchModule),
   },
   {
+    path: 'settings',
+    loadChildren: () =>
+      import('@mp/app/settings/feature').then((m) => m.SettingsModule),
+  },
+  {
     path: 'tos',
     loadChildren: () => import('@mp/app/tos/feature').then((m) => m.TosModule),
   },
