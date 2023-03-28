@@ -1,15 +1,39 @@
-ion-title {
-  display: flex;
+//Old code of original profile page
+
+// ion-title {
+//   display: flex;
+// }
+
+// ion-card-title {
+//   display: flex;
+// }
+
+// ion-card-title > ion-icon {
+//   margin-top: 0px;
+// }
+
+// ion-icon {
+//   padding-left: 5px;
+// }
+
+.img1{
+  border-radius: 50%;
+  width: 50%;
+  height: 30%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-ion-card-title {
-  display: flex;
+.img2{
+  border-radius: 5%;
+  margin-bottom: 5%;
 }
 
-ion-card-title > ion-icon {
-  margin-top: 0px;
-}
-
-ion-icon {
-  padding-left: 5px;
+ion-col {
+  background-color: #ffffff;;
+  border: solid 1px #fff;
+  color: #fff;
+  text-align: center;
+  font:bold;
 }
