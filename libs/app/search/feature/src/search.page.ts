@@ -30,6 +30,6 @@ export class SearchPage implements OnInit {
     this.router.navigate(["/portfolio"]);
   }
   toProfilePage() {
-    this.router.navigate(["/profile-page"]);
+    this.router.navigate(["/profile"]);
   }
 }

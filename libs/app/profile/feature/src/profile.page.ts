@@ -5,7 +5,7 @@ import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'ms-profile-page',
+  selector: 'ms-profile',
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })

@@ -33,6 +33,6 @@ export class HomePage {
     this.router.navigate(["/portfolio"]);
   }
   toProfilePage() {
-    this.router.navigate(["/profile-page"]);
+    this.router.navigate(["/profile"]);
   }
 }

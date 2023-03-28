@@ -13,6 +13,6 @@ export class SettingsPage implements OnInit {
   ngOnInit() {}
 
   toProfilePage() {
-    this.router.navigate(["/profile-page"]);
+    this.router.navigate(["/profile"]);
   }
 }
