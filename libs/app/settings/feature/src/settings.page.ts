@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mp-settings',
@@ -6,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./settings.page.scss'],
 })
 export class SettingsPage implements OnInit {
-  constructor() {}
+  constructor(private router: Router) { }
+
 
   ngOnInit() {}
+
+  toProfilePage() {
+    this.router.navigate(["/profile-page"]);
+  }
 }
