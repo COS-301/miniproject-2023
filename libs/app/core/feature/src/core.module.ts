@@ -52,6 +52,7 @@ import { MomentModule } from 'ngx-moment';
 import { CoreRouting } from './core.routing';
 import { CoreShell } from './core.shell';
 import { FeedModule } from '@mp/app/feed/feature';
+import { DeathScreenModule } from '@mp/app/death-screen/feature';
 
 let resolvePersistenceEnabled: (enabled: boolean) => void;
 
@@ -88,6 +89,7 @@ const FIREBASE_OPTIONS: FirebaseOptions = {
   declarations: [CoreShell],
   entryComponents: [],
   imports: [
+    DeathScreenModule,
     SettingsModule,
     BrowserModule,
     IonicModule.forRoot(),

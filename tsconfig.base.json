@@ -50,6 +50,9 @@
       ],
       "@mp/app/dashboard/feature": ["libs/app/dashboard/feature/src/index.ts"],
       "@mp/app/dashboard/util": ["libs/app/dashboard/util/src/index.ts"],
+      "@mp/app/death-screen/feature": [
+        "libs/app/death-screen/feature/src/index.ts"
+      ],
       "@mp/app/demo/feature": ["libs/app/demo/feature/src/index.ts"],
       "@mp/app/errors/data-access": [
         "libs/app/errors/data-access/src/index.ts"

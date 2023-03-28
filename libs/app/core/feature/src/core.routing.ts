@@ -94,6 +94,13 @@ const routes: Routes = [
     loadChildren: () =>
       import ('@mp/app/settings/feature').then((m)=>m.SettingsModule),
   },
+  {
+    path: 'death-screen',
+    loadChildren: () =>
+      import ('@mp/app/death-screen/feature').then((m)=>m.DeathScreenModule),
+  },
+  
+  
 ];
 
 @NgModule({
