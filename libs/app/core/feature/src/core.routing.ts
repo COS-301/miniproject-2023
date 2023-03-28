@@ -66,6 +66,11 @@ const routes: Routes = [
       import('@mp/app/settings/feature').then((m) => m.SettingsModule),
   },
   {
+    path: 'splash',
+    loadChildren: () =>
+      import('@mp/app/splash/feature').then((m) => m.SplashModule),
+  },
+  {
     path: 'tos',
     loadChildren: () => import('@mp/app/tos/feature').then((m) => m.TosModule),
   },
