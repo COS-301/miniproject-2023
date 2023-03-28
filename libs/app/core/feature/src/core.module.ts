@@ -53,6 +53,7 @@ import { CoreRouting } from './core.routing';
 import { CoreShell } from './core.shell';
 import { FeedModule } from '@mp/app/feed/feature';
 import { DeathScreenModule } from '@mp/app/death-screen/feature';
+import { MessagesModule } from '@mp/app/messages/feature';
 
 let resolvePersistenceEnabled: (enabled: boolean) => void;
 
@@ -89,6 +90,7 @@ const FIREBASE_OPTIONS: FirebaseOptions = {
   declarations: [CoreShell],
   entryComponents: [],
   imports: [
+    MessagesModule,
     DeathScreenModule,
     SettingsModule,
     BrowserModule,

@@ -99,6 +99,11 @@ const routes: Routes = [
     loadChildren: () =>
       import ('@mp/app/death-screen/feature').then((m)=>m.DeathScreenModule),
   },
+  {
+    path: 'messages',
+    loadChildren: () =>
+      import ('@mp/app/messages/feature').then((m)=>m.MessagesModule),
+  },
   
   
 ];
