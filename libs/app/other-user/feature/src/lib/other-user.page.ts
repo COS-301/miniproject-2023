@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 
 @Component({
-  selector: 'mp-other-user',
+  selector: 'mp-other-user-page',
   templateUrl: './other-user.page.html',
   styleUrls: ['./other-user.page.css']
 })
