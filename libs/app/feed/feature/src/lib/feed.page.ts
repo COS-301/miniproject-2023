@@ -6,4 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./feed.page.scss']
 })
 export class FeedPage {
+
+  feedOpen = false;
+
+  onClick(){
+    this.feedOpen = !this.feedOpen;
+  }
+
 }
