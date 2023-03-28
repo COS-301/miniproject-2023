@@ -30,6 +30,7 @@
               required="true"
               placeholder="Enter display name"
               formControlName="displayName"
+              [value]="accountDetails.displayName"
               autocomplete="name"></ion-input>
           </ion-item>
           <ion-text
@@ -50,6 +51,7 @@
               required="true"
               placeholder="Enter email"
               formControlName="email"
+              [value]="accountDetails.email"
               autocomplete="email"></ion-input>
           </ion-item>
           <ion-text

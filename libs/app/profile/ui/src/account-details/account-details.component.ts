@@ -1,21 +1,21 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { IProfile } from '@mp/api/profiles/util';
 import { ProfileState } from '@mp/app/profile/data-access';
 import { Logout, UpdateAccountDetails } from '@mp/app/profile/util';
 import {
-  ActionsExecuting,
-  actionsExecuting
+    ActionsExecuting,
+    actionsExecuting
 } from '@ngxs-labs/actions-executing';
 import { Select, Store } from '@ngxs/store';
-import { Observable, Subject, takeUntil, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'ms-profile-account-details-component',
   templateUrl: './account-details.component.html',
   styleUrls: ['./account-details.component.scss'],
 })
-export class AccountDetailsComponent implements OnDestroy, OnInit {
+export class AccountDetailsComponent {
   @Select(ProfileState.profile) profile$!: Observable<IProfile | null>;
   @Select(actionsExecuting([UpdateAccountDetails]))
   busy$!: Observable<ActionsExecuting>;
@@ -27,30 +27,6 @@ export class AccountDetailsComponent implements OnDestroy, OnInit {
   });
   showPassword = false;
 
-  private ngUnsubscribe = new Subject<void>();
-  ngOnInit(): void {
-    //console.warn("@@@@@@@@");
-    this.profile$.pipe(
-      tap((profile: IProfile | null | undefined) => {
-        //console.warn(profile);
-        if (profile) {
-
-          if (this.displayName && profile.accountDetails) {
-            this.displayName.setValue(profile.accountDetails.displayName || "");
-          }
-          if (this.email && profile.accountDetails) {
-            this.email.setValue(profile.accountDetails.email || "");
-          }
-        }
-      }),
-      takeUntil(this.ngUnsubscribe)
-    ).subscribe();
-  }
-
-  ngOnDestroy(): void {
-    this.ngUnsubscribe.next();
-    this.ngUnsubscribe.complete();
-  }
   get displayName() {
     return this.accountDetailsForm.get('displayName');
   }
@@ -112,7 +88,7 @@ export class AccountDetailsComponent implements OnDestroy, OnInit {
   constructor(
     private readonly fb: FormBuilder,
     private readonly store: Store
-  ) { }
+  ) {}
 
   logout() {
     this.store.dispatch(new Logout());
