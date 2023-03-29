@@ -53,6 +53,8 @@ import { CoreRouting } from './core.routing';
 import { CoreShell } from './core.shell';
 import { FeedModule } from '@mp/app/feed/feature';
 import { DeathScreenModule } from '@mp/app/death-screen/feature';
+import { SearchModule } from '@mp/app/search/feature';
+
 
 let resolvePersistenceEnabled: (enabled: boolean) => void;
 
@@ -90,6 +92,7 @@ const FIREBASE_OPTIONS: FirebaseOptions = {
   entryComponents: [],
   imports: [
     DeathScreenModule,
+    SearchModule,
     SettingsModule,
     BrowserModule,
     IonicModule.forRoot(),

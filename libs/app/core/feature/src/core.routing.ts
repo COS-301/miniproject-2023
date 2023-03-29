@@ -45,6 +45,11 @@ const routes: Routes = [
       import('@mp/app/privacy/feature').then((m) => m.PrivacyModule),
   },
   {
+    path: 'search',
+    loadChildren: () =>
+      import ('@mp/app/search/feature').then((m)=>m.SearchModule),
+  },
+  {
     path: 'feed',
     loadChildren: () =>
       import('@mp/app/feed/feature').then((m) => m.FeedModule),
@@ -99,8 +104,7 @@ const routes: Routes = [
     loadChildren: () =>
       import ('@mp/app/death-screen/feature').then((m)=>m.DeathScreenModule),
   },
-  
-  
+
 ];
 
 @NgModule({
