@@ -21,24 +21,20 @@ export class CommentPage implements OnInit {
   }
 
   send(){
-    var x=document.getElementsByTagName("textarea");
-    for (var i = 0; i < x.length; i++) {
-      if(!x[i].getAttribute("[readonly]")){
-        x[i].value="";
-      }
-    }
+
+    //Todo: send comment to database
+    this.clear();
     console.log("sent comment!");
 
   }
 
   clear(){
-    var x=document.getElementsByTagName("textarea");
-    for (var i = 0; i < x.length; i++) {
+    let x=document.getElementsByTagName("ion-textarea");
+    for (let i = 0; i < x.length; i++) {
       if(!x[i].getAttribute("[readonly]")){
         x[i].value="";
       }
     }
-    console.log("cleared comment!");
   }
 
   like(event: any){
