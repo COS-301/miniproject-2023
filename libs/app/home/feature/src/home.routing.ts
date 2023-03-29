@@ -20,7 +20,7 @@ const routes: Routes = [
       {
         path: 'messages',
         loadChildren: () =>
-          import('@mp/app/messages/feature').then((m) => m.MessagesModule),
+          import('@mp/app/messages/feature').then((m) => m.MessagesModule)
       },
       {
         path: '',
