@@ -13,7 +13,7 @@ import { AggregateRoot } from '@nestjs/cqrs';
 export class Message extends AggregateRoot implements IConversation {
   constructor(
     public conversationID: string,
-    public messages : IMessage[],
+    public messages : /*IMessage[]*/ | string, //just to avoid build errors
     public members? : IUser[] | null | undefined, // TODO remove undefined for authentication purpouses
   ) {
     super();

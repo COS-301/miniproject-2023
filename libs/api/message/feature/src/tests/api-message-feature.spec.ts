@@ -1,7 +1,7 @@
-import { apiPostFeature } from './api-post-feature';
+import { apiMessageFeature } from './api-message-feature';
 
-describe('apiPostFeature', () => {
+describe('apiMessageFeature', () => {
   it('should work', () => {
-    expect(apiPostFeature()).toEqual('api-post-feature');
+    expect(apiMessageFeature()).toEqual('api-message-feature');
   });
 });

@@ -4,8 +4,8 @@ This library was generated with [Nx](https://nx.dev).
 
 ## Building
 
-Run `nx build api-post-feature` to build the library.
+Run `nx build api-message-feature` to build the library.
 
 ## Running unit tests
 
-Run `nx test api-post-feature` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx test api-message-feature` to execute the unit tests via [Jest](https://jestjs.io).

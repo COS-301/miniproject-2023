@@ -1,3 +1,3 @@
-export function apiPostFeature(): string {
-  return 'api-post-feature';
+export function apiMessageFeature(): string {
+  return 'api-message-feature';
 }

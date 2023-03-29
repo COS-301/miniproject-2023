@@ -10,6 +10,6 @@ export class MessageDeletedHandler
 
     async handle(event: MessageDeletedEvent) {
     	console.log(`$MessageDeletedHandler.name`)
-	this.repository.deleteMessage(event.conversation)
+	this.repository.deleteMessage(/*event.IMessage*/)
     }
   }

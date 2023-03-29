@@ -1,11 +1,14 @@
-import { IConversation } from '@mp/api/conversation/util';
+import { IConversation } from '@mp/api/conversation/util'; //NOTE: RESULTS IN CIRCULAR DEPENDENCY
+
+import { IMessage } from '@mp/api/message/util';
 import { Injectable } from '@nestjs/common';
 import * as admin from 'firebase-admin';
 
 @Injectable()
 export class MessageRepository {
-  async getMessage(profile: IConversation) { // TODO Placeholder feature
-      /*
+
+
+  async getMessage(msg : IConversation) { // TODO Placeholder feature
     return await admin
       .firestore()
       .collection('profiles')
@@ -15,10 +18,10 @@ export class MessageRepository {
         },
         toFirestore: (it: IConversation) => it,
       })
-      .doc(profile.userId)
+      .doc(msg.conversationID)
       .get();
-      */
   }
+  
 
   async sendMessage(message: IConversation) {
     return await admin
@@ -39,5 +42,13 @@ export class MessageRepository {
       .update({
 	  messages : admin.firestore.FieldValue.arrayRemove(message.messages)
       });
+  }
+
+  async saveMessage(message: IMessage){
+    return await admin
+    .firestore()
+    .collection('message')
+    .doc(message.id)
+    .set(message, { merge: true });
   }
 }
