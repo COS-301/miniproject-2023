@@ -84,6 +84,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('@mp/app/profile/feature').then((m) => m.ProfileModule),
   },
+  {
+    path: 'welcome',
+    loadChildren: () =>
+      import('@mp/app/welcome/feature').then((m) => m.WelcomeModule),
+  },
   // {
   //   path: 'verify',
   //   pathMatch: 'full',
