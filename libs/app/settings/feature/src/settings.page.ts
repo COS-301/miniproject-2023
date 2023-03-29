@@ -15,4 +15,10 @@ export class SettingsPage implements OnInit {
   toProfilePage() {
     this.router.navigate(["/profile"]);
   }
+
+  logOut(){
+    console.log("Sorry to see you go :(");
+    this.router.navigate(["/welcome"]);
+
+  }
 }
