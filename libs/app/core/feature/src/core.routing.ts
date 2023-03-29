@@ -16,7 +16,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { authGuardPipe: redirectLoggedIn },
     loadChildren: () =>
-      import('@mp/app/welcome/feature').then((m) => m.WelcomeModule),
+      import('@mp/app/splash/feature').then((m) => m.SplashModule),
   },
   // {
   //   path: 'response',
