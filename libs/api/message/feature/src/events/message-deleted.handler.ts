@@ -9,7 +9,7 @@ export class MessageDeletedHandler
     constructor(private readonly repository : MessageRepository) {}
 
     async handle(event: MessageDeletedEvent) {
-    	console.log(`$MessageDeletedHandler.name`)
-	this.repository.deleteMessage(/*event.IMessage*/)
+      console.log(`$MessageDeletedHandler.name`)
+      this.repository.deleteMessage(event.conversation)
     }
   }

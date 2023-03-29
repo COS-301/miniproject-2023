@@ -5,7 +5,6 @@ import{
     SendMessageCommand
 }from '@mp/api/message/util';
 
-import { UserCreatedEvent } from '@mp/api/users/util';
 import {Injectable} from "@nestjs/common";
 import { ICommand, ofType, Saga } from '@nestjs/cqrs';
 import { map, Observable } from 'rxjs';
@@ -14,6 +13,7 @@ import { map, Observable } from 'rxjs';
 
 @Injectable()
 export class MessageSagas {
+  /*
     @Saga()
     onMessageDeleted = (events$: Observable<any>): Observable<ICommand> => {
     return events$.pipe(
@@ -34,5 +34,6 @@ export class MessageSagas {
             new SendMessageCommand({ user: event.user })
         )
     );
-    };  
+    };
+    */
 }

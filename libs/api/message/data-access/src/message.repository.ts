@@ -11,7 +11,7 @@ export class MessageRepository {
   async getMessage(msg : IConversation) { // TODO Placeholder feature
     return await admin
       .firestore()
-      .collection('profiles')
+      .collection('conversations')
       .withConverter<IConversation>({
         fromFirestore: (snapshot) => {
           return snapshot.data() as IConversation;
@@ -21,7 +21,7 @@ export class MessageRepository {
       .doc(msg.conversationID)
       .get();
   }
-  
+
 
   async sendMessage(message: IConversation) {
     return await admin

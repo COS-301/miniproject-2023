@@ -10,6 +10,6 @@ export class MessageSentHandler
 
     async handle(event: MessageSentEvent) {
       console.log(`$MessageSentHandler.name}`);
-      await this.repository.sendMessage(/*event.conversation*/)
+      this.repository.sendMessage(event.conversation);
     }
   }
