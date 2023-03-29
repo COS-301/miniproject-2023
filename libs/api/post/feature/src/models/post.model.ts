@@ -1,6 +1,7 @@
 import { Timestamp } from 'firebase-admin/firestore';
 import { AggregateRoot } from '@nestjs/cqrs';
-import { Hashtag, IComment, IPost } from '@mp/api/postss/util';
+import {Hashtag, IComment, IPost, PostCreatedEvent} from '@mp/api/postss/util';
+import {PostRepository} from "@mp/api/postss/data-access";
 
 export class Post extends AggregateRoot implements IPost {
     constructor(
@@ -21,8 +22,12 @@ export class Post extends AggregateRoot implements IPost {
         super();
     }
 
+    // create() {
+    //   this.apply(new LikesUpdatedEvent(this.toJSON()));
+    // }
+
     static fromData(post: IPost): Post {
-        const instance = new Post(      
+        const instance = new Post(
             post.postID,
             post.createdBy,
             post.likes,
@@ -38,6 +43,10 @@ export class Post extends AggregateRoot implements IPost {
             post.listing,
         );
         return instance;
+      }
+
+      create(){
+        this.apply(new PostCreatedEvent(this.toJSON()));
       }
 
 
@@ -56,4 +65,10 @@ export class Post extends AggregateRoot implements IPost {
           listing: this.listing,
         };
       }
+
+      //  updatelikes(post: IPost) {
+
+      //   this.likes = post.likse + 1;
+      //   this.apply(new LikesUpdatedEvent(this.toJSON()))
+      // }
 }

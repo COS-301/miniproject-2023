@@ -1,5 +1,5 @@
 import { IPost } from '../interfaces';
 
-export class ProfileLikedEvent {
+export class PostLikedEvent {
   constructor(public readonly profile: IPost) {}
 }
