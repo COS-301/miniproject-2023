@@ -6,6 +6,4 @@ import { Component} from '@angular/core';
   templateUrl: './chat-card.html',
   styleUrls: ['./chat-card.css']
 })
-export class ChatCard {
-  // @Input() name: string;
-}
+export class ChatCard {}
