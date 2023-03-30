@@ -1,48 +1,62 @@
-<ion-header [translucent]="true" [ngClass]="{'deus': deus, 'normal': !deus && !dead, 'dead': dead}">
-<!-- Profile pic & Name -->
-    <ion-avatar>
-        <!-- If private and not friends -->
-        <img *ngIf="private && !friends"  alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+<!-- <h2>It worksss!!</h2> -->
 
-        <!-- If not private OR if private and friends -->
-        <img *ngIf="!private || (private && friends)"  alt="User's profile picture" src="user image variable from api" />
-    </ion-avatar>
-    <ion-text>
-        <h2>Jon Snow</h2>
-    </ion-text>
+ <!-- Title Background == Style background of header with conditional css classes -->
+ <!-- [ngClass]="{'deus': deus, 'normal': !deus && !dead, 'dead': dead}" -->
+<ion-header [translucent]="false" [ngClass]="user.status | lowercase">
+    <div class="header-content">
 
-<!-- Title -->
-    <ion-text>
-        <h4>Deus</h4>
-    </ion-text>
-    
-<!-- Title Background == Style background of header with conditional css classes -->
-
-<!-- Time left -->
-    <ion-text>
-        <!-- If not private OR if private and friends -->
-        <h3 *ngIf="!private || (private && friends)" >10:00:30</h3>
-
-        <!-- If private and not friends -->
-        <h3 *ngIf="private && !friends" >__:__:__</h3>
-    </ion-text>
-<!-- Message Button --><!-- Friend Button - Dropdown? / perhaps ion-action-sheet -->
-<ion-button>Message</ion-button>
-
+        <!-- Profile pic & Name -->
+            <ion-avatar>
+                <!-- If private and not friends -->
+                <img *ngIf="private && !friends"  alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        
+                <!-- If not private OR if private and friends -->
+                <img *ngIf="!private || (private && friends)"  alt="User's profile picture" [src]=user.pfp />
+            </ion-avatar>
+            <ion-text>
+                <h1>{{user.name}}</h1>
+            </ion-text>
+        
+        <!-- Title -->
+            <ion-text>
+                <h4>{{user.status}}</h4>
+            </ion-text>
+            
+       
+        
+        <!-- Time left -->
+            <ion-text>
+                <!-- If not private OR if private and friends -->
+                <h2 *ngIf="!user.private || (user.private && user.friends)" >10:00:30</h2>
+        
+                <!-- If user.private and not user.friends -->
+                <h2 *ngIf="user.private && !user.friends" >__:__:__</h2>
+            </ion-text>
+        <!-- Message Button --><!-- Friend Button - Dropdown? / perhaps ion-action-sheet -->
+        <ion-list>
+            <ion-button>Message</ion-button><ion-button>Friend</ion-button>
+        </ion-list>
+    </div>
 </ion-header>
+
 <ion-content>
     <ion-toolbar>
         <!-- Meters --><!-- Badges --><!-- Posts -->
+        <ion-segment value="meters" #toolbarSegment>
+            <ion-segment-button value="meters">Meters</ion-segment-button>
+            <ion-segment-button value="badges">Badges</ion-segment-button>
+            <ion-segment-button value="posts">Posts</ion-segment-button>
+        </ion-segment>
     </ion-toolbar>
     <!-- OR  -->
-    <ion-tabs>
+    <!-- <ion-tabs>
 
         <ion-router-outlet></ion-router-outlet>
         <ion-tab-button tab="home">
             <ion-icon name="play-circle"></ion-icon>
             Listen Now
         </ion-tab-button>
-    </ion-tabs>
+    </ion-tabs> -->
 
     <!-- if user private and they are not friends -->
     <ion-content *ngIf="private && !friends">
@@ -56,25 +70,28 @@
     <!-- If user not private OR if user is private and they are friends -->
     <ion-content *ngIf="!private || (private && friends)" >
         <!-- METERS -->
-        <ion-content>
+        <ion-content *ngIf="toolbarSegment.value === 'meters'">
             <!-- ngFor to display all the meters -->
             <!-- Meter title -->
             <!-- Progress bar -->
             <!-- Meter value -->
+            <h3>Meters works!</h3>
         </ion-content>
-    
+        
         <!-- BADGES -->
-        <ion-content>
+        <ion-content *ngIf="toolbarSegment.value === 'badges'">
             <!-- ngFor to display all disciplines where the user has badges -->
             <!-- within discipline ngFor to display badge icons -->
+            <h3>Badges works!</h3>
         </ion-content>
-    
+        
         <!-- POSTS -->
-        <ion-content>
-            <ion-grid>
+        <ion-content *ngIf="toolbarSegment.value === 'posts'">
+            <h3>Posts works!</h3>
+            <!-- <ion-grid> -->
                 <!-- ngFors to loop through number of posts -->
                 <!-- User ngIfs to limit number of cols per row -->
-            </ion-grid>
+            <!-- </ion-grid> -->
         </ion-content>
     </ion-content>
 </ion-content>
