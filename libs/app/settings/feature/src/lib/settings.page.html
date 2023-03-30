@@ -1,1 +1,41 @@
-<p>settings works!</p>
+<ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Settings
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-list>
+      <ion-item>
+        <ion-label>Dark Mode</ion-label>
+        <ion-toggle aria-label="Primary toggle" color="primary" [checked]="true"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>Notifications</ion-label>
+        <ion-toggle aria-label="Primary toggle" color="primary" [checked]="true"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>Sound</ion-label>
+        <ion-toggle aria-label="Primary toggle" color="primary" [checked]="true"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>Colour Blind Mode</ion-label>
+        <ion-toggle aria-label="Primary toggle" color="primary" [checked]="true"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>Profile Settings</ion-label>
+        <ion-button [disabled]="false">Change</ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-label>Billing</ion-label>
+        <ion-button [disabled]="false">Change</ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-label>Terms of Service</ion-label>
+        <ion-button [disabled]="false">View</ion-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  
