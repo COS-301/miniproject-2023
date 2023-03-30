@@ -1,13 +1,13 @@
 .deus {
-    background-color: gold;
+    background-color: rgb(216, 205, 106);
 }
 
 .dead {
-    background-color: red;
+    background-color: rgb(213, 94, 94);
 }
 
 .normal {
-    background-color: green;
+    background-color: rgb(97, 218, 97);
 }
 
 .header-content {
@@ -22,6 +22,11 @@
 .header-content > ion-text {
     margin: auto;
     text-align: center;
+}
+
+.header-content > ion-text.status-text {
+  /* margin-left: 10px; */
+  text-align: left;
 }
 
 .header-content > ion-button {
@@ -56,6 +61,7 @@ ion-segment {
     padding: 0px;
     --background: #191919;
     color: white;
+    border-radius: 0%;
 }
 
 ion-segment-button::part(indicator-background) {
@@ -64,11 +70,11 @@ ion-segment-button::part(indicator-background) {
   
   /* Material Design styles */
   ion-segment-button.md::part(native) {
-    color: #000;
+    color: #f9f8f8;
   }
   
   .segment-button-checked.md::part(native) {
-    color: #00740e;
+    color: #03ac08;
   }
   
   ion-segment-button.md::part(indicator-background) {
@@ -85,9 +91,18 @@ ion-segment-button::part(indicator-background) {
   }
   
   ion-segment-button.ios::part(indicator-background) {
-    border-radius: 20px;
+    border-radius: 3px;
   }
 
 ion-toolbar {
     padding: 0px;
+    background: #191919;
+}
+
+.toolbar-container {
+  padding: 0px;
+}
+
+.content-section {
+  padding: 0px;
 }

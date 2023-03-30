@@ -18,8 +18,8 @@
             </ion-text>
         
         <!-- Title -->
-            <ion-text>
-                <h4>{{user.status}}</h4>
+            <ion-text class="status-text">
+                <h5>{{user.status}}</h5>
             </ion-text>
             
        
@@ -39,15 +39,15 @@
     </div>
 </ion-header>
 
-<ion-content>
-    <ion-toolbar>
+<ion-content class="content-section">
+    <!-- <ion-toolbar> -->
         <!-- Meters --><!-- Badges --><!-- Posts -->
         <ion-segment value="meters" #toolbarSegment>
             <ion-segment-button value="meters">Meters</ion-segment-button>
             <ion-segment-button value="badges">Badges</ion-segment-button>
             <ion-segment-button value="posts">Posts</ion-segment-button>
         </ion-segment>
-    </ion-toolbar>
+    <!-- </ion-toolbar> -->
     <!-- OR  -->
     <!-- <ion-tabs>
 

@@ -23,8 +23,8 @@ export class OtherUserPage {
     private: true
   }
 
-  NgOnInit() {
+  // NgOnInit() {
 
-  }
+  // }
 
 }
