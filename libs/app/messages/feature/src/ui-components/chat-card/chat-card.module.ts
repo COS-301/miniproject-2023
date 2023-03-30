@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { Input, NgModule } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { ChatCard } from "./chat-card";
 
@@ -10,4 +10,6 @@ import { ChatCard } from "./chat-card";
   exports: [ChatCard],
   declarations: [ChatCard],
 })
-export class ChatCardModule {}
+export class ChatCardModule {
+
+}

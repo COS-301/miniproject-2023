@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, Input} from '@angular/core';
 
 
 @Component({
@@ -6,4 +6,9 @@ import { Component} from '@angular/core';
   templateUrl: './chat-card.html',
   styleUrls: ['./chat-card.css']
 })
-export class ChatCard {}
+export class ChatCard {
+  @Input() name: String = "";
+  @Input() profilePhoto: String = "";
+  @Input() snippet: String = "";
+  @Input() time: String = "";
+}
