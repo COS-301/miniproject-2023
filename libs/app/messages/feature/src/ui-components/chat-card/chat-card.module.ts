@@ -1,0 +1,13 @@
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { IonicModule } from '@ionic/angular';
+import { ChatCard } from "./ChatCard";
+
+
+
+@NgModule({
+  imports: [CommonModule, IonicModule],
+  exports: [ChatCard],
+  declarations: [ChatCard],
+})
+export class ChatCardModule {}

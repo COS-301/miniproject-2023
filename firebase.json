@@ -49,10 +49,6 @@
     "rules": "storage.rules"
   },
   "emulators": {
-    "ui": {
-      "port": 5001,
-      "enabled": true
-    },
     "auth": {
       "port": 5002
     },
@@ -71,13 +67,13 @@
     "hosting": {
       "port": 5007
     },
-    "pubsub": {
-      "port": 5008
-    },
     "eventarc": {
       "port": 5009
     },
-    "singleProjectMode": true
+    "singleProjectMode": true,
+    "ui": {
+      "enabled": false
+    }
   },
   "remoteconfig": {
     "template": "remoteconfig.template.json"

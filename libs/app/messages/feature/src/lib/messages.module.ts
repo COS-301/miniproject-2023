@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { MessagesPage } from './messages.page';
 import { MessagesRouting } from './messages.routing';
-
+import { ChatCardModule } from '../ui-components/chat-card';
 
 @NgModule({
-  imports: [CommonModule, IonicModule, MessagesRouting],
+  imports: [ChatCardModule, CommonModule, IonicModule, MessagesRouting],
   exports: [MessagesPage],
   declarations: [MessagesPage],
 })

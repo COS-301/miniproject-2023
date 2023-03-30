@@ -7,7 +7,6 @@ import { VersionModule } from '@mp/app/version/ui';
 import { WelcomeModule as WelcomeDataAccessModule } from '@mp/app/welcome/data-access';
 import { WelcomePage } from './welcome.page';
 import { WelcomeRouting } from './welcome.routing';
-import { MessagesModule } from '@mp/app/messages/feature';
 
 @NgModule({
   imports: [
@@ -18,7 +17,6 @@ import { MessagesModule } from '@mp/app/messages/feature';
     WelcomeDataAccessModule,
     CopyrightModule,
     VersionModule,
-    MessagesModule,
   ],
   declarations: [WelcomePage],
 })
