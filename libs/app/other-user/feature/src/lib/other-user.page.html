@@ -18,8 +18,8 @@
             </ion-text>
         
         <!-- Title -->
-            <ion-text class="status-text">
-                <h5>{{user.status}}</h5>
+            <ion-text >
+                <h5 class="status-text">{{user.status}}</h5>
             </ion-text>
             
        
@@ -34,7 +34,7 @@
             </ion-text>
         <!-- Message Button --><!-- Friend Button - Dropdown? / perhaps ion-action-sheet -->
         <ion-list>
-            <ion-button>Message</ion-button><ion-button>Friend</ion-button>
+            <ion-button shape="small">Message</ion-button><ion-button shape="small">Friend</ion-button>
         </ion-list>
     </div>
 </ion-header>
@@ -59,7 +59,7 @@
     </ion-tabs> -->
 
     <!-- if user private and they are not friends -->
-    <ion-content *ngIf="private && !friends">
+    <ion-content *ngIf="private && !friends" >
         <ion-text color="warning">
             <h3>This account is private</h3>
         </ion-text>
