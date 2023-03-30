@@ -1,8 +1,8 @@
 rules_version = '2';
 
-//checks that the image filesize is below max MegaBytes. I passed 10 mb as a parameter.
+//checks that the image filesize is below max MegaBytes. I passed 10 as a parameter.
 function checkForCorrectSizeImage(max){
-	request.resource.contentType.matches('image/.*') && return request.resource.size < max * 1024 * 1024;
+	return request.resource.size < max * 1024 * 1024 && request.resource.contentType.matches('image/.*');
 }
 
 service firebase.storage {
