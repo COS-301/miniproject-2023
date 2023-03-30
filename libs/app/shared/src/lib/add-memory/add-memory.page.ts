@@ -23,24 +23,25 @@ export class AddMemoryPageComponent {
 
   async onFileSelected(event: any) {
     const file: File = event.target.files[0];
-    if (!file || !file.type.match(/image\/*/) ) {
+    if (!file || !file.type.match(/image\/*/)) {
       const alert = await this.alertCtrl.create({
         cssClass: 'file-select-alert',
         header: 'Invalid file selected',
         subHeader: 'Only images are allowed',
-        buttons: [{
-          text: 'OK',
-          handler: () => {
-            console.log('Alert dismissed')
-          }
-        }]
+        buttons: [
+          {
+            text: 'OK',
+            handler: () => {
+              console.log('Alert dismissed');
+            },
+          },
+        ],
       });
-      
+
       event.target.value = null;
       this.memory.imageUrl = '';
       await alert.present();
-    }
-    else {
+    } else {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {
@@ -51,15 +52,15 @@ export class AddMemoryPageComponent {
     }
   }
 
-  setTitleText(){
-    if (this.memory.title !== ''){
+  setTitleText() {
+    if (this.memory.title !== '') {
       this.memory.title = this.memory.title[0].toUpperCase() + this.memory.title.substring(1);
     }
   }
-  setDescriptionText(){
-    if (this.memory.description !== ''){
+  setDescriptionText() {
+    if (this.memory.description !== '') {
       this.memory.description = this.memory.description[0].toUpperCase() + this.memory.description.substring(1);
-    } 
+    }
   }
 
   async add() {
@@ -83,25 +84,25 @@ export class AddMemoryPageComponent {
       date: formattedDate,
     };
 
-    if (!this.memory.title || !this.memory.description || !this.memory.imageUrl){
+    if (!this.memory.title || !this.memory.description || !this.memory.imageUrl) {
       const alert = await this.alertCtrl.create({
         cssClass: 'add-memory-alert',
         header: 'Invalid input received',
         subHeader: 'Please fill in all fields.',
-        buttons: [{
-          text: 'OK',
-          handler: () => {
-            console.log('Alert dismissed')
-          }
-        }]
+        buttons: [
+          {
+            text: 'OK',
+            handler: () => {
+              console.log('Alert dismissed');
+            },
+          },
+        ],
       });
-      
+
       await alert.present();
-    }
-    else{
+    } else {
       this.modalController.dismiss(newMemory);
     }
-
   }
 
   cancel() {

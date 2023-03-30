@@ -6,17 +6,15 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: ProfileViewPageComponent
+    component: ProfileViewPageComponent,
   },
   {
     path: 'Dashboard',
-    loadChildren: () =>
-      import('@mp/app/dashboard/feature').then((m) => m.DashboardModule),
+    loadChildren: () => import('@mp/app/dashboard/feature').then((m) => m.DashboardModule),
   },
   {
     path: 'profile',
-    loadChildren: () =>
-      import('@mp/app/profile/feature').then((m) => m.ProfileModule),
+    loadChildren: () => import('@mp/app/profile/feature').then((m) => m.ProfileModule),
   },
 ];
 

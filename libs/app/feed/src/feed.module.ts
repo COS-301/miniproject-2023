@@ -7,11 +7,7 @@ import { SharedModule } from '@mp/app/shared';
 
 @NgModule({
   imports: [CommonModule, IonicModule, FeedRouting, SharedModule],
-  declarations: [
-    FeedPageComponent,
-  ],
-  exports: [
-    FeedPageComponent,
-  ]
+  declarations: [FeedPageComponent],
+  exports: [FeedPageComponent],
 })
 export class FeedModule {}

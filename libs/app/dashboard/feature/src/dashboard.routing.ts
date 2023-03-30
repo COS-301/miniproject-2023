@@ -10,8 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-    loadChildren: () =>
-      import('@mp/app/profile/feature').then((m) => m.ProfileModule),
+    loadChildren: () => import('@mp/app/profile/feature').then((m) => m.ProfileModule),
   },
 ];
 

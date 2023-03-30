@@ -1,37 +1,38 @@
-.modal-list{
-    background-color: transparent;
+.modal-list {
+  background-color: transparent;
 }
 
-.modal-list-item{
-    border: 1px solid #ffffff;
-    padding: 10px;
-    font-size: 20px;
-    font-weight: bold;
-    width: 99%;
+.modal-list-item {
+  border: 1px solid #ffffff;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  width: 99%;
 }
 
-.modal-list-input{
-    background-color: #ffffff;
-    border-radius: 5px;
-    font-size: 18px;
-    color: #000000;
-    margin-left: 5px;
-    --padding-start: 10px;
-    --padding-end: 10px;
+.modal-list-input {
+  background-color: #ffffff;
+  border-radius: 5px;
+  font-size: 18px;
+  color: #000000;
+  margin-left: 5px;
+  --padding-start: 10px;
+  --padding-end: 10px;
 }
 
-.button-save, .button-cancel{
-    font-size: 25px;
-    margin-top: 20px;
-    height: 40px;
-    color: #ffffff;
-    width: 100px;
+.button-save,
+.button-cancel {
+  font-size: 25px;
+  margin-top: 20px;
+  height: 40px;
+  color: #ffffff;
+  width: 100px;
 }
 
 .button-save {
-    --background: #08ff08cd;
+  --background: #08ff08cd;
 }
 
 .button-cancel {
-    --background: #ff0000;
+  --background: #ff0000;
 }

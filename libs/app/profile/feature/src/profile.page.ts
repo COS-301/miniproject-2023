@@ -13,13 +13,13 @@ import { ActivatedRoute } from '@angular/router';
 export class ProfilePage implements OnInit {
   @Select(ProfileState.profile) profile$!: Observable<IProfile | null>;
 
-  previousPageName ='';
+  previousPageName = '';
 
-  constructor(private route: ActivatedRoute){ }
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-      this.route.queryParamMap.subscribe(params => {
-        this.previousPageName = params.get('from') === 'profile-view' ? 'Profile' : 'Dashboard';
-      });
+    this.route.queryParamMap.subscribe((params) => {
+      this.previousPageName = params.get('from') === 'profile-view' ? 'Profile' : 'Dashboard';
+    });
   }
 }

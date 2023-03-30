@@ -4,7 +4,7 @@ import { ProfileState } from '@mp/app/profile/data-access';
 import { SubscribeToProfile } from '@mp/app/profile/util';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { MenubarService } from '@mp/app/services'
+import { MenubarService } from '@mp/app/services';
 
 @Component({
   selector: 'ms-home-page',
@@ -19,8 +19,8 @@ export class HomePage {
   constructor(private readonly store: Store, private menubarService: MenubarService) {
     this.menuShown = this.menubarService.menuStatus;
   }
-  
-  getMenuStatus(){
+
+  getMenuStatus() {
     return this.menubarService.menuStatus;
   }
 

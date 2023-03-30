@@ -1,3 +1,3 @@
 export class ForgotPassword {
-    static readonly type = '[ForgotPassword] ForgotPassword';
-  }
+  static readonly type = '[ForgotPassword] ForgotPassword';
+}

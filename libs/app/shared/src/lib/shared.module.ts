@@ -8,6 +8,6 @@ import { AddMemoryPageComponent } from './add-memory/add-memory.page';
 @NgModule({
   imports: [CommonModule, IonicModule, FormsModule],
   declarations: [MemoryCardComponent, AddMemoryPageComponent],
-  exports: [MemoryCardComponent]
+  exports: [MemoryCardComponent],
 })
 export class SharedModule {}

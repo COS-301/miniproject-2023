@@ -7,14 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from '@mp/app/shared';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    SharedModule,
-    SearchResultsPageRouting,
-    IonicModule
-  ],
+  imports: [CommonModule, FormsModule, SharedModule, SearchResultsPageRouting, IonicModule],
   declarations: [SearchResultsPageComponent],
 })
 export class SearchResultsPageModule {}
-

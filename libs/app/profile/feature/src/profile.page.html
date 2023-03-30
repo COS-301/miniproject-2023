@@ -4,14 +4,8 @@
     <ion-title color="light" class="ion-align-items-center">
       Profile Settings
       <ng-container *ngIf="(profile$ | async) as profile;">
-        <ion-icon
-          *ngIf="profile.status == 'Incomplete'"
-          color="danger"
-          name="alert-circle-outline"></ion-icon>
-        <ion-icon
-          *ngIf="profile.status == 'Complete'"
-          color="success"
-          name="checkmark-circle-outline"></ion-icon>
+        <ion-icon *ngIf="profile.status == 'Incomplete'" color="danger" name="alert-circle-outline"></ion-icon>
+        <ion-icon *ngIf="profile.status == 'Complete'" color="success" name="checkmark-circle-outline"></ion-icon>
       </ng-container>
     </ion-title>
   </ion-toolbar>
@@ -22,14 +16,8 @@
       <ion-title color="light" size="large" class="ion-align-items-center">
         Profile Settings
         <ng-container *ngIf="(profile$ | async) as profile;">
-          <ion-icon
-            *ngIf="profile.status == 'Incomplete'"
-            color="danger"
-            name="alert-circle-outline"></ion-icon>
-          <ion-icon
-            *ngIf="profile.status == 'Complete'"
-            color="success"
-            name="checkmark-circle-outline"></ion-icon>
+          <ion-icon *ngIf="profile.status == 'Incomplete'" color="danger" name="alert-circle-outline"></ion-icon>
+          <ion-icon *ngIf="profile.status == 'Complete'" color="success" name="checkmark-circle-outline"></ion-icon>
         </ng-container>
       </ion-title>
     </ion-toolbar>
@@ -46,10 +34,7 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-          <ngx-skeleton-loader
-            count="5"
-            [theme]="{height: '150px'}"
-            appearance="line"></ngx-skeleton-loader>
+          <ngx-skeleton-loader count="5" [theme]="{height: '150px'}" appearance="line"></ngx-skeleton-loader>
         </ion-col>
       </ion-row>
     </ion-grid>

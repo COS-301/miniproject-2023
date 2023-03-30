@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ProfileImage } from '@mp/app/shared';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProfileImageService {
   private _profileImage: ProfileImage = new ProfileImage();

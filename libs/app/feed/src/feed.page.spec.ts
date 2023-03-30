@@ -38,13 +38,12 @@ describe('FeedPageComponent', () => {
   });
 
   it('should change the variable showExpandedView to true when calling the changeMemoryView() function for the first time', () => {
-    
     component1.changeMemoryView();
 
     expect(component1.showExpandedView).toBeTruthy();
   });
 
-  it('should toggle the variable showExpandedView to true and then to false when calling changeMemoryView() twice', () => {    
+  it('should toggle the variable showExpandedView to true and then to false when calling changeMemoryView() twice', () => {
     component1.changeMemoryView();
     component1.changeMemoryView();
 
