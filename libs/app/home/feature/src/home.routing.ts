@@ -18,9 +18,9 @@ const routes: Routes = [
           import('@mp/app/profile/feature').then((m) => m.ProfileModule),
       },
       {
-        path: 'chat',
+        path: 'inbox',
         loadChildren: () =>
-          import('@mp/app/chat/feature').then((m) => m.ChatModule),
+          import('@mp/app/inbox/feature').then((m) => m.InboxModule),
       },
       {
         path: '',

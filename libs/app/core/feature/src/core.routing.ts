@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { ChatPageComponent } from '@mp/app/chat/feature';
 import {
   AuthGuard,
   redirectLoggedInTo,
@@ -35,6 +34,10 @@ const routes: Routes = [
     data: { authGuardPipe: redirectLoggedOut },
     loadChildren: () =>
       import('@mp/app/home/feature').then((m) => m.HomeModule),
+  },
+  {
+    path: 'inbox',
+    loadChildren: () => import('@mp/app/inbox/feature').then((m) => m.InboxModule),
   },
   {
     path: 'tos',
@@ -85,7 +88,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('@mp/app/login/feature').then((m) => m.LoginModule),
   },
-  { path: 'chat', component: ChatPageComponent },
+  //  { path: 'chat', component: InboxPageComponent },
 ];
 
 @NgModule({
