@@ -1,7 +1,0 @@
-{
-  "projects": {
-    "default": "timehive-a9ec2",
-    "production": "timehive-a9ec2",
-    "development": "timehive-a9ec2"
-  }
-}
