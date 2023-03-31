@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
+import { ChatPageComponent } from '@mp/app/chat/feature';
 import {
-    AuthGuard,
-    redirectLoggedInTo,
-    redirectUnauthorizedTo
+  AuthGuard,
+  redirectLoggedInTo,
+  redirectUnauthorizedTo
 } from '@angular/fire/auth-guard';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
@@ -84,6 +85,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('@mp/app/login/feature').then((m) => m.LoginModule),
   },
+  { path: 'chat', component: ChatPageComponent },
 ];
 
 @NgModule({
@@ -92,4 +94,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class CoreRouting {}
+export class CoreRouting { }
