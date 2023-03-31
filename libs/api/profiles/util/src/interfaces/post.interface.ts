@@ -1,3 +1,6 @@
+// Need to remove this later to avoid duplicate code - already defined in Luke's code
+
+
 import { Discipline } from "../enums/discipline.enum"
 import {IUser} from '@mp/api/users/util'; // use existing IUser interface
 
