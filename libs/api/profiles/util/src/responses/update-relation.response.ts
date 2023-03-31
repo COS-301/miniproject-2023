@@ -1,1 +1,4 @@
-// Do we get a response here?
+
+export interface IUpdateRelationResponse {
+  status: string; // use Luke's enum for success/failure
+}
