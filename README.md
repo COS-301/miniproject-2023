@@ -4,6 +4,7 @@
 
 The following items are required to run this project:
 
+
 - Node 16: Used for the app, api and cli (Tip: use NVM)
 - Java: used by the Firebase emulators (Make sure that JAVA_HOME is set. Tip: use JENV)
 - You need to create a firebase project (See: https://console.firebase.google.com - You will need to config for your firebase project in the .env files, .firestorerc)
