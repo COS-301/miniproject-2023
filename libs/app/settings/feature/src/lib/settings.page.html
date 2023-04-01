@@ -9,32 +9,35 @@
   <ion-content>
     <ion-list>
       <ion-item>
-        <ion-label>Dark Mode</ion-label>
+        <ion-label>Privacy</ion-label>
         <ion-toggle aria-label="Primary toggle" color="primary" [checked]="true"></ion-toggle>
       </ion-item>
       <ion-item>
         <ion-label>Notifications</ion-label>
         <ion-toggle aria-label="Primary toggle" color="primary" [checked]="true"></ion-toggle>
       </ion-item>
+
       <ion-item>
         <ion-label>Sound</ion-label>
         <ion-toggle aria-label="Primary toggle" color="primary" [checked]="true"></ion-toggle>
       </ion-item>
+  
       <ion-item>
-        <ion-label>Colour Blind Mode</ion-label>
-        <ion-toggle aria-label="Primary toggle" color="primary" [checked]="true"></ion-toggle>
+        <ion-label>Update Profile</ion-label>
+        <ion-button [disabled]="false">></ion-button>
       </ion-item>
+
       <ion-item>
-        <ion-label>Profile Settings</ion-label>
-        <ion-button [disabled]="false">Change</ion-button>
-      </ion-item>
-      <ion-item>
-        <ion-label>Billing</ion-label>
-        <ion-button [disabled]="false">Change</ion-button>
+        <ion-label>Delete Account</ion-label>
+        <ion-button [disabled]="false">></ion-button>
       </ion-item>
       <ion-item>
         <ion-label>Terms of Service</ion-label>
-        <ion-button [disabled]="false">View</ion-button>
+        <ion-button [disabled]="false">></ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-label>About</ion-label>
+        <ion-button [disabled]="false">></ion-button>
       </ion-item>
     </ion-list>
   </ion-content>

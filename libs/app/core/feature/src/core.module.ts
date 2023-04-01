@@ -54,6 +54,7 @@ import { CoreShell } from './core.shell';
 import { FeedModule } from '@mp/app/feed/feature';
 import { DeathScreenModule } from '@mp/app/death-screen/feature';
 import { MessagesModule } from '@mp/app/messages/feature';
+import { CreatePostModule } from '@mp/app/create-post/feature';
 
 let resolvePersistenceEnabled: (enabled: boolean) => void;
 
@@ -90,7 +91,7 @@ const FIREBASE_OPTIONS: FirebaseOptions = {
   declarations: [CoreShell],
   entryComponents: [],
   imports: [
-    MessagesModule,
+    CreatePostModule,
     DeathScreenModule,
     SettingsModule,
     BrowserModule,

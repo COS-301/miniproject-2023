@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class SettingsPage {
 
-  darkMode = false;
+  privacy = false;
   notification = true;
 
   constructor() {

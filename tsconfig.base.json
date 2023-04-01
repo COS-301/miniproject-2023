@@ -45,6 +45,9 @@
       "@mp/app/auth/util": ["libs/app/auth/util/src/index.ts"],
       "@mp/app/copyright/ui": ["libs/app/copyright/ui/src/index.ts"],
       "@mp/app/core/feature": ["libs/app/core/feature/src/index.ts"],
+      "@mp/app/create-post/feature": [
+        "libs/app/create-post/feature/src/index.ts"
+      ],
       "@mp/app/dashboard/data-access": [
         "libs/app/dashboard/data-access/src/index.ts"
       ],

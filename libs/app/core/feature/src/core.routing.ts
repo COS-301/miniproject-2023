@@ -104,6 +104,11 @@ const routes: Routes = [
     loadChildren: () =>
       import ('@mp/app/messages/feature').then((m)=>m.MessagesModule),
   },
+  {
+    path: 'create-post',
+    loadChildren: () =>
+      import ('@mp/app/create-post/feature').then((m)=>m.CreatePostModule),
+  },
   
   
 ];

@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./death-screen.page.scss']
 })
 export class DeathScreenPage {
-
+  public alertButtons = ['Log out', 'Watch Ad', 'Buy Time'];
 }
