@@ -55,6 +55,8 @@ import { FeedModule } from '@mp/app/feed/feature';
 import { DeathScreenModule } from '@mp/app/death-screen/feature';
 import { MessagesModule } from '@mp/app/messages/feature';
 import { CreatePostModule } from '@mp/app/create-post/feature';
+import { SearchModule } from '@mp/app/search/feature';
+
 
 let resolvePersistenceEnabled: (enabled: boolean) => void;
 
@@ -93,6 +95,7 @@ const FIREBASE_OPTIONS: FirebaseOptions = {
   imports: [
     CreatePostModule,
     DeathScreenModule,
+    SearchModule,
     SettingsModule,
     BrowserModule,
     IonicModule.forRoot(),
