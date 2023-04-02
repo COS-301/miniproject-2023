@@ -44,6 +44,16 @@ const routes: Routes = [
     loadChildren: () =>
       import('@mp/app/privacy/feature').then((m) => m.PrivacyModule),
   },
+  {
+    path: 'search',
+    loadChildren: () =>
+      import ('@mp/app/search/feature').then((m)=>m.SearchModule),
+  },
+  {
+    path: 'feed',
+    loadChildren: () =>
+      import('@mp/app/feed/feature').then((m) => m.FeedModule),
+  },
   // {
   //   path: 'verify',
   //   pathMatch: 'full',
@@ -84,6 +94,28 @@ const routes: Routes = [
     loadChildren: () =>
       import('@mp/app/login/feature').then((m) => m.LoginModule),
   },
+  {
+    path: 'settings',
+    loadChildren: () =>
+      import ('@mp/app/settings/feature').then((m)=>m.SettingsModule),
+  },
+  {
+    path: 'death-screen',
+    loadChildren: () =>
+      import ('@mp/app/death-screen/feature').then((m)=>m.DeathScreenModule),
+  },
+  {
+    path: 'messages',
+    loadChildren: () =>
+      import ('@mp/app/messages/feature').then((m)=>m.MessagesModule),
+  },
+  {
+    path: 'create-post',
+    loadChildren: () =>
+      import ('@mp/app/create-post/feature').then((m)=>m.CreatePostModule),
+  },
+  
+  
 ];
 
 @NgModule({

@@ -40,6 +40,7 @@ import { AuthState } from '@mp/app/auth/data-access';
 import { AuthModule } from '@mp/app/auth/feature';
 import { ErrorsState } from '@mp/app/errors/data-access';
 import { ErrorsModule } from '@mp/app/errors/feature';
+import { SettingsModule } from '@mp/app/settings/feature';
 import { NgxsActionsExecutingModule } from '@ngxs-labs/actions-executing';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
@@ -50,6 +51,12 @@ import { NgxsModule } from '@ngxs/store';
 import { MomentModule } from 'ngx-moment';
 import { CoreRouting } from './core.routing';
 import { CoreShell } from './core.shell';
+import { FeedModule } from '@mp/app/feed/feature';
+import { DeathScreenModule } from '@mp/app/death-screen/feature';
+import { MessagesModule } from '@mp/app/messages/feature';
+import { CreatePostModule } from '@mp/app/create-post/feature';
+import { SearchModule } from '@mp/app/search/feature';
+
 
 let resolvePersistenceEnabled: (enabled: boolean) => void;
 
@@ -86,6 +93,10 @@ const FIREBASE_OPTIONS: FirebaseOptions = {
   declarations: [CoreShell],
   entryComponents: [],
   imports: [
+    CreatePostModule,
+    DeathScreenModule,
+    SearchModule,
+    SettingsModule,
     BrowserModule,
     IonicModule.forRoot(),
     CoreRouting,
@@ -157,6 +168,7 @@ const FIREBASE_OPTIONS: FirebaseOptions = {
     }),
     AuthModule,
     ErrorsModule,
+    FeedModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [CoreShell],
