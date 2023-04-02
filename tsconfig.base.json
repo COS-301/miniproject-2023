@@ -68,6 +68,7 @@
       "@mp/app/other-user/feature": [
         "libs/app/other-user/feature/src/index.ts"
       ],
+      "@mp/app/other-user/ui": ["libs/app/other-user/ui/src/index.ts"],
       "@mp/app/privacy/feature": ["libs/app/privacy/feature/src/index.ts"],
       "@mp/app/profile/data-access": [
         "libs/app/profile/data-access/src/index.ts"
