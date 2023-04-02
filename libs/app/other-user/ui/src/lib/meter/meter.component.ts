@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'meter',
@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./meter.component.scss']
 })
 export class MeterComponent {
-
+  @Input() meter: any = {
+    name: '',
+    value: 0,
+  };
 }
