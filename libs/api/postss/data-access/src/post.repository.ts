@@ -5,6 +5,9 @@ import * as admin from 'firebase-admin';
 
 @Injectable()
 export class PostRepository {
+  updatePost(post: any) {
+      throw new Error('Method not implemented.');
+  }
 
   
   

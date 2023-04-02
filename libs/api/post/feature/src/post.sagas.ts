@@ -1,6 +1,6 @@
 import {
   CreatePostCommand,
-} from '@mp/api/post/util';
+} from '@mp/api/postss/util';
 import {PostCreatedEvent} from "@mp/api/postss/util";
 import { Injectable } from '@nestjs/common';
 import { ICommand, ofType, Saga } from '@nestjs/cqrs';

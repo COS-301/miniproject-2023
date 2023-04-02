@@ -2,6 +2,9 @@ import { Timestamp } from 'firebase-admin/firestore';
 import { AggregateRoot } from '@nestjs/cqrs';
 import {Hashtag, IComment, IPost, PostCreatedEvent} from '@mp/api/postss/util';
 import {PostRepository} from "@mp/api/postss/data-access";
+// import { currency } from "@mp/api/post/util";
+import { LikeUpdatedEvent , TotaltimeUpdateEvent} from "@mp/api/postss/util";
+
 
 export class Post extends AggregateRoot implements IPost {
     constructor(
@@ -49,6 +52,24 @@ export class Post extends AggregateRoot implements IPost {
         this.apply(new PostCreatedEvent(this.toJSON()));
       }
 
+      UpdateLikedCount() {
+        this.likes = this.likes + 1;
+        this.UpdateTotalTime();
+        this.apply(new LikeUpdatedEvent(this.toJSON()));
+      }
+
+      UpdateTotalTime()
+      {
+        if(this.totalTime != null)
+        {
+          // this.totalTime = this.totalTime + currency.TIMEPERLIKE;
+          this.totalTime = this.totalTime + 5;
+
+        }
+        else
+          this.totalTime = 1;
+        this.apply(new TotaltimeUpdateEvent(this.toJSON()));
+      }
 
       toJSON(): IPost {
         return {
