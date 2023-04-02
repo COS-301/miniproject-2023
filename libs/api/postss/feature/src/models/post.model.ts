@@ -13,7 +13,7 @@ CreatePostCommand,
 PostGetEvent,
 PostTrendingGetQuery,
 PostCreatedEvent,
-ProfileLikedEvent,
+PostLikedEvent,
 Hashtag,
 } from '@mp/api/postss/util';
 import { AggregateRoot } from '@nestjs/cqrs';
