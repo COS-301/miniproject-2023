@@ -45,6 +45,16 @@ export class ProfilesApi {
     )(request);
   }
 
+  async fetchPosts(request: any) {
+    return await httpsCallable<
+      any,
+      any
+    >(
+      this.functions, 
+      'fetchPosts'
+    )(request);
+  }
+
   async updateContactDetails(request: IUpdateContactDetailsRequest) {
     return await httpsCallable<
       IUpdateContactDetailsRequest,
