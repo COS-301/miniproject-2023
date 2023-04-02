@@ -1,5 +1,5 @@
 <div id="filters-container" >
-  <ion-chip class="filter" *ngFor="let filter of filters">{{filter}}</ion-chip>
+  <ion-chip (click)="filterChanged()" class="filter" *ngFor="let filter of filters">{{filter}}</ion-chip>
 </div>
 
 
