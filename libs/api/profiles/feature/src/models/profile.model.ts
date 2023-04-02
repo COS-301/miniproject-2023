@@ -59,6 +59,10 @@ export class Profile extends AggregateRoot implements IProfile {
     this.apply(new AddressDetailsUpdatedEvent(this.toJSON()));
   }
 
+
+
+ 
+
   updateContactDetails(contactDetails: IContactDetails) {
     if (!this.contactDetails) this.contactDetails = {};
     this.contactDetails.cellphone = contactDetails.cellphone
