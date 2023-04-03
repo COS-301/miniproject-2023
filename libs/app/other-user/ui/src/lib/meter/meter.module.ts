@@ -13,5 +13,6 @@ import { MeterComponent } from './meter.component';
     NgxSkeletonLoaderModule,
   ],
   declarations: [MeterComponent],
+  exports: [MeterComponent]
 })
 export class MeterModule {}

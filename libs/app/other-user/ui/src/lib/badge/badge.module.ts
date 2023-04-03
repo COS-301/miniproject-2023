@@ -13,5 +13,6 @@ import { BadgeComponent } from './badge.component';
     NgxSkeletonLoaderModule,
   ],
   declarations: [BadgeComponent],
+  exports: [BadgeComponent]
 })
 export class BadgeModule {}
