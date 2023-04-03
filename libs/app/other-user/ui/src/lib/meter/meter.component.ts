@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'meter',
+  selector: 'mp-meter',
   templateUrl: './meter.component.html',
   styleUrls: ['./meter.component.scss']
 })

@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'badge',
+  selector: 'mp-badge',
   templateUrl: './badge.component.html',
-  styleUrls: ['./badge.component.css']
+  styleUrls: ['./badge.component.scss']
 })
 export class BadgeComponent {
   @Input() badge: any = {
