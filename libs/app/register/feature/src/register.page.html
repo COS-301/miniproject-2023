@@ -1,4 +1,5 @@
 <ion-content [fullscreen]="true">
+  <img src="../../../../../apps/app/src/assets/icons/lock.svg">
 
   <div class="createaccount-container">
     <div class="createaccount-createaccount">
@@ -7,35 +8,32 @@
           <span>Register for TimeHive</span>
         </span>
       </div>
-      <ion-nav-link routerLink="/login" routerDirection="forward">
-        <ion-button class="createaccount-button1" color="white">
-          <ion-label class="createaccount-text04">
-            <span>Go back to login</span>
-          </ion-label>
-        </ion-button>
-      </ion-nav-link>
-      <img src="assets/logos/TimeHive.png" alt="Ellipse251870" class="createaccount-ellipse25" />
+      <img src="assets/logos/TimeHive.png" class="createaccount-ellipse25" />
       <form (submit)="register()">
-      <div class="createaccount-frame5">
-         <img src="assets/images/rectangle11872-u3hc-200h.png" alt="Rectangle11872" class="createaccount-rectangle1" />
-            <ion-input class="createaccount-text06" type="text" placeholder="Email or Username"></ion-input>
-          <ion-icon src="assets/images/personfill1wght400grad0opsz4811874-ncdg.svg" alt="personFILL1wght400GRAD0opsz4811874" class="createaccount-person-fill1wght400grad0opsz481"></ion-icon>
-        </div>
-        <div class="createaccount-frame51">
-          <img src="assets/images/rectangle21877-2o5q-200h.png" alt="Rectangle21877" class="createaccount-rectangle2" />
-          <ion-input class="createaccount-text08" type="Password" placeholder="Password"></ion-input>
-          <ion-icon src="assets/images/lockfill1wght400grad0opsz48111879-8ali.svg" alt="lockFILL1wght400GRAD0opsz48111879" class="createaccount-lock-fill1wght400grad0opsz4811"></ion-icon>
-        </div>
-        <div class="createaccount-frame3">
-          <img src="assets/images/rectangle21882-ch35-200h.png" alt="Rectangle21882" class="createaccount-rectangle21" />
-          <ion-input class="createaccount-text10" type="Password" placeholder="Confirm Password"></ion-input>
-          <ion-icon src="assets/images/lockfill1wght400grad0opsz48111884-ehl.svg" alt="lockFILL1wght400GRAD0opsz48111884" class="createaccount-lock-fill1wght400grad0opsz48111"></ion-icon>
-        </div>
-        <ion-button id="createaccount-button" color="white">
-          <ion-label class="createaccount-text">
-            <span>Create account</span>
-          </ion-label>
-        </ion-button>
+        <ion-grid>
+          <ion-row>
+      <ion-col size="12" class="createaccount-input-1 ion-padding-horizontal">
+        <ion-input class="createaccount-text08 user_input" type="email" placeholder="Email or username">
+          <ion-icon slot="start" class="ion-padding-start" src="assets/icons/person.svg"></ion-icon>
+        </ion-input>
+      </ion-col>
+      <ion-col size="12" class="createaccount-input-2 ion-padding-horizontal">
+          <ion-input class="createaccount-text08 user_input" type="Password" placeholder="Password">
+            <ion-icon slot="start" class="ion-padding-start" src="assets/icons/lock.svg"></ion-icon>
+          </ion-input>
+      </ion-col>
+      <ion-col size="12" class="createaccount-input-3 ion-padding-horizontal">
+        <ion-input class="createaccount-text08 user_input" type="Password" placeholder="Confirm Password">
+          <ion-icon slot="start" class="ion-padding-start" src="assets/icons/lock.svg"></ion-icon>
+        </ion-input>
+      </ion-col>
+      <ion-button id="createaccount-button" color="white">
+        <ion-label class="createaccount-text">
+          <span>Create account</span>
+        </ion-label>
+      </ion-button>
+    </ion-row>
+  </ion-grid>
       </form>
     </div>
   </div>

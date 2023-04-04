@@ -1,225 +1,170 @@
 .createaccount-container {
-    min-height: 100vh;
-  }
-  .createaccount-createaccount {
-    width: 100%;
-    height: 844px;
-    display: flex;
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
-    align-items: flex-start;
-    flex-shrink: 0;
-    border-color: transparent;
-    border-radius: 40px;
-    background-image: linear-gradient(180deg, rgba(252, 163, 17, 1) 24%, rgba(255, 255, 255, 1) 100%);
-  }
-  #createaccount-button {
-    top: 632px;
-    left: 41px;
-    width: 308px;
-    display: flex;
-    padding: 16px 20px;
-    overflow: hidden;
-    position: absolute;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
-    align-items: center;
-    flex-shrink: 0;
-    border-color: transparent;
-    border-radius: 30px;
-    flex-direction: column;
-    justify-content: center;
-    background-color: rgba(252, 163, 17, 1);
-  }
-  .createaccount-text {
-    color: rgba(20, 33, 61, 1);
-    height: auto;
-    align-self: auto;
-    text-align: left;
-    line-height: 24px;
-    margin-right: 0;
-    margin-bottom: 0;
-  }
-  .createaccount-text-large {
-    top: 216px;
-    left: 45px;
-    width: 330px;
-    display: flex;
-    overflow: hidden;
-    position: absolute;
-    align-items: center;
-    flex-shrink: 0;
-    border-color: transparent;
-    justify-content: center;
-  }
-  .createaccount-text02 {
-    color: rgba(20, 33, 61, 1);
-    height: auto;
-    flex-grow: 1;
-    align-self: auto;
-    text-align: left;
-    line-height: 36px;
-    margin-right: 0;
-    margin-bottom: 0;
-    font-family:Arial, Helvetica, sans-serif;
-    font-size:xx-large;
-  }
-  .createaccount-button1 {
-    top: 714px;
-    left: 41px;
-    width: 308px;
-    display: flex;
-    //padding: 16px 20px;
-    overflow: hidden;
-    position: absolute;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
-    align-items: center;
-    flex-shrink: 0;
-    border-color: rgba(252, 163, 17, 1);
-    border-style: solid;
-    border-width: 2px;
-    border-radius: 30px;
-    flex-direction: column;
-    justify-content: center;
-    background-color: rgba(255, 255, 255, 1);
-  }
-  .createaccount-text04 {
-    color: rgba(20, 33, 61, 1);
-    height: auto;
-    align-self: auto;
-    text-align: left;
-    line-height: 24px;
-    margin-right: 0;
-    margin-bottom: 0;
-    padding: 2px;
-  }
-  .createaccount-ellipse25 {
-    top: 50px;
-    left: 135px;
-    width: 120px;
-    height: 120px;
-    position: absolute;
-    border-color: transparent;
-  }
-  .createaccount-frame5 {
-    top: 284px;
-    left: 16px;
-    width: 358px;
-    height: 56px;
-    display: flex;
-    position: absolute;
-    align-items: flex-start;
-    flex-shrink: 0;
-    border-color: transparent;
-  }
-  .createaccount-rectangle1 {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 358px;
-    height: 56px;
-    position: absolute;
-    border-color: transparent;
-    border-radius: 30px;
-  }
-  .createaccount-text06 {
-    top: 9px;
-    left: 54px;
-    color: rgba(0, 0, 0, 1);
-    height: auto;
-    position: absolute;
-    align-self: auto;
-    text-align: left;
-    line-height: normal;
-    margin-right: 0;
-    margin-bottom: 0;
-  }
-  .createaccount-person-fill1wght400grad0opsz481 {
-    top: 16px;
-    left: 22px;
-    width: 24px;
-    height: 24px;
-    position: absolute;
-  }
-  .createaccount-frame51 {
-    top: 374px;
-    left: 16px;
-    width: 358px;
-    height: 56px;
-    display: flex;
-    position: absolute;
-    align-items: flex-start;
-    flex-shrink: 0;
-    border-color: transparent;
-  }
-  .createaccount-rectangle2 {
-    top: 0px;
-    left: 0px;
-    width: 358px;
-    height: 56px;
-    position: absolute;
-    border-color: transparent;
-    border-radius: 30px;
-  }
-  .createaccount-text08 {
-    top: 9px;
-    left: 54px;
-    color: rgba(0, 0, 0, 1);
-    height: auto;
-    position: absolute;
-    align-self: auto;
-    text-align: left;
-    line-height: normal;
-    margin-right: 0;
-    margin-bottom: 0;
-  }
-  .createaccount-lock-fill1wght400grad0opsz4811 {
-    top: 16px;
-    left: 22px;
-    width: 24px;
-    height: 24px;
-    position: absolute;
-  }
-  .createaccount-frame3 {
-    top: 464px;
-    left: 16px;
-    width: 358px;
-    height: 56px;
-    display: flex;
-    position: absolute;
-    align-items: flex-start;
-    flex-shrink: 0;
-    border-color: transparent;
-  }
-  .createaccount-rectangle21 {
-    top: 0px;
-    left: 0px;
-    width: 358px;
-    height: 56px;
-    position: absolute;
-    border-color: transparent;
-    border-radius: 30px;
-  }
-  .createaccount-text10 {
-    top: 9px;
-    left: 54px;
-    color: rgba(0, 0, 0, 1);
-    height: auto;
-    position: absolute;
-    align-self: auto;
-    text-align: left;
-    line-height: normal;
-    margin-right: 0;
-    margin-bottom: 0;
-  }
-  .createaccount-lock-fill1wght400grad0opsz48111 {
-    top: 16px;
-    left: 22px;
-    width: 24px;
-    height: 24px;
-    position: absolute;
-  }
-  
+  min-height: 100vh;
+}
+
+.createaccount-createaccount {
+  width: 100%;
+  height: 844px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  align-items: flex-start;
+  flex-shrink: 0;
+  border-color: transparent;
+  border-radius: 40px;
+  background-image: linear-gradient(180deg, rgba(252, 163, 17, 1) 24%, rgba(255, 255, 255, 1) 100%);
+}
+
+#createaccount-button {
+  top: 632px;
+  left: 41px;
+  width: 308px;
+  display: flex;
+  padding: 16px 20px;
+  overflow: hidden;
+  position: absolute;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  align-items: center;
+  flex-shrink: 0;
+  border-color: transparent;
+  border-radius: 30px;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(252, 163, 17, 1);
+}
+
+.createaccount-text {
+  color: rgba(20, 33, 61, 1);
+  height: auto;
+  align-self: auto;
+  text-align: left;
+  line-height: 24px;
+  margin-right: 0;
+  margin-bottom: 0;
+}
+
+.createaccount-text-large {
+  top: 216px;
+  left: 45px;
+  width: 330px;
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  align-items: center;
+  flex-shrink: 0;
+  border-color: transparent;
+  justify-content: center;
+}
+
+.createaccount-text02 {
+  color: rgba(20, 33, 61, 1);
+  height: auto;
+  flex-grow: 1;
+  align-self: auto;
+  text-align: left;
+  line-height: 36px;
+  margin-right: 0;
+  margin-bottom: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: xx-large;
+}
+
+.createaccount-button1 {
+  top: 714px;
+  left: 41px;
+  width: 308px;
+  display: flex;
+  //padding: 16px 20px;
+  overflow: hidden;
+  position: absolute;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  align-items: center;
+  flex-shrink: 0;
+  border-color: rgba(252, 163, 17, 1);
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 30px;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.createaccount-text04 {
+  color: rgba(20, 33, 61, 1);
+  height: auto;
+  align-self: auto;
+  text-align: left;
+  line-height: 24px;
+  margin-right: 0;
+  margin-bottom: 0;
+  padding: 2px;
+}
+
+.createaccount-ellipse25 {
+  top: 50px;
+  left: 135px;
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  border-color: transparent;
+}
+
+.createaccount-input-1 {
+  top: 284px;
+  width: 358px;
+  height: 56px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+  border-color: transparent;
+}
+
+.createaccount-text06 {
+  top: 9px;
+  left: 54px;
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  position: absolute;
+  align-self: auto;
+  text-align: left;
+  line-height: normal;
+  margin-right: 0;
+  margin-bottom: 0;
+}
+
+.createaccount-input-2 {
+  top: 374px;
+  height: 56px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+  border-color: transparent;
+}
+
+
+.createaccount-text08 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  align-self: auto;
+  text-align: left;
+  line-height: normal;
+  margin-right: 0;
+  margin-bottom: 0;
+}
+
+.createaccount-input-3 {
+  top: 464px;
+  width: 358px;
+  height: 56px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+  border-color: transparent;
+}
 
 $color_1: var(--dl-color-gray-black);
 $font-family_1: Inter;
@@ -228,110 +173,126 @@ $font-family_3: Open Sans;
 $background-color_1: var(--dl-color-gray-white);
 $border-color_1: var(--dl-color-gray-black);
 
-:root {
-	--dl-color-gray-500: #595959;
-	--dl-color-gray-700: #999999;
-	--dl-color-gray-900: #D9D9D9;
-	--dl-size-size-large: 144px;
-	--dl-size-size-small: 48px;
-	--dl-color-danger-300: #A22020;
-	--dl-color-danger-500: #BF2626;
-	--dl-color-danger-700: #E14747;
-	--dl-color-gray-black: #000000;
-	--dl-color-gray-white: #FFFFFF;
-	--dl-size-size-medium: 96px;
-	--dl-size-size-xlarge: 192px;
-	--dl-size-size-xsmall: 16px;
-	--dl-space-space-unit: 16px;
-	--dl-color-primary-100: #003EB3;
-	--dl-color-primary-300: #0074F0;
-	--dl-color-primary-500: #14A9FF;
-	--dl-color-primary-700: #85DCFF;
-	--dl-color-success-300: #199033;
-	--dl-color-success-500: #32A94C;
-	--dl-color-success-700: #4CC366;
-	--dl-size-size-xxlarge: 288px;
-	--dl-size-size-maxwidth: 1400px;
-	--dl-radius-radius-round: 50%;
-	--dl-space-space-halfunit: 8px;
-	--dl-space-space-sixunits: 96px;
-	--dl-space-space-twounits: 32px;
-	--dl-radius-radius-radius2: 2px;
-	--dl-radius-radius-radius4: 4px;
-	--dl-radius-radius-radius8: 8px;
-	--dl-space-space-fiveunits: 80px;
-	--dl-space-space-fourunits: 64px;
-	--dl-space-space-threeunits: 48px;
-	--dl-space-space-oneandhalfunits: 24px;
+.input {
+  color: $color_1;
+  cursor: auto;
+  padding: 0.5rem 1rem;
+  border-color: $border-color_1;
+  border-width: 1px;
+  border-radius: 4px;
+  background-color: $background-color_1;
 }
 
-.input {
-	color: $color_1;
-	cursor: auto;
-	padding: 0.5rem 1rem;
-	border-color: $border-color_1;
-	border-width: 1px;
-	border-radius: 4px;
-	background-color: $background-color_1;
-}
 .textarea {
-	color: $color_1;
-	cursor: auto;
-	padding: 0.5rem;
-	border-color: $border-color_1;
-	border-width: 1px;
-	border-radius: 4px;
-	background-color: $background-color_1;
+  color: $color_1;
+  cursor: auto;
+  padding: 0.5rem;
+  border-color: $border-color_1;
+  border-width: 1px;
+  border-radius: 4px;
+  background-color: $background-color_1;
 }
+
 .list {
-	width: 100%;
-	margin: 1em 0px 1em 0px;
-	display: block;
-	padding: 0px 0px 0px 1.5rem;
-	list-style-type: none;
-	list-style-position: outside;
+  width: 100%;
+  margin: 1em 0px 1em 0px;
+  display: block;
+  padding: 0px 0px 0px 1.5rem;
+  list-style-type: none;
+  list-style-position: outside;
 }
+
 .list-item {
-	display: list-item;
+  display: list-item;
 }
+
 .teleport-show {
-	display: flex !important;
-	transform: none !important;
+  display: flex !important;
+  transform: none !important;
 }
+
 .Content {
-	font-size: 16px;
-	font-family: $font-family_1;
-	font-weight: 400;
-	line-height: 1.15;
-	text-transform: none;
-	text-decoration: none;
+  font-size: 16px;
+  font-family: $font-family_1;
+  font-weight: 400;
+  line-height: 1.15;
+  text-transform: none;
+  text-decoration: none;
 }
+
 .Heading {
-	font-size: 32px;
-	font-family: $font-family_1;
-	font-weight: 700;
-	line-height: 1.15;
-	text-transform: none;
-	text-decoration: none;
+  font-size: 32px;
+  font-family: $font-family_1;
+  font-weight: 700;
+  line-height: 1.15;
+  text-transform: none;
+  text-decoration: none;
 }
+
 .labellarge {
-	font-size: 16px;
-	font-style: normal;
-	font-family: $font-family_2;
-	font-weight: 500;
-	font-stretch: normal;
+  font-size: 16px;
+  font-style: normal;
+  font-family: $font-family_2;
+  font-weight: 500;
+  font-stretch: normal;
 }
+
 .headlinemedium {
-	font-size: 28px;
-	font-style: normal;
-	font-family: $font-family_2;
-	font-weight: 400px;
-	font-stretch: normal;
+  font-size: 28px;
+  font-style: normal;
+  font-family: $font-family_2;
+  font-weight: 400px;
+  font-stretch: normal;
 }
+
 .BodyRegular {
-	font-size: 16px;
-	font-style: normal;
-	font-family: $font-family_3;
-	font-weight: 400px;
-	font-stretch: normal;
+  font-size: 16px;
+  font-style: normal;
+  font-family: $font-family_3;
+  font-weight: 400px;
+  font-stretch: normal;
+}
+
+/*
+.inputh {
+  color: var(--dl-color-gray-black);
+  cursor: auto;
+  padding: 0.5rem 1rem;
+  border-color: var(--dl-color-gray-black);
+  border-width: 1px;
+  border-radius: 4px;
+  background-color: var(--dl-color-gray-white);
+
+  top: 0px;
+  left: 0px;
+  width: 358px;
+  height: 56px;
+  position: absolute;
+  border-color: transparent;
+  border-radius: 30px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+*/
+
+.user_input {
+  color: var(--dl-color-gray-black);
+  cursor: auto;
+  //padding: 0.5rem 1rem;
+  border-color: var(--dl-color-gray-black);
+  border-width: 1px;
+  border-radius: 4px;
+  background-color: var(--dl-color-gray-white);
+  height: 56px;
+  border-color: transparent;
+  border-radius: 30px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  width: 100%;
+}
+
+::placeholder {
+  text-align: center;
+}
+
+ion-icon {
+  font-size: 24px;
 }
