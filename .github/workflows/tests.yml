@@ -12,6 +12,24 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      - name: "📚 Create ENV"
+        run: |
+          touch .env
+          echo NX_ENVIRONMENT="development" >> .env
+          echo NX_FIREBASE_AUTH_DOMAIN='${{secrets.NX_FIREBASE_AUTH_DOMAIN}}' >> .env
+          echo NX_FIREBASE_DATABASE_URL='${{ secrets.NX_FIREBASE_DATABASE_URL }}' >> .env
+          echo NX_FIREBASE_PROJECT_ID='${{secrets.NX_FIREBASE_PROJECT_ID}}' >> .env
+          echo NX_FIREBASE_STORAGE_BUCKET='${{secrets.NX_FIREABASE_STORAGE_BUCKET}}' >> .env
+          echo NX_FIREBASE_MESSAGING_SENDER_ID='${{ secrets.NX_FIREBASE_MESSAGING_SENDER_ID }}' >> .env
+          echo NX_FIREBASE_APP_ID='${{ secrets.NX_FIREBASE_APP_ID }}' >> .env
+          echo NX_FIREBASE_MEASUREMENT_ID='${{ secrets.NX_FIREBASE_MEASUREMENT_ID }}' >> .env
+          echo NX_FIREBASE_API_KEY='${{ secrets.NX_FIREBASE_API_KEY }}' >> .env
+          cat .env
+      - name: "📚 Create firebasesc"
+        uses: "finnp/create-file-action@master"
+        env:
+          FILE_NAME: ".firebasesc"
+          FILE_DATA: "${{secrets.FIREBASESC}}"
       - uses: nrwl/nx-set-shas@v3
       - run: yarn install --frozen-lockfile && yarn build:app:prod && yarn build:api:prod
 
