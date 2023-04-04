@@ -1,5 +1,5 @@
-import { MinimisedProfile } from "../interfaces/minimised-profile.interface";
+import { FriendsList } from "../interfaces/friends-list.interface";
 
-export interface GetFriendsResponse {
-    profile : MinimisedProfile;
+export interface GetFriendsRequest {
+    friends: FriendsList;
 }
