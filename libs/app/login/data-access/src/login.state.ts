@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Login as AuthLogin } from '@mp/app/auth/util';
+import { Login as AuthLogin, ContinueWithGoogle as GoogleAuth, ContinueWithFacebook as FacebookAuth } from '@mp/app/auth/util';
 import { SetError } from '@mp/app/errors/util';
 import { Login } from '@mp/app/login/util';
 import { Action, State, StateContext } from '@ngxs/store';
-import { ContinueWithGoogle as GoogleAuth, ContinueWithFacebook as FacebookAuth } from '@mp/app/auth/util';
 import { ContinueWithGoogle, ContinueWithFacebook } from '@mp/app/login/util';
 
 export interface LoginStateModel {

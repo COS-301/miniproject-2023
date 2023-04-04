@@ -36,3 +36,18 @@ export class Logout {
 export class ContinueWithFacebook {
   static readonly type = '[Auth] ContinueWithFacebook';
 }
+
+export class SendForgotEmail {
+  static readonly type = '[Auth] SendForgotEmail';
+  constructor(
+    public readonly email: string
+  ) { }
+}
+
+export class ConfirmPasswordCode {
+  static readonly type = '[Auth] ConfirmPasswordCode';
+  constructor(
+    public readonly code: string,
+    public readonly password: string
+  ) { }
+}

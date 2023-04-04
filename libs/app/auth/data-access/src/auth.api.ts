@@ -6,7 +6,9 @@ import {
   GoogleAuthProvider,
   signInWithEmailAndPassword,
   signInWithPopup,
-  FacebookAuthProvider
+  FacebookAuthProvider,
+  sendPasswordResetEmail,
+  confirmPasswordReset
 } from '@angular/fire/auth';
 import { signOut } from '@firebase/auth';
 
@@ -38,5 +40,13 @@ export class AuthApi {
   async continueWithFacebook() {
     const provider = new FacebookAuthProvider();
     return await signInWithPopup(this.auth, provider);
+  }
+
+  async forgotPassword(email: string) {
+    await sendPasswordResetEmail(this.auth, email);
+  }
+
+  async acceptCode(code: string, password: string) {
+    return await confirmPasswordReset(this.auth, code, password);
   }
 }

@@ -1,1 +1,1 @@
-export * from './lib/app-forgot-util';
+export * from './forgot.actions';
