@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { SetError, SetSuccess } from '@mp/app/errors/util';
+import { SetError } from '@mp/app/errors/util';
 import { SendForgotEmail as ForgotAuth, ConfirmPasswordCode as CodeAuth } from '@mp/app/auth/util';
 import { Action, State, StateContext } from '@ngxs/store';
 import { ForgotPassword, SendConfirmCode } from '@mp/app/forgot/util';
+import { SetSuccess } from '@mp/app/success/util';
 
 // utils
 
