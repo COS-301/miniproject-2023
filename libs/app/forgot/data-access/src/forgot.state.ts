@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SetError } from '@mp/app/errors/util';
+import { SetError, SetSuccess } from '@mp/app/errors/util';
 import { SendForgotEmail as ForgotAuth, ConfirmPasswordCode as CodeAuth } from '@mp/app/auth/util';
 import { Action, State, StateContext } from '@ngxs/store';
 import { ForgotPassword, SendConfirmCode } from '@mp/app/forgot/util';
@@ -56,8 +56,10 @@ export class ForgotState {
         try {
             const state = ctx.getState();
             const email = state.forgotForm.model.email;
+            console.log(email);
             if (email) {
-                return ctx.dispatch(new ForgotAuth(email));
+                ctx.dispatch(new ForgotAuth(email));
+                return ctx.dispatch(new SetSuccess(`Email send successfully. Please check ${email} for the reset password link.`));
             }
             return ctx.dispatch(new SetError('Email not set'));
         } catch (error) {
