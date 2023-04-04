@@ -1,0 +1,14 @@
+name: Dev Deploy to Firebase
+'on':
+  push:
+    branches:
+      - '*'
+jobs:
+  build_and_deploy:
+    name: "🔥 Tests"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "❤️ Checking out Repo"
+        uses: actions/checkout@v2
+      - name: "📚 Run Tests"
+        run: "nx run-many --target=test --all --skip-nx-cache --parallel=5 --configuration=ci"
