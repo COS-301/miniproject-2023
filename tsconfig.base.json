@@ -19,6 +19,13 @@
       "@mp/api/auth/data-access": ["libs/api/auth/data-access/src/index.ts"],
       "@mp/api/auth/feature": ["libs/api/auth/feature/src/index.ts"],
       "@mp/api/auth/util": ["libs/api/auth/util/src/index.ts"],
+      "@mp/api/conversation/data-access": [
+        "libs/api/conversation/data-access/src/index.ts"
+      ],
+      "@mp/api/conversation/feature": [
+        "libs/api/conversation/feature/src/index.ts"
+      ],
+      "@mp/api/conversation/util": ["libs/api/conversation/util/src/index.ts"],
       "@mp/api/core/feature": ["libs/api/core/feature/src/index.ts"],
       "@mp/api/eventstore/data-access": [
         "libs/api/eventstore/data-access/src/index.ts"
@@ -32,9 +39,11 @@
       ],
       "@mp/api/history/feature": ["libs/api/history/feature/src/index.ts"],
       "@mp/api/history/util": ["libs/api/history/util/src/index.ts"],
-      "@mp/api/post/data-access": ["libs/api/post/data-access/src/index.ts"],
-      "@mp/api/post/feature": ["libs/api/post/feature/src/index.ts"],
-      "@mp/api/post/util": ["libs/api/post/util/src/index.ts"],
+      "@mp/api/message/data-access": [
+        "libs/api/message/data-access/src/index.ts"
+      ],
+      "@mp/api/message/feature": ["libs/api/message/feature/src/index.ts"],
+      "@mp/api/message/util": ["libs/api/message/util/src/index.ts"],
       "@mp/api/profiles/data-access": [
         "libs/api/profiles/data-access/src/index.ts"
       ],
