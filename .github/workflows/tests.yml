@@ -13,7 +13,7 @@ jobs:
         with:
           fetch-depth: 0
       - uses: nrwl/nx-set-shas@v3
-      - run: npm ci
+      - run: yarn install --frozen-lockfile && yarn build:app:prod && yarn build:api:prod
 
       - run: npx nx format:check
       - run: npx nx affected -t lint --parallel=3
