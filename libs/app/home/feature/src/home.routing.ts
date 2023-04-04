@@ -18,6 +18,11 @@ const routes: Routes = [
           import('@mp/app/profile/feature').then((m) => m.ProfileModule),
       },
       {
+        path: 'inbox',
+        loadChildren: () =>
+          import('@mp/app/inbox/feature').then((m) => m.InboxModule),
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: '/home/dashboard',
@@ -35,4 +40,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class HomeRouting {}
+export class HomeRouting { }

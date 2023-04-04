@@ -35,6 +35,7 @@ testem.log
 /typings
 .env
 .firebaserc
+.env.prod
 
 # System Files
 .DS_Store
@@ -55,3 +56,6 @@ pubsub-debug.log
 
 # Keys
 .keys/*.json
+
+#text
+*.txt
