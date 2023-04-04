@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Login } from '@mp/app/login/util';
 import {
-    ActionsExecuting,
-    actionsExecuting
+  ActionsExecuting,
+  actionsExecuting
 } from '@ngxs-labs/actions-executing';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
+import { ContinueWithFacebook, ContinueWithGoogle } from '@mp/app/login/util';
 
 @Component({
   selector: 'ms-login-page',
@@ -56,7 +57,7 @@ export class LoginPage {
   constructor(
     private readonly fb: FormBuilder,
     private readonly store: Store
-  ) {}
+  ) { }
 
   login() {
     if (this.loginForm.valid) {
@@ -66,5 +67,13 @@ export class LoginPage {
 
   toggleShowPassword() {
     this.showPassword = !this.showPassword;
+  }
+
+  continueWithGoogle() {
+    this.store.dispatch(new ContinueWithGoogle());
+  }
+
+  continueWithFacebook() {
+    this.store.dispatch(new ContinueWithFacebook());
   }
 }

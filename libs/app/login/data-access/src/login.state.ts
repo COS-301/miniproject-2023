@@ -3,6 +3,8 @@ import { Login as AuthLogin } from '@mp/app/auth/util';
 import { SetError } from '@mp/app/errors/util';
 import { Login } from '@mp/app/login/util';
 import { Action, State, StateContext } from '@ngxs/store';
+import { ContinueWithGoogle as GoogleAuth, ContinueWithFacebook as FacebookAuth } from '@mp/app/auth/util';
+import { ContinueWithGoogle, ContinueWithFacebook } from '@mp/app/login/util';
 
 export interface LoginStateModel {
   loginForm: {
@@ -43,6 +45,24 @@ export class LoginState {
         return ctx.dispatch(new AuthLogin(email, password));
       }
       return ctx.dispatch(new SetError('Email and password not set'));
+    } catch (error) {
+      return ctx.dispatch(new SetError((error as Error).message));
+    }
+  }
+
+  @Action(ContinueWithGoogle)
+  async ContinueWithGoogle(ctx: StateContext<LoginStateModel>) {
+    try {
+      return ctx.dispatch(new GoogleAuth());
+    } catch (error) {
+      return ctx.dispatch(new SetError((error as Error).message));
+    }
+  }
+
+  @Action(ContinueWithFacebook)
+  async ContinueWithFacebook(ctx: StateContext<LoginStateModel>) {
+    try {
+      return ctx.dispatch(new FacebookAuth());
     } catch (error) {
       return ctx.dispatch(new SetError((error as Error).message));
     }
