@@ -1,0 +1,127 @@
+<ion-header class="title-header">
+    <ion-toolbar>
+      <!-- <img [src]="TimeHiveLogo.jpg"/> -->
+      <ion-toolbar>
+        <ion-title>Time Hive</ion-title>
+      </ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button fill="clear" id="popover">
+          <ion-icon slot="icon-only" name="menu-outline" color="black"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+  
+  
+      <ion-popover #popover trigger="popover" triggerAction="click">
+        <ng-template>
+          <ion-content class="ion-padding ion-text-center" (click)="logout()">
+            <ion-label color="danger">
+              <!-- <ion-icon slot="icon-only" name="log-out"></ion-icon> -->
+              LOGOUT
+            </ion-label>
+          </ion-content> 
+        </ng-template>
+      </ion-popover>
+    
+  
+  
+    <ion-content>
+      <ion-list>
+        <ion-item lines="none" text-end>
+          <ion-avatar slot="end">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ55xNIciu8yA_9IqA9TB3oPwEheZmo_gKWsg&usqp=CAU">
+          </ion-avatar>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-toolbar>
+  
+  <ion-segment color="primary" value="button1">
+    <ion-segment-button value="button1">
+      <ion-label>Home</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="button2">
+      <ion-label>Discovery</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  
+  
+  </ion-header>
+  
+  <ion-content color="light">
+  
+    <ion-list *ngIf="segment === 'chats' && (chatRooms) as rooms">
+  
+      <ion-list-header class="ion-padding-bottom">
+        Messages
+      </ion-list-header>
+  
+      <ion-item 
+      *ngFor="let item of rooms"
+      (click)="getChat(item)"
+      [detail]="true">
+        <ion-avatar slot="start">
+          <img [src]="item?.photo"/>
+        </ion-avatar>
+        <ion-label>
+          {{item?.name}}
+          <p>
+            <ion-text>
+              message
+            </ion-text>
+          </p>
+        </ion-label>
+        <ion-text slot="end" color="medium">10:02 am</ion-text>
+      </ion-item>
+  
+    </ion-list>
+  
+    <ion-fab slot="fixed" horizontal="end" vertical="bottom">
+      <ion-fab-button (click)="newChat()">
+        <ion-icon name="chatbubbles"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  
+    <ion-modal #new_chat [isOpen]="open_new_chat" (willDismiss)="onWillDismiss($event)">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar color="primary">
+            <ion-title>New Chat</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="cancel()">Cancel</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content color="light" *ngIf="users as user$">
+          <ion-list class="ion-margin-top" [style.background]="'transparent'" lines="none">
+            <app-user-list 
+            *ngFor="let item of user$"
+            [item]="item"
+            (onClick)="startChat($event)">
+          </app-user-list>
+          </ion-list>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+  
+  </ion-content>
+  
+  <ion-footer>
+    <ion-segment color="primary" value="button1">
+      <ion-segment-button value="button1">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="button2">
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="button3">
+        <ion-icon name="duplicate-outline"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="button4">
+        <ion-icon name="notifications-outline"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="button5">
+        <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-footer>
+  

@@ -1,13 +1,70 @@
-<ion-tabs>
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="dashboard">
-      <ion-icon name="home-outline"></ion-icon>
-      <ion-label>Dashboard</ion-label>
-    </ion-tab-button>
 
-    <ion-tab-button tab="profile">
-      <ion-icon name="person-circle-outline"></ion-icon>
-      <ion-label>Profile</ion-label>
-    </ion-tab-button>
-  </ion-tab-bar>
-</ion-tabs>
+ <ion-split-pane when="sm" contentId="main-content">
+    <ion-menu contentId="main-content">
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content>
+        <ion-list>
+          <ion-list-header>
+            Navigate
+          </ion-list-header>
+          <ion-menu-toggle [autoHide]="false">
+            <ion-item button>
+              <ion-icon slot="start" name='person'></ion-icon>
+              <ion-label>
+                Profile
+              </ion-label>
+            </ion-item>
+            <ion-item button>
+              <ion-icon slot="start" name='people'></ion-icon>
+              <ion-label>
+                Groups
+              </ion-label>
+            </ion-item>
+            <ion-item button>
+              <ion-icon slot="start" name='settings'></ion-icon>
+              <ion-label>
+                Settings
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+    
+    <div class="ion-page" id="main-content">
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-menu-toggle>
+              <ion-button>
+                <ion-icon slot="icon-only" name="menu"></ion-icon>
+              </ion-button>
+            </ion-menu-toggle>
+          </ion-buttons>
+          <ion-title><img src="assets/logos/TimeHiveLogo.jpg" id="logo"></ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-tabs>
+          <ion-tab-bar slot="bottom">
+            <ion-tab-button tab="dashboard">
+              <ion-icon name="home-outline"></ion-icon>
+              <ion-label>Dashboard</ion-label>
+            </ion-tab-button>
+    
+            <ion-tab-button tab="profile">
+              <ion-icon name="person-circle-outline"></ion-icon>
+              <ion-label>Profile</ion-label>
+            </ion-tab-button>
+          </ion-tab-bar>
+        </ion-tabs>
+      </ion-content>
+    </div>
+  </ion-split-pane>
+
