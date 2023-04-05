@@ -55,33 +55,19 @@
       <ion-title size="large">Login</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-img
-        src="assets/logos/ellipse241344-uom8-200h.png"
-        alt="Ellipse241344"
-        class="login-ellipse24"
-      ></ion-img>
-      <ion-img
-        src="assets/logos/ellipse251345-91l-200h.png"
-        alt="Ellipse251345"
-        class="login-ellipse25"
-      ></ion-img>
+  <img
+        src="assets/logos/TimeHive.jpg"
+        alt="logo"
+        class="logo" id="time_logo"/>
   <div class="login-text-large">
     <span class="login-text04 headlinemedium">
       <span>Welcome to TimeHive</span>
     </span>
   </div>
   <form [formGroup]="loginForm" ngxsForm="login.loginForm" (submit)="login()">
-      <div class="login-frame4">
+      <ion-col class="login-frame4">
         <!--<ion-label position="floating" class="required">Email</ion-label> -->
-        
-        
-        <ion-img
-          src="assets/images/rectangle11347-su2g-200h.png"
-          alt="Rectangle11347"
-          class="login-rectangle1"
-        ></ion-img>
-        <span class="login-text08 BodyRegular">
-        <ion-input
+        <ion-input class="login-text08 BodyRegular user_input"
           type="email"
           minlength="6"
           maxlength="64"
@@ -89,24 +75,18 @@
           required="true"
           class="login-input"
           autocomplete="email"
-          formControlName="email"></ion-input>
-          </span>
-           <ion-img src="assets/icons/person.svg"
-          alt="personFILL1wght400GRAD0opsz4811349" class="login-person-fill1wght400grad0opsz481"></ion-img> 
-      </div>
+          formControlName="email">
+            <ion-icon slot="start" class="ion-padding-start"  src="assets/icons/person.svg"></ion-icon>  
+        </ion-input>
+      </ion-col>
       <ion-text
         *ngIf="email?.invalid && (email?.dirty || email?.touched)"
         class="ion-padding-start"
         color="danger">
         <small>{{ emailError }}</small>
       </ion-text>
-      <div class="login-frame3">
-        <ion-img
-        src="assets/images/rectangle21352-duwp-200h.png"
-        alt="Rectangle21352"
-        class="login-rectangle2"></ion-img>
-        <span class="login-text10 BodyRegular">
-        <ion-input
+      <ion-col class="login-frame3">
+        <ion-input class="login-text10 BodyRegular user_input"
           [type]="showPassword ? 'text' : 'password'"
           minlength="6"
           maxlength="64"
@@ -114,16 +94,13 @@
           required="true"
           autocomplete="password"
           formControlName="password"
-          class="login-input"></ion-input>
-        <ion-icon
+          class="login-input">
+          <ion-icon slot="start" class="ion-padding-start item-right"  src="assets/icons/lock.svg"></ion-icon>
+        <!--  <ion-icon slot="end" class="ion-align-self-center"
           [name]="showPassword ? 'eye-outline' : 'eye-off-outline'"
-          slot="end"
-          class="ion-align-self-center"
-          (click)="toggleShowPassword()"></ion-icon>
-        </span>
-         <ion-img src="assets/icons/lock.svg"
-          alt="personFILL1wght400GRAD0opsz4811349" class="login-person-fill1wght400grad0opsz481"></ion-img> 
-      </div>
+          (click)="toggleShowPassword()"></ion-icon> -->
+        </ion-input>
+      </ion-col>
       <ion-text
         *ngIf="password?.invalid && (password?.dirty || password?.touched)"
         class="ion-padding-start"
