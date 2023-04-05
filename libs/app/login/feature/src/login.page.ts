@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Login } from '@mp/app/login/util';
 import {
-    ActionsExecuting,
-    actionsExecuting
+  ActionsExecuting,
+  actionsExecuting
 } from '@ngxs-labs/actions-executing';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'ms-login-page',
   templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss','./login.page.css','./login.page.style.css'],
+  styleUrls: ['./login.page.scss', './login.page.css'],
 })
 export class LoginPage {
   @Select(actionsExecuting([Login])) busy$!: Observable<ActionsExecuting>;
@@ -56,7 +56,7 @@ export class LoginPage {
   constructor(
     private readonly fb: FormBuilder,
     private readonly store: Store
-  ) {}
+  ) { }
 
   login() {
     if (this.loginForm.valid) {
