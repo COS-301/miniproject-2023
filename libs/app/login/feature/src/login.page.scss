@@ -1,0 +1,151 @@
+.button {
+    color: var(--dl-color-gray-black);
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-color: var(--dl-color-gray-black);
+    border-width: 1px;
+    border-radius: 4px;
+    background-color: var(--dl-color-gray-white);
+}
+
+.input {
+    color: var(--dl-color-gray-black);
+    cursor: auto;
+    padding: 0.5rem 1rem;
+    border-color: var(--dl-color-gray-black);
+    border-width: 1px;
+    border-radius: 4px;
+    background-color: var(--dl-color-gray-white);
+}
+
+.textarea {
+    color: var(--dl-color-gray-black);
+    cursor: auto;
+    padding: 0.5rem;
+    border-color: var(--dl-color-gray-black);
+    border-width: 1px;
+    border-radius: 4px;
+    background-color: var(--dl-color-gray-white);
+}
+
+.list {
+    width: 100%;
+    margin: 1em 0px 1em 0px;
+    display: block;
+    padding: 0px 0px 0px 1.5rem;
+    list-style-type: none;
+    list-style-position: outside;
+}
+
+.list-item {
+    display: list-item;
+}
+
+.teleport-show {
+    display: flex !important;
+    transform: none !important;
+}
+
+.Content {
+    font-size: 16px;
+    font-family: Inter;
+    font-weight: 400;
+    line-height: 1.15;
+    text-transform: none;
+    text-decoration: none;
+}
+
+.Heading {
+    font-size: 32px;
+    font-family: Inter;
+    font-weight: 700;
+    line-height: 1.15;
+    text-transform: none;
+    text-decoration: none;
+}
+
+.labellarge {
+    font-size: 16px;
+    font-style: normal;
+    font-family: Work Sans;
+    font-weight: 500px;
+    font-stretch: normal;
+}
+
+.labelmedium {
+    font-size: 14px;
+    font-style: normal;
+    font-family: Work Sans;
+    font-weight: 500px;
+    font-stretch: normal;
+}
+
+.headlinemedium {
+    font-size: 28px;
+    font-style: normal;
+    font-family: Work Sans;
+    font-weight: 400px;
+    font-stretch: normal;
+}
+
+.BodyRegular {
+    font-size: 16px;
+    font-style: normal;
+    font-family: Open Sans;
+    font-weight: 400px;
+    font-stretch: normal;
+}
+
+ion-col {
+    height: 56px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 0;
+    border-color: transparent;
+    background-color: #ffffff;
+    border-radius: 40px;
+    align-self: auto;
+    text-align: left;
+    line-height: normal;
+}
+
+input {
+    color: var(--dl-color-gray-black);
+    cursor: auto;
+    //padding: 0.5rem 1rem;
+    border-color: var(--dl-color-gray-black);
+    border-width: 1px;
+    border-radius: 4px;
+    height: 56px;
+    border-color: transparent;
+    border-radius: 30px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    padding: 8px;
+    height: auto;
+}
+
+ion-icon {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+}
+
+.logo {
+    top: 60px;
+    left: 145px;
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    border-color: transparent;
+    border-radius: 50px;
+}
+
+#time_logo {
+    border-radius: 50%;
+}
+
+ion-col {
+    width: 308px
+}
