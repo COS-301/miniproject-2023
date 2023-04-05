@@ -23,6 +23,12 @@ const routes: Routes = [
           import('@mp/app/messages/feature').then((m) => m.MessagesModule)
       },
       {
+        path: 'post',
+        loadChildren: () =>
+          import('@np.app/post/feauture').then((m) => m.PostModule)
+         
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: '/home/dashboard',
