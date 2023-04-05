@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'post',
@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent {
-
+  @Input() post: any = {
+    caption: '',
+    // comments: [],
+    imagePath: '',
+  };
 }
