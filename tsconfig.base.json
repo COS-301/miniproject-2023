@@ -19,13 +19,6 @@
       "@mp/api/auth/data-access": ["libs/api/auth/data-access/src/index.ts"],
       "@mp/api/auth/feature": ["libs/api/auth/feature/src/index.ts"],
       "@mp/api/auth/util": ["libs/api/auth/util/src/index.ts"],
-      "@mp/api/conversation/data-access": [
-        "libs/api/conversation/data-access/src/index.ts"
-      ],
-      "@mp/api/conversation/feature": [
-        "libs/api/conversation/feature/src/index.ts"
-      ],
-      "@mp/api/conversation/util": ["libs/api/conversation/util/src/index.ts"],
       "@mp/api/core/feature": ["libs/api/core/feature/src/index.ts"],
       "@mp/api/eventstore/data-access": [
         "libs/api/eventstore/data-access/src/index.ts"
