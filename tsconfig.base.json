@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "types": ["cypress", "node"],
     "rootDir": ".",
     "sourceMap": true,
     "declaration": false,
@@ -11,7 +12,7 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "lib": ["es2015", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
@@ -126,5 +127,5 @@
       "@mp/cli/core/feature": ["libs/cli/core/feature/src/index.ts"]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": ["node_modules", "tmp", "node_modules/cypress", "cypress/**/*.ts"]
 }
