@@ -18,11 +18,11 @@ export class FeedApi {
     private readonly functions: Functions
   ) {}
 
-  async fetchPosts(posts: FetchPostsRequest){
-    return await httpsCallable<FetchPostsRequest, FetchPostsResponse>(
-      this.functions,
-      'fetchPosts'
-    )(posts);
-  }
+  // async fetchPosts(posts: FetchPostsRequest){
+  //   return await httpsCallable<FetchPostsRequest, FetchPostsResponse>(
+  //     this.functions,
+  //     'fetchPosts'
+  //   )(posts);
+  // }
 
 }

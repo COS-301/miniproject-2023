@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import produce from 'immer';
 import {
+  printe,
   SetFilterList,
   SetPost,
   SetPostList,
@@ -163,13 +164,17 @@ export interface FeedStateModel {
 export class FeedState {
   constructor(
     private readonly store: Store,
-    private readonly feedApi: FeedApi
     ) {//
     }
 
   @Selector()
   static feed(state: FeedStateModel) {
     return state.FilterList;
+  }
+
+  @Action(printe)
+  async printe() {
+    console.log('action triggered');
   }
 
   @Action(SetFilterList)
@@ -194,10 +199,10 @@ export class FeedState {
         }
       }
 
-      const responseRef = await this.feedApi.fetchPosts(request);
-      const response = responseRef;
+      //const responseRef = await this.feedApi.fetchPosts(request);
+      //const response = responseRef;
 
-      console.log('response: ', response);
+     // console.log('response: ', response);
 
       return;
       ///return ctx.dispatch(new SetPostList(response));
