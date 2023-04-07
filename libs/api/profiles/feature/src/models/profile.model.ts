@@ -19,13 +19,24 @@ import { AggregateRoot } from '@nestjs/cqrs';
 export class Profile extends AggregateRoot implements IProfile {
   constructor(
     public userId: string,
-    public accountDetails?: IAccountDetails | null | undefined,
+    public Age: number | null,
+    public Bio: string | null,
+    public DOB: FirebaseFirestore.Timestamp | null,
+    public Gender: string | null,
+    public Interest: string[] | null,
+    public Name: string | null,
+    public PhoneNumber: string | null,
+    public Posts: string[] | null,
+    public ProfilePicture: string | null,
+    public Sexuality: string | null,
+    public Time: number | null
+    /*public accountDetails?: IAccountDetails | null | undefined,
     public personalDetails?: IPersonalDetails | null | undefined,
     public contactDetails?: IContactDetails | null | undefined,
     public addressDetails?: IAddressDetails | null | undefined,
     public occupationDetails?: IOccupationDetails | null | undefined,
     public status?: ProfileStatus | null | undefined,
-    public created?: FirebaseFirestore.Timestamp | null | undefined
+    public created?: FirebaseFirestore.Timestamp | null | undefined*/
   ) {
     super();
   }
@@ -33,13 +44,17 @@ export class Profile extends AggregateRoot implements IProfile {
   static fromData(profile: IProfile): Profile {
     const instance = new Profile(
       profile.userId,
-      profile.accountDetails,
-      profile.personalDetails,
-      profile.contactDetails,
-      profile.addressDetails,
-      profile.occupationDetails,
-      profile.status,
-      profile.created
+      profile.Age,
+      profile.Bio,
+      profile.DOB,
+      profile.Gender,
+      profile.Interest,
+      profile.Name,
+      profile.PhoneNumber,
+      profile.Posts,
+      profile.ProfilePicture,
+      profile.Sexuality,
+      profile.Time
     );
     return instance;
   }
@@ -48,7 +63,7 @@ export class Profile extends AggregateRoot implements IProfile {
     this.apply(new ProfileCreatedEvent(this.toJSON()));
   }
 
-  updateAddressDetails(addressDetails: IAddressDetails) {
+  /*updateAddressDetails(addressDetails: IAddressDetails) {
     if (!this.addressDetails) this.addressDetails = {};
     this.addressDetails.residentialArea = addressDetails.residentialArea
       ? addressDetails.residentialArea
@@ -204,9 +219,9 @@ export class Profile extends AggregateRoot implements IProfile {
 
     this.occupationDetails.status = ProfileStatus.COMPLETE;
     return;
-  }
+  }*/
 
-  updateStatus() {
+  /*updateStatus() {
     this.updateAccountDetailsStatus();
     this.updateAddressDetailsStatus();
     this.updateContactDetailsStatus();
@@ -224,18 +239,22 @@ export class Profile extends AggregateRoot implements IProfile {
     }
 
     this.apply(new ProfileStatusUpdatedEvent(this.toJSON()));
-  }
+  }*/
 
   toJSON(): IProfile {
     return {
       userId: this.userId,
-      accountDetails: this.accountDetails,
-      personalDetails: this.personalDetails,
-      contactDetails: this.contactDetails,
-      addressDetails: this.addressDetails,
-      occupationDetails: this.occupationDetails,
-      status: this.status,
-      created: this.created,
+      Age: this.Age,
+      Bio: this.Bio,
+      DOB: this.DOB,
+      Gender: this.Gender,
+      Interest: this.Interest,
+      Name: this.Name,
+      PhoneNumber: this.PhoneNumber,
+      Posts: this.Posts,
+      ProfilePicture: this.ProfilePicture,
+      Sexuality: this.Sexuality,
+      Time: this.Time,
     };
   }
 }

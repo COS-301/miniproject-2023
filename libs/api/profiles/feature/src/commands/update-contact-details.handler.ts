@@ -29,9 +29,9 @@ export class UpdateContactDetailsHandler
       Profile.fromData(profileData)
     );
 
-    if (!request.profile.contactDetails)
+    /*if (!request.profile.contactDetails)
       throw new Error('Profile contact details not found');
-    profile.updateContactDetails(request.profile.contactDetails);
+    profile.updateContactDetails(request.profile.contactDetails);*/
     profile.commit();
 
     const response: IUpdateContactDetailsResponse = { profile };

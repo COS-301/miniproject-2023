@@ -7,7 +7,7 @@ export class ProfilesRepository {
   async findOne(profile: IProfile) {
     return await admin
       .firestore()
-      .collection('profiles')
+      .collection('User_Profile')
       .withConverter<IProfile>({
         fromFirestore: (snapshot) => {
           return snapshot.data() as IProfile;
@@ -20,20 +20,20 @@ export class ProfilesRepository {
 
   async createProfile(profile: IProfile) {
     // Remove password field if present
-    delete profile.accountDetails?.password;
+    //delete profile.accountDetails?.password;
     return await admin
       .firestore()
-      .collection('profiles')
+      .collection('User_Profile')
       .doc(profile.userId)
       .create(profile);
   }
 
   async updateProfile(profile: IProfile) {
     // Remove password field if present
-    delete profile.accountDetails?.password;
+    //delete profile.accountDetails?.password;
     return await admin
       .firestore()
-      .collection('profiles')
+      .collection('User_Profile')
       .doc(profile.userId)
       .set(profile, { merge: true });
   }

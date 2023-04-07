@@ -25,7 +25,18 @@ export class CreateProfileHandler
 
     const data: IProfile = {
       userId,
-      accountDetails: {
+      Age: null,
+      Bio: null,
+      DOB: null,
+      Gender: null,
+      Interest: null,
+      Name: null,
+      PhoneNumber: null,
+      Posts: null,
+      ProfilePicture: null,
+      Sexuality: null,
+      Time: null,
+      /*accountDetails: {
         displayName,
         email,
         photoURL,
@@ -52,7 +63,7 @@ export class CreateProfileHandler
         status: ProfileStatus.INCOMPLETE,
       },
       status: ProfileStatus.INCOMPLETE,
-      created: Timestamp.fromDate(new Date()),
+      created: Timestamp.fromDate(new Date()),*/
     };
     const profile = this.publisher.mergeObjectContext(Profile.fromData(data));
 

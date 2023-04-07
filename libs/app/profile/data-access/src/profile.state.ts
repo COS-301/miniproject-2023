@@ -32,7 +32,18 @@ import { ProfilesApi } from './profiles.api';
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ProfileStateModel {
   profile: IProfile | null;
-  accountDetailsForm: {
+  Age: number | null;
+  Bio: string | null;
+  DOB: FirebaseFirestore.Timestamp | null;
+  Gender: string | null;
+  Interest: string[] | null;
+  Name: string | null;
+  PhoneNumber: string | null;
+  Posts: string[] | null;
+  ProfilePicture: string | null;
+  Sexuality: string | null;
+  Time: number | null;
+  /*accountDetailsForm: {
     model: {
       displayName: string | null;
       email: string | null;
@@ -78,14 +89,25 @@ export interface ProfileStateModel {
     dirty: false;
     status: string;
     errors: object;
-  };
+  };*/
 }
 
 @State<ProfileStateModel>({
   name: 'profile',
   defaults: {
     profile: null,
-    accountDetailsForm: {
+    Age: null,
+    Bio: null,
+    DOB: null,
+    Gender: null,
+    Interest: null,
+    Name: null,
+    PhoneNumber: null,
+    Posts: null,
+    ProfilePicture: null,
+    Sexuality: null,
+    Time: 2000,
+    /*accountDetailsForm: {
       model: {
         displayName: null,
         email: null,
@@ -131,7 +153,7 @@ export interface ProfileStateModel {
       dirty: false,
       status: '',
       errors: {},
-    },
+    },*/
   },
 })
 @Injectable()
@@ -170,7 +192,7 @@ export class ProfileState {
     );
   }
 
-  @Action(UpdateAccountDetails)
+  /*@Action(UpdateAccountDetails)
   async updateAccountDetails(ctx: StateContext<ProfileStateModel>) {
     try {
       const state = ctx.getState();
@@ -323,5 +345,5 @@ export class ProfileState {
     } catch (error) {
       return ctx.dispatch(new SetError((error as Error).message));
     }
-  }
+  }*/
 }

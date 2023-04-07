@@ -32,9 +32,9 @@ export class UpdateOccupationDetailsHandler
       Profile.fromData(profileData)
     );
 
-    if (!request.profile.occupationDetails)
+    /*if (!request.profile.occupationDetails)
       throw new Error('Profile occupation details not found');
-    profile.updateOccupationDetails(request.profile.occupationDetails);
+    profile.updateOccupationDetails(request.profile.occupationDetails);*/
     profile.commit();
 
     const response: IUpdateOccupationDetailsResponse = { profile };

@@ -8,11 +8,22 @@ import { IPersonalDetails } from './personal-details.interface';
 
 export interface IProfile {
   userId: string;
-  accountDetails?: IAccountDetails | null | undefined;
+  Age: number | null;
+  Bio: string | null;
+  DOB: FirebaseFirestore.Timestamp | null;
+  Gender: string | null;
+  Interest: string[] | null;
+  Name: string | null;
+  PhoneNumber: string | null;
+  Posts: string[] | null;
+  ProfilePicture: string | null;
+  Sexuality: string | null;
+  Time: number | null;
+  /*accountDetails?: IAccountDetails | null | undefined;
   personalDetails?: IPersonalDetails | null | undefined;
   contactDetails?: IContactDetails | null | undefined;
   addressDetails?: IAddressDetails | null | undefined;
   occupationDetails?: IOccupationDetails | null | undefined;
   status?: ProfileStatus | null | undefined;
-  created?: Timestamp | null | undefined;
+  created?: Timestamp | null | undefined;*/
 }

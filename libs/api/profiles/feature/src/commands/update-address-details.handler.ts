@@ -15,8 +15,11 @@ export class UpdateAddressDetailsHandler
     private readonly publisher: EventPublisher,
     private readonly repository: ProfilesRepository
   ) {}
+  execute(command: UpdateAddressDetailsCommand): Promise<IUpdateAddressDetailsResponse> {
+    throw new Error('Method not implemented.');
+  }
 
-  async execute(command: UpdateAddressDetailsCommand) {
+  /*async execute(command: UpdateAddressDetailsCommand) {
     console.log(`${UpdateAddressDetailsHandler.name}`);
 
     const request = command.request;
@@ -29,12 +32,13 @@ export class UpdateAddressDetailsHandler
       Profile.fromData(profileData)
     );
 
-    if (!request.profile.addressDetails)
+    /*if (!request.profile.addressDetails)
       throw new Error('Profile address details not found');
     profile.updateAddressDetails(request.profile.addressDetails);
     profile.commit();
 
-    const response: IUpdateAddressDetailsResponse = { profile };
-    return response;
-  }
+    //const response: IUpdateAddressDetailsResponse = { profile };
+    //return response;
+    return null;
+  }*/
 }
