@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'post',
+  selector: 'mp-post',
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.scss']
 })
