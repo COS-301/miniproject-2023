@@ -42,13 +42,34 @@ export class DashboardPage {
   kronosTimer = setInterval(() => {
     const counter = this.deathTime - Date.now()/1000;
     this.kronos = this.displayKronos(counter);
-  }, 1000)
+  }, 999)
+
+  pickRandom(arr: any[]) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
 
   // Convert a unix timestamp to a kronos string
   displayKronos(timeDelta : number) {
     if (timeDelta < 0)
     {
-      return "DEAD xP";
+      return this.pickRandom([
+        "BUCKETED",
+        "CEASED",
+        "DEAD",
+        "DECEASED",
+        "DEPARTED",
+        "DEPLETED",
+        "DISBANDED",
+        "DISMISSED",
+        "ELIMINATED",
+        "EXPELLED",
+        "EXPIRED",
+        "INERT",
+        "LATE",
+        "PERISHED",
+        "TERMINATED",
+        "WASTED",
+      ]) + "💀";
     }
 
     const [years, days, hours, minutes, seconds] = [
