@@ -76,7 +76,7 @@
             <!-- Progress bar -->
             <!-- Meter value -->
             <!-- <h3>Meters works!</h3> -->
-            
+            <mp-meter [meter]="{name:'science', value:'50'}"></mp-meter>
         </ion-content>
         
         <!-- BADGES -->
@@ -84,6 +84,7 @@
             <!-- ngFor to display all disciplines where the user has badges -->
             <!-- within discipline ngFor to display badge icons -->
             <h3>Badges works!</h3>
+            <mp-badge [badge]="{name: 'Rockstar', value:'50', imageSrc:''}"></mp-badge>
         </ion-content>
         
         <!-- POSTS -->
@@ -93,6 +94,7 @@
                 <!-- ngFors to loop through number of posts -->
                 <!-- User ngIfs to limit number of cols per row -->
             <!-- </ion-grid> -->
+            <!-- <mp-post [post]="{caption:'No caption', imagePath:''}"></mp-post> -->
         </ion-content>
     </ion-content>
 </ion-content>
