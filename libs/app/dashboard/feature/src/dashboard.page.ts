@@ -52,40 +52,43 @@ export class DashboardPage {
   displayKronos(timeDelta : number) {
     if (timeDelta < 0)
     {
-      return this.pickRandom([
-        "BUCKETED",
-        "CEASED",
-        "DEAD",
-        "DECEASED",
-        "DEPARTED",
-        "DEPLETED",
-        "DISBANDED",
-        "DISMISSED",
-        "ELIMINATED",
-        "EXPELLED",
-        "EXPIRED",
-        "INERT",
-        "LATE",
-        "PERISHED",
-        "TERMINATED",
-        "WASTED",
-      ]) + "💀";
+      return ([
+        this.pickRandom([ "ELIMINATED", "TERMINATED", ]),
+        this.pickRandom([ "DISBANDED", "DISMISSED", ]),
+        this.pickRandom([ "DECEASED", "DEPLETED", "PERISHED", ]),
+        this.pickRandom([ "EXPIRED", "EXTINCT", ]),
+        this.pickRandom([ "CEASED", "WASTED", ]),
+        this.pickRandom([ "INERT", "ENDED" ]),
+        this.pickRandom([ "DEAD", "LATE", ]),
+      ])[Math.floor(Math.abs(timeDelta))%7] + "💀";
     }
 
     const [years, days, hours, minutes, seconds] = [
       Math.floor( timeDelta / (60*60*24*365)),
-      Math.floor((timeDelta % (60*60*24*365)) / 86400).toString().padStart(3, '0'),
-      Math.floor((timeDelta % (60*60*24)) / 3600).toString().padStart(2, '0'),
-      Math.floor((timeDelta % (60*60)) / 60).toString().padStart(2, '0'),
-      Math.floor( timeDelta % (60)).toString().padStart(2, '0'),
+      Math.floor((timeDelta % (60*60*24*365)) / 86400),
+      Math.floor((timeDelta % (60*60*24)) / 3600),
+      Math.floor((timeDelta % (60*60)) / 60),
+      Math.floor( timeDelta % (60)),
     ];
+    const [syears, sdays, shours, sminutes, sseconds] = [
+      years.toString(),
+      days.toString().padStart(3, '0'),
+      hours.toString().padStart(2, '0'),
+      minutes.toString().padStart(2, '0'),
+      seconds.toString().padStart(2, '0'),
+    ]
 
-    // YY:DD:HH:MM:SS
-    if (years < 1) {
-      return `${days}:${hours}:${minutes}:${seconds}`
+    // HH:MM:SS
+    if (years < 1 && days < 1) {
+      return `${shours}:${sminutes}:${sseconds}`
     }
+    // DD:HH:MM:SS
+    else if (years < 1) {
+      return `${sdays}:${shours}:${sminutes}:${sseconds}`
+    }
+    // YY:DD:HH:MM:SS
     else {
-      return `${years}:${days}:${hours}:${minutes}:${seconds}`
+      return `${syears}:${sdays}:${shours}:${sminutes}:${sseconds}`
     }
   }
 
