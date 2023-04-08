@@ -1,7 +1,7 @@
 <ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar>
 
-    <div *ngIf="!isSearchbarVisible">
+    <div *ngIf="!isSearchbarVisible" class="barKronos">
         <ion-title class="title">
           <span>Home</span>
           <span style="float: right">{{kronos}}</span>
@@ -23,7 +23,7 @@
 </ion-header>
 
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" [scrollEvents]="true" (ionScroll)="onContentScroll($event)">
 
   <br /><br />
   <!-- HOME BANNER -->

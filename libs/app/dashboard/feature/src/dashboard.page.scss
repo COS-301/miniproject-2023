@@ -12,6 +12,11 @@ ion-searchbar {
     --ion-background-color: transparent;
 }
 
+.barKronos {
+    opacity: 0;
+    transition: all 0.1s ease-in;
+}
+
 //========== BANNER ==========//
 
 ion-img.logo {
