@@ -62,6 +62,21 @@ export class OtherUserPage {
       value: 70,
       imageSrc: 'https://ionicframework.com/docs/img/demos/avatar.svg',
     },
+    {
+      name: 'Rockstar',
+      value: 60,
+      imageSrc: 'https://ionicframework.com/docs/img/demos/avatar.svg',
+    },
+    {
+      name: 'Einstein',
+      value: 30,
+      imageSrc: 'https://ionicframework.com/docs/img/demos/avatar.svg',
+    },
+    {
+      name: 'Ramsy',
+      value: 70,
+      imageSrc: 'https://ionicframework.com/docs/img/demos/avatar.svg',
+    },
   ]
 
   meters: any[] = [

@@ -76,25 +76,37 @@
             <!-- Progress bar -->
             <!-- Meter value -->
             <!-- <h3>Meters works!</h3> -->
-            <mp-meter [meter]="{name:'science', value:'50'}"></mp-meter>
+            <mp-meter *ngFor="let meter of meters" [meter]="meter"></mp-meter>
         </ion-content>
         
         <!-- BADGES -->
         <ion-content *ngIf="toolbarSegment.value === 'badges'">
             <!-- ngFor to display all disciplines where the user has badges -->
             <!-- within discipline ngFor to display badge icons -->
-            <h3>Badges works!</h3>
-            <mp-badge [badge]="{name: 'Rockstar', value:'50', imageSrc:''}"></mp-badge>
+            <!-- <h3>Badges works!</h3> -->
+            <ion-grid>
+                <ion-row>
+                    <ion-col  *ngFor="let badge of badges" size="4" >
+                        <mp-badge [badge]="badge"></mp-badge>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
         </ion-content>
         
         <!-- POSTS -->
         <ion-content *ngIf="toolbarSegment.value === 'posts'">
-            <h3>Posts works!</h3>
+            <!-- <h3>Posts works!</h3> -->
             <!-- <ion-grid> -->
                 <!-- ngFors to loop through number of posts -->
                 <!-- User ngIfs to limit number of cols per row -->
             <!-- </ion-grid> -->
-            <mp-post [post]="{caption:'No caption', imagePath:''}"></mp-post>
+            <ion-grid>
+                <ion-row>
+                    <ion-col *ngFor="let post of posts" size="4">
+                        <mp-post [post]="post"></mp-post>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
         </ion-content>
     </ion-content>
 </ion-content>

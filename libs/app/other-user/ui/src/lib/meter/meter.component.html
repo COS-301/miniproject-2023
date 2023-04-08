@@ -1,5 +1,5 @@
 <div>
     <h2>{{meter.name}}</h2>
-    <ion-progress-bar value="meter.value/100"></ion-progress-bar>
+    <ion-progress-bar [value]="meter.value/100" color="success"></ion-progress-bar>
     <!-- Need to perform calculation for the value based on the total value for the meter -->
 </div>
