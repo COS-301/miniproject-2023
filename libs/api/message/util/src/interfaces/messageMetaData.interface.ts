@@ -1,7 +1,7 @@
-//import { Timestamp } from "firebase-admin/firestore";
 import { IProfile } from "@mp/api/profiles/util";
+import { Timestamp } from 'firebase-admin/firestore';
 
 export interface IMessageMetaData {
-    timePosted : number/*Timestamp*/;
+    timePosted : Timestamp;
     sender : IProfile;
 }

@@ -1,5 +1,5 @@
 import {IUser} from '@mp/api/users/util';
-import {IMessage} from '@mp/api/message/util';
+import {IMessage} from './message.interface';
 
 export interface IConversation {
   conversationID?: string | null | undefined;
