@@ -34,9 +34,6 @@ export class Message extends AggregateRoot implements IConversation {
 
   sendMessage() {
     this.messages!.at(0)!.id = (this.messages!.at(0)!.metaData.timePosted.seconds + randomInt(10000)).toString();
-    if (this?.messages?.at(0)?.id) {
-      this.messages.at(0)!.content.textData = "fuck";
-    }
     this.apply(new MessageSentEvent(this.toJSON()));
   }
 

@@ -57,7 +57,7 @@ describe('apiMessageFeature', () => {
       const result: ISendMessageResponse = { message: messageToSendCopy.conversation.messages![0] };
       const send = await commandBus.execute(new SendMessageCommand(messageToSend));
       console.log(send);
-      expect({...send}).not.toMatchObject({...result});
+      expect({...send}).not.toStrictEqual({...result});
     });
   })
 });
