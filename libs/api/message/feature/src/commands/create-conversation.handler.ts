@@ -30,7 +30,7 @@ export class CreateConversationHandler
     if (request.members?.length <= 1) {
       throw new Error("Cannot Create a conversation with only one member");
     }
-    for (let member of request.members) {
+    for (const member of request.members) {
       if (!await this.repository.doesUserExist(member)) {
 	throw new Error("One of the specified users do not exist");
       }

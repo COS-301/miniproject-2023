@@ -1,4 +1,4 @@
-import { IConversation } from "@mp/api/message/util";
+import { IConversation } from "../interfaces";
 
 export class MessageDeletedEvent {
     constructor(public readonly conversation : IConversation) {}

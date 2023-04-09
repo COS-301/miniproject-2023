@@ -1,4 +1,4 @@
-import { IConversation } from "../interfaces/conversation.interface";
+import { IConversation } from "../interfaces";
 
 export interface ISendMessageRequest {
     conversation : IConversation;

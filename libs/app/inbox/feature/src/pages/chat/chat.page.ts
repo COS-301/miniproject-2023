@@ -42,25 +42,38 @@ export class ChatPageComponent implements OnInit {
     let responseData;
     const functions=getFunctions();
     const sendMsg=httpsCallable(functions,'sendMessage');
-    let myIMessageContent = {
+    const myIMessageContent = {
       textData: this.message,
       video: null,
       photo:null
     };
-    let myIProfile = {
+    const myIProfile = {
       userID:this.currentUserId
     }
-    let myIMessageData = {
+    const myIMessageData = {
       timePosted : Timestamp.now(),
       sender : myIProfile
     }
-    let myIMessage = {
+    const myIMessage = {
       id:"", //will have to get the message id
       content : myIMessageContent,
       metaData : myIMessageData
     };
-    sendMsg({message:myIMessage})
+
+    const myConversation = {
+        conversationID : "", ///some conversation ID.
+        messages : myIMessage,
+        members : [this.currentUserId, this.receiver],
+    }
+
+
+    sendMsg({conversation:myConversation})
       .then(results =>{
+        /**
+         * Note: UI/Chat Engineer
+         * Implement logic on how to load chat for both the sender and reciever
+         */
+
         this.message = "";//this is to make the textarea where the message was entered blank
         this.isLoading = false;
         responseData = results.data;
@@ -79,5 +92,17 @@ export class ChatPageComponent implements OnInit {
     //   await MessageService.prototype.sendMessage(myRequest);
     // }
     
+  }
+
+  async deleteMessage(){
+    const functions=getFunctions();
+    const deleteMsg=httpsCallable(functions, 'deleteMessage');
+    deleteMsg({/**some message info */})
+      .then(results =>{
+        /**some out put message indicating message was deleted */
+      })
+      .catch(error =>{
+        console.log("DELETE MESSAGE ERROR: "+error);
+      })
   }
 }
