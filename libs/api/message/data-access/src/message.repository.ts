@@ -40,7 +40,7 @@ export class MessageRepository {
       });
   }
 
-  async getMessageID() : Promise<admin.firestore.DocumentReference<IConversation>> {
+  async getConversationID() : Promise<admin.firestore.DocumentReference<IConversation>> {
     return admin.firestore().collection("converstations").doc();
   }
 }

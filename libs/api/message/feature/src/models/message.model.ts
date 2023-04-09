@@ -3,17 +3,12 @@ import {
     MessageDeletedEvent,
     IMessage,
 } from '@mp/api/message/util';
-
-import {MessageRepository} from "@mp/api/message/data-access";
 import {IUser} from '@mp/api/users/util';
-
 import { IConversation } from '@mp/api/message/util';
-
 import { AggregateRoot } from '@nestjs/cqrs';
-import { Inject } from "@nestjs/common";
+import {randomInt} from 'crypto';
 
 export class Message extends AggregateRoot implements IConversation {
-  @Inject(MessageRepository) private readonly repository : MessageRepository = new MessageRepository();
   constructor(
     public conversationID? : string | null | undefined,
     public messages? : IMessage[] | null | undefined, //just to avoid build errors
@@ -32,12 +27,11 @@ export class Message extends AggregateRoot implements IConversation {
   }
 
   async sendMessage() {
-    const doc = await this.repository.getMessageID();
-    this.messages!.at(0)!.id = doc.id;
+    this.messages!.at(0)!.id = (this.messages!.at(0)!.metaData.timePosted.seconds + randomInt(10000)).toString();
     if (this?.messages?.at(0)?.id) {
       this.messages.at(0)!.content.textData = "fuck";
     }
-    this.apply(new MessageSentEvent(this.toJSON(), doc));
+    this.apply(new MessageSentEvent(this.toJSON()));
   }
 
   deleteMessage() {
