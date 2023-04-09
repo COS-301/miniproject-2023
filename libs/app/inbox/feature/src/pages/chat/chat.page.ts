@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 //import { MessageService } from 'libs/api/message/feature/src/message.service'
 import { ActivatedRoute } from '@angular/router';
 import { httpsCallable, getFunctions } from '@angular/fire/functions';
+import { Timestamp } from 'firebase-admin/firestore';
+//import {ISendMessageResponse} from 'libs/api/message/util/src/responses/send-message.response'
 
 @Component({
   selector: 'app-chat',
@@ -32,21 +34,42 @@ export class ChatPageComponent implements OnInit {
   }
 
   async sendMessage() {
+    if (this.message?.trim() == "" || !this.message) {
+      //If there is a blank message or  a message that is just white space, it is not a valid message so  don't send it
+      return;
+    }
+    this.isLoading = true;
+    let responseData;
     const functions=getFunctions();
     const sendMsg=httpsCallable(functions,'sendMessage');
-    sendMsg({/**message data */})
+    let myIMessageContent = {
+      textData: this.message,
+      video: null,
+      photo:null
+    };
+    let myIProfile = {
+      userID:this.currentUserId
+    }
+    let myIMessageData = {
+      timePosted : Timestamp.now(),
+      sender : myIProfile
+    }
+    let myIMessage = {
+      id:"", //will have to get the message id
+      content : myIMessageContent,
+      metaData : myIMessageData
+    };
+    sendMsg({message:myIMessage})
       .then(results =>{
-        /**Logic on how to handle response */
+        this.message = "";//this is to make the textarea where the message was entered blank
+        this.isLoading = false;
+        responseData = results.data;
       })
       .catch(error => {
-        /**logic on how to display error */
+        console.log("error occured");
+        console.log(error);
       })
-    // if (this.message?.trim() == "" || !this.message) {
-    //   //If there is a blank message or  a message that is just white space, it is not a valid message so  don't send it
-    //   return;
-    // }
     // try {
-    //   this.isLoading = true;
     //   let myConversation = {
     //     conversationID : this.conversationID,
     //     messages : this.message,
@@ -54,11 +77,6 @@ export class ChatPageComponent implements OnInit {
     //   };  //this myConversation object is not correct. Some stuff need to be changed.
     //   let myRequest = {conversation:myConversation};
     //   await MessageService.prototype.sendMessage(myRequest);
-    //   this.message = "";//this is to make the textarea where the message was entered blank
-    //   this.isLoading = false;
-    // } catch(error){
-    //   console.log("error occured");
-    //   console.log(error);
     // }
     
   }
