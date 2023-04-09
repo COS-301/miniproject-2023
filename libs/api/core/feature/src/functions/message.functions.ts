@@ -9,7 +9,7 @@ import { NestFactory } from '@nestjs/core';
 import * as functions from 'firebase-functions';
 import { CoreModule } from '../core.module';
 
-export const sentMessage = functions.https.onCall(
+export const sendMessage = functions.https.onCall(
     async (
         req: ISendMessageRequest
     ): Promise<ISendMessageResponse> => {
