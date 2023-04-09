@@ -1,6 +1,6 @@
 import {ISendMessageResponse, SendMessageCommand} from "@mp/api/message/util";
 import {ISendMessageRequest} from "@mp/api/message/util";
-import { MessageService, SendMessageHandler } from '@mp/api/message/feature';
+import { SendMessageHandler } from '@mp/api/message/feature';
 import { MessageModule } from "@mp/api/message/feature";
 import {Test, TestingModule} from "@nestjs/testing";
 import {CommandBus, CqrsModule} from '@nestjs/cqrs';
@@ -8,14 +8,16 @@ import * as firebase from "firebase-admin";
 
 describe('apiMessageFeature', () => {
   let commandBus: CommandBus;
-  let firestore: firebase.firestore.Firestore;
-  const firebaseAppInstance = firebase.initializeApp({
-    projectId: "1:486178134246:web:b0e4ee054909cabbdc8327",
-    credential : firebase.credential.cert("./timehive-29588-firebase-adminsdk-bzovc-d18235ddfd.json"),
-    databaseURL : "http://127.0.0.1:5004/?ns=timehive-29588-default-rtdb"
+  firebase.initializeApp({
+    projectId: "timehive-29588",
   })
-  firestore = firebaseAppInstance.firestore();
-    beforeEach(async () => {
+  const db = firebase.firestore()
+  db.settings({
+    host: "localhost:5003",
+    ssl: false
+  });
+
+  beforeEach(async () => {
     const controler: TestingModule = await Test.createTestingModule({
       imports : [CqrsModule, MessageModule],
       providers : [SendMessageHandler, ]
@@ -57,12 +59,4 @@ describe('apiMessageFeature', () => {
       expect({...send}).not.toMatchObject({...result});
     });
   })
-
-  describe('firebase fucking test', () => {
-    it ("should write someththing", async () => {
-      firestore.collection("testing").add(test);
-      firestore.collection("testing").doc("test").create({test : "test"});
-      expect(firestore.collection("testing").doc("test")).toMatchObject({test :"test"});
-    })
-  });
 });
