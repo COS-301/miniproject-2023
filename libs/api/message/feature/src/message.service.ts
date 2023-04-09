@@ -6,7 +6,10 @@ import {
   ISendMessageResponse,
 	IDeleteMessageRequest,
 	DeleteMessageCommand,
-	IDeleteMessageResponse
+	IDeleteMessageResponse,
+	ICreateConversationRequest,
+	ICreateConversationResponse,
+	CreateConversationCommand
 } from "@mp/api/message/util";
 
 @Injectable()
@@ -29,5 +32,14 @@ export class MessageService {
       DeleteMessageCommand,
       IDeleteMessageResponse
     >(new DeleteMessageCommand(request));
+  }
+
+  async createConversation(
+    request: ICreateConversationRequest
+  ): Promise<ICreateConversationResponse> {
+    return await this.commandBus.execute<
+    CreateConversationCommand,
+    ICreateConversationResponse
+   >(new CreateConversationCommand(request));
   }
 }

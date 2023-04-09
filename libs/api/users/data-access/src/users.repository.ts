@@ -11,4 +11,12 @@ export class UsersRepository {
       .doc(user.id)
       .create(user);
   }
+
+  async doesUserExist(user: IUser):Promise<boolean> {
+    const potentialUser = await admin
+      .firestore()
+      .collection("users")
+      .where(admin.firestore.FieldPath.documentId(),"==", user.id).get();
+    return !potentialUser.empty
+  }
 }

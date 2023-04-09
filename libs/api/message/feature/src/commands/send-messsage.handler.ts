@@ -33,7 +33,7 @@ export class SendMessageHandler implements ICommandHandler<SendMessageCommand, I
     const message = this.eventBus.mergeObjectContext(
       Message.fromData(request)
     );
-    await message.sendMessage();
+    message.sendMessage();
     message.commit();
     // We have two options here, we either just return what we were given, or we return the conversation object storing the messages.
     // TODO maybe we should return the next 10 like we would in the paging thing.
