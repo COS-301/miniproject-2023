@@ -5,6 +5,7 @@ import { MessageModule } from "@mp/api/message/feature";
 import {Test, TestingModule} from "@nestjs/testing";
 import {CommandBus, CqrsModule} from '@nestjs/cqrs';
 import * as firebase from "firebase-admin";
+import {Timestamp } from 'firebase-admin/firestore';
 
 describe('apiMessageFeature', () => {
   let commandBus: CommandBus;
@@ -43,7 +44,7 @@ describe('apiMessageFeature', () => {
 		sender : {
 		  userId : "gustav testing",
 		},
-		timePosted : 0,
+		timePosted : Timestamp.now(),
 	      },
 	      content : {
 		textData : "testing testing 123",
