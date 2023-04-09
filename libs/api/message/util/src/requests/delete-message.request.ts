@@ -1,4 +1,4 @@
-import { IConversation } from "@mp/api/conversation/util";
+import { IConversation } from "@mp/api/message/util";
 
 export interface IDeleteMessageRequest {
     conversation : IConversation;

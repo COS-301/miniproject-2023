@@ -1,18 +1,16 @@
-import { MessageRepository } from '@mp/api/message/data-access';
 import {
     ISendMessageResponse,
-    MessageSentEvent,
-    SendMessageCommand
+    SendMessageCommand,
 } from '@mp/api/message/util';
 
-import {CommandHandler, EventBus, ICommandHandler} from "@nestjs/cqrs";
-import { Inject } from "@nestjs/common";
+import {CommandHandler, EventPublisher, ICommandHandler} from "@nestjs/cqrs";
+import { Message } from '../models';
 
 @CommandHandler(SendMessageCommand)
 export class SendMessageHandler implements ICommandHandler<SendMessageCommand, ISendMessageResponse>{
 
   constructor(
-    @Inject(EventBus) private readonly eventBus : EventBus,
+    private readonly eventBus : EventPublisher,
   ) {}
 
   async execute(command: SendMessageCommand) : Promise<ISendMessageResponse> {
@@ -23,14 +21,23 @@ export class SendMessageHandler implements ICommandHandler<SendMessageCommand, I
     check requests authentication details
     if they are unauthorized then reject
     */
-
-    this.eventBus.publish(new MessageSentEvent(request));
-
-
+    if (!request.conversationID) {
+      throw new Error("Conversation ID missing in Request Body");
+    }
+    if (!request.messages) {
+      throw new Error("Message Missing in request body");
+    }
+    if (request.messages.length == 0) {
+      throw new Error("Message propertie must contain a message");
+    }
+    const message = this.eventBus.mergeObjectContext(
+      Message.fromData(request)
+    );
+    await message.sendMessage();
+    message.commit();
     // We have two options here, we either just return what we were given, or we return the conversation object storing the messages.
     // TODO maybe we should return the next 10 like we would in the paging thing.
-    const sentMessage = request.messages[request.messages.length-1];
-    const response : ISendMessageResponse = {message:sentMessage};
+    const response : ISendMessageResponse = {message:message.messages!.at(0)!};
     return response;
   }
 }

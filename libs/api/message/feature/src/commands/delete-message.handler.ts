@@ -28,7 +28,7 @@ export class DeleteMessageHandler
       this.eventBus.publish(new MessageDeletedEvent(request));
 
       // TODO maybe we should return the next 10 like we would in the paging thing.
-      const deletedMessage :IMessage = request.messages[request.messages.length-1];
+      const deletedMessage :IMessage = request.messages![request.messages!.length-1];
 
       const response : IDeleteMessageResponse = {message:deletedMessage};
       return response;

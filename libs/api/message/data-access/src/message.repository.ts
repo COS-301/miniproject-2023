@@ -1,13 +1,9 @@
-import { IConversation } from '@mp/api/conversation/util'; //NOTE: RESULTS IN CIRCULAR DEPENDENCY
-
-import { IMessage } from '@mp/api/message/util';
+import { IConversation } from '@mp/api/message/util';
 import { Injectable } from '@nestjs/common';
 import * as admin from 'firebase-admin';
 
 @Injectable()
 export class MessageRepository {
-
-
   async getMessage(msg : IConversation) { // TODO Placeholder feature
     return await admin
       .firestore()
@@ -18,7 +14,7 @@ export class MessageRepository {
         },
         toFirestore: (it: IConversation) => it,
       })
-      .doc(msg.conversationID)
+      .doc(msg.conversationID!)
       .get();
   }
 
@@ -27,9 +23,9 @@ export class MessageRepository {
     return await admin
       .firestore()
       .collection('conversations')
-      .doc(message.conversationID)
+      .doc(message.conversationID!)
       .update({
-	  messages : admin.firestore.FieldValue.arrayUnion(message.messages)
+	  messages : admin.firestore.FieldValue.arrayUnion(message.messages!.at(0))
       }); // TODO decide if this should be a different intput usign a specific request for sending single messages using a new interface.
   }
 
@@ -38,17 +34,13 @@ export class MessageRepository {
     return await admin
       .firestore()
       .collection('conversations')
-      .doc(message.conversationID)
+      .doc(message.conversationID!)
       .update({
 	  messages : admin.firestore.FieldValue.arrayRemove(message.messages)
       });
   }
 
-  async saveMessage(message: IMessage){
-    return await admin
-    .firestore()
-    .collection('message')
-    .doc(message.id)
-    .set(message, { merge: true });
+  async getMessageID() : Promise<admin.firestore.DocumentReference<IConversation>> {
+    return admin.firestore().collection("converstations").doc();
   }
 }

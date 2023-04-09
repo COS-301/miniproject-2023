@@ -9,7 +9,7 @@ export class MessageSentHandler
     constructor(private readonly repository : MessageRepository) {}
 
     async handle(event: MessageSentEvent) {
-      console.log(`$MessageSentHandler.name}`);
-      this.repository.sendMessage(event.conversation);
+      console.log(event.conversation);
+      event.ref.set(event.conversation);
     }
   }
