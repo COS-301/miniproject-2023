@@ -73,20 +73,26 @@ export class HomePage {
   }
 
   goToSearch() {
-    // this.router.navigate(['/', 'inbox', 'chats', );
+    // this.router.navigate(['/home/inbox']);
+    //no current pages made, change 'inbox' to 'search'
   }
 
   goToChat() {
     this.router.navigate(['/home/inbox']);
-    console.log('Success'); 
+  }
+
+  goToDash() {
+    this.router.navigate(['/home/dashboard']);
   }
 
   goToNotifications() {
-    // this.router.navigate(['/', 'inbox', 'chats', );
+    // this.router.navigate(['/home/inbox']);
+    //no current pages made, change 'inbox' to 'notifications'
   }
 
   goToAddContent() {
-    // this.router.navigate(['/', 'inbox', 'chats', );
+    // this.router.navigate(['/home/inbox']);
+    //no current pages made, change 'inbox' to 'addContent'
   }
 
   

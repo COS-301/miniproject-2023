@@ -101,19 +101,19 @@
 
 <ion-footer>
   <ion-segment color="primary" value="button1">
-    <ion-segment-button value="button1">
+    <ion-segment-button value="homeButton" (click)="goToDash()">
       <ion-icon name="home-outline"></ion-icon>
     </ion-segment-button>
-    <ion-segment-button value="button2" (click)="goToSearch()">
+    <ion-segment-button value="searchButton" (click)="goToSearch()">
       <ion-icon name="search-outline"></ion-icon>
     </ion-segment-button>
-    <ion-segment-button value="button3" (click)="goToAddContent()">
+    <ion-segment-button value="addButton" (click)="goToAddContent()">
       <ion-icon name="duplicate-outline"></ion-icon>
     </ion-segment-button>
-    <ion-segment-button value="button4" (click)="goToNotifications()">
+    <ion-segment-button value="notiButton" (click)="goToNotifications()">
       <ion-icon name="notifications-outline"></ion-icon>
     </ion-segment-button>
-    <ion-segment-button value="button5" (click)="goToChat()">
+    <ion-segment-button value="chatButton" (click)="goToChat()">
       <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
     </ion-segment-button>
   </ion-segment>
