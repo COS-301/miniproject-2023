@@ -30,4 +30,6 @@ jobs:
 
       # Finally, run our tests
       - name: Run the tests
-        run: yarn test
+        run: yarn nx test app-search-results
+        run: yarn nx test app-search-page
+        run: yarn nx test app-user-view

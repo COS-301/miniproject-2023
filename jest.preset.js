@@ -1,5 +1,3 @@
-const config = {
-  verbose: true,
-};
+const nxPreset = require('@nrwl/jest/preset').default;
 
-export default config;
+module.exports = { ...nxPreset };
