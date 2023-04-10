@@ -79,7 +79,7 @@ describe('apiMessageFeature', () => {
         }
       }
     };
-  
+
     const myConversation = {
       conversationID : "con 1", ///some conversation ID.
       messages : myIMessage,
