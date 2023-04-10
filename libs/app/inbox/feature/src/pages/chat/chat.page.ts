@@ -17,6 +17,7 @@ export class ChatPageComponent implements OnInit {
 
   constructor() {
     // do nothing.
+    console.log("here");
   }
 
   ngOnInit() {
