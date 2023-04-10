@@ -1,11 +1,12 @@
 import {ISendMessageResponse, SendMessageCommand} from "@mp/api/message/util";
 import {ISendMessageRequest} from "@mp/api/message/util";
-import { SendMessageHandler } from '@mp/api/message/feature';
-import { MessageModule } from "@mp/api/message/feature";
+import { SendMessageHandler } from '../commands';
+import { MessageModule } from "../message.module";
 import {Test, TestingModule} from "@nestjs/testing";
 import {CommandBus, CqrsModule} from '@nestjs/cqrs';
 import * as firebase from "firebase-admin";
-import {Timestamp } from 'firebase-admin/firestore';
+import { sendMessageFeature } from './api-message-feature';
+import { Timestamp } from "firebase-admin/firestore";
 
 describe('apiMessageFeature', () => {
   let commandBus: CommandBus;
@@ -60,4 +61,30 @@ describe('apiMessageFeature', () => {
       expect({...send}).not.toStrictEqual({...result});
     });
   })
+});
+
+describe('apiMessageFeature', () => {
+  it('should work', () => {
+    const myIMessage = {
+      id:"1", //will have to get the message id
+      content : {
+        textData: "Hello At Thabo Testing Testing here",
+        video: null,
+        photo:null
+      },
+      metaData : {
+        timePosted : 655000000,
+        sender : {
+          userID:"User 1"
+        }
+      }
+    };
+  
+    const myConversation = {
+      conversationID : "con 1", ///some conversation ID.
+      messages : myIMessage,
+      members : ["User 1", "User 2"],
+  }
+    expect(sendMessageFeature()).toEqual(myConversation);
+  });
 });

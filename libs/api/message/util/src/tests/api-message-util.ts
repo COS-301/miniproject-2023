@@ -1,3 +1,3 @@
-export function apiPostUtil(): string {
-  return 'api-post-util';
+export function apiMessageUtil(): string {
+  return 'api-message-util';
 }

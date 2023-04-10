@@ -1,7 +1,7 @@
-import { apiPostUtil } from './api-post-util';
+import { apiMessageUtil } from './api-message-util';
 
-describe('apiPostUtil', () => {
+describe('apiMessageUtil', () => {
   it('should work', () => {
-    expect(apiPostUtil()).toEqual('api-post-util');
+    expect(apiMessageUtil()).toEqual('api-message-util');
   });
 });
