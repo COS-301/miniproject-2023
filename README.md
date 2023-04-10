@@ -44,7 +44,7 @@ Run these commands in separate terminals:
 
 ```sh
 yarn start:api:dev
-yarn start:emulators
+yarn start:emulators`
 yarn start:app:dev
 ```
 
