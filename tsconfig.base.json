@@ -32,6 +32,11 @@
       ],
       "@mp/api/history/feature": ["libs/api/history/feature/src/index.ts"],
       "@mp/api/history/util": ["libs/api/history/util/src/index.ts"],
+      "@mp/api/messages/data-access": [
+        "libs/api/messages/data-access/src/index.ts"
+      ],
+      "@mp/api/messages/feature": ["libs/api/messages/feature/src/index.ts"],
+      "@mp/api/messages/util": ["libs/api/messages/util/src/index.ts"],
       "@mp/api/profiles/data-access": [
         "libs/api/profiles/data-access/src/index.ts"
       ],
@@ -65,10 +70,7 @@
       "@mp/app/login/feature": ["libs/app/login/feature/src/index.ts"],
       "@mp/app/login/util": ["libs/app/login/util/src/index.ts"],
       "@mp/app/messages/feature": ["libs/app/messages/feature/src/index.ts"],
-      "@np.app/post/feauture": ["libs/app/post/feature/src/index.ts"],
-
       "@mp/app/messages/ui": ["libs/app/messages/ui/src/index.ts"],
-
       "@mp/app/privacy/feature": ["libs/app/privacy/feature/src/index.ts"],
       "@mp/app/profile/data-access": [
         "libs/app/profile/data-access/src/index.ts"
@@ -104,7 +106,8 @@
       ],
       "@mp/app/welcome/feature": ["libs/app/welcome/feature/src/index.ts"],
       "@mp/app/welcome/util": ["libs/app/welcome/util/src/index.ts"],
-      "@mp/cli/core/feature": ["libs/cli/core/feature/src/index.ts"]
+      "@mp/cli/core/feature": ["libs/cli/core/feature/src/index.ts"],
+      "@np.app/post/feauture": ["libs/app/post/feature/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
