@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-//import { MessageService } from 'libs/api/message/feature/src/message.service'
+import { MessageService } from 'libs/api/message/feature/src/message.service'
 import { ActivatedRoute } from '@angular/router';
 import { httpsCallable, getFunctions } from '@angular/fire/functions';
 import { Timestamp } from 'firebase-admin/firestore';
@@ -15,19 +15,21 @@ export class ChatPageComponent implements OnInit {
   receiver =  "";
   message!: string;
   isLoading = false;
-  currentUserId = 1;
+  currentUserId = MessageService.prototype.getID();
   conversationID = 1;
   chats = [
     { id: 1, sender: 1, message: 'hi' },
     { id: 2, sender: 2, message: 'hey' }
   ];  //some stuff need to be added/changed here. This is mock data
 
-  constructor(/*private route: ActivatedRoute*/) {}
+  constructor(/*private route: ActivatedRoute*/) {
+    //
+  }
 
   ngOnInit() {
     console.log('');
     //const myQueryParams = this.route.snapshot.queryParams;
-
+    
 
   }
 
@@ -89,7 +91,7 @@ export class ChatPageComponent implements OnInit {
     //   let myRequest = {conversation:myConversation};
     //   await MessageService.prototype.sendMessage(myRequest);
     // }
-
+    
   }
 
   async deleteMessage(){
