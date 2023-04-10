@@ -12,9 +12,14 @@ import {
 	CreateConversationCommand
 } from "@mp/api/message/util";
 
+import {AuthService} from 'libs/api/auth/feature/src/auth.service'
+
 @Injectable()
 export class MessageService {
-  constructor(private readonly commandBus: CommandBus) {}
+  currentUserID: string = '';
+  constructor(private readonly commandBus: CommandBus, public auth: AuthService) {
+    
+  }
 
   async sendMessage(
     request: ISendMessageRequest
@@ -42,4 +47,9 @@ export class MessageService {
     ICreateConversationResponse
    >(new CreateConversationCommand(request));
   }
+
+  getID(){
+    this.currentUserID = this.auth.getId();
+  }
 }
+
