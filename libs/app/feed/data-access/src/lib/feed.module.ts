@@ -6,6 +6,6 @@ import { FeedApi } from './feed.api';
 
 @NgModule({
   imports: [CommonModule, NgxsModule.forFeature([FeedState])],
-  providers: [FeedApi],
+   providers: [FeedApi],
 })
 export class FeedModule {}

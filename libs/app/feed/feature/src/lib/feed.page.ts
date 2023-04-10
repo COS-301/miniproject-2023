@@ -5,7 +5,7 @@ import {
 } from '@ngxs-labs/actions-executing';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { printe, SetFilterList, SetPost, SetPostList, SetTimeModification, SetPostListLoading, SetUserTime } from '@mp/app/feed/util';
+import { SetFilterList, SetPost, SetPostList, SetTimeModification, SetUserTime } from '@mp/app/feed/util';
 import { FeedState } from '@mp/app/feed/data-access';
 import { FilterList, FilterType } from '@mp/api/feed/util';
 @Component({
@@ -36,8 +36,7 @@ export class FeedPage {
       myFilterList.list.push(FilterType.NEWS_FILTER);
       myFilterList.list.push(FilterType.SPORT_FILTER);
 
-      this.store.dispatch(new printe("test"));
-    //this.store.dispatch(new SetFilterList(myFilterList));
+    this.store.dispatch(new SetFilterList(myFilterList));
 
   }
 

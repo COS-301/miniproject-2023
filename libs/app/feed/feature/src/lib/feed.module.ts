@@ -6,7 +6,7 @@ import { FeedRouting } from './feed.routing';
 import { FeedUIModule } from '@mp/app/feed/ui';
 import { FooterModule } from '@mp/app/footer/feature';
 import { NgxsModule } from '@ngxs/store';
-import { FeedState } from '@mp/app/feed/data-access';
+import { FeedApi, FeedState } from '@mp/app/feed/data-access';
 
 
 @NgModule({

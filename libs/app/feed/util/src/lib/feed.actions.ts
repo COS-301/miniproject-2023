@@ -4,11 +4,6 @@ import {Post} from '@mp/api/feed/util';
 import { TimeModification } from '@mp/api/feed/util';
 import { UserTime } from '@mp/api/feed/util';
 
-export class printe {
-  static readonly type = '[Feed] print';
-  constructor(public readonly test: string) {};
-}
-
 export class SetFilterList {
   static readonly type = '[Feed] SetFilterList';
   constructor(public readonly filterList: FilterList | null) {
@@ -34,9 +29,4 @@ export class SetTimeModification {
 export class SetUserTime {
   static readonly type = '[Feed] SetUserTime';
   constructor(public readonly userTime: UserTime | null) {}
-}
-
-export class SetPostListLoading {
-  static readonly type = '[Feed] SetPostListLoading';
-  constructor(public readonly loading: boolean) {}
 }
