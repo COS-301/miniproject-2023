@@ -22,13 +22,13 @@ export class ChatPageComponent implements OnInit {
     { id: 2, sender: 2, message: 'hey' }
   ];  //some stuff need to be added/changed here. This is mock data
 
-  constructor(private route: ActivatedRoute) {
-
+  constructor(/*private route: ActivatedRoute*/) {
+    //
   }
 
   ngOnInit() {
     console.log('');
-    const myQueryParams = this.route.snapshot.queryParams;
+    //const myQueryParams = this.route.snapshot.queryParams;
     
 
   }
