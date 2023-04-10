@@ -18,6 +18,7 @@ import { PostRouting } from './post.routing';
     PostDataAccessModule,
     NgxSkeletonLoaderModule,
   ],
+exports:[PostUiModule,PostDataAccessModule],
   declarations: [PostPage],
 })
 export class PostModule {}

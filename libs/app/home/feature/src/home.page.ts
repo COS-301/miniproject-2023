@@ -35,4 +35,7 @@ export class HomePage {
   toProfilePage() {
     this.router.navigate(["/profile"]);
   }
+toPostPage(){
+  this.router.navigate(["/post"]);
+}
 }

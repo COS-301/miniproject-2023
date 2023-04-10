@@ -10,6 +10,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./post.page.scss'],
 })
 export class PostPage {
-  @Select(PostState.posts) posts$!: Observable<IPosts | null>;
+  @Select(PostState.post) post$!: Observable<IPost | null>;
 
 }

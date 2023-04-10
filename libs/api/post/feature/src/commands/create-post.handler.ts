@@ -3,7 +3,7 @@ import{
   IPost
 } from "@mp/api/postss/util";
 import {CommandHandler, EventPublisher, ICommandHandler} from '@nestjs/cqrs';
-import {Timestamp} from "firebase-admin/firestore";
+import {Timestamp} from "firebase/firestore";
 import {Post} from "../models/post.model";
 
 @CommandHandler(CreatePostCommand)

@@ -1,5 +1,5 @@
 <ion-content>
- 
+
   <ion-header>
     <ion-toolbar color="secondary">
       <ion-label (click)="toDashboard()" color="tertiary" style = "font-size: 100%; font:bold">  <ion-icon name="arrow-back-outline" size="small"></ion-icon>Create</ion-label>
@@ -17,18 +17,20 @@ position: absolute; "></div>
 
     <div
     style=" border-radius: 5%; margin: auto; width: 80%; height: 40%; background-color: rgb(53,107,89); text-align: center; position: relative;">
-    <ion-icon style = "font-size: 128px; position: relative; top:25%"name="share-outline" color = "secondary"></ion-icon>  
+    <ion-icon style = "font-size: 128px; position: relative; top:25%"name="share-outline" color = "secondary"></ion-icon>
   </div>
 
   <br>
- 
+
   <ion-list lines = "none">
     <ion-item counter="true">
       <ion-textarea [autoGrow]="true" maxlength="100" style =  "background-color: #ffffff; --padding-end: 10px; --padding-start: 10px; border:solid 1px rgb(53,107,89); border-radius: 25%; ">
       </ion-textarea>
     </ion-item>
   </ion-list>
-  
+
+  <!-- <app-post-component (postCreated)="onPostCreated()"></app-post-component> -->
+
     <!-- <div style = "
     margin: auto;
     width: 20%;
@@ -36,7 +38,7 @@ position: absolute; "></div>
     text-align: center;">
       <ion-label>0/100</ion-label>
     </div> -->
-    
+
     <!-- <div style="width: 100%;
 
 border-bottom: 1px solid grey;
@@ -53,7 +55,7 @@ position: absolute; "></div> -->
         <ion-col size = "4"style="text-align: center;"><ion-button size = "small"color = "light">#food</ion-button> </ion-col>
       </ion-row>
     </ion-grid>
-  
+
     <div style="width: 100%;
 
     border-bottom: 1px solid grey;
@@ -76,7 +78,8 @@ position: absolute; "></div> -->
    <div style = "text-align: center; position: relative; bottom:5%;">
     <ion-button expand="full" shape="round" >POST</ion-button>
    </div>
-    
-    
+
+
+
 
 </ion-content>

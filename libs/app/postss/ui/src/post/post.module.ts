@@ -4,10 +4,11 @@ import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { PostComponent } from './post.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [PostComponent],
-  imports: [CommonModule, IonicModule, RouterModule, NgxSkeletonLoaderModule],
+  imports: [CommonModule, IonicModule, RouterModule, NgxSkeletonLoaderModule, ReactiveFormsModule],
   exports: [PostComponent],
 })
-export class PostModule {}
+export class PostDModule {}

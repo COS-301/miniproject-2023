@@ -1,7 +1,8 @@
 import {
   ILikePostRequest, ILikePostResponse, LikePostCommand,
   CommentOnPostCommand, ICommentOnPostRequest, ICommentOnPostResponse,
-  IBuyPostResponse, IBuyPostRequest, BuyPostCommand
+  IBuyPostResponse, IBuyPostRequest, BuyPostCommand,
+  ICreatePostRequest,ICreatePostResponse,CreatePostCommand
 } from '@mp/api/postss/util';
 import { Injectable } from '@nestjs/common';
 import { CommandBus } from '@nestjs/cqrs';
@@ -30,5 +31,13 @@ constructor(private readonly commandBus: CommandBus) {}
 
 async buyPost(request: IBuyPostRequest): Promise<IBuyPostResponse> {
 return await this.commandBus.execute<BuyPostCommand, IBuyPostResponse>(new BuyPostCommand(request));
+}
+}
+
+@Injectable()
+export class CreateService {
+constructor(private readonly commandBus: CommandBus) {}
+async createPost(request: ICreatePostRequest): Promise<ICreatePostResponse> {
+return await this.commandBus.execute<CreatePostCommand, ICreatePostResponse>(new CreatePostCommand(request));
 }
 }

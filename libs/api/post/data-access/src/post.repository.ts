@@ -5,7 +5,7 @@ import * as admin from 'firebase-admin';
 @Injectable()
 export class PostRepository {
 
-  
+
 
   async updatePost(post: IPost) {
     return await admin

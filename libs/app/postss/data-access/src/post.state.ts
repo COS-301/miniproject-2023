@@ -8,9 +8,8 @@ import {
   ICreatePostRequest
 } from '@mp/api/postss/util';
 import { AuthState } from '@mp/app/auth/data-access';
-import { Logout as AuthLogout } from '@mp/app/auth/util';
 import { SetError } from '@mp/app/errors/util';
-import { Timestamp } from 'firebase-admin/firestore';
+import { Timestamp } from 'firebase/firestore';
 import {
   SetPosts,
   SetPost,
@@ -20,14 +19,13 @@ import {
   GetPostByHashtag,
   CommentOnPost,
   LikePost,
-  BuyPost
+  BuyPost,
+  SubscribeToPost
 } from '@mp/app/postss/util';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import produce, {createDraft} from 'immer';
 import { tap } from 'rxjs';
 import { PostApi } from './post.api';
-import { SubscribeToPost } from '@mp/app/postss/util';
-import { firebaseApp$ } from '@angular/fire/app';
 import { firestore } from 'firebase-admin';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -40,11 +38,11 @@ export interface PostStateModel {
   post: IPost | null;
   postDetailsForm: {
     model: {
-      postID: string;
-      createdBy: string;
+      postID: string | null | undefined;
+      createdBy: string | null | undefined;
       ownedBy: string | null | undefined;
-      likes: number;
-      comments: IComment[] | null;
+      likes: number | null | undefined;
+      comments: IComment[] | null | undefined;
       createdAt?: Timestamp | null | undefined;
       content?: string | null | undefined;
       hashtag?: Hashtag | null | undefined;
@@ -97,17 +95,17 @@ export interface PostsStateModel {
     post: null,
     postDetailsForm: {
       model: {
-        postID: '',
-        createdBy: '',
-        ownedBy: '',
-        likes:0, //fixed like left out  before
+        postID: null,
+        createdBy: null,
+        ownedBy: null,
+        likes:null, //fixed like left out  before
         comments: null,
         createdAt: null,
-        content: '',
-        hashtag: Hashtag.OTHER,
-        caption: '',
-        totalTime: 0,
-        ownerGainedTime: 0,
+        content: null,
+        hashtag: null,
+        caption: null,
+        totalTime: null,
+        ownerGainedTime: null,
         listing: null
       },
       dirty: false,
@@ -117,48 +115,16 @@ export interface PostsStateModel {
   }
 })
 @Injectable()
-export class PostState { /* changed from 'PostsState' to 'PostState' */
-  constructor(
-    private readonly postApi: PostApi,
-    private readonly store: Store
-  ) { }
-
+export class PostsState {
+  constructor(private postApi: PostApi, private store: Store) {}
   @Selector()
   static posts(state: PostsStateModel) {
     return state.posts;
   }
 
-  @Selector()
-  static post(state: PostStateModel) {
-    return state.post;
-  }
-
-  //This function will set the posts to the state
-  @Action(GetPostByUserId)
-  async getPostByUserId(ctx: StateContext<PostsStateModel>, action: GetPostByUserId) {
-    try {
-      const posts = await this.postApi.getPostByUserId(action.userId);
-      ctx.patchState({ posts: posts });
-    } catch (error) {
-      ctx.dispatch(new SetError((error as Error).message));
-    }
-  }
-
-  @Action(GetPostByHashtag)
-  async getPostByHashtag(ctx: StateContext<PostsStateModel>, action: GetPostByHashtag) {
-    try {
-      const posts = await this.postApi.getPostByHashtag(action.hashtag);
-      ctx.patchState({ posts: posts });
-    } catch (error) {
-      ctx.dispatch(new SetError((error as Error).message));
-    }
-  }
-
-
-//This function will subscribe to the current posts that are loaded
   @Action(SubscribeToPost)
   subscribeToPosts(ctx: StateContext<PostsStateModel>) {
-    const postsToLook = this.store.selectSnapshot(PostState.posts);
+    const postsToLook = this.store.selectSnapshot(PostsState.posts);
     if (!postsToLook || postsToLook.posts == null) return ctx.dispatch(new SetError('Posts not Set'));
 
     // Subscribe to changes in each post
@@ -192,6 +158,29 @@ export class PostState { /* changed from 'PostsState' to 'PostState' */
 
   }
 
+  @Action(GetPostByUserId)
+  async getPostByUserId(ctx: StateContext<PostsStateModel>, action: GetPostByUserId) {
+    try {
+      const posts = await this.postApi.getPostByUserId(action.userId);
+      ctx.patchState({ posts: posts });
+    } catch (error) {
+      ctx.dispatch(new SetError((error as Error).message));
+    }
+  }
+
+  @Action(GetPostByHashtag)
+  async getPostByHashtag(ctx: StateContext<PostsStateModel>, action: GetPostByHashtag) {
+    try {
+      const posts = await this.postApi.getPostByHashtag(action.hashtag);
+      ctx.patchState({ posts: posts });
+    } catch (error) {
+      ctx.dispatch(new SetError((error as Error).message));
+    }
+  }
+
+
+//This function will subscribe to the current posts that are loaded
+
   @Action(SetPosts)
   setPosts(ctx: StateContext<PostsStateModel>, { posts }: SetPosts) {
     return ctx.setState(
@@ -200,6 +189,30 @@ export class PostState { /* changed from 'PostsState' to 'PostState' */
       })
     );
   }
+  @Action(PostTrendingGet)
+  async postTrendingGet(ctx: StateContext<PostsStateModel>) {
+    try {
+      const posts = await this.postApi.postTrendingGet();
+      ctx.patchState({ posts: { posts } });
+    } catch (error) {
+      ctx.dispatch(new SetError((error as Error).message));
+    }
+  }
+}
+@Injectable()
+export class PostState { /* changed from 'PostsState' to 'PostState' */
+  constructor(
+    private readonly postApi: PostApi,
+    private readonly store: Store
+  ) { }
+
+
+  @Selector()
+  static post(state: PostStateModel) {
+    return state.post;
+  }
+
+  //This function will set the posts to the state
 
   @Action(SetPost)
   setPost(ctx: StateContext<PostStateModel>, { post }: SetPost) {
@@ -210,19 +223,8 @@ export class PostState { /* changed from 'PostsState' to 'PostState' */
     );
   }
 
-  @Action(PostTrendingGet)
-  async postTrendingGet(ctx: StateContext<PostsStateModel>) {
-    try {
-      const posts = await this.postApi.postTrendingGet();
-      ctx.patchState({ posts: { posts } });
-    } catch (error) {
-      ctx.dispatch(new SetError((error as Error).message));
-    }
-  }  
-
-  
   @Action(LikePost)
-  async likePost(ctx: StateContext<PostStateModel>, action: LikePost) { 
+  async likePost(ctx: StateContext<PostStateModel>, action: LikePost) {
     try {
       const post = await this.postApi.likePost(action.postID);
       ctx.dispatch(new SetPost(post));
@@ -260,58 +262,48 @@ export class PostState { /* changed from 'PostsState' to 'PostState' */
       .post$(user.uid)
       .pipe(tap((profile: IPost) => ctx.dispatch(new SetPost(profile))));
   }
-  @Action(SetPost)
-  setProfile(ctx: StateContext<PostStateModel>, { post }: SetPost) {
-    return ctx.setState(
-      produce((draft) => {
-        draft.post = post;
-      })
-    );
-  }
   @Action(CreatePost)
-  async createPost(ctx: StateContext<PostStateModel>) {
-    try {
-      const state = ctx.getState();
-      const createdBy = state.post?.createdBy;
-      const ownedBy = state.post?.createdBy;
-      const content = state.post?.content;
-      const caption = state.post?.caption;
-      const hashtag = state.post?.hashtag;
-      const postID = state.post?.createdBy+"1";
-      const likes = 0;
-      const createdAt=firestore.Timestamp.now();
-      if (!createdBy || !content || !caption || !hashtag)
-        return ctx.dispatch(
-          new SetError(
-            'UserId or display name or email or photo URL or password not set'
-          )
-        );
+async createPost(ctx: StateContext<PostStateModel>, action: CreatePost) {
+  // Get the form values from the action payload
+  console.log("here in state");
+  const { createdBy, content, caption, hashtag } = action.payload;
 
-      const request: ICreatePostRequest = {
-        post: {
-          postID,
-          createdBy,
-          ownedBy,
-          likes,
-          createdAt,
-          content,
-          hashtag,
-          caption,
-        },
-      };
-      const responseRef = await this.postApi.createPost(request);
-      const response = responseRef.data;
-      return ctx.dispatch(new SetPost(response.post));
-    } catch (error) {
-      return ctx.dispatch(new SetError((error as Error).message));
-    }
+  try {
+    const ownedBy = createdBy; // We can use 'createdBy' from the action payload
+    const postID = createdBy + "1";
+    const likes = 0;
+    const createdAt = firestore.Timestamp.now();
 
-    
+    if (!createdBy || !content || !caption || !hashtag)
+      return ctx.dispatch(
+        new SetError(
+          'UserId or display name or email or photo URL or password not set'
+        )
+      );
+
+    const request: ICreatePostRequest = {
+      post: {
+        postID,
+        createdBy,
+        ownedBy,
+        likes,
+        createdAt,
+        content,
+        hashtag,
+        caption,
+      },
+    };
+    const responseRef = await this.postApi.createPost(request);
+    const response = responseRef.data;
+    return ctx.dispatch(new SetPost(response.post));
+  } catch (error) {
+    return ctx.dispatch(new SetError((error as Error).message));
   }
+}
 
-  
 
-  
+
+
 
   /*
 

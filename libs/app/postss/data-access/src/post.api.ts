@@ -18,9 +18,7 @@ import {
   IComment
 
 } from '@mp/api/postss/util';
-import { PostState } from './post.state';
 import { PostTrendingGetQuery } from '@mp/api/postss/util';
-import { ICreateAuthRequest } from '@mp/api/auth/util';
 import { update } from 'firebase/database';
 
 // import {
@@ -105,6 +103,7 @@ export class PostApi {
   }
 
   async createPost(request: ICreatePostRequest) {
+    console.log('API createPost called with request:', request);
     return await httpsCallable<
       ICreatePostRequest,
       ICreatePostResponse
@@ -115,7 +114,7 @@ export class PostApi {
   }
 
   async likePost(postID: string): Promise<IPost> {
-    //another of doing it is to import PostRepositoy and use the UpdateLikes function. 
+    //another of doing it is to import PostRepositoy and use the UpdateLikes function.
     const docRef = doc(
     this.firestore,
     `posts/${postID}`
@@ -128,15 +127,15 @@ export class PostApi {
     },
     toFirestore: (it: IPost) => it,
     })
-    
+
     const post = await docData(docRef).toPromise();
     if (!post) {
       throw new Error(`Post with ID ${postID} not found`);
     }
     const newLikeCount = post.likes + 1;
-    
+
     await updateDoc(docRef, { likes: newLikeCount })
-    
+
     return { ...post, likes: newLikeCount };
     }
 
@@ -153,28 +152,28 @@ export class PostApi {
         },
         toFirestore: (it: IPost) => it,
       });
-    
+
       const post = await docData(docRef).toPromise();
       if (!post) {
         throw new Error(`Post with ID ${postID} not found`);
       }
-    
+
       const newComment: IComment = {
         creatorID : "1",
         comment: comment,
       }
-    
+
       const newComments = [...post.comments ?? [], newComment];
-    
+
       await updateDoc(docRef, { comments: newComments });
-    
+
       return { ...post, comments: newComments };
     }
 
     /**
-     * 
-     * @param postID 
-     * @param userID 
+     *
+     * @param postID
+     * @param userID
      * @returns the updated post meta-data.
      */
 
@@ -191,7 +190,7 @@ export class PostApi {
         },
         toFirestore: (it: IPost) => it,
       });
-    
+
       const post = await docData(docRef).toPromise();
       if (!post) {
         throw new Error(`Post with ID ${postID} not found`);
@@ -203,19 +202,19 @@ export class PostApi {
 
       const userRef = doc(this.firestore, 'users', userID);
       const docSnap = await getDoc(userRef);
-      
+
       if (!docSnap.exists()) {
         throw new Error(`User with ID ${userID} not found`);
       }
 
       const userData = docSnap.data();
-    
+
       if (post.listing > userData['balance']) {
         throw new Error(`Insufficient balance to buy post with ID ${postID}`);
       }
-    
+
       const newBalance = userData['balance'] - post.listing;
-    
+
       await updateDoc(docRef, { sold: true });
       await updateDoc(userRef, { balance: newBalance });
       return { ...post, sold: true };

@@ -1,4 +1,5 @@
 import { Hashtag, IPost, IPosts } from '@mp/api/postss/util';
+import { ActionType } from '@ngxs/store';
 
 
 export class SubscribeToPost {
@@ -30,7 +31,8 @@ export class GetPostByHashtag {
 }
 
 export class CreatePost {
-  static readonly type = '[Posts] CreatePost';
+  static readonly type = '[Posts] Create Post';
+  constructor(public payload: { createdBy: string; content: string; caption: string; hashtag: Hashtag }) {}
 }
 
 export class LikePost {

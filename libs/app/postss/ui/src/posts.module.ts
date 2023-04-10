@@ -1,16 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import { PostModule } from './post';
+import { PostDModule } from './post';
 
 @NgModule({
   imports: [
     CommonModule,
     IonicModule,
-    PostModule,
+    PostDModule,
   ],
   exports: [
-    PostModule,
+    PostDModule,
   ],
 })
-export class PostsModule {}
+export class PostModule {}
