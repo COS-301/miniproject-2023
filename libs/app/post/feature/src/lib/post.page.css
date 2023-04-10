@@ -66,3 +66,31 @@
     transform: translate(-50%, -50%);
     cursor: pointer;
 }
+
+input[type="file"] 
+{
+  margin-left: 40%;
+  margin-top: 20%;
+  margin-right: auto;
+  margin-bottom: auto;
+}
+
+input[type="file"]:hover {
+  color: purple;
+}
+
+input[type="text"] 
+{
+  margin-left: 40%;
+  margin-top: relative;
+  margin-right: auto;
+  margin-bottom: auto;
+}
+
+input[type="submit"]
+{
+  margin-left: 40%;
+  margin-top: relative;
+  margin-right: auto;
+  margin-bottom: auto;
+}

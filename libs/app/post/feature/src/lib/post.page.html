@@ -12,9 +12,11 @@
         <div class="centered-box">
 
             <div id="FileUpload">
-                <input type="file" name="file" id="file" class="inputfile" accept="image/*, video/*" /><br>
-                <input type="text" placeholder="Caption" /><br>
-                <input type="submit" value="Upload" />
+                <form>
+                    <input type="file" name="file" id="file" class="inputfile" accept="image/*, video/*" required/><br>
+                    <input type="text" placeholder="Caption" /><br>
+                    <input type="submit" value="Upload or Die" />
+                </form>
             </div>
             <!-- <ion-icon name="add-circle-outline" class="upload-icon" id="file" type="file">
             </ion-icon>
