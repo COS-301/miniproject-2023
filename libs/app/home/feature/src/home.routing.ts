@@ -23,6 +23,11 @@ const routes: Routes = [
           import('@mp/app/inbox/feature').then((m) => m.InboxModule),
       },
       {
+        path: 'inbox/chats/:id', // Update the route for chat messages
+        loadChildren: () =>
+          import('./../../../inbox/feature/src/pages/chat/chat.module').then((m) => m.ChatModule),
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: '/home/dashboard',
