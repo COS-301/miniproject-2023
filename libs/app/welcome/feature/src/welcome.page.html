@@ -15,24 +15,32 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-nav-link [routerLink]="['login']">
-            <ion-button expand="block">Login</ion-button>
+          <ion-nav-link [routerLink]="['register']">
+            
+              <ion-button  expand="block" class="custom" >SIGN UP</ion-button>
+            
           </ion-nav-link>
         </ion-col>
       </ion-row>
+       <ion-row>
+        <ion-col class="ion-text-center">
+          <ion-text color="medium">Already have an account?</ion-text>
+        </ion-col>
+      </ion-row>
+      
       <ion-row>
         <ion-col>
-          <ion-nav-link [routerLink]="['register']">
-            <ion-button expand="block">Register</ion-button>
+            <ion-nav-link [routerLink]="['login']">
+            <ion-button expand="block" class="my-class">LOGIN</ion-button>
           </ion-nav-link>
         </ion-col>
       </ion-row>
-      <ion-row>
+      <!-- <ion-row>
         <ion-col class="ion-text-center">
           <ion-text color="medium">or</ion-text>
         </ion-col>
-      </ion-row>
-      <ion-row>
+      </ion-row> -->
+      <!-- <ion-row>
         <ion-col>
           <ion-nav-link>
             <ion-button
@@ -47,8 +55,8 @@
             </ion-button>
           </ion-nav-link>
         </ion-col>
-      </ion-row>
-      <ion-row class="ion-padding-top">
+      </ion-row> -->
+      <!-- <ion-row class="ion-padding-top">
         <ion-col style="display: flex" class="ion-justify-content-center">
           <ion-nav-link [routerLink]="['tos']">
             <ion-button fill="clear"> Terms of Service </ion-button>
@@ -57,7 +65,7 @@
             <ion-button fill="clear"> Privacy Policy </ion-button>
           </ion-nav-link>
         </ion-col>
-      </ion-row>
+      </ion-row> -->
     </ion-grid>
   </div>
 </ion-content>
