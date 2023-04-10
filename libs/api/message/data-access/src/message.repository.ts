@@ -26,6 +26,10 @@ export class MessageRepository {
       .doc(message.conversationID!)
       .update({
 	  messages : admin.firestore.FieldValue.arrayUnion(message.messages!.at(0))
+      }).then((docRef) => {
+	console.log(docRef.writeTime);
+      }).catch((error) => {
+	console.log(error);
       }); // TODO decide if this should be a different intput usign a specific request for sending single messages using a new interface.
   }
 
@@ -37,6 +41,10 @@ export class MessageRepository {
       .doc(message.conversationID!)
       .update({
 	  messages : admin.firestore.FieldValue.arrayRemove(message.messages)
+      }).then((docRef) => {
+	console.log(docRef.writeTime);
+      }).catch((error) => {
+	console.log(error);
       });
   }
 

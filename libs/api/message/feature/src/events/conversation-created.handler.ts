@@ -7,6 +7,10 @@ export class ConversationCreatedHandler
   {
     constructor() {};
     async handle(event: ConversationCreatedEvent) {
-      event.ref.set(event.conversation);
+      event.ref.set(event.conversation).then((docRef) => {
+	console.log(docRef.writeTime);
+      }).catch((error) => {
+	console.log(error);
+      });
     }
   }

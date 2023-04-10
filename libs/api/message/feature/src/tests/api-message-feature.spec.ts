@@ -33,8 +33,16 @@ describe('apiMessageFeature', () => {
     await firebase.app().delete();
   });
 
-  describe('sendMessage', () => {
-    it("should exectute a command" , async () => {
+  describe('sendMessageService', () => {
+    it("should send a message and the message returned should have a id" , async () => {
+      firebase.firestore().collection("conversations").doc("testing").set({
+	conversationID : "testing"
+      }).then((docRef) => {
+	console.log(docRef.writeTime);
+      }).catch((error) => {
+	console.log(error);
+      });
+
       const messageToSend:ISendMessageRequest =
 	{
 	conversation : {
@@ -61,6 +69,12 @@ describe('apiMessageFeature', () => {
       expect({...send}).not.toStrictEqual({...result});
     });
   })
+  describe('CreateConversation', () => {
+    it("Create A new Conversation between two users" , async () => {
+
+    })
+  });
+
 });
 
 describe('apiMessageFeature', () => {
