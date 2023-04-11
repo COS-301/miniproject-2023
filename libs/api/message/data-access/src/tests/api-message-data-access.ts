@@ -1,3 +1,3 @@
-export function apiPostDataAccess(): string {
+export function apiMessageDataAccess(): string {
   return 'api-post-data-access';
 }

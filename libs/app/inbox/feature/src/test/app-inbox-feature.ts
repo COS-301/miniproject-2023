@@ -10,7 +10,7 @@ export function appInboxFeature(){
     chat.receiver =  "User 1";
     chat.message = "Hello Thabo Testing Testing"
     chat.isLoading = false;
-    chat.currentUserId = 1;
+    //chat.currentUserId = 1; TODO re-impliment this feature
     chat.conversationID = 1;
     return chat.sendMessage();
 }
