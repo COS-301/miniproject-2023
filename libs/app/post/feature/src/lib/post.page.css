@@ -73,19 +73,24 @@ input[type="file"]
   margin-top: 20%;
   margin-right: auto;
   margin-bottom: auto;
-}
-
-input[type="file"]:hover {
-  color: purple;
+  /* border: 2px solid white;
+  border-radius: 5px; */
 }
 
 input[type="text"] 
 {
-  margin-left: 40%;
+  margin-left: 35%;
   margin-top: relative;
   margin-right: auto;
   margin-bottom: auto;
+  height: 70px;
+  width: 200px;
+  border: 2px solid white;
+  border-radius: 5px;
+  resize: vertical;
+
 }
+
 
 input[type="submit"]
 {
@@ -93,4 +98,6 @@ input[type="submit"]
   margin-top: relative;
   margin-right: auto;
   margin-bottom: auto;
+  border: 2px solid white;
+  border-radius: 5px;
 }

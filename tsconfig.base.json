@@ -37,6 +37,15 @@
       ],
       "@mp/api/messages/feature": ["libs/api/messages/feature/src/index.ts"],
       "@mp/api/messages/util": ["libs/api/messages/util/src/index.ts"],
+      "@mp/api/notifications/data-access": [
+        "libs/api/notifications/data-access/src/index.ts"
+      ],
+      "@mp/api/notifications/feature": [
+        "libs/api/notifications/feature/src/index.ts"
+      ],
+      "@mp/api/notifications/util": [
+        "libs/api/notifications/util/src/index.ts"
+      ],
       "@mp/api/profiles/data-access": [
         "libs/api/profiles/data-access/src/index.ts"
       ],
@@ -71,6 +80,15 @@
       "@mp/app/login/util": ["libs/app/login/util/src/index.ts"],
       "@mp/app/messages/feature": ["libs/app/messages/feature/src/index.ts"],
       "@mp/app/messages/ui": ["libs/app/messages/ui/src/index.ts"],
+      "@mp/app/notifications/data-access": [
+        "libs/app/notifications/data-access/src/index.ts"
+      ],
+      "@mp/app/notifications/feature": [
+        "libs/app/notifications/feature/src/index.ts"
+      ],
+      "@mp/app/notifications/util": [
+        "libs/app/notifications/util/src/index.ts"
+      ],
       "@mp/app/privacy/feature": ["libs/app/privacy/feature/src/index.ts"],
       "@mp/app/profile/data-access": [
         "libs/app/profile/data-access/src/index.ts"
