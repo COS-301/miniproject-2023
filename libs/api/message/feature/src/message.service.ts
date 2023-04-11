@@ -18,7 +18,7 @@ import {AuthService} from 'libs/api/auth/feature/src/auth.service'
 export class MessageService {
   currentUserID: string = '';
   constructor(private readonly commandBus: CommandBus, public auth: AuthService) {
-    
+
   }
 
   async sendMessage(
@@ -46,10 +46,6 @@ export class MessageService {
     CreateConversationCommand,
     ICreateConversationResponse
    >(new CreateConversationCommand(request));
-  }
-
-  getID(){
-    this.currentUserID = this.auth.getId();
   }
 }
 

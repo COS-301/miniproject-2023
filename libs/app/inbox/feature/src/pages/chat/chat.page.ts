@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MessageService } from 'libs/api/message/feature/src/message.service'
 import { ActivatedRoute } from '@angular/router';
 import { httpsCallable, getFunctions } from '@angular/fire/functions';
 import { Timestamp } from 'firebase-admin/firestore';
@@ -15,7 +14,6 @@ export class ChatPageComponent implements OnInit {
   receiver =  "";
   message!: string;
   isLoading = false;
-  currentUserId = MessageService.prototype.getID();
   conversationID = 1;
   chats = [
     { id: 1, sender: 1, message: 'hi' },
@@ -29,7 +27,7 @@ export class ChatPageComponent implements OnInit {
   ngOnInit() {
     console.log('');
     //const myQueryParams = this.route.snapshot.queryParams;
-    
+
 
   }
 
@@ -48,7 +46,7 @@ export class ChatPageComponent implements OnInit {
       photo:null
     };
     const myIProfile = {
-      userID:this.currentUserId
+      //userID:this.currentUserId //TODO Fix this
     }
     const myIMessageData = {
       timePosted : Timestamp.now(),
@@ -63,7 +61,7 @@ export class ChatPageComponent implements OnInit {
     const myConversation = {
         conversationID : "", ///some conversation ID.
         messages : myIMessage,
-        members : [this.currentUserId, this.receiver],
+        members : [/*this.currentUserId TODO  Fix this*/, this.receiver],
     }
 
 
@@ -91,7 +89,7 @@ export class ChatPageComponent implements OnInit {
     //   let myRequest = {conversation:myConversation};
     //   await MessageService.prototype.sendMessage(myRequest);
     // }
-    
+
   }
 
   async deleteMessage(){

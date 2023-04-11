@@ -6,26 +6,26 @@
       <ion-title slot="end">{{name}}</ion-title>
     </ion-toolbar>
   </ion-header>
-  
+
   <ion-content>
-  
-    <ion-list 
-      lines="none" 
+
+    <ion-list
+      lines="none"
       *ngIf="(chats) as chat$">
       <ion-item-group class="chats-group" *ngFor="let chat of chat$">
-        <app-chat-box [chat]="chat" [current_user_id]="currentUserId"></app-chat-box>
+	<!-- <app-chat-box [chat]="chat" [current_user_id]="currentUserId"></app-chat-box> TODO fix this when chat.page.ts is fixed--->
       </ion-item-group>
     </ion-list>
-  
+
   </ion-content>
-  
+
   <ion-footer>
     <ion-toolbar color="light">
-      <ion-textarea 
-        autoGrow 
-        rows="1" 
-        placeholder="Send message" 
-        class="ion-text-center" 
+      <ion-textarea
+        autoGrow
+        rows="1"
+        placeholder="Send message"
+        class="ion-text-center"
         [(ngModel)]="message">
       </ion-textarea>
       <ion-buttons slot="end">
