@@ -11,7 +11,7 @@ const routes: Routes = [
         path: 'chats/:id',
         loadChildren: () => import('./pages/chat/chat.module').then(m => m.ChatModule)
     },/*
-  {
+  {please
     path: 'search',
     loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
   },

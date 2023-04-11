@@ -15,3 +15,17 @@ ion-footer {
         }
     }
 }
+
+.deleted-bubble {
+    background-color: ion-color-tertiary; // Set the background color to blue
+    color: white; // Set the text color to white
+    border-radius: 20px; // Set the border radius to create a rounded bubble
+    padding: 10px; // Add padding to the bubble
+    display: flex; // Use flexbox for positioning
+    align-items: center; // Center align items vertically
+  }
+  
+  .deleted-bubble ion-icon {
+    margin-right: 5px; // Add margin to the right of the icon for spacing
+  }
+  

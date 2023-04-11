@@ -23,6 +23,12 @@ const routes: Routes = [
           import('@mp/app/inbox/feature').then((m) => m.InboxModule),
       },
       {
+        path: 'inbox/chats/:id', // Update the route for chat messages
+        loadChildren: () =>
+          // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+          import('./../../../inbox/feature/src/pages/chat/chat.module').then((m) => m.ChatModule),
+      },
+      {
         path: 'notifications',
         loadChildren: () =>
           import('@mp/app/notifications/feature').then((m) => m.NotificationsModule),

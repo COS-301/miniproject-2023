@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-chat',
@@ -15,9 +16,35 @@ export class ChatPageComponent implements OnInit {
     { id: 2, sender: 2, message: 'hey' }
   ];
 
-  constructor() {
-    // do nothing.
-  }
+  // constructor() {
+  // }
+
+  constructor(private alertController: AlertController) {}
+
+  async onMessagePress(chat: any) {
+    const alert = await this.alertController.create({
+      header: 'Delete Message',
+      message: 'Are you sure you want to delete this message?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Delete',
+          handler: () => {
+            // Perform deletion logic here
+            console.log('Delete clicked');
+          }
+        }
+      ]
+    });
+
+  await alert.present();
+}
 
   ngOnInit() {
     console.log('');
