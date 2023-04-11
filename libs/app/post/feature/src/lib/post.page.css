@@ -69,7 +69,7 @@
 
 input[type="file"] 
 {
-  margin-left: 40%;
+  margin-left: 37%;
   margin-top: 20%;
   margin-right: auto;
   margin-bottom: auto;
@@ -79,12 +79,12 @@ input[type="file"]
 
 input[type="text"] 
 {
-  margin-left: 35%;
+  margin-left: 30%;
   margin-top: relative;
   margin-right: auto;
   margin-bottom: auto;
   height: 70px;
-  width: 200px;
+  width: 40%;
   border: 2px solid white;
   border-radius: 5px;
   resize: vertical;
