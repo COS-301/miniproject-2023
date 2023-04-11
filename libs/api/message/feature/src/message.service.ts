@@ -12,12 +12,10 @@ import {
 	CreateConversationCommand
 } from "@mp/api/message/util";
 
-import {AuthService} from 'libs/api/auth/feature/src/auth.service'
-
 @Injectable()
 export class MessageService {
   currentUserID: string = '';
-  constructor(private readonly commandBus: CommandBus, public auth: AuthService) {
+  constructor(private readonly commandBus: CommandBus) {
 
   }
 
