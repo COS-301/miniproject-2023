@@ -46,6 +46,9 @@
       "@mp/api/notifications/util": [
         "libs/api/notifications/util/src/index.ts"
       ],
+      "@mp/api/post/data-access": ["libs/api/post/data-access/src/index.ts"],
+      "@mp/api/post/feature": ["libs/api/post/feature/src/index.ts"],
+      "@mp/api/post/util": ["libs/api/post/util/src/index.ts"],
       "@mp/api/profiles/data-access": [
         "libs/api/profiles/data-access/src/index.ts"
       ],
@@ -89,6 +92,9 @@
       "@mp/app/notifications/util": [
         "libs/app/notifications/util/src/index.ts"
       ],
+      "@mp/app/post/data-access": ["libs/app/post/data-access/src/index.ts"],
+      "@mp/app/post/feature": ["libs/app/post/feature/src/index.ts"],
+      "@mp/app/post/util": ["libs/app/post/util/src/index.ts"],
       "@mp/app/privacy/feature": ["libs/app/privacy/feature/src/index.ts"],
       "@mp/app/profile/data-access": [
         "libs/app/profile/data-access/src/index.ts"
@@ -124,8 +130,7 @@
       ],
       "@mp/app/welcome/feature": ["libs/app/welcome/feature/src/index.ts"],
       "@mp/app/welcome/util": ["libs/app/welcome/util/src/index.ts"],
-      "@mp/cli/core/feature": ["libs/cli/core/feature/src/index.ts"],
-      "@np.app/post/feauture": ["libs/app/post/feature/src/index.ts"]
+      "@mp/cli/core/feature": ["libs/cli/core/feature/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

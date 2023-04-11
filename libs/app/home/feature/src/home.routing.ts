@@ -25,7 +25,7 @@ const routes: Routes = [
       {
         path: 'post',
         loadChildren: () =>
-          import('@np.app/post/feauture').then((m) => m.PostModule)
+          import('@mp/app/post/feature').then((m) => m.PostModule)
          
       },
       {
