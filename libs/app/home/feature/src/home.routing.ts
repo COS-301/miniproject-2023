@@ -39,6 +39,11 @@ const routes: Routes = [
           import('@mp/app/post/feature').then((m) => m.PostModule),
       },
       {
+        path: 'search',
+        loadChildren: () =>
+          import('@mp/app/search/feature').then((m) => m.SearchModule),
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: '/home/dashboard',
