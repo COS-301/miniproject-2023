@@ -10,6 +10,7 @@ import {
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { ProfilesApi } from '@mp/app/profile/data-access';
+import { FilterType } from '@mp/api/feed/util';
 
 @Component({
   selector: 'ms-profile-account-details-component',
@@ -102,7 +103,7 @@ export class AccountDetailsComponent {
 
   fetchPosts = async () => {
     try {
-      const fetch = await this.profileApi.fetchPosts({});
+      const fetch = await this.profileApi.fetchPosts({"filters": {"list" : [FilterType.FOOD_FILTER]}});
       console.log(fetch);
     } catch(err) {
       console.log(err);

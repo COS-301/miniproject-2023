@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { doc, docData, Firestore } from '@angular/fire/firestore';
 import { Functions, httpsCallable } from '@angular/fire/functions';
+import { FetchPostsRequest, FetchPostsResponse } from '@mp/api/feed/util';
 import {
     IProfile,
     IUpdateAccountDetailsRequest,
@@ -45,10 +46,10 @@ export class ProfilesApi {
     )(request);
   }
 
-  async fetchPosts(request: any) {
+  async fetchPosts(request: FetchPostsRequest) {
     return await httpsCallable<
-      any,
-      any
+      FetchPostsRequest,
+      FetchPostsResponse
     >(
       this.functions, 
       'fetchPosts'
