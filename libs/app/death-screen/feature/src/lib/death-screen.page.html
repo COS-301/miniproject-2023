@@ -1,10 +1,11 @@
-<!-- <ion-button id="present-alert">You're out of time</ion-button>
-<ion-alert
-  trigger="present-alert"
-  header="Death"
-  subHeader="You have died"
-  message="0:00:00 left"
-  [buttons]="alertButtons"
-></ion-alert>
-
- -->
+<!-- death-overlay.component.html -->
+<ion-card>
+  <img src="assets/death-image.png" alt="Death Image">
+  <ion-card-content>
+    <h2>You have died!</h2>
+    <p>Go and touch grass.</p>
+    <ion-button (click)="onRetry()">Buy More Time</ion-button>
+    <ion-button (click)="onExit()">Exit</ion-button>
+    <ion-button (click)="onShare()">Watch an Ad</ion-button>
+  </ion-card-content>
+</ion-card>

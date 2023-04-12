@@ -8,37 +8,55 @@
   
   <ion-content>
     <ion-list>
+
       <ion-item>
-        <ion-label>Privacy</ion-label>
-        <ion-toggle aria-label="Primary toggle" color="primary" [checked]="true"></ion-toggle>
-      </ion-item>
-      <ion-item>
-        <ion-label>Notifications</ion-label>
-        <ion-toggle aria-label="Primary toggle" color="primary" [checked]="true"></ion-toggle>
+        <ion-label>Volume</ion-label>
+        <ion-range [(ngModel)]="sliderValue" min="0" max="100" step="1" color="secondary">
+          <ion-label slot="start">0</ion-label>
+          <ion-label slot="end">100</ion-label>
+        </ion-range>
       </ion-item>
 
       <ion-item>
-        <ion-label>Sound</ion-label>
-        <ion-toggle aria-label="Primary toggle" color="primary" [checked]="true"></ion-toggle>
+        <ion-label>Privacy</ion-label>
+        <ion-toggle aria-label="Primary toggle" color="primary" [(ngModel)]= "privacy" [checked]="true"></ion-toggle>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Update Profile</ion-label>
+        <ion-button [disabled]="false" [routerLink] = "['/profile']"></ion-button>
       </ion-item>
   
       <ion-item>
-        <ion-label>Update Profile</ion-label>
-        <ion-button [disabled]="false">></ion-button>
+        <ion-label>Update Information</ion-label>
+        <ion-button [disabled]="false" [routerLink] = "['/personal-details']"></ion-button>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Update Password</ion-label>
+        <ion-button [disabled]="false" [routerLink] = "['/forgot']"></ion-button>
       </ion-item>
 
       <ion-item>
         <ion-label>Delete Account</ion-label>
-        <ion-button [disabled]="false">></ion-button>
+        <ion-button [disabled]="false"></ion-button>
       </ion-item>
+
       <ion-item>
         <ion-label>Terms of Service</ion-label>
-        <ion-button [disabled]="false">></ion-button>
+        <ion-button [disabled]="false" [routerLink] = "['/tos']"></ion-button>
       </ion-item>
+
       <ion-item>
-        <ion-label>About</ion-label>
-        <ion-button [disabled]="false">></ion-button>
+        <ion-label>Privacy Policy</ion-label>
+        <ion-button [disabled]="false" [routerLink] = "['/privacy']"></ion-button>
       </ion-item>
+
+      <ion-item>
+        <ion-label>Version</ion-label>
+        <ion-button [disabled]="false" [routerLink] = "['/version']"></ion-button>
+      </ion-item>
+      
     </ion-list>
   </ion-content>
   
