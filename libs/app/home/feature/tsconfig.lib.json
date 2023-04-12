@@ -9,7 +9,6 @@
   },
   "include": [
     "src/**/*.ts",
-    "../../post/feature/src/post-routing.module.ts"
   ],
   "exclude": [
     "jest.config.ts",
