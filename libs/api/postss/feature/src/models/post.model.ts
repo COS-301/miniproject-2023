@@ -37,20 +37,20 @@ constructor(
   super();
 }
 
-static fromData(profile: IPost): Post {
+static fromData(post: IPost): Post {
   const instance = new Post(
-    profile.postID,
-    profile.createdBy,
-    profile.ownedBy,
-    profile.likes,
-    profile.comments,
-    profile.createdAt,
-    profile.content,
-    profile.hashtag,
-    profile.caption,
-    profile.totalTime,
-    profile.ownerGainedTime,
-    profile.listing
+    post.postID,
+    post.createdBy,
+    post.ownedBy,
+    post.likes,
+    post.comments,
+    post.createdAt,
+    post.content,
+    post.hashtag,
+    post.caption,
+    post.totalTime,
+    post.ownerGainedTime,
+    post.listing
   );
   return instance;
 }

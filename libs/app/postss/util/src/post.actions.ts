@@ -1,11 +1,13 @@
 import { Hashtag, IPost, IPosts } from '@mp/api/postss/util';
-import { ActionType } from '@ngxs/store';
+//import { ActionType } from '@ngxs/store';
 
 
 export class SubscribeToPost {
   static readonly type = '[Post] SubscribeToPost';
 }
-
+export class SubscribeToPosts {
+  static readonly type = '[Posts] SubscribeToPosts';
+}
 export class SetPosts {
   static readonly type = '[Posts] SetPosts';
   constructor(public readonly posts: IPosts) {}

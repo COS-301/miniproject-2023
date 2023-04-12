@@ -5,12 +5,9 @@ import * as admin from 'firebase-admin';
 
 @Injectable()
 export class PostRepository {
-  updatePost(post: any) {
+  updatePost(post: IPost) {
       throw new Error('Method not implemented.');
   }
-
-  
-  
 
   
   async findOne(post: IPost) {

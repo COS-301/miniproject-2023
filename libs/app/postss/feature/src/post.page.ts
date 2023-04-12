@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IPost, IPosts } from '@mp/api/postss/util';
+import { IPost} from '@mp/api/postss/util';
 import { PostState} from '@mp/app/postss/data-access';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';

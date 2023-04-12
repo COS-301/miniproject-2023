@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Select, Store } from '@ngxs/store';
 import { CreatePost } from '@mp/app/postss/util';
 import { Hashtag, IPost } from '@mp/api/postss/util';
-import { PostState, PostsState } from '@mp/app/postss/data-access';
+import { PostState } from '@mp/app/postss/data-access';
 import { Observable } from 'rxjs';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { ActionsExecuting, actionsExecuting } from '@ngxs-labs/actions-executing';

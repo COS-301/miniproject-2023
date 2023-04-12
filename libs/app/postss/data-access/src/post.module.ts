@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { AuthModule } from '@mp/app/auth/data-access';
+//import { AuthModule } from '@mp/app/auth/data-access';
 import { NgxsModule } from '@ngxs/store';
-import { PostState, PostsState } from './post.state';
+import { PostState} from './post.state';
 import { PostApi } from './post.api';
 
 @NgModule({
-  imports: [CommonModule, NgxsModule.forRoot([PostState,PostsState])],
-  providers: [PostApi]
+  imports: [CommonModule, NgxsModule.forFeature([PostState])],
+  exports: [PostState],
+  providers: [PostApi],
 })
 export class PostModule {}

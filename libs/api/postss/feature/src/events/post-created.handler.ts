@@ -10,6 +10,6 @@ export class PostCreatedHandler
 
   async handle(event: PostCreatedEvent) {
     console.log(`${PostCreatedHandler.name}`);
-    await this.repository.createPost(event.profile);
+    await this.repository.createPost(event.post);
   }
 }

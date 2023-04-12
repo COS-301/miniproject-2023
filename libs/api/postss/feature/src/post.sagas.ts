@@ -19,7 +19,7 @@ export class PostSagas {
       ofType(PostCreatedEvent),
       map(
         (event: PostCreatedEvent) =>
-          new CreatePostCommand({ post: event.profile })
+          new CreatePostCommand({ post: event.post })
       )
     );
   };

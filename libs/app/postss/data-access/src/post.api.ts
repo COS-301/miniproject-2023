@@ -6,20 +6,20 @@ import { updateDoc, getDoc } from "firebase/firestore";
 import {
   ICreatePostRequest,
   ICreatePostResponse,
-  IGetPostRequest,
-  IGetPostResponse,
+  // IGetPostRequest,
+  // IGetPostResponse,
   IPost,
-  IPosts,
-  Hashtag,
-  ICommentOnPostRequest,
-  ICommentOnPostResponse,
-  IBuyPostRequest,
-  IBuyPostResponse,
+  // IPosts,
+  // Hashtag,
+  // ICommentOnPostRequest,
+  // ICommentOnPostResponse,
+  // IBuyPostRequest,
+  // IBuyPostResponse,
   IComment
 
 } from '@mp/api/postss/util';
-import { PostTrendingGetQuery } from '@mp/api/postss/util';
-import { update } from 'firebase/database';
+// import { PostTrendingGetQuery } from '@mp/api/postss/util';
+// import { update } from 'firebase/database';
 
 // import {
 //     Hashtag
@@ -50,30 +50,30 @@ export class PostApi {
 
   /* Query for posts by userId -> read only */
   /* returns an array of the fetched IPost objects */
-  async getPostByUserId(userId: string): Promise<IPosts> {
-    const postsQuery = query(
-      collection(this.firestore, 'posts'),
-      where('createdBy', '==', userId)
-    ).withConverter<IPost>({
-      fromFirestore: (snapshot) => {
-        return {
-          ...snapshot.data(),
-          postID: snapshot.id,
-        } as IPost;
-      },
-      toFirestore: (it: IPost) => it,
-    });
+  // async getPostByUserId(userId: string): Promise<IPosts> {
+  //   const postsQuery = query(
+  //     collection(this.firestore, 'posts'),
+  //     where('createdBy', '==', userId)
+  //   ).withConverter<IPost>({
+  //     fromFirestore: (snapshot) => {
+  //       return {
+  //         ...snapshot.data(),
+  //         postID: snapshot.id,
+  //       } as IPost;
+  //     },
+  //     toFirestore: (it: IPost) => it,
+  //   });
 
-    const posts = await collectionData<IPost>(postsQuery, { idField: 'postID' }).toPromise();
-    return { posts: posts ?? [] };
-  }
+  //   const posts = await collectionData<IPost>(postsQuery, { idField: 'postID' }).toPromise();
+  //   return { posts: posts ?? [] };
+  // }
 
 
   /*
   Returns an array of IPost[] objects that are "trending"
   */
-  async postTrendingGet(): Promise<IPost[]>{
-     const callable = httpsCallable<undefined, IPost[]>(
+  async postTrendingGet(): Promise<IPost>{
+     const callable = httpsCallable<undefined, IPost>(
       this.functions,
       "postTrendingGet"
      );
@@ -84,23 +84,23 @@ export class PostApi {
 
   /* Query for posts by hashtag -> read only */
   /* returns an array of the fetched IPost objects filtered by hashtag */
-  async getPostByHashtag(hashtag: Hashtag): Promise<IPosts> {
-    const postsQuery = query(
-      collection(this.firestore, 'posts'),
-      where('hashtag', '==', hashtag)
-    ).withConverter<IPost>({
-      fromFirestore: (snapshot) => {
-        return {
-          ...snapshot.data(),
-          postID: snapshot.id,
-        } as IPost;
-      },
-      toFirestore: (it: IPost) => it,
-    });
+  // async getPostByHashtag(hashtag: Hashtag): Promise<IPosts> {
+  //   const postsQuery = query(
+  //     collection(this.firestore, 'posts'),
+  //     where('hashtag', '==', hashtag)
+  //   ).withConverter<IPost>({
+  //     fromFirestore: (snapshot) => {
+  //       return {
+  //         ...snapshot.data(),
+  //         postID: snapshot.id,
+  //       } as IPost;
+  //     },
+  //     toFirestore: (it: IPost) => it,
+  //   });
 
-    const posts = await collectionData<IPost>(postsQuery, { idField: 'postID' }).toPromise();
-    return { posts: posts ?? [] };
-  }
+  //   const posts = await collectionData<IPost>(postsQuery, { idField: 'postID' }).toPromise();
+  //   return { posts: posts ?? [] };
+  // }
 
   async createPost(request: ICreatePostRequest) {
     console.log('API createPost called with request:', request);

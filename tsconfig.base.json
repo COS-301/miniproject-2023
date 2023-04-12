@@ -76,13 +76,7 @@
         "libs/app/notifications/feature/src/index.ts"
       ],
       "@mp/app/portfolio/feature": ["libs/app/portfolio/feature/src/index.ts"],
-      "@mp/app/postss/data-access": [
-        "libs/app/postss/data-access/src/index.ts"
-      ],
-      "@mp/app/postss/data-feature": [
-        "libs/app/postss/data-feature/src/index.ts"
-      ],
-      "@mp/app/postss/data-util": ["libs/app/postss/data-util/src/index.ts"],
+      "@mp/app/postss/data-access": ["libs/app/postss/data-access/src/index.ts"],
       "@mp/app/postss/feature": ["libs/app/postss/feature/src/index.ts"],
       "@mp/app/postss/ui": ["libs/app/postss/ui/src/index.ts"],
       "@mp/app/postss/util": ["libs/app/postss/util/src/index.ts"],
