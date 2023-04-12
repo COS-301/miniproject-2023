@@ -44,6 +44,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('@mp/app/privacy/feature').then((m) => m.PrivacyModule),
   },
+  {
+    path: 'settings',
+    loadChildren: () =>
+      import('@mp/app/settings/feature').then((m) => m.SettingsModule),
+  },
   // {
   //   path: 'verify',
   //   pathMatch: 'full',
