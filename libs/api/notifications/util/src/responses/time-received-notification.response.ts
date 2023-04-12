@@ -1,5 +1,5 @@
-import { INewFollowerDetails } from "../interfaces";
+import { followerDetails } from "../interfaces";
 
-export interface IGetNewFollowerNotificationResponse {
-    notification : INewFollowerDetails;
+export interface IGetTimeReceivedNotificationResponse {
+    notification : followerDetails;
 }

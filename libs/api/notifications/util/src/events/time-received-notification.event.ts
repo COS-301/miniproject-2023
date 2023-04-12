@@ -1,5 +1,5 @@
-import { INewFollowerDetails } from "../interfaces";
+import { ITimeReceivedDetails } from "../interfaces";
 
 export class TimeReceivedNotificationEvent {
-    constructor(public readonly notification : INewFollowerDetails) {} 
+    constructor(public readonly notification : ITimeReceivedDetails) {}
 }

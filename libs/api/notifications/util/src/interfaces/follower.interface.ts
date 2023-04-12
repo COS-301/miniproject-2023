@@ -1,6 +1,6 @@
 import { Timestamp } from 'firebase-admin/firestore';
 
-export interface ITimeReceivedDetails {
+export interface followerDetails {
     userId : string;
     displayName?: string | null | undefined;
     photoURL?: string | null | undefined;
