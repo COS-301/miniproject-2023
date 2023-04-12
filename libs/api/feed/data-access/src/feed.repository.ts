@@ -1,8 +1,10 @@
 import { Module } from '@nestjs/common';
 import { Injectable } from '@nestjs/common';
 import * as admin from 'firebase-admin';
-import { FilterList } from '@mp/api/feed/util';
+import { FilterList, TimeModification } from '@mp/api/feed/util';
 import { Discipline } from '@mp/api/feed/util';
+import { IUser } from '@mp/api/users/util';
+import { Status } from '@mp/api/feed/util';
 
 @Injectable()
 export class FeedRepository {
@@ -11,7 +13,6 @@ export class FeedRepository {
         
         // This is some mock data - will actually need to query the database
         const toReturn = {
-            // postsFound: 'true',
             data: [
                 {
                     id: "post 1",
@@ -35,6 +36,19 @@ export class FeedRepository {
         };
         
         return toReturn;
+    }
+
+
+    async addTime(timeMode : TimeModification){
+        // Query the database to add the amount of time to the user
+
+        return Status.SUCCESS
+    }
+
+    async getUserTime(user : IUser){
+        // Query the database to return the amount of time the user has left
+
+        return {"timeRemaing":true, "value":1000};
     }
 
 

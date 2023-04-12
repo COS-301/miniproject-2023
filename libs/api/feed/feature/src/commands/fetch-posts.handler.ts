@@ -13,7 +13,7 @@ export class FetchPostsHandler implements ICommandHandler<FetchPostsCommand, Fet
         // For debugging
         console.log(`${FetchPostsHandler.name}`);
 
-        // This object will contain the data sent by the request
+        // This object will contain the data sent by the request (whose interface you have already defined)
         const request = command.request;
         
         // Get the parameters from the request (in this case the filters)
