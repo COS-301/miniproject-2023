@@ -1,6 +1,6 @@
 import { IComment, CommentCreatedEvent, CreateCommentCommand } from '@mp/api/comments/util';
 import { CommandHandler, ICommandHandler, EventPublisher } from '@nestjs/cqrs';
-import { Comment } from '../models';
+import { Comment } from '../../../../comments/feature/src/models';
 
 @CommandHandler(CreateCommentCommand)
 export class CreateCommentHandler implements ICommandHandler<CommentCreatedEvent> {

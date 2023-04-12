@@ -1,5 +1,5 @@
 import { Timestamp } from 'firebase-admin/firestore';
-import { IComment } from '@mp/api/comments/util';
+import { IComment } from './comment.interface';
 
 export interface IMemory {
   userId: string | null | undefined;

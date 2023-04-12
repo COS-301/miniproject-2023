@@ -1,6 +1,8 @@
 import {
   ICreateMemoryRequest,
   ICreateMemoryResponse,
+  CommentCreatedEvent,
+  CreateCommentCommand,
   MemoryCreatedEvent,
   CreateMemoryCommand,
 } from '@mp/api/memories/util';
