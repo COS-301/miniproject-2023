@@ -7,7 +7,6 @@ import { PostApi } from './post.api';
 
 @NgModule({
   imports: [CommonModule, NgxsModule.forFeature([PostState])],
-  exports: [PostState],
   providers: [PostApi],
 })
 export class PostModule {}
