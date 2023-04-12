@@ -34,6 +34,11 @@ const routes: Routes = [
           import('@mp/app/notifications/feature').then((m) => m.NotificationsModule),
       },
       {
+        path: 'post',
+        loadChildren: () =>
+          import('@mp/app/post/feature').then((m) => m.PostModule),
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: '/home/dashboard',

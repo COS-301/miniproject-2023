@@ -6,7 +6,7 @@ import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { ModalController, PopoverController } from '@ionic/angular';
-import {OnInit, ViewChild } from '@angular/core';
+import { OnInit, ViewChild } from '@angular/core';
 
 
 @Component({
@@ -21,7 +21,7 @@ export class HomePage {
 
   segment = 'chats';
   open_new_chat = false;
- 
+
   // users = [
   //   { id: 1, name: 'Nikhil', photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' },
   //   { id: 2, name: 'Serah', photo: 'https://i.pinimg.com/564x/a6/58/32/a65832155622ac173337874f02b218fb.jpg' },
@@ -42,7 +42,7 @@ export class HomePage {
   //   this.store.dispatch(new SubscribeToProfile());
   // }
 
-  
+
   ngOnInit() {
     // console.log('');
   }
@@ -73,8 +73,7 @@ export class HomePage {
   }
 
   goToSearch() {
-    // this.router.navigate(['/home/inbox']);
-    //no current pages made, change 'inbox' to 'search'
+    this.router.navigate(['/home/search']);
   }
 
   goToChat() {
@@ -87,13 +86,11 @@ export class HomePage {
 
   goToNotifications() {
     this.router.navigate(['/home/notifications']);
-    //no current pages made, change 'inbox' to 'notifications'
   }
 
-  goToAddContent() {
-    // this.router.navigate(['/home/inbox']);
-    //no current pages made, change 'inbox' to 'addContent'
+  goToPost() {
+    this.router.navigate(['/home/post']);
   }
 
-  
+
 }

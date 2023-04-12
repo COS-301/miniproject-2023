@@ -3,17 +3,15 @@
   "compilerOptions": {
     "outDir": "../../../../dist/out-tsc",
     "declaration": true,
-    "types": [
-      "node"
-    ]
+    "declarationMap": true,
+    "inlineSources": true,
+    "types": []
   },
-  "include": [
-    "src/**/*.ts",
-    "../../post/feature/src/post-routing.module.ts"
-  ],
   "exclude": [
-    "jest.config.ts",
+    "src/test-setup.ts",
     "src/**/*.spec.ts",
+    "jest.config.ts",
     "src/**/*.test.ts"
-  ]
+  ],
+  "include": ["src/**/*.ts"]
 }

@@ -36,10 +36,6 @@ const routes: Routes = [
       import('@mp/app/home/feature').then((m) => m.HomeModule),
   },
   {
-    path: 'inbox',
-    loadChildren: () => import('@mp/app/inbox/feature').then((m) => m.InboxModule),
-  },
-  {
     path: 'tos',
     loadChildren: () => import('@mp/app/tos/feature').then((m) => m.TosModule),
   },

@@ -72,6 +72,7 @@
       "@mp/app/notifications/feature": [
         "libs/app/notifications/feature/src/index.ts"
       ],
+      "@mp/app/post/feature": ["libs/app/post/feature/src/index.ts"],
       "@mp/app/privacy/feature": ["libs/app/privacy/feature/src/index.ts"],
       "@mp/app/profile/data-access": [
         "libs/app/profile/data-access/src/index.ts"
@@ -87,6 +88,7 @@
       "@mp/app/reset/data-access": ["libs/app/reset/data-access/src/index.ts"],
       "@mp/app/reset/feature": ["libs/app/reset/feature/src/index.ts"],
       "@mp/app/reset/util": ["libs/app/reset/util/src/index.ts"],
+      "@mp/app/search/feature": ["libs/app/search/feature/src/index.ts"],
       "@mp/app/tos/feature": ["libs/app/tos/feature/src/index.ts"],
       "@mp/app/updates/data-access": [
         "libs/app/updates/data-access/src/index.ts"
