@@ -7,24 +7,29 @@ import { Discipline } from '@mp/api/feed/util';
 @Injectable()
 export class FeedRepository {
 
-    // async fetchPosts(filters : FilterList){
-    async fetchPosts(){
+    async fetchPosts(filters : FilterList){
+        
+        // This is some mock data - will actually need to query the database
         const toReturn = {
-            success: 'true',
+            // postsFound: 'true',
             data: [
                 {
-                    name: "post 1",
-                    time: 500,
+                    id: "post 1",
+                    title: "Burger King Foot Lettuce",
+                    author: null,
                     description: "This is a very orginal and cool post!",
+                    content: "Wow, I really am I a super cool story - pls spend time",
                     discipline: Discipline.SCIENCE,
-                    content: "Wow, I really am I a super cool story - pls spend time"
+                    time: 500
                 },
                 {
-                name : "post 2",
-                time : 10000,
-                description : "This is a really cool post!",
-                discipline: Discipline.MUSIC,
-                content : "Wow, I really am I a super cool story - pls spend time" 
+                    id: "post 1",
+                    title: "Burger King Foot Lettuce",
+                    author: null,
+                    description: "This is a very orginal and cool post!",
+                    content: "Wow, I really am I a super cool story - pls spend time",
+                    discipline: Discipline.SCIENCE,
+                    time: 500
                 }
             ]
         };
