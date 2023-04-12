@@ -1,5 +1,5 @@
 import { followerDetails } from "../interfaces";
 
-export class TimeReceivedNotificationEvent {
+export class TimeElapsingNotificationEvent {
     constructor(public readonly notification : followerDetails) {}
 }
