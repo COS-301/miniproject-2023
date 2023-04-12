@@ -36,10 +36,6 @@ const routes: Routes = [
       import('@mp/app/home/feature').then((m) => m.HomeModule),
   },
   {
-    path: 'inbox',
-    loadChildren: () => import('@mp/app/inbox/feature').then((m) => m.InboxModule),
-  },
-  {
     path: 'tos',
     loadChildren: () => import('@mp/app/tos/feature').then((m) => m.TosModule),
   },
@@ -47,6 +43,11 @@ const routes: Routes = [
     path: 'privacy',
     loadChildren: () =>
       import('@mp/app/privacy/feature').then((m) => m.PrivacyModule),
+  },
+  {
+    path: 'settings',
+    loadChildren: () =>
+      import('@mp/app/settings/feature').then((m) => m.SettingsModule),
   },
   // {
   //   path: 'verify',

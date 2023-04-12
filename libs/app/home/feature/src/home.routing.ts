@@ -23,6 +23,27 @@ const routes: Routes = [
           import('@mp/app/inbox/feature').then((m) => m.InboxModule),
       },
       {
+        path: 'inbox/chats/:id', // Update the route for chat messages
+        loadChildren: () =>
+          // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+          import('./../../../inbox/feature/src/pages/chat/chat.module').then((m) => m.ChatModule),
+      },
+      {
+        path: 'notifications',
+        loadChildren: () =>
+          import('@mp/app/notifications/feature').then((m) => m.NotificationsModule),
+      },
+      {
+        path: 'post',
+        loadChildren: () =>
+          import('@mp/app/post/feature').then((m) => m.PostModule),
+      },
+      {
+        path: 'search',
+        loadChildren: () =>
+          import('@mp/app/search/feature').then((m) => m.SearchModule),
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: '/home/dashboard',

@@ -62,6 +62,6 @@ export class InboxPageComponent implements OnInit {
 
   getChat(item: any) {
     this.router.navigate(['/', 'inbox', 'chats', item?.id]);
+    // this.router.navigate(['/home/inbox']);
   }
 }
-
