@@ -37,6 +37,9 @@
       ],
       "@mp/api/message/feature": ["libs/api/message/feature/src/index.ts"],
       "@mp/api/message/util": ["libs/api/message/util/src/index.ts"],
+      "@mp/api/post/data-access": ["libs/api/post/data-access/src/index.ts"],
+      "@mp/api/post/feature": ["libs/api/post/feature/src/index.ts"],
+      "@mp/api/post/util": ["libs/api/post/util/src/index.ts"],
       "@mp/api/profiles/data-access": [
         "libs/api/profiles/data-access/src/index.ts"
       ],
