@@ -1,58 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+  <meta charset="utf-8" />
   <title>Welcome</title>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="./logo.png" type="image/png" sizes="16x16">
-
-  <style>
-    /* Center the image and text */
-    .loading-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-
-    footer {
-      background-color: #f2f2f2;
-      padding: 10px;
-      position: fixed;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      text-align: center;
-    }
-
-    /* Style the loading text */
-    .loading-text {
-      font-size: 24px;
-      font-weight: bold;
-      margin-top: 16px;
-    }
-
-    /* Add a CSS animation to the loading text */
-    @keyframes blink {
-      0% { opacity: 0.2; }
-      20% { opacity: 1; }
-      100% { opacity: 0.2; }
-    }
-
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="./logo.png" type="image/png" sizes="16x16" />
 </head>
+
 <body>
-<div class="loading-container">
-  <img src="./logo.png" alt="Logo" class="loading-logo">
-  <p class="loading-text">It's about time you joined!</p>
-
-</div>
-
+<ion-content>
+  <div class="loading-container">
+    <img src="./logo.png" alt="Logo" class="loading-logo" />
+    <p class="loading-text">It's about time you joined!</p>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-row>
+    <ion-col>
+      <p>© 2023 Schadre</p>
+      <p>version 0.0.1</p>
+    </ion-col>
+  </ion-row>
+</ion-footer>
 </body>
-<footer>
-  <p>© 2020 Schadre</p>
-  <p>version 0.0.1</p>
-</footer>
+
 </html>

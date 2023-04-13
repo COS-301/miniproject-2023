@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import {
-    AuthGuard,
-    redirectLoggedInTo,
-    redirectUnauthorizedTo
+  AuthGuard,
+  redirectLoggedInTo,
+  redirectUnauthorizedTo
 } from '@angular/fire/auth-guard';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
@@ -44,16 +44,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('@mp/app/privacy/feature').then((m) => m.PrivacyModule),
   },
-  {
-    path: 'search',
-    loadChildren: () =>
-      import ('@mp/app/search/feature').then((m)=>m.SearchModule),
-  },
-  {
-    path: 'feed',
-    loadChildren: () =>
-      import('@mp/app/feed/feature').then((m) => m.FeedModule),
-  },
   // {
   //   path: 'verify',
   //   pathMatch: 'full',
@@ -70,14 +60,12 @@ const routes: Routes = [
   //   loadChildren: () =>
   //     import('./reset/reset.module').then((m) => m.ResetPageModule),
   // },
-  // {
-  //   path: 'forgot',
-  //   pathMatch: 'full',
-  //   canActivate: [AuthGuard],
-  //   data: { authGuardPipe: redirectLoggedIn },
-  //   loadChildren: () =>
-  //     import('./forgot/forgot.module').then((m) => m.ForgotPageModule),
-  // },
+  {
+    path: 'forgot',
+    pathMatch: 'full',
+    loadChildren: () =>
+      import('@mp/app/forgot/feature').then((m) => m.ForgotModule),
+  },
   {
     path: 'register',
     pathMatch: 'full',
@@ -97,25 +85,24 @@ const routes: Routes = [
   {
     path: 'settings',
     loadChildren: () =>
-      import ('@mp/app/settings/feature').then((m)=>m.SettingsModule),
+      import('@mp/app/settings/feature').then((m) => m.SettingsModule),
   },
   {
     path: 'death-screen',
     loadChildren: () =>
-      import ('@mp/app/death-screen/feature').then((m)=>m.DeathScreenModule),
+      import('@mp/app/death-screen/feature').then((m) => m.DeathScreenModule),
   },
   {
     path: 'messages',
     loadChildren: () =>
-      import ('@mp/app/messages/feature').then((m)=>m.MessagesModule),
+      import('@mp/app/messages/feature').then((m) => m.MessagesModule),
   },
   {
     path: 'create-post',
     loadChildren: () =>
-      import ('@mp/app/create-post/feature').then((m)=>m.CreatePostModule),
-  },
-  
-  
+      import('@mp/app/create-post/feature').then((m) => m.CreatePostModule),
+  }
+
 ];
 
 @NgModule({
@@ -124,4 +111,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class CoreRouting {}
+export class CoreRouting { }
