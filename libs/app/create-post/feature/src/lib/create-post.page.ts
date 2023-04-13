@@ -48,8 +48,9 @@ export class CreatePostPage {
       });
   }
 
-  onFileChange(event: { target: { files: null[]; }; }) {
-    // Handle file change event, e.g., capture the selected file
-    this.post.photo = event.target.files[0];
+  onFileChange(event: Event) {
+    const target = event.target as HTMLInputElement;
+    // Now you can access target.files property
+    // and perform the desired logic with the selected files
   }
 }

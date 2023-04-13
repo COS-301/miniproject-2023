@@ -5,9 +5,11 @@ import { CreatePostPage } from './create-post.page';
 import { CreatePostRouting } from './create-post.routing';
 import { PostService } from './post.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
-  imports:[CommonModule, IonicModule, CreatePostRouting,HttpClientModule],
+  imports:[CommonModule, IonicModule, CreatePostRouting,HttpClientModule,FormsModule],
   declarations: [CreatePostPage],
   providers: [PostService]
 })
