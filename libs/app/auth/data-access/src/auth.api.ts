@@ -6,12 +6,13 @@ import {
   GoogleAuthProvider,
   signInWithEmailAndPassword,
   signInWithPopup,
+  FacebookAuthProvider
 } from '@angular/fire/auth';
 import { signOut } from '@firebase/auth';
 
 @Injectable()
 export class AuthApi {
-  constructor(private readonly auth: Auth) {}
+  constructor(private readonly auth: Auth) { }
 
   auth$() {
     return authState(this.auth);
@@ -32,5 +33,10 @@ export class AuthApi {
 
   async logout() {
     return await signOut(this.auth);
+  }
+
+  async continueWithFacebook() {
+    const provider = new FacebookAuthProvider();
+    return await signInWithPopup(this.auth, provider);
   }
 }
