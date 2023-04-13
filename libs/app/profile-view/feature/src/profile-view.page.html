@@ -92,9 +92,10 @@
         </div>
       </ion-card-header>
       <ion-card-content scroll-y="false" [ngClass]="{ 'ion-card-content-expanded': showExpandedView }">
-        <ion-card-title *ngIf="!showExpandedView" ngClass="memory-card-title">{{ memory.title }}</ion-card-title>
+        <ion-card-title *ngIf="!showExpandedView" ngClass="memory-card-title" (click)="changeMemoryView()">{{ memory.title }}</ion-card-title>
         <ion-img *ngIf="showExpandedView" ngClass="memory-img-expanded" src="{{ memory.imgUrl }}"></ion-img>
-        <p [ngClass]="{ 'memory-card-desc': !showExpandedView, 'memory-card-desc-expanded': showExpandedView }">
+        <h4 *ngIf="showExpandedView" ngClass="memory-card-title-expanded">{{ memory.title }}</h4>
+        <p [ngClass]="{ 'memory-card-desc': !showExpandedView, 'memory-card-desc-expanded': showExpandedView }" (click)="changeMemoryView()">
           {{ memory.description }}
         </p>
         <ion-text *ngIf="!showExpandedView" class="ion-padding-top" ngClass="memory-date">{{
