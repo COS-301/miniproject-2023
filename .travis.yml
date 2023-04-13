@@ -8,7 +8,9 @@ branches:
   only:
     - dev
 
-cache:
+cache: yarn
+  npm: false
+  yarn: true
   directories:
      - ./node_modules
 
