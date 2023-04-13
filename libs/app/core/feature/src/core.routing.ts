@@ -44,16 +44,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('@mp/app/privacy/feature').then((m) => m.PrivacyModule),
   },
-  {
-    path: 'search',
-    loadChildren: () =>
-      import('@mp/app/search/feature').then((m) => m.SearchModule),
-  },
-  {
-    path: 'feed',
-    loadChildren: () =>
-      import('@mp/app/feed/feature').then((m) => m.FeedModule),
-  },
   // {
   //   path: 'verify',
   //   pathMatch: 'full',

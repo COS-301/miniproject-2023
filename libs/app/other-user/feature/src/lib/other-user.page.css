@@ -1,0 +1,124 @@
+.deus {
+    background-color: rgb(216, 205, 106);
+}
+
+.dead {
+    background-color: rgb(213, 94, 94);
+}
+
+.normal {
+    background-color: rgb(97, 218, 97);
+}
+
+ion-header {
+  height: 45%;
+}
+
+.header-content {
+    padding: 15px;
+    height: 100%;
+}
+
+.header-content > * {
+    margin: auto;
+}
+
+.header-content > ion-text {
+    margin: auto;
+    text-align: center;
+}
+
+.header-content > ion-text .status-text {
+  margin-left: 20px;
+  text-align: left;
+}
+
+.header-content > ion-button {
+    margin: auto;
+    text-align: center;
+    height: 30px;
+}
+
+.header-content > ion-list {
+    text-align:center; 
+    background-color: transparent;
+}
+
+.header-content h1, h2, h3, h4, h5 {
+  margin-top: 1px;
+  margin-bottom: 0px;
+}
+
+ion-avatar {
+    /* margin-top: 10px;
+    margin-bottom: 10px; */
+    width: 150px;
+    height: 150px;
+    box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.25);
+}
+
+ion-button {
+    --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.25);
+    /* --background: #93e9be; */
+    /* --background-hover: #9ce0be; */
+    --background-activated: #5e5eff;
+    --background-focused: #88f4be;
+
+}
+
+ion-segment {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    --background: #191919;
+    color: white;
+    border-radius: 0%;
+}
+
+ion-segment-button::part(indicator-background) {
+    background: #01b41f;
+  }
+  
+  /* Material Design styles */
+  ion-segment-button.md::part(native) {
+    color: #f9f8f8;
+  }
+  
+  .segment-button-checked.md::part(native) {
+    color: #03ac08;
+  }
+  
+  ion-segment-button.md::part(indicator-background) {
+    height: 4px;
+  }
+  
+  /* iOS styles */
+  ion-segment-button.ios::part(native) {
+    color: #03ac08;
+  }
+  
+  .segment-button-checked.ios::part(native) {
+    color: #fff;
+  }
+  
+  ion-segment-button.ios::part(indicator-background) {
+    border-radius: 3px;
+  }
+
+/* ion-toolbar {
+    padding: 0px;
+    background: #191919;
+}
+
+.toolbar-container {
+  padding: 0px;
+}
+
+.content-section {
+  padding: 0px;
+} */
+
+.content-section, .content-section ion-content {
+   --background: #2b2b2b;
+   --color: white;
+}
