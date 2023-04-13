@@ -168,34 +168,22 @@ export class FeedState {
   }
 
   @Action(SetFilterList)
-  async setFilterList(ctx: StateContext<FeedStateModel>) {
-    console.log('action triggered');
+  async setFilterList(
+    ctx: StateContext<FeedStateModel>,
+    { payload }: SetFilterList
+    ) {
     try{
 
-      const state = ctx.getState();
-      const filterList = state.FilterList.model.list;
 
-      if  (!filterList){
-        return ctx.dispatch(
-          new SetError('filterlist not set')
-        );
-      }
-
-      console.log('filterList: ', filterList)
-
-      // const request: FetchPostsRequest = {
-      //   filters:{
-      //     list: filterList,
-      //   }
-      // }
-
-      // const responseRef = await this.feedApi.fetchPosts$(request);
-      // const response = responseRef;
-
-     //console.log('response: ', response);
+      ctx.setState(
+        produce((draft) => {
+            draft.filterList = {
+              list: null,
+            }
+            draft.filterList.list = payload.list;
+        }));
 
       return;
-      ///return ctx.dispatch(new SetPostList(response));
     }catch(error){
       return ctx.dispatch(new SetError((error as Error).message));
     }

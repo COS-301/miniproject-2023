@@ -25,18 +25,22 @@ export class FeedPage {
 
   constructor(private store: Store) { }
 
-  filterChanged() {
-    console.log('filter changed');
+  activeFilters: FilterList = {
+    list: [],
+  };
 
-    const myFilterList: FilterList = {
-      list: [],
-    };
+  setFilters($data:FilterType){
+    console.log($data);
 
-    myFilterList.list?.push(FilterType.ART_FILTER);
-    myFilterList.list?.push(FilterType.NEWS_FILTER);
-    myFilterList.list?.push(FilterType.SPORT_FILTER);
+    if(this.activeFilters.list?.includes($data)){
+      this.activeFilters.list = this.activeFilters.list?.filter((item) => item !== $data);
+    } else {
+    this.activeFilters.list = this.activeFilters.list?.concat([$data]);
+    }
 
-    this.store.dispatch(new SetFilterList(myFilterList));
+    if (this.activeFilters.list) {
+      this.store.dispatch(new SetFilterList({ list: this.activeFilters.list }));
+    }
 
   }
 

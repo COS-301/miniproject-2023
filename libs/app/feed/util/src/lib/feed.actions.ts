@@ -1,14 +1,12 @@
-import {FilterList} from '@mp/api/feed/util';
+import {FilterList, FilterType} from '@mp/api/feed/util';
 import {PostList} from '@mp/api/feed/util';
 import {Post} from '@mp/api/feed/util';
 import { TimeModification } from '@mp/api/feed/util';
 import { UserTime } from '@mp/api/feed/util';
 
 export class SetFilterList {
-  static readonly type = '[Feed] SetFilterList';
-  constructor(public readonly filterList: FilterList | null) {
-    console.log('constructor ', filterList);
-  }
+  static readonly type = '[Feed] Set Filter List';
+  constructor(public payload: { list: FilterType[] }) {}
 }
 
 export class SetPostList {
