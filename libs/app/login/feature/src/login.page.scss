@@ -1,0 +1,57 @@
+ion-toolbar,
+ion-button {
+    --background: #0E8C00;
+    --color: white;
+}
+
+ion-content {
+    --ion-background-color: #242423;
+}
+
+ion-card-title,
+ion-label,
+ion-input,
+.text-white {
+    --color: white;
+    color: white;
+}
+
+.input-wrapper {
+    --color: #edede9;
+}
+
+.off-white,
+.ion-touched,
+.item-has-focus {
+    color: #edede9 !important;
+}
+
+.or-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1px !important;
+    width: 100% !important;
+}
+
+hr {
+    height: 1px !important;
+    background: white !important;
+    display: block !important;
+    font-size: 2em !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+ion-card-content {
+    color: #edede9;
+}
+
+ion-card-content a,
+.link {
+    color: #0E8C00;
+}
+
+ion-card {
+    --background: #333533;
+}

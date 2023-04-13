@@ -1,7 +1,7 @@
 import { UpdateAuthCommand } from '@mp/api/auth/util';
 import {
-    AccountDetailsUpdatedEvent,
-    ContactDetailsUpdatedEvent
+  AccountDetailsUpdatedEvent,
+  ContactDetailsUpdatedEvent
 } from '@mp/api/profiles/util';
 import { Injectable } from '@nestjs/common';
 import { ICommand, ofType, Saga } from '@nestjs/cqrs';
@@ -20,7 +20,7 @@ export class AuthSagas {
           new UpdateAuthCommand({
             auth: {
               id: event.profile.userId,
-              displayName: event.profile.accountDetails?.displayName,
+              userName: event.profile.accountDetails?.userName,
               email: event.profile.accountDetails?.email,
               photoURL: event.profile.accountDetails?.photoURL,
               password: event.profile.accountDetails?.password,
@@ -30,21 +30,4 @@ export class AuthSagas {
     );
   };
 
-  @Saga()
-  onContactDetailsUpdated = (
-    events$: Observable<any>
-  ): Observable<ICommand> => {
-    return events$.pipe(
-      ofType(ContactDetailsUpdatedEvent),
-      map(
-        (event: ContactDetailsUpdatedEvent) =>
-          new UpdateAuthCommand({
-            auth: {
-              id: event.profile.userId,
-              phoneNumber: event.profile.contactDetails?.cellphone,
-            },
-          })
-      )
-    );
-  };
 }

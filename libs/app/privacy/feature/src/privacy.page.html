@@ -8,13 +8,72 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
+  <ion-header collapse="condense" class="header">
+    <ion-toolbar class="toolbar">
       <ion-title size="large">Privacy Policy</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>It's About Time Privacy Policy</ion-card-title>
+      <ion-card-subtitle>Last updated 04/04/2023</ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+  <!-- Personal Information -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Personal Information</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      When you register for our account, you are giving us permission to process any information that you provide in the
+      registration process.<br /><br />We do not share this information with any 3rd parties, and are only used for
+      internal use.
+    </ion-card-content>
+  </ion-card>
+  <!-- What info we collect -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>What Information We Collect</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      We only collect data that we require for the use of our application.<br />We collect the following information:
+      <ul>
+        <li>Email Address</li>
+        <li>Age</li>
+        <li>Gender</li>
+        <li>IP Address that initated any request</li>
+        <li>Date and time of any request</li>
+        <li>Browser type that the request came from</li>
+      </ul>
+    </ion-card-content>
+  </ion-card>
+  <!-- What we use your information for -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>What we use your Information for</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      We only use your information for internal use cases, and we never share this information with 3rd parties.<br />
+      <ul>
+        <li>Providing you with personal services</li>
+        <li>Updating our records</li>
+      </ul>
+    </ion-card-content>
+  </ion-card>
+  <!-- 3rd Parties -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>3rd Party Services</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      We make use of Firebase as our application hosting and backend. We take all measures into account when
+      transmitting data between the client and the server, making use of HTTPS and SSL. You can read Firebases Security
+      and Privacy Policy <a href="https://firebase.google.com/support/privacy">here</a>.
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-content class="ion-text-center">
+      <ms-copyright-component></ms-copyright-component>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
-
-<ion-footer collapse="condense" class="ion-padding ion-text-center">
-  <ms-copyright-component></ms-copyright-component>
-</ion-footer>

@@ -23,6 +23,7 @@ jobs:
           echo NX_FIREBASE_APP_ID='${{ secrets.NX_FIREBASE_APP_ID }}' >> .env.prod
           echo NX_FIREBASE_MEASUREMENT_ID='${{ secrets.NX_FIREBASE_MEASUREMENT_ID }}' >> .env.prod
           echo NX_FIREBASE_API_KEY='${{ secrets.NX_FIREBASE_API_KEY }}' >> .env.prod
+          echo NX_FIREBASE_USE_EMULATORS=false >> .env.prod
           cat .env.prod
       - name: "📚 Create firebasesc"
         uses: "finnp/create-file-action@master"

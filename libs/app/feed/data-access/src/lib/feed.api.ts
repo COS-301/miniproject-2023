@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { doc, docData, Firestore } from '@angular/fire/firestore';
+import { Firestore } from '@angular/fire/firestore';
 import { Functions, httpsCallable } from '@angular/fire/functions';
 import {
-  FilterList,
-  Post,
-  PostList,
-  TimeModification,
-  UserTime,
+  // FilterList,
+  // Post,
+  // PostList,
+  // TimeModification,
+  // UserTime,
   FetchPostsRequest,
   FetchPostsResponse
 } from '@mp/api/feed/util';
@@ -18,7 +18,7 @@ export class FeedApi {
     private readonly functions: Functions
   ) {}
 
-  async fetchPosts(posts: FetchPostsRequest){
+  async fetchPosts$(posts: FetchPostsRequest){
     return await httpsCallable<FetchPostsRequest, FetchPostsResponse>(
       this.functions,
       'fetchPosts'

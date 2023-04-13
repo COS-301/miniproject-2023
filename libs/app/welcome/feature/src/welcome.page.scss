@@ -1,28 +1,11 @@
-ion-content {
-  background-color: #ffffff; /* Set background color */
+.center-container {
+  height: 100%;
+  display: flex;
 }
 
-.splash-logo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.logo {
+  padding-bottom: 50px;
 }
-
-
-.splash-logo img {
-  max-width: 50%;
-  height: auto;
-}
-
-//.center-container {
-//  height: 100%;
-//  display: flex;
-//}
-//
-//.logo {
-//  padding-bottom: 50px;
-//}
 
 // @media (prefers-color-scheme: light) {
 //   .logo-light {

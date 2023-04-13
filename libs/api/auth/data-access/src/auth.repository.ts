@@ -6,7 +6,7 @@ import * as admin from 'firebase-admin';
 export class AuthRepository {
   async updateProfile(auth: IAuth) {
     await admin.auth().updateUser(auth.id, {
-      displayName: auth.displayName,
+      displayName: auth.userName ? auth.userName : undefined,
       email: auth.email ? auth.email : undefined,
       photoURL: auth.photoURL,
       phoneNumber: auth.phoneNumber,

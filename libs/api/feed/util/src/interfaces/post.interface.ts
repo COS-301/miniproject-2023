@@ -4,7 +4,7 @@ import {IUser} from '@mp/api/users/util'; // use existing IUser interface
 export interface Post {
     id : string;
     title : string;
-    author : IUser;
+    author : IUser | null;
     description : string;
     content : string;
     discipline : Discipline;
