@@ -2,66 +2,32 @@
   <div class="center-container ion-align-items-center">
     <ion-grid>
       <ion-row>
-        <ion-col offset="2" size="8">
-          <!-- <img
-            class="logo logo-light"
-            src="/assets/logos/schadre-logo-full.png" /> -->
-          <!-- <img
-            class="logo logo-dark"
-            src="/assets/logos/schadre-logo-full-white.png"
-          /> -->
-        </ion-col>
+        <ion-img src="./assets/hourglass.png" alt="About-Time Logo"></ion-img>
       </ion-row>
-      <ion-row>
+      <ion-row class="seperate">
         <ion-col>
           <ion-nav-link [routerLink]="['login']">
-            <ion-button expand="block">Login</ion-button>
+            <ion-button class="cust_button_var1" expand="block">Login</ion-button>
           </ion-nav-link>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
           <ion-nav-link [routerLink]="['register']">
-            <ion-button expand="block">Register</ion-button>
-          </ion-nav-link>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col class="ion-text-center">
-          <ion-text color="medium">or</ion-text>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-nav-link>
-            <ion-button
-              expand="block"
-              fill="outline"
-              color="dark"
-              (click)="continueWithGoogle()">
-              <ion-icon name="logo-google"></ion-icon>
-              <ion-text style="padding-left: 5px">
-                Continue with Google
-              </ion-text>
-            </ion-button>
+            <ion-button class="cust_button_var1" expand="block">Register</ion-button>
           </ion-nav-link>
         </ion-col>
       </ion-row>
       <ion-row class="ion-padding-top">
         <ion-col style="display: flex" class="ion-justify-content-center">
           <ion-nav-link [routerLink]="['tos']">
-            <ion-button fill="clear"> Terms of Service </ion-button>
+            <ion-button class="cust_button_var2" fill="clear"> Terms of Service </ion-button>
           </ion-nav-link>
           <ion-nav-link [routerLink]="['privacy']">
-            <ion-button fill="clear"> Privacy Policy </ion-button>
+            <ion-button class="cust_button_var2" fill="clear"> Privacy Policy </ion-button>
           </ion-nav-link>
         </ion-col>
       </ion-row>
     </ion-grid>
   </div>
 </ion-content>
-
-<ion-footer collapse="condense" class="ion-padding ion-text-center">
-  <ms-version-component></ms-version-component><br />
-  <ms-copyright-component></ms-copyright-component>
-</ion-footer>
