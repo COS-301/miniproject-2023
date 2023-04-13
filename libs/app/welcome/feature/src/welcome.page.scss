@@ -12,15 +12,19 @@ $vibrantGreen: #0E8C00;
     --color: white;
 }
 
-.cust_button_var2{
+.textColor{
   --color: #0E8C00;
+  color: #0E8C00;
 }
 
-.img {
-  margin-bottom: 50px;
-  padding: 6.472px;                     // golden ration (1.618) * 4
+.italic{
+  font-style: italic;
 }
 
-.seperate{
-  margin-top: 50px
+.header{
+  font-size: 3rem;
+}
+
+.bold{
+  font-weight: bold;
 }

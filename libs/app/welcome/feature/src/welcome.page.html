@@ -1,10 +1,26 @@
 <ion-content [fullscreen]="true">
   <div class="center-container ion-align-items-center">
     <ion-grid>
+      <ion-row class="ion-text-center">
+        <ion-col>
+        <ion-text class="textColor">
+          <h2>Welcome to</h2>
+          <h3 class="header">About Time</h3>
+          <h3 >"Where it's all <span class="italic">about <span class="bold">time</span>"</span></h3>
+        </ion-text>
+      </ion-col>
+      </ion-row>
       <ion-row>
         <ion-img src="https://lh3.googleusercontent.com/pw/AJFCJaUOOjPzTemCb7sNEAYdqXkm55Lhk0SzwR9VYWJXprvBUq_il7mZbz1C80eosD_nwDva5sr0OJ1lQaUF2oHiaN3hGfkeO1uCSzVhF4ZOs6R70cU161ykFynJW1Y4n1vNRFbPH7Ym2mymRJqoNkdadFNY1Q=w500-h500-s-no" alt="About-Time Logo"></ion-img>
       </ion-row>
-      <ion-row class="seperate">
+      <ion-row class="ion-text-center">
+        <ion-col>
+        <ion-text class="textColor">
+          <h3>Please choose an action below</h3>
+        </ion-text>
+      </ion-col>
+      </ion-row>
+      <ion-row>
         <ion-col>
           <ion-nav-link [routerLink]="['login']">
             <ion-button class="cust_button_var1" expand="block">Login</ion-button>
@@ -21,10 +37,10 @@
       <ion-row class="ion-padding-top">
         <ion-col style="display: flex" class="ion-justify-content-center">
           <ion-nav-link [routerLink]="['tos']">
-            <ion-button class="cust_button_var2" fill="clear"> Terms of Service </ion-button>
+            <ion-button class="textColor" fill="clear"> Terms of Service </ion-button>
           </ion-nav-link>
           <ion-nav-link [routerLink]="['privacy']">
-            <ion-button class="cust_button_var2" fill="clear"> Privacy Policy </ion-button>
+            <ion-button class="textColor" fill="clear"> Privacy Policy </ion-button>
           </ion-nav-link>
         </ion-col>
       </ion-row>
