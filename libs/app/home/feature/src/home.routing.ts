@@ -8,9 +8,9 @@ const routes: Routes = [
     component: HomePage,
     children: [
       {
-        path: 'dashboard',
+        path: 'feed',
         loadChildren: () =>
-          import('@mp/app/dashboard/feature').then((m) => m.DashboardModule),
+          import('@mp/app/feed/feature').then((m) => m.FeedModule),
       },
       {
         path: 'profile',
@@ -18,16 +18,31 @@ const routes: Routes = [
           import('@mp/app/profile/feature').then((m) => m.ProfileModule),
       },
       {
+        path: 'search',
+        loadChildren: () =>
+          import('@mp/app/search/feature').then((m) => m.SearchModule),
+      },
+      {
+        path: 'settings',
+        loadChildren: () =>
+          import('@mp/app/settings/feature').then((m) => m.SettingsModule),
+      },
+      {
+        path: 'create-post',
+        loadChildren: () =>
+          import('@mp/app/create-post/feature').then((m) => m.CreatePostModule),
+      },
+      {
         path: '',
         pathMatch: 'full',
-        redirectTo: '/home/dashboard',
+        redirectTo: '/home/feed',
       },
     ],
   },
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/home/dashboard',
+    redirectTo: '/home/feed',
   },
 ];
 
