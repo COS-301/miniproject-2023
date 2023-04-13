@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>Create Post</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <form>
+      <ion-item>
+        <ion-label>Title</ion-label>
+        <ion-input type="text" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Caption</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Link</ion-label>
+        <ion-input type="text" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Tag</ion-label>
+        <ion-select>
+          <ion-select-option value="food">Food</ion-select-option>
+          <ion-select-option value="travel">Travel</ion-select-option>
+          <ion-select-option value="fitness">Fitness</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Photo</ion-label>
+        <input type="file">
+      </ion-item>
+      <ion-button>Submit</ion-button>
+    </form>
+  </ion-content>
+  

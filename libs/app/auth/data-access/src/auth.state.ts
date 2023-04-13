@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { User } from '@angular/fire/auth';
 import {
-    ContinueWithGoogle,
-    Login,
-    Logout,
-    Register,
-    SetUser,
-    SubscribeToAuthState
+  ContinueWithGoogle,
+  Login,
+  Logout,
+  Register,
+  SetUser,
+  SubscribeToAuthState,
+  ContinueWithFacebook,
+  SendForgotEmail,
+  ConfirmPasswordCode
 } from '@mp/app/auth/util';
 import { SetError } from '@mp/app/errors/util';
 import { Navigate } from '@ngxs/router-plugin';
@@ -27,7 +30,7 @@ export interface AuthStateModel {
 })
 @Injectable()
 export class AuthState {
-  constructor(private readonly authApi: AuthApi) {}
+  constructor(private readonly authApi: AuthApi) { }
 
   @Selector()
   static user(state: AuthStateModel) {
@@ -62,6 +65,24 @@ export class AuthState {
     }
   }
 
+  @Action(SendForgotEmail)
+  async sendForgotEmail(ctx: StateContext<AuthStateModel>, { email }: SendForgotEmail) {
+    try {
+      return await this.authApi.forgotPassword(email);
+    } catch (error) {
+      return ctx.dispatch(new SetError((error as Error).message));
+    }
+  }
+
+  @Action(ConfirmPasswordCode)
+  async confirmPassowrdCode(ctx: StateContext<AuthStateModel>, { code, password }: ConfirmPasswordCode) {
+    try {
+      return await this.authApi.acceptCode(code, password);
+    } catch (error) {
+      return ctx.dispatch(new SetError((error as Error).message));
+    }
+  }
+
   @Action(Register)
   async register(
     ctx: StateContext<AuthStateModel>,
@@ -74,6 +95,7 @@ export class AuthState {
       return ctx.dispatch(new SetError((error as Error).message));
     }
   }
+
 
   @Action(ContinueWithGoogle)
   async continueWithGoogle(ctx: StateContext<AuthStateModel>) {
@@ -89,5 +111,15 @@ export class AuthState {
   async logout(ctx: StateContext<AuthStateModel>) {
     await this.authApi.logout();
     return ctx.dispatch(new Navigate(['/']));
+  }
+
+  @Action(ContinueWithFacebook)
+  async ContinueWithFacebook(ctx: StateContext<AuthStateModel>) {
+    try {
+      await this.authApi.continueWithFacebook();
+      return ctx.dispatch(new Navigate(['home']));
+    } catch (error) {
+      return ctx.dispatch(new SetError((error as Error).message));
+    }
   }
 }

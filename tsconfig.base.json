@@ -27,6 +27,9 @@
         "libs/api/eventstore/feature/src/index.ts"
       ],
       "@mp/api/eventstore/util": ["libs/api/eventstore/util/src/index.ts"],
+      "@mp/api/feed/data-access": ["libs/api/feed/data-access/src/index.ts"],
+      "@mp/api/feed/feature": ["libs/api/feed/feature/src/index.ts"],
+      "@mp/api/feed/util": ["libs/api/feed/util/src/index.ts"],
       "@mp/api/history/data-access": [
         "libs/api/history/data-access/src/index.ts"
       ],
@@ -45,16 +48,27 @@
       "@mp/app/auth/util": ["libs/app/auth/util/src/index.ts"],
       "@mp/app/copyright/ui": ["libs/app/copyright/ui/src/index.ts"],
       "@mp/app/core/feature": ["libs/app/core/feature/src/index.ts"],
+      "@mp/app/create-post/feature": [
+        "libs/app/create-post/feature/src/index.ts"
+      ],
       "@mp/app/dashboard/data-access": [
         "libs/app/dashboard/data-access/src/index.ts"
       ],
       "@mp/app/dashboard/feature": ["libs/app/dashboard/feature/src/index.ts"],
       "@mp/app/dashboard/util": ["libs/app/dashboard/util/src/index.ts"],
+      "@mp/app/death-screen/feature": [
+        "libs/app/death-screen/feature/src/index.ts"
+      ],
+      "@mp/app/demo/feature": ["libs/app/demo/feature/src/index.ts"],
       "@mp/app/errors/data-access": [
         "libs/app/errors/data-access/src/index.ts"
       ],
       "@mp/app/errors/feature": ["libs/app/errors/feature/src/index.ts"],
       "@mp/app/errors/util": ["libs/app/errors/util/src/index.ts"],
+      "@mp/app/feed/data-access": ["libs/app/feed/data-access/src/index.ts"],
+      "@mp/app/feed/feature": ["libs/app/feed/feature/src/index.ts"],
+      "@mp/app/feed/ui": ["libs/app/feed/ui/src/index.ts"],
+      "@mp/app/feed/util": ["libs/app/feed/util/src/index.ts"],
       "@mp/app/footer/feature": ["libs/app/footer/feature/src/index.ts"],
       "@mp/app/forgot/data-access": [
         "libs/app/forgot/data-access/src/index.ts"
@@ -73,6 +87,7 @@
       ],
       "@mp/app/other-user/ui": ["libs/app/other-user/ui/src/index.ts"],
       "@mp/app/other-user/util": ["libs/app/other-user/util/src/index.ts"],
+      "@mp/app/messages/feature": ["libs/app/messages/feature/src/index.ts"],
       "@mp/app/privacy/feature": ["libs/app/privacy/feature/src/index.ts"],
       "@mp/app/profile/data-access": [
         "libs/app/profile/data-access/src/index.ts"
@@ -88,6 +103,14 @@
       "@mp/app/reset/data-access": ["libs/app/reset/data-access/src/index.ts"],
       "@mp/app/reset/feature": ["libs/app/reset/feature/src/index.ts"],
       "@mp/app/reset/util": ["libs/app/reset/util/src/index.ts"],
+      "@mp/app/search/feature": ["libs/app/search/feature/src/index.ts"],
+      "@mp/app/settings/feature": ["libs/app/settings/feature/src/index.ts"],
+      "@mp/app/success/data-access": [
+        "libs/app/success/data-access/src/index.ts"
+      ],
+      "@mp/app/success/feature": ["libs/app/success/feature/src/index.ts"],
+      "@mp/app/success/util": ["libs/app/success/util/src/index.ts"],
+      "@mp/app/timer/feature": ["libs/app/timer/feature/src/index.ts"],
       "@mp/app/tos/feature": ["libs/app/tos/feature/src/index.ts"],
       "@mp/app/updates/data-access": [
         "libs/app/updates/data-access/src/index.ts"

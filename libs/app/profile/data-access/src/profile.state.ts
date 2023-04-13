@@ -197,6 +197,7 @@ export class ProfileState {
           },
         },
       };
+
       const responseRef = await this.profileApi.updateAccountDetails(request);
       const response = responseRef.data;
       return ctx.dispatch(new SetProfile(response.profile));

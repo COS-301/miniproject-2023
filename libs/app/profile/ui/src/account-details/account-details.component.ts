@@ -9,6 +9,7 @@ import {
 } from '@ngxs-labs/actions-executing';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
+import { ProfilesApi } from '@mp/app/profile/data-access';
 
 @Component({
   selector: 'ms-profile-account-details-component',
@@ -87,7 +88,8 @@ export class AccountDetailsComponent {
 
   constructor(
     private readonly fb: FormBuilder,
-    private readonly store: Store
+    private readonly store: Store,
+    private readonly profileApi: ProfilesApi,
   ) {}
 
   logout() {
@@ -96,5 +98,14 @@ export class AccountDetailsComponent {
 
   updateAccountDetails() {
     this.store.dispatch(new UpdateAccountDetails());
+  }
+
+  fetchPosts = async () => {
+    try {
+      const fetch = await this.profileApi.fetchPosts({});
+      console.log(fetch);
+    } catch(err) {
+      console.log(err);
+    }
   }
 }

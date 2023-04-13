@@ -6,7 +6,7 @@ export class SubscribeToAuthState {
 
 export class SetUser {
   static readonly type = '[Auth] SetUser';
-  constructor(public readonly user: User | null) {}
+  constructor(public readonly user: User | null) { }
 }
 
 export class Login {
@@ -14,7 +14,7 @@ export class Login {
   constructor(
     public readonly email: string,
     public readonly password: string
-  ) {}
+  ) { }
 }
 
 export class Register {
@@ -22,7 +22,7 @@ export class Register {
   constructor(
     public readonly email: string,
     public readonly password: string
-  ) {}
+  ) { }
 }
 
 export class ContinueWithGoogle {
@@ -31,4 +31,23 @@ export class ContinueWithGoogle {
 
 export class Logout {
   static readonly type = '[Auth] Logout';
+}
+
+export class ContinueWithFacebook {
+  static readonly type = '[Auth] ContinueWithFacebook';
+}
+
+export class SendForgotEmail {
+  static readonly type = '[Auth] SendForgotEmail';
+  constructor(
+    public readonly email: string
+  ) { }
+}
+
+export class ConfirmPasswordCode {
+  static readonly type = '[Auth] ConfirmPasswordCode';
+  constructor(
+    public readonly code: string,
+    public readonly password: string
+  ) { }
 }

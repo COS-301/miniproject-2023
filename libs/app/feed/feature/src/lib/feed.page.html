@@ -1,0 +1,7 @@
+<ion-content *ngIf="feedOpen==false">
+  <mp-feed-closed (click)="onClick()"></mp-feed-closed>
+</ion-content>
+<ion-content *ngIf="feedOpen==true">
+  <mp-feed-open></mp-feed-open>
+</ion-content>
+<mp-footer-component></mp-footer-component>
