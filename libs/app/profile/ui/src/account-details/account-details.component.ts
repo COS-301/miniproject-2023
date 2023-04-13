@@ -4,8 +4,8 @@ import { IProfile } from '@mp/api/profiles/util';
 import { ProfileState } from '@mp/app/profile/data-access';
 import { Logout, UpdateAccountDetails } from '@mp/app/profile/util';
 import {
-    ActionsExecuting,
-    actionsExecuting
+  ActionsExecuting,
+  actionsExecuting
 } from '@ngxs-labs/actions-executing';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
@@ -22,15 +22,15 @@ export class AccountDetailsComponent {
   @Select(actionsExecuting([UpdateAccountDetails]))
   busy$!: Observable<ActionsExecuting>;
   accountDetailsForm = this.fb.group({
-    displayName: ['', [Validators.minLength(6), Validators.maxLength(64)]],
+    userName: ['', [Validators.minLength(6), Validators.maxLength(64)]],
     email: ['', [Validators.minLength(6), Validators.maxLength(64)]],
     photoURL: ['', [Validators.minLength(6), Validators.maxLength(64)]],
     password: ['', [Validators.minLength(6), Validators.maxLength(64)]],
   });
   showPassword = false;
 
-  get displayName() {
-    return this.accountDetailsForm.get('displayName');
+  get userName() {
+    return this.accountDetailsForm.get('userName');
   }
 
   get email() {
@@ -45,12 +45,12 @@ export class AccountDetailsComponent {
     return this.accountDetailsForm.get('password');
   }
 
-  get displayNameError(): string {
-    if (this.displayName?.errors?.['required'])
+  get userNameError(): string {
+    if (this.userName?.errors?.['required'])
       return 'Display name is required';
-    if (this.displayName?.errors?.['minlength'])
+    if (this.userName?.errors?.['minlength'])
       return 'Display name should be longer than 6 characters';
-    if (this.displayName?.errors?.['maxlength'])
+    if (this.userName?.errors?.['maxlength'])
       return 'Display name should be shorter than 64 characters';
 
     return 'Display name is invalid';
@@ -91,7 +91,7 @@ export class AccountDetailsComponent {
     private readonly fb: FormBuilder,
     private readonly store: Store,
     private readonly profileApi: ProfilesApi,
-  ) {}
+  ) { }
 
   logout() {
     this.store.dispatch(new Logout());
@@ -103,9 +103,9 @@ export class AccountDetailsComponent {
 
   fetchPosts = async () => {
     try {
-      const fetch = await this.profileApi.fetchPosts({"filters": {"list" : [FilterType.FOOD_FILTER]}});
+      const fetch = await this.profileApi.fetchPosts({ "filters": { "list": [FilterType.FOOD_FILTER] } });
       console.log(fetch);
-    } catch(err) {
+    } catch (err) {
       console.log(err);
     }
   }

@@ -6,7 +6,7 @@ export class User extends AggregateRoot implements IUser {
   constructor(
     public id: string,
     public email?: string | null | undefined,
-    public displayName?: string | null | undefined,
+    public userName?: string | null | undefined,
     public photoURL?: string | null | undefined,
     public phoneNumber?: string | null | undefined,
     public customClaims?: { [key: string]: any } | null | undefined,
@@ -19,7 +19,7 @@ export class User extends AggregateRoot implements IUser {
     const instance = new User(
       user.id,
       user.email,
-      user.displayName,
+      user.userName,
       user.photoURL,
       user.phoneNumber,
       user.customClaims,
@@ -36,7 +36,7 @@ export class User extends AggregateRoot implements IUser {
     return {
       id: this.id,
       email: this.email,
-      displayName: this.displayName,
+      userName: this.userName,
       photoURL: this.photoURL,
       phoneNumber: this.phoneNumber,
       customClaims: this.customClaims,

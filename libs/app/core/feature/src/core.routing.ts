@@ -12,22 +12,18 @@ const redirectLoggedIn = () => redirectLoggedInTo(['home']);
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
     canActivate: [AuthGuard],
     data: { authGuardPipe: redirectLoggedIn },
     loadChildren: () =>
       import('@mp/app/welcome/feature').then((m) => m.WelcomeModule),
   },
-  // {
-  //   path: 'response',
-  //   loadChildren: () =>
-  //     import('./response/response.module').then((m) => m.ResponsePageModule),
-  // },
-  // {
-  //   path: 'responses',
-  //   loadChildren: () =>
-  //     import('./responses/responses.module').then((m) => m.ResponsesPageModule),
-  // },
+  {
+    path: 'welcome',
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectLoggedIn },
+    loadChildren: () =>
+      import('@mp/app/welcome/feature').then((m) => m.WelcomeModule),
+  },
   {
     path: 'home',
     canActivate: [AuthGuard],
@@ -44,22 +40,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('@mp/app/privacy/feature').then((m) => m.PrivacyModule),
   },
-  // {
-  //   path: 'verify',
-  //   pathMatch: 'full',
-  //   canActivate: [AuthGuard],
-  //   data: { authGuardPipe: redirectLoggedIn },
-  //   loadChildren: () =>
-  //     import('./verify/verify.module').then((m) => m.VerifyPageModule),
-  // },
-  // {
-  //   path: 'reset',
-  //   pathMatch: 'full',
-  //   canActivate: [AuthGuard],
-  //   data: { authGuardPipe: redirectLoggedIn },
-  //   loadChildren: () =>
-  //     import('./reset/reset.module').then((m) => m.ResetPageModule),
-  // },
   {
     path: 'forgot',
     pathMatch: 'full',
@@ -99,8 +79,10 @@ const routes: Routes = [
   },
   {
     path: 'create-post',
+    pathMatch: 'full',
     loadChildren: () =>
-      import('@mp/app/create-post/feature').then((m) => m.CreatePostModule),
+      // import('@mp/app/create-post/feature').then((m) => m.CreatePostModule),
+      import('@mp/app/settings/feature').then((m) => m.SettingsModule),
   }
 
 ];

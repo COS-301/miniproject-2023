@@ -1,40 +1,28 @@
-.loading-container {
+.center-container {
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-
-  .loading-logo {
-    /* Add any styles for the loading logo */
-  }
-
-  .loading-text {
-    font-size: 24px;
-    font-weight: bold;
-    margin-top: 16px;
-    animation: blink 2s infinite;
-  }
 }
 
-footer {
-  background-color: #f2f2f2;
-  padding: 10px;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
+.logo {
+  padding-bottom: 50px;
 }
 
-@keyframes blink {
-  0% {
-    opacity: 0.2;
-  }
-  20% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.2;
-  }
-}
+// @media (prefers-color-scheme: light) {
+//   .logo-light {
+//     display: block;
+//   }
+
+//   .logo-dark {
+//     display: none;
+//   }
+// }
+
+// @media (prefers-color-scheme: dark) {
+//   .logo-light {
+//     display: none;
+//   }
+
+//   .logo-dark {
+//     display: block;
+//   }
+// }

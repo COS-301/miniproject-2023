@@ -10,25 +10,25 @@ export class FeedClosedComponent {
   posts: Array<{ title: string, creator: string, description: string, thumbnail: string }> = [{ title: 'title', creator: 'creator', description: 'description', thumbnail: 'thumbnail' }, { title: 'title', creator: 'creator', description: 'description', thumbnail: 'thumbnail' }, { title: 'title', creator: 'creator', description: 'description', thumbnail: 'thumbnail' }, { title: 'title', creator: 'creator', description: 'description', thumbnail: 'thumbnail' }];
 
 
-  @Select(FeedState.feed) feed$!: Observable<FeedState | null>;
+  // @Select(FeedState.feed) feed$!: Observable<FeedState | null>;
 
-  constructor(private store: Store) { }
+  // constructor(private store: Store) { }
 
-  filterChanged() {
-    console.log('filter changed');
+  // filterChanged() {
+  //   console.log('filter changed');
 
-    this.store.dispatch(new SetError('test error'));
+  //   this.store.dispatch(new SetError('test error'));
 
-    const myFilterList: FilterList = {
-      list: [],
-    };
+  //   const myFilterList: FilterList = {
+  //     list: [],
+  //   };
 
-    myFilterList.list!.push(FilterType.ART_FILTER);
-    myFilterList.list!.push(FilterType.NEWS_FILTER);
-    myFilterList.list!.push(FilterType.SPORT_FILTER);
+  //   myFilterList.list!.push(FilterType.ART_FILTER);
+  //   myFilterList.list!.push(FilterType.NEWS_FILTER);
+  //   myFilterList.list!.push(FilterType.SPORT_FILTER);
 
-    this.store.dispatch(new SetFilterList(myFilterList));
-  }
+  //   this.store.dispatch(new SetFilterList(myFilterList));
+  // }
 
 }
 

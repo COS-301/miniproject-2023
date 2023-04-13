@@ -17,7 +17,7 @@ export class FeedPage {
 
   feedOpen = false;
 
-  onClick(){
+  onClick() {
     this.feedOpen = !this.feedOpen;
   }
 
@@ -25,16 +25,16 @@ export class FeedPage {
 
   constructor(private store: Store) { }
 
-  filterChanged(){
+  filterChanged() {
     console.log('filter changed');
 
     const myFilterList: FilterList = {
       list: [],
-  };
+    };
 
-      myFilterList.list.push(FilterType.ART_FILTER);
-      myFilterList.list.push(FilterType.NEWS_FILTER);
-      myFilterList.list.push(FilterType.SPORT_FILTER);
+    myFilterList.list?.push(FilterType.ART_FILTER);
+    myFilterList.list?.push(FilterType.NEWS_FILTER);
+    myFilterList.list?.push(FilterType.SPORT_FILTER);
 
     this.store.dispatch(new SetFilterList(myFilterList));
 

@@ -5,7 +5,7 @@ import { Auth } from '../models';
 
 @CommandHandler(UpdateAuthCommand)
 export class UpdateAuthHandler implements ICommandHandler<UpdateAuthCommand> {
-  constructor(private publisher: EventPublisher) {}
+  constructor(private publisher: EventPublisher) { }
 
   async execute(command: UpdateAuthCommand) {
     console.log(`${UpdateAuthHandler.name}`);
@@ -14,7 +14,7 @@ export class UpdateAuthHandler implements ICommandHandler<UpdateAuthCommand> {
     const data: IAuth = {
       id: request.auth.id,
       email: request.auth.email,
-      displayName: request.auth.displayName,
+      userName: request.auth.userName,
       photoURL: request.auth.photoURL,
       phoneNumber: request.auth.phoneNumber,
       password: request.auth.password,
