@@ -1,1 +1,1 @@
-export * from './lib/app-profile-view-data-access';
+export * from './app-profile-view-data-access';
