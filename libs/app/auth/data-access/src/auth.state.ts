@@ -7,7 +7,9 @@ import {
   Register,
   SetUser,
   SubscribeToAuthState,
-  ContinueWithFacebook
+  ContinueWithFacebook,
+  SendForgotEmail,
+  ConfirmPasswordCode
 } from '@mp/app/auth/util';
 import { SetError } from '@mp/app/errors/util';
 import { Navigate } from '@ngxs/router-plugin';
@@ -63,6 +65,24 @@ export class AuthState {
     }
   }
 
+  @Action(SendForgotEmail)
+  async sendForgotEmail(ctx: StateContext<AuthStateModel>, { email }: SendForgotEmail) {
+    try {
+      return await this.authApi.forgotPassword(email);
+    } catch (error) {
+      return ctx.dispatch(new SetError((error as Error).message));
+    }
+  }
+
+  @Action(ConfirmPasswordCode)
+  async confirmPassowrdCode(ctx: StateContext<AuthStateModel>, { code, password }: ConfirmPasswordCode) {
+    try {
+      return await this.authApi.acceptCode(code, password);
+    } catch (error) {
+      return ctx.dispatch(new SetError((error as Error).message));
+    }
+  }
+
   @Action(Register)
   async register(
     ctx: StateContext<AuthStateModel>,
@@ -75,6 +95,7 @@ export class AuthState {
       return ctx.dispatch(new SetError((error as Error).message));
     }
   }
+
 
   @Action(ContinueWithGoogle)
   async continueWithGoogle(ctx: StateContext<AuthStateModel>) {
