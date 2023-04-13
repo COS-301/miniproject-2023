@@ -1,9 +1,8 @@
 language: node_js
 node_js:
-  - '10'
+  - '16'
 
 dist: trusty
-sudo: false
 
 branches:
   only:
@@ -14,7 +13,6 @@ cache:
      - ./node_modules
 
 deploy:
-  skip_cleanup: true
+  cleanup: true
   provider: firebase
-  token: 
-    secure: "1//03UrKAVdHn-9yCgYIARAAGAMSNwF-L9Irqinx7k2eBrgHr6DHB_7-ScgGGHss1KKW95DMpkZjNl9b5F6xw8XqzJMFVN2QSN0n1Zo"
+  token: "1//03UrKAVdHn-9yCgYIARAAGAMSNwF-L9Irqinx7k2eBrgHr6DHB_7-ScgGGHss1KKW95DMpkZjNl9b5F6xw8XqzJMFVN2QSN0n1Zo"
