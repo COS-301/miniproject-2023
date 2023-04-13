@@ -1,6 +1,7 @@
 import { IProfile } from '@mp/api/profiles/util';
 import { Injectable } from '@nestjs/common';
 import * as admin from 'firebase-admin';
+import { IRelationship } from '../../util/src/interfaces/relationship.interface';
 
 @Injectable()
 export class ProfilesRepository {
@@ -36,5 +37,9 @@ export class ProfilesRepository {
       .collection('profiles')
       .doc(profile.userId)
       .set(profile, { merge: true });
+  }
+
+  async checkRelationship(relationship: IRelationship) {
+    return {"exists": true, "type": "FRIEND"}
   }
 }
