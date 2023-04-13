@@ -58,3 +58,4 @@ pubsub-debug.log
 .env
 .env.prod
 .vscode/*
+libs/app/core/feature/src/core.routing.ts
