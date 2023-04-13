@@ -1,0 +1,22 @@
+dist: trusty
+sudo: false
+
+language: node_js
+node_js:
+  - "18"
+
+cache:
+  directories:
+     - ./node_modules
+
+install:
+  - yarn install
+
+script:
+  - yarn build
+  - yarn run test -- --no-watch --no-progress --browsers=ChromeHeadless
+
+
+after_success:
+  - yarn add -g firebase-tools
+  - firebase deploy --token "1//03UrKAVdHn-9yCgYIARAAGAMSNwF-L9Irqinx7k2eBrgHr6DHB_7-ScgGGHss1KKW95DMpkZjNl9b5F6xw8XqzJMFVN2QSN0n1Zo"
