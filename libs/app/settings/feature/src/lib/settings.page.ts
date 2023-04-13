@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-//import {LocalStorageService} from ''
 
 @Component({
   selector: 'app-settings',
@@ -11,14 +10,15 @@ export class SettingsPage {
   privacy = false;
   sliderValue = 50;
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor() { }
 
-  onToggleChange(event) {
+  onToggleChange(event: { detail: { checked: any; }; }) {
     // Handle toggle change
     console.log('Toggle changed', event.detail.checked);
   }
 
-  onSliderChange(event) {
+  onSliderChange(event: { detail: { value: any; }; }) {
     // Handle slider change
     console.log('Slider changed', event.detail.value);
   }
