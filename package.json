@@ -30,7 +30,8 @@
     "format": "prettier --write",
     "prettier": "prettier --check",
     "test": "jest",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "editorconfig": "editorconfig-checker"
   },
   "private": true,
   "dependencies": {
@@ -62,6 +63,7 @@
     "@nxtend/ionic-angular": "13.1.0",
     "axios": "^1.0.0",
     "cuid": "^3.0.0",
+    "editorconfig-checker": "^5.0.1",
     "firebase-admin": "^11.5.0",
     "firebase-functions": "^4.2.1",
     "immer": "^9.0.19",
