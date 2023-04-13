@@ -28,13 +28,13 @@ const routes: Routes = [
   //   loadChildren: () =>
   //     import('./responses/responses.module').then((m) => m.ResponsesPageModule),
   // },
-  // {
-  //   path: 'home',
-  //   //canActivate: [AuthGuard],
-  //   //data: { authGuardPipe: redirectLoggedOut },
-  //   loadChildren: () =>
-  //     import('@mp/app/home/feature').then((m) => m.HomeModule),
-  // },
+  {
+    path: 'home',
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectLoggedOut },
+    loadChildren: () =>
+      import('@mp/app/home/feature').then((m) => m.HomeModule),
+  },
   {
     path: 'tos',
     pathMatch: 'full',
