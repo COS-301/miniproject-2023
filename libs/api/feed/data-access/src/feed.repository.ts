@@ -1,35 +1,54 @@
 import { Module } from '@nestjs/common';
 import { Injectable } from '@nestjs/common';
 import * as admin from 'firebase-admin';
-import { FilterList } from '@mp/api/feed/util';
+import { FilterList, TimeModification } from '@mp/api/feed/util';
 import { Discipline } from '@mp/api/feed/util';
+import { IUser } from '@mp/api/users/util';
+import { Status } from '@mp/api/feed/util';
 
 @Injectable()
 export class FeedRepository {
 
-    // async fetchPosts(filters : FilterList){
-    async fetchPosts(){
+    async fetchPosts(filters : FilterList){
+        
+        // This is some mock data - will actually need to query the database
         const toReturn = {
-            success: 'true',
             data: [
                 {
-                    name: "post 1",
-                    time: 500,
+                    id: "post 1",
+                    title: "Burger King Foot Lettuce",
+                    author: null,
                     description: "This is a very orginal and cool post!",
+                    content: "Wow, I really am I a super cool story - pls spend time",
                     discipline: Discipline.SCIENCE,
-                    content: "Wow, I really am I a super cool story - pls spend time"
+                    time: 500
                 },
                 {
-                name : "post 2",
-                time : 10000,
-                description : "This is a really cool post!",
-                discipline: Discipline.MUSIC,
-                content : "Wow, I really am I a super cool story - pls spend time" 
+                    id: "post 1",
+                    title: "Burger King Foot Lettuce",
+                    author: null,
+                    description: "This is a very orginal and cool post!",
+                    content: "Wow, I really am I a super cool story - pls spend time",
+                    discipline: Discipline.SCIENCE,
+                    time: 500
                 }
             ]
         };
         
         return toReturn;
+    }
+
+
+    async addTime(timeMode : TimeModification){
+        // Query the database to add the amount of time to the user
+
+        return Status.SUCCESS
+    }
+
+    async getUserTime(user : IUser){
+        // Query the database to return the amount of time the user has left
+
+        return {"timeRemaing":true, "value":1000};
     }
 
 
