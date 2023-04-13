@@ -5,4 +5,4 @@ import { CommentsRepository } from './comments.repository';
   providers: [CommentsRepository],
   exports: [CommentsRepository],
 })
-export class CommentModule {}
+export class CommentsModule {}
