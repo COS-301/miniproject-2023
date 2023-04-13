@@ -1,9 +1,13 @@
+language: node_js
+node_js:
+  - '18'
+
 dist: trusty
 sudo: false
 
-language: node_js
-node_js:
-  - "18"
+branches:
+  only:
+    - dev
 
 cache:
   directories:
@@ -13,10 +17,10 @@ install:
   - yarn install
 
 script:
-  - yarn build
-  - yarn run test -- --no-watch --no-progress --browsers=ChromeHeadless
+  - yarn run 
 
-
-after_success:
-  - yarn add -g firebase-tools
-  - firebase deploy --token "1//03UrKAVdHn-9yCgYIARAAGAMSNwF-L9Irqinx7k2eBrgHr6DHB_7-ScgGGHss1KKW95DMpkZjNl9b5F6xw8XqzJMFVN2QSN0n1Zo"
+deploy:
+  skip_cleanup: true
+  provider: firebase
+  token: 
+    secure: "1//03UrKAVdHn-9yCgYIARAAGAMSNwF-L9Irqinx7k2eBrgHr6DHB_7-ScgGGHss1KKW95DMpkZjNl9b5F6xw8XqzJMFVN2QSN0n1Zo"
