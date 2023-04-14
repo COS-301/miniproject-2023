@@ -34,22 +34,22 @@ export class CreatePostState {
 
   @Action(CreatePost)
   createPost(ctx: StateContext<CreatePostStateModel>, action: CreatePost) {
-    try {
-      // Dispatch an API request to create a post with the given post data and file
-      const response = await this.postService.createPost(action.post, action.file);
+    // Extract the post and file data from the action
+    const { post, file } = action;
 
-      if (response.success) {
-        // Update state with the post ID on success
-        ctx.dispatch(new CreatePostSuccess(response.postId));
-      } else {
-        // Update state with the error message on failure
-        ctx.dispatch(new CreatePostFailure(response.error));
-      }
-    } catch (error) {
-      // Handle error and update state accordingly
-      ctx.dispatch(new CreatePostFailure(error.message));
-    }
-  }
+    // Call the postService to create the post
+    return this.postService.createPost(post, file)
+      .subscribe(
+        (response: any) => {
+          // Handle successful response from API
+          const postId = response.id; // Update with the actual response property name
+          ctx.dispatch(new CreatePostSuccess(postId));
+        },
+        (error: any) => {
+          // Handle error from API
+          ctx.dispatch(new CreatePostFailure(error.message));
+        }
+      );
   }
 
   @Action(CreatePostSuccess)
