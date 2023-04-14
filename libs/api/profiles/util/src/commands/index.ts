@@ -6,3 +6,4 @@ export * from './update-occupation-details.command';
 export * from './update-personal-details.command';
 export * from './update-profile-status.command';
 export * from './check-relationship.command';
+export * from './fetch-user-posts.command';

@@ -6,3 +6,4 @@ export * from './update-occupation-details.request';
 export * from './update-personal-details.request';
 export * from './update-profile-status.request';
 export * from './check-relationship.request';
+export * from './fetch-user-posts.request';
