@@ -49,7 +49,6 @@
       "@mp/app/auth/feature": ["libs/app/auth/feature/src/index.ts"],
       "@mp/app/auth/util": ["libs/app/auth/util/src/index.ts"],
       "@mp/app/comment/feature": ["libs/app/comment/feature/src/index.ts"],
-      "@mp/app/splash/feature": ["libs/app/splash/feature/src/index.ts"],
       "@mp/app/copyright/ui": ["libs/app/copyright/ui/src/index.ts"],
       "@mp/app/core/feature": ["libs/app/core/feature/src/index.ts"],
       "@mp/app/create/feature": ["libs/app/create/feature/src/index.ts"],
@@ -76,7 +75,12 @@
         "libs/app/notifications/feature/src/index.ts"
       ],
       "@mp/app/portfolio/feature": ["libs/app/portfolio/feature/src/index.ts"],
-      "@mp/app/postss/data-access": ["libs/app/postss/data-access/src/index.ts"],
+      "@mp/app/post/data-access": ["libs/app/post/data-access/src/index.ts"],
+      "@mp/app/post/feature": ["libs/app/post/feature/src/index.ts"],
+      "@mp/app/post/util": ["libs/app/post/util/src/index.ts"],
+      "@mp/app/postss/data-access": [
+        "libs/app/postss/data-access/src/index.ts"
+      ],
       "@mp/app/postss/feature": ["libs/app/postss/feature/src/index.ts"],
       "@mp/app/postss/ui": ["libs/app/postss/ui/src/index.ts"],
       "@mp/app/postss/util": ["libs/app/postss/util/src/index.ts"],
@@ -97,6 +101,7 @@
       "@mp/app/reset/util": ["libs/app/reset/util/src/index.ts"],
       "@mp/app/search/feature": ["libs/app/search/feature/src/index.ts"],
       "@mp/app/settings/feature": ["libs/app/settings/feature/src/index.ts"],
+      "@mp/app/splash/feature": ["libs/app/splash/feature/src/index.ts"],
       "@mp/app/tos/feature": ["libs/app/tos/feature/src/index.ts"],
       "@mp/app/updates/data-access": [
         "libs/app/updates/data-access/src/index.ts"
@@ -118,6 +123,7 @@
       "@mp/app/welcome/feature": ["libs/app/welcome/feature/src/index.ts"],
       "@mp/app/welcome/util": ["libs/app/welcome/util/src/index.ts"],
       "@mp/cli/core/feature": ["libs/cli/core/feature/src/index.ts"],
+      "@mp/data-access": ["libs/data-access/src/index.ts"],
       "@mp/feature": ["libs/feature/src/index.ts"]
     }
   },

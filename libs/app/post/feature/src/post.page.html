@@ -14,28 +14,28 @@
     </ion-toolbar>
   </ion-header>
 
-  <ng-container *ngIf="post$ | async as post;">
+  <ng-container *ngIf="post$ | async as post">
   <form
     [formGroup]="postDetailsForm"
-    ngxsForm="post.postDetailsForm"
+    ngxsForm="post"
     (submit)="createPost()">
-    <ion-card>
+    <ion-card *ngIf="post as postDetails">
       <ion-card-content>
         <ion-item>
           <ion-label>Created By</ion-label>
-          <ion-input formControlName="createdBy" type="text"></ion-input>
+          <ion-input formControlName="createdBy" [value]="postDetails.createdBy" type="text"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label>Content</ion-label>
-          <ion-input formControlName="content" type="text"></ion-input>
+          <ion-input formControlName="content" [value]="postDetails.content" type="text"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label>Caption</ion-label>
-          <ion-input formControlName="caption" type="text"></ion-input>
+          <ion-input formControlName="caption" [value]="postDetails.caption" type="text"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label>Hashtag</ion-label>
-          <ion-input formControlName="hashtag" type="text"></ion-input>
+          <ion-input formControlName="hashtag" [value]="postDetails.hashtag" type="text"></ion-input>
         </ion-item>
         <ion-button type="submit">Submit</ion-button>
       </ion-card-content>

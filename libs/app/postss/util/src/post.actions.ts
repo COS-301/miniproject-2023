@@ -14,8 +14,8 @@ export class SetPosts {
 }
 
 export class SetPost {
-  static readonly type = '[Post] Set Post';
-  constructor(public post: IPost) { }
+  static readonly type = '[Post] SetPost';
+  constructor(public readonly post: IPost | null | undefined ) {}
 }
 
 export class GetPostByUserId {
@@ -33,22 +33,21 @@ export class GetPostByHashtag {
 }
 
 export class CreatePost {
-  static readonly type = '[Posts] Create Post';
-  constructor(public payload: { createdBy: string; content: string; caption: string; hashtag: Hashtag }) {}
+  static readonly type = '[Post] CreatePost';
 }
 
 export class LikePost {
-  static readonly type = '[Post] Like Post';
+  static readonly type = '[Post] LikePost';
   constructor(public postID: string) {}
 }
 
 export class CommentOnPost {
-  static readonly type = '[Post] Comment on Post';
+  static readonly type = '[Post] CommentOnPost';
   constructor(public postId: string, public comment: string) {}
 }
 
 export class BuyPost {
-  static readonly type = '[Post] Buy Post';
+  static readonly type = '[Post] BuyPost';
   constructor(public postId: string, public amount: number, public buyerID: string) {}
 }
 /*

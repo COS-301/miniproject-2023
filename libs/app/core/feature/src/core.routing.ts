@@ -57,7 +57,7 @@ const routes: Routes = [
   },
   {
     path: 'post',
-    loadChildren: () => import('@mp/app/postss/feature').then((m) => m.PostFeatureModule),
+    loadChildren: () => import('@mp/app/post/feature').then((m) => m.PostModule),
   },
   {
     path: 'search',

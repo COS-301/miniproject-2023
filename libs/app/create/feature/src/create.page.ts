@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
-import { CreatePost } from '@mp/app/postss/util';
-import { Hashtag } from '@mp/api/postss/util';
+// import { CreatePost } from '@mp/app/postss/util';
+// import { Hashtag } from '@mp/api/postss/util';
 
 @Component({
   selector: 'mp-create',

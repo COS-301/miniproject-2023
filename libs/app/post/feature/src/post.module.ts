@@ -1,23 +1,24 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms'; // Change this line
+import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { PostModule as PostDataAccessModule } from '@mp/app/postss/data-access';
-//import { PostModule as PostUiModule } from '@mp/app/postss/ui';
+import { PostModule as PostDataAccessModule } from '@mp/app/post/data-access';
+//import { ProfileModule as ProfileUiModule } from '@mp/app/profile/ui';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { PostPage } from './post.page';
 import { PostRouting } from './post.routing';
-import { PostModule } from '@mp/app/postss/data-access';
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   imports: [
     CommonModule,
-    ReactiveFormsModule, // Change this line
+    FormsModule,
     IonicModule,
     PostRouting,
+    ReactiveFormsModule,
     PostDataAccessModule,
     NgxSkeletonLoaderModule,
   ],
-//exports:[PostUiModule],
   declarations: [PostPage],
 })
-export class PostFeatureModule {}
+export class PostModule {}

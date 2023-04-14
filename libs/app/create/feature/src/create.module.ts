@@ -8,7 +8,7 @@ import { CreatePageRoutingModule } from './create.routing';
 import { CreatePage } from './create.page';
 import { RouterModule } from '@angular/router';
 import { NgxsModule } from '@ngxs/store';
-import { PostState } from '@mp/app/postss/data-access'; 
+//import { PostState } from '@mp/app/postss/data-access';
 @NgModule({
   imports: [
     CommonModule,

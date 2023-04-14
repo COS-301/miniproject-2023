@@ -28,8 +28,6 @@ import {
 
 @Injectable()
 export class PostApi {
-
-
   constructor(
     private readonly firestore: Firestore,
     private readonly functions: Functions
@@ -132,7 +130,7 @@ export class PostApi {
     if (!post) {
       throw new Error(`Post with ID ${postID} not found`);
     }
-    const newLikeCount = post.likes + 1;
+    const newLikeCount =  1;
 
     await updateDoc(docRef, { likes: newLikeCount })
 
