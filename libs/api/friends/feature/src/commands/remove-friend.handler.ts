@@ -10,12 +10,13 @@ export class RemoveFriendHandler implements ICommandHandler<RemoveFriendCommand,
     ) { }
 
     async execute(command : RemoveFriendCommand){
+        console.log(`${RemoveFriendHandler.name}`);
         const request = command.request;
         const status = await this.repository.removeFriend(request.user, request.removedfriend);
 
         const responseData : Status = status;
         const response : RemoveFriendResponse = {"status": responseData};
-        
+
 
         return response;
     }
