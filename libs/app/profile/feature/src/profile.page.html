@@ -1,6 +1,6 @@
 <!-- Old code of original profile page -->
 
-<!-- <ion-header [translucent]="true">
+<ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title class="ion-align-items-center">
       Profile
@@ -37,6 +37,7 @@
   </ion-header>
 
   <ng-container *ngIf="(profile$ | async) as profile; else noProfile">
+    <ms-profile-post-details-component></ms-profile-post-details-component>
     <ms-profile-account-details-component></ms-profile-account-details-component>
     <ms-profile-personal-details-component></ms-profile-personal-details-component>
     <ms-profile-contact-details-component></ms-profile-contact-details-component>
@@ -55,9 +56,9 @@
       </ion-row>
     </ion-grid>
   </ng-template>
-</ion-content> -->
+</ion-content>
 
-
+<!-- 
 <ion-header>
   <ion-toolbar color="secondary">
     <ion-label (click) = "toHomePage()" color="tertiary" style = "font-size: 100%; font:bold">  <ion-icon name="arrow-back-outline" size="small"></ion-icon>Profile</ion-label>
@@ -95,6 +96,15 @@
   </ion-row> 
 </ion-grid>
 
+
+<ng-container *ngIf="(profile$ | async) as profile; else noProfile">
+  
+  <ms-profile-account-details-component></ms-profile-account-details-component>
+  <ms-profile-personal-details-component></ms-profile-personal-details-component>
+  <ms-profile-contact-details-component></ms-profile-contact-details-component>
+  <ms-profile-address-details-component></ms-profile-address-details-component>
+  <ms-profile-occupation-details-component></ms-profile-occupation-details-component>
+</ng-container>
 <ion-grid >
   <ion-row>
     <ion-col size="8">
@@ -180,4 +190,4 @@
     </ion-tab-bar>
   </ion-tabs>
 
-</ion-toolbar>
+</ion-toolbar> -->

@@ -50,6 +50,7 @@ import { NgxsModule } from '@ngxs/store';
 import { MomentModule } from 'ngx-moment';
 import { CoreRouting } from './core.routing';
 import { CoreShell } from './core.shell';
+// import { PostModule } from '@mp/app/post/feature';
 
 let resolvePersistenceEnabled: (enabled: boolean) => void;
 
@@ -157,6 +158,7 @@ const FIREBASE_OPTIONS: FirebaseOptions = {
     }),
     AuthModule,
     ErrorsModule,
+
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [CoreShell],

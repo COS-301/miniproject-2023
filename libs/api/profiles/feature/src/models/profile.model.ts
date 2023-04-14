@@ -2,11 +2,13 @@ import {
     AccountDetailsUpdatedEvent,
     AddressDetailsUpdatedEvent,
     ContactDetailsUpdatedEvent,
+    PostCreatedEvent,
     IAccountDetails,
     IAddressDetails,
     IContactDetails,
     IOccupationDetails,
     IPersonalDetails,
+    IPostDetails,
     IProfile,
     OccupationDetailsUpdatedEvent,
     PersonalDetailsUpdatedEvent,
@@ -23,6 +25,7 @@ export class Profile extends AggregateRoot implements IProfile {
     public personalDetails?: IPersonalDetails | null | undefined,
     public contactDetails?: IContactDetails | null | undefined,
     public addressDetails?: IAddressDetails | null | undefined,
+    public postDetails?: IPostDetails | null | undefined,
     public occupationDetails?: IOccupationDetails | null | undefined,
     public status?: ProfileStatus | null | undefined,
     public created?: FirebaseFirestore.Timestamp | null | undefined
@@ -37,6 +40,7 @@ export class Profile extends AggregateRoot implements IProfile {
       profile.personalDetails,
       profile.contactDetails,
       profile.addressDetails,
+      profile.postDetails,
       profile.occupationDetails,
       profile.status,
       profile.created
@@ -60,7 +64,22 @@ export class Profile extends AggregateRoot implements IProfile {
   }
 
 
-
+  createPostDetails(postDetails: IPostDetails) {
+    if (!this.postDetails) this.postDetails = {};
+    this.postDetails.postID = postDetails.postID
+      ? postDetails.postID
+      : this.postDetails.postID;
+    this.postDetails.createdBy = postDetails.createdBy
+      ? postDetails.createdBy
+      : this.postDetails.createdBy;
+    this.postDetails.ownedBy = postDetails.ownedBy
+      ? postDetails.ownedBy
+      : this.postDetails.ownedBy;
+    this.postDetails.content = postDetails.content
+      ? postDetails.content
+      : this.postDetails.content;
+    this.apply(new PostCreatedEvent(this.toJSON()));
+  }
  
 
   updateContactDetails(contactDetails: IContactDetails) {
@@ -238,6 +257,7 @@ export class Profile extends AggregateRoot implements IProfile {
       contactDetails: this.contactDetails,
       addressDetails: this.addressDetails,
       occupationDetails: this.occupationDetails,
+      postDetails: this.postDetails,
       status: this.status,
       created: this.created,
     };

@@ -4,12 +4,14 @@ import {
     Ethnicity,
     Gender,
     HouseholdIncome,
+    Hashtag,
     IProfile,
     IUpdateAccountDetailsRequest,
     IUpdateAddressDetailsRequest,
     IUpdateContactDetailsRequest,
     IUpdateOccupationDetailsRequest,
-    IUpdatePersonalDetailsRequest
+    IUpdatePersonalDetailsRequest,
+    ICreatePostRequest,
 } from '@mp/api/profiles/util';
 import { AuthState } from '@mp/app/auth/data-access';
 import { Logout as AuthLogout } from '@mp/app/auth/util';
@@ -22,12 +24,14 @@ import {
     UpdateAddressDetails,
     UpdateContactDetails,
     UpdateOccupationDetails,
-    UpdatePersonalDetails
+    UpdatePersonalDetails,
+    CreatePostDetails
 } from '@mp/app/profile/util';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import produce from 'immer';
 import { tap } from 'rxjs';
 import { ProfilesApi } from './profiles.api';
+import { Timestamp } from '@angular/fire/firestore';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ProfileStateModel {
@@ -65,6 +69,25 @@ export interface ProfileStateModel {
       age: AgeGroup | null;
       gender: Gender | null;
       ethnicity: Ethnicity | null;
+    };
+    dirty: false;
+    status: string;
+    errors: object;
+  };
+  postDetailsForm: {
+    model: {
+      postID: string | null | undefined;
+      createdBy: string | null | undefined;
+      ownedBy: string | null | undefined;
+      likes: number | null | undefined;
+      comments: string | null | undefined;
+      createdAt?: Timestamp | null | undefined;
+      content?: string | null | undefined;
+      hashtag?: Hashtag | null | undefined;
+      caption?: string | null | undefined;
+      totalTime?: number | null | undefined;
+      ownerGainedTime?: number | null | undefined;
+      listing?: number | null | undefined;
     };
     dirty: false;
     status: string;
@@ -118,6 +141,25 @@ export interface ProfileStateModel {
         age: null,
         gender: null,
         ethnicity: null,
+      },
+      dirty: false,
+      status: '',
+      errors: {},
+    },
+    postDetailsForm: {
+      model: {
+        postID: null,
+        createdBy: null,
+        ownedBy: null,
+        likes: null, //fixed like left out  before
+        comments: null,
+        createdAt: null,
+        content: null,
+        hashtag: null,
+        caption: null,
+        totalTime: null,
+        ownerGainedTime: null,
+        listing: null,
       },
       dirty: false,
       status: '',
@@ -198,6 +240,50 @@ export class ProfileState {
         },
       };
       const responseRef = await this.profileApi.updateAccountDetails(request);
+      const response = responseRef.data;
+      return ctx.dispatch(new SetProfile(response.profile));
+    } catch (error) {
+      return ctx.dispatch(new SetError((error as Error).message));
+    }
+  }
+
+  @Action(CreatePostDetails)
+  async createPostDetails(ctx: StateContext<ProfileStateModel>) {
+    try {
+      const state = ctx.getState();
+      const userId = state.profile?.userId;
+      const content = state.postDetailsForm.model.content;
+      const createdBy = state.profile?.userId;
+      const caption = state.postDetailsForm.model.caption;
+      const hashtag = state.postDetailsForm.model.hashtag;
+      const ownedBy = state.profile?.userId; // We can use 'createdBy' from the action payload
+      const postID = state.profile?.userId + "1";
+      const likes = 0;
+      const createdAt = Timestamp.now();
+
+      if (!userId || !content || !caption || !hashtag)
+        return ctx.dispatch(
+          new SetError(
+            'UserId or display name or email or photo URL or password not set'
+          )
+        );
+
+      const request: ICreatePostRequest = {
+        profile: {
+          userId,
+          postDetails: {
+            postID,
+            createdBy,
+            ownedBy,
+            likes,
+            createdAt,
+            content,
+            hashtag,
+            caption,
+          },
+        },
+      };
+      const responseRef = await this.profileApi.createPostDetails(request);
       const response = responseRef.data;
       return ctx.dispatch(new SetProfile(response.profile));
     } catch (error) {

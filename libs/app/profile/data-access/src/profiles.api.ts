@@ -12,7 +12,9 @@ import {
     IUpdateOccupationDetailsRequest,
     IUpdateOccupationDetailsResponse,
     IUpdatePersonalDetailsRequest,
-    IUpdatePersonalDetailsResponse
+    IUpdatePersonalDetailsResponse,
+    ICreatePostResponse,
+    ICreatePostRequest
 } from '@mp/api/profiles/util';
 
 @Injectable()
@@ -42,6 +44,16 @@ export class ProfilesApi {
     >(
       this.functions,
       'updateAccountDetails'
+    )(request);
+  }
+
+  async createPostDetails(request: ICreatePostRequest) {
+    return await httpsCallable<
+    ICreatePostRequest,
+    ICreatePostResponse
+    >(
+      this.functions,
+      'createPostDetails'
     )(request);
   }
 

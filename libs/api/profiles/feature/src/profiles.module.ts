@@ -8,7 +8,8 @@ import {
     UpdateContactDetailsHandler,
     UpdateOccupationDetailsHandler,
     UpdatePersonalDetailsHandler,
-    UpdateProfileStatusHandler
+    UpdateProfileStatusHandler,
+    CreatePostHandler
 } from './commands';
 import {
     AccountDetailsUpdatedHandler,
@@ -17,7 +18,8 @@ import {
     OccupationDetailsUpdatedHandler,
     PersonalDetailsUpdatedHandler,
     ProfileCreatedHandler,
-    ProfileStatusUpdatedHandler
+    ProfileStatusUpdatedHandler,
+    PostCreatedHandler
 } from './events';
 import { ProfilesSagas } from './profiles.sagas';
 import { ProfilesService } from './profiles.service';
@@ -29,6 +31,7 @@ export const CommandHandlers = [
   UpdateOccupationDetailsHandler,
   UpdateAccountDetailsHandler,
   UpdateProfileStatusHandler,
+  CreatePostHandler
 ];
 export const EventHandlers = [
   ProfileCreatedHandler,
@@ -38,6 +41,7 @@ export const EventHandlers = [
   OccupationDetailsUpdatedHandler,
   AccountDetailsUpdatedHandler,
   ProfileStatusUpdatedHandler,
+  PostCreatedHandler
 ];
 
 @Module({

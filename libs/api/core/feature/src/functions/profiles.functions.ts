@@ -9,7 +9,9 @@ import {
     IUpdateOccupationDetailsRequest,
     IUpdateOccupationDetailsResponse,
     IUpdatePersonalDetailsRequest,
-    IUpdatePersonalDetailsResponse
+    IUpdatePersonalDetailsResponse,
+    ICreatePostRequest,
+    ICreatePostResponse
 } from '@mp/api/profiles/util';
 import { NestFactory } from '@nestjs/core';
 import * as functions from 'firebase-functions';
@@ -22,6 +24,16 @@ export const updateAccountDetails = functions.https.onCall(
     const app = await NestFactory.createApplicationContext(CoreModule);
     const service = app.get(ProfilesService);
     return service.updateAccountDetails(request);
+  }
+);
+
+export const createPostDetails = functions.https.onCall(
+  async (
+    request: ICreatePostRequest
+  ): Promise<ICreatePostResponse> => {
+    const app = await NestFactory.createApplicationContext(CoreModule);
+    const service = app.get(ProfilesService);
+    return service.createPostDetails(request);
   }
 );
 

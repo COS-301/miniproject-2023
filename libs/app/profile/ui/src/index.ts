@@ -5,3 +5,4 @@ export * from './occupation-details';
 export * from './personal-details';
 export * from './profile-status';
 export * from './profile.module';
+export * from './post-details';

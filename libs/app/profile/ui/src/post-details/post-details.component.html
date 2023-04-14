@@ -1,0 +1,68 @@
+<ng-container *ngIf="profile$ | async as profile; else loading">
+  <form
+    [formGroup]="postDetailsForm"
+    ngxsForm="profile.postDetailsForm"
+    (submit)="createPostDetails()">
+    <ion-card *ngIf="profile.postDetails as postDetails">
+      <ion-card-header>
+        <ion-card-title class="ion-align-items-center">
+          Post Details
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item class="ion-no-padding">
+            <ion-label position="floating" class="required">Content</ion-label>
+            <ion-input
+              type="text"
+              minlength="4"
+              maxlength="64"
+              required="true"
+              [value]="postDetails.content"
+              formControlName="content"
+              placeholder="Enter content"></ion-input>
+          </ion-item>
+          <ion-item class="ion-no-padding">
+            <ion-label position="floating" class="required">Caption</ion-label>
+            <ion-input
+              type="text"
+              minlength="4"
+              maxlength="64"
+              required="true"
+              [value]="postDetails.caption"
+              formControlName="caption"
+              placeholder="Enter caption"></ion-input>
+          </ion-item>
+          <ion-item class="ion-no-padding">
+            <ion-label position="floating" class="required">
+              Hashtag
+            </ion-label>
+            <ion-input
+              type="text"
+              minlength="4"
+              maxlength="64"
+              required="true"
+              [value]="postDetails.hashtag"
+              formControlName="hashtag"
+              placeholder="Enter hashtag"></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+      <ion-button fill="clear" class="ion-float-right" type="submit"
+        >Save</ion-button
+      >
+    </ion-card>
+  </form>
+</ng-container>
+<ng-template #loading>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ngx-skeleton-loader
+          count="1"
+          [theme]="{ height: '150px' }"
+          appearance="line"></ngx-skeleton-loader>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ng-template>

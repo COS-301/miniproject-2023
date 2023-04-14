@@ -1,4 +1,5 @@
 export * from './create-profile.command';
+export * from './create-post.command';
 export * from './update-account-details.command';
 export * from './update-address-details.command';
 export * from './update-contact-details.command';

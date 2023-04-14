@@ -5,6 +5,8 @@ import {
     IUpdateAddressDetailsResponse,
     IUpdateContactDetailsRequest,
     IUpdateContactDetailsResponse,
+    ICreatePostRequest,
+    ICreatePostResponse,
     IUpdateOccupationDetailsRequest,
     IUpdateOccupationDetailsResponse,
     IUpdatePersonalDetailsRequest,
@@ -13,7 +15,8 @@ import {
     UpdateAddressDetailsCommand,
     UpdateContactDetailsCommand,
     UpdateOccupationDetailsCommand,
-    UpdatePersonalDetailsCommand
+    UpdatePersonalDetailsCommand,
+    CreatePostCommand
 } from '@mp/api/profiles/util';
 import { Injectable } from '@nestjs/common';
 import { CommandBus } from '@nestjs/cqrs';
@@ -29,6 +32,15 @@ export class ProfilesService {
       UpdateAccountDetailsCommand,
       IUpdateAccountDetailsResponse
     >(new UpdateAccountDetailsCommand(request));
+  }
+
+  async createPostDetails(
+    request: ICreatePostRequest
+  ): Promise<ICreatePostResponse> {
+    return await this.commandBus.execute<
+      CreatePostCommand,
+      ICreatePostResponse
+    >(new CreatePostCommand(request));
   }
 
   async updateAddressDetails(

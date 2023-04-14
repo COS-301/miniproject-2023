@@ -32,3 +32,7 @@ export class UpdateOccupationDetails {
 export class UpdatePersonalDetails {
   static readonly type = '[Profile] UpdatePersonalDetails';
 }
+
+export class CreatePostDetails {
+  static readonly type = '[Profile] CreatePostDetails';
+}

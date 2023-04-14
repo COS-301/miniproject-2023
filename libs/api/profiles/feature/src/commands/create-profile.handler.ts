@@ -37,6 +37,20 @@ export class CreateProfileHandler
         ethnicity: null,
         status: ProfileStatus.INCOMPLETE,
       },
+      postDetails: {
+        postID: userId,
+        createdBy: userId,
+        ownedBy: userId,
+        likes: null, //fixed like left out  before
+        comments: null,
+        createdAt: null,
+        content: null,
+        hashtag: null,
+        caption: null,
+        totalTime: null,
+        ownerGainedTime: null,
+        listing: null,
+      },
       contactDetails: {
         cellphone,
         status: ProfileStatus.INCOMPLETE,

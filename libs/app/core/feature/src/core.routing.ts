@@ -5,7 +5,6 @@ import {
   redirectUnauthorizedTo
 } from '@angular/fire/auth-guard';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-
 const redirectLoggedOut = () => redirectUnauthorizedTo(['']);
 const redirectLoggedIn = () => redirectLoggedInTo(['home']);
 
@@ -58,6 +57,8 @@ const routes: Routes = [
   {
     path: 'post',
     loadChildren: () => import('@mp/app/post/feature').then((m) => m.PostModule),
+
+
   },
   {
     path: 'search',
