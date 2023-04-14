@@ -1,1 +1,6 @@
-export * from './app-profile-view-data-access';
+export * from './profile-view.module';
+
+export * from './profile-view.api';
+
+export * from './profile-view.state';
+

@@ -1,1 +1,1 @@
-export * from './lib/app-profile-view-util';
+export * from './profile-view.actions';
