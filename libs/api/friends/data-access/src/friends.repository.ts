@@ -9,7 +9,7 @@ import {IUser} from '@mp/api/users/util';
 
 @Injectable()
 export class FriendsRepository {
-    async getFriends( profile : MinimisedProfile){
+    async getFriends( miniProfile : MinimisedProfile){
         const toReturn = {
             data : [
                 {
@@ -33,7 +33,7 @@ export class FriendsRepository {
         return toReturn;
     }
 
-   async removeFriend( user : IUser, profile : MinimisedProfile){
+   async removeFriend( user : IUser, miniProfile : MinimisedProfile){
     return Status.SUCCESS
    }
 }
