@@ -1,1 +1,2 @@
-export * from './lib/app-home-utils';
+export * from './home.action';
+export * from './Tab';

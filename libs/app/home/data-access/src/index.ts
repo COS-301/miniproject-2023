@@ -1,1 +1,5 @@
-export * from './lib/app-home-data-access';
+export * from './home.module';
+
+export * from './home.api';
+
+export * from './home.state';
