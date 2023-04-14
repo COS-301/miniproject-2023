@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FilterList, FilterType } from '@mp/api/feed/util';
+import { FilterList, FilterType, Post, PostList } from '@mp/api/feed/util';
 
 @Component({
   selector: 'mp-feed-closed',
@@ -10,8 +10,15 @@ export class FeedClosedComponent {
   filters: FilterList = {
     list: [],
   };
+
+  posts: PostList = {
+    postsFound : false,
+    list : [],
+  };
+
   constructor(){
-      this.filters.list?.push(FilterType.MOST_RECENT,
+      this.filters.list?.push(
+      FilterType.MOST_RECENT,
       FilterType.MOST_POPULAR,
       FilterType.SCIENCE_FILTER,
       FilterType.ART_FILTER,
@@ -19,35 +26,29 @@ export class FeedClosedComponent {
       FilterType.SPORT_FILTER,
       FilterType.FOOD_FILTER,
       FilterType.GAMING_FILTER)
+
+      this.posts.postsFound = true;
+      this.posts.list?.push(
+        {
+          id: '1',
+          title: 'Post 1',
+          author: {},
+          description: 'Description 1',
+          discipline: {},
+          time: 0,
+        } as Post,
+      )
   }
 
   @Output() filterChanged = new EventEmitter<FilterType>();
+  @Output() setCurrentPost = new EventEmitter<Post>();
 
   onSetFilters(data:FilterType){
     this.filterChanged.emit(data);
   }
-  posts: Array<{ title: string, creator: string, description: string, thumbnail: string }> = [{ title: 'title', creator: 'creator', description: 'description', thumbnail: 'thumbnail' }, { title: 'title', creator: 'creator', description: 'description', thumbnail: 'thumbnail' }, { title: 'title', creator: 'creator', description: 'description', thumbnail: 'thumbnail' }, { title: 'title', creator: 'creator', description: 'description', thumbnail: 'thumbnail' }];
 
-
-  // @Select(FeedState.feed) feed$!: Observable<FeedState | null>;
-
-  // constructor(private store: Store) { }
-
-  // filterChanged() {
-  //   console.log('filter changed');
-
-  //   this.store.dispatch(new SetError('test error'));
-
-  //   const myFilterList: FilterList = {
-  //     list: [],
-  //   };
-
-  //   myFilterList.list!.push(FilterType.ART_FILTER);
-  //   myFilterList.list!.push(FilterType.NEWS_FILTER);
-  //   myFilterList.list!.push(FilterType.SPORT_FILTER);
-
-  //   this.store.dispatch(new SetFilterList(myFilterList));
-  // }
-
+  setPost(data:Post){
+    this.setCurrentPost.emit(data);
+  }
 }
 

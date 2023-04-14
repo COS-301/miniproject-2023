@@ -16,7 +16,7 @@ export class SetPostList {
 
 export class SetPost {
   static readonly type = '[Feed] SetPost';
-  constructor(public readonly post: Post | null) {}
+  constructor(public payload: { post: Post }) {}
 }
 
 export class SetTimeModification {

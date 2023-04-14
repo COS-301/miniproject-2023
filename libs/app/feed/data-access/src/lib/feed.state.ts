@@ -158,9 +158,9 @@ export interface FeedStateModel {
 @Injectable()
 export class FeedState {
   constructor(
+    private readonly feedApi: FeedApi,
     private readonly store: Store,
-    ) {//
-    }
+    ) {}
 
   @Selector()
   static feed(state: FeedStateModel) {
@@ -181,7 +181,9 @@ export class FeedState {
               list: null,
             }
             draft.filterList.list = payload.list;
+            draft.FilterList = {model : {list : payload.list}, dirty : false, status : '', errors : {}};
         }));
+
 
       return;
     }catch(error){
@@ -190,7 +192,10 @@ export class FeedState {
   }
 
   @Action(SetPostList)
-  async setPostList(ctx: StateContext<FeedStateModel>, {postList}: SetPostList){
+  async setPostList(
+    ctx: StateContext<FeedStateModel>,
+    {postList}: SetPostList)
+    {
     console.log('postList: ', postList);
     return ctx.setState(
       produce((draft) => {
@@ -200,13 +205,24 @@ export class FeedState {
   }
 
   @Action(SetPost)
-  async setPost(ctx: StateContext<FeedStateModel>, {post}: SetPost){
-    console.log('post: ', post);
-    return ctx.setState(
-      produce((draft) => {
-        draft.post = post;
-      })
-    )
+  async setPost(
+    ctx: StateContext<FeedStateModel>,
+    {payload}: SetPost
+    ){
+    console.log('post: ', payload);
+    try{
+
+
+      ctx.setState(
+        produce((draft) => {
+            draft.Post = {model : payload.post, dirty : false, status : '', errors : {}};
+            draft.post = payload.post;
+        }));
+
+      return;
+    }catch(error){
+      return ctx.dispatch(new SetError((error as Error).message));
+    }
   }
 
   @Action(SetTimeModification)

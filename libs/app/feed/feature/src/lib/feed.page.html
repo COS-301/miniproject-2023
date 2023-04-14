@@ -1,5 +1,5 @@
 <ion-content *ngIf="feedOpen==false">
-  <mp-feed-closed (filterChanged)="setFilters($event)"></mp-feed-closed>
+  <mp-feed-closed (filterChanged)="setFilters($event)" (setCurrentPost)="setPost($event)"></mp-feed-closed>
 </ion-content>
 <ion-content *ngIf="feedOpen==true">
   <mp-feed-open></mp-feed-open>
