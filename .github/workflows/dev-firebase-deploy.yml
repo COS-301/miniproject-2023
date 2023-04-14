@@ -1,17 +1,20 @@
-name: Dev Deploy to Firebase
+name: Dev | Deploy to Firebase
 'on':
   push:
     branches:
       - dev
 jobs:
-  build_and_deploy:
-    name: "🔥 Deploy to Firebase Development"
+  build:
+    name: "Building App"
     environment: development
     runs-on: ubuntu-latest
     steps:
-      - name: "❤️ Checking out Repo"
+      # checking out repo
+      - name: Checkout
         uses: actions/checkout@v2
-      - name: "📚 Create ENV"
+        
+      # creating env file
+      - name: .env creation
         run: |
           touch .env.prod
           echo NX_ENVIRONMENT="development" >> .env.prod
@@ -24,14 +27,38 @@ jobs:
           echo NX_FIREBASE_MEASUREMENT_ID='${{ secrets.NX_FIREBASE_MEASUREMENT_ID }}' >> .env.prod
           echo NX_FIREBASE_API_KEY='${{ secrets.NX_FIREBASE_API_KEY }}' >> .env.prod
           cat .env.prod
-      - name: "📚 Create firebasesc"
-        uses: "finnp/create-file-action@master"
-        env:
-          FILE_NAME: ".firebasesc"
-          FILE_DATA: "${{secrets.FIREBASESC}}"
-      - name: "👷 Installing Packages on Worker"
-        run: yarn install --frozen-lockfile && yarn build:app:prod
-      - name: "🔨 Deploying to Firebase"
+        
+      # installing packages and building the app
+      - name: Installing packages and buidling app
+        run: yarn install -frozen-lockfile && yarn build:app:prod
+        
+      # saving artifact for later use
+      - name: Make artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-artifacts
+          path: app-artifacts
+          retention-days: 1
+        
+  deploy:
+    name: "Deploying App"
+    environment: development
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      # checking out repo
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      # Getting artifacts
+      - name: Getting artifacts
+        uses: actions/download-artifact@master
+        with:
+          name: app-artifacts
+          path: app-artifacts
+      
+      # Pushing to Firebase
+      - name: Pushing to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'

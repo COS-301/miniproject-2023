@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
+      <ion-back-button defaultHref="/" class="off-white"></ion-back-button>
     </ion-buttons>
     <ion-title>Register</ion-title>
   </ion-toolbar>
@@ -20,7 +20,7 @@
     (submit)="register()">
     <ion-list class="ion-padding-vertical">
       <ion-item>
-        <ion-label position="floating" class="required">Email</ion-label>
+        <ion-label position="floating" class="required off-white white">Email</ion-label>
         <ion-input
           type="email"
           minlength="6"
@@ -37,7 +37,7 @@
         <small>{{ emailError }}</small>
       </ion-text>
       <ion-item>
-        <ion-label position="floating" class="required">Password</ion-label>
+        <ion-label position="floating" class="required off-white white">Password</ion-label>
         <ion-input
           [type]="showPassword ? 'text' : 'password'"
           minlength="6"
@@ -49,7 +49,7 @@
         <ion-icon
           [name]="showPassword ? 'eye-outline' : 'eye-off-outline'"
           slot="end"
-          class="ion-align-self-center"
+          class="ion-align-self-center off-white"
           (click)="toggleShowPassword()"></ion-icon>
       </ion-item>
       <ion-text
@@ -68,23 +68,15 @@
             [disabled]="!this.registerForm.valid || (busy$ | async)"
             type="submit">
             <ion-spinner *ngIf="busy$ | async"></ion-spinner>
-            <ion-text>Register</ion-text>
+            <ion-text>It's about time!</ion-text>
           </ion-button>
         </ion-col>
       </ion-row>
       <ion-row class="ion-padding-top">
-        <ion-col class="ion-text-center">
+        <ion-col class="ion-text-center off-white white">
           Already have an account?
           <ion-nav-link routerLink="/login">
-            <ion-text color="primary">Login</ion-text>
-          </ion-nav-link>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col class="ion-text-center">
-          Having trouble?
-          <ion-nav-link routerLink="/forgot">
-            <ion-text color="primary">Forgot Password</ion-text>
+            <ion-text color="primary" class="link">Login</ion-text>
           </ion-nav-link>
         </ion-col>
       </ion-row>

@@ -1,36 +1,36 @@
 import { isDevMode, NgModule } from '@angular/core';
 import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
 import {
-    FirebaseOptions,
-    initializeApp,
-    provideFirebaseApp
+  FirebaseOptions,
+  initializeApp,
+  provideFirebaseApp
 } from '@angular/fire/app';
 import { connectAuthEmulator, getAuth, provideAuth } from '@angular/fire/auth';
 import {
-    connectDatabaseEmulator,
-    getDatabase,
-    provideDatabase
+  connectDatabaseEmulator,
+  getDatabase,
+  provideDatabase
 } from '@angular/fire/database';
 import {
-    connectFirestoreEmulator,
-    enableMultiTabIndexedDbPersistence,
-    getFirestore,
-    provideFirestore
+  connectFirestoreEmulator,
+  enableMultiTabIndexedDbPersistence,
+  getFirestore,
+  provideFirestore
 } from '@angular/fire/firestore';
 import {
-    connectFunctionsEmulator,
-    getFunctions,
-    provideFunctions
+  connectFunctionsEmulator,
+  getFunctions,
+  provideFunctions
 } from '@angular/fire/functions';
 import { getMessaging, provideMessaging } from '@angular/fire/messaging';
 import {
-    getRemoteConfig,
-    provideRemoteConfig
+  getRemoteConfig,
+  provideRemoteConfig
 } from '@angular/fire/remote-config';
 import {
-    connectStorageEmulator,
-    getStorage,
-    provideStorage
+  connectStorageEmulator,
+  getStorage,
+  provideStorage
 } from '@angular/fire/storage';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -40,7 +40,6 @@ import { AuthState } from '@mp/app/auth/data-access';
 import { AuthModule } from '@mp/app/auth/feature';
 import { ErrorsState } from '@mp/app/errors/data-access';
 import { ErrorsModule } from '@mp/app/errors/feature';
-import { SettingsModule } from '@mp/app/settings/feature';
 import { NgxsActionsExecutingModule } from '@ngxs-labs/actions-executing';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
@@ -48,16 +47,12 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { NgxsModule } from '@ngxs/store';
-import { OtherUserModule } from 'libs/app/other-user/feature/src/lib/other-user.module';
+import { OtherUserModule } from '@mp/app/other-user/feature';
 import { MomentModule } from 'ngx-moment';
 import { CoreRouting } from './core.routing';
 import { CoreShell } from './core.shell';
 import { FeedModule } from '@mp/app/feed/feature';
-import { DeathScreenModule } from '@mp/app/death-screen/feature';
-import { MessagesModule } from '@mp/app/messages/feature';
-import { CreatePostModule } from '@mp/app/create-post/feature';
-import { SearchModule } from '@mp/app/search/feature';
-
+import { ForgotModule } from '@mp/app/forgot/feature';
 
 let resolvePersistenceEnabled: (enabled: boolean) => void;
 
@@ -94,10 +89,6 @@ const FIREBASE_OPTIONS: FirebaseOptions = {
   declarations: [CoreShell],
   entryComponents: [],
   imports: [
-    CreatePostModule,
-    DeathScreenModule,
-    SearchModule,
-    SettingsModule,
     BrowserModule,
     IonicModule.forRoot(),
     CoreRouting,
@@ -170,9 +161,10 @@ const FIREBASE_OPTIONS: FirebaseOptions = {
     AuthModule,
     ErrorsModule,
     OtherUserModule,
-    FeedModule
+    FeedModule,
+    ForgotModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [CoreShell],
 })
-export class CoreModule {}
+export class CoreModule { }
