@@ -3,6 +3,14 @@ describe('Login Page Test', () => {
   beforeEach(() => {
     cy.viewport(390, 844);
     cy.visit('http://localhost:4200/login');
+
+    cy.location('pathname').then((current) => {
+      if(current.includes('home/feed')) {
+        cy.get('ion-tab-button').contains('Profile').click();
+        cy.get('ion-button').contains('Logout').click();
+      }
+    });
+
   });
 
   it('Displays Content', () => {
@@ -62,11 +70,11 @@ describe('Login Page Test', () => {
     .type('Testing123?');
 
     cy.get('ion-button').contains("It's about time!").click();
-    cy.get('ion-button').contains("It's about time!").click();
-    if(!cy.url().should('include', '/home/feed'))
-    {
-      cy.get('ion-button').contains("It's about time!").click();
-    }
+    cy.location('pathname').then((current) => {
+      if(!current.includes('home/feed')) {
+        cy.get('ion-button').contains("It's about time!").click();
+      }
+    });
     cy.url().should('include', '/home/feed');
   });
 })
