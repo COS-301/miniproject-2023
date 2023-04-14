@@ -1,4 +1,4 @@
-describe('Welcome Page Test', () => {
+describe('Terms of Service Page Test', () => {
 
   beforeEach(() => {
     cy.viewport(390, 844);
