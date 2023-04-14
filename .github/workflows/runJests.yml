@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: "18"
       - name: Install Firebase
-        run: yarn install -g firebase-tools
+        run: yarn global add firebase-tools
       - run: yarn install --frozen-lockfile
       - run: firebase emulators:exec --project timehive-29588 'npx jest'
       - name: Upload coverage reports to Codecov
