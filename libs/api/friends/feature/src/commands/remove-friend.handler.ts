@@ -15,6 +15,7 @@ export class RemoveFriendHandler implements ICommandHandler<RemoveFriendCommand,
 
         const responseData : Status = status;
         const response : RemoveFriendResponse = {"status": responseData};
+        
 
         return response;
     }

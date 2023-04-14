@@ -22,7 +22,6 @@ export class GetFriendsHandler implements ICommandHandler<GetFriendsCommand, Get
         }
 
         const responseData : FriendsList = {"friendFound" : flag, "list" : getFriendsDoc.data};
-
         const response : GetFriendsResponse = {"friends" : responseData};
 
         return response;
