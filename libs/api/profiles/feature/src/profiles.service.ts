@@ -1,4 +1,7 @@
 import {
+  CheckRelationshipCommand,
+  ICheckRelationshipResponse,
+  ICheckRelationshipRequest,
     IUpdateAccountDetailsRequest,
     IUpdateAccountDetailsResponse,
     IUpdateAddressDetailsRequest,
@@ -65,5 +68,14 @@ export class ProfilesService {
       UpdateOccupationDetailsCommand,
       IUpdateOccupationDetailsResponse
     >(new UpdateOccupationDetailsCommand(request));
+  }
+
+  async checkRelationship(
+    request: ICheckRelationshipRequest
+  ): Promise<ICheckRelationshipResponse> {
+    return await this.commandBus.execute<
+      CheckRelationshipCommand,
+      ICheckRelationshipResponse
+    >(new CheckRelationshipCommand(request));
   }
 }
