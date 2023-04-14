@@ -52,4 +52,21 @@ describe('Login Page Test', () => {
     cy.url().should('include', '/register');
   });
 
+  it('Logs user in', () => {
+    cy.get('ion-input[formControlName="email"]')
+    .find('input')
+    .type('test@test.com');
+
+    cy.get('ion-input[formControlName="password"]')
+    .find('input')
+    .type('Testing123?');
+
+    cy.get('ion-button').contains("It's about time!").click();
+    cy.get('ion-button').contains("It's about time!").click();
+    if(!cy.url().should('include', '/home/feed'))
+    {
+      cy.get('ion-button').contains("It's about time!").click();
+    }
+    cy.url().should('include', '/home/feed');
+  });
 })
