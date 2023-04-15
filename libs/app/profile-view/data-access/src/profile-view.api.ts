@@ -93,4 +93,14 @@ export class ProfileViewApi {
   //     'updateComment'
   //   )(request);
   // }
+
+  // async createFriendRequest(request: ICreateFriendRequestRequest) {
+  //   return await httpsCallable<
+  //     ICreateFriendRequestRequest,
+  //     ICreateFriendRequestResponse
+  //   >(
+  //     this.functions,
+  //     'createFriendRequest'
+  //   )(request);
+  // }
 }
