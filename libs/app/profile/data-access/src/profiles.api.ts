@@ -61,6 +61,7 @@ export class ProfilesApi {
 
   async addPostDetails(request: IAddPostRequest) {
     console.log("profiles.api.addPostsDetails ");
+    console.log(JSON.stringify(request));
     return await httpsCallable<
     IAddPostRequest,
     IAddPostResponse

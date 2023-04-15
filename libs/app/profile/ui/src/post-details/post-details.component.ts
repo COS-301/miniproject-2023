@@ -20,13 +20,15 @@ export class PostDetailsComponent {
   @Select(actionsExecuting([CreatePostDetails]))
   busy$!: Observable<ActionsExecuting>;
   postDetailsForm = this.fb.group({
-    content: ['', [Validators.minLength(4), Validators.maxLength(64)]],
+    content: [''],
     caption: ['', [Validators.minLength(4), Validators.maxLength(64)]],
     hashtag: ['', [Validators.minLength(4), Validators.maxLength(64)]],
+    listing: [0]
   });
   showPassword = false;
 
   get content() {
+    console.debug(this.postDetailsForm.get('content')?.value?.split(",")[1].slice(0,10));
     return this.postDetailsForm.get('content');
   }
 
@@ -39,16 +41,39 @@ export class PostDetailsComponent {
   }
 
   createNewPost() {
+    console.log("Trying to create");
     if (this.postDetailsForm.invalid) {
+      console.log("Invalid");
       return;
     }
+
+    const strCon = this.postDetailsForm.get('content')?.value?.split(",")[1].slice(0,10);
+    console.log("Content " + strCon);
     const postDetails: IPostDetails = {
-      content: this.postDetailsForm.get('content')?.value,
+      content: strCon,
       caption: this.postDetailsForm.get('caption')?.value,
       hashtag: stringToHashtag(this.postDetailsForm.get('hashtag')?.value),
+      listing: this.postDetailsForm.get('listing')?.value
     };
     this.store.dispatch(new CreateNewPost(postDetails));
   }
+
+  onFileChange(event: any) {
+    if (event.target.files && event.target.files[0]) {    
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        const base64Image = e.target.result;
+        this.postDetailsForm?.get('content')?.setValue(base64Image);
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+  
+  setHashtag(hashtag: string) {
+    this.postDetailsForm?.get('hashtag')?.setValue(hashtag);
+  }
+  
 
   // get ageError(): string {
   //   if (this.age?.errors?.['required']) return 'Age is required';

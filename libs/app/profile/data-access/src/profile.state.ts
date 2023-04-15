@@ -421,13 +421,13 @@ export class ProfileState {
     try {
       const state = ctx.getState();
       const userId = state.profile?.userId;
-      const content = state.postDetailsForm.model.content;
+      const content = state.postDetailsForm.model.content?.split(",")[1].slice(0,50);
       const createdBy = state.profile?.userId;
       const caption = state.postDetailsForm.model.caption;
       const hashtag = state.postDetailsForm.model.hashtag;
       const ownedBy = state.profile?.userId; // We can use 'createdBy' from the action payload
       const postID = state.profile?.userId + "- " + state.profile?.posts?.length;
-      const likes = 0;
+      const likes = state.postDetailsForm.model.likes;
       const createdAt = Timestamp.now();
 
       if (!userId || !content || !caption || !hashtag)
@@ -452,7 +452,6 @@ export class ProfileState {
       const request: IAddPostRequest = {
         profile: {
           userId,
-          
         },
         post: details
 

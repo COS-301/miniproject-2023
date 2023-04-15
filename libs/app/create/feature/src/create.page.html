@@ -13,7 +13,11 @@
 border-bottom: 1px solid grey;
 position: absolute; "></div>
 
-<br>
+<ng-container *ngIf="(profile$ | async) as profile;">
+    <ms-profile-post-details-component></ms-profile-post-details-component>
+  </ng-container>
+
+<!-- <br>
 
     <div
     style=" border-radius: 5%; margin: auto; width: 80%; height: 40%; background-color: rgb(53,107,89); text-align: center; position: relative;">
@@ -29,12 +33,10 @@ position: absolute; "></div>
     </ion-item>
   </ion-list>
 
-  <ng-container *ngIf="(profile$ | async) as profile;">
-    <ms-profile-post-details-component></ms-profile-post-details-component>
-  </ng-container>
-  <!-- <app-post-component (postCreated)="onPostCreated()"></app-post-component> -->
+  
+  
 
-    <!-- <div style = "
+    <div style = "
     margin: auto;
     width: 20%;
     padding: 10px;
@@ -46,7 +48,7 @@ position: absolute; "></div>
 
 border-bottom: 1px solid grey;
 position: absolute; "></div> -->
-    <ion-grid >
+    <!-- <ion-grid >
       <ion-row>
         <ion-col size = "4" style="text-align: center;"> <ion-button size = "small" color = "success">#nature</ion-button> </ion-col>
         <ion-col size = "4"style="text-align: center;"><ion-button size = "small" color = "warning">#funny</ion-button> </ion-col>
@@ -85,4 +87,4 @@ position: absolute; "></div> -->
 
 
 
-</ion-content>
+</ion-content> --> -->
