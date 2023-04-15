@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input, ChangeDetectorRef, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { FilterList, FilterType, Post, PostList } from '@mp/api/feed/util';
+import { Store } from '@ngxs/store';
 
 @Component({
   selector: 'mp-feed-closed',
@@ -7,13 +8,15 @@ import { FilterList, FilterType, Post, PostList } from '@mp/api/feed/util';
   styleUrls: ['./feed-closed.component.scss']
 })
 export class FeedClosedComponent {
-  filters: FilterList = {
-    list: [],
-  };
 
-  posts: PostList = {
+  @Input() posts : PostList = {
     postsFound : false,
     list : [],
+  };
+
+
+  filters: FilterList = {
+    list: [],
   };
 
   constructor(){
@@ -26,22 +29,11 @@ export class FeedClosedComponent {
       FilterType.SPORT_FILTER,
       FilterType.FOOD_FILTER,
       FilterType.GAMING_FILTER)
-
-      this.posts.postsFound = true;
-      this.posts.list?.push(
-        {
-          id: '1',
-          title: 'Post 1',
-          author: {},
-          description: 'Description 1',
-          discipline: {},
-          time: 0,
-        } as Post,
-      )
   }
 
   @Output() filterChanged = new EventEmitter<FilterType>();
   @Output() setCurrentPost = new EventEmitter<Post>();
+
 
   onSetFilters(data:FilterType){
     this.filterChanged.emit(data);
@@ -50,5 +42,7 @@ export class FeedClosedComponent {
   setPost(data:Post){
     this.setCurrentPost.emit(data);
   }
+
+
 }
 

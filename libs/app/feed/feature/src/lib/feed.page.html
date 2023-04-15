@@ -1,6 +1,6 @@
 <ion-content *ngIf="feedOpen==false">
-  <mp-feed-closed (filterChanged)="setFilters($event)" (setCurrentPost)="setPost($event)"></mp-feed-closed>
+  <mp-feed-closed [posts]="postsData" (filterChanged)="setFilters($event)" (setCurrentPost)="setPost($event)"></mp-feed-closed>
 </ion-content>
 <ion-content *ngIf="feedOpen==true">
-  <mp-feed-open></mp-feed-open>
+  <mp-feed-open [currentPost]="selectedPost" [posts]="postsData" (setCurrentPost)="setPost($event)" (retutnToFeedClosed)="closeFeed()"></mp-feed-open>
 </ion-content>

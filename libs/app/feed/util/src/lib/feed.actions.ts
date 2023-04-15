@@ -11,7 +11,6 @@ export class SetFilterList {
 
 export class SetPostList {
   static readonly type = '[Feed] SetPostList';
-  constructor(public readonly postList: PostList | null) {}
 }
 
 export class SetPost {

@@ -18,12 +18,15 @@ import {
   UserTime,
   Discipline,
   FilterType,
+  FetchPostsRequest,
+  FetchPostsResponse,
 } from '@mp/api/feed/util';
 
 import { IUser } from '@mp/api/users/util';
 
 import { FeedApi } from './feed.api';
 import { SetError } from '@mp/app/errors/util';
+import { fetchPosts } from '@mp/api/core/feature';
 
 export interface FeedStateModel {
 
@@ -164,7 +167,7 @@ export class FeedState {
 
   @Selector()
   static feed(state: FeedStateModel) {
-    return state;
+    return state.PostList;
   }
 
   @Action(SetFilterList)
@@ -184,7 +187,7 @@ export class FeedState {
             draft.FilterList = {model : {list : payload.list}, dirty : false, status : '', errors : {}};
         }));
 
-
+        ctx.dispatch(new SetPostList());
       return;
     }catch(error){
       return ctx.dispatch(new SetError((error as Error).message));
@@ -193,15 +196,45 @@ export class FeedState {
 
   @Action(SetPostList)
   async setPostList(
-    ctx: StateContext<FeedStateModel>,
-    {postList}: SetPostList)
+    ctx: StateContext<FeedStateModel>)
     {
-    console.log('postList: ', postList);
-    return ctx.setState(
-      produce((draft) => {
-        draft.postList = postList;
-      })
-    )
+
+      const rqst: FetchPostsRequest = {
+        filters : this.store.selectSnapshot(FeedState).filterList.list,
+      };
+
+
+      const listOfPosts = await this.feedApi.fetchPosts$(rqst);
+
+      const arrOfPosts: Post[] = [];
+
+      listOfPosts.data.posts.list?.forEach((post) => {
+        arrOfPosts.push({
+          id : post.id,
+          title : post.title,
+          author : post.author,
+          description : post.description,
+          content : post.content,
+          discipline : post.discipline,
+          time : post.time,
+        });
+      });
+
+      console.table(arrOfPosts);
+
+      ctx.setState(
+        produce((draft) => {
+            draft.PostList = {
+              model: {
+                postFound: true,
+                list: arrOfPosts,
+              },
+              dirty: false,
+              status: '',
+              errors: {},
+            }
+        }));
+
   }
 
   @Action(SetPost)
@@ -209,9 +242,7 @@ export class FeedState {
     ctx: StateContext<FeedStateModel>,
     {payload}: SetPost
     ){
-    console.log('post: ', payload);
     try{
-
 
       ctx.setState(
         produce((draft) => {
