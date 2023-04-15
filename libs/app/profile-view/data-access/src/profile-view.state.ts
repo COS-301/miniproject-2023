@@ -1,12 +1,14 @@
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import { IProfile, IGetProfileRequest } from "@mp/api/profiles/util"
-import { GetCommentsRequest, GetProfileRequest, SetProfileView } from "@mp/app/profile-view/util"
+import { CreateCommentRequest, GetCommentsRequest, GetProfileRequest, SetProfileView } from "@mp/app/profile-view/util"
 import { Injectable } from '@angular/core';
 import { AuthState } from '@mp/app/auth/data-access';
 import { SetError } from '@mp/app/errors/util';
 import { ProfileViewApi } from './profile-view.api';
 import produce from 'immer';
 import { IMemory } from '@mp/api/memories/util';
+import { IComment } from '@mp/api/comments/util';
+import { Timestamp } from 'firebase-admin/firestore';
 
 export interface ProfileViewStateModel {
     profile: IProfile;
@@ -103,6 +105,29 @@ export class ProfileViewState {
     //         return ctx.dispatch(new SetProfileView(response.profile));
     //     }
     //     catch(error){
+    //         return ctx.dispatch(new SetError((error as Error).message));
+    //     }
+    // }
+
+    // @Action(CreateCommentRequest) 
+    // async createCommentRequest(ctx: StateContext<ProfileViewStateModel>, action: CreateCommentRequest) {
+    //     try{
+    //         const state = ctx.getState();
+
+    //         const request : IComment = { //data needs to be added
+    //             userId: '',
+    //             commentId: '',
+    //             username: '',
+    //             profileImgUrl: '',
+    //             text: '',
+    //             created: new Timestamp(0,0)
+    //         }
+
+    //         const responseRef = this.profileViewApi.createComment(request);
+    //         const response = response.data;
+    //         return ctx.dispatch(new SetProfileView(response.profile));
+    //     }
+    //     catch (error) {
     //         return ctx.dispatch(new SetError((error as Error).message));
     //     }
     // }

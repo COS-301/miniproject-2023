@@ -73,4 +73,14 @@ export class ProfileViewApi {
   //     'getComments'
   //   )(request);
   // }
+
+  // async createComment(request: ICreateCommentRequest) {
+  //   return await httpsCallable<
+  //     ICreateCommentRequest,
+  //     ICreateCommentResponse
+  //   >(
+  //     this.functions,
+  //     'createComment'
+  //   )(request);
+  // }
 }
