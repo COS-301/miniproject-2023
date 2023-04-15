@@ -12,6 +12,7 @@ import { FeedApi, FeedState } from '@mp/app/feed/data-access';
 @NgModule({
   imports: [CommonModule, IonicModule, FeedRouting, FeedUIModule, FooterModule, NgxsModule.forFeature([FeedState])],
   declarations: [FeedPage],
+  providers: [FeedApi],
   //exports: [FeedPage],
 })
 export class FeedModule {}
