@@ -133,7 +133,7 @@ export class ProfileViewState {
     // }
 
     // @Action(UpdateCommentRequest) 
-    // async updateCommentRequest(ctx: StateContext<ProfileViewStateModel>, action: CreateCommentRequest) {
+    // async updateCommentRequest(ctx: StateContext<ProfileViewStateModel>, action: UpdateCommentRequest) {
     //     try{
     //         const state = ctx.getState();
 
