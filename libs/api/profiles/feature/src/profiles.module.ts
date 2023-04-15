@@ -19,6 +19,9 @@ import {
   ProfileCreatedHandler,
   ProfileStatusUpdatedHandler,
 } from './events';
+
+import { GetProfileHandler } from './queries';
+
 import { ProfilesSagas } from './profiles.sagas';
 import { ProfilesService } from './profiles.service';
 export const CommandHandlers = [
@@ -39,10 +42,11 @@ export const EventHandlers = [
   AccountDetailsUpdatedHandler,
   ProfileStatusUpdatedHandler,
 ];
+export const QueryHandlers = [GetProfileHandler];
 
 @Module({
   imports: [CqrsModule, ProfilesDataAccessModule],
-  providers: [ProfilesService, ...CommandHandlers, ...EventHandlers, ProfilesSagas],
+  providers: [ProfilesService, ...CommandHandlers, ...EventHandlers, ...QueryHandlers, ProfilesSagas],
   exports: [ProfilesService],
 })
 export class ProfilesModule {}
