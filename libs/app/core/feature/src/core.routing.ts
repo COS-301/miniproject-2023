@@ -46,14 +46,14 @@ const routes: Routes = [
     loadChildren: () =>
       import('@mp/app/privacy/feature').then((m) => m.PrivacyModule),
   },
-  // {
-  //   path: 'search',
-  //   pathMatch: 'full',
-  //   canActivate: [AuthGuard],
-  //   data: { authGuardPipe: redirectLoggedIn },
-  //   loadChildren: () =>
-  //     import ('@mp/app/search/feature').then((m)=>m.SearchModule),
-  // },
+   {
+     path: 'search',
+     pathMatch: 'full',
+     canActivate: [AuthGuard],
+     data: { authGuardPipe: redirectLoggedIn },
+     loadChildren: () =>
+       import ('@mp/app/search/feature').then((m)=>m.SearchModule),
+   },
   // {
   //   path: 'feed',
   //   pathMatch: 'full',

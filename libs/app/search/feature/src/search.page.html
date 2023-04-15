@@ -1,3 +1,19 @@
-<ion-searchbar show-clear-button="focus"></ion-searchbar>
-<mp-timer></mp-timer>
+<ion-content [fullscreen]="true">
+  <div class="center-container ion-align-items-center">
+    <ion-grid>
+      <ion-row class="ion-text-center">
+          <ion-col>
+            <ion-text class="textColor">
+              <h2>Search</h2>
+            </ion-text>
+          </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-searchbar class="search" show-clear-button="focus"></ion-searchbar>
+      </ion-row>
+    </ion-grid>
+    <mp-timer></mp-timer>
+
+  </div>
+</ion-content>
 <mp-footer-component></mp-footer-component>

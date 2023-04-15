@@ -1,9 +1,15 @@
+ion-footer {
+  background-color: #242423;
+  display: flex;
+}
 ion-icon {
-  color: black;
+  color: #0E8C00;;
 }
 ion-button {
   --border-radius: 0;
-  --border-color: #000;
+  --border-color: #0E8C00;;
   --border-style: solid;
   --border-width: 1px;
 }
+
+
