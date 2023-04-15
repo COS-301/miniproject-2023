@@ -17,6 +17,7 @@ import {
   IGetProfileRequest,
   IGetProfileResponse,
   GetProfileQuery,
+  GetDeadMemoriesQuery,
 } from '@mp/api/profiles/util';
 import { Injectable } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
@@ -57,5 +58,9 @@ export class ProfilesService {
 
   async getProfileRequest(request: IGetProfileRequest): Promise<IGetProfileResponse> {
     return await this.queryBus.execute<GetProfileQuery, IGetProfileResponse>(new GetProfileQuery(request));
+  }
+
+  async getDeadMemoriesRequest(request: IGetProfileRequest): Promise<IGetProfileResponse> {
+    return await this.queryBus.execute<GetDeadMemoriesQuery, IGetProfileResponse>(new GetDeadMemoriesQuery(request));
   }
 }

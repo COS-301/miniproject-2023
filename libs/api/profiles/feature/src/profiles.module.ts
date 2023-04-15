@@ -20,7 +20,7 @@ import {
   ProfileStatusUpdatedHandler,
 } from './events';
 
-import { GetProfileHandler } from './queries';
+import { GetProfileHandler, GetDeadMemoriesHandler } from './queries';
 
 import { ProfilesSagas } from './profiles.sagas';
 import { ProfilesService } from './profiles.service';
@@ -42,7 +42,7 @@ export const EventHandlers = [
   AccountDetailsUpdatedHandler,
   ProfileStatusUpdatedHandler,
 ];
-export const QueryHandlers = [GetProfileHandler];
+export const QueryHandlers = [GetProfileHandler, GetDeadMemoriesHandler];
 
 @Module({
   imports: [CqrsModule, ProfilesDataAccessModule],

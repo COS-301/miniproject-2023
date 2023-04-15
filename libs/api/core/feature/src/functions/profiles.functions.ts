@@ -64,3 +64,11 @@ export const getUserProfile = functions.https.onCall(
     return service.getProfileRequest(request);
   },
 );
+
+export const getDeadMemories = functions.https.onCall(
+  async (request: IGetProfileRequest): Promise<IGetProfileResponse> => {
+    const app = await NestFactory.createApplicationContext(CoreModule);
+    const service = app.get(ProfilesService);
+    return service.getDeadMemoriesRequest(request);
+  },
+);

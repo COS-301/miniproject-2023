@@ -1,27 +1,23 @@
 import { ProfilesRepository } from '@mp/api/profiles/data-access';
-import { IGetProfileResponse, GetProfileQuery, IProfile } from '@mp/api/profiles/util';
+import { IGetProfileResponse, GetDeadMemoriesQuery, IProfile } from '@mp/api/profiles/util';
 //import { IUser } from '@mp/api/users/util';
 import { QueryHandler, EventPublisher, IQueryHandler } from '@nestjs/cqrs';
 //import { Profile } from '../models';
 import { IMemory } from '@mp/api/memories/util';
 
-@QueryHandler(GetProfileQuery)
-export class GetProfileHandler implements IQueryHandler<GetProfileQuery, IGetProfileResponse> {
+@QueryHandler(GetDeadMemoriesQuery)
+export class GetDeadMemoriesHandler implements IQueryHandler<GetDeadMemoriesQuery, IGetProfileResponse> {
   constructor(private readonly publisher: EventPublisher, private readonly repository: ProfilesRepository) {}
 
-  async execute(query: GetProfileQuery) {
+  async execute(query: GetDeadMemoriesQuery) {
     const request = query.request;
 
-    const profileDetails = await this.repository.getProfileDetails(request.user);
-    const profileDetailsData = profileDetails.data();
-
-    const profileMemories = await this.repository.getProfileMemories(request.user);
-    const CurrentMemories: IMemory[] = [];
+    const profileMemories = await this.repository.getDeadMemories(request.user);
 
     const profile: IProfile = {
       userId: request.user.userId,
       memories: profileMemories,
-      user: profileDetailsData,
+      user: null,
     };
 
     const response: IGetProfileResponse = { profile };
