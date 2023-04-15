@@ -2,7 +2,10 @@ name: Deploy to Firebase on push
 on:
   push:
     branches:
-      - main
+      - dev
+  pull-request:
+    branches:
+      - dev
 
 jobs:
   build:
