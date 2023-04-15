@@ -1,4 +1,4 @@
-import { IMemory } from '@mp/api/memories/util'
+import { IMemory } from '../interfaces'
 
 export interface IGetCommentsRequest {
 	memory : IMemory
