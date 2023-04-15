@@ -49,53 +49,84 @@ export class ProfilesRepository {
   }
 
   async getProfileMemories(profile: IProfile): Promise<IMemory[]> {
-    const MemorySnapshots = await admin
+    const memoriesSnapshot = await admin
       .firestore()
       .collection('memories')
       .where('userId', '==', profile.userId)
+      // .where('username', '==', profile.user?.username) // kinda want to return profile by username
       .where('alive', '==', true)
       .orderBy('created')
       .get();
 
     const memories: IMemory[] = [];
 
-    MemorySnapshots.forEach((doc) => {
-      //console.log(doc.data());
+    for (const memoryDoc of memoriesSnapshot.docs) {
+      const memory = memoryDoc.data() as IMemory;
+      delete memory.userId;
+      
+      const commentsSnapshot = await memoryDoc.ref.collection('comments').get();
+      memory.comments = [];
 
-      //console.log("Comment Here: "+doc.data()["comments"]);
+      for (const commentDoc of commentsSnapshot.docs) {
+        const comment = commentDoc.data() as IComment;
+        delete comment.userId;
+        memory.comments?.push(comment);
+      }
 
-      const CommentsSnapshots = admin
-        .firestore()
-        .collection(`memories/${doc.id}/comments`)
-        .get()
-        .then((snapshot) => {
-          const CurrentComments: IComment[] = [];
-          snapshot.forEach((i) => {
-            const comment = i.data() as IComment;
-            CurrentComments.push(comment);
-          });
-          return CurrentComments;
-        })
-        .then((item) => {
-          doc.data().comments = item;
-          console.log(doc.data().comments);
-        });
-
-      //console.log(CurrentComments);
-      //console.log(CurrentComments);
-      /*
-        const memory = doc.data() as IMemory;
-        
-
-        memory.comments.forEach((item)=>{
-
-        })
-
-        memory.userId = "";
-        */
-      memories.push(doc.data());
-    });
+      memories.push(memory);
+    }
 
     return memories;
   }
+  
+  // async getProfileMemories(profile: IProfile): Promise<IMemory[]> {
+  //   const MemorySnapshots = await admin
+  //     .firestore()
+  //     .collection('memories')
+  //     .where('userId', '==', profile.userId)
+  //     .where('alive', '==', true)
+  //     .orderBy('created')
+  //     .get();
+
+  //   const memories: IMemory[] = [];
+
+  //   MemorySnapshots.forEach((doc) => {
+  //     //console.log(doc.data());
+
+  //     //console.log("Comment Here: "+doc.data()["comments"]);
+
+  //     const CommentsSnapshots = admin
+  //       .firestore()
+  //       .collection(`memories/${doc.id}/comments`)
+  //       .get()
+  //       .then((snapshot) => {
+  //         const CurrentComments: IComment[] = [];
+  //         snapshot.forEach((i) => {
+  //           const comment = i.data() as IComment;
+  //           CurrentComments.push(comment);
+  //         });
+  //         return CurrentComments;
+  //       })
+  //       .then((item) => {
+  //         doc.data().comments = item;
+  //         console.log(doc.data().comments);
+  //       });
+
+  //     //console.log(CurrentComments);
+  //     //console.log(CurrentComments);
+  //     /*
+  //       const memory = doc.data() as IMemory;
+        
+
+  //       memory.comments.forEach((item)=>{
+
+  //       })
+
+  //       memory.userId = "";
+  //       */
+  //     memories.push(doc.data());
+  //   });
+
+  //   return memories;
+  // }
 }
