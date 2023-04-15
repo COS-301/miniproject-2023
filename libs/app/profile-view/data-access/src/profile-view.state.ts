@@ -131,4 +131,27 @@ export class ProfileViewState {
     //         return ctx.dispatch(new SetError((error as Error).message));
     //     }
     // }
+
+    // @Action(UpdateCommentRequest) 
+    // async updateCommentRequest(ctx: StateContext<ProfileViewStateModel>, action: CreateCommentRequest) {
+    //     try{
+    //         const state = ctx.getState();
+
+    //         const request : IComment = { //data needs to be added
+    //             userId: '',
+    //             commentId: '',
+    //             username: '',
+    //             profileImgUrl: '',
+    //             text: '',
+    //             created: new Timestamp(0,0)
+    //         }
+
+    //         const responseRef = this.profileViewApi.updateComment(request);
+    //         const response = response.data;
+    //         return ctx.dispatch(new SetProfileView(response.profile));
+    //     }
+    //     catch (error) {
+    //         return ctx.dispatch(new SetError((error as Error).message));
+    //     }
+    // }
 }

@@ -83,4 +83,14 @@ export class ProfileViewApi {
   //     'createComment'
   //   )(request);
   // }
+
+  // async updateComment(request: IUpdateCommentRequest) {
+  //   return await httpsCallable<
+  //     IUpdateCommentRequest,
+  //     IUpdateCommentResponse
+  //   >(
+  //     this.functions,
+  //     'updateComment'
+  //   )(request);
+  // }
 }

@@ -16,3 +16,7 @@ export class GetCommentsRequest {
 export class CreateCommentRequest {
     static readonly type = '[ProfileView] CreateCommentRequest';
 }
+
+export class UpdateCommentRequest {
+    static readonly type = '[ProfileView] UpdateCommentRequest';
+}
