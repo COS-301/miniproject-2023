@@ -1,9 +1,5 @@
 name: Deploy to Firebase on push
-on:
-  push:
-    branches:
-      - dev
-  pull:
+on: [push, pull_request]
     branches:
       - dev
 
