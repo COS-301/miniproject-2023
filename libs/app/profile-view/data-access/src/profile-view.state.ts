@@ -1,11 +1,12 @@
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import { IProfile, IGetProfileRequest } from "@mp/api/profiles/util"
-import { GetProfileRequest, SetProfileView } from "@mp/app/profile-view/util"
+import { GetCommentsRequest, GetProfileRequest, SetProfileView } from "@mp/app/profile-view/util"
 import { Injectable } from '@angular/core';
 import { AuthState } from '@mp/app/auth/data-access';
 import { SetError } from '@mp/app/errors/util';
 import { ProfileViewApi } from './profile-view.api';
 import produce from 'immer';
+import { IMemory } from '@mp/api/memories/util';
 
 export interface ProfileViewStateModel {
     profile: IProfile;
@@ -73,4 +74,36 @@ export class ProfileViewState {
         })
         );
     }
+
+    // @Action(GetCommentsRequest)
+    // getCommentsRequest(ctx: StateContext<ProfileViewStateModel>) {
+    //     try {
+    //         const state = ctx.getState();
+    //         const _userId = state.profile.userId;
+    //         const _memories = state.profile?.memories;
+            
+    //         let _memory: IMemory;
+    //         _memories?.map((m)=>{
+    //             if (m.userId === _userId){
+    //                 _memory = m;
+    //             }
+    //             return m;
+    //         });
+
+    //         const _memoryId = _memory.memoryId;
+
+    //         const request: IGetCommentsRequest = {
+    //             memory: {
+    //                 userId: _userId,
+    //                 memoryId: _memoryId
+    //             }
+    //         }
+    //         const responseRef = await this.profileViewApi.getComments(request);
+    //         const response = responseRef.data;
+    //         return ctx.dispatch(new SetProfileView(response.profile));
+    //     }
+    //     catch(error){
+    //         return ctx.dispatch(new SetError((error as Error).message));
+    //     }
+    // }
 }

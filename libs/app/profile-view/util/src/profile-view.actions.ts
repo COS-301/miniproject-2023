@@ -8,3 +8,7 @@ export class SetProfileView {
     static readonly type = '[ProfileView] SetProfileView';
     constructor(public readonly profile: IProfile) {}
 }
+
+export class GetCommentsRequest {
+    static readonly type = '[ProfileView] GetCommentsRequest';
+}

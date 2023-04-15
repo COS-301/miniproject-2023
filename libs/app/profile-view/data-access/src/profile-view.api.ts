@@ -63,4 +63,14 @@ export class ProfileViewApi {
   //     'createMemory'
   //   )(request);
   // }
+
+  // async getComments(request: IGetCommentsRequest) {
+  //   return await httpsCallable<
+  //     IGetCommentsRequest,
+  //     IGetCommentsResponse
+  //   >(
+  //     this.functions,
+  //     'getComments'
+  //   )(request);
+  // }
 }
