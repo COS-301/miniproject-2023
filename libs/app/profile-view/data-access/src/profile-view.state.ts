@@ -172,4 +172,22 @@ export class ProfileViewState {
     //         return ctx.dispatch(new SetError((error as Error).message));
     //     }
     // }
+
+    // @Action(UpdateFriendRequest) 
+    // async updateFriendRequest(ctx: StateContext<ProfileViewStateModel>, action: UpdateFriendRequest) {
+    //     try{
+    //         const state = ctx.getState();
+
+    //         const request : IUser = { //data needs to be added
+    //             userId: '',
+    //         }
+
+    //         const responseRef = this.profileViewApi.updateFriendRequest(request);
+    //         const response = response.data;
+    //         return ctx.dispatch(new SetProfileView(response.profile));
+    //     }
+    //     catch (error) {
+    //         return ctx.dispatch(new SetError((error as Error).message));
+    //     }
+    // }
 }

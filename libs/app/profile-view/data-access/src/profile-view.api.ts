@@ -103,4 +103,14 @@ export class ProfileViewApi {
   //     'createFriendRequest'
   //   )(request);
   // }
+
+  // async updateFriendRequest(request: IUpdateFriendRequestRequest) {
+  //   return await httpsCallable<
+  //     IUpdateFriendRequestRequest,
+  //     IUpdateFriendRequestResponse
+  //   >(
+  //     this.functions,
+  //     'updateFriendRequest'
+  //   )(request);
+  // }
 }
