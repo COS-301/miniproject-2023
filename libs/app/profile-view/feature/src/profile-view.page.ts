@@ -5,6 +5,8 @@ import { AddMemoryPageComponent, Memory, ProfileImage } from '@mp/app/shared/fea
 import { ReviveMemoryPageComponent } from './lib/revive-memory/revive-memory.page';
 import { MenubarService, ProfileImageService } from '@mp/app/services/feature';
 import { formatDate } from '@angular/common';
+import { GetProfileRequest } from '../../util/src/profile-view.actions';
+import { Store } from '@ngxs/store';
 
 @Component({
   selector: 'app-profile-view',
@@ -38,12 +40,15 @@ export class ProfileViewPageComponent implements OnInit {
   profileImage: ProfileImage;
 
   constructor(
+    private store: Store,
     public modalController: ModalController,
     private profileImageService: ProfileImageService,
-    private menubarService: MenubarService,
+    private menubarService: MenubarService
   ) {
     this.profileImage = profileImageService.profileImage;
   }
+
+  data:any;
 
   ngOnInit(): void {
     this.profileImage = this.profileImageService.profileImage;
@@ -128,4 +133,9 @@ export class ProfileViewPageComponent implements OnInit {
       return `${seconds} second${seconds > 1 ? 's' : ''} ago`;
     }
   }
+
+  // //function that executes when the page is about to enter
+  // ionViewWillEnter() {
+  //   this.store.dispatch(new GetProfileRequest());
+  // }
 }

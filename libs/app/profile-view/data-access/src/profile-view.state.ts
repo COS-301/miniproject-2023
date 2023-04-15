@@ -1,25 +1,40 @@
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import { IProfile, IGetProfileRequest } from "@mp/api/profiles/util"
-import { GetProfileRequest } from "@mp/app/profile-view/util"
+import { GetProfileRequest, SetProfileView } from "@mp/app/profile-view/util"
 import { Injectable } from '@angular/core';
 import { AuthState } from '@mp/app/auth/data-access';
 import { SetError } from '@mp/app/errors/util';
+import { ProfileViewApi } from './profile-view.api';
+import produce from 'immer';
 
 export interface ProfileViewStateModel {
-    profile: IProfile | null;
+    profile: IProfile;
 }
 
 @State<ProfileViewStateModel>({
     name: 'profileView',
     defaults: {
-        profile: null
+        profile: {
+            user: null,
+            memories: [],
+
+            userId: '',
+            accountDetails: null,
+            personalDetails:null,
+            contactDetails: null,
+            addressDetails: null,
+            occupationDetails: null,
+            status: null,
+            created: null,
+
+        }
     },
 })
 
 @Injectable()
 export class ProfileViewState {
     constructor(
-        // private readonly profileViewApi: ProfileViewApi
+        private readonly profileViewApi: ProfileViewApi,
         private readonly store: Store
     ){}
 
@@ -28,12 +43,34 @@ export class ProfileViewState {
         return state.profile;
     }
 
-    // @Action(GetProfileRequest)
-    // async getProfileRequest(ctx: StateContext<ProfileViewStateModel>) {
-    //     try {
-    //         const state = ctx.getState();
-    //         const userId = state.profile?.userId;
-    //         const username = state.profile?.user?.username;
-    //     }
-    // }
+    @Action(GetProfileRequest)
+    async getProfileRequest(ctx: StateContext<ProfileViewStateModel>) {
+        try {
+            const state = ctx.getState();
+            const _userId = state.profile?.userId;
+            const _username = state.profile?.accountDetails?.displayName;
+
+            const request: IGetProfileRequest = {
+                user: {
+                    userId: _userId,
+                    username: _username
+                }
+            }
+            const responseRef = await this.profileViewApi.getUserProfile(request);
+            const response = responseRef.data;
+            return ctx.dispatch(new SetProfileView(response.profile));
+        }
+        catch(error){
+            return ctx.dispatch(new SetError((error as Error).message));
+        }
+    }
+
+    @Action(SetProfileView)
+    setProfile(ctx: StateContext<ProfileViewStateModel>, { profile }: SetProfileView) {
+        return ctx.setState(
+        produce((draft) => {
+            draft.profile = profile;
+        })
+        );
+    }
 }
