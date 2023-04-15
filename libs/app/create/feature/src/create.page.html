@@ -29,6 +29,9 @@ position: absolute; "></div>
     </ion-item>
   </ion-list>
 
+  <ng-container *ngIf="(profile$ | async) as profile;">
+    <ms-profile-post-details-component></ms-profile-post-details-component>
+  </ng-container>
   <!-- <app-post-component (postCreated)="onPostCreated()"></app-post-component> -->
 
     <!-- <div style = "

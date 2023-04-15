@@ -4,10 +4,12 @@ import {
     ContactDetailsUpdatedEvent,
     PostCreatedEvent,
     CreatePostCommand,
+    AddPostCommand,
     CreateProfileCommand,
     OccupationDetailsUpdatedEvent,
     PersonalDetailsUpdatedEvent,
-    UpdateProfileStatusCommand
+    UpdateProfileStatusCommand,
+    PostAddedEvent
 } from '@mp/api/profiles/util';
 import { UserCreatedEvent } from '@mp/api/users/util';
 import { Injectable } from '@nestjs/common';
@@ -104,4 +106,19 @@ export class ProfilesSagas {
       )
     );
   };
-}
+
+
+@Saga()
+onPostAdded = (
+  events$: Observable<any>
+): Observable<ICommand> => {
+  return events$.pipe(
+    ofType(PostAddedEvent),
+    map(
+      (event: PostAddedEvent) =>
+        new UpdateProfileStatusCommand({ profile: event.profile })
+    )
+  );
+};
+
+};

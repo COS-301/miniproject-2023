@@ -3,6 +3,8 @@ import { doc, docData, Firestore } from '@angular/fire/firestore';
 import { Functions, httpsCallable } from '@angular/fire/functions';
 import {
     IProfile,
+    IAddPostRequest,
+    IAddPostResponse,
     IUpdateAccountDetailsRequest,
     IUpdateAccountDetailsResponse,
     IUpdateAddressDetailsRequest,
@@ -54,6 +56,17 @@ export class ProfilesApi {
     >(
       this.functions,
       'createPostDetails'
+    )(request);
+  }
+
+  async addPostDetails(request: IAddPostRequest) {
+    console.log("profiles.api.addPostsDetails ");
+    return await httpsCallable<
+    IAddPostRequest,
+    IAddPostResponse
+    >(
+      this.functions,
+      'addPost'
     )(request);
   }
 

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { IProfile } from '@mp/api/profiles/util';
+import { IProfile, IPostDetails, stringToHashtag } from '@mp/api/profiles/util';
 import { ProfileState } from '@mp/app/profile/data-access';
-import { CreatePostDetails } from '@mp/app/profile/util';
+import { AddPost, CreatePostDetails, CreateNewPost } from '@mp/app/profile/util';
 import {
     ActionsExecuting,
     actionsExecuting
@@ -36,6 +36,18 @@ export class PostDetailsComponent {
 
   get hashtag() {
     return this.postDetailsForm.get('hashtag');
+  }
+
+  createNewPost() {
+    if (this.postDetailsForm.invalid) {
+      return;
+    }
+    const postDetails: IPostDetails = {
+      content: this.postDetailsForm.get('content')?.value,
+      caption: this.postDetailsForm.get('caption')?.value,
+      hashtag: stringToHashtag(this.postDetailsForm.get('hashtag')?.value),
+    };
+    this.store.dispatch(new CreateNewPost(postDetails));
   }
 
   // get ageError(): string {
@@ -74,6 +86,7 @@ export class PostDetailsComponent {
   ) {}
 
   createPostDetails() {
+    console.log("here in component");
     this.store.dispatch(new CreatePostDetails());
   }
 }

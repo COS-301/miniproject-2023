@@ -7,6 +7,9 @@ import {
     IUpdateContactDetailsResponse,
     ICreatePostRequest,
     ICreatePostResponse,
+    IAddPostRequest,
+    IAddPostResponse,
+    AddPostCommand,
     IUpdateOccupationDetailsRequest,
     IUpdateOccupationDetailsResponse,
     IUpdatePersonalDetailsRequest,
@@ -77,5 +80,15 @@ export class ProfilesService {
       UpdateOccupationDetailsCommand,
       IUpdateOccupationDetailsResponse
     >(new UpdateOccupationDetailsCommand(request));
+  }
+
+  async addPost(
+    request: IAddPostRequest
+    ):Promise<IAddPostResponse>{
+    console.log("profiles.service.addPost");
+    return await this.commandBus.execute<
+    AddPostCommand,
+    IAddPostResponse
+    >(new AddPostCommand(request));
   }
 }

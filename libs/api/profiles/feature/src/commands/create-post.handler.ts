@@ -29,9 +29,9 @@ export class CreatePostHandler
       Profile.fromData(profileData)
     );
 
-    if (!request.profile.postDetails)
+    if (!request.profile.posts)
       throw new Error('Profile post details not found');
-    profile.createPostDetails(request.profile.postDetails);
+    profile.createPostDetails(request.profile.posts[0]);
     profile.commit();
 
     const response: ICreatePostResponse = { profile };

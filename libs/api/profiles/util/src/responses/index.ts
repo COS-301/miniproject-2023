@@ -1,5 +1,6 @@
 export * from './create-profile.response';
 export * from './create-post.response';
+export * from './add-post.response';
 export * from './update-account-details.response';
 export * from './update-address-details.response';
 export * from './update-contact-details.response';

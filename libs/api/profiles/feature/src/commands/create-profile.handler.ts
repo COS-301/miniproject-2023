@@ -37,7 +37,7 @@ export class CreateProfileHandler
         ethnicity: null,
         status: ProfileStatus.INCOMPLETE,
       },
-      postDetails: {
+      posts:[ {
         postID: userId,
         createdBy: userId,
         ownedBy: userId,
@@ -50,7 +50,7 @@ export class CreateProfileHandler
         totalTime: null,
         ownerGainedTime: null,
         listing: null,
-      },
+      }],
       contactDetails: {
         cellphone,
         status: ProfileStatus.INCOMPLETE,

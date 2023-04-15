@@ -14,7 +14,7 @@ export interface IProfile {
   contactDetails?: IContactDetails | null | undefined;
   addressDetails?: IAddressDetails | null | undefined;
   occupationDetails?: IOccupationDetails | null | undefined;
-  postDetails? : IPostDetails | null | undefined;
+  posts? : IPostDetails[]| null | undefined;
   status?: ProfileStatus | null | undefined;
   created?: Timestamp | null | undefined;
 }

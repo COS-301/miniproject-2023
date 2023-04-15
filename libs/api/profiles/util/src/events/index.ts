@@ -5,4 +5,5 @@ export * from './occupation-details-updated.event';
 export * from './personal-details-updated.event';
 export * from './profile-created.event';
 export * from './post-created.event';
+export * from './post-added.event';
 export * from './profile-status-updated.event';

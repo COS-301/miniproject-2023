@@ -1,31 +1,35 @@
 import { Injectable } from '@angular/core';
 import {
-    AgeGroup,
-    Ethnicity,
-    Gender,
-    HouseholdIncome,
-    Hashtag,
-    IProfile,
-    IUpdateAccountDetailsRequest,
-    IUpdateAddressDetailsRequest,
-    IUpdateContactDetailsRequest,
-    IUpdateOccupationDetailsRequest,
-    IUpdatePersonalDetailsRequest,
-    ICreatePostRequest,
+  AgeGroup,
+  Ethnicity,
+  Gender,
+  HouseholdIncome,
+  Hashtag,
+  IProfile,
+  IUpdateAccountDetailsRequest,
+  IUpdateAddressDetailsRequest,
+  IUpdateContactDetailsRequest,
+  IUpdateOccupationDetailsRequest,
+  IUpdatePersonalDetailsRequest,
+  ICreatePostRequest,
+  IAddPostRequest,
+  IPostDetails
 } from '@mp/api/profiles/util';
 import { AuthState } from '@mp/app/auth/data-access';
 import { Logout as AuthLogout } from '@mp/app/auth/util';
 import { SetError } from '@mp/app/errors/util';
 import {
-    Logout,
-    SetProfile,
-    SubscribeToProfile,
-    UpdateAccountDetails,
-    UpdateAddressDetails,
-    UpdateContactDetails,
-    UpdateOccupationDetails,
-    UpdatePersonalDetails,
-    CreatePostDetails
+  Logout,
+  SetProfile,
+  SubscribeToProfile,
+  UpdateAccountDetails,
+  UpdateAddressDetails,
+  UpdateContactDetails,
+  UpdateOccupationDetails,
+  UpdatePersonalDetails,
+  CreatePostDetails,
+  AddPost,
+  CreateNewPost
 } from '@mp/app/profile/util';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import produce from 'immer';
@@ -181,7 +185,7 @@ export class ProfileState {
   constructor(
     private readonly profileApi: ProfilesApi,
     private readonly store: Store
-  ) {}
+  ) { }
 
   @Selector()
   static profile(state: ProfileStateModel) {
@@ -271,7 +275,7 @@ export class ProfileState {
       const request: ICreatePostRequest = {
         profile: {
           userId,
-          postDetails: {
+          posts: [{
             postID,
             createdBy,
             ownedBy,
@@ -280,7 +284,7 @@ export class ProfileState {
             content,
             hashtag,
             caption,
-          },
+          }],
         },
       };
       const responseRef = await this.profileApi.createPostDetails(request);
@@ -406,6 +410,66 @@ export class ProfileState {
       );
       const response = responseRef.data;
       return ctx.dispatch(new SetProfile(response.profile));
+    } catch (error) {
+      return ctx.dispatch(new SetError((error as Error).message));
+    }
+  }
+
+  @Action(CreateNewPost)
+  async addPost(ctx: StateContext<ProfileStateModel>, { post }: CreateNewPost) {
+    console.log("In state AddPost");
+    try {
+      const state = ctx.getState();
+      const userId = state.profile?.userId;
+      const content = state.postDetailsForm.model.content;
+      const createdBy = state.profile?.userId;
+      const caption = state.postDetailsForm.model.caption;
+      const hashtag = state.postDetailsForm.model.hashtag;
+      const ownedBy = state.profile?.userId; // We can use 'createdBy' from the action payload
+      const postID = state.profile?.userId + "- " + state.profile?.posts?.length;
+      const likes = 0;
+      const createdAt = Timestamp.now();
+
+      if (!userId || !content || !caption || !hashtag)
+        return ctx.dispatch(
+          new SetError(
+            'UserId or display name or email or photo URL or password not set'
+          )
+        );
+
+      const details: IPostDetails = {
+        postID,
+        createdBy,
+        ownedBy,
+        likes,
+        createdAt,
+        content,
+        hashtag,
+        caption,
+
+      }
+
+      const request: IAddPostRequest = {
+        profile: {
+          userId,
+          
+        },
+        post: details
+
+      };
+      const responseRef = await this.profileApi.addPostDetails(request);
+      console.log("API returned " + responseRef.data);
+      const response = responseRef.data;
+      return ctx.setState(
+        produce((draft) => {
+          if (draft.profile){
+          if (!draft.profile?.posts) {
+            draft.profile.posts = [];
+          }
+          draft.profile.posts.splice(1, 0, post);
+        }
+        })
+      );
     } catch (error) {
       return ctx.dispatch(new SetError((error as Error).message));
     }

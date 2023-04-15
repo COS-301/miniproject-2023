@@ -11,7 +11,9 @@ import {
     IUpdatePersonalDetailsRequest,
     IUpdatePersonalDetailsResponse,
     ICreatePostRequest,
-    ICreatePostResponse
+    ICreatePostResponse,
+    IAddPostRequest,
+    IAddPostResponse
 } from '@mp/api/profiles/util';
 import { NestFactory } from '@nestjs/core';
 import * as functions from 'firebase-functions';
@@ -74,5 +76,17 @@ export const updateOccupationDetails = functions.https.onCall(
     const app = await NestFactory.createApplicationContext(CoreModule);
     const service = app.get(ProfilesService);
     return service.updateOccupationDetails(request);
+  }
+);
+
+export const addPost = functions.https.onCall(
+  async(
+    request: IAddPostRequest
+    ): Promise<IAddPostResponse> => {
+    console.log("profiles.functions addPost ");
+    const app = await NestFactory.createApplicationContext(CoreModule);
+    console.log('here1');
+    const service = app.get(ProfilesService);
+    return service.addPost(request);
   }
 );
