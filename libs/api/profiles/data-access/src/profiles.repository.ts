@@ -1,5 +1,5 @@
 import { IProfile } from '@mp/api/profiles/util';
-import { IMemory } from '@mp/api/memories/util';
+import { IMemory, IComment } from '@mp/api/memories/util';
 import { IUser } from '@mp/api/users/util';
 import { Injectable } from '@nestjs/common';
 import * as admin from 'firebase-admin';
@@ -53,37 +53,49 @@ export class ProfilesRepository {
       .firestore()
       .collection('memories')
       .where('userId', '==', profile.userId)
-      .where('alive', '==', 'true')
+      .where('alive', '==', true)
       .orderBy('created')
       .get();
 
     const memories: IMemory[] = [];
 
     MemorySnapshots.forEach((doc) => {
-      console.log(doc.data());
+      //console.log(doc.data());
 
-      /*
-        const CommentsSnapshots = admin
+      //console.log("Comment Here: "+doc.data()["comments"]);
+
+      const CommentsSnapshots = admin
         .firestore()
         .collection(`memories/${doc.id}/comments`)
-        .where('userId','==',profile.userId)
-        .where('alive','==','true')
-        .orderBy('created')
-        .get();
+        .get()
+        .then((snapshot) => {
+          const CurrentComments: IComment[] = [];
+          snapshot.forEach((i) => {
+            const comment = i.data() as IComment;
+            CurrentComments.push(comment);
+          });
+          return CurrentComments;
+        })
+        .then((item) => {
+          doc.data().comments = item;
+          console.log(doc.data().comments);
+        });
 
-        CommentsSnapshots.then()
-
+      //console.log(CurrentComments);
+      //console.log(CurrentComments);
+      /*
         const memory = doc.data() as IMemory;
-        const comments: IComment[] =[];
+        
 
         memory.comments.forEach((item)=>{
 
         })
 
         memory.userId = "";
-
         */
       memories.push(doc.data());
     });
+
+    return memories;
   }
 }

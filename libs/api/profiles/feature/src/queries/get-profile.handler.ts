@@ -10,8 +10,6 @@ export class GetProfileHandler implements IQueryHandler<GetProfileQuery, IGetPro
   constructor(private readonly publisher: EventPublisher, private readonly repository: ProfilesRepository) {}
 
   async execute(query: GetProfileQuery) {
-    console.log('This is the query:' + JSON.stringify(query));
-
     const request = query.request;
 
     const profileDetails = await this.repository.getProfileDetails(request.user);
@@ -19,9 +17,9 @@ export class GetProfileHandler implements IQueryHandler<GetProfileQuery, IGetPro
 
     const profileMemories = await this.repository.getProfileMemories(request.user);
     const CurrentMemories: IMemory[] = [];
-    profileMemories.docs.forEach((doc) => {
-      //let CurrentComments
-      /*
+    //profileMemories.docs.forEach((doc) => {
+    //let CurrentComments
+    /*
             let tempMemory: IMemory={
                 userId: doc.data().userId,
                 username: doc.data().username,
@@ -38,12 +36,12 @@ export class GetProfileHandler implements IQueryHandler<GetProfileQuery, IGetPro
 
             }
             */
-      CurrentMemories.push(doc.data());
-    });
+    //CurrentMemories.push(doc.data());
+    //});
 
     const profile: IProfile = {
       userId: request.user.userId,
-      memories: CurrentMemories,
+      memories: profileMemories,
       user: profileDetailsData,
     };
 
