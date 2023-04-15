@@ -1,13 +1,13 @@
-import { IComment, CommentUpdatedEvent, CreateCommentCommand } from '@mp/api/comments/util';
+import { IComment, CommentCreatedEvent, CreateCommentCommand } from '@mp/api/memories/util';
 import { CommandHandler, ICommandHandler, EventPublisher } from '@nestjs/cqrs';
 import { Comment } from '../models';
 
 @CommandHandler(CreateCommentCommand)
-export class UpdatedCommentHandler implements ICommandHandler<CommentUpdatedEvent> {
+export class CreateCommentHandler implements ICommandHandler<CommentCreatedEvent> {
   constructor(private publisher: EventPublisher) {}
 
   //TODO implement
-  async execute(command: CommentUpdatedEvent) {
+  async execute(command: CommentCreatedEvent) {
     return null;
   }
 }
