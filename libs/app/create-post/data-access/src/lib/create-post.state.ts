@@ -2,6 +2,8 @@ import { State, Action, StateContext } from '@ngxs/store';
 import { CreatePost, CreatePostSuccess, CreatePostFailure } from '@mp/app/create-post/util';
 import { IUser } from '@mp/api/users/util';
 import { Discipline } from '@mp/api/feed/util';
+import { PostService } from './post.service'; // Import the PostService from your application
+
 /*export interface CreatePostStateModel {
   Post: {
     model: {
@@ -32,6 +34,7 @@ export interface CreatePostStateModel {
 })
 export class CreatePostState {
 
+constructor(private postService: PostService) {}
   @Action(CreatePost)
   createPost(ctx: StateContext<CreatePostStateModel>, action: CreatePost) {
     // Extract the post and file data from the action

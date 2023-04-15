@@ -9,30 +9,31 @@
   
   <ion-content>
     <form (ngSubmit)="submitForm()">
+
       <ion-item>
         <ion-label>Title</ion-label>
         <ion-input type="text" [(ngModel)]="post.title" name="title" required></ion-input>
       </ion-item>
+
       <ion-item>
         <ion-label>Caption</ion-label>
         <ion-input type="text" [(ngModel)]="post.caption" name="caption"></ion-input>
       </ion-item>
+   
       <ion-item>
-        <ion-label>Link</ion-label>
-        <ion-input type="text" [(ngModel)]="post.link" name="link" ></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Tag</ion-label>
+        <ion-label>Discipline</ion-label>
         <ion-select [(ngModel)]="post.tag" name="tag">
           <ion-select-option value="food">Food</ion-select-option>
           <ion-select-option value="travel">Travel</ion-select-option>
           <ion-select-option value="fitness">Fitness</ion-select-option>
         </ion-select>
       </ion-item>
+
       <ion-item>
         <ion-label>Photo</ion-label>
         <input type="file" (change)="onFileChange($event)">
       </ion-item>
+      
       <ion-button>Submit</ion-button>
     </form>
   </ion-content>

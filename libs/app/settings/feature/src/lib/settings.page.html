@@ -24,37 +24,44 @@
 
       <ion-item>
         <ion-label>Update Profile</ion-label>
-        <ion-button [disabled]="false" [routerLink] = "['/profile']"></ion-button>
+        <ion-button [disabled]="false" [routerLink] = "['/profile']">></ion-button>
       </ion-item>
   
       <ion-item>
         <ion-label>Update Information</ion-label>
-        <ion-button [disabled]="false" [routerLink] = "['/personal-details']"></ion-button>
+        <ion-button [disabled]="false" [routerLink] = "['/personal-details']">></ion-button>
       </ion-item>
 
       <ion-item>
         <ion-label>Update Password</ion-label>
-        <ion-button [disabled]="false" [routerLink] = "['/forgot']"></ion-button>
+        <ion-button [disabled]="false" [routerLink] = "['/forgot']">></ion-button>
       </ion-item>
 
       <ion-item>
         <ion-label>Delete Account</ion-label>
-        <ion-button [disabled]="false"></ion-button>
+        <ion-button id="present-alert" [disabled]="false">></ion-button>
+        <!-- <ion-alert
+          trigger="present-alert"
+          header="Warning"
+          subHeader="You are about to delete your account"
+          message="Are you sure?"
+          [buttons]="alertButtons"
+        ></ion-alert> -->
       </ion-item>
 
       <ion-item>
         <ion-label>Terms of Service</ion-label>
-        <ion-button [disabled]="false" [routerLink] = "['/tos']"></ion-button>
+        <ion-button [disabled]="false" [routerLink] = "['/tos']">></ion-button>
       </ion-item>
 
       <ion-item>
         <ion-label>Privacy Policy</ion-label>
-        <ion-button [disabled]="false" [routerLink] = "['/privacy']"></ion-button>
+        <ion-button [disabled]="false" [routerLink] = "['/privacy']">></ion-button>
       </ion-item>
 
       <ion-item>
         <ion-label>Version</ion-label>
-        <ion-button [disabled]="false" [routerLink] = "['/version']"></ion-button>
+        <ion-button [disabled]="false" [routerLink] = "['/version']">></ion-button>
       </ion-item>
       
     </ion-list>

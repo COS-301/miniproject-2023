@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DeathScreenPage } from './death-screen.page';
+import { DeathScreenPage } from './death-screen.component';
 
 const routes: Routes = [
     {

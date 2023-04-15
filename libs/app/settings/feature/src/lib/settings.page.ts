@@ -9,6 +9,7 @@ export class SettingsPage {
 
   privacy = false;
   sliderValue = 50;
+  public alertButtons = ['Yes','No'];
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor() { }
