@@ -8,17 +8,27 @@ import { Component } from '@angular/core';
 export class SettingsPage {
 
   privacy = false;
-  notification = true;
+  sliderValue = 50;
 
-  constructor() {
-    //code to do whatever
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  constructor() { }
+
+  onToggleChange(event: { detail: { checked: any; }; }) {
+    // Handle toggle change
+    console.log('Toggle changed', event.detail.checked);
   }
 
-  ngOnInit() {
-    // code to initialize settings
+  onSliderChange(event: { detail: { value: any; }; }) {
+    // Handle slider change
+    console.log('Slider changed', event.detail.value);
   }
 
   onSave() {
     // code to save settings
+    // this.storage.set('option1', this.option1);
+    // this.storage.set('option2', this.option2);
+    // this.storage.set('sliderValue', this.sliderValue);
+
+    console.log('Settings saved');
   }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'mp-death-screen',
@@ -6,5 +7,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./death-screen.page.scss']
 })
 export class DeathScreenPage {
-  public alertButtons = ['Log out', 'Watch Ad', 'Buy Time'];
+  constructor(private modalCtrl: ModalController) { }
+
+  onRetry() {
+    // Handle retry button click
+    // You can implement custom logic here
+    console.log('Buy more time clicked');
+  }
+
+  onExit() {
+    // Handle exit button click
+    // You can implement custom logic here
+    console.log('Exit clicked');
+  }
+
+  onShare() {
+    // Handle share button click
+    // You can implement custom logic here
+    console.log('Watch an Ad clicked');
+  }
 }

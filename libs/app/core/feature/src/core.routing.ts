@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import {
-  AuthGuard,
-  redirectLoggedInTo,
-  redirectUnauthorizedTo
+    AuthGuard,
+    redirectLoggedInTo,
+    redirectUnauthorizedTo
 } from '@angular/fire/auth-guard';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
@@ -37,17 +37,31 @@ const routes: Routes = [
   },
   {
     path: 'tos',
+    pathMatch: 'full',
     loadChildren: () => import('@mp/app/tos/feature').then((m) => m.TosModule),
   },
   {
     path: 'privacy',
+    pathMatch: 'full',
     loadChildren: () =>
       import('@mp/app/privacy/feature').then((m) => m.PrivacyModule),
   },
-  {
-    path: 'search',
-    loadChildren: () => import('@mp/app/search/feature').then((m) => m.SearchModule),
-  },
+  // {
+  //   path: 'search',
+  //   pathMatch: 'full',
+  //   canActivate: [AuthGuard],
+  //   data: { authGuardPipe: redirectLoggedIn },
+  //   loadChildren: () =>
+  //     import ('@mp/app/search/feature').then((m)=>m.SearchModule),
+  // },
+  // {
+  //   path: 'feed',
+  //   pathMatch: 'full',
+  //   canActivate: [AuthGuard],
+  //   data: { authGuardPipe: redirectLoggedIn },
+  //   loadChildren: () =>
+  //     import('@mp/app/feed/feature').then((m) => m.FeedModule),
+  // },
   // {
   //   path: 'verify',
   //   pathMatch: 'full',
@@ -62,7 +76,7 @@ const routes: Routes = [
   //   canActivate: [AuthGuard],
   //   data: { authGuardPipe: redirectLoggedIn },
   //   loadChildren: () =>
-  //     import('./reset/reset.module').then((m) => m.ResetPageModule),
+  //     import('@mp/app/reset/feature').then((m) => m.ResetModule),
   // },
   {
     path: 'forgot',
@@ -86,26 +100,39 @@ const routes: Routes = [
     loadChildren: () =>
       import('@mp/app/login/feature').then((m) => m.LoginModule),
   },
-  {
-    path: 'settings',
-    loadChildren: () =>
-      import('@mp/app/settings/feature').then((m) => m.SettingsModule),
-  },
-  {
-    path: 'death-screen',
-    loadChildren: () =>
-      import('@mp/app/death-screen/feature').then((m) => m.DeathScreenModule),
-  },
-  {
-    path: 'messages',
-    loadChildren: () =>
-      import('@mp/app/messages/feature').then((m) => m.MessagesModule),
-  },
-  {
-    path: 'create-post',
-    loadChildren: () =>
-      import('@mp/app/create-post/feature').then((m) => m.CreatePostModule),
-  }
+  // {
+  //   path: 'settings',
+  //   pathMatch: 'full',
+  //   canActivate: [AuthGuard],
+  //   data: { authGuardPipe: redirectLoggedIn },
+  //   loadChildren: () =>
+  //     import ('@mp/app/settings/feature').then((m)=>m.SettingsModule),
+  // },
+  // {
+  //   path: 'death-screen',
+  //   pathMatch: 'full',
+  //   canActivate: [AuthGuard],
+  //   data: { authGuardPipe: redirectLoggedIn },
+  //   loadChildren: () =>
+  //     import ('@mp/app/death-screen/feature').then((m)=>m.DeathScreenModule),
+  // },
+  // {
+  //   path: 'messages',
+  //   pathMatch: 'full',
+  //   canActivate: [AuthGuard],
+  //   data: { authGuardPipe: redirectLoggedIn },
+  //   loadChildren: () =>
+  //     import ('@mp/app/messages/feature').then((m)=>m.MessagesModule),
+  // },
+  // {
+  //   path: 'create-post',
+  //   pathMatch: 'full',
+  //   canActivate: [AuthGuard],
+  //   data: { authGuardPipe: redirectLoggedIn },
+  //   loadChildren: () =>
+  //     import ('@mp/app/create-post/feature').then((m)=>m.CreatePostModule),
+  // },
+
 
 ];
 
@@ -115,4 +142,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class CoreRouting { }
+export class CoreRouting {}

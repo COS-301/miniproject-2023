@@ -5,7 +5,6 @@ import {
   SetFilterList,
   SetPost,
   SetPostList,
-  SetPostListLoading,
   SetTimeModification,
   SetUserTime,
 } from '@mp/app/feed/util';
@@ -19,9 +18,6 @@ import {
   UserTime,
   Discipline,
   FilterType,
-  FetchPostsRequest,
-  AddTimeRequest,
-  GetUserTimeRequest,
 } from '@mp/api/feed/util';
 
 import { IUser } from '@mp/api/users/util';
@@ -163,13 +159,12 @@ export interface FeedStateModel {
 export class FeedState {
   constructor(
     private readonly store: Store,
-    private readonly feedApi: FeedApi
     ) {//
     }
 
   @Selector()
   static feed(state: FeedStateModel) {
-    return state.FilterList;
+    return state;
   }
 
   @Action(SetFilterList)
@@ -188,16 +183,16 @@ export class FeedState {
 
       console.log('filterList: ', filterList)
 
-      const request: FetchPostsRequest = {
-        filters:{
-          list: filterList,
-        }
-      }
+      // const request: FetchPostsRequest = {
+      //   filters:{
+      //     list: filterList,
+      //   }
+      // }
 
-      const responseRef = await this.feedApi.fetchPosts(request);
-      const response = responseRef;
+      // const responseRef = await this.feedApi.fetchPosts$(request);
+      // const response = responseRef;
 
-      console.log('response: ', response);
+     //console.log('response: ', response);
 
       return;
       ///return ctx.dispatch(new SetPostList(response));
@@ -216,4 +211,33 @@ export class FeedState {
     )
   }
 
+  @Action(SetPost)
+  async setPost(ctx: StateContext<FeedStateModel>, {post}: SetPost){
+    console.log('post: ', post);
+    return ctx.setState(
+      produce((draft) => {
+        draft.post = post;
+      })
+    )
+  }
+
+  @Action(SetTimeModification)
+  async setTimeModification(ctx: StateContext<FeedStateModel>, {timeModification}: SetTimeModification){
+    console.log('timeModification: ', timeModification);
+    return ctx.setState(
+      produce((draft) => {
+        draft.timeModification = timeModification;
+      })
+    )
+  }
+
+  @Action(SetUserTime)
+  async setUserTime(ctx: StateContext<FeedStateModel>, {userTime}: SetUserTime){
+    console.log('userTime: ', userTime);
+    return ctx.setState(
+      produce((draft) => {
+        draft.userTime = userTime;
+      })
+    )
+  }
 }

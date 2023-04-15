@@ -1,40 +1,34 @@
-.loading-container {
+$backgroundColor: #242423;
+$vibrantGreen: #0E8C00;
+
+.center-container {
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-
-  .loading-logo {
-    /* Add any styles for the loading logo */
-  }
-
-  .loading-text {
-    font-size: 24px;
-    font-weight: bold;
-    margin-top: 16px;
-    animation: blink 2s infinite;
-  }
+  background-color: $backgroundColor;
 }
 
-footer {
-  background-color: #f2f2f2;
-  padding: 10px;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
+.cust_button_var1 {
+    --background: #0E8C00;
+    --color: white;
 }
 
-@keyframes blink {
-  0% {
-    opacity: 0.2;
-  }
-  20% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.2;
-  }
+.textColor{
+  --color: #0E8C00;
+  color: #0E8C00;
+}
+
+.italic{
+  font-style: italic;
+}
+
+.header{
+  font-size: 3rem;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.underline{
+  text-decoration: underline;
 }

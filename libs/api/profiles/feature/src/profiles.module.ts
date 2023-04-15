@@ -2,40 +2,24 @@ import { ProfilesModule as ProfilesDataAccessModule } from '@mp/api/profiles/dat
 import { Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
 import {
-    CreateProfileHandler,
-    UpdateAccountDetailsHandler,
-    UpdateAddressDetailsHandler,
-    UpdateContactDetailsHandler,
-    UpdateOccupationDetailsHandler,
-    UpdatePersonalDetailsHandler,
-    UpdateProfileStatusHandler
+  CreateProfileHandler,
+  UpdateAccountDetailsHandler,
+  UpdateProfileStatusHandler
 } from './commands';
 import {
-    AccountDetailsUpdatedHandler,
-    AddressDetailsUpdatedHandler,
-    ContactDetailsUpdatedHandler,
-    OccupationDetailsUpdatedHandler,
-    PersonalDetailsUpdatedHandler,
-    ProfileCreatedHandler,
-    ProfileStatusUpdatedHandler
+  AccountDetailsUpdatedHandler,
+  ProfileCreatedHandler,
+  ProfileStatusUpdatedHandler
 } from './events';
 import { ProfilesSagas } from './profiles.sagas';
 import { ProfilesService } from './profiles.service';
 export const CommandHandlers = [
   CreateProfileHandler,
-  UpdateContactDetailsHandler,
-  UpdateAddressDetailsHandler,
-  UpdatePersonalDetailsHandler,
-  UpdateOccupationDetailsHandler,
   UpdateAccountDetailsHandler,
   UpdateProfileStatusHandler,
 ];
 export const EventHandlers = [
   ProfileCreatedHandler,
-  ContactDetailsUpdatedHandler,
-  AddressDetailsUpdatedHandler,
-  PersonalDetailsUpdatedHandler,
-  OccupationDetailsUpdatedHandler,
   AccountDetailsUpdatedHandler,
   ProfileStatusUpdatedHandler,
 ];
@@ -50,4 +34,4 @@ export const EventHandlers = [
   ],
   exports: [ProfilesService],
 })
-export class ProfilesModule {}
+export class ProfilesModule { }

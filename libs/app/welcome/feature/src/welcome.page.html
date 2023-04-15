@@ -1,28 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <title>Welcome</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" href="./logo.png" type="image/png" sizes="16x16" />
-</head>
-
-<body>
-<ion-content>
-  <div class="loading-container">
-    <img src="./logo.png" alt="Logo" class="loading-logo" />
-    <p class="loading-text">It's about time you joined!</p>
+<ion-content [fullscreen]="true">
+  <div class="center-container ion-align-items-center">
+    <ion-grid>
+      <ion-row class="ion-text-center">
+        <ion-col>
+        <ion-text class="textColor">
+          <h2>Welcome to</h2>
+          <h3 class="header">About Time</h3>
+          <h3 >"Where it's all <span class="italic">about <span class="bold">time</span>"</span></h3>
+        </ion-text>
+      </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-img src="https://i.imgur.com/BejwlI6.png" alt="About-Time Logo"></ion-img>
+      </ion-row>
+      <ion-row class="ion-text-center">
+        <ion-col>
+        <ion-text class="textColor">
+          <h3>Please choose an action below</h3>
+        </ion-text>
+      </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-nav-link [routerLink]="['login']">
+            <ion-button class="cust_button_var1" expand="block">Login</ion-button>
+          </ion-nav-link>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-nav-link [routerLink]="['register']">
+            <ion-button class="cust_button_var1" expand="block">Register</ion-button>
+          </ion-nav-link>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-padding-top">
+        <ion-col style="display: flex" class="ion-justify-content-center">
+          <ion-nav-link [routerLink]="['tos']">
+            <ion-button class="textColor underline" fill="clear"> Terms of Service </ion-button>
+          </ion-nav-link>
+          <ion-nav-link [routerLink]="['privacy']">
+            <ion-button class="textColor underline" fill="clear"> Privacy Policy </ion-button>
+          </ion-nav-link>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 </ion-content>
-<ion-footer>
-  <ion-row>
-    <ion-col>
-      <p>© 2023 Schadre</p>
-      <p>version 0.0.1</p>
-    </ion-col>
-  </ion-row>
-</ion-footer>
-</body>
-
-</html>
