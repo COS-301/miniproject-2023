@@ -1,1 +1,1 @@
-export * from './create-post-response.response';
+export * from './create-post.response';

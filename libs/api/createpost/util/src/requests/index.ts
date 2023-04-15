@@ -1,1 +1,1 @@
-export * from './create-post-request.request';
+export * from './create-post.request';
