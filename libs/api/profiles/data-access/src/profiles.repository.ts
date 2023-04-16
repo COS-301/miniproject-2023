@@ -1,9 +1,10 @@
-import { IProfile, Post } from '@mp/api/profiles/util';
+import { IProfile, Post, Status } from '@mp/api/profiles/util';
 import { Injectable } from '@nestjs/common';
 import * as admin from 'firebase-admin';
 import { IRelationship } from '../../util/src/interfaces/relationship.interface';
 import { Discipline } from '../../util/src/enums/discipline.enum';
 import { IUser } from '@mp/api/users/util';
+import { IRelation } from '../../util/src/interfaces/relation.interface';
 
 @Injectable()
 export class ProfilesRepository {
@@ -76,5 +77,16 @@ export class ProfilesRepository {
       // "list": toReturn.data
       "list": null
     }
+  }
+
+  async updateRelation(relation: IRelation) {
+
+    // Change the relation in the db
+
+    // Get succes response from db
+
+    // Return success enum
+    return Status.SUCCESS;
+
   }
 }

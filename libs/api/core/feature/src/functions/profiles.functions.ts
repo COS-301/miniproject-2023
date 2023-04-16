@@ -6,6 +6,8 @@ import {
   IFetchUserPostsResponse,
   IUpdateAccountDetailsRequest,
   IUpdateAccountDetailsResponse,
+  IUpdateRelationRequest,
+  IUpdateRelationResponse,
 } from '@mp/api/profiles/util';
 import { NestFactory } from '@nestjs/core';
 import * as functions from 'firebase-functions';
@@ -38,5 +40,15 @@ export const fetchUserPosts = functions.https.onCall(
     const app = await NestFactory.createApplicationContext(CoreModule);
     const service = app.get(ProfilesService);
     return service.fetchUserPosts(request);
+  }
+);
+
+export const updateRelation = functions.https.onCall(
+  async (
+    request: IUpdateRelationRequest
+  ): Promise<IUpdateRelationResponse> => {
+    const app = await NestFactory.createApplicationContext(CoreModule);
+    const service = app.get(ProfilesService);
+    return service.updateRelation(request);
   }
 );
