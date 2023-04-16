@@ -1,14 +1,14 @@
-<div id="wrapper"  (touchstart)="touchStart($event)" (touchend)="touchEnd()" (touchmove)="touchMove($event)">
-<ion-grid class="grid-container" *ngFor="let post of posts; let i = index" id="{{'post-'+i}}">
+ <div id="wrapper"  (touchstart)="touchStart($event)" (touchend)="touchEnd()" (touchmove)="touchMove($event)">
+<ion-grid class="grid-container">
   <ion-row class="title-container">
-      <h1>{{post.title}}</h1>
-      <ion-button><ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon></ion-button>
+    <ion-button (click)="goBack()"><ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon></ion-button>
+      <h1>{{posts.list?.at(currentPostIndex)?.title}}</h1>
   </ion-row>
   <ion-row>
     <ion-card>
-      <img src="{{post.image}}" alt="not loading">
+      <img src="post.image" alt="not loading">
       <ion-col class="timer-container">
-        <div class="timer-col-containers"><ion-chip>{{post.creator}}</ion-chip><ion-chip>{{convertTime(post.postTime)}}</ion-chip></div>
+        <div class="timer-col-containers"><ion-chip>{{posts.list?.at(currentPostIndex)?.author}}</ion-chip><ion-chip>{{posts.list?.at(currentPostIndex)?.time}}</ion-chip></div>
         <div class="timer-col-containers"><ion-chip>00:01:14</ion-chip></div>
       </ion-col>
     </ion-card>
@@ -21,8 +21,10 @@
     <ion-col>
       <ion-card class="post-content-container">
         <ion-card-content>
-          <p>{{post.content}}</p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias, non quos! Adipisci eum maiores modi voluptatem totam nesciunt tempora sed exercitationem numquam earum consequatur perferendis pariatur recusandae sint deserunt, fuga sequi ut ipsum sunt reiciendis delectus libero? Labore commodi sint, ratione aspernatur sed ipsam possimus. Nostrum aut explicabo placeat fugiat quas ullam ipsa, dolorem voluptatum quod quis odit magnam veniam atque, ipsum consequatur aliquam quaerat cupiditate dicta, repellendus molestiae ratione adipisci. Culpa explicabo cupiditate officiis ipsum nemo recusandae, fugit nesciunt voluptates corporis at atque vero aspernatur officia distinctio ipsa, accusamus omnis similique sed nulla reprehenderit quasi ea quia natus ad.
+          <p>{{posts.list?.at(currentPostIndex)?.description}}</p>
+        </ion-card-content>
+        <ion-card-content>
+          <p>{{posts.list?.at(currentPostIndex)?.content}}</p>
         </ion-card-content>
       </ion-card>
     </ion-col>
