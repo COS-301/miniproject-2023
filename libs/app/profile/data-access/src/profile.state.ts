@@ -46,6 +46,7 @@ export interface ProfileStateModel {
       email: string | null;
       photoURL: string | null;
       password: string | null;
+      bio: string | null;
     };
     dirty: false;
     status: string;
@@ -118,6 +119,7 @@ export interface ProfileStateModel {
         email: null,
         photoURL: null,
         password: null,
+        bio: '',
       },
       dirty: false,
       status: '',
@@ -209,6 +211,7 @@ export class ProfileState {
 
   @Action(SetProfile)
   setProfile(ctx: StateContext<ProfileStateModel>, { profile }: SetProfile) {
+    console.log("In SetProfile + " + JSON.stringify(this.setProfile));
     return ctx.setState(
       produce((draft) => {
         draft.profile = profile;
@@ -225,11 +228,12 @@ export class ProfileState {
       const email = state.accountDetailsForm.model.email;
       // const photoURL = state.accountDetailsForm.model.photoURL;
       const password = state.accountDetailsForm.model.password;
+      const bio = state.accountDetailsForm.model.bio;
 
-      if (!userId || !displayName || !email || !password)
+      if (!userId )
         return ctx.dispatch(
           new SetError(
-            'UserId or display name or email or photo URL or password not set'
+            'UserId  not set'
           )
         );
 
@@ -240,10 +244,12 @@ export class ProfileState {
             displayName,
             email,
             password,
+            bio,
           },
         },
       };
       const responseRef = await this.profileApi.updateAccountDetails(request);
+      console.log("Profile State " + responseRef.data);
       const response = responseRef.data;
       return ctx.dispatch(new SetProfile(response.profile));
     } catch (error) {
@@ -268,7 +274,7 @@ export class ProfileState {
       if (!userId || !content || !caption || !hashtag)
         return ctx.dispatch(
           new SetError(
-            'UserId or display name or email or photo URL or password not set'
+            'UserId or content or caption or hashtag'
           )
         );
 
@@ -433,7 +439,7 @@ export class ProfileState {
       if (!userId || !content || !caption || !hashtag)
         return ctx.dispatch(
           new SetError(
-            'UserId or display name or email or photo URL or password not set'
+            'UserId or content or caption or hashtag not set'
           )
         );
 

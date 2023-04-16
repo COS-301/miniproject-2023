@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { doc, docData, Firestore } from '@angular/fire/firestore';
+import { collection, doc, docData, Firestore, collectionData } from '@angular/fire/firestore';
 import { Functions, httpsCallable } from '@angular/fire/functions';
 import {
     IProfile,
+    IPostDetails,
     IAddPostRequest,
     IAddPostResponse,
     IUpdateAccountDetailsRequest,
@@ -18,6 +19,7 @@ import {
     ICreatePostResponse,
     ICreatePostRequest
 } from '@mp/api/profiles/util';
+import { combineLatest, map } from 'rxjs';
 
 @Injectable()
 export class ProfilesApi {
@@ -26,8 +28,21 @@ export class ProfilesApi {
     private readonly functions: Functions
   ) {}
 
+  // profile$(id: string) {
+  //   const docRef = doc(
+  //     this.firestore,
+  //     `profiles/${id}`
+  //   ).withConverter<IProfile>({
+  //     fromFirestore: (snapshot) => {
+  //       return snapshot.data() as IProfile;
+  //     },
+  //     toFirestore: (it: IProfile) => it,
+  //   });
+  //   return docData(docRef, { idField: 'id' });
+  // }
+
   profile$(id: string) {
-    const docRef = doc(
+    const profileDocRef = doc(
       this.firestore,
       `profiles/${id}`
     ).withConverter<IProfile>({
@@ -36,8 +51,28 @@ export class ProfilesApi {
       },
       toFirestore: (it: IProfile) => it,
     });
-    return docData(docRef, { idField: 'id' });
+  
+    const postsCollectionRef = collection(
+      this.firestore,
+      `profiles/${id}/posts`
+    ).withConverter<IPostDetails>({
+      fromFirestore: (snapshot) => {
+        return snapshot.data() as IPostDetails;
+      },
+      toFirestore: (it: IPostDetails) => it,
+    });
+  
+    return combineLatest([
+      docData(profileDocRef, { idField: 'id' }),
+      collectionData(postsCollectionRef, { idField: 'id' }),
+    ]).pipe(
+      map(([profile, posts]) => {
+        return { ...profile, posts } as IProfile;
+      })
+    );
+    
   }
+  
 
   async updateAccountDetails(request: IUpdateAccountDetailsRequest) {
     return await httpsCallable<

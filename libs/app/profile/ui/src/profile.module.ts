@@ -8,6 +8,7 @@ import { OccupationDetailsModule } from './occupation-details';
 import { PersonalDetailsModule } from './personal-details';
 import { PostDetailsModule } from './post-details';
 import { ProfileStatusModule } from './profile-status';
+import { ProfilePostsModule } from './profile-posts';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { ProfileStatusModule } from './profile-status';
     PersonalDetailsModule,
     PostDetailsModule,
     ProfileStatusModule,
+    ProfilePostsModule
   ],
   exports: [
     AccountDetailsModule,
@@ -28,7 +30,8 @@ import { ProfileStatusModule } from './profile-status';
     OccupationDetailsModule,
     PersonalDetailsModule,
     ProfileStatusModule,
-    PostDetailsModule
+    PostDetailsModule,
+    ProfilePostsModule
   ],
 })
 export class ProfileModule {}

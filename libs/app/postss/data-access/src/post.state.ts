@@ -277,7 +277,7 @@ export class PostState { /* changed from 'PostsState' to 'PostState' */
       if (!createdBy || !content || !caption || !hashtag)
         return ctx.dispatch(
           new SetError(
-            'UserId or display name or email or photo URL or password not set'
+            'UserId or content or caption'
           )
         );
 
@@ -330,7 +330,7 @@ export class PostState { /* changed from 'PostsState' to 'PostState' */
       if (!userId || !displayName || !email || !password)
         return ctx.dispatch(
           new SetError(
-            'UserId or display name or email or photo URL or password not set'
+            'nn'
           )
         );
 

@@ -5,5 +5,6 @@ export interface IAccountDetails {
   email?: string | null | undefined;
   photoURL?: string | null | undefined;
   password?: string | null | undefined;
+  bio?: string|null|undefined;
   status?: ProfileStatus | null | undefined;
 }

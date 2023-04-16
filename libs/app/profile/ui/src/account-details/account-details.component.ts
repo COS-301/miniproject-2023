@@ -24,6 +24,7 @@ export class AccountDetailsComponent {
     email: ['', [Validators.minLength(6), Validators.maxLength(64)]],
     photoURL: ['', [Validators.minLength(6), Validators.maxLength(64)]],
     password: ['', [Validators.minLength(6), Validators.maxLength(64)]],
+    bio: ['']
   });
   showPassword = false;
 

@@ -1,0 +1,61 @@
+
+<br>
+<ng-container *ngIf="(profile$ | async) as profile;">
+<ion-content>
+<img class = "img1" src="assets/images/profilephoto.jpeg" alt="IMAGE" />
+<ion-grid >
+  <ion-row>
+    <ion-col ></ion-col>
+    <ion-col size = "4"style="text-align: center;"><ion-label style="color:black">{{profile?.accountDetails?.displayName}}</ion-label> </ion-col>
+    <ion-col></ion-col>
+  </ion-row>
+  <!-- <ion-row>
+    <ion-col ></ion-col>
+    <ion-col size = "6"style="text-align: center;"><ion-label style="color:black;font-size: small;" >123 Followers</ion-label> </ion-col>
+    <ion-col></ion-col>
+  </ion-row> -->
+</ion-grid>
+<form
+  [formGroup]="accountDetailsForm"
+  ngxsForm="profile.accountDetailsForm"
+  (submit)="updateAccountDetails()">
+<ion-list lines = "none">
+  <ion-item counter="true">
+    <ion-textarea [autoGrow]="true" maxlength="150" style =  "background-color: #ffffff; --padding-end: 10px; --padding-start: 10px; border:solid 1px rgb(53,107,89); border-radius: 25%; " formControlName="bio">
+    </ion-textarea>
+  </ion-item>
+  <ion-button type="submit">Submit</ion-button>
+</ion-list>
+</form>
+<ion-grid >
+  <ion-row>
+    
+  </ion-row> 
+</ion-grid>
+
+<ng-container *ngFor="let postDetails of profile.posts?.slice(1); let i = index">
+<ion-grid >
+  
+  <ion-row>
+    <ng-container *ngIf="i%3==0">
+    <ion-col size="8">
+        <img class="img2" src="assets/images/profilephoto.jpeg" alt="IMAGE"  />
+        {{postDetails.caption}}
+    </ion-col>
+   </ng-container>
+   <ng-container *ngIf="i%3!=0">
+    <ion-col size="4">
+      <ion-row>
+        <img class="img2" src="assets/images/profilephoto.jpeg" alt="IMAGE" />
+        {{postDetails.caption}}
+      </ion-row>
+    </ion-col>
+  </ng-container>
+  </ion-row> 
+  
+</ion-grid>
+</ng-container>
+
+</ion-content>
+
+</ng-container>
