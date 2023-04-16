@@ -5,7 +5,7 @@ import { AddMemoryPageComponent, Memory, ProfileImage } from '@mp/app/shared/fea
 import { ReviveMemoryPageComponent } from './lib/revive-memory/revive-memory.page';
 import { MenubarService, ProfileImageService } from '@mp/app/services/feature';
 import { formatDate } from '@angular/common';
-import { GetProfileRequest } from '../../util/src/profile-view.actions';
+import { GetProfileRequest } from '@mp/app/profile-view/util';
 import { Store } from '@ngxs/store';
 
 @Component({
@@ -134,8 +134,8 @@ export class ProfileViewPageComponent implements OnInit {
     }
   }
 
-  // //function that executes when the page is about to enter
-  // ionViewWillEnter() {
-  //   this.store.dispatch(new GetProfileRequest());
-  // }
+  //function that executes when the page is about to enter
+  ionViewWillEnter() {
+    this.store.dispatch(new GetProfileRequest());
+  }
 }

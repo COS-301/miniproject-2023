@@ -1,36 +1,16 @@
 <ion-tabs>
   <ion-tab-bar slot="bottom" ngClass="nav-bar">
-    <ion-tab-button tab="feed" ngClass="tabs-background" (click)="toggleTab('feed',true)">
+    <ion-tab-button tab="feed" ngClass="tabs-background">
       <ion-icon name="home-outline"></ion-icon>
     </ion-tab-button>
 
-    <ion-tab-button tab="search-page" ngClass="tabs-background" (click)="toggleTab('search',true)">
+    <ion-tab-button tab="search-page" ngClass="tabs-background">
       <ion-icon name="search"></ion-icon>
     </ion-tab-button>
 
-    <ion-tab-button tab="profile-view" ngClass="tabs-background" (click)="toggleTab('profile',true)">
+    <ion-tab-button tab="profile-view" ngClass="tabs-background">
       <ion-icon name="person-circle-outline"></ion-icon>
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>
-
-<!-- <div *ngIf="(tabs$ | async)?.length">
-  <h3>Tab statuses</h3>
-  <ul>
-    <li *ngFor="let tab of tabs" [class.active]="tab.active" (click)="setActiveItem(tab)">
-      <h4>{{ tab.name }}</h4>
-    </li>
-  </ul>
-</div> -->
-
-<!-- <ion-tabs>
-  <ion-tab-bar slot="bottom" ngClass="nav-bar">
-    <script>console.log("HERE I AM: " + tabs$)</script>
-    <ng-container *ngFor="let tab of tabs$ | async">
-      <ion-tab-button [ngClass]="{'tabs-background': tab.active}" [tab]="tab.name" (click)="setActiveTab(tab)">
-        <ion-icon [name]="tab.icon"></ion-icon>
-      </ion-tab-button>
-    </ng-container>
-  </ion-tab-bar>
-</ion-tabs> -->
 

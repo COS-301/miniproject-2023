@@ -7,7 +7,7 @@ import { SetError } from '@mp/app/errors/util';
 import { ProfileViewApi } from './profile-view.api';
 import produce from 'immer';
 import { IMemory } from '@mp/api/memories/util';
-import { IComment } from '@mp/api/comments/util';
+import { IComment } from '@mp/api/memories/util';
 import { Timestamp } from 'firebase-admin/firestore';
 
 export interface ProfileViewStateModel {

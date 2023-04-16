@@ -4,7 +4,7 @@ import {IMemory} from '@mp/api/memories/util';
 import {IUser} from '@mp/api/users/util';
 import {IProfile} from '@mp/api/profiles/util';
 import { Timestamp } from 'firebase-admin/firestore';
-import { IComment } from '@mp/api/comments/util';
+import { IComment } from '@mp/api/memories/util';
 import { user } from 'firebase-functions/v1/auth';
 
 admin.initializeApp();

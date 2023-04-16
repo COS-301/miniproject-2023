@@ -1,4 +1,4 @@
-import { IComment } from "@mp/api/comments/util";
+import { IComment } from "@mp/api/memories/util";
 import { IProfile } from "@mp/api/profiles/util";
 import { IUser } from "@mp/api/users/util";
 
