@@ -1,7 +1,9 @@
 import { ProfilesService } from '@mp/api/profiles/feature';
 import {
+  FetchUserPostsRequest,
   ICheckRelationshipRequest,
   ICheckRelationshipResponse,
+  IFetchUserPostsResponse,
   IUpdateAccountDetailsRequest,
   IUpdateAccountDetailsResponse,
 } from '@mp/api/profiles/util';
@@ -26,5 +28,15 @@ export const checkRelationship = functions.https.onCall(
     const app = await NestFactory.createApplicationContext(CoreModule);
     const service = app.get(ProfilesService);
     return service.checkRelationship(request);
+  }
+);
+
+export const fetchUserPosts = functions.https.onCall(
+  async (
+    request: FetchUserPostsRequest
+  ): Promise<IFetchUserPostsResponse> => {
+    const app = await NestFactory.createApplicationContext(CoreModule);
+    const service = app.get(ProfilesService);
+    return service.fetchUserPosts(request);
   }
 );

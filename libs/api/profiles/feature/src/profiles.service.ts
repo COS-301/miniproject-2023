@@ -16,7 +16,10 @@ import {
     UpdateAddressDetailsCommand,
     UpdateContactDetailsCommand,
     UpdateOccupationDetailsCommand,
-    UpdatePersonalDetailsCommand
+    UpdatePersonalDetailsCommand,
+    FetchUserPostsCommand,
+    IFetchUserPostsResponse,
+    FetchUserPostsRequest
 } from '@mp/api/profiles/util';
 import { Injectable } from '@nestjs/common';
 import { CommandBus } from '@nestjs/cqrs';
@@ -77,5 +80,14 @@ export class ProfilesService {
       CheckRelationshipCommand,
       ICheckRelationshipResponse
     >(new CheckRelationshipCommand(request));
+  }
+
+  async fetchUserPosts(
+    request: FetchUserPostsRequest
+  ): Promise<IFetchUserPostsResponse> {
+    return await this.commandBus.execute<
+      FetchUserPostsCommand,
+      IFetchUserPostsResponse
+    >(new FetchUserPostsCommand(request));
   }
 }
