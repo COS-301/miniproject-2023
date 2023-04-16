@@ -10,32 +10,54 @@ import { Status } from '@mp/api/feed/util';
 export class FeedRepository {
 
     async fetchPosts(filters : FilterList){
-        
+        const documents = await admin.firestore()
+        .collection("Posts")
+        .orderBy("createdTimestamp", "desc")
+        .get();
+
+        console.log(`Documents retrieved: ${documents}`);
+
+        const toReturn: { id: string; title: string; author: null; description: string; content: string; time: number; discipline: Discipline; }[] = [];
+
+        documents.forEach((doc) => {
+          const currentDoc = doc.data();
+          const currentDocPostData = currentDoc['postDetails'];
+          toReturn.push({
+            id: currentDoc['id'],
+            title: currentDoc['title'],
+            author: null,  // TODO: Create function to interpret ```currentDoc['author']``` 's userId value and fetch the appropriate user details
+            description: currentDocPostData['desc'],
+            content: currentDocPostData['content'],
+            time: currentDocPostData['timeWatched'],
+            discipline: Discipline.SCIENCE,   // TODO: Create function to interpret ```currentDocPostData['discipline']``` 's value
+          });
+        });
+
         // This is some mock data - will actually need to query the database
-        const toReturn = {
-            data: [
-                {
-                    id: "post 1",
-                    title: "Burger King Foot Lettuce",
-                    author: null,
-                    description: "This is a very orginal and cool post!",
-                    content: "Wow, I really am I a super cool story - pls spend time",
-                    discipline: Discipline.SCIENCE,
-                    time: 500
-                },
-                {
-                    id: "post 1",
-                    title: "Burger King Foot Lettuce",
-                    author: null,
-                    description: "This is a very orginal and cool post!",
-                    content: "Wow, I really am I a super cool story - pls spend time",
-                    discipline: Discipline.SCIENCE,
-                    time: 500
-                }
-            ]
-        };
-        
-        return toReturn;
+        // const toReturn = {
+        //     data: [
+        //         {
+        //             id: "post 1",
+        //             title: "Burger King Foot Lettuce",
+        //             author: null,
+        //             description: "This is a very orginal and cool post!",
+        //             content: "Wow, I really am I a super cool story - pls spend time",
+        //             discipline: Discipline.SCIENCE,
+        //             time: 500
+        //         },
+        //         {
+        //             id: "post 1",
+        //             title: "Burger King Foot Lettuce",
+        //             author: null,
+        //             description: "This is a very orginal and cool post!",
+        //             content: "Wow, I really am I a super cool story - pls spend time",
+        //             discipline: Discipline.SCIENCE,
+        //             time: 500
+        //         }
+        //     ]
+        // };
+
+        return {data: toReturn};
     }
 
 
