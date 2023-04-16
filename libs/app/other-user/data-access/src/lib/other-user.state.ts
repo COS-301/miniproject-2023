@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { ToastController } from '@ionic/angular';
-import { IPostList, IProfile, IUpdateRelationRequest, IRelation, RelationEnum } from '@mp/api/profiles/util';
+import { IPostList, IProfile, IUpdateRelationRequest, IRelation, RelationEnum, ICheckRelationshipRequest, FetchUserPostsRequest } from '@mp/api/profiles/util';
 import { SetError } from '@mp/app/errors/util';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import produce from 'immer';
 import { OtherUserApi } from './other-user.api';
-import { UpdateRelation } from '@mp/app/other-user/util';
+import { SetPosts, SetRelation, UpdateRelation } from '@mp/app/other-user/util';
 // import { IRelation } from 'libs/api/profiles/util/src/interfaces/relation.interface';
 
 export interface OtherUserStateModel {
-  profile: IProfile | null;
+  currentUser: IProfile | null;
+  otherUser: IProfile | null;
   posts: IPostList | null;
   relation: IRelation | null;
   error: string | null;
@@ -18,7 +19,8 @@ export interface OtherUserStateModel {
 @State<OtherUserStateModel>({
   name: 'OtherUser',
   defaults: {
-    profile: null,
+    currentUser: null,
+    otherUser: null,
     posts: null,
     relation: null,
     error: null,
@@ -34,7 +36,7 @@ export class OtherUserState {
 
   @Selector() 
   static profile(state: OtherUserStateModel) {
-    return state.profile;
+    return state.otherUser;
   }
 
   @Selector() 
@@ -77,6 +79,45 @@ export class OtherUserState {
     } catch (error) {
       return ctx.dispatch(new SetError((error as Error).message));
     }
+  }
+
+  @Action(SetRelation)
+  async setRelation(ctx: StateContext<OtherUserStateModel>) {
+    // First call the api checkRelationship function
+    const request: ICheckRelationshipRequest = {
+      relationship: {
+        currentUser: ctx.getState().currentUser,
+        otherUser: ctx.getState().otherUser,
+      }
+    }
+
+    const responseRef = await this.otherUserApi.checkRelationship(request);
+    const response = responseRef.data;
+
+    // then set the relation in the state
+    return ctx.setState(
+      produce((draft) => {
+        draft.relation = response.relation;
+      })
+    );
+  }
+
+  @Action(SetPosts)
+  async setPosts(ctx: StateContext<OtherUserStateModel>) {
+    const request: FetchUserPostsRequest = {
+      userProfile: ctx.getState().otherUser!,
+    }
+    
+    // First call the api fetchUserPosts function
+    const responseRef = await this.otherUserApi.fetchUserPosts(request);
+    const response = responseRef.data;
+
+    // then set the posts in the state
+    return ctx.setState(
+      produce((draft) => {
+        draft.posts = response.posts;
+      })
+    );
   }
 
 

@@ -7,6 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./other-user.page.css']
 })
 export class OtherUserPage {
+  // For the state
+  
+
   private: boolean = true;
   friends: boolean = true;
   deus: boolean = true;

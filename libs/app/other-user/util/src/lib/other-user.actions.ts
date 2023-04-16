@@ -9,9 +9,16 @@ export class SetError {
 
 
 export class UpdateRelation {
-  static readonly type = '[Profile] UpdateRelation';
+  static readonly type = '[OtherUser] UpdateRelation';
   constructor(public readonly relation: string | null) {}
 }
 
+export class SetRelation {
+  static readonly type = '[OtherUser] SetRelation';
+  // constructor(public readonly relation: string | null) {}
+}
 
-// Do checkRelation next
+export class SetPosts {
+  static readonly type = '[OtherUser] SetPosts';
+  constructor(public readonly profile: IProfile | null) {}
+}
