@@ -9,7 +9,6 @@ export class MemoriesRepository {
   async createMemory(memory: IMemory): Promise<null> {
     return null;
   }
-  
   async findOne(memory: IMemory) {
     return await admin
       .firestore()
@@ -25,22 +24,19 @@ export class MemoriesRepository {
   }
 
   async getComments(memoryId: string): Promise<IComment[]> {
-    const querySnapshot = await admin
-      .firestore()
-      .collection(`memories/${memoryId}/comments`) 
-      .get();
+    const querySnapshot = await admin.firestore().collection(`memories/${memoryId}/comments`).get();
 
-      const comments: IComment[] = [];
+    const comments: IComment[] = [];
 
-      querySnapshot.forEach((doc) => {
-        const comment = doc.data() as IComment;
-        delete comment.userId;
-        comments.push(comment);
-      });
-      
-      return comments;
+    querySnapshot.forEach((doc) => {
+      const comment = doc.data() as IComment;
+      delete comment.userId;
+      comments.push(comment);
+    });
+
+    return comments;
   }
-  
+
   async createComment(comment: IComment) {
     return null;
   }

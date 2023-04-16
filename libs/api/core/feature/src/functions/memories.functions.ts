@@ -1,7 +1,7 @@
 import { MemoriesService } from '@mp/api/memories/feature';
 import {
-  ICreateMemoryRequest, 
-  ICreateMemoryResponse ,
+  ICreateMemoryRequest,
+  ICreateMemoryResponse,
   IGetCommentsRequest,
   IGetCommentsResponse,
 } from '@mp/api/memories/util';

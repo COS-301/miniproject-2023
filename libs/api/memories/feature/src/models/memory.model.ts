@@ -9,7 +9,7 @@ export class Memory extends AggregateRoot implements IMemory {
     public username?: string | null | undefined,
     public title?: string | null | undefined,
     public description?: string | null | undefined,
-    public imgUrl?:string | null | undefined,
+    public imgUrl?: string | null | undefined,
     public profileImgUrl?: string | null | undefined,
     public created?: Timestamp | null | undefined,
     public commentsCount?: number | null | undefined,
@@ -24,7 +24,6 @@ export class Memory extends AggregateRoot implements IMemory {
   create() {
     return null;
   }
-  
   static fromData(memory: IMemory): Memory {
     const instance = new Memory(
       memory.userId,
@@ -49,11 +48,11 @@ export class Memory extends AggregateRoot implements IMemory {
       username: this.username,
       title: this.title,
       description: this.description,
-      imgUrl:this.imgUrl,
-      profileImgUrl:this.profileImgUrl,
+      imgUrl: this.imgUrl,
+      profileImgUrl: this.profileImgUrl,
       created: this.created,
-      commentsCount:this.commentsCount,
-      remainingTime:this.remainingTime,
+      commentsCount: this.commentsCount,
+      remainingTime: this.remainingTime,
       alive: this.alive,
       comments: this.comments,
     };
