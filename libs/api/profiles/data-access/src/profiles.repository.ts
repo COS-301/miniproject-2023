@@ -1,5 +1,6 @@
-import { IProfile } from '@mp/api/profiles/util';
+import { IProfile, PrivacyStatus, Status } from '@mp/api/profiles/util';
 import { Injectable } from '@nestjs/common';
+import { IPasswordSettings } from '@mp/api/profiles/util';
 import * as admin from 'firebase-admin';
 
 @Injectable()
@@ -36,5 +37,25 @@ export class ProfilesRepository {
       .collection('profiles')
       .doc(profile.userId)
       .set(profile, { merge: true });
+  }
+
+
+
+  // Pertaining to the settings
+  async updatePassword(user : IPasswordSettings) {
+    return Status.SUCCESS;
+  }
+
+
+async updatePrivacySettings(user : IProfile) {
+  return Status.SUCCESS; 
+  }
+
+async getPrivacySettings(user : IProfile) {
+  return PrivacyStatus.PUBLIC;
+  }
+
+async deleteAccount(profile : IProfile) {
+  return Status.SUCCESS; 
   }
 }
