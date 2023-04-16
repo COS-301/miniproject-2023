@@ -6,3 +6,5 @@ export * from './personal-details.interface';
 export * from './profile.interface';
 export * from './post-list.interface';
 export * from './post.interface';
+export * from './relation.interface';
+export * from './relationship.interface';
