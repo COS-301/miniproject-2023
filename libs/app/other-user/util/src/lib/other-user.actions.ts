@@ -22,3 +22,14 @@ export class SetPosts {
   static readonly type = '[OtherUser] SetPosts';
   constructor(public readonly profile: IProfile | null) {}
 }
+
+export class SetOtherProfile {
+  static readonly type = '[OtherUser] SetOtherProfile';
+  constructor(public readonly profile: IProfile | null) {}
+}
+
+export class SetCurrentProfile {
+  static readonly type = '[OtherUser] SetCurrentProfile';
+  constructor(public readonly profile: IProfile | null) {}
+}
+

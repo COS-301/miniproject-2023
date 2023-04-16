@@ -1,4 +1,11 @@
 import { Component } from '@angular/core';
+import { RelationEnum } from '@mp/api/profiles/util';
+import { OtherUserState } from '@mp/app/other-user/data-access';
+import { SetOtherProfile, SetRelation } from '@mp/app/other-user/util';
+import { Select, Store } from '@ngxs/store';
+import { IBadge } from 'libs/api/profiles/util/src/interfaces/badge.interface';
+import { IMeter } from 'libs/api/profiles/util/src/interfaces/meter.interface';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -8,7 +15,11 @@ import { Component } from '@angular/core';
 })
 export class OtherUserPage {
   // For the state
-  
+  @Select(OtherUserState.profile) profile$!: Observable<OtherUserState | null>;
+
+  constructor(
+    private store: Store
+  ) { }
 
   private: boolean = true;
   friends: boolean = true;
@@ -49,56 +60,78 @@ export class OtherUserPage {
     },
   ];
 
-  badges: any[] = [
+  badges: IBadge[] = [
     {
       name: 'Rockstar',
-      value: 60,
-      imageSrc: 'https://ionicframework.com/docs/img/demos/avatar.svg',
+      iconURL: 'https://ionicframework.com/docs/img/demos/avatar.svg',
     },
     {
       name: 'Einstein',
-      value: 30,
-      imageSrc: 'https://ionicframework.com/docs/img/demos/avatar.svg',
+      iconURL: 'https://ionicframework.com/docs/img/demos/avatar.svg',
     },
     {
       name: 'Ramsy',
-      value: 70,
-      imageSrc: 'https://ionicframework.com/docs/img/demos/avatar.svg',
+      iconURL: 'https://ionicframework.com/docs/img/demos/avatar.svg',
     },
     {
       name: 'Rockstar',
-      value: 60,
-      imageSrc: 'https://ionicframework.com/docs/img/demos/avatar.svg',
+      iconURL: 'https://ionicframework.com/docs/img/demos/avatar.svg',
     },
     {
       name: 'Einstein',
-      value: 30,
-      imageSrc: 'https://ionicframework.com/docs/img/demos/avatar.svg',
+      iconURL: 'https://ionicframework.com/docs/img/demos/avatar.svg',
     },
     {
       name: 'Ramsy',
-      value: 70,
-      imageSrc: 'https://ionicframework.com/docs/img/demos/avatar.svg',
+      iconURL: 'https://ionicframework.com/docs/img/demos/avatar.svg',
     },
   ]
 
-  meters: any[] = [
+  meters: IMeter[] = [
     {
-      name: 'Science',
-      value: 60,
+      discipline: 'Science',
+      time_accumulated: 60,
     },
     {
-      name: 'Music',
-      value: 70,
+      discipline: 'Music',
+      time_accumulated: 70,
     },
     {
-      name: 'Food',
-      value: 50,
+      discipline: 'Food',
+      time_accumulated: 50,
     },
   ]
 
-  // NgOnInit() {
+  NgOnInit() {
+    // this.store.dispatch(new SetOtherProfile());
+    this.store.dispatch(new SetRelation());
 
-  // }
+    this.store.select(OtherUserState.profile).subscribe((profile) => {
+      if (profile?.accountDetails?.private) {
+        this.private = true;
+      }
+      else
+      {
+        this.private == false;
+      }
+      this.badges = profile?.accountDetails?.badges!;
+      this.meters = profile?.accountDetails?.meters!;
+    })
+    this.store.select(OtherUserState.relation).subscribe((relation) => {
+      if (relation?.type === RelationEnum.FRIEND) {
+        this.friends = true;
+      }
+      else
+      {
+        this.friends == false;
+      }
+    })
+
+    this.store.select(OtherUserState.posts).subscribe((posts) => {
+      this.posts = posts?.list?.map((post) => {
+        return {caption: post.title, imagePath: post.image}
+      })!;
+    })
+  }
 
 }

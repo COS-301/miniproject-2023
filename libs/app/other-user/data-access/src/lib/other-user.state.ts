@@ -5,7 +5,7 @@ import { SetError } from '@mp/app/errors/util';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import produce from 'immer';
 import { OtherUserApi } from './other-user.api';
-import { SetPosts, SetRelation, UpdateRelation } from '@mp/app/other-user/util';
+import { SetCurrentProfile, SetOtherProfile, SetPosts, SetRelation, UpdateRelation } from '@mp/app/other-user/util';
 // import { IRelation } from 'libs/api/profiles/util/src/interfaces/relation.interface';
 
 export interface OtherUserStateModel {
@@ -42,6 +42,11 @@ export class OtherUserState {
   @Selector() 
   static posts(state: OtherUserStateModel) {
     return state.posts;
+  }
+
+  @Selector() 
+  static relation(state: OtherUserStateModel) {
+    return state.relation;
   }
 
   @Action(UpdateRelation)
@@ -140,4 +145,23 @@ export class OtherUserState {
 
     await toast.present();
   }
+
+  @Action(SetOtherProfile)
+  setOtherProfile(ctx: StateContext<OtherUserStateModel>, { profile }: SetOtherProfile) {
+    return ctx.setState(
+      produce((draft) => {
+        draft.otherUser = profile;
+      })
+    );
+  }
+
+  @Action(SetCurrentProfile)
+  setCurrentProfile(ctx: StateContext<OtherUserStateModel>, { profile }: SetCurrentProfile) {
+    return ctx.setState(
+      produce((draft) => {
+        draft.currentUser = profile;
+      })
+    );
+  }
+  
 }
