@@ -1,31 +1,52 @@
 {
+<<<<<<<< HEAD:libs/app/home/utils/project.json
   "name": "app-home-utils",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/app/home/utils/src",
+========
+  "name": "api-friend-feature",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/api/friend/feature/src",
+>>>>>>>> dev:libs/api/friend/feature/project.json
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
+<<<<<<<< HEAD:libs/app/home/utils/project.json
         "outputPath": "dist/libs/app/home/utils",
         "main": "libs/app/home/utils/src/index.ts",
         "tsConfig": "libs/app/home/utils/tsconfig.lib.json",
         "assets": ["libs/app/home/utils/*.md"]
+========
+        "outputPath": "dist/libs/api/friend/feature",
+        "main": "libs/api/friend/feature/src/index.ts",
+        "tsConfig": "libs/api/friend/feature/tsconfig.lib.json",
+        "assets": ["libs/api/friend/feature/*.md"]
+>>>>>>>> dev:libs/api/friend/feature/project.json
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
+<<<<<<<< HEAD:libs/app/home/utils/project.json
         "lintFilePatterns": ["libs/app/home/utils/**/*.ts"]
+========
+        "lintFilePatterns": ["libs/api/friend/feature/**/*.ts"]
+>>>>>>>> dev:libs/api/friend/feature/project.json
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
+<<<<<<<< HEAD:libs/app/home/utils/project.json
         "jestConfig": "libs/app/home/utils/jest.config.ts",
+========
+        "jestConfig": "libs/api/friend/feature/jest.config.ts",
+>>>>>>>> dev:libs/api/friend/feature/project.json
         "passWithNoTests": true
       },
       "configurations": {

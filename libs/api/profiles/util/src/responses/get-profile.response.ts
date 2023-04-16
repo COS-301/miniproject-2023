@@ -1,5 +1,5 @@
-import { IProfile } from "../interfaces";
+import { IProfile } from '../interfaces';
 
-export interface IGetProfileResponse{ 
-    profile:IProfile;
+export interface IGetProfileResponse {
+  profile: IProfile;
 }
