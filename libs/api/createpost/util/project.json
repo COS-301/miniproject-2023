@@ -1,31 +1,31 @@
 {
-  "name": "api-create-profile-api-util",
+  "name": "api-createpost-util",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/api/create-profile-api/util/src",
+  "sourceRoot": "libs/api/createpost/util/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/api/create-profile-api/util",
-        "main": "libs/api/create-profile-api/util/src/index.ts",
-        "tsConfig": "libs/api/create-profile-api/util/tsconfig.lib.json",
-        "assets": ["libs/api/create-profile-api/util/*.md"]
+        "outputPath": "dist/libs/api/createpost/util",
+        "main": "libs/api/createpost/util/src/index.ts",
+        "tsConfig": "libs/api/createpost/util/tsconfig.lib.json",
+        "assets": ["libs/api/createpost/util/*.md"]
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/api/create-profile-api/util/**/*.ts"]
+        "lintFilePatterns": ["libs/api/createpost/util/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/api/create-profile-api/util/jest.config.ts",
+        "jestConfig": "libs/api/createpost/util/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {

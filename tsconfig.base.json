@@ -20,6 +20,13 @@
       "@mp/api/auth/feature": ["libs/api/auth/feature/src/index.ts"],
       "@mp/api/auth/util": ["libs/api/auth/util/src/index.ts"],
       "@mp/api/core/feature": ["libs/api/core/feature/src/index.ts"],
+      "@mp/api/createpost/data-access": [
+        "libs/api/createpost/data-access/src/index.ts"
+      ],
+      "@mp/api/createpost/feature": [
+        "libs/api/createpost/feature/src/index.ts"
+      ],
+      "@mp/api/createpost/util": ["libs/api/createpost/util/src/index.ts"],
       "@mp/api/eventstore/data-access": [
         "libs/api/eventstore/data-access/src/index.ts"
       ],
@@ -30,6 +37,11 @@
       "@mp/api/feed/data-access": ["libs/api/feed/data-access/src/index.ts"],
       "@mp/api/feed/feature": ["libs/api/feed/feature/src/index.ts"],
       "@mp/api/feed/util": ["libs/api/feed/util/src/index.ts"],
+
+      "@mp/api/search/data-access": ["libs/api/search/data-access/src/index.ts"],
+      "@mp/api/search/feature": ["libs/api/search/feature/src/index.ts"],
+      "@mp/api/search/util": ["libs/api/search/util/src/index.ts"],
+
       "@mp/api/friends/data-access": [
         "libs/api/friends/data-access/src/index.ts"
       ],
@@ -89,6 +101,7 @@
       "@mp/app/login/data-access": ["libs/app/login/data-access/src/index.ts"],
       "@mp/app/login/feature": ["libs/app/login/feature/src/index.ts"],
       "@mp/app/login/util": ["libs/app/login/util/src/index.ts"],
+      "@mp/app/messages/feature": ["libs/app/messages/feature/src/index.ts"],
       "@mp/app/other-user/data-access": [
         "libs/app/other-user/data-access/src/index.ts"
       ],
@@ -97,7 +110,6 @@
       ],
       "@mp/app/other-user/ui": ["libs/app/other-user/ui/src/index.ts"],
       "@mp/app/other-user/util": ["libs/app/other-user/util/src/index.ts"],
-      "@mp/app/messages/feature": ["libs/app/messages/feature/src/index.ts"],
       "@mp/app/privacy/feature": ["libs/app/privacy/feature/src/index.ts"],
       "@mp/app/profile/data-access": [
         "libs/app/profile/data-access/src/index.ts"

@@ -61,22 +61,25 @@ ion-button {
     --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.25);
     /* --background: #93e9be; */
     /* --background-hover: #9ce0be; */
-    --background-activated: #5e5eff;
-    --background-focused: #88f4be;
+    --background: #0E8C00;
+    --color: white;
+}
 
+ion-content {
+  --ion-background-color: #242423;
 }
 
 ion-segment {
     width: 100%;
     margin: 0px;
     padding: 0px;
-    --background: #191919;
+    --background: #242423;
     color: white;
     border-radius: 0%;
 }
 
 ion-segment-button::part(indicator-background) {
-    background: #01b41f;
+    background: #0E8C00;
   }
   
   /* Material Design styles */
@@ -85,7 +88,7 @@ ion-segment-button::part(indicator-background) {
   }
   
   .segment-button-checked.md::part(native) {
-    color: #03ac08;
+    color: #0E8C00;
   }
   
   ion-segment-button.md::part(indicator-background) {
@@ -94,7 +97,7 @@ ion-segment-button::part(indicator-background) {
   
   /* iOS styles */
   ion-segment-button.ios::part(native) {
-    color: #03ac08;
+    color: #0E8C00;
   }
   
   .segment-button-checked.ios::part(native) {
@@ -119,6 +122,6 @@ ion-segment-button::part(indicator-background) {
 } */
 
 .content-section, .content-section ion-content {
-   --background: #2b2b2b;
+   --background: #333533;
    --color: white;
 }

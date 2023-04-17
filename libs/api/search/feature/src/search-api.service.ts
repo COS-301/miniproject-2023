@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CommandBus } from '@nestjs/cqrs';
-import { SearchCommand, SearchRequest, SearchResponse } from '@mp/api/search-api/util';
+import { SearchCommand, SearchRequest, SearchResponse } from '@mp/api/search/util';
 
 @Injectable()
 export class SearchService {

@@ -27,6 +27,7 @@ import { IUser } from '@mp/api/users/util';
 import { FeedApi } from './feed.api';
 import { SetError } from '@mp/app/errors/util';
 import { fetchPosts } from '@mp/api/core/feature';
+import { AuthState } from '@mp/app/auth/data-access';
 
 export interface FeedStateModel {
 
@@ -83,7 +84,7 @@ export interface FeedStateModel {
   UserTime: {
     model: {
       timeRemaining: boolean | null;
-      timeAbout: number | null;
+      timeAmount: number | null;
     };
     dirty: false;
     status: string;
@@ -149,7 +150,7 @@ export interface FeedStateModel {
   UserTime: {
     model: {
       timeRemaining: null,
-      timeAbout: null,
+      timeAmount: null,
     },
     dirty: false,
     status: '',
@@ -158,6 +159,7 @@ export interface FeedStateModel {
   },
 
 })
+
 @Injectable()
 export class FeedState {
   constructor(
@@ -166,8 +168,13 @@ export class FeedState {
     ) {}
 
   @Selector()
-  static feed(state: FeedStateModel) {
+  static postList(state: FeedStateModel) {
     return state.PostList;
+  }
+
+  @Selector()
+  static userTime(state: FeedStateModel) {
+    return state.UserTime;
   }
 
   @Action(SetFilterList)
@@ -257,22 +264,47 @@ export class FeedState {
   }
 
   @Action(SetTimeModification)
-  async setTimeModification(ctx: StateContext<FeedStateModel>, {timeModification}: SetTimeModification){
-    console.log('timeModification: ', timeModification);
-    return ctx.setState(
-      produce((draft) => {
-        draft.timeModification = timeModification;
-      })
-    )
+  async setTimeModification(ctx: StateContext<FeedStateModel>,
+  {payload} : SetTimeModification)
+  {
+    try{
+
+        ctx.setState(
+          produce((draft) => {
+              draft.TimeModification = {model : {postID : payload.postID, time :payload.time}, dirty : false, status : '', errors : {}};
+          }));
+
+        const addTimeRqst = {modification : this.store.selectSnapshot(FeedState).timeModification};
+
+        const rqstStatus = await this.feedApi.addTime$(addTimeRqst);
+
+        if(rqstStatus.data.status === 'success'){
+          console.log('Time added successfully');
+        }else{
+          ctx.dispatch(new SetError('Time could not be added'));
+        }
+        return;
+
+    }catch(error){
+      return ctx.dispatch(new SetError((error as Error).message));
+    }
   }
 
-  @Action(SetUserTime)
-  async setUserTime(ctx: StateContext<FeedStateModel>, {userTime}: SetUserTime){
-    console.log('userTime: ', userTime);
-    return ctx.setState(
-      produce((draft) => {
-        draft.userTime = userTime;
-      })
-    )
-  }
+  // @Action(SetUserTime)
+  // async setUserTime(ctx: StateContext<FeedStateModel>){
+  //   const userTimeRqst = {
+  //     user : this.store.selectSnapshot(AuthState).user,
+  //   }
+
+  //   const userTime = await this.feedApi.getUserTime$(userTimeRqst);
+  //   //console.log('userTime: ', userTime);
+  //   ctx.setState(
+  //     produce((draft) => {
+  //       draft.userTime = {
+  //         timeRemaining: userTime.data.userTime.timeRemaining,
+  //         timeAmount: userTime.data.userTime.timeAmount,
+  //       }
+  //     })
+  //   )
+  // }
 }

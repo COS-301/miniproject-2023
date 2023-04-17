@@ -7,7 +7,7 @@ import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { SetFilterList, SetPost, SetPostList, SetTimeModification, SetUserTime } from '@mp/app/feed/util';
 import { FeedState } from '@mp/app/feed/data-access';
-import { FilterList, FilterType, Post, PostList } from '@mp/api/feed/util';
+import { FilterList, FilterType, Post, PostList, TimeModification, UserTime } from '@mp/api/feed/util';
 @Component({
   selector: 'mp-feed',
   templateUrl: './feed.page.html',
@@ -15,10 +15,11 @@ import { FilterList, FilterType, Post, PostList } from '@mp/api/feed/util';
 })
 export class FeedPage {
 
-  @Select(FeedState.feed) feed$!: Observable<PostList>;
-
+  @Select(FeedState.postList) postList$!: Observable<PostList>;
+  //  @Select(FeedState.userTime) userTime$!: Observable<UserTime>;
 
   feedOpen: boolean;
+  userTime!: number | null;
   postsData: PostList = {
     postsFound : false,
     list : [],
@@ -30,8 +31,9 @@ export class FeedPage {
 
   ngOnInit(){
     this.store.dispatch(new SetPostList());
+    //  this.store.dispatch(new SetUserTime());
 
-    this.store.select(FeedState.feed).subscribe((feed) => {
+    this.store.select(FeedState.postList).subscribe((feed) => {
       if (feed.model.list != null){
 
         this.postsData.postsFound = true;
@@ -41,6 +43,12 @@ export class FeedPage {
         })
       }
      })
+
+    //  this.store.select(FeedState.userTime).subscribe((userTime) => {
+    //   if (userTime.model != null){
+    //     this.userTime = userTime.model.timeAmount;
+    //   }
+    //  })
   }
   activeFilters: FilterList = {
     list: [],
@@ -67,6 +75,7 @@ export class FeedPage {
   setPost($data:Post){
     if(this.postsData.list?.indexOf($data)){
       this.selectedPost = this.postsData.list?.indexOf($data);
+      console.log('selected post: ' + this.selectedPost);
     }
 
     this.store.dispatch(new SetPost({post : $data}));
@@ -75,6 +84,10 @@ export class FeedPage {
 
   closeFeed(){
     this.feedOpen = false;
+  }
+
+  updatePostTime($data:TimeModification){
+    this.store.dispatch(new SetTimeModification({postID:$data.postID, time : $data.time}));
   }
 
 }

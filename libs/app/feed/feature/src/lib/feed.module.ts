@@ -7,6 +7,8 @@ import { FeedUIModule } from '@mp/app/feed/ui';
 import { FooterModule } from '@mp/app/footer/feature';
 import { NgxsModule } from '@ngxs/store';
 import { FeedApi, FeedState } from '@mp/app/feed/data-access';
+import { NgxsActionsExecutingModule } from '@ngxs-labs/actions-executing';
+import { SetPostList } from '@mp/app/feed/util';
 
 
 @NgModule({

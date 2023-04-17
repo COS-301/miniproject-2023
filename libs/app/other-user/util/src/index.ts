@@ -1,1 +1,1 @@
-export * from './lib/app-other-user-util';
+export * from './lib/other-user.actions';

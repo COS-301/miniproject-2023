@@ -16,6 +16,10 @@ import {
     IUpdatePersonalDetailsResponse
 } from '@mp/api/profiles/util';
 
+//for friends api call
+import { GetFriendsRequest, GetFriendsResponse } from '@mp/api/friends/util';
+import { RemoveFriendRequest, RemoveFriendResponse } from '@mp/api/friends/util';
+
 @Injectable()
 export class ProfilesApi {
   constructor(
@@ -55,6 +59,27 @@ export class ProfilesApi {
       'fetchPosts'
     )(request);
   }
+
+  async getFriends(request: GetFriendsRequest) {
+    return await httpsCallable<
+      GetFriendsRequest,
+      GetFriendsResponse
+    >(
+      this.functions,
+      'getFriends'
+    )(request);
+  }
+
+  async removeFriend(request: RemoveFriendRequest) {
+    return await httpsCallable<
+      RemoveFriendRequest,
+      RemoveFriendResponse
+    >(
+      this.functions,
+      'removeFriend'
+    )(request);
+  }
+
 
   async updateContactDetails(request: IUpdateContactDetailsRequest) {
     return await httpsCallable<
