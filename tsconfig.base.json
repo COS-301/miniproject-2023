@@ -72,7 +72,15 @@
       "@mp/app/notifications/feature": [
         "libs/app/notifications/feature/src/index.ts"
       ],
+      "@mp/app/post/data-access": ["libs/app/post/data-access/src/index.ts"],
       "@mp/app/post/feature": ["libs/app/post/feature/src/index.ts"],
+      "@mp/app/post/pages/posts/feature": [
+        "libs/app/post/pages/posts/feature/src/index.ts"
+      ],
+      "@mp/app/post/src/pages/posts/data-access": [
+        "libs/app/post/src/pages/posts/data-access/src/index.ts"
+      ],
+      "@mp/app/post/util": ["libs/app/post/util/src/index.ts"],
       "@mp/app/privacy/feature": ["libs/app/privacy/feature/src/index.ts"],
       "@mp/app/profile/data-access": [
         "libs/app/profile/data-access/src/index.ts"
