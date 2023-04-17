@@ -1,0 +1,111 @@
+$backgroundColor: #242423;
+$vibrantGreen: #0E8C00;
+
+
+.cust_button_var1 {
+  --background: #0E8C00;
+  --color: white;
+}
+
+// Custom styles for ion-header
+ion-header {
+  ion-toolbar {
+    background-color: $backgroundColor;
+
+      // Custom styles for ion-buttons in start slot
+      ion-button {
+        &.my-custom-button {
+          // Custom background color
+          background-color: $vibrantGreen;
+  
+          // Custom text color
+          color: white;
+          margin-right: auto;
+          // Custom font size
+          font-size: 1.2rem;
+  
+          // Custom padding
+          padding: 10px 20px;
+  
+          // Custom hover effect
+          &:hover {
+            background-color: darken($vibrantGreen, 10%);
+          }
+  
+          // Custom disabled state
+          &[disabled] {
+            opacity: 0.5;
+            cursor: not-allowed;
+          }
+        }
+      }
+
+    ion-title {
+      // Custom styles for ion-title
+      color: white;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+// Custom styles for ion-content
+ion-content {
+  form {
+    ion-item {
+      ion-label {
+        // Custom styles for ion-label
+        color: $vibrantGreen;
+        font-weight: bold;
+        font-size: 1rem;
+      }
+
+      ion-input {
+        // Custom styles for ion-input
+        border-color: $vibrantGreen;
+        color: $vibrantGreen;
+        font-size: 1rem;
+      }
+
+      ion-select {
+        // Custom styles for ion-select
+        border-color: $vibrantGreen;
+        color: $vibrantGreen;
+        font-size: 1rem;
+      }
+
+      input[type="file"] {
+        // Custom styles for input[type="file"]
+        color: $vibrantGreen;
+        font-size: 1rem;
+      }
+    }
+
+    ion-button {
+      // Add your custom styles for ion-button here
+      &.my-custom-button {
+        // Custom background color
+        background-color: $vibrantGreen;
+
+        // Custom text color
+        color: white;
+        margin-right: auto;
+        // Custom font size
+        font-size: 1.2rem;
+
+        // Custom padding
+        padding: 10px 20px;
+
+        // Custom hover effect
+        &:hover {
+          background-color: darken($vibrantGreen, 10%);
+        }
+
+        // Custom disabled state
+        &[disabled] {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+}

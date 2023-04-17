@@ -1,0 +1,47 @@
+$backgroundColor: #242423;
+$vibrantGreen: #0E8C00;
+
+.cust_button_var1 {
+  --background: #0E8C00;
+  --color: white;
+}
+ion-header {
+  ion-toolbar {
+    ion-title {
+      font-size: 3rem;
+      color: $vibrantGreen;
+    }
+  }
+}
+
+ion-content {
+  ion-list {
+    ion-item {
+      ion-label {
+        color: $vibrantGreen;
+        &.textColor {
+          color: $vibrantGreen;
+        }
+        &.italic {
+          font-style: italic;
+        }
+        &.bold {
+          font-weight: bold;
+        }
+        &.underline {
+          text-decoration: underline;
+        }
+      }
+      ion-toggle {
+        color: $vibrantGreen;
+      }
+    }
+  }
+}
+
+.center-container {
+  height: 100%;
+  display: flex;
+  background-color: $backgroundColor;
+}
+

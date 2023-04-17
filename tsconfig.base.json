@@ -127,8 +127,14 @@
       "@mp/app/core/feature": [
         "libs/app/core/feature/src/index.ts"
       ],
+      "@mp/app/create-post/data-access": [
+        "libs/app/create-post/data-access/src/index.ts"
+      ],
       "@mp/app/create-post/feature": [
         "libs/app/create-post/feature/src/index.ts"
+      ],
+      "@mp/app/create-post/util": [
+        "libs/app/create-post/util/src/index.ts"
       ],
       "@mp/app/dashboard/data-access": [
         "libs/app/dashboard/data-access/src/index.ts"

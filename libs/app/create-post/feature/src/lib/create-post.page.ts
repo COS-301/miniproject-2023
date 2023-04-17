@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-//import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-//import { Storage } from '@ionic/storage';
+import { PostService } from './post.service'; // Example service for handling post submission
+import { Location } from '@angular/common';
+
 
 
 @Component({
@@ -9,42 +10,53 @@ import { Component } from '@angular/core';
   styleUrls: ['./create-post.page.scss']
 })
 export class CreatePostPage {
+  post = {
+    user:'',
+    title: '',
+    caption: '',
+    link: '',
+    tag: '',
+    photo: null
+  };
 
-  constructor() {
-    console.log("create post");
+  constructor(private postService: PostService, private location: Location) {}
+  
+  goBack() {
+    this.location.back();
+  }
+  
+
+  submitForm() {
+    // Validate form data, e.g., check if required fields are filled out
+    if (!this.post.title) {
+      alert('Please enter a title.');
+      return;
+    }
+
+    // Call the post service to submit the form data
+    this.postService.createPost(this.post)
+      .then(response => {
+        // Handle successful post submission, e.g., show a success message
+        alert('Post created successfully!');
+        // Reset form data
+        this.post = {
+          user: '',
+          title: '',
+          caption: '',
+          link: '',
+          tag: '',
+          photo: null
+        };
+      })
+      .catch(error => {
+        // Handle error, e.g., show an error message
+        alert('Failed to create post. Please try again.');
+      });
   }
 
-  /* title: string;
-   caption: string;
-   link: string;
-   tag: string;
-   photo: string;
- 
-   constructor(private camera: Camera, private storage: Storage) { }
- 
-   handleFileInput(event: any): void {
-     const file: File = event.target.files[0];
-     const reader: FileReader = new FileReader();
-     reader.onloadend = () => {
-       this.photo = reader.result as string;
-     };
-     reader.readAsDataURL(file);
-   }
- 
-   submitPost(): void {
-     /*const post = {
-       title: this.title,
-       caption: this.caption,
-       link: this.link,
-       tag: this.tag,
-       photo: this.photo,
-     };
-     this.storage.get('posts').then(posts => {
-       const newPosts = posts ? [...posts, post] : [post];
-       this.storage.set('posts', newPosts);
-     });
-   }
- 
- 
- }*/
+  onFileChange(event: Event) {
+    const target = event.target as HTMLInputElement;
+    // Now you can access target.files property
+    // and perform the desired logic with the selected files
+  }
 }
