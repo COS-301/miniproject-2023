@@ -1,5 +1,4 @@
 import { describe, test } from '@jest/globals';
-import { ICreateMemoryResponse } from '../../../memories/util/src';
 
 const mockData = { //change according to seeded data
   userId:"0104fa66-5a7b-429c-aedd-acab833be72e",
@@ -10,7 +9,7 @@ const mockData = { //change according to seeded data
 };
 
 describe('Tesing Cloud Function: createMemory', () => {
-  test(`Creating Memory for userID = ${mockData.userId}`, async () => {
+  test(`Creating Memory for userID = ${mockData.userId} \n using endPoint`, async () => {
       const createMemoryRequest = {
        data:{
               memory: {
@@ -21,13 +20,6 @@ describe('Tesing Cloud Function: createMemory', () => {
               imgUrl: mockData.imgUrl
             }
         }
-      };
-      const memoryResponse = {
-          username: mockData.username,
-          userId: mockData.userId,
-          title: mockData.title,
-          description: mockData.description,
-          imgUrl: mockData.imgUrl
       };
       
       const res = (await fetch('http://127.0.0.1:5005/demo-project/us-central1/createMemory',{
