@@ -1,4 +1,4 @@
-name: Dev | Deploy to Firebase
+name: Development | Deploy to Firebase
 'on':
   push:
     branches:
@@ -9,59 +9,38 @@ jobs:
     environment: development
     runs-on: ubuntu-latest
     steps:
-      # checking out repo
-      - name: Checkout
-        uses: actions/checkout@v2
+      - name: 🛏️ Checkout repository
+        uses: actions/checkout@v3
         
-      # creating env file
-      - name: .env creation
+      - name: 📁 Create ENV File
         run: |
-          touch .env.prod
-          echo NX_ENVIRONMENT="development" >> .env.prod
-          echo NX_FIREBASE_AUTH_DOMAIN='${{secrets.NX_FIREBASE_AUTH_DOMAIN}}' >> .env.prod
-          echo NX_FIREBASE_DATABASE_URL='${{ secrets.NX_FIREBASE_DATABASE_URL }}' >> .env.prod
-          echo NX_FIREBASE_PROJECT_ID='${{secrets.NX_FIREBASE_PROJECT_ID}}' >> .env.prod
-          echo NX_FIREBASE_STORAGE_BUCKET='${{secrets.NX_FIREABASE_STORAGE_BUCKET}}' >> .env.prod
-          echo NX_FIREBASE_MESSAGING_SENDER_ID='${{ secrets.NX_FIREBASE_MESSAGING_SENDER_ID }}' >> .env.prod
-          echo NX_FIREBASE_APP_ID='${{ secrets.NX_FIREBASE_APP_ID }}' >> .env.prod
-          echo NX_FIREBASE_MEASUREMENT_ID='${{ secrets.NX_FIREBASE_MEASUREMENT_ID }}' >> .env.prod
-          echo NX_FIREBASE_API_KEY='${{ secrets.NX_FIREBASE_API_KEY }}' >> .env.prod
-          cat .env.prod
+          touch .env
+          echo NX_ENVIRONMENT="production" >> .env
+          echo NX_FIREBASE_AUTH_DOMAIN='${{secrets.NX_FIREBASE_AUTH_DOMAIN}}' >> .env
+          echo NX_FIREBASE_DATABASE_URL='${{ secrets.NX_FIREBASE_DATABASE_URL }}' >> .env
+          echo NX_FIREBASE_PROJECT_ID='${{secrets.NX_FIREBASE_PROJECT_ID}}' >> .env
+          echo NX_FIREBASE_STORAGE_BUCKET='${{secrets.NX_FIREABASE_STORAGE_BUCKET}}' >> .env
+          echo NX_FIREBASE_MESSAGING_SENDER_ID='${{ secrets.NX_FIREBASE_MESSAGING_SENDER_ID }}' >> .env
+          echo NX_FIREBASE_APP_ID='${{ secrets.NX_FIREBASE_APP_ID }}' >> .env
+          echo NX_FIREBASE_MEASUREMENT_ID='${{ secrets.NX_FIREBASE_MEASUREMENT_ID }}' >> .env
+          echo NX_FIREBASE_API_KEY='${{ secrets.NX_FIREBASE_API_KEY }}' >> .env
+          # cat .env
         
-      # installing packages and building the app
-      - name: Installing packages and buidling app
-        run: yarn install -frozen-lockfile && yarn build:app:prod
+      - name: 🧰 Installing packages and buidling app
+        run: yarn install --frozen-lockfile && yarn build:app:dev && yarn build:api:dev
         
-      # saving artifact for later use
-      - name: Make artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: app-artifacts
-          path: app-artifacts
-          retention-days: 1
-        
-  deploy:
-    name: "Deploying App"
-    environment: development
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      # checking out repo
-      - name: Checkout
-        uses: actions/checkout@v2
-        
-      # Getting artifacts
-      - name: Getting artifacts
-        uses: actions/download-artifact@master
-        with:
-          name: app-artifacts
-          path: app-artifacts
-      
-      # Pushing to Firebase
-      - name: Pushing to Firebase Hosting
+      - name: 🔥 Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_COS301_MINIPROJECT_DEV }}'
+          projectId: '${{ secrets.NX_FIREBASE_PROJECT_ID }}'
           channelId: live
-          projectId: '${{secrets.NX_FIREBASE_PROJECT_ID}}'
+          
+      - name: 🔥 Deploy to Firebase Cloud Functions
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only functions --project development
+        env:
+          GCP_SA_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_COS301_MINIPROJECT_DEV }}
+          PROJECT_ID: '${{ secrets.NX_FIREBASE_PROJECT_ID }}'
