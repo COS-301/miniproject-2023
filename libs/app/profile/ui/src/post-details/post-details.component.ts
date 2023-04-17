@@ -114,4 +114,10 @@ export class PostDetailsComponent {
     console.log("here in component");
     this.store.dispatch(new CreatePostDetails());
   }
+  
+  setInsertionPoint(){
+    const x = document.getElementById("numberInput") as HTMLIonInputElement;
+
+    x.setFocus();
+  }
 }
