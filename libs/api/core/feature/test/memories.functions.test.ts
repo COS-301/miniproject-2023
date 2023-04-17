@@ -1,7 +1,5 @@
 import { describe, test } from '@jest/globals';
 import { createMemory } from '../src';
-import * as admin from 'firebase-admin';
-import * as functions from 'firebase-functions-test';
 
 const mockData = { //change according to seeded data
   userId:"0301b908-4fd3-4b2d-af8c-29dd90b4c2fd",
@@ -14,17 +12,15 @@ const mockData = { //change according to seeded data
 describe('Tesing Cloud Function: createMemory', () => {
   test(`Creating Memory for userID = ${mockData.userId}`, async () => {
     const createMemoryRequest = {
-      body:{
-         data:{
-                memory: {
-                username: mockData.username,
-                userId: mockData.userId,
-                title: mockData.title,
-                description: mockData.description,
-                imgUrl: mockData.imgUrl
-              }
+     data:{
+            memory: {
+            username: mockData.username,
+            userId: mockData.userId,
+            title: mockData.title,
+            description: mockData.description,
+            imgUrl: mockData.imgUrl
           }
-        }
+      }
     };
     const memoryResponse = {
         username: mockData.username,
@@ -33,15 +29,17 @@ describe('Tesing Cloud Function: createMemory', () => {
         description: mockData.description,
         imgUrl: mockData.imgUrl
     };
-    const createMemoryResponse = {
-      memory: memoryResponse
-      };
-      const response = {
-        send: (payload) => {
-          console.debug(createMemoryResponse);
-          expect(payload).toBe(createMemoryResponse);
-        }, 
-      };
-      await createMemory(createMemoryRequest as any,createMemoryResponse as any);
-  });
+    
+    fetch('http://127.0.0.1:5005/demo-project/us-central1/createMemory',{
+      method: 'POST',
+      headers: new Headers({'content-type': 'application/json'}),
+      mode: 'no-cors',
+      body: JSON.stringify(createMemoryRequest)
+    })
+    .then((onSuccess)=>{
+      console.log(onSuccess.body);
+      expect(onSuccess).toBe('')
+    },(e)=>{
+      console.debug(e);
+    })
 });

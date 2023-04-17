@@ -43,9 +43,8 @@ export class CreateMemoryHandler implements ICommandHandler<CreateMemoryCommand>
       alive: alive,
     };
     const memoriesRepository:MemoriesRepository = new MemoriesRepository();
-    return memoriesRepository.createMemory(memory)
-    .then((writSuccessFul)=>{
-      console.debug(writSuccessFul);
+    const writeResults =  await memoriesRepository.createMemory(memory)
+    if(writeResults.writeTime){
       const memoryEventPublisher = this.publisher.mergeObjectContext(Memory.fromData(memory));
       memoryEventPublisher.create();
       memoryEventPublisher.commit();
@@ -53,11 +52,10 @@ export class CreateMemoryHandler implements ICommandHandler<CreateMemoryCommand>
         ICreateMemoryResponse:memory
       }
       return iCreateMemoryResponse;
-    },
-      (writeFailure)=>{
-        return {
-          error: `writing memory to peristant storage failed. Info ${writeFailure}`
-        }
-    });
+    }
+    const error = {
+      error: `writing memory to peristant storage failed. Info ${writeResults}`
+    };
+    return error;
   }
 }
