@@ -51,8 +51,7 @@ export class CreateMemoryHandler implements ICommandHandler<CreateMemoryCommand>
       },(error)=>{
           //TODO implement
             //handle error for invalid uid
-          console.debug(error);
+          console.debug('Error fetching user data:', error);
       });
   }
 }
-
