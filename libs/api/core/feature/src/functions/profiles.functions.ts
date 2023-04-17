@@ -1,15 +1,24 @@
 import { ProfilesService } from '@mp/api/profiles/feature';
 import {
+
   IDeleteAccountRequest,
   IDeleteAccountResponse,
   IGetPrivacySettingsRequest,
   IGetPrivacySettingsResponse,
-  IUpdateAccountDetailsRequest,
-  IUpdateAccountDetailsResponse,
   IUpdatePasswordRequest,
   IUpdatePasswordResponse,
   IUpdatePrivacySettingsRequest,
   IUpdatePrivacySettingsResponse,
+
+  FetchUserPostsRequest,
+  ICheckRelationshipRequest,
+  ICheckRelationshipResponse,
+  IFetchUserPostsResponse,
+  IUpdateAccountDetailsRequest,
+  IUpdateAccountDetailsResponse,
+  IUpdateRelationRequest,
+  IUpdateRelationResponse,
+
 } from '@mp/api/profiles/util';
 import { NestFactory } from '@nestjs/core';
 import * as functions from 'firebase-functions';
@@ -64,5 +73,35 @@ export const updatePassword = functions.https.onCall(
     const app = await NestFactory.createApplicationContext(CoreModule);
     const service = app.get(ProfilesService);
     return service.updatePassword(request);
+  }
+);
+export const checkRelationship = functions.https.onCall(
+  async (
+    request: ICheckRelationshipRequest
+  ): Promise<ICheckRelationshipResponse> => {
+    const app = await NestFactory.createApplicationContext(CoreModule);
+    const service = app.get(ProfilesService);
+    return service.checkRelationship(request);
+  }
+);
+
+export const fetchUserPosts = functions.https.onCall(
+  async (
+    request: FetchUserPostsRequest
+  ): Promise<IFetchUserPostsResponse> => {
+    const app = await NestFactory.createApplicationContext(CoreModule);
+    const service = app.get(ProfilesService);
+    return service.fetchUserPosts(request);
+  }
+);
+
+export const updateRelation = functions.https.onCall(
+  async (
+    request: IUpdateRelationRequest
+  ): Promise<IUpdateRelationResponse> => {
+    const app = await NestFactory.createApplicationContext(CoreModule);
+    const service = app.get(ProfilesService);
+    return service.updateRelation(request);
+
   }
 );

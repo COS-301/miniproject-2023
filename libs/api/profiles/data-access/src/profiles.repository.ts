@@ -1,7 +1,11 @@
-import { IProfile, PrivacyStatus, Status } from '@mp/api/profiles/util';
+import { IProfile, Post, Status } from '@mp/api/profiles/util';
 import { Injectable } from '@nestjs/common';
 import { IPasswordSettings } from '@mp/api/profiles/util';
 import * as admin from 'firebase-admin';
+import { IRelationship } from '../../util/src/interfaces/relationship.interface';
+import { Discipline } from '../../util/src/enums/discipline.enum';
+import { IUser } from '@mp/api/users/util';
+import { IRelation } from '../../util/src/interfaces/relation.interface';
 
 @Injectable()
 export class ProfilesRepository {
@@ -41,6 +45,7 @@ export class ProfilesRepository {
 
 
 
+
   // Pertaining to the settings
   async updatePassword(user : IPasswordSettings) {
     return Status.SUCCESS;
@@ -57,5 +62,54 @@ async getPrivacySettings(user : IProfile) {
 
 async deleteAccount(profile : IProfile) {
   return Status.SUCCESS; 
+}
+
+  async checkRelationship(relationship: IRelationship) {
+    return {"exists": true, "type": "FRIEND"}
+  }
+
+  async fetchUserPosts(userProfile: IProfile) {
+    
+
+    const toReturn = {
+      data: [
+          {
+              id: "post 1",
+              title: "Burger King Foot Lettuce",
+              author: null,
+              description: "This is a very orginal and cool post!",
+              content: "Wow, I really am I a super cool story - pls spend time",
+              discipline: Discipline.SCIENCE,
+              time: 500
+          },
+          {
+              id: "post 1",
+              title: "Burger King Foot Lettuce",
+              author: null,
+              description: "This is a very orginal and cool post!",
+              content: "Wow, I really am I a super cool story - pls spend time",
+              discipline: Discipline.SCIENCE,
+              time: 500
+          }
+      ]
+    };
+
+    return {
+      "postsFound": true, 
+      // "list": toReturn.data
+      "list": null
+    }
+  }
+
+  async updateRelation(relation: IRelation) {
+
+    // Change the relation in the db
+
+    // Get succes response from db
+
+    // Return success enum
+    return Status.SUCCESS;
+
+
   }
 }

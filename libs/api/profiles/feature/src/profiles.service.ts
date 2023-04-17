@@ -1,10 +1,16 @@
 import {
+
   DeleteAccountCommand,
   GetPrivacySettingsCommand,
   IDeleteAccountRequest,
     IDeleteAccountResponse,
     IGetPrivacySettingsRequest,
     IGetPrivacySettingsResponse,
+
+  CheckRelationshipCommand,
+  ICheckRelationshipResponse,
+  ICheckRelationshipRequest,
+
     IUpdateAccountDetailsRequest,
     IUpdateAccountDetailsResponse,
     IUpdateAddressDetailsRequest,
@@ -23,9 +29,18 @@ import {
     UpdateAddressDetailsCommand,
     UpdateContactDetailsCommand,
     UpdateOccupationDetailsCommand,
+
     UpdatePasswordCommand,
+    UpdatePrivacySettingsCommand,
+
     UpdatePersonalDetailsCommand,
-    UpdatePrivacySettingsCommand
+    FetchUserPostsCommand,
+    IFetchUserPostsResponse,
+    FetchUserPostsRequest,
+    IUpdateRelationRequest,
+    IUpdateRelationResponse,
+    UpdateRelationCommand
+
 } from '@mp/api/profiles/util';
 import { Injectable } from '@nestjs/common';
 import { CommandBus } from '@nestjs/cqrs';
@@ -82,7 +97,6 @@ export class ProfilesService {
 
 
 
-
   // For the settings
   async deleteAccount(
     request: IDeleteAccountRequest
@@ -118,6 +132,34 @@ export class ProfilesService {
       UpdatePrivacySettingsCommand,
       IUpdatePrivacySettingsResponse
     >(new UpdatePrivacySettingsCommand(request));
+  }
+
+
+  async checkRelationship(
+    request: ICheckRelationshipRequest
+  ): Promise<ICheckRelationshipResponse> {
+    return await this.commandBus.execute<
+      CheckRelationshipCommand,
+      ICheckRelationshipResponse
+    >(new CheckRelationshipCommand(request));
+  }
+
+  async fetchUserPosts(
+    request: FetchUserPostsRequest
+  ): Promise<IFetchUserPostsResponse> {
+    return await this.commandBus.execute<
+      FetchUserPostsCommand,
+      IFetchUserPostsResponse
+    >(new FetchUserPostsCommand(request));
+  }
+
+  async updateRelation(
+    request: IUpdateRelationRequest
+  ): Promise<IUpdateRelationResponse> {
+    return await this.commandBus.execute<
+      UpdateRelationCommand,
+      IUpdateRelationResponse
+    >(new UpdateRelationCommand(request));
   }
 
 }
