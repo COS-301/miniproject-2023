@@ -3,11 +3,21 @@
     height: 750px;
 }
 
-.edit-button{
-    width: auto;
-    padding-right: 0;
+ion-buttons{
+    background-image:  linear-gradient(#FC9C00,#F6CC86) !important;
+    border-radius: 10px;
+}
+.settings-button{
+    width: 40px;
+    height: 40px;
 }
 
+.settings-button-icon
+{
+    width: 24px;
+    height: 24px;
+    color: white;
+}
 .notification-text{
     position: absolute;
     bottom: 0;
