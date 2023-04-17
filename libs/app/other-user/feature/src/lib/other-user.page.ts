@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'mp-other-user-page',
   templateUrl: './other-user.page.html',
-  styleUrls: ['./other-user.page.css']
+  styleUrls: ['./other-user.page.scss']
 })
 export class OtherUserPage {
   // For the state
