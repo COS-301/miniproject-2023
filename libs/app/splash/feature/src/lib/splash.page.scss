@@ -1,0 +1,71 @@
+$backgroundColor: #242423;
+$vibrantGreen: #0E8C00;
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .loading-logo {
+    width: 50px;
+    height: 50px;
+    animation: rotate 1s linear infinite;
+  }
+
+  .loading-text {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 16px;
+
+    .loading-dot {
+      animation: blink 1s infinite;
+      animation-delay: 0ms;
+    }
+
+    &:nth-child(2) {
+      .loading-dot {
+        animation-delay: 333ms;
+      }
+    }
+
+    &:nth-child(3) {
+      .loading-dot {
+        animation-delay: 666ms;
+      }
+    }
+  }
+}
+.center-container {
+  height: 100%;
+  display: flex;
+  background-color: $backgroundColor;
+}
+.textColor{
+  --color: #0E8C00;
+  color: #0E8C00;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0.2;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.2;
+  }
+}
