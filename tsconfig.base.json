@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "types": ["cypress", "node"],
     "rootDir": ".",
     "sourceMap": true,
     "declaration": false,
@@ -306,8 +307,5 @@
       ]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp", "node_modules/cypress", "cypress/**/*.ts"]
 }
