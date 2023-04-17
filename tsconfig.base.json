@@ -37,6 +37,7 @@
       "@mp/api/feed/data-access": ["libs/api/feed/data-access/src/index.ts"],
       "@mp/api/feed/feature": ["libs/api/feed/feature/src/index.ts"],
       "@mp/api/feed/util": ["libs/api/feed/util/src/index.ts"],
+      
       "@mp/api/friends/data-access": [
         "libs/api/friends/data-access/src/index.ts"
       ],
