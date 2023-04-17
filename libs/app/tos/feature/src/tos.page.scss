@@ -1,3 +1,24 @@
-p {
-    margin: 10px;
+ion-toolbar {
+    --background: #0E8C00;
+    --color: white;
+}
+
+ion-content {
+    --ion-background-color: #242423;
+}
+
+ion-card-title {
+    --color: white;
+}
+
+ion-card-content {
+    color: #edede9;
+}
+
+ion-card-content a {
+    color: #0E8C00;
+}
+
+ion-card {
+    --background: #333533;
 }
