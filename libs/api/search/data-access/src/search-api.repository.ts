@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { Injectable } from '@nestjs/common';
 import * as admin from 'firebase-admin';
-import { UserList } from '@mp/api/search-api/util';
-import { MinimizedProfile } from '@mp/api/search-api/util';
+// import { UserList } from '@mp/api/search/util';
+import { MinimizedProfile } from '@mp/api/search/util';
 import { IUser } from '@mp/api/users/util';
-import { Status } from '@mp/api/search-api/util';
+import { Status } from '@mp/api/search/util';
 
 @Injectable()
 export class SearchRepository {
