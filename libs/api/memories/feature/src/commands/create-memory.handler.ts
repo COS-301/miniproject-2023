@@ -19,15 +19,15 @@ export class CreateMemoryHandler implements ICommandHandler<CreateMemoryCommand>
     const memoryInitialDuration: number = 24 * 60 * 60; //memory lasts for 24 hours
     console.debug('request: ',request)
     getAuth()
-      .getUser(userId!)
+      .getUserByEmail(userId!)
       .then(( userRecord) => {
         console.debug(userRecord);
         const user = userRecord.toJSON() as User;
-        const username = userRecord.displayName;
+        const username = user.username;
         const title = request.memory.title;
         const description = request.memory.description;
         const imgUrl = request.memory.imgUrl;
-        const profileImgUrl = userRecord.photoURL;
+        const profileImgUrl = user.profileImgUrl;
         const created = Timestamp.fromDate(new Date());
         const commentsCount = 0;
         const remainingTime = memoryInitialDuration;
