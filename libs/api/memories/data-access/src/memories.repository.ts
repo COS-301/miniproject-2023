@@ -2,6 +2,7 @@ import { IMemory } from '@mp/api/memories/util';
 import { IComment } from '@mp/api/memories/util';
 import { Injectable } from '@nestjs/common';
 import * as admin from 'firebase-admin';
+import { ICreateMemoryResponse } from '@mp/api/memories/util';
 
 @Injectable()
 export class MemoriesRepository {
@@ -10,7 +11,6 @@ export class MemoriesRepository {
     return await admin.firestore().collection('memories').doc().create(memory);
   }
 
-  
   async findOne(memory: IMemory) {
     return await admin
       .firestore()
