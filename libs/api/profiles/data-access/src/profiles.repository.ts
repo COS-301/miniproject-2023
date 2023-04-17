@@ -1,4 +1,4 @@
-import { IProfile, Post, Status } from '@mp/api/profiles/util';
+import { IProfile, Post, Status, PrivacyStatus } from '@mp/api/profiles/util';
 import { Injectable } from '@nestjs/common';
 import { IPasswordSettings } from '@mp/api/profiles/util';
 import * as admin from 'firebase-admin';
