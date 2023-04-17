@@ -1,3 +1,3 @@
-export * from './search-api.module';
-export * from './search-api.sagas';
-export * from './search-api.service';
+export * from './search.module';
+export * from './search.sagas';
+export * from './search.service';
