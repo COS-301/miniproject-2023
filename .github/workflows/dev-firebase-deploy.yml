@@ -1,5 +1,9 @@
 name: Development | Deploy to Firebase
 'on':
+  workflow_run:
+    workflows: ["🐳 NRWL NX"]
+    types:
+      - completed
   push:
     branches:
       - dev
