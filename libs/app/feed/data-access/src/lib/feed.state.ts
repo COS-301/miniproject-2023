@@ -39,13 +39,13 @@ export interface FeedStateModel {
 
   Post: {
     model: {
-      id : string | null;
-      title : string | null;
-      author : IUser | null;
-      description : string | null;
-      content : string | null;
-      discipline : Discipline | null;
-      time : number | null;
+      id: string | null;
+      title: string | null;
+      author: IUser | null;
+      description: string | null;
+      content: string | null;
+      discipline: Discipline | null;
+      time: number | null;
     };
     dirty: false;
     status: string;
@@ -104,13 +104,13 @@ export interface FeedStateModel {
 
     Post: {
       model: {
-        id : null,
-        title : null,
-        author : null,
-        description : null,
-        content : null,
-        discipline : null,
-        time : null,
+        id: null,
+        title: null,
+        author: null,
+        description: null,
+        content: null,
+        discipline: null,
+        time: null,
       },
 
       dirty: false,
@@ -125,37 +125,37 @@ export interface FeedStateModel {
       dirty: false,
       status: '',
       errors: {},
-  },
-
-  PostList: {
-    model: {
-      postFound: null,
-      list: null,
     },
-    dirty: false,
-    status: '',
-    errors: {},
-  },
 
-  TimeModification: {
-    model: {
-      postID: null,
-      time: null,
+    PostList: {
+      model: {
+        postFound: null,
+        list: null,
+      },
+      dirty: false,
+      status: '',
+      errors: {},
     },
-    dirty: false,
-    status: '',
-    errors: {},
-  },
 
-  UserTime: {
-    model: {
-      timeRemaining: null,
-      timeAmount: null,
+    TimeModification: {
+      model: {
+        postID: null,
+        time: null,
+      },
+      dirty: false,
+      status: '',
+      errors: {},
     },
-    dirty: false,
-    status: '',
-    errors: {},
-  },
+
+    UserTime: {
+      model: {
+        timeRemaining: null,
+        timeAmount: null,
+      },
+      dirty: false,
+      status: '',
+      errors: {},
+    },
   },
 
 })
@@ -165,7 +165,7 @@ export class FeedState {
   constructor(
     private readonly feedApi: FeedApi,
     private readonly store: Store,
-    ) {}
+  ) { }
 
   @Selector()
   static postList(state: FeedStateModel) {
@@ -181,111 +181,109 @@ export class FeedState {
   async setFilterList(
     ctx: StateContext<FeedStateModel>,
     { payload }: SetFilterList
-    ) {
-    try{
+  ) {
+    try {
 
 
       ctx.setState(
         produce((draft) => {
-            draft.filterList = {
-              list: null,
-            }
-            draft.filterList.list = payload.list;
-            draft.FilterList = {model : {list : payload.list}, dirty : false, status : '', errors : {}};
+          draft.filterList = {
+            list: null,
+          }
+          draft.filterList.list = payload.list;
+          draft.FilterList = { model: { list: payload.list }, dirty: false, status: '', errors: {} };
         }));
 
-        ctx.dispatch(new SetPostList());
+      ctx.dispatch(new SetPostList());
       return;
-    }catch(error){
+    } catch (error) {
       return ctx.dispatch(new SetError((error as Error).message));
     }
   }
 
   @Action(SetPostList)
   async setPostList(
-    ctx: StateContext<FeedStateModel>)
-    {
+    ctx: StateContext<FeedStateModel>) {
 
-      const rqst: FetchPostsRequest = {
-        filters : this.store.selectSnapshot(FeedState).filterList.list,
-      };
+    const rqst: FetchPostsRequest = {
+      filters: this.store.selectSnapshot(FeedState).filterList?.list,
+    };
 
 
-      const listOfPosts = await this.feedApi.fetchPosts$(rqst);
+    const listOfPosts = await this.feedApi.fetchPosts$(rqst);
 
-      const arrOfPosts: Post[] = [];
+    const arrOfPosts: Post[] = [];
 
-      listOfPosts.data.posts.list?.forEach((post) => {
-        arrOfPosts.push({
-          id : post.id,
-          title : post.title,
-          author : post.author,
-          description : post.description,
-          content : post.content,
-          discipline : post.discipline,
-          time : post.time,
-        });
+    listOfPosts.data.posts.list?.forEach((post) => {
+      arrOfPosts.push({
+        id: post.id,
+        title: post.title,
+        author: post.author,
+        description: post.description,
+        content: post.content,
+        discipline: post.discipline,
+        time: post.time,
       });
+    });
 
-      console.table(arrOfPosts);
+    console.table(arrOfPosts);
 
-      ctx.setState(
-        produce((draft) => {
-            draft.PostList = {
-              model: {
-                postFound: true,
-                list: arrOfPosts,
-              },
-              dirty: false,
-              status: '',
-              errors: {},
-            }
-        }));
+    ctx.setState(
+      produce((draft) => {
+        draft.PostList = {
+          model: {
+            postFound: true,
+            list: arrOfPosts,
+          },
+          dirty: false,
+          status: '',
+          errors: {},
+        }
+      }));
 
   }
 
   @Action(SetPost)
   async setPost(
     ctx: StateContext<FeedStateModel>,
-    {payload}: SetPost
-    ){
-    try{
+    { payload }: SetPost
+  ) {
+    try {
 
       ctx.setState(
         produce((draft) => {
-            draft.Post = {model : payload.post, dirty : false, status : '', errors : {}};
-            draft.post = payload.post;
+          draft.Post = { model: payload.post, dirty: false, status: '', errors: {} };
+          draft.post = payload.post;
         }));
 
       return;
-    }catch(error){
+    } catch (error) {
       return ctx.dispatch(new SetError((error as Error).message));
     }
   }
 
   @Action(SetTimeModification)
   async setTimeModification(ctx: StateContext<FeedStateModel>,
-  {payload} : SetTimeModification)
-  {
-    try{
+    { payload }: SetTimeModification) {
+    try {
 
-        ctx.setState(
-          produce((draft) => {
-              draft.TimeModification = {model : {postID : payload.postID, time :payload.time}, dirty : false, status : '', errors : {}};
-          }));
+      ctx.setState(
+        produce((draft) => {
+          draft.TimeModification = { model: { postID: payload.postID, time: payload.time }, dirty: false, status: '', errors: {} };
+        }));
 
-        const addTimeRqst = {modification : this.store.selectSnapshot(FeedState).timeModification};
+      const addTimeRqst = { modification: this.store.selectSnapshot(FeedState).timeModification };
 
-        const rqstStatus = await this.feedApi.addTime$(addTimeRqst);
+      const rqstStatus = await this.feedApi.addTime$(addTimeRqst);
 
-        if(rqstStatus.data.status === 'success'){
-          console.log('Time added successfully');
-        }else{
-          ctx.dispatch(new SetError('Time could not be added'));
-        }
-        return;
+      if (rqstStatus.data.status === 'success') {
+        console.log('Time added successfully');
+      } else {
+        ctx.dispatch(new SetError('Time could not be added'));
+      }
+      return;
 
-    }catch(error){
+    } catch (error) {
       return ctx.dispatch(new SetError((error as Error).message));
     }
   }
