@@ -1,4 +1,16 @@
 import {
+
+  DeleteAccountCommand,
+  GetPrivacySettingsCommand,
+  IDeleteAccountRequest,
+    IDeleteAccountResponse,
+    IGetPrivacySettingsRequest,
+    IGetPrivacySettingsResponse,
+
+  CheckRelationshipCommand,
+  ICheckRelationshipResponse,
+  ICheckRelationshipRequest,
+
     IUpdateAccountDetailsRequest,
     IUpdateAccountDetailsResponse,
     IUpdateAddressDetailsRequest,
@@ -7,13 +19,28 @@ import {
     IUpdateContactDetailsResponse,
     IUpdateOccupationDetailsRequest,
     IUpdateOccupationDetailsResponse,
+    IUpdatePasswordRequest,
+    IUpdatePasswordResponse,
     IUpdatePersonalDetailsRequest,
     IUpdatePersonalDetailsResponse,
+    IUpdatePrivacySettingsRequest,
+    IUpdatePrivacySettingsResponse,
     UpdateAccountDetailsCommand,
     UpdateAddressDetailsCommand,
     UpdateContactDetailsCommand,
     UpdateOccupationDetailsCommand,
-    UpdatePersonalDetailsCommand
+
+    UpdatePasswordCommand,
+    UpdatePrivacySettingsCommand,
+
+    UpdatePersonalDetailsCommand,
+    FetchUserPostsCommand,
+    IFetchUserPostsResponse,
+    FetchUserPostsRequest,
+    IUpdateRelationRequest,
+    IUpdateRelationResponse,
+    UpdateRelationCommand
+
 } from '@mp/api/profiles/util';
 import { Injectable } from '@nestjs/common';
 import { CommandBus } from '@nestjs/cqrs';
@@ -66,4 +93,73 @@ export class ProfilesService {
       IUpdateOccupationDetailsResponse
     >(new UpdateOccupationDetailsCommand(request));
   }
+
+
+
+
+  // For the settings
+  async deleteAccount(
+    request: IDeleteAccountRequest
+  ): Promise<IDeleteAccountResponse> {
+    return await this.commandBus.execute<
+      DeleteAccountCommand,
+      IDeleteAccountResponse
+    >(new DeleteAccountCommand(request));
+  }
+
+  async updatePassword(
+    request: IUpdatePasswordRequest
+  ): Promise<IUpdatePasswordResponse> {
+    return await this.commandBus.execute<
+      UpdatePasswordCommand,
+      IUpdatePasswordResponse
+    >(new UpdatePasswordCommand(request));
+  }
+
+  async getPrivacySettings(
+    request: IGetPrivacySettingsRequest
+  ): Promise<IGetPrivacySettingsResponse> {
+    return await this.commandBus.execute<
+      GetPrivacySettingsCommand,
+      IGetPrivacySettingsResponse
+    >(new GetPrivacySettingsCommand(request));
+  }
+
+  async UpdatePrivacySettings(
+    request: IUpdatePrivacySettingsRequest
+  ): Promise<IUpdatePrivacySettingsResponse> {
+    return await this.commandBus.execute<
+      UpdatePrivacySettingsCommand,
+      IUpdatePrivacySettingsResponse
+    >(new UpdatePrivacySettingsCommand(request));
+  }
+
+
+  async checkRelationship(
+    request: ICheckRelationshipRequest
+  ): Promise<ICheckRelationshipResponse> {
+    return await this.commandBus.execute<
+      CheckRelationshipCommand,
+      ICheckRelationshipResponse
+    >(new CheckRelationshipCommand(request));
+  }
+
+  async fetchUserPosts(
+    request: FetchUserPostsRequest
+  ): Promise<IFetchUserPostsResponse> {
+    return await this.commandBus.execute<
+      FetchUserPostsCommand,
+      IFetchUserPostsResponse
+    >(new FetchUserPostsCommand(request));
+  }
+
+  async updateRelation(
+    request: IUpdateRelationRequest
+  ): Promise<IUpdateRelationResponse> {
+    return await this.commandBus.execute<
+      UpdateRelationCommand,
+      IUpdateRelationResponse
+    >(new UpdateRelationCommand(request));
+  }
+
 }

@@ -12,6 +12,6 @@ export interface Post {
     content : string;
     discipline : Discipline;
     time : number;
-    // image : reference to an image stored elsewhere in the database; - not sure yet how this will be stored in the db yet
+    image : string; // reference to an image stored elsewhere in the database; - not sure yet how this will be stored in the db yet
 
 }

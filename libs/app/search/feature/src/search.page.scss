@@ -1,0 +1,19 @@
+$backgroundColor: #242423;
+$vibrantGreen: #0E8C00;
+
+.center-container {
+  height: 100%;
+  background-color: $backgroundColor;
+}
+
+.textColor{
+  --color: #0E8C00;
+  color: #0E8C00;
+}
+
+.search {
+  background-color: $vibrantGreen;
+}
+//.search {
+//  background-color: $vibrantGreen;
+//}

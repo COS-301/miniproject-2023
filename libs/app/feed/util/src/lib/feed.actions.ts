@@ -20,10 +20,9 @@ export class SetPost {
 
 export class SetTimeModification {
   static readonly type = '[Feed] SetTimeModification';
-  constructor(public readonly timeModification: TimeModification | null) {}
+  constructor(public payload: {postID : string, time : number}) {}
 }
 
 export class SetUserTime {
   static readonly type = '[Feed] SetUserTime';
-  constructor(public readonly userTime: UserTime | null) {}
 }
