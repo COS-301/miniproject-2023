@@ -2,16 +2,14 @@ name: Development | Deploy to Firebase
 'on':
   workflow_run:
     workflows: ["🐳 NRWL NX"]
-    types:
-      - completed
-  push:
-    branches:
-      - dev
+    types: completed
+    branches: dev
 jobs:
   build:
     name: "Building App"
     environment: development
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: 🛏️ Checkout repository
         uses: actions/checkout@v3
