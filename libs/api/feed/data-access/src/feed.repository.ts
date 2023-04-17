@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { Injectable } from '@nestjs/common';
 import * as admin from 'firebase-admin';
-import { FilterList, TimeModification } from '@mp/api/feed/util';
+import { FilterList, TimeModification, UserTimeModification } from '@mp/api/feed/util';
 import { Discipline } from '@mp/api/feed/util';
 import { IUser } from '@mp/api/users/util';
 import { Status } from '@mp/api/feed/util';
@@ -40,7 +40,13 @@ export class FeedRepository {
 
 
     async addTime(timeMode : TimeModification){
-        // Query the database to add the amount of time to the user
+        // Query the database to add the amount of time to the post
+
+        return Status.SUCCESS
+    }
+
+    async modifyUserTime(timeModification : UserTimeModification){
+        // Query the database to add/subtract the amount of time to the user
 
         return Status.SUCCESS
     }
