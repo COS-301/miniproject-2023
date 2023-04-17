@@ -13,10 +13,10 @@ jobs:
     
       - uses: mskelton/setup-yarn@v1
         
-      #- name: 🐋 NX Lint
-      #  uses: mansagroup/nrwl-nx-action@v3
-       # with:
-       #   targets: lint
+      - name: 🐋 NX Lint
+        uses: mansagroup/nrwl-nx-action@v3
+        with:
+          targets: lint
           
       - name: 🐋 NX Test
         uses: mansagroup/nrwl-nx-action@v3
@@ -25,5 +25,3 @@ jobs:
           all: true
           parallel: 5
           args: --skip-nx-cache --configuration=ci
-          
-          
