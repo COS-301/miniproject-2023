@@ -1,28 +1,34 @@
+$backgroundColor: #242423;
+$vibrantGreen: #0E8C00;
+
 .center-container {
   height: 100%;
   display: flex;
+  background-color: $backgroundColor;
 }
 
-.logo {
-  padding-bottom: 50px;
+.cust_button_var1 {
+    --background: #0E8C00;
+    --color: white;
 }
 
-// @media (prefers-color-scheme: light) {
-//   .logo-light {
-//     display: block;
-//   }
+.textColor{
+  --color: #0E8C00;
+  color: #0E8C00;
+}
 
-//   .logo-dark {
-//     display: none;
-//   }
-// }
+.italic{
+  font-style: italic;
+}
 
-// @media (prefers-color-scheme: dark) {
-//   .logo-light {
-//     display: none;
-//   }
+.header{
+  font-size: 3rem;
+}
 
-//   .logo-dark {
-//     display: block;
-//   }
-// }
+.bold{
+  font-weight: bold;
+}
+
+.underline{
+  text-decoration: underline;
+}

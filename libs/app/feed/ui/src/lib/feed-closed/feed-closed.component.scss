@@ -1,0 +1,51 @@
+ion-col{
+  display: flex;
+  place-items: center;
+  height: 100%;
+}
+
+ion-card{
+  padding: 0px;
+  margin: 0px;
+}
+
+ion-card-content{
+  overflow: hidden;
+
+}
+
+ion-row{
+  height: 100%;
+}
+
+#post-preview-content-container{
+height: 100%;
+}
+
+
+
+#post-preview-container{
+  height: 250px;
+  margin-top: 10px;
+  }
+
+ion-grid{
+  height: 100%;
+}
+
+#filters-container{
+  height: 50px;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+
+.filter{
+  min-width: fit-content;
+  position: relative;
+  white-space: nowrap;
+}

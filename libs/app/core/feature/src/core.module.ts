@@ -1,36 +1,36 @@
 import { isDevMode, NgModule } from '@angular/core';
 import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
 import {
-    FirebaseOptions,
-    initializeApp,
-    provideFirebaseApp
+  FirebaseOptions,
+  initializeApp,
+  provideFirebaseApp
 } from '@angular/fire/app';
 import { connectAuthEmulator, getAuth, provideAuth } from '@angular/fire/auth';
 import {
-    connectDatabaseEmulator,
-    getDatabase,
-    provideDatabase
+  connectDatabaseEmulator,
+  getDatabase,
+  provideDatabase
 } from '@angular/fire/database';
 import {
-    connectFirestoreEmulator,
-    enableMultiTabIndexedDbPersistence,
-    getFirestore,
-    provideFirestore
+  connectFirestoreEmulator,
+  enableMultiTabIndexedDbPersistence,
+  getFirestore,
+  provideFirestore
 } from '@angular/fire/firestore';
 import {
-    connectFunctionsEmulator,
-    getFunctions,
-    provideFunctions
+  connectFunctionsEmulator,
+  getFunctions,
+  provideFunctions
 } from '@angular/fire/functions';
 import { getMessaging, provideMessaging } from '@angular/fire/messaging';
 import {
-    getRemoteConfig,
-    provideRemoteConfig
+  getRemoteConfig,
+  provideRemoteConfig
 } from '@angular/fire/remote-config';
 import {
-    connectStorageEmulator,
-    getStorage,
-    provideStorage
+  connectStorageEmulator,
+  getStorage,
+  provideStorage
 } from '@angular/fire/storage';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -47,9 +47,11 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { NgxsModule } from '@ngxs/store';
+import { OtherUserModule } from '@mp/app/other-user/feature';
 import { MomentModule } from 'ngx-moment';
 import { CoreRouting } from './core.routing';
 import { CoreShell } from './core.shell';
+import { ForgotModule } from '@mp/app/forgot/feature';
 
 let resolvePersistenceEnabled: (enabled: boolean) => void;
 
@@ -157,8 +159,10 @@ const FIREBASE_OPTIONS: FirebaseOptions = {
     }),
     AuthModule,
     ErrorsModule,
+    OtherUserModule,
+    ForgotModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [CoreShell],
 })
-export class CoreModule {}
+export class CoreModule { }
