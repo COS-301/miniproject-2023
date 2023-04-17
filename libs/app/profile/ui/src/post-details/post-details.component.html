@@ -140,6 +140,15 @@
       <ion-input class="textInput" type="text" display="none" formControlName="hashtag"></ion-input>
     </div>
 
+    <!-- section to display the fetched posts
+  <div *ngIf="posts.length > 0">
+    <h2>Posts by user:</h2>
+    <div *ngFor="let post of posts">
+      <h3>{{ post.caption }}</h3>
+      <p>{{ post.content }}</p>
+      <p>Hashtag: {{ post.hashtag }}</p>
+    </div>
+  </div> -->
 
 
     <ion-grid style="position: relative; bottom:2%">
