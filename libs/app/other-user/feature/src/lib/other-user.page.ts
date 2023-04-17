@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RelationEnum } from '@mp/api/profiles/util';
+import { IProfile, RelationEnum } from '@mp/api/profiles/util';
 import { OtherUserState } from '@mp/app/other-user/data-access';
 import { SetOtherProfile, SetRelation } from '@mp/app/other-user/util';
 import { Select, Store } from '@ngxs/store';
