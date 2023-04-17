@@ -145,9 +145,36 @@ export class FeedRepository {
 
 
     async addTime(timeMode : TimeModification){
-        // Query the database to add the amount of time to the user
+        // Query the database to add the amount of time to the post
 
-        return Status.SUCCESS
+        const postID = timeMode.postID;
+        const amount = timeMode.time;
+
+        const post = await admin.firestore()
+        .collection("Posts")
+        .where("id", "==", postID)
+        .get().then( (post) =>{
+          if (post.empty){
+            return Status.FAILURE;
+          } else {
+           
+              const docPost = post.docs[0];
+              let currValue = docPost?.data()["timeWatched"];
+              currValue += amount;
+    
+              docPost.ref.update({timeWatched: currValue}).then(() =>{
+                return Status.SUCCESS;
+              }).catch(() => {
+                return Status.FAILURE;
+              });
+              // return Status.FAILURE;
+          }
+        }
+        ).catch(() =>{
+          return Status.FAILURE;
+        });
+        
+
     }
 
     async getUserTime(user : IUser){
