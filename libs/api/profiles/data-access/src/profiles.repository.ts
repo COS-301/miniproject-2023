@@ -39,6 +39,38 @@ export class ProfilesRepository {
   }
 
   async addPost(profile: IProfile, post: IPostDetails) {
+    // First, fetch the profile data
+    const profileDocRef = admin
+      .firestore()
+      .collection('profiles')
+      .doc(profile.userId);
+  
+    const profileDoc = await profileDocRef.get();
+  
+    const profileData = profileDoc.data() as IProfile;
+  
+    // If profile doesn't exist, handle the error
+    if (!profileData) {
+      throw new Error('Profile not found');
+    }
+  
+    // Add the post to the profile's posts array
+    if (!profileData.posts) {
+      profileData.posts = [];
+    }
+    profileData.posts.push(post);
+  
+    // Update the profile document with the new posts array
+    await profileDocRef.update({
+      posts: profileData.posts,
+    });
+  
+    return profileData;
+  }
+  
+
+  /*
+  async addPost(profile: IProfile, post: IPostDetails) {
     //First, fetch the profile data
     const profileDoc = await admin
       .firestore()
@@ -72,5 +104,6 @@ export class ProfilesRepository {
 
     return profileData;
   }
+  */
 
 }
