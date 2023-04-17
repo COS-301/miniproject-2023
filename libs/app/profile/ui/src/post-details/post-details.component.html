@@ -94,7 +94,7 @@
 
 <!-- ... -->
 <ng-container *ngIf="(profile$ | async) as profile;">
-  <form 
+  <form
   [formGroup]="postDetailsForm"
   ngxsForm="profile.postDetailsForm"
   (submit)="createNewPost()">
@@ -102,7 +102,7 @@
       style="border-radius: 5%; margin: auto; width: 80%; height: 40%; background-color: rgb(53,107,89); text-align: center; position: relative;"
       (click)="fileInput.click()">
       <ion-icon style="font-size: 128px; position: relative; top:25%" name="share-outline" color="secondary"></ion-icon>
-      <input #fileInput type="file" (change)="onFileChange($event)" style="display: none" accept="image/*">
+      <input #fileInput type="file" (change) = "uploadImage($event)" style="display: none" accept="image/*">
     </div>
     <ion-list lines="none">
       <ion-item counter="true">

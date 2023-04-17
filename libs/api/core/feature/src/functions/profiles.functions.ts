@@ -13,12 +13,13 @@ import {
     ICreatePostRequest,
     ICreatePostResponse,
     IAddPostRequest,
-    IAddPostResponse
+    IAddPostResponse,
+    IPostDetails
 } from '@mp/api/profiles/util';
 import { NestFactory } from '@nestjs/core';
 import * as functions from 'firebase-functions';
 import { CoreModule } from '../core.module';
-
+import * as admin from 'firebase-admin';
 export const updateAccountDetails = functions.https.onCall(
   async (
     request: IUpdateAccountDetailsRequest
@@ -28,6 +29,45 @@ export const updateAccountDetails = functions.https.onCall(
     return service.updateAccountDetails(request);
   }
 );
+
+
+exports.getUserPosts = functions.https.onCall(async (data, context) => {
+  const userId = data.userId;
+
+  if (!userId) {
+    throw new functions.https.HttpsError('invalid-argument', 'User ID is required');
+  }
+
+    const querySnapshot = await admin.firestore().collection(`profiles/${userId}/posts`).get();
+    const posts: { id: string; }[] = [];
+    querySnapshot.forEach((doc) => {
+      posts.push({ id: doc.id, ...doc.data() });
+    });
+    return { posts };
+
+});
+
+exports.getAllPosts = functions.https.onCall(async (data, context) => {
+  const profilesRef = admin.firestore().collection('profiles');
+  const profileDocs = await profilesRef.get();
+
+  let allPosts:IPostDetails[] = [];
+
+  for (const profileDoc of profileDocs.docs) {
+    const userId = profileDoc.id;
+    const userPostsRef = admin.firestore().collection(`profiles/${userId}/posts`);
+    const userPostsSnapshot = await userPostsRef.get();
+
+    const userPosts = userPostsSnapshot.docs.map((postDoc) => ({
+
+      ...postDoc.data(),
+    }));
+
+    allPosts = [...allPosts, ...userPosts];
+  }
+
+  return { allPosts };
+});
 
 export const createPostDetails = functions.https.onCall(
   async (

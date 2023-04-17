@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { collection, doc, docData, Firestore, collectionData } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Functions, httpsCallable } from '@angular/fire/functions';
 import {
     IProfile,
@@ -19,13 +20,18 @@ import {
     ICreatePostResponse,
     ICreatePostRequest
 } from '@mp/api/profiles/util';
-import { combineLatest, map } from 'rxjs';
+import { Observable, combineLatest, from, map } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { AngularFireFunctions } from '@angular/fire/compat/functions';
 
 @Injectable()
 export class ProfilesApi {
   constructor(
     private readonly firestore: Firestore,
-    private readonly functions: Functions
+    private readonly functions: Functions,
+    private firestore1: AngularFirestore,
+    private http: HttpClient, private functions2: AngularFireFunctions
   ) {}
 
   // profile$(id: string) {
@@ -40,9 +46,8 @@ export class ProfilesApi {
   //   });
   //   return docData(docRef, { idField: 'id' });
   // }
-
   profile$(id: string) {
-    const profileDocRef = doc(
+    const docRef = doc(
       this.firestore,
       `profiles/${id}`
     ).withConverter<IProfile>({
@@ -51,8 +56,10 @@ export class ProfilesApi {
       },
       toFirestore: (it: IProfile) => it,
     });
-  
-    const postsCollectionRef = collection(
+
+    const profile$ = docData(docRef, { idField: 'id' });
+
+    const postsRef = collection(
       this.firestore,
       `profiles/${id}/posts`
     ).withConverter<IPostDetails>({
@@ -61,18 +68,59 @@ export class ProfilesApi {
       },
       toFirestore: (it: IPostDetails) => it,
     });
-  
-    return combineLatest([
-      docData(profileDocRef, { idField: 'id' }),
-      collectionData(postsCollectionRef, { idField: 'id' }),
-    ]).pipe(
-      map(([profile, posts]) => {
-        return { ...profile, posts } as IProfile;
-      })
+
+    const posts$ = collectionData(postsRef, { idField: 'id' });
+
+    return combineLatest([profile$, posts$]).pipe(
+      map(([profile, posts]) => ({
+        ...profile,
+        posts,
+      }))
     );
-    
   }
-  
+
+  getUserPostsFromFunction$(userId: string): Observable<IPostDetails[]> {
+    const getUserPosts = this.functions2.httpsCallable('getUserPosts');
+    return from(getUserPosts({ userId })).pipe(map(result => result.posts));
+  }
+
+getAllPosts$():Observable<IPostDetails[]>{
+  const getAllPosts = this.functions2.httpsCallable('getAllPosts');
+  return from(getAllPosts( ' ' )).pipe(map(result => result.posts));
+}
+
+  // profile$(id: string) {
+  //   const profileDocRef = doc(
+  //     this.firestore,
+  //     `profiles/${id}`
+  //   ).withConverter<IProfile>({
+  //     fromFirestore: (snapshot) => {
+  //       return snapshot.data() as IProfile;
+  //     },
+  //     toFirestore: (it: IProfile) => it,
+  //   });
+
+  //   const postsCollectionRef = collection(
+  //     this.firestore,
+  //     `profiles/${id}/posts`
+  //   ).withConverter<IPostDetails>({
+  //     fromFirestore: (snapshot) => {
+  //       return snapshot.data() as IPostDetails;
+  //     },
+  //     toFirestore: (it: IPostDetails) => it,
+  //   });
+
+  //   return combineLatest([
+  //     docData(profileDocRef, { idField: 'id' }),
+  //     collectionData(postsCollectionRef, { idField: 'id' }),
+  //   ]).pipe(
+  //     map(([profile, posts]) => {
+  //       return { ...profile, posts } as IProfile;
+  //     })
+  //   );
+
+  // }
+
 
   async updateAccountDetails(request: IUpdateAccountDetailsRequest) {
     return await httpsCallable<

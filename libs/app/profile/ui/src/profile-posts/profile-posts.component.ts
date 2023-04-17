@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { IProfile} from '@mp/api/profiles/util';
+import { IPostDetails, IProfile} from '@mp/api/profiles/util';
 import { ProfileState } from '@mp/app/profile/data-access';
 import { UpdateAccountDetails, Logout } from '@mp/app/profile/util';
 import {
@@ -8,7 +8,7 @@ import {
     actionsExecuting
 } from '@ngxs-labs/actions-executing';
 import { Select, Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'ms-profile-posts-component',
@@ -16,6 +16,14 @@ import { Observable } from 'rxjs';
   styleUrls: ['./profile-posts.component.scss'],
 })
 export class ProfilePostsComponent {
+
+posts$: Observable<IPostDetails[] | null | undefined>;
+
+  constructor(private readonly fb: FormBuilder,private store: Store) {
+    this.posts$ = this.store.select(ProfileState.profile).pipe(
+      map(profile => profile?.posts)
+    );
+  }
   @Select(ProfileState.profile) profile$!: Observable<IProfile | null>;
   @Select(actionsExecuting([UpdateAccountDetails]))
   busy$!: Observable<ActionsExecuting>;
@@ -59,10 +67,6 @@ export class ProfilePostsComponent {
   //   return 'Ethnicity is invalid';
   // }
 
-  constructor(
-    private readonly fb: FormBuilder,
-    private readonly store: Store
-  ) {}
 
   logout() {
     this.store.dispatch(new Logout());

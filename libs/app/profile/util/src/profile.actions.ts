@@ -8,6 +8,17 @@ export class SubscribeToProfile {
   static readonly type = '[Profile] SubscribeToProfile';
 }
 
+export class FetchUserPosts {
+  static readonly type = '[Profile] Fetch User Posts';
+  constructor(public userId: string) {}
+}
+
+export class GetAllPosts {
+  static readonly type = '[Profile] Get All Posts';
+  constructor(public userId: string) {}
+}
+
+
 export class SetProfile {
   static readonly type = '[Profile] SetProfile';
   constructor(public readonly profile: IProfile | null) {}
@@ -43,5 +54,11 @@ export class AddPost {
 
 export class CreateNewPost {
   static readonly type = '[Profile] CreateNewPost';
-  constructor(public post: IPostDetails) {}
+   postDetail:IPostDetails|null=null;
+  constructor(public post: IPostDetails) {
+this.postDetail=post;
+  }
+getPost(){
+return this.postDetail;
+}
 }

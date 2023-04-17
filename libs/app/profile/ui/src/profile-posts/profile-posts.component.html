@@ -29,33 +29,23 @@
 </form>
 <ion-grid >
   <ion-row>
-    
-  </ion-row> 
-</ion-grid>
 
-<ng-container *ngFor="let postDetails of profile.posts?.slice(1); let i = index">
-<ion-grid >
-  
-  <ion-row>
-    <ng-container *ngIf="i%3==0">
-    <ion-col size="8">
-        <img class="img2" src="assets/images/profilephoto.jpeg" alt="IMAGE"  />
-        {{postDetails.caption}}
-    </ion-col>
-   </ng-container>
-   <ng-container *ngIf="i%3!=0">
-    <ion-col size="4">
-      <ion-row>
-        <img class="img2" src="assets/images/profilephoto.jpeg" alt="IMAGE" />
-        {{postDetails.caption}}
-      </ion-row>
-    </ion-col>
-  </ng-container>
-  </ion-row> 
-  
+  </ion-row>
 </ion-grid>
+<ion-button
+        fill="clear"
+        class="ion-float-left"
+        type="button"
+        (click)="logout()">
+        Logout
+      </ion-button>
+<ng-container *ngIf="posts$ | async as posts">
+  <div *ngFor="let post of posts">
+    <img [src]="post.content" alt="Post image" width="100%" />
+    <p>{{ post.caption }}</p>
+    <p>Hashtag: {{ post.hashtag }}</p>
+    <p>Likes: {{ post.likes }}</p>
+  </div>
 </ng-container>
-
 </ion-content>
-
 </ng-container>

@@ -29,17 +29,20 @@ import {
   UpdatePersonalDetails,
   CreatePostDetails,
   AddPost,
-  CreateNewPost
+  CreateNewPost,
+  FetchUserPosts,
+  GetAllPosts
 } from '@mp/app/profile/util';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import produce from 'immer';
-import { tap } from 'rxjs';
+import { catchError, of, tap } from 'rxjs';
 import { ProfilesApi } from './profiles.api';
 import { Timestamp } from '@angular/fire/firestore';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ProfileStateModel {
   profile: IProfile | null;
+  posts: IPostDetails[];
   accountDetailsForm: {
     model: {
       displayName: string | null;
@@ -113,6 +116,7 @@ export interface ProfileStateModel {
   name: 'profile',
   defaults: {
     profile: null,
+    posts: [],
     accountDetailsForm: {
       model: {
         displayName: null,
@@ -423,11 +427,11 @@ export class ProfileState {
 
   @Action(CreateNewPost)
   async addPost(ctx: StateContext<ProfileStateModel>, { post }: CreateNewPost) {
-    console.log("In state AddPost");
+    console.log("In state AddPost " + post.content);
     try {
       const state = ctx.getState();
       const userId = state.profile?.userId;
-      const content = state.postDetailsForm.model.content?.split(",")[1].slice(0,50);
+      const content = post.content;
       const createdBy = state.profile?.userId;
       const caption = state.postDetailsForm.model.caption;
       const hashtag = state.postDetailsForm.model.hashtag;
@@ -479,4 +483,30 @@ export class ProfileState {
       return ctx.dispatch(new SetError((error as Error).message));
     }
   }
+  @Selector()
+  static userPosts(state: ProfileStateModel): IPostDetails[] {
+    return state.posts;
+  }
+
+  @Action(FetchUserPosts)
+fetchUserPosts(ctx: StateContext<ProfileStateModel>, { userId }: FetchUserPosts) {
+  return this.profileApi.getUserPostsFromFunction$(userId).pipe(
+    tap((posts: IPostDetails[]) => ctx.patchState({ posts: posts })),
+    catchError((error) => {
+      ctx.dispatch(new SetError((error as Error).message));
+      return of(null);
+    })
+  );
+}
+
+@Action(GetAllPosts)
+getAllPosts(ctx: StateContext<ProfileStateModel>, { userId }: GetAllPosts) {
+  return this.profileApi.getAllPosts$().pipe(
+    tap((posts: IPostDetails[]) => ctx.patchState({ posts: posts })),
+    catchError((error) => {
+      ctx.dispatch(new SetError((error as Error).message));
+      return of(null);
+    })
+  );
+}
 }

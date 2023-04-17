@@ -50,6 +50,11 @@ import { NgxsModule } from '@ngxs/store';
 import { MomentModule } from 'ngx-moment';
 import { CoreRouting } from './core.routing';
 import { CoreShell } from './core.shell';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { HttpClientModule } from '@angular/common/http';
+
 // import { PostModule } from '@mp/app/post/feature';
 
 let resolvePersistenceEnabled: (enabled: boolean) => void;
@@ -158,7 +163,10 @@ const FIREBASE_OPTIONS: FirebaseOptions = {
     }),
     AuthModule,
     ErrorsModule,
-
+    AngularFireModule.initializeApp(FIREBASE_OPTIONS),
+    AngularFirestoreModule,
+    HttpClientModule,
+    AngularFireStorageModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [CoreShell],
