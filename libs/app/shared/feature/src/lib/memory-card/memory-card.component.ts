@@ -9,8 +9,8 @@ import { NavController } from '@ionic/angular';
 })
 export class MemoryCardComponent {
   @Input() memory: {
-    username: string;
-    profileUrl: string;
+    username?: string;
+    profileUrl?: string;
     imgUrl: string;
     title: string;
     description: string;
@@ -20,8 +20,9 @@ export class MemoryCardComponent {
         profileImgUrl: string;
         comment: string;
       },
-    ];
+    ] | [];  
     timePosted: string;
+    alive: boolean;
   } = {
     username: '@username',
     profileUrl:
@@ -40,6 +41,7 @@ export class MemoryCardComponent {
       },
     ],
     timePosted: '2020-11-14T10:30:00.000-07:00',
+    alive: true
   };
 
   showExpandedView = false;
