@@ -45,7 +45,7 @@ export class DeathScreenPage {
     switch (action) {
       case 'Logout':
         // Navigate to Logout page
-        this.router.navigate(['/logout']);
+        this.router.navigate(['/welcome']);
         break;
       case 'Ad':
         // Navigate to Ad page

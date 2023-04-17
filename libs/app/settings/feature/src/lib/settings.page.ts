@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+import { AlertController } from '@ionic/angular';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.page.html',
@@ -9,19 +10,33 @@ export class SettingsPage {
 
   privacy = false;
   sliderValue = 50;
-  public alertButtons = ['Yes','No'];
+  public alertButtons = ['Yes', 'No'];
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  constructor() { }
+  constructor(public alertController: AlertController,  private location: Location) { }
+  goBack() {
+    this.location.back();
+  }
+  
 
-  onToggleChange(event: { detail: { checked: any; }; }) {
+  onToggleChange(event: any) {
     // Handle toggle change
     console.log('Toggle changed', event.detail.checked);
   }
 
-  onSliderChange(event: { detail: { value: any; }; }) {
+  onSliderChange(event: any) {
     // Handle slider change
     console.log('Slider changed', event.detail.value);
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Warning',
+      subHeader: 'You are about to delete your account',
+      message: 'Are you sure?',
+      buttons: this.alertButtons
+    });
+
+    await alert.present();
   }
 
   onSave() {

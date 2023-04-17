@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { PostService } from './post.service'; // Example service for handling post submission
+import { Location } from '@angular/common';
 
-//import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-//import { Storage } from '@ionic/storage';
 
 
 @Component({
@@ -12,6 +11,7 @@ import { PostService } from './post.service'; // Example service for handling po
 })
 export class CreatePostPage {
   post = {
+    user:'',
     title: '',
     caption: '',
     link: '',
@@ -19,7 +19,12 @@ export class CreatePostPage {
     photo: null
   };
 
-  constructor(private postService: PostService) {}
+  constructor(private postService: PostService, private location: Location) {}
+  
+  goBack() {
+    this.location.back();
+  }
+  
 
   submitForm() {
     // Validate form data, e.g., check if required fields are filled out
@@ -35,6 +40,7 @@ export class CreatePostPage {
         alert('Post created successfully!');
         // Reset form data
         this.post = {
+          user: '',
           title: '',
           caption: '',
           link: '',

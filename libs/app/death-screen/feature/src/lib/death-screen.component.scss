@@ -1,0 +1,29 @@
+$backgroundColor: #242423;
+$vibrantGreen: #0E8C00;
+
+ion-button {
+  &.custom-button {
+    --background: $vibrantGreen;
+    --color: white;
+  }
+}
+
+ion-action-sheet {
+  &.custom-action-sheet {
+    --background: $backgroundColor;
+    ion-toolbar {
+      &.custom-header {
+        font-size: 1.5rem;
+        color: $vibrantGreen;
+        font-weight: bold;
+        text-align: center;
+      }
+    }
+    ion-button {
+      &.custom-button {
+        --background: $vibrantGreen;
+        --color: white;
+      }
+    }
+  }
+}

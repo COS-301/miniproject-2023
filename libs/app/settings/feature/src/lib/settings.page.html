@@ -1,67 +1,50 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-title>
-        Settings
-      </ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar>
+    <ion-button class = "cust_button_var1" (click)="goBack()"><</ion-button>
+  </ion-toolbar>
+</ion-header>
   
   <ion-content>
     <ion-list>
 
       <ion-item>
-        <ion-label>Volume</ion-label>
-        <ion-range [(ngModel)]="sliderValue" min="0" max="100" step="1" color="secondary">
-          <ion-label slot="start">0</ion-label>
-          <ion-label slot="end">100</ion-label>
-        </ion-range>
-      </ion-item>
-
-      <ion-item>
         <ion-label>Privacy</ion-label>
-        <ion-toggle aria-label="Primary toggle" color="primary" [(ngModel)]= "privacy" [checked]="true"></ion-toggle>
+        <ion-toggle aria-label="Primary toggle" color="primary" [(ngModel)]= "privacy" (ionChange)="onToggleChange($event)" [checked]="true"></ion-toggle>
       </ion-item>
 
       <ion-item>
         <ion-label>Update Profile</ion-label>
-        <ion-button [disabled]="false" [routerLink] = "['/profile']">></ion-button>
+        <ion-button class = "cust_button_var1" [disabled]="false" [routerLink] = "['/profile']">></ion-button>
       </ion-item>
   
-      <ion-item>
+      <!-- <ion-item>
         <ion-label>Update Information</ion-label>
-        <ion-button [disabled]="false" [routerLink] = "['/personal-details']">></ion-button>
-      </ion-item>
+        <ion-button class = "cust_button_var1" [disabled]="false" [routerLink] = "['/account-details']">></ion-button>
+      </ion-item> -->
 
       <ion-item>
         <ion-label>Update Password</ion-label>
-        <ion-button [disabled]="false" [routerLink] = "['/forgot']">></ion-button>
+        <ion-button class = "cust_button_var1" [disabled]="false" [routerLink] = "['/forgot']">></ion-button>
       </ion-item>
 
       <ion-item>
         <ion-label>Delete Account</ion-label>
-        <ion-button id="present-alert" [disabled]="false">></ion-button>
-        <!-- <ion-alert
-          trigger="present-alert"
-          header="Warning"
-          subHeader="You are about to delete your account"
-          message="Are you sure?"
-          [buttons]="alertButtons"
-        ></ion-alert> -->
+        <ion-button class = "cust_button_var1" expand="block" (click)="presentAlert()">></ion-button>
       </ion-item>
 
       <ion-item>
         <ion-label>Terms of Service</ion-label>
-        <ion-button [disabled]="false" [routerLink] = "['/tos']">></ion-button>
+        <ion-button class = "cust_button_var1" [disabled]="false" [routerLink] = "['/tos']">></ion-button>
       </ion-item>
 
       <ion-item>
         <ion-label>Privacy Policy</ion-label>
-        <ion-button [disabled]="false" [routerLink] = "['/privacy']">></ion-button>
+        <ion-button class = "cust_button_var1" [disabled]="false" [routerLink] = "['/privacy']">></ion-button>
       </ion-item>
 
       <ion-item>
         <ion-label>Version</ion-label>
-        <ion-button [disabled]="false" [routerLink] = "['/version']">></ion-button>
+        <ion-button class = "cust_button_var1" [disabled]="false" [routerLink] = "['/version']">></ion-button>
       </ion-item>
       
     </ion-list>
