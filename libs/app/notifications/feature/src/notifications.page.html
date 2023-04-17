@@ -1,1 +1,44 @@
-<p>notifications works!</p>
+<ion-content color="light">
+<ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title style="align-items: center;">Notifications</ion-title>
+      <ion-buttons slot="end">
+        <ion-button class="settings-button" [routerLink]="['/settings/notifications-settings']" >
+            <ion-icon src="assets/icons/settings.svg" class="settings-button-icon"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+<ion-grid class="Notification-content">
+    <ion-row>
+        <ion-col class="notification-container" size="11.55">
+            <img src="assets/logos/TimeHive.jpg" class="notification-logo" />
+            <ion-title class="notification-heading">TimeHive</ion-title>
+            <ion-text class="notification-time">3m</ion-text>
+            <img src="assets/icons/notification-orange.svg" class="notification-icon" />
+            <ion-label class="notification-text">You are running out of Time !!!</ion-label>
+        </ion-col>
+        <ion-col class="notification-container" size="11.55">
+            <img src="assets/logos/TimeHive.jpg" class="notification-logo"/>
+            <ion-title class="notification-heading">Mason Jacobs</ion-title>
+            <ion-text class="notification-time">2h</ion-text>
+            <img src="assets/icons/notification-orange.svg" class="notification-icon" />
+            <ion-label class="notification-text">Liked your Post !</ion-label>
+        </ion-col>
+        <ion-col class="notification-container" size="11.55">
+            <img src="assets/logos/TimeHive.jpg" class="notification-logo" />
+            <ion-title class="notification-heading">TimeHive</ion-title>
+            <ion-text class="notification-time">19h</ion-text>
+            <img src="assets/icons/notification-orange.svg" class="notification-icon" />
+            <ion-label class="notification-text">Verify your Email</ion-label>
+        </ion-col>
+        <ion-col class="notification-container" size="11.55">
+            <img src="assets/logos/TimeHive.jpg" class="notification-logo" />
+            <ion-title class="notification-heading">TimeHive</ion-title>
+            <ion-text class="notification-time">5d</ion-text>
+            <img src="assets/icons/notification-black.svg" class="notification-icon" />
+            <ion-label class="notification-text">Welcome to TimeHive</ion-label>
+        </ion-col>
+    </ion-row>
+</ion-grid>
+</ion-content>
