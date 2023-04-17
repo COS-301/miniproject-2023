@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { Injectable } from '@nestjs/common';
 import * as admin from 'firebase-admin';
-import { FilterList, TimeModification } from '@mp/api/feed/util';
+import { FilterList, FilterType, TimeModification } from '@mp/api/feed/util';
 import { Discipline } from '@mp/api/feed/util';
 import { IUser } from '@mp/api/users/util';
 import { Status } from '@mp/api/feed/util';
@@ -9,12 +9,95 @@ import { Status } from '@mp/api/feed/util';
 @Injectable()
 export class FeedRepository {
 
+    interpretDiscipline(disciplineStr : string){
+      if (disciplineStr.toLowerCase() == "art"){
+        return Discipline.ART;
+      } else if (disciplineStr.toLowerCase() == "food"){
+        return Discipline.FOOD;
+      } else if (disciplineStr.toLowerCase() == "gaming"){
+        return Discipline.GAMING;
+      } else if (disciplineStr.toLowerCase() == "sport"){
+        return Discipline.SPORT;
+      } else if (disciplineStr.toLowerCase() == "science"){
+        return Discipline.SCIENCE;
+      } else if (disciplineStr.toLowerCase() == "news"){
+        return Discipline.NEWS;
+      } else if (disciplineStr.toLowerCase() == "travel"){
+        return Discipline.TRAVEL;
+      } else {
+        return Discipline.MUSIC;
+      }
+      
+    }
+
+
     async fetchPosts(filters : FilterList){
-        const documents = await admin.firestore()
+        
+
+      let discipline = "";
+      if (filters.list?.includes(FilterType.ART_FILTER)){
+        discipline = Discipline.ART;
+      } else if (filters.list?.includes(FilterType.FOOD_FILTER)){
+        discipline = Discipline.FOOD;
+      } else if (filters.list?.includes(FilterType.GAMING_FILTER)){
+        discipline = Discipline.GAMING;
+      } else if (filters.list?.includes(FilterType.SPORT_FILTER)){
+        discipline = Discipline.SPORT;
+      } else if (filters.list?.includes(FilterType.SCIENCE_FILTER)){
+        discipline = Discipline.SCIENCE;
+      } else if (filters.list?.includes(FilterType.NEWS_FILTER)){
+        discipline = Discipline.NEWS;
+      } else if (filters.list?.includes(FilterType.TRAVEL_FILTER)){
+        discipline = Discipline.TRAVEL;
+      } else if (filters.list?.includes(FilterType.MUSIC_FILTER)){
+        discipline = Discipline.MUSIC;
+      } 
+
+      let documents;
+      if (filters.list?.includes(FilterType.MOST_RECENT)){
+         
+        if (discipline.length != 0){
+          documents = await admin.firestore()
+        .collection("Posts")
+        .where("discipline", "==", discipline)
+        .orderBy("createdTimestamp", "desc")
+        .get();
+        } else {
+          documents = await admin.firestore()
         .collection("Posts")
         .orderBy("createdTimestamp", "desc")
         .get();
+        }
 
+      }
+      else if (filters.list?.includes(FilterType.MOST_POPULAR)){
+           if (discipline.length != 0){
+          documents = await admin.firestore()
+        .collection("Posts")
+        .where("discipline", "==", discipline)
+        .orderBy("timeWatched", "desc")
+        .get();
+        } else {
+          documents = await admin.firestore()
+        .collection("Posts")
+        .orderBy("timeWatched", "desc")
+        .get();
+        }
+      } else {
+        if (discipline.length != 0){
+          documents = await admin.firestore()
+        .collection("Posts")
+        .where("discipline", "==", discipline)
+        .get();
+        } else {
+          documents = await admin.firestore()
+        .collection("Posts")
+        .get();
+        }
+      }
+      
+      
+        
         console.log(`Documents retrieved: ${documents}`);
 
         const toReturn: { id: string; title: string; author: null; description: string; content: string; time: number; discipline: Discipline; }[] = [];
@@ -29,7 +112,7 @@ export class FeedRepository {
             description: currentDocPostData['desc'],
             content: currentDocPostData['content'],
             time: currentDocPostData['timeWatched'],
-            discipline: Discipline.SCIENCE,   // TODO: Create function to interpret ```currentDocPostData['discipline']``` 's value
+            discipline: this.interpretDiscipline(currentDocPostData['discipline']),   // TODO - done: Create function to interpret ```currentDocPostData['discipline']``` 's value
           });
         });
 
