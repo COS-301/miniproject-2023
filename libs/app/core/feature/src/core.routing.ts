@@ -47,6 +47,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('@mp/app/privacy/feature').then((m) => m.PrivacyModule),
   },
+  {
+    path: 'notifications',
+    loadChildren: () =>
+      import('@mp/app/notifications/feature').then((m) => m.notificationsPageModule),
+  },
 
   //   path: 'verify',
   //   pathMatch: 'full',

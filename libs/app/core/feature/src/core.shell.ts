@@ -4,7 +4,7 @@ import { ToastController } from '@ionic/angular';
 import { SubscribeToAuthState } from '@mp/app/auth/util';
 import { Store } from '@ngxs/store';
 import { Subject, takeUntil, tap } from 'rxjs';
-// import { CoreModule as NavComponent } from '@mp/app/core/ui';
+import { CoreModule as NavComponent } from '@mp/app/core/ui';
 //  NavComponent
 
 @Component({
