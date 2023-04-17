@@ -1,1 +1,1 @@
-export * from './lib/app-other-user-data-access';
+export * from './lib/other-user.state';
