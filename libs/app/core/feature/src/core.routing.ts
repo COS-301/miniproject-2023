@@ -18,6 +18,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('@mp/app/welcome/feature').then((m) => m.WelcomeModule),
   },
+  {
+    path: 'splash',
+    loadChildren: () =>
+      import('@mp/app/splash/feature').then((m) => m.SplashModule),
+  },
   // {
   //   path: 'response',
   //   loadChildren: () =>

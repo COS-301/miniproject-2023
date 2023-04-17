@@ -52,6 +52,7 @@ import { MomentModule } from 'ngx-moment';
 import { CoreRouting } from './core.routing';
 import { CoreShell } from './core.shell';
 import { ForgotModule } from '@mp/app/forgot/feature';
+import { SplashModule } from '@mp/app/splash/feature';
 
 let resolvePersistenceEnabled: (enabled: boolean) => void;
 
@@ -89,6 +90,7 @@ const FIREBASE_OPTIONS: FirebaseOptions = {
   entryComponents: [],
   imports: [
     BrowserModule,
+    SplashModule,
     IonicModule.forRoot(),
     CoreRouting,
     provideRemoteConfig(() => getRemoteConfig()),
