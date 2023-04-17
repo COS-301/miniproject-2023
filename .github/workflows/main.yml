@@ -1,0 +1,25 @@
+name: CI
+'on':
+  push:
+
+jobs:
+  nrwl_test:
+    name: "🐳 NRWL NX Text"
+    environment: development
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛏️ Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: 🐋 NX Lint
+        uses: mansagroup/nrwl-nx-action@v3
+        with:
+          targets: lint
+          
+      - name: 🐋 NX Test
+        uses: mansagroup/nrwl-nx-action@v3
+        with:
+          targets: test
+          args: --all --skip-nx-cache --parallel=5 --configuration=ci
+          
+          
