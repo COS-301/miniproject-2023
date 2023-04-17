@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
+import { Discipline, FilterType, Post, PostList, TimeModification } from '@mp/api/feed/util';
 
 @Component({
   selector: 'mp-feed-open',
@@ -9,18 +10,79 @@ export class FeedOpenComponent {
 
   image = 'https://ionicframework.com/docs/img/demos/thumbnail.svg';
 
-  posts : Array<{title: string, content: string, image: string, postTime: number, creator: string}> = [
-    {title: 'Post 1', content: 'This is the first post, this is just some dummy text to take up some space and see how the page responds. The actual post description will be here eventually', image: this.image, postTime: 1589, creator: 'John'},
-    {title: 'Post 2', content: 'This is the first post, this is just some dummy text to take up some space and see how the page responds. The actual post description will be here eventually', image: this.image, postTime: 1589, creator: 'John'},
-    {title: 'Post 3', content: 'This is the third post', image: this.image, postTime: 158, creator: 'John'},
-    {title: 'Post 4', content: 'This is the fourth post', image: this.image, postTime: 158, creator: 'John'},
-    {title: 'Post 5', content: 'This is the fifth post', image: this.image, postTime: 158, creator: 'John'},
-    {title: 'Post 6', content: 'This is the sixth post', image: this.image, postTime: 158, creator: 'John'},
-    {title: 'Post 7', content: 'This is the seventh post', image: this.image, postTime: 158, creator: 'John'},
-    {title: 'Post 8', content: 'This is the eighth post', image: this.image, postTime: 158, creator: 'John'},
-    {title: 'Post 9', content: 'This is the ninth post', image: this.image, postTime: 158, creator: 'John'},
-    {title: 'Post 10', content: 'This is the first post, this is just some dummy text to take up some space and see how the page responds. The actual post description will be here eventually', image: this.image, postTime: 158, creator: 'John'},
-  ];
+  @Input() posts : PostList = {
+    postsFound : false,
+    list : [],
+  };
+
+  @Input() currentPost = 0;
+
+
+
+  // posts : PostList = {
+  //   postsFound : false,
+  //   list : [
+  //     {
+  //       id : "post 1",
+  //       title : "Title 1",
+  //       author : null,
+  //       description : "description 1",
+  //       content : "content 1",
+  //       discipline : Discipline.SCIENCE,
+  //       time : 0,
+  //   },
+  //   {
+  //     id : "post 2",
+  //     title : "Title 2",
+  //     author : null,
+  //     description : "description 2",
+  //     content : "content 2",
+  //     discipline : Discipline.SCIENCE,
+  //     time : 0,
+  // },
+  // {
+  //   id : "post 3",
+  //   title : "Title 3",
+  //   author : null,
+  //   description : "description 3",
+  //   content : "content 3",
+  //   discipline : Discipline.SCIENCE,
+  //   time : 0,
+  // }
+  //   ],
+  // };
+
+  startTime = 0;
+  endTime = 0;
+
+  @Output() setCurrentPost = new EventEmitter<Post>();
+  @Output() retutnToFeedClosed = new EventEmitter<void>();
+  @Output() updatePostTime = new EventEmitter<TimeModification>();
+
+  currentPostIndex = 0;
+
+  ngOnInit(){
+    this.startTime = Date.now();
+    this.setPost(this.posts.list?.at(this.currentPostIndex) as Post);
+  }
+
+  ngOnDestroy(){
+    this.endTime = Date.now();
+    this.updatePostTime.emit({
+      postID : this.posts.list?.at(this.currentPostIndex)?.id as string,
+      time : this.endTime - this.startTime,
+    });
+  }
+
+  ngOnChanges(changes:SimpleChanges){
+    if(changes['currentPost']){
+      this.currentPostIndex = changes['currentPost'].currentValue;
+    }
+  }
+
+  setPost(data:Post){
+    this.setCurrentPost.emit(data);
+  }
 
   tStart = 0;
   tEnd = 0;
@@ -29,45 +91,45 @@ export class FeedOpenComponent {
     this.tStart = e.touches[0].pageX;
   }
 
-  currentPostIndex = this.posts.length -1;
-
   touchEnd() {
 
 
     if (this.tEnd-this.tStart > -200 && this.tEnd-this.tStart < 200) {
       //swipe gesture not big enough to be considered a swipe
-      console.log('not valid swipe');
-      (<HTMLStyleElement>document.getElementById('post-' + this.currentPostIndex)).style.transform = 'translateX(0%)';
-      (<HTMLStyleElement>document.getElementById("post-"+this.currentPostIndex)).style.transition = ".3s";
-
-      setTimeout(() => {
-        (<HTMLStyleElement>document.getElementById("post-"+this.currentPostIndex)).style.transition = "0s";
-      }, 350);
+      //do nothing
     }else if(this.tEnd-this.tStart > 200) {
       //go back one post
-      console.log('swipe right');
-      this.currentPostIndex++;
-      (<HTMLStyleElement>document.getElementById('post-' + this.currentPostIndex)).style.transform = 'translateX(0%)';
-      console.log('post-' + this.currentPostIndex);
+      if(this.startTime != 0){
+        this.endTime = Date.now();
+        this.updatePostTime.emit({
+          postID : this.posts.list?.at(this.currentPostIndex)?.id as string,
+          time : this.endTime - this.startTime,
+        });
+      }
+      this.startTime = Date.now();//reset timer
 
-      (<HTMLStyleElement>document.getElementById("post-"+this.currentPostIndex)).style.transition = ".5s";
-
-      setTimeout(() => {
-        (<HTMLStyleElement>document.getElementById("post-"+this.currentPostIndex)).style.transition = "0s";
-      }, 500);
+      console.log(this.posts?.list?.at(this.currentPostIndex))
+      if (this.currentPostIndex > 0){
+        this.currentPostIndex--;
+      }
+      this.setPost(this.posts.list?.at(this.currentPostIndex) as Post);
 
     }else if(this.tEnd-this.tStart < -200) {
       //go forward one post
-      console.log('swipe left');
-
-      (<HTMLStyleElement>document.getElementById('post-' + this.currentPostIndex)).style.transform = 'translateX(-100%)';
-      console.log('post-' + this.currentPostIndex);
-
-      (<HTMLStyleElement>document.getElementById("post-"+this.currentPostIndex)).style.transition = ".5s";
-      this.currentPostIndex--;
-      setTimeout(() => {
-        (<HTMLStyleElement>document.getElementById("post-"+this.currentPostIndex)).style.transition = "0s";
-      }, 500);
+      if(this.startTime != 0){
+        this.endTime = Date.now();
+        this.updatePostTime.emit({
+          postID : this.posts.list?.at(this.currentPostIndex)?.id as string,
+          time : this.endTime - this.startTime,
+        });
+      }
+      this.startTime = Date.now();//reset timer
+      if(this.posts.list!=null){
+        if (this.currentPostIndex < this.posts.list.length - 1){
+          this.currentPostIndex++;
+        }
+      }
+      this.setPost(this.posts.list?.at(this.currentPostIndex) as Post);
 
     }
 
@@ -77,28 +139,10 @@ export class FeedOpenComponent {
 
   touchMove(e : TouchEvent) {
     this.tEnd = e.touches[0].pageX;
-    const deltaX = this.tStart - this.tEnd;
-
-    if (deltaX > 0) {
-      //swiping right
-      (<HTMLStyleElement>document.getElementById("post-"+this.currentPostIndex)).style.transform = "translateX("+ -deltaX+"px)";
-
   }
 
-
-
-  }
-
- convertTime(time : number) {
-    let timeString = '';
-    if (time < 60) {
-      timeString = time + '';
-    } else if (time < 3600) {
-      timeString =  ':' + Math.floor(time/60);
-    } else if (time < 86400) {
-      timeString = ':' + Math.floor(time/3600) ;
-    }
-    return timeString;
+  goBack(){
+    this.retutnToFeedClosed.emit();
   }
 
 }

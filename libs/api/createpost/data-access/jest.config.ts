@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'api-create-profile-api-data-access',
+  displayName: 'api-createpost-data-access',
   preset: '../../../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -11,6 +11,5 @@ export default {
     '^.+\\.[tj]s$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory:
-    '../../../../coverage/libs/api/create-profile-api/data-access',
+  coverageDirectory: '../../../../coverage/libs/api/createpost/data-access',
 };

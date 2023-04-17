@@ -1,2 +1,2 @@
-export * from './create-post-api.module';
-export * from './create-post-api.repository';
+export * from './create-post.module';
+export * from './create-post.repository';

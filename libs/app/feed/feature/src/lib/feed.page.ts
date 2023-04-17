@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import {
   ActionsExecuting,
   actionsExecuting
@@ -7,7 +7,7 @@ import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { SetFilterList, SetPost, SetPostList, SetTimeModification, SetUserTime } from '@mp/app/feed/util';
 import { FeedState } from '@mp/app/feed/data-access';
-import { FilterList, FilterType } from '@mp/api/feed/util';
+import { FilterList, FilterType, Post, PostList, TimeModification, UserTime } from '@mp/api/feed/util';
 @Component({
   selector: 'mp-feed',
   templateUrl: './feed.page.html',
@@ -15,29 +15,79 @@ import { FilterList, FilterType } from '@mp/api/feed/util';
 })
 export class FeedPage {
 
-  feedOpen = false;
+  @Select(FeedState.postList) postList$!: Observable<PostList>;
+  //  @Select(FeedState.userTime) userTime$!: Observable<UserTime>;
 
-  onClick() {
-    this.feedOpen = !this.feedOpen;
+  feedOpen: boolean;
+  userTime!: number | null;
+  postsData: PostList = {
+    postsFound : false,
+    list : [],
+  };
+
+  constructor(private store: Store) {
+    this.feedOpen = false;
   }
 
-  @Select(FeedState.feed) feed$!: Observable<FeedState | null>;
+  ngOnInit(){
+    this.store.dispatch(new SetPostList());
+    //  this.store.dispatch(new SetUserTime());
 
-  constructor(private store: Store) { }
+    this.store.select(FeedState.postList).subscribe((feed) => {
+      if (feed.model.list != null){
 
-  filterChanged() {
-    console.log('filter changed');
+        this.postsData.postsFound = true;
 
-    const myFilterList: FilterList = {
-      list: [],
-    };
+        feed?.model.list?.forEach((post) => {
+          this.postsData.list?.push(post);
+        })
+      }
+     })
 
-    myFilterList.list?.push(FilterType.ART_FILTER);
-    myFilterList.list?.push(FilterType.NEWS_FILTER);
-    myFilterList.list?.push(FilterType.SPORT_FILTER);
+    //  this.store.select(FeedState.userTime).subscribe((userTime) => {
+    //   if (userTime.model != null){
+    //     this.userTime = userTime.model.timeAmount;
+    //   }
+    //  })
+  }
+  activeFilters: FilterList = {
+    list: [],
+  };
 
-    this.store.dispatch(new SetFilterList(myFilterList));
+  setFilters($data:FilterType){
 
+    this.postsData.list = [];//reset the posts data
+
+    if(this.activeFilters.list?.includes($data)){
+      this.activeFilters.list = this.activeFilters.list?.filter((item) => item !== $data);
+    } else {
+    this.activeFilters.list = this.activeFilters.list?.concat([$data]);
+    }
+
+    if (this.activeFilters.list) {
+      this.store.dispatch(new SetFilterList({ list: this.activeFilters.list }));
+    }
+
+  }
+
+  selectedPost = 0;
+
+  setPost($data:Post){
+    if(this.postsData.list?.indexOf($data)){
+      this.selectedPost = this.postsData.list?.indexOf($data);
+      console.log('selected post: ' + this.selectedPost);
+    }
+
+    this.store.dispatch(new SetPost({post : $data}));
+    this.feedOpen = true;//user clicked on a post, the post is set and then the feed is open
+  }
+
+  closeFeed(){
+    this.feedOpen = false;
+  }
+
+  updatePostTime($data:TimeModification){
+    this.store.dispatch(new SetTimeModification({postID:$data.postID, time : $data.time}));
   }
 
 }

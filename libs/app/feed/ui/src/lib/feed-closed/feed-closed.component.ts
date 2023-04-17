@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output, Input, ChangeDetectorRef, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
+import { FilterList, FilterType, Post, PostList } from '@mp/api/feed/util';
+import { Store } from '@ngxs/store';
+import { ActionsExecuting, actionsExecuting } from '@ngxs-labs/actions-executing';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'mp-feed-closed',
@@ -6,29 +10,40 @@ import { Component } from '@angular/core';
   styleUrls: ['./feed-closed.component.scss']
 })
 export class FeedClosedComponent {
-  filters: Array<string> = ['All', 'My', 'Following', 'Popular', 'Arts', 'Business', 'Comedy', 'Education', 'Entertainment', 'Film', 'Food', 'Games', 'Health', 'History', 'Music', 'News', 'Politics', 'Science', 'Sports', 'Technology', 'Travel'];
-  posts: Array<{ title: string, creator: string, description: string, thumbnail: string }> = [{ title: 'title', creator: 'creator', description: 'description', thumbnail: 'thumbnail' }, { title: 'title', creator: 'creator', description: 'description', thumbnail: 'thumbnail' }, { title: 'title', creator: 'creator', description: 'description', thumbnail: 'thumbnail' }, { title: 'title', creator: 'creator', description: 'description', thumbnail: 'thumbnail' }];
+
+  @Input() posts : PostList = {
+    postsFound : false,
+    list : [],
+  };
+
+  filters: FilterList = {
+    list: [],
+  };
+
+  constructor(){
+      this.filters.list?.push(
+      FilterType.MOST_RECENT,
+      FilterType.MOST_POPULAR,
+      FilterType.SCIENCE_FILTER,
+      FilterType.ART_FILTER,
+      FilterType.NEWS_FILTER,
+      FilterType.SPORT_FILTER,
+      FilterType.FOOD_FILTER,
+      FilterType.GAMING_FILTER)
+  }
+
+  @Output() filterChanged = new EventEmitter<FilterType>();
+  @Output() setCurrentPost = new EventEmitter<Post>();
 
 
-  // @Select(FeedState.feed) feed$!: Observable<FeedState | null>;
+  onSetFilters(data:FilterType){
+    this.filterChanged.emit(data);
+  }
 
-  // constructor(private store: Store) { }
+  setPost(data:Post){
+    this.setCurrentPost.emit(data);
+  }
 
-  // filterChanged() {
-  //   console.log('filter changed');
-
-  //   this.store.dispatch(new SetError('test error'));
-
-  //   const myFilterList: FilterList = {
-  //     list: [],
-  //   };
-
-  //   myFilterList.list!.push(FilterType.ART_FILTER);
-  //   myFilterList.list!.push(FilterType.NEWS_FILTER);
-  //   myFilterList.list!.push(FilterType.SPORT_FILTER);
-
-  //   this.store.dispatch(new SetFilterList(myFilterList));
-  // }
 
 }
 

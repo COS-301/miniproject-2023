@@ -1,1 +1,1 @@
-export * from './create-post-command.command'
+export * from './create-post.command'

@@ -1,0 +1,29 @@
+name: 🐳 NRWL NX
+'on':
+  push:
+
+jobs:
+  nrwl_test:
+    name: "🐳 NRWL NX Text"
+    environment: development
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛏️ Checkout repository
+        uses: actions/checkout@v3
+    
+      - uses: mskelton/setup-yarn@v1
+        
+      #- name: 🐋 NX Lint
+      #  uses: mansagroup/nrwl-nx-action@v3
+       # with:
+       #   targets: lint
+          
+      - name: 🐋 NX Test
+        uses: mansagroup/nrwl-nx-action@v3
+        with:
+          targets: test
+          all: true
+          parallel: 5
+          args: --skip-nx-cache --configuration=ci
+          
+          

@@ -51,7 +51,6 @@ import { OtherUserModule } from '@mp/app/other-user/feature';
 import { MomentModule } from 'ngx-moment';
 import { CoreRouting } from './core.routing';
 import { CoreShell } from './core.shell';
-import { FeedModule } from '@mp/app/feed/feature';
 import { ForgotModule } from '@mp/app/forgot/feature';
 
 let resolvePersistenceEnabled: (enabled: boolean) => void;
@@ -161,7 +160,6 @@ const FIREBASE_OPTIONS: FirebaseOptions = {
     AuthModule,
     ErrorsModule,
     OtherUserModule,
-    FeedModule,
     ForgotModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
