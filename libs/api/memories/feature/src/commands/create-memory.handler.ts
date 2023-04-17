@@ -3,6 +3,8 @@ import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs';
 import { Memory } from '../models';
 import { getAuth, Auth } from 'firebase-admin/auth';
 import { Timestamp } from 'firebase-admin/firestore';
+import { doc, getDocFromCache } from "firebase/firestore";
+import { User } from 'libs/api/users/feature/src/models';
 
 @CommandHandler(CreateMemoryCommand)
 export class CreateMemoryHandler implements ICommandHandler<CreateMemoryCommand> {
@@ -15,9 +17,12 @@ export class CreateMemoryHandler implements ICommandHandler<CreateMemoryCommand>
     const request = command.request;
     const userId = request.memory.userId;
     const memoryInitialDuration: number = 24 * 60 * 60; //memory lasts for 24 hours
+    console.debug('request: ',request)
     getAuth()
       .getUser(userId!)
       .then(( userRecord) => {
+        console.debug(userRecord);
+        const user = userRecord.toJSON() as User;
         const username = userRecord.displayName;
         const title = request.memory.title;
         const description = request.memory.description;
