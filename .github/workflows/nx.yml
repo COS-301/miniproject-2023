@@ -1,6 +1,5 @@
 name: 🐳 NRWL NX
-'on':
-  push:
+on: push
 
 jobs:
   nrwl_test:
