@@ -68,6 +68,32 @@ return{posts};
 
 });
 
+exports.getUserPostsByHashtag = functions.https.onCall(async (data, context) => {
+  const hashtag = data.hashtag;
+
+  if (!hashtag) {
+    throw new functions.https.HttpsError('invalid-argument', 'Hashtag is required');
+  }
+  // const userId = data.displayName;
+  // console.log(userId + "functions");
+  const profilesRef = admin.firestore().collection('profiles');
+  const profileDocs = await profilesRef.get();
+  const posts: { id: string; }[] = [];
+
+  for (const profileDoc of profileDocs.docs) {
+    const userId2 = profileDoc.id;
+    // console.log("hashtag is " + hashtag + " and userId is " + userId2 + "");
+    const userPostsRef = admin.firestore().collection(`profiles/${userId2}/posts`).where("hashtag", "==", hashtag);
+    const userPostsSnapshot = await userPostsRef.get();
+
+    userPostsSnapshot.forEach((doc) => {
+      posts.push({ id: doc.id, ...doc.data() });
+    });
+  }
+
+  return { posts };
+});
+
 exports.buyPost = functions.https.onCall(async (data, context) => {
   const post = data.post;
   const buyer = data.buyer;

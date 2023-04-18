@@ -32,6 +32,7 @@ import {
   CreateNewPost,
   FetchUserPosts,
   GetAllPosts,
+  GetUserPostsByHashtag,
   BuyPost
 } from '@mp/app/profile/util';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
@@ -527,8 +528,34 @@ console.log(uId);
       return of(null);
     })
   );
+  }
 
-}
+  @Action(GetUserPostsByHashtag)
+  getUserPostsByHashtag(
+    ctx: StateContext<ProfileStateModel>,
+    action: GetUserPostsByHashtag
+  ) {
+    const state = ctx.getState();
+
+    return this.profileApi.getUserPostsByHashtag$(action.hashtag).pipe(
+      tap((posts: IPostDetails[]) => {
+        if (posts.length === 0) {
+          throw new Error('No posts found with the given hashtag.');
+        }
+
+        ctx.setState(
+          produce(state, (draft: ProfileStateModel) => {
+            draft.searchPosts = posts;
+          })
+        );
+      }),
+      catchError((error) => {
+        ctx.dispatch(new SetError(error));
+        return of(null);
+      })
+    );
+  }
+
 
 @Action(BuyPost)
 buyPost(ctx: StateContext<ProfileStateModel>, {post}: BuyPost) {
