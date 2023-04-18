@@ -31,21 +31,9 @@ export class ProfilesApi {
     private readonly firestore: Firestore,
     private readonly functions: Functions,
     private firestore1: AngularFirestore,
-    private http: HttpClient, private functions2: AngularFireFunctions
+    private http: HttpClient, public functions2: AngularFireFunctions
   ) {}
 
-  // profile$(id: string) {
-  //   const docRef = doc(
-  //     this.firestore,
-  //     `profiles/${id}`
-  //   ).withConverter<IProfile>({
-  //     fromFirestore: (snapshot) => {
-  //       return snapshot.data() as IProfile;
-  //     },
-  //     toFirestore: (it: IProfile) => it,
-  //   });
-  //   return docData(docRef, { idField: 'id' });
-  // }
   profile$(id: string) {
     const docRef = doc(
       this.firestore,
@@ -84,6 +72,11 @@ export class ProfilesApi {
     return from(getUserPosts({ displayName })).pipe(map(result => result.posts));
   }
 
+buyPost$(post:IPostDetails,buyer:string): Observable<IPostDetails[]> {
+  const buyPost = this.functions2.httpsCallable('buyPost');
+  return from(buyPost({ post,buyer })).pipe(map(result => result.posts));
+}
+
 getAllPosts$(userId: string):Observable<IPostDetails[]>{
 console.log("in api");
   const getAllPosts = this.functions2.httpsCallable('getAllPosts');
@@ -97,40 +90,6 @@ getUserPostsByHashtag$(hashtag: string): Observable<IPostDetails[]> {
   const getUserPostsByHashtag = this.functions2.httpsCallable('getUserPostsByHashtag');
   return from(getUserPostsByHashtag({ hashtag })).pipe(map(result => result.posts));
 }
-
-
-  // profile$(id: string) {
-  //   const profileDocRef = doc(
-  //     this.firestore,
-  //     `profiles/${id}`
-  //   ).withConverter<IProfile>({
-  //     fromFirestore: (snapshot) => {
-  //       return snapshot.data() as IProfile;
-  //     },
-  //     toFirestore: (it: IProfile) => it,
-  //   });
-
-  //   const postsCollectionRef = collection(
-  //     this.firestore,
-  //     `profiles/${id}/posts`
-  //   ).withConverter<IPostDetails>({
-  //     fromFirestore: (snapshot) => {
-  //       return snapshot.data() as IPostDetails;
-  //     },
-  //     toFirestore: (it: IPostDetails) => it,
-  //   });
-
-  //   return combineLatest([
-  //     docData(profileDocRef, { idField: 'id' }),
-  //     collectionData(postsCollectionRef, { idField: 'id' }),
-  //   ]).pipe(
-  //     map(([profile, posts]) => {
-  //       return { ...profile, posts } as IProfile;
-  //     })
-  //   );
-
-  // }
-
 
   async updateAccountDetails(request: IUpdateAccountDetailsRequest) {
     return await httpsCallable<

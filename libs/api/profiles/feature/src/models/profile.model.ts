@@ -21,6 +21,7 @@ import { AggregateRoot } from '@nestjs/cqrs';
 export class Profile extends AggregateRoot implements IProfile {
   constructor(
     public userId: string,
+    public time?: number,
     public accountDetails?: IAccountDetails | null | undefined,
     public personalDetails?: IPersonalDetails | null | undefined,
     public contactDetails?: IContactDetails | null | undefined,
@@ -36,6 +37,7 @@ export class Profile extends AggregateRoot implements IProfile {
   static fromData(profile: IProfile): Profile {
     const instance = new Profile(
       profile.userId,
+      profile.time,
       profile.accountDetails,
       profile.personalDetails,
       profile.contactDetails,
@@ -71,7 +73,7 @@ export class Profile extends AggregateRoot implements IProfile {
     this.posts.push(postDetails);
     this.apply(new PostCreatedEvent(this.toJSON()));
   }
- 
+
 
   updateContactDetails(contactDetails: IContactDetails) {
     if (!this.contactDetails) this.contactDetails = {};
@@ -243,6 +245,7 @@ export class Profile extends AggregateRoot implements IProfile {
   toJSON(): IProfile {
     return {
       userId: this.userId,
+time:this.time,
       accountDetails: this.accountDetails,
       personalDetails: this.personalDetails,
       contactDetails: this.contactDetails,

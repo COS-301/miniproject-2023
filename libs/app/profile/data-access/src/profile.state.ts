@@ -32,11 +32,12 @@ import {
   CreateNewPost,
   FetchUserPosts,
   GetAllPosts,
-  GetUserPostsByHashtag
+  GetUserPostsByHashtag,
+  BuyPost
 } from '@mp/app/profile/util';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import produce from 'immer';
-import { catchError, of, tap } from 'rxjs';
+import { catchError, of, tap, from } from 'rxjs';
 import { ProfilesApi } from './profiles.api';
 import { Timestamp } from '@angular/fire/firestore';
 
@@ -45,6 +46,7 @@ export interface ProfileStateModel {
   profile: IProfile | null;
   searchPosts: IPostDetails[];
 posts:IPostDetails[];
+time:number|null;
   accountDetailsForm: {
     model: {
       displayName: string | null;
@@ -120,6 +122,7 @@ posts:IPostDetails[];
     profile: null,
     searchPosts: [],
     posts:[],
+time:0,
     accountDetailsForm: {
       model: {
         displayName: null,
@@ -438,6 +441,7 @@ export class ProfileState {
       const createdBy = state.profile?.userId;
       const caption = state.postDetailsForm.model.caption;
       const hashtag = state.postDetailsForm.model.hashtag;
+      const listing = state.postDetailsForm.model.listing;
       const ownedBy = state.profile?.userId; // We can use 'createdBy' from the action payload
       const postID = state.profile?.accountDetails?.displayName?.split("@")[0] + "-" + state.profile?.posts?.length;
       const likes = state.postDetailsForm.model.likes;
@@ -459,7 +463,7 @@ export class ProfileState {
         content,
         hashtag,
         caption,
-
+        listing,
       }
 
       const request: IAddPostRequest = {
@@ -532,13 +536,13 @@ console.log(uId);
     action: GetUserPostsByHashtag
   ) {
     const state = ctx.getState();
-  
+
     return this.profileApi.getUserPostsByHashtag$(action.hashtag).pipe(
       tap((posts: IPostDetails[]) => {
         if (posts.length === 0) {
           throw new Error('No posts found with the given hashtag.');
         }
-  
+
         ctx.setState(
           produce(state, (draft: ProfileStateModel) => {
             draft.searchPosts = posts;
@@ -551,5 +555,49 @@ console.log(uId);
       })
     );
   }
-  
+
+
+// @Action(BuyPost)
+// buyPost(ctx: StateContext<ProfileStateModel>, {post}: BuyPost) {
+// const state=ctx.getState();
+// let uId=' ';
+//   if(state.profile?.userId){
+//     uId=state.profile?.userId;
+//   }
+//   const postS =post;
+//   return this.profileApi.buyPost$(post,uId).pipe(
+//     tap((posts: IPostDetails[]) => ctx.patchState({ posts: posts })),
+//     catchError((error) => {
+//       ctx.dispatch(new SetError((error as Error).message));
+//       return of(null);
+//     })
+//   );
+// }
+
+@Action(BuyPost)
+buyPost(ctx: StateContext<ProfileStateModel>, { postId }: BuyPost) {
+  const buyerId = ctx.getState().profile?.userId;
+
+  if (!buyerId || !postId) {
+    return ctx.dispatch(
+      new SetError('BuyerId or PostId not set')
+    );
+  }
+
+  return from(
+    this.profileApi.functions2.httpsCallable('buyPosts')({ postId })
+  ).pipe(
+    tap(() => {
+      ctx.patchState({
+        posts: ctx.getState().posts.map((post) =>
+          post.postID === postId ? { ...post, ownedBy: buyerId } : post
+        ),
+      });
+    }),
+    catchError((error) => {
+      ctx.dispatch(new SetError((error as Error).message));
+      return of(null);
+    })
+  );
+}
 }

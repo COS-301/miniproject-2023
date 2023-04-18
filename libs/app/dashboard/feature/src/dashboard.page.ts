@@ -4,9 +4,10 @@ import { Store } from '@ngxs/store';
 import { IPostDetails, IProfile } from '@mp/api/profiles/util';
 import { ProfileState } from '@mp/app/profile/data-access';
 import { Select } from '@ngxs/store';
-import { Observable } from 'rxjs';
+import { Observable, concatMap, filter, map, of, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { FetchUserPosts, GetAllPosts } from '@mp/app/profile/util';
+import { BuyPost } from '@mp/app/profile/util';
 
 
 @Component({
@@ -37,6 +38,26 @@ console.log("we done in dispatch")
     this.router.navigate(["/comment"]);
   }
 
+buyPost(i:number){
+  this.getPostByIndex(i).subscribe((post) => {
+    if (post?.postID) {
+      // Perform your action with the post object
+const postID = post.postID;
+      console.log('Post:'+i);
+this.store.dispatch(new BuyPost(postID));
+    } else {
+      console.error('Invalid index');
+    }
+  });
+}
+getPostByIndex(index: number): Observable<IPostDetails | undefined> {
+if(!this.userPosts$){
+  return throwError(new Error('userPosts$ is undefined'));
+}
+  return this.userPosts$.pipe(
+    concatMap(posts => posts ? of(posts[index]) : of(undefined))
+  );
+}
   trending() {
 
     var trend = <HTMLInputElement>document.getElementById("trendingButton");
