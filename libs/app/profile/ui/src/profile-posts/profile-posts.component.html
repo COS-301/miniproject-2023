@@ -32,16 +32,18 @@
 
   </ion-row>
 </ion-grid>
-<ion-button
+<!-- <ion-button
         fill="clear"
         class="ion-float-left"
         type="button"
         (click)="logout()">
         Logout
-      </ion-button>
+      </ion-button> -->
 <ng-container *ngIf="posts$ | async as posts">
-  <div *ngFor="let post of posts">
-    <img [src]="post.content" alt="Post image" width="100%" />
+  <div *ngFor="let post of posts" style="text-align: center;">
+    <img [src]="post.content" alt="Post image" width="80%"   style="position:relative; border-radius: 25%;object-fit: cover;
+    width: 300px;
+    height: 300px;" />
     <p>{{ post.caption }}</p>
     <p>Hashtag: {{ post.hashtag }}</p>
     <p>Likes: {{ post.likes }}</p>
