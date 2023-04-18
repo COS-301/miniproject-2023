@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
 export class PostPageComponent { 
 
   constructor(private router: Router) { }
-
-  MakeChallenge() {
-    this.router.navigate(['/home/post/challenge']);
+  
+  customCounterFormatter(inputLength: number, maxLength: number) {
+    return `${maxLength - inputLength} characters remaining`;
   }
 }

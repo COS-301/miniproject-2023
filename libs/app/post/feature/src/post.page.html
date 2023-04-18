@@ -1,13 +1,31 @@
-<ion-header>
-    <ion-segment value="button1">
-        <ion-segment-button value="Postbtn">
-            <ion-label>Post</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="Chalbtn" (click)="MakeChallenge()">
-            <ion-label>Issue Challenge</ion-label>
-        </ion-segment-button>
-    </ion-segment>
-</ion-header>
 
+<ion-card>
+  <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+  <ion-card-header>
+    <ion-card-title>Card Title</ion-card-title>
+    <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+  </ion-card-header>
 
-<p> This is the post page </p>
+  <ion-card-content>
+    <ion-input label="Solid input" label-placement="floating" fill="solid" placeholder="Enter Heading"></ion-input>
+    Here's a small text description for the card content. Nothing more, nothing less.
+  </ion-card-content>
+</ion-card>
+
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Card Title</ion-card-title>
+    <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+    Here's a small text description for the card content. Nothing more, nothing less.
+  </ion-card-content>
+</ion-card>
+
+<ion-fab slot="fixed" horizontal="end" vertical="bottom">
+  <ion-button>
+    Post
+    <ion-icon slot="end" name="paper-plane"></ion-icon>
+  </ion-button>
+</ion-fab>

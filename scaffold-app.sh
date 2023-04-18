@@ -26,9 +26,9 @@ yarn nx generate @nrwl/js:library data-access --unitTestRunner=jest --directory=
 yarn nx generate @nrwl/js:library util --unitTestRunner=jest --directory=app/forgot --no-interactive
 
 # RESET
-yarn nx generate @nrwl/js:library feature --unitTestRunner=jest --directory=app/post --no-interactive
-yarn nx generate @nrwl/js:library data-access --unitTestRunner=jest --directory=app/post --no-interactive
-yarn nx generate @nrwl/js:library util --unitTestRunner=jest --directory=app/post --no-interactive
+yarn nx generate @nrwl/js:library feature --unitTestRunner=jest --directory=app/challenge --no-interactive
+yarn nx generate @nrwl/js:library data-access --unitTestRunner=jest --directory=app/challenge --no-interactive
+yarn nx generate @nrwl/js:library util --unitTestRunner=jest --directory=app/challenge --no-interactive
 
 # VERIFY
 yarn nx generate @nrwl/js:library feature --unitTestRunner=jest --directory=app/verify --no-interactive

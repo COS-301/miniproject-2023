@@ -28,11 +28,6 @@ const routes: Routes = [
           import('@mp/app/notifications/feature').then((m) => m.NotificationsModule),
       },
       {
-        path: 'post',
-        loadChildren: () =>
-          import('@mp/app/post/feature').then((m) => m.PostModule),
-      },
-      {
         path: 'search',
         loadChildren: () =>
           import('@mp/app/search/feature').then((m) => m.SearchModule),
@@ -42,8 +37,19 @@ const routes: Routes = [
         pathMatch: 'full',
         redirectTo: '/home/dashboard',
       },
+      {
+        path: 'post',
+        loadChildren: () =>
+          import('@mp/app/post/feature').then((m) => m.PostModule),
+      },
+      // {
+      //   path: 'challenge',
+      //   loadChildren: () =>
+      //     import('@mp/app/challenge/feature').then((m) => m.ChallengeModule),
+      // },
     ],
   },
+  
   {
     path: '',
     pathMatch: 'full',

@@ -7,11 +7,6 @@ const routes: Routes = [
     path: '',
     component: PostPageComponent
   },
-  {
-    path: 'challenge',
-    loadChildren: () =>
-      import('./challenges/challenges/challenges.module').then((m) => m.ChallengesModule),
-  },
 ];
 
 @NgModule({
