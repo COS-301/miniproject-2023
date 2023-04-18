@@ -40,10 +40,11 @@ console.log("we done in dispatch")
 
 buyPost(i:number){
   this.getPostByIndex(i).subscribe((post) => {
-    if (post) {
+    if (post?.postID) {
       // Perform your action with the post object
+const postID = post.postID;
       console.log('Post:'+i);
-this.store.dispatch(new BuyPost(post));
+this.store.dispatch(new BuyPost(postID));
     } else {
       console.error('Invalid index');
     }

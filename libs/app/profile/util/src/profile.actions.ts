@@ -15,7 +15,7 @@ export class FetchUserPosts {
 
 export class BuyPost{
   static readonly type = '[Profile] BuyPost';
-  constructor(public post: IPostDetails) {}
+  constructor(public postId: string) {}
 }
 export class GetAllPosts {
   static readonly type = '[Profile] Get All Posts';

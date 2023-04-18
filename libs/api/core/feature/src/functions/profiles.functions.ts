@@ -94,59 +94,182 @@ exports.getUserPostsByHashtag = functions.https.onCall(async (data, context) => 
   return { posts };
 });
 
-exports.buyPost = functions.https.onCall(async (data, context) => {
-  const post = data.post;
-  const buyer = data.buyer;
-  const seller = data.post.ownedBy;
+export const buyPosts = functions.https.onCall(async (data, context) => {
+  const buyerId = context.auth?.uid;
+  const postName = data.postId;
 
-
-  if (!post || !buyer || !seller) {
-    throw new functions.https.HttpsError('invalid-argument', 'Post, buyer, and seller are required');
+  if (!buyerId || !postName) {
+    throw new functions.https.HttpsError(
+      'invalid-argument',
+      'The function must be called with a buyerId and postName.'
+    );
   }
 
-  const listingPrice = post.listing;
-  if (buyer.time < listingPrice) {
-    throw new functions.https.HttpsError('failed-precondition', 'Buyer does not have enough time to buy the post');
+  const lockRef = admin.firestore().collection('locks').doc(`${buyerId}_${postName}`);
+
+  const lockSnapshot = await lockRef.get();
+  if (lockSnapshot.exists) {
+    throw new functions.https.HttpsError(
+      'failed-precondition',
+      'Another buyPosts operation is already in progress for this buyer and post.'
+    );
   }
 
-  // Start a batch for atomic updates
+  // Create a lock document
+  await lockRef.set({ locked: true });
+
+  try {
+
+  const profilesRef = admin.firestore().collection('profiles');
+  let postRef;
+
+  const profilesSnapshot = await profilesRef.get();
+  for (const profileDoc of profilesSnapshot.docs) {
+    const profileId = profileDoc.id;
+    const postsRef = admin
+      .firestore()
+      .collection('profiles')
+      .doc(profileId)
+      .collection('posts');
+
+    const postsSnapshot = await postsRef.where('postID', '==', postName).get();
+    for (const postDoc of postsSnapshot.docs) {
+      postRef = postDoc.ref;
+      break;
+    }
+    if (postRef) {
+      break;
+    }
+  }
+
+  if (!postRef) {
+    throw new functions.https.HttpsError(
+      'not-found',
+      'The specified post does not exist.'
+    );
+  }
+
+  const postSnapshot = await postRef.get();
+if(!postSnapshot.data()){
+  throw new functions.https.HttpsError(
+    'not-found',
+    'The specified post does not exist.'
+  );
+}
+  const post = postSnapshot.data();
+if(!post){
+  throw new functions.https.HttpsError(
+    'not-found',
+    'The specified post does not exist.'
+  );
+}
+  if (post['ownedBy'] === buyerId) {
+    throw new functions.https.HttpsError(
+      'failed-precondition',
+      'You already own this post.'
+    );
+  }
+
+  const oldOwnerRef = admin
+    .firestore()
+    .collection('profiles')
+    .doc(post['ownedBy']);
+  const newOwnerRef = admin.firestore().collection('profiles').doc(buyerId);
+
+  const oldOwnerSnapshot = await oldOwnerRef.get();
+  const newOwnerSnapshot = await newOwnerRef.get();
+
+  if (!oldOwnerSnapshot.exists || !newOwnerSnapshot.exists) {
+    throw new functions.https.HttpsError(
+      'not-found',
+      'One or both of the specified users do not exist.'
+    );
+  }
+
+  const oldOwnerData = oldOwnerSnapshot.data();
+  const newOwnerData = newOwnerSnapshot.data();
+
   const batch = admin.firestore().batch();
 
-  // Update buyer's time
-  const buyerRef = admin.firestore().doc(`profiles/${buyer}`);
-  const buyerDocs = await buyerRef.get();
+  // Transfer ownership
+  batch.update(postRef, { ownedBy: buyerId });
+  // Update old owner's time
+// Update old owner's time
+if (oldOwnerData && post['listing'] !== null && typeof post['listing'] === 'number') {
+  const updatedOldOwnerTime = oldOwnerData['time'] + post['listing'];
+  batch.update(oldOwnerRef, { time: updatedOldOwnerTime });
+}
 
-  batch.update(buyerRef, { time: buyerDocs.data()?.['time'] - listingPrice });
-
-  // Update seller's time
-  const sellerRef = admin.firestore().doc(`profiles/${seller}`);
-  const sellerDocs = await sellerRef.get();
-  batch.update(sellerRef, { time: sellerDocs.data()?.['time'] + listingPrice });
-
-  // Copy post to buyer's collection and update ownerId and ownerGainedTime
-  const postData = { ...post, ownerId: buyer, ownerGainedTime: 0 };
-  const buyerPostsRef = admin.firestore().collection(`profiles/${buyer}/posts`);
-  batch.set(buyerPostsRef.doc(post.id), postData);
-
-  // Commit the batch
-  await batch.commit();
-
-  // Update ownerId for all occurrences of the post with the given postName
-  const postName = post.postID;
-  const allPostsSnapshot = await admin.firestore().collectionGroup('posts').where('postID', '==', postName).get();
-
-  allPostsSnapshot.forEach((doc) => {
-    doc.ref.update({ ownerId: buyer });
-  });
-
-  const querySnapshot = await admin.firestore().collection(`profiles/${buyer}/posts`).get();
-    const posts: { id: string; }[] = [];
-    querySnapshot.forEach((doc) => {
-      posts.push({ id: doc.id, ...doc.data() });
-    });
-console.log(posts);
-    return { posts };
+// Update new owner's time
+if (newOwnerData && post['listing'] !== null && typeof post['listing'] === 'number') {
+  const updatedNewOwnerTime = newOwnerData['time'] - post['listing'];
+  batch.update(newOwnerRef, { time: updatedNewOwnerTime });
+}
+await batch.commit();
+  }catch (error) {
+    // Delete the lock document in case of any error
+    await lockRef.delete();
+    throw error;
+  }
+  // Delete the lock document after successful completion
+  await lockRef.delete();
+  return { message: 'Post successfully bought.' };
 });
+
+
+// exports.buyPost = functions.https.onCall(async (data, context) => {
+//   const post = data.post;
+//   const buyer = data.buyer;
+//   const seller = data.post.ownedBy;
+
+
+//   if (!post || !buyer || !seller) {
+//     throw new functions.https.HttpsError('invalid-argument', 'Post, buyer, and seller are required');
+//   }
+
+//   const listingPrice = post.listing;
+//   if (buyer.time < listingPrice) {
+//     throw new functions.https.HttpsError('failed-precondition', 'Buyer does not have enough time to buy the post');
+//   }
+
+//   // Start a batch for atomic updates
+//   const batch = admin.firestore().batch();
+
+//   // Update buyer's time
+//   const buyerRef = admin.firestore().doc(`profiles/${buyer}`);
+//   const buyerDocs = await buyerRef.get();
+
+//   batch.update(buyerRef, { time: buyerDocs.data()?.['time'] - listingPrice });
+
+//   // Update seller's time
+//   const sellerRef = admin.firestore().doc(`profiles/${seller}`);
+//   const sellerDocs = await sellerRef.get();
+//   batch.update(sellerRef, { time: sellerDocs.data()?.['time'] + listingPrice });
+
+//   // Copy post to buyer's collection and update ownerId and ownerGainedTime
+//   const postData = { ...post, ownerId: buyer, ownerGainedTime: 0 };
+//   const buyerPostsRef = admin.firestore().collection(`profiles/${buyer}/posts`);
+//   batch.set(buyerPostsRef.doc(post.id), postData);
+
+//   // Commit the batch
+//   await batch.commit();
+
+//   // Update ownerId for all occurrences of the post with the given postName
+//   const postName = post.postID;
+//   const allPostsSnapshot = await admin.firestore().collectionGroup('posts').where('postID', '==', postName).get();
+
+//   allPostsSnapshot.forEach((doc) => {
+//     doc.ref.update({ ownerId: buyer });
+//   });
+
+//   const querySnapshot = await admin.firestore().collection(`profiles/${buyer}/posts`).get();
+//     const posts: { id: string; }[] = [];
+//     querySnapshot.forEach((doc) => {
+//       posts.push({ id: doc.id, ...doc.data() });
+//     });
+// console.log(posts);
+//     return { posts };
+// });
 
 exports.getAllPosts = functions.https.onCall(async (data, context) => {
   const profilesRef = admin.firestore().collection('profiles');
