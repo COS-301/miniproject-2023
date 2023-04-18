@@ -31,7 +31,8 @@ import {
   AddPost,
   CreateNewPost,
   FetchUserPosts,
-  GetAllPosts
+  GetAllPosts,
+  BuyPost
 } from '@mp/app/profile/util';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import produce from 'immer';
@@ -44,6 +45,7 @@ export interface ProfileStateModel {
   profile: IProfile | null;
   searchPosts: IPostDetails[];
 posts:IPostDetails[];
+time:number|null;
   accountDetailsForm: {
     model: {
       displayName: string | null;
@@ -119,6 +121,7 @@ posts:IPostDetails[];
     profile: null,
     searchPosts: [],
     posts:[],
+time:0,
     accountDetailsForm: {
       model: {
         displayName: null,
@@ -437,6 +440,7 @@ export class ProfileState {
       const createdBy = state.profile?.userId;
       const caption = state.postDetailsForm.model.caption;
       const hashtag = state.postDetailsForm.model.hashtag;
+      const listing = state.postDetailsForm.model.listing;
       const ownedBy = state.profile?.userId; // We can use 'createdBy' from the action payload
       const postID = state.profile?.accountDetails?.displayName?.split("@")[0] + "-" + state.profile?.posts?.length;
       const likes = state.postDetailsForm.model.likes;
@@ -458,7 +462,7 @@ export class ProfileState {
         content,
         hashtag,
         caption,
-
+        listing,
       }
 
       const request: IAddPostRequest = {
@@ -524,5 +528,22 @@ console.log(uId);
     })
   );
 
+}
+
+@Action(BuyPost)
+buyPost(ctx: StateContext<ProfileStateModel>, {post}: BuyPost) {
+const state=ctx.getState();
+let uId=' ';
+  if(state.profile?.userId){
+    uId=state.profile?.userId;
+  }
+  const postS =post;
+  return this.profileApi.buyPost$(post,uId).pipe(
+    tap((posts: IPostDetails[]) => ctx.patchState({ posts: posts })),
+    catchError((error) => {
+      ctx.dispatch(new SetError((error as Error).message));
+      return of(null);
+    })
+  );
 }
 }

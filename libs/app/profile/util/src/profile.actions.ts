@@ -13,6 +13,10 @@ export class FetchUserPosts {
   constructor(public displayName: string) {}
 }
 
+export class BuyPost{
+  static readonly type = '[Profile] BuyPost';
+  constructor(public post: IPostDetails) {}
+}
 export class GetAllPosts {
   static readonly type = '[Profile] Get All Posts';
   constructor(public userId: string) {}

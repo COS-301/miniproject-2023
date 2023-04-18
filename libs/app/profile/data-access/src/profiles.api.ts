@@ -84,6 +84,11 @@ export class ProfilesApi {
     return from(getUserPosts({ displayName })).pipe(map(result => result.posts));
   }
 
+buyPost$(post:IPostDetails,buyer:string): Observable<IPostDetails[]> {
+  const buyPost = this.functions2.httpsCallable('buyPost');
+  return from(buyPost({ post,buyer })).pipe(map(result => result.posts));
+}
+
 getAllPosts$(userId: string):Observable<IPostDetails[]>{
 console.log("in api");
   const getAllPosts = this.functions2.httpsCallable('getAllPosts');

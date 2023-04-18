@@ -22,9 +22,11 @@ export class CreateProfileHandler
     const email = request.user.email;
     const photoURL = request.user.photoURL;
     const cellphone = request.user.phoneNumber;
+    const time=100;
 
     const data: IProfile = {
       userId,
+      time,
       accountDetails: {
         displayName,
         email,

@@ -9,6 +9,7 @@ import { IPostDetails } from './post-details.interface';
 
 export interface IProfile {
   userId: string;
+  time?: number;
   accountDetails?: IAccountDetails | null | undefined;
   personalDetails?: IPersonalDetails | null | undefined;
   contactDetails?: IContactDetails | null | undefined;
