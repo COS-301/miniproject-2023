@@ -1,4 +1,28 @@
-<ion-content [fullscreen]="true">
+<ion-content>
+  <div class="container ion-text-center">
+    <img src="https://i.imgur.com/bftfKDQ.png">
+  </div>
+
+  <ion-footer>
+    <ion-row>
+      <ion-col>
+        <ion-text class="textColor ion-text-center">
+        <p>version 0.0.1</p>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-footer>
+  <div *ngIf = "countdownDisplay">
+    <ion-nav-link [routerLink]="['/welcome']"></ion-nav-link>
+  </div>
+</ion-content>
+
+
+
+
+
+
+<!-- <ion-content [fullscreen]="true">
   <div class="center-container ion-align-items-center">
   <ion-grid>
       <div class="loading-container">
@@ -13,10 +37,7 @@
           <p class="loading-text">It's about time you joined!</p>
         </ion-text>
       </ion-col>
-    </ion-row>
-      </div>
-
-    <ion-footer>
+    </ion-row><ion-footer>
       <ion-row>
         <ion-col>
           <ion-text class="textColor">
@@ -26,10 +47,13 @@
         </ion-col>
       </ion-row>
     </ion-footer>
+      </div>
+
+    
 
   </ion-grid>
   </div>
-</ion-content>
+</ion-content> -->
 
 <!--<head>-->
 <!--  <meta charset="utf-8" />-->

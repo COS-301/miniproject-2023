@@ -7,7 +7,14 @@ const routes: Routes = [
     path: '',
     pathMatch: 'full',
     component: SplashPage,
-  },
+    children: [
+    {
+      path: 'welcome',
+      loadChildren: () =>
+        import('@mp/app/welcome/feature').then((m) => m.WelcomeModule),
+    },
+   ],
+  }
 ];
 
 @NgModule({
