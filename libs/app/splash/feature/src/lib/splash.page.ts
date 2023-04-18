@@ -17,7 +17,6 @@ export class SplashPage {
     
       setTimeout(() => {
         let element:HTMLElement = document.getElementById('trigger') as HTMLElement;
-
         element.click();
         
     }, 3000);
