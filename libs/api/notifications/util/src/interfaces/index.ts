@@ -1,1 +1,1 @@
-export * from './new-follower.interface'
+export * from './new-follower-notification.interface'
