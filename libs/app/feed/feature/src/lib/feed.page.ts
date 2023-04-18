@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class FeedPage {
   contentArr: string[] = ["Card1", "Card2"];
+  Discoveryt(){
+    console.log("Discover");
+  }
+
+  homet(){
+    console.log("Home");
+  }
 }
