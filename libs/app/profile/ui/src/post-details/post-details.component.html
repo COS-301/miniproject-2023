@@ -104,7 +104,7 @@
     style="border-radius: 5%; margin: auto; width: 80%; height: 40%; background-color: rgba(53,107,89,0); text-align: center; position: relative;"
       >
       <img (click)="fileInput.click()" alt="" src="assets/icons/upload.png" style="font-size: 128px; position: relative; top:25%; border-radius: 10%;" color="secondary">
-      <input #fileInput type="file" (change)="onFileChange($event)" style="display: none" accept="image/*">
+      <input #fileInput type="file" (change)="uploadImage($event)" style="display: none" accept="image/*">
     </div>
     <br>
     <ion-list lines="none">
