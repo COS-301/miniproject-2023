@@ -1,4 +1,4 @@
-<ion-content>
+<ion-content onload='Go()'>
   <div class="container ion-text-center">
     <img src="https://i.imgur.com/bftfKDQ.png">
   </div>
@@ -7,14 +7,13 @@
     <ion-row>
       <ion-col>
         <ion-text class="textColor ion-text-center">
-        <p>version 0.0.1</p>
         </ion-text>
       </ion-col>
     </ion-row>
   </ion-footer>
-  <div *ngIf = "countdownDisplay">
-    <ion-nav-link [routerLink]="['/welcome']"></ion-nav-link>
-  </div>
+  <ion-nav-link [routerLink]="['welcome']">
+    <ion-button class="fake_but" id = "trigger" ></ion-button>
+  </ion-nav-link>
 </ion-content>
 
 

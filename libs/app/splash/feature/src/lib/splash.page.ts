@@ -9,14 +9,18 @@ import { timeout } from 'rxjs';
 })
 export class SplashPage {
 
-  constructor() {}
+    constructor() {};
 
-  countdownDisplay?: string;
+  
+    ngOnInit(){
 
-  go(): void{
-    setTimeout(()=>{
-        this.countdownDisplay = 'go';
-    },4000);
+    
+      setTimeout(() => {
+        let element:HTMLElement = document.getElementById('trigger') as HTMLElement;
+
+        element.click();
+        
+    }, 3000);
+    }
   }
 
-}

@@ -11,7 +11,7 @@ const redirectLoggedIn = () => redirectLoggedInTo(['home']);
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'welcome',
     pathMatch: 'full',
     canActivate: [AuthGuard],
     data: { authGuardPipe: redirectLoggedIn },
@@ -19,7 +19,7 @@ const routes: Routes = [
       import('@mp/app/welcome/feature').then((m) => m.WelcomeModule),
   },
   {
-    path: 'splash',
+    path: '',
     loadChildren: () =>
       import('@mp/app/splash/feature').then((m) => m.SplashModule),
   },
