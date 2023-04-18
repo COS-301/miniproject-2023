@@ -79,9 +79,9 @@ export class ProfilesApi {
     );
   }
 
-  getUserPostsFromFunction$(userId: string): Observable<IPostDetails[]> {
-    const getUserPosts = this.functions2.httpsCallable('getUserPosts');
-    return from(getUserPosts({ userId })).pipe(map(result => result.posts));
+  getUserPostsFromFunction$(displayName: string): Observable<IPostDetails[]> {
+    const getUserPosts = this.functions2.httpsCallable('getUserPostsByEmail');
+    return from(getUserPosts({ displayName })).pipe(map(result => result.posts));
   }
 
 getAllPosts$(userId: string):Observable<IPostDetails[]>{

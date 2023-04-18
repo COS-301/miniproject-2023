@@ -496,8 +496,8 @@ export class ProfileState {
   }
 
   @Action(FetchUserPosts)
-fetchUserPosts(ctx: StateContext<ProfileStateModel>, { userId }: FetchUserPosts) {
-  return this.profileApi.getUserPostsFromFunction$(userId).pipe(
+fetchUserPosts(ctx: StateContext<ProfileStateModel>, { displayName }: FetchUserPosts) {
+  return this.profileApi.getUserPostsFromFunction$(displayName).pipe(
     tap((posts: IPostDetails[]) => ctx.patchState({ searchPosts: posts })),
     catchError((error) => {
       ctx.dispatch(new SetError((error as Error).message));

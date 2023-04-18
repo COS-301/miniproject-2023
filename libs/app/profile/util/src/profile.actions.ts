@@ -10,7 +10,7 @@ export class SubscribeToProfile {
 
 export class FetchUserPosts {
   static readonly type = '[Profile] Fetch User Posts';
-  constructor(public userId: string) {}
+  constructor(public displayName: string) {}
 }
 
 export class GetAllPosts {

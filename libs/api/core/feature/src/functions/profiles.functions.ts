@@ -49,19 +49,22 @@ console.log(posts);
 });
 
 exports.getUserPostsByEmail = functions.https.onCall(async (data, context) => {
-  const userId = data.email;
+  const userId = data.displayName;
+console.log(userId + "functions");
+  const profilesRef = admin.firestore().collection('profiles').where("accountDetails.displayName", "==", userId);
+  const profileDocs = await profilesRef.get();
+  const posts: { id: string; }[] = [];
 
-  if (!userId) {
-    throw new functions.https.HttpsError('invalid-argument', 'User ID is required');
-  }
+  for (const profileDoc of profileDocs.docs) {
+    const userIdP = profileDoc.id;
+    const userPostsRef = admin.firestore().collection(`profiles/${userIdP}/posts`);
+    const userPostsSnapshot = await userPostsRef.get();
 
-    const querySnapshot = await admin.firestore().collection(`profiles/${userId}/posts`).get();
-    const posts: { id: string; }[] = [];
-    querySnapshot.forEach((doc) => {
+    userPostsSnapshot.forEach((doc) => {
       posts.push({ id: doc.id, ...doc.data() });
     });
-console.log(posts);
-    return { posts };
+  }
+return{posts};
 
 });
 
