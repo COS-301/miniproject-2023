@@ -18,6 +18,10 @@ export class GetAllPosts {
   constructor(public userId: string) {}
 }
 
+export class GetUserPostsByHashtag {
+  static readonly type = '[Profile] Get User Posts By Hashtag';
+  constructor(public hashtag: string) {}
+}
 
 export class SetProfile {
   static readonly type = '[Profile] SetProfile';

@@ -92,6 +92,13 @@ console.log(getAllPosts);
 return from(getAllPosts( {userId} )).pipe(map(result => result.posts));
 }
 
+getUserPostsByHashtag$(hashtag: string): Observable<IPostDetails[]> {
+  console.log("testing get by hashtag. in profile.api.ts");
+  const getUserPostsByHashtag = this.functions2.httpsCallable('getUserPostsByHashtag');
+  return from(getUserPostsByHashtag({ hashtag })).pipe(map(result => result.posts));
+}
+
+
   // profile$(id: string) {
   //   const profileDocRef = doc(
   //     this.firestore,

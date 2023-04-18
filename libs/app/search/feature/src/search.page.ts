@@ -6,7 +6,9 @@ import { ProfileState } from '@mp/app/profile/data-access';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { FetchUserPosts, GetAllPosts } from '@mp/app/profile/util';
+import { FetchUserPosts, GetAllPosts, GetUserPostsByHashtag } from '@mp/app/profile/util';
+
+
 @Component({
   selector: 'mp-search',
   templateUrl: './search.page.html',
@@ -17,16 +19,37 @@ export class SearchPage {
   @Select(ProfileState.searchPosts) searchPosts$: Observable<IPostDetails[]> | undefined;
   @Select(ProfileState.profile) profile$!: Observable<IProfile | null>;
   searchUser='';
-  userSearch(){
-    console.log(this.searchUser);
-    this.store.dispatch(new FetchUserPosts(this.searchUser));
-  }
+  // userSearch(){
+  //   console.log(this.searchUser);
+  //   this.store.dispatch(new FetchUserPosts(this.searchUser));
+  // }
+  errorMessage: string | null = null;
+
+  userSearch() {
+    if (this.searchUser.startsWith('#')) {
+      this.searchByHashtag();
+    } else {
+      console.log(this.searchUser);
+      this.store.dispatch(new FetchUserPosts(this.searchUser));
+    }
+  } //if the input starts with a hashtag, search by hashtag, else search by username
+
   toHomePage(){
     this.router.navigate(["/home"]);
   }
   fillBar(category: string){
     console.log(category);
    const searchBar=document.getElementById("searchBar")?.setAttribute("value", category);
+  }
+
+  searchByHashtag() {
+    const hashtag = this.searchUser;
+    console.log('Searching by hashtag:', hashtag);
+    this.store.dispatch(new GetUserPostsByHashtag(hashtag)).subscribe({
+      error: (err) => {
+        console.log('Error:', err.message);
+      },
+    });
   }
 
   toSearchPage() {
