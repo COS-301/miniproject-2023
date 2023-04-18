@@ -14,7 +14,7 @@ import { FetchUserPosts, GetAllPosts } from '@mp/app/profile/util';
 })
 export class SearchPage {
   constructor(private router: Router, private store: Store) { }
-  @Select(ProfileState.userPosts) userPosts$: Observable<IPostDetails[]> | undefined;
+  @Select(ProfileState.searchPosts) searchPosts$: Observable<IPostDetails[]> | undefined;
   @Select(ProfileState.profile) profile$!: Observable<IProfile | null>;
   searchUser='';
   userSearch(){

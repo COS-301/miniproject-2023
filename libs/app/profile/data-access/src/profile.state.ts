@@ -42,7 +42,8 @@ import { Timestamp } from '@angular/fire/firestore';
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ProfileStateModel {
   profile: IProfile | null;
-  posts: IPostDetails[];
+  searchPosts: IPostDetails[];
+posts:IPostDetails[];
   accountDetailsForm: {
     model: {
       displayName: string | null;
@@ -116,7 +117,8 @@ export interface ProfileStateModel {
   name: 'profile',
   defaults: {
     profile: null,
-    posts: [],
+    searchPosts: [],
+    posts:[],
     accountDetailsForm: {
       model: {
         displayName: null,
@@ -436,7 +438,7 @@ export class ProfileState {
       const caption = state.postDetailsForm.model.caption;
       const hashtag = state.postDetailsForm.model.hashtag;
       const ownedBy = state.profile?.userId; // We can use 'createdBy' from the action payload
-      const postID = state.profile?.userId + "- " + state.profile?.posts?.length;
+      const postID = state.profile?.accountDetails?.displayName?.split("@")[0] + "-" + state.profile?.posts?.length;
       const likes = state.postDetailsForm.model.likes;
       const createdAt = Timestamp.now();
 
@@ -488,10 +490,15 @@ export class ProfileState {
     return state.posts;
   }
 
+  @Selector()
+  static searchPosts(state: ProfileStateModel): IPostDetails[] {
+    return state.searchPosts;
+  }
+
   @Action(FetchUserPosts)
 fetchUserPosts(ctx: StateContext<ProfileStateModel>, { userId }: FetchUserPosts) {
   return this.profileApi.getUserPostsFromFunction$(userId).pipe(
-    tap((posts: IPostDetails[]) => ctx.patchState({ posts: posts })),
+    tap((posts: IPostDetails[]) => ctx.patchState({ searchPosts: posts })),
     catchError((error) => {
       ctx.dispatch(new SetError((error as Error).message));
       return of(null);

@@ -18,7 +18,7 @@
 <ion-content>
 
   <ion-list>
-    <ion-item *ngFor="let post of userPosts$ | async">
+    <ion-item *ngFor="let post of searchPosts$ | async">
       <ion-label>
         <img [src]="post.content" alt="Post image" width="100%" />
         <h2>{{ post.caption }}</h2>

@@ -18,7 +18,7 @@ export class CreateProfileHandler
 
     const request = command.request;
     const userId = request.user.id;
-    const displayName = request.user.displayName;
+    const displayName = request.user.email?.split("@")[0];
     const email = request.user.email;
     const photoURL = request.user.photoURL;
     const cellphone = request.user.phoneNumber;
