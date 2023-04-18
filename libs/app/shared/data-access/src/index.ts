@@ -1,3 +1,5 @@
-// export * from './lib/add-memory/add-memory.module';
-// export * from './lib/add-memory/add-memory.api';
-// export * from './lib/add-memory/add-memory.state';
+export * from './add-memory.module';
+
+export * from './add-memory.api';
+
+export * from './add-memory.state';

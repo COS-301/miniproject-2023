@@ -1,1 +1,1 @@
-// export * from './lib/add-memory/add-memory.actions';
+export * from './add-memory.actions';
