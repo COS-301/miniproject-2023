@@ -8,4 +8,8 @@ export class UsersRepository {
     console.log(user);
     return await admin.firestore().collection('users').doc().create(user);
   }
+
+  async getUserId(username: string) {
+    return await admin.firestore().collection('users').where('username', '==', username).get();
+  }
 }
