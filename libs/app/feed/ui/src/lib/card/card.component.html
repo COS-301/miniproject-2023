@@ -32,24 +32,31 @@
   
     <ion-grid>
         <ion-row>
-            <ion-col size="0.9">
-
+            <ion-col size="3">
+                <ion-button fill="clear" (click)="Like()">
+                    <ion-icon name="thumbs-up-outline"></ion-icon>
+                    <ion-label> 12</ion-label>
+                </ion-button>
             </ion-col>
-            <ion-button fill="clear" (click)="Like()">
-                <ion-icon name="thumbs-up-outline"></ion-icon>
-                <ion-label>12</ion-label>
-            </ion-button>
-          <ion-button fill="clear" (click)="Dislike()">
-            <ion-icon name="thumbs-down-outline" ></ion-icon>
-            <ion-label>1</ion-label>
-          </ion-button>
-          <ion-button fill="clear" (click)="Comment()">
-            <ion-icon name="chatbubble-outline" ></ion-icon>
-            <ion-label>2</ion-label>
-          </ion-button>
-          <ion-button fill="clear" (click)="Share()">
-            <ion-icon name="share-social-outline"></ion-icon>
-          </ion-button>
+            <ion-col size="3">
+                <ion-button fill="clear" (click)="Dislike()">
+                    <ion-icon name="thumbs-down-outline" ></ion-icon>
+                    <ion-label> 1</ion-label>
+                  </ion-button>
+            </ion-col>
+            <ion-col size="3">
+                <ion-button fill="clear" (click)="Comment()">
+                    <ion-icon name="chatbubble-outline" ></ion-icon>
+                    <ion-label> 2</ion-label>
+                  </ion-button>
+            </ion-col>
+            <ion-col size="3">
+                <ion-button fill="clear" (click)="Share()">
+                    <ion-icon name="share-social-outline"></ion-icon>
+                  </ion-button>
+            </ion-col>
+
+
         </ion-row>
     </ion-grid>
 </ion-card>
