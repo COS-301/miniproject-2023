@@ -45,8 +45,3 @@ export class CreateNewPost {
   static readonly type = '[Profile] CreateNewPost';
   constructor(public post: IPostDetails) {}
 }
-
-export class GetPostByUserId {
-  static readonly type = '[Post] GetPostByUserID';
-  constructor(public userId: string) {}
-}

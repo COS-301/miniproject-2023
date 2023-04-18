@@ -48,24 +48,24 @@ export class PostApi {
 
   /* Query for posts by userId -> read only */
   /* returns an array of the fetched IPost objects */
-  async getPostsByUserId(userId: string): Promise<IPost[]> {
-    const postsQuery = query(
-      collection(this.firestore, 'posts'),
-      where('createdBy', '==', userId)
-    ).withConverter<IPost>({
-      fromFirestore: (snapshot) => {
-        return {
-          ...snapshot.data(),
-          postID: snapshot.id,
-        } as IPost;
-      },
-      toFirestore: (it: IPost) => it,
-    });
-  
-    const posts = await getDocs(postsQuery);
-    return posts.docs.map((doc) => doc.data());
-  }
-  
+  // async getPostByUserId(userId: string): Promise<IPosts> {
+  //   const postsQuery = query(
+  //     collection(this.firestore, 'posts'),
+  //     where('createdBy', '==', userId)
+  //   ).withConverter<IPost>({
+  //     fromFirestore: (snapshot) => {
+  //       return {
+  //         ...snapshot.data(),
+  //         postID: snapshot.id,
+  //       } as IPost;
+  //     },
+  //     toFirestore: (it: IPost) => it,
+  //   });
+
+  //   const posts = await collectionData<IPost>(postsQuery, { idField: 'postID' }).toPromise();
+  //   return { posts: posts ?? [] };
+  // }
+
 
   /*
   Returns an array of IPost[] objects that are "trending"

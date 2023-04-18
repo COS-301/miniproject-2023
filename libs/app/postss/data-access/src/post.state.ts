@@ -13,7 +13,7 @@ import {
   //SetPosts,
   SetPost,
   CreatePost,
-  GetPostByUserId,
+  //GetPostByUserId,
   //PostTrendingGet,
   //GetPostByHashtag,
   CommentOnPost,
@@ -56,7 +56,6 @@ export interface PostStateModel {
     status: string;
     errors: object;
   };
-  userPosts: IPost[];
 }
 
 /*
@@ -111,8 +110,7 @@ Array of Post objects
       dirty: false,
       status: '',
       errors: {},
-    },
-    userPosts: [],
+    }
   }
 })
 // @Injectable()
@@ -213,12 +211,6 @@ export class PostState { /* changed from 'PostsState' to 'PostState' */
     return state.post;
   }
 
-  @Selector()
-  static userPosts(state: PostStateModel) {
-    return state.post;
-}
-
-
   //This function will set the posts to the state
 
   @Action(SetPost)
@@ -309,15 +301,6 @@ export class PostState { /* changed from 'PostsState' to 'PostState' */
     }
   }
 
-  @Action(GetPostByUserId)
-  async getPostsByUserId(ctx: StateContext<PostStateModel>, action: GetPostByUserId) {
-  try {
-    const userPosts = await this.postApi.getPostsByUserId(action.userId);
-    ctx.patchState({ userPosts });
-  } catch (error) {
-    ctx.dispatch(new SetError((error as Error).message));
-  }
-}
 
 
 
