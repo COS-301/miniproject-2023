@@ -89,11 +89,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('@mp/app/login/feature').then((m) => m.LoginModule),
   },
-  {
-    path:'feed',
-    loadChildren: () => 
-      import('@mp/app/feed/feature').then((m) => m.FeedModule)
-  }
   //  { path: 'chat', component: InboxPageComponent },
 ];
 
