@@ -20,8 +20,10 @@ export class DashboardPage {
 
 
   ngOnInit() {
-    const userId = 'WNmpjfUwXG84TydWTFKu52zWZNVJ'; // Replace this with the actual user ID
+    const userId = ' '; // Replace this with the actual user ID
+console.log("here in dispatch");
     this.store.dispatch(new GetAllPosts(userId));
+console.log("we done in dispatch")
   }
   @Select(ProfileState.profile) profile$!: Observable<IProfile | null>;
 

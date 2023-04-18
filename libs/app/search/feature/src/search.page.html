@@ -3,8 +3,9 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-          <ion-searchbar id="searchBar" search-icon="search-outline" class="searchBar"
+          <ion-searchbar [(ngModel)]="searchUser" search-icon="search-outline" class="searchBar"
             placeholder="Search"></ion-searchbar>
+<ion-button (click) = "userSearch()">Search</ion-button>
         </ion-col>
         <ion-col size="auto">
           <ion-badge class="timer">134:20:00</ion-badge>
@@ -16,7 +17,15 @@
 
 <ion-content>
 
+  <ion-list>
+    <ion-item *ngFor="let post of userPosts$ | async">
+      <ion-label>
+        <img [src]="post.content" alt="Post image" width="100%" />
+        <h2>{{ post.caption }}</h2>
 
+      </ion-label>
+    </ion-item>
+  </ion-list>
   <div class="categoryWrapper" (click)="fillBar('#nature')">
     <ion-grid>
       <ion-row>

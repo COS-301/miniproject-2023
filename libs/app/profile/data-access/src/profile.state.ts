@@ -501,12 +501,21 @@ fetchUserPosts(ctx: StateContext<ProfileStateModel>, { userId }: FetchUserPosts)
 
 @Action(GetAllPosts)
 getAllPosts(ctx: StateContext<ProfileStateModel>, { userId }: GetAllPosts) {
-  return this.profileApi.getAllPosts$().pipe(
+const userID=userId;
+  const state = ctx.getState();
+console.log("here in state");
+  let uId=' ';
+  if(state.profile?.userId){
+    uId=state.profile?.userId;
+  }
+console.log(uId);
+  return this.profileApi.getAllPosts$(uId).pipe(
     tap((posts: IPostDetails[]) => ctx.patchState({ posts: posts })),
     catchError((error) => {
       ctx.dispatch(new SetError((error as Error).message));
       return of(null);
     })
   );
+
 }
 }

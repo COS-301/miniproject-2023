@@ -84,9 +84,12 @@ export class ProfilesApi {
     return from(getUserPosts({ userId })).pipe(map(result => result.posts));
   }
 
-getAllPosts$():Observable<IPostDetails[]>{
+getAllPosts$(userId: string):Observable<IPostDetails[]>{
+console.log("in api");
   const getAllPosts = this.functions2.httpsCallable('getAllPosts');
-  return from(getAllPosts( ' ' )).pipe(map(result => result.posts));
+console.log(getAllPosts);
+  console.log( from(getAllPosts( {userId} )).pipe(map(result => result.posts)));
+return from(getAllPosts( {userId} )).pipe(map(result => result.posts));
 }
 
   // profile$(id: string) {

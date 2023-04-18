@@ -43,6 +43,24 @@ exports.getUserPosts = functions.https.onCall(async (data, context) => {
     querySnapshot.forEach((doc) => {
       posts.push({ id: doc.id, ...doc.data() });
     });
+console.log(posts);
+    return { posts };
+
+});
+
+exports.getUserPostsByEmail = functions.https.onCall(async (data, context) => {
+  const userId = data.email;
+
+  if (!userId) {
+    throw new functions.https.HttpsError('invalid-argument', 'User ID is required');
+  }
+
+    const querySnapshot = await admin.firestore().collection(`profiles/${userId}/posts`).get();
+    const posts: { id: string; }[] = [];
+    querySnapshot.forEach((doc) => {
+      posts.push({ id: doc.id, ...doc.data() });
+    });
+console.log(posts);
     return { posts };
 
 });
@@ -50,23 +68,24 @@ exports.getUserPosts = functions.https.onCall(async (data, context) => {
 exports.getAllPosts = functions.https.onCall(async (data, context) => {
   const profilesRef = admin.firestore().collection('profiles');
   const profileDocs = await profilesRef.get();
+console.log("here in functions");
 
-  let allPosts:IPostDetails[] = [];
+const posts: { id: string; }[] = [];
 
   for (const profileDoc of profileDocs.docs) {
     const userId = profileDoc.id;
+console.log(userId);
+    if(userId != data.userId){
     const userPostsRef = admin.firestore().collection(`profiles/${userId}/posts`);
     const userPostsSnapshot = await userPostsRef.get();
 
-    const userPosts = userPostsSnapshot.docs.map((postDoc) => ({
-
-      ...postDoc.data(),
-    }));
-
-    allPosts = [...allPosts, ...userPosts];
+    userPostsSnapshot.forEach((doc) => {
+      posts.push({ id: doc.id, ...doc.data() });
+    });
   }
-
-  return { allPosts };
+  }
+console.log(posts);
+  return { posts };
 });
 
 export const createPostDetails = functions.https.onCall(
