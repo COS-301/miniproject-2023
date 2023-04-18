@@ -1,1 +1,47 @@
-<p>card works!</p>
+<p>{{content}}</p>
+<ion-card>
+    <!--img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" /-->
+    <ion-grid>
+        <ion-row>
+            <ion-col size="2">
+                <ion-avatar>
+                    <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                  </ion-avatar>
+            </ion-col>
+            <ion-col size="8">
+                <ion-card-header>
+                  <ion-card-title>Card Title</ion-card-title>
+                </ion-card-header>
+            </ion-col>
+            <ion-col size="2">
+                <ion-icon name="ellipsis-horizontal-outline"class="large-icon"></ion-icon>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-card-header>
+              <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+            </ion-card-header>
+        </ion-row>
+    </ion-grid>
+
+  
+    <ion-card-content>
+      Here's a small text description for the card content. Nothing more, nothing less.
+    </ion-card-content>
+
+    <ion-button fill="clear" (click)="Like()">
+        <ion-icon name="thumbs-up-outline"></ion-icon>
+        <ion-label>12</ion-label>
+    </ion-button>
+  <ion-button fill="clear">
+    <ion-icon name="thumbs-down-outline" (click)="Dislike()"></ion-icon>
+    <ion-label>1</ion-label>
+  </ion-button>
+  <ion-button fill="clear">
+    <ion-icon name="chatbubble-outline" (click)="Comment()"></ion-icon>
+    <ion-label>2</ion-label>
+  </ion-button>
+  <ion-button fill="clear">
+    <ion-icon name="share-social-outline"(click)="Share()"></ion-icon>
+  </ion-button>
+</ion-card>

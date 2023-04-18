@@ -5,4 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './feed.page.html',
   styleUrls: ['./feed.page.scss'],
 })
-export class FeedPage {}
+export class FeedPage {
+  contentArr: string[] = ["Card1", "Card2"];
+}
