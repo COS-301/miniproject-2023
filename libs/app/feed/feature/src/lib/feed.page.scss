@@ -1,5 +1,11 @@
 ion-content{
     --ion-background-color: #E5E5E5;
+
+}
+
+ion-segment{
+    --ion-background-color: orange;
+    margin-top: 5%;
 }
 
 .navbar{
@@ -7,5 +13,11 @@ ion-content{
 }
 
 .burger{
+    font-size: 2.2rem;
+    margin-top: 10%;
+}
+
+.stats{
     font-size: 2rem;
+    margin-top: 30%;
 }
