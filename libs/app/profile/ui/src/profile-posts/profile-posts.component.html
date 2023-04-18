@@ -24,24 +24,35 @@
     <ion-textarea [autoGrow]="true" maxlength="150" style =  "background-color: #ffffff; --padding-end: 10px; --padding-start: 10px; border:solid 1px rgb(53,107,89); border-radius: 25%; " formControlName="bio">
     </ion-textarea>
   </ion-item>
-  <ion-button type="submit">Submit</ion-button>
+  
 </ion-list>
+<ion-grid  >
+  <ion-row>
+    <ion-col size="3"></ion-col>
+    <ion-col ><ion-icon (click)="toNotificationsPage()" name="mail-outline" color = "primary"></ion-icon></ion-col>
+    <ion-col > <ion-icon (click)="updateAccountDetails()" name="create-outline" color = "primary"></ion-icon></ion-col>
+    <ion-col ><ion-icon (click)= "toSettingsPage()" name="settings-outline" color = "primary" ></ion-icon></ion-col>
+    <ion-col size="3"></ion-col>
+  </ion-row> 
+</ion-grid>
 </form>
 <ion-grid >
   <ion-row>
 
   </ion-row>
 </ion-grid>
-<ion-button
+<!-- <ion-button
         fill="clear"
         class="ion-float-left"
         type="button"
         (click)="logout()">
         Logout
-      </ion-button>
+      </ion-button> -->
 <ng-container *ngIf="posts$ | async as posts">
-  <div *ngFor="let post of posts">
-    <img [src]="post.content" alt="Post image" width="100%" />
+  <div *ngFor="let post of posts" style="text-align: center;">
+    <img [src]="post.content" alt="Post image" width="80%"   style="position:relative; border-radius: 25%;object-fit: cover;
+    width: 300px;
+    height: 300px;" />
     <p>{{ post.caption }}</p>
     <p>Hashtag: {{ post.hashtag }}</p>
     <p>Likes: {{ post.likes }}</p>

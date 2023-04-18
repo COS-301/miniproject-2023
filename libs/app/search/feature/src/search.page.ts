@@ -38,8 +38,11 @@ export class SearchPage {
     this.router.navigate(["/home"]);
   }
   fillBar(category: string){
+
+    this.searchUser=category;
     console.log(category);
-   const searchBar=document.getElementById("searchBar")?.setAttribute("value", category);
+   document.getElementById("searchBar")?.setAttribute("value", category);
+   this.userSearch();
   }
 
   searchByHashtag() {
