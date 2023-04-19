@@ -72,6 +72,11 @@ export class ProfilesApi {
     return from(getUserPosts({ displayName })).pipe(map(result => result.posts));
   }
 
+  getPortfolioPostsFromFunction$(userId: string):Observable<IPostDetails[]> {
+    const getUserPosts = this.functions2.httpsCallable('getUserPortfolio');
+    return from(getUserPosts({ userId })).pipe(map(result => result.posts));
+  }
+
 buyPost$(post:IPostDetails,buyer:string): Observable<IPostDetails[]> {
   const buyPost = this.functions2.httpsCallable('buyPost');
   return from(buyPost({ post,buyer })).pipe(map(result => result.posts));

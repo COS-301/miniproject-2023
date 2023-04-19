@@ -27,6 +27,11 @@ export class GetUserPostsByHashtag {
   constructor(public hashtag: string) {}
 }
 
+export class getPortfolioPostsFromFunction {
+  static readonly type = '[Profile] get portfolio posts By ID';
+  constructor(public hashtag: string) {}
+}
+
 export class SetProfile {
   static readonly type = '[Profile] SetProfile';
   constructor(public readonly profile: IProfile | null) {}
