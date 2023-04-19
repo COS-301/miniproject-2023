@@ -5,12 +5,13 @@ import { IProfile, IPostDetails, stringToHashtag } from '@mp/api/profiles/util';
 import { ProfileState } from '@mp/app/profile/data-access';
 import { AddPost, CreatePostDetails, CreateNewPost } from '@mp/app/profile/util';
 import {
-    ActionsExecuting,
-    actionsExecuting
+  ActionsExecuting,
+  actionsExecuting
 } from '@ngxs-labs/actions-executing';
 import { Select, Store } from '@ngxs/store';
 import { UploadTaskSnapshot, ref } from 'firebase/storage';
 import { Observable, filter, finalize, tap } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ms-profile-post-details-component',
@@ -50,7 +51,7 @@ export class PostDetailsComponent {
       const img: HTMLImageElement = document.getElementById('postImage') as HTMLImageElement;
       img.src = reader.result as string;
     };
-    
+
     this.selectedFile = event.target.files[0];
   }
 
@@ -64,7 +65,7 @@ export class PostDetailsComponent {
 
     try {
       const url = await this.uploadImageAndReturnUrl(this.selectedFile);
-console.debug("CreateComponent"+url);
+      console.debug("CreateComponent" + url);
       const postDetails: IPostDetails = {
         content: url,
         caption: this.postDetailsForm.get('caption')?.value,
@@ -73,24 +74,25 @@ console.debug("CreateComponent"+url);
       };
       this.store.dispatch(new CreateNewPost(postDetails));
       this.clearForm();
+      this.router.navigate(["/profile"]);
     } catch (error) {
       console.error('Error uploading image:', error);
     }
   }
 
-clearForm() {
-  const img: HTMLImageElement = document.getElementById('postImage') as HTMLImageElement;
-  const captionInput: HTMLIonTextareaElement = document.getElementById('captionInput') as HTMLIonTextareaElement;
-  const toggle: HTMLIonToggleElement = document.getElementById('toggleSale') as HTMLIonToggleElement;
-  const categoryInput: HTMLIonInputElement = document.getElementById('categoryInput') as HTMLIonInputElement;
-  const priceInput: HTMLIonInputElement = document.getElementById('numberInput') as HTMLIonInputElement;
+  clearForm() {
+    const img: HTMLImageElement = document.getElementById('postImage') as HTMLImageElement;
+    const captionInput: HTMLIonTextareaElement = document.getElementById('captionInput') as HTMLIonTextareaElement;
+    const toggle: HTMLIonToggleElement = document.getElementById('toggleSale') as HTMLIonToggleElement;
+    const categoryInput: HTMLIonInputElement = document.getElementById('categoryInput') as HTMLIonInputElement;
+    const priceInput: HTMLIonInputElement = document.getElementById('numberInput') as HTMLIonInputElement;
 
-  img.src = "assets/icons/upload.png";
-  captionInput.value = "";
-  toggle.checked = false;
-  categoryInput.value = "";
-  priceInput.value = "";
-}
+    img.src = "assets/icons/upload.png";
+    captionInput.value = "";
+    toggle.checked = false;
+    categoryInput.value = "";
+    priceInput.value = "";
+  }
 
   uploadImageAndReturnUrl(file: File): Promise<string> {
     const filePath = `posts/${new Date().getTime()}_${file.name}`;
@@ -235,15 +237,16 @@ clearForm() {
   constructor(
     private readonly fb: FormBuilder,
     private readonly store: Store,
-    private storage: AngularFireStorage
-  ) {}
+    private storage: AngularFireStorage,
+    private router: Router
+  ) { }
 
   createPostDetails() {
     console.log("here in component");
     this.store.dispatch(new CreatePostDetails());
   }
-  
-  setInsertionPoint(){
+
+  setInsertionPoint() {
     const x = document.getElementById("numberInput") as HTMLIonInputElement;
 
     x.setFocus();
