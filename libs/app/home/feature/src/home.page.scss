@@ -1,9 +1,32 @@
 ion-icon {
-  color: black;
+  color:#0E8C00;
 }
 ion-button {
   --border-radius: 0;
   --border-color: #000;
   --border-style: solid;
   --border-width: 1px;
+
+}
+
+ion-tab-button:active{
+  ion-icon {
+    color:#8c0075;
+  }
+
+}
+ion-tab-button{
+  background-color: #000;
+  border-color: #0E8C00;
+  border-right: #0E8C00;
+  border-top: #0E8C00;
+  border-top-width: thin;
+  border-top-style:solid;
+
+
+}
+
+img{
+  height: 63px;
+  background-color: #000;
 }
