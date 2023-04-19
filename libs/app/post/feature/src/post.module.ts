@@ -6,13 +6,8 @@ import { PostPageRoutingModule } from './post-routing.module';
 import { PostPageComponent } from './post.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    PostPageRoutingModule
-  ],
+  imports: [CommonModule, FormsModule, IonicModule, PostPageRoutingModule],
   declarations: [PostPageComponent],
   exports: [PostPageComponent],
 })
-export class PostModule { }
+export class PostModule {}
