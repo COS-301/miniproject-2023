@@ -6,7 +6,36 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content>
+  <ion-grid>
+    <ion-row *ngFor="let item of items">
+      <ion-col size="5">
+        <ion-img [src]="item.imageUrl"></ion-img>
+      </ion-col>
+      <ion-col>
+        <ion-row>
+          <ion-avatar>
+            <img [src]="item.avatarUrl" />
+          </ion-avatar>
+          <ion-list lines="none"><ion-item>{{item.username}}</ion-item></ion-list>
+        </ion-row>
+        <ion-row>
+          <ion-col><ion-icon name="thumbs-up-outline"></ion-icon> {{item.likes}}</ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col><ion-icon name="timer-outline"></ion-icon> {{item.duration}}</ion-col>
+          <ion-col><ion-icon name="chatbubble-ellipses-outline"></ion-icon> {{item.comments}} Comments</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col><ion-icon name="cash-outline"></ion-icon> paid {{item.paidDuration}} min</ion-col>
+          <ion-col><ion-icon name="cash"></ion-icon> made {{item.madeDuration}} min</ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
 
   <!-- <div class="postWrapper">
     <ion-grid>
@@ -39,7 +68,7 @@
 
   </div> -->
 
-</ion-content>
+
 
 <ion-toolbar>
 
