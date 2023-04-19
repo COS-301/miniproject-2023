@@ -83,27 +83,20 @@ export class ProfileViewState {
                 })
             );
         }
-        else if (profile && !memory) {
-            return ctx.setState(
-                produce((draft) => {
-                    draft.profile = {
-                    ...profile,
-                    userId: id,
-                    memories: profile.memories ? [...profile.memories, memory] : [memory]
-                    };
-                })
-            );
-        }
         else {
-            return ctx.setState(
-                produce((draft) => {
-                    draft.profile = {
-                    userId: id,
-                    profile: _profile,
-                    memories: profile.memories ? [...profile.memories, memory] : [memory]
-                    };
-                })
-            );
+            if (memory) {
+                profile.memories?.push(memory);
+                return ctx.setState(
+                    produce((draft) => {
+                        draft.profile = {
+                        ...profile,
+                        userId: id,
+                        memories: profile.memories
+                        };
+                    })
+                );
+            }
+            else return ctx.dispatch('Memory is undefined');
         }
     }
 
