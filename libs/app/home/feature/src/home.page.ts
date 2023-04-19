@@ -51,7 +51,7 @@ export class HomePage {
   }
 
   goToChallenge() {
-    // this.router.navigate(['/home/challenge']);
+    this.router.navigate(['/home/challenge']);
   }
 
 

@@ -42,11 +42,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('@mp/app/post/feature').then((m) => m.PostModule),
       },
-      // {
-      //   path: 'challenge',
-      //   loadChildren: () =>
-      //     import('@mp/app/challenge/feature').then((m) => m.ChallengeModule),
-      // },
+      {
+        path: 'challenge',
+        loadChildren: () =>
+          import('@mp/app/challenge/feature').then((m) => m.ChallengeModule),
+      },
     ],
   },
   
