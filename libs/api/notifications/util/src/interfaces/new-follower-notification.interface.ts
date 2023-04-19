@@ -1,8 +1,6 @@
 import { Timestamp } from 'firebase-admin/firestore';
 
-export interface INewFollowerDetails {
-    userId : string;
-    displayName?: string | null | undefined;
-    photoURL?: string | null | undefined;
+export interface INewFollowerNotification {
+    newFollowerId : string;
     created?: Timestamp | null | undefined; 
 }

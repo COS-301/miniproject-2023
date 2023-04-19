@@ -1,5 +1,5 @@
-import { INewFollowerDetails } from "../interfaces";
+import { INewFollowerNotification } from "../interfaces";
 
 export class NewFollowerNotificationEvent {
-    constructor(public readonly notification : INewFollowerDetails) {} 
+    constructor(public readonly notification : INewFollowerNotification) {} 
 }
