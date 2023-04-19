@@ -74,10 +74,16 @@
       "@mp/app/login/data-access": ["libs/app/login/data-access/src/index.ts"],
       "@mp/app/login/feature": ["libs/app/login/feature/src/index.ts"],
       "@mp/app/login/util": ["libs/app/login/util/src/index.ts"],
+      "@mp/app/notifications/data-access": [
+        "libs/app/notifications/data-access/src/index.ts"
+      ],
       "@mp/app/notifications/feature": [
         "libs/app/notifications/feature/src/index.ts"
       ],
       "@mp/app/post/data-access": ["libs/app/post/data-access/src/index.ts"],
+      "@mp/app/notifications/util": [
+        "libs/app/notifications/util/src/index.ts"
+      ],
       "@mp/app/post/feature": ["libs/app/post/feature/src/index.ts"],
       "@mp/app/post/pages/posts/feature": [
         "libs/app/post/pages/posts/feature/src/index.ts"
