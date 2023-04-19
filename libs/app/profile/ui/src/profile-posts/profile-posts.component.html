@@ -49,7 +49,38 @@
         Logout
       </ion-button> -->
 <ng-container *ngIf="posts$ | async as posts">
-  <div *ngFor="let post of posts" style="text-align: center;">
+
+  <div *ngFor="let post of posts" color=secondary>
+
+    <img class="postImage" alt="Post" [src]="post.content" />
+    <ion-toolbar color="secondary">
+      <ion-list lines="none">
+        
+        <ion-item> {{ post.caption }}</ion-item>
+        <ion-item> Hashtag: {{ post.hashtag }}</ion-item>
+        <ion-item> Likes: {{ post.likes }}</ion-item>
+        <ion-item> Listing: {{post.listing}}</ion-item>
+      </ion-list>
+      <ion-buttons slot="end">
+
+        <!-- <ion-button expand="block" color="primary" (click)="like()">
+          <ion-icon name="thumbs-up-outline"></ion-icon>
+        </ion-button>
+
+        <ion-button expand="block" color="primary" (click)="comment()">
+          <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+        </ion-button>
+
+        <ion-button expand="block" color="primary" (click)="bid()">
+          <ion-icon name="cart-outline"></ion-icon>
+        </ion-button> -->
+
+      </ion-buttons>
+    </ion-toolbar>
+    <hr>
+  </div>
+  
+  <!-- <div *ngFor="let post of posts" style="text-align: center;">
     <img [src]="post.content" alt="Post image" width="80%"   style="position:relative; border-radius: 25%;object-fit: cover;
     width: 300px;
     height: 300px;" />
@@ -57,7 +88,7 @@
     <p>Hashtag: {{ post.hashtag }}</p>
     <p>Likes: {{ post.likes }}</p>
     <p>Listing: {{post.listing}}</p>
-  </div>
+  </div> -->
 </ng-container>
 </ion-content>
 </ng-container>
