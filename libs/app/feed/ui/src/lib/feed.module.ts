@@ -10,6 +10,6 @@ import { CardComponent, CardModule } from './card';
     CardModule,
   ],
   declarations: [],
-  exports: [CardComponent]
+  exports: [CardModule]
 })
 export class FeedModule {}
