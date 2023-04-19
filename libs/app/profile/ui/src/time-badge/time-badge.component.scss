@@ -1,0 +1,11 @@
+.timer{
+    --background: var(--ion-color-primary);
+    border-radius:12px;
+    height:24px;
+    box-shadow: 4px #ccc;
+    margin:auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+  }

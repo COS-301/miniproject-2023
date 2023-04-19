@@ -9,6 +9,7 @@ import { PersonalDetailsModule } from './personal-details';
 import { PostDetailsModule } from './post-details';
 import { ProfileStatusModule } from './profile-status';
 import { ProfilePostsModule } from './profile-posts';
+import { TimeBadgeModule } from './time-badge';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { ProfilePostsModule } from './profile-posts';
     PersonalDetailsModule,
     PostDetailsModule,
     ProfileStatusModule,
-    ProfilePostsModule
+    ProfilePostsModule,
+    TimeBadgeModule
   ],
   exports: [
     AccountDetailsModule,
@@ -31,7 +33,8 @@ import { ProfilePostsModule } from './profile-posts';
     PersonalDetailsModule,
     ProfileStatusModule,
     PostDetailsModule,
-    ProfilePostsModule
+    ProfilePostsModule,
+    TimeBadgeModule
   ],
 })
 export class ProfileModule {}

@@ -2,7 +2,8 @@
 <ion-header>
   <ion-toolbar color="secondary">
     <ion-label (click) = "toHomePage()" color="tertiary" style = "font-size: 100%; font:bold">  <ion-icon name="arrow-back-outline" size="small"></ion-icon>Profile</ion-label>
-    <ion-badge slot="end" style="position:static">00:00</ion-badge>
+    <!-- <ion-badge slot="end" style="position:static">00:00</ion-badge> -->
+    <lapse-time-badge slot="end" [time]="(1000).valueOf()"></lapse-time-badge>
 </ion-toolbar>
 </ion-header>
 
