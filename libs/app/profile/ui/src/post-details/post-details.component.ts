@@ -34,7 +34,24 @@ export class PostDetailsComponent {
   //   return this.postDetailsForm.get('content');
   // }
   uploadImage(event: any) {
-console.log("here");
+    console.log("Image Uploaded");
+
+    const file: File | null = event.target.files?.[0];
+    if (!file) {
+      return;
+    }
+    const blob: Blob = new Blob([file], { type: file.type });
+    const formData: FormData = new FormData();
+    formData.append('image', blob, file.name);
+
+    const reader: FileReader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      const img: HTMLImageElement = document.getElementById('postImage') as HTMLImageElement;
+      img.src = reader.result as string;
+    };
+    
+    //Important
     this.selectedFile = event.target.files[0];
   }
   async createNewPost() {
