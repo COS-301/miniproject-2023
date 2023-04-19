@@ -28,7 +28,7 @@
   </ng-template>
 </ion-content> -->
 
-
+<ng-container *ngIf="profile$ | async as profile">
 <ion-header class="ion-no-border">
   <ion-toolbar color="black" style="border-color:rgba(0,0,0,0)">
 
@@ -49,7 +49,8 @@
         </ion-col>
         <ion-col class="timerCol" size="auto">
 
-          <ion-badge class="timer">134:20:00</ion-badge>
+          <ion-badge class="timer">{{profile.time}}</ion-badge>
+
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -77,8 +78,7 @@
           <ion-avatar>
             <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
           </ion-avatar>
-          <ion-list lines="none"><ion-item>Username</ion-item></ion-list>
-
+          <ion-list lines="none"><ion-item>Created by: {{post.postID}}</ion-item></ion-list>
         </ion-row>
       </ion-grid>
     </ion-toolbar>
@@ -94,11 +94,12 @@
         <ion-button expand="block" color="primary" (click)="comment()">
           <ion-icon name="chatbox-ellipses-outline"></ion-icon>
         </ion-button>
-
-        <ion-button expand="block" color="primary" (click)="bid()">
+      <ng-container *ngIf="post.ownedBy !== profile.userId">
+        <ion-button expand="block" color="primary" (click)="buyPost(i)">
           <ion-icon name="cart-outline"></ion-icon>
+          <ion-item>{{post.listing}}</ion-item>
         </ion-button>
-
+      </ng-container>
       </ion-buttons>
     </ion-toolbar>
     <hr>
@@ -144,3 +145,4 @@
 
 
 </ion-content>
+</ng-container>

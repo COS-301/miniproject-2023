@@ -45,8 +45,8 @@ import { Timestamp } from '@angular/fire/firestore';
 export interface ProfileStateModel {
   profile: IProfile | null;
   searchPosts: IPostDetails[];
-posts:IPostDetails[];
-time:number|null;
+  posts:IPostDetails[];
+  time: number | null;
   accountDetailsForm: {
     model: {
       displayName: string | null;
@@ -122,7 +122,7 @@ time:number|null;
     profile: null,
     searchPosts: [],
     posts:[],
-time:0,
+    time: 0,
     accountDetailsForm: {
       model: {
         displayName: null,
@@ -173,8 +173,8 @@ time:0,
         content: null,
         hashtag: null,
         caption: null,
-        totalTime: null,
-        ownerGainedTime: null,
+        totalTime: 0,
+        ownerGainedTime: 0,
         listing: null,
       },
       dirty: false,

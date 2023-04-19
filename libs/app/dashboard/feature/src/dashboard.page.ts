@@ -1,14 +1,14 @@
 /* eslint-disable no-var */
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { IPostDetails, IProfile } from '@mp/api/profiles/util';
-import { ProfileState } from '@mp/app/profile/data-access';
+import { ProfileState, ProfileStateModel } from '@mp/app/profile/data-access';
 import { Select } from '@ngxs/store';
-import { Observable, concatMap, filter, map, of, throwError } from 'rxjs';
+import { Observable, concatMap, filter, map, of, throwError, Subscription, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { FetchUserPosts, GetAllPosts } from '@mp/app/profile/util';
 import { BuyPost } from '@mp/app/profile/util';
-
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'ms-dashboard-page',
@@ -18,7 +18,6 @@ import { BuyPost } from '@mp/app/profile/util';
 export class DashboardPage {
   constructor(private router: Router, private store: Store) { }
   @Select(ProfileState.userPosts) userPosts$: Observable<IPostDetails[]> | undefined;
-
 
   ngOnInit() {
     const userId = ' '; // Replace this with the actual user ID
