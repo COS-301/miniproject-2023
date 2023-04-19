@@ -51,9 +51,10 @@ export class PostDetailsComponent {
       img.src = reader.result as string;
     };
     
-    //Important
     this.selectedFile = event.target.files[0];
   }
+
+
   async createNewPost() {
     console.log("Trying to create");
     if (this.postDetailsForm.invalid || !this.selectedFile) {
@@ -71,10 +72,26 @@ console.debug("CreateComponent"+url);
         listing: this.postDetailsForm.get('listing')?.value
       };
       this.store.dispatch(new CreateNewPost(postDetails));
+      this.clearForm();
     } catch (error) {
       console.error('Error uploading image:', error);
     }
   }
+
+clearForm() {
+  const img: HTMLImageElement = document.getElementById('postImage') as HTMLImageElement;
+  const captionInput: HTMLIonTextareaElement = document.getElementById('captionInput') as HTMLIonTextareaElement;
+  const toggle: HTMLIonToggleElement = document.getElementById('toggleSale') as HTMLIonToggleElement;
+  const categoryInput: HTMLIonInputElement = document.getElementById('categoryInput') as HTMLIonInputElement;
+  const priceInput: HTMLIonInputElement = document.getElementById('numberInput') as HTMLIonInputElement;
+
+  img.src = "assets/icons/upload.png";
+  captionInput.value = "";
+  toggle.checked = false;
+  categoryInput.value = "";
+  priceInput.value = "";
+}
+
   uploadImageAndReturnUrl(file: File): Promise<string> {
     const filePath = `posts/${new Date().getTime()}_${file.name}`;
     const fileRef = this.storage.ref(filePath);

@@ -109,7 +109,7 @@
     <br>
     <ion-list lines="none">
       <ion-item counter="true">
-        <ion-textarea [autoGrow]="true" maxlength="100" style="background-color: #ffffff; --padding-end: 10px; --padding-start: 10px; border:solid 1px rgb(53,107,89); border-radius: 25%; "
+        <ion-textarea id="captionInput" [autoGrow]="true" maxlength="100" style="background-color: #ffffff; --padding-end: 10px; --padding-start: 10px; border:solid 1px rgb(53,107,89); border-radius: 25%; "
           formControlName="caption"></ion-textarea>
       </ion-item>
     </ion-list>
@@ -120,7 +120,7 @@
 
     <ion-item>
       <ion-label>For Sale:</ion-label>
-      <ion-toggle style="width:20%;height: 50%;"></ion-toggle>
+      <ion-toggle id="toggleSale" style="width:20%;height: 50%;"></ion-toggle>
     </ion-item>
 
     <div >
@@ -137,7 +137,7 @@
           <ion-col size="4" style="text-align: center;"><ion-button size="small" color="light" (click)="setHashtag('#food')">#food</ion-button> </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-input class="textInput" type="text" display="none" formControlName="hashtag"></ion-input>
+      <ion-input id="categoryInput" class="textInput" type="text" display="none" formControlName="hashtag"></ion-input>
     </div>
 
 
