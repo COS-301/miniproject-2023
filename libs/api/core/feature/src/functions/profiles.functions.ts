@@ -216,6 +216,7 @@ await batch.commit();
   return { message: 'Post successfully bought.' };
 });
 
+/*
 
 // exports.buyPost = functions.https.onCall(async (data, context) => {
 //   const post = data.post;
@@ -270,6 +271,7 @@ await batch.commit();
 // console.log(posts);
 //     return { posts };
 // });
+*/
 
 exports.getAllPosts = functions.https.onCall(async (data, context) => {
   const profilesRef = admin.firestore().collection('profiles');
@@ -355,3 +357,17 @@ export const addPost = functions.https.onCall(
     return service.addPost(request);
   }
 );
+
+exports.getUserPortfolio = functions.https.onCall(async (data, context) => {
+  const userId = data.userId;
+console.log(userId + "functions");
+  const postsRef = admin.firestore().collectionGroup('posts').where("ownedBy", "==", userId);
+  const postsDocs = await postsRef.get();
+  const posts: { id: string; }[] = [];
+
+  postsDocs.forEach((doc) => {
+    posts.push({ id: doc.id, ...doc.data() });
+  });
+return{posts};
+
+});
