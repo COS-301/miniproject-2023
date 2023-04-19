@@ -18,10 +18,10 @@ export class TimeBadgeComponent {
   @Input() time= 1000;
 
   startTime() {
-    setInterval(() => {
+    /*setInterval(() => {
       this.time--;
       document.getElementById("time")!.innerHTML = Math.floor((this.time/60)).toString()+":"+((this.time%60).toString().length==1?"0":"")+(this.time%60).toString();
-    }, 1000);
+    }, 1000);*/
 
   }
 }
