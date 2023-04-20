@@ -41,7 +41,7 @@ export class AuthSagas {
           new UpdateAuthCommand({
             auth: {
               id: event.profile.userId,
-              phoneNumber: event.profile.contactDetails?.cellphone,
+              //phoneNumber: event.profile.contactDetails?.cellphone,
             },
           })
       )
