@@ -70,7 +70,48 @@
         <ion-button (click)="buyPost(i)">Buy Post</ion-button>
       </ion-label> -->
 
-  <div *ngFor="let post of userPosts$ | async; let i = index" color=secondary>
+      <div *ngIf="(userPosts$ | async)?.length; else noPosts">
+        <div *ngFor="let post of userPosts$ | async; let i = index" color=secondary>
+          <ion-toolbar color=secondary>
+            <ion-grid>
+              <ion-row>
+                <ion-avatar>
+                  <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                </ion-avatar>
+                <ion-list lines="none"><ion-item>Created by: {{post.postID}}</ion-item></ion-list>
+              </ion-row>
+            </ion-grid>
+          </ion-toolbar>
+          <img class="postImage" alt="Post" [src]="post.content" />
+          <ion-toolbar color="secondary">
+            <ion-list lines="none"><ion-item> {{ post.caption }}</ion-item></ion-list>
+            <ion-buttons slot="end">
+              <ion-button expand="block" color="primary" (click)="like()">
+                <ion-icon name="thumbs-up-outline"></ion-icon>
+              </ion-button>
+              <ion-button expand="block" color="primary" (click)="comment()">
+                <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+              </ion-button>
+              <ng-container *ngIf="post.ownedBy !== profile.userId">
+                <ion-button expand="block" color="primary" (click)="buyPost(i)">
+                  <ion-icon name="cart-outline"></ion-icon>
+                  <ion-item>{{post.listing}}</ion-item>
+                </ion-button>
+              </ng-container>
+            </ion-buttons>
+          </ion-toolbar>
+          <hr>
+        </div>
+      </div>
+      <ng-template #noPosts>
+      
+        <div class="noPosts">
+          <p>No posts available yet</p>
+        </div>
+      </ng-template>
+
+  <!-- Old post code without no post message -->
+  <!-- <div *ngFor="let post of userPosts$ | async; let i = index" color=secondary>
     <ion-toolbar color=secondary>
       <ion-grid>
         <ion-row>
@@ -103,7 +144,8 @@
       </ion-buttons>
     </ion-toolbar>
     <hr>
-  </div>
+  </div> -->
+
   <!-- </ion-item>
   </ion-list> -->
 
