@@ -29,14 +29,14 @@ export class PostDetailsComponent {
     listing: [0]
   });
   showPassword = false;
-  selectedFile: File | null = null;
+  selectedFile!: File | null;
   // get content() {
   //   console.debug(this.postDetailsForm.get('content')?.value?.split(",")[1].slice(0,10));
   //   return this.postDetailsForm.get('content');
   // }
   uploadImage(event: any) {
     console.log("Image Uploaded");
-
+alert("Change is called");
     const file: File | null = event.target.files?.[0];
     if (!file) {
       return;
@@ -53,12 +53,14 @@ export class PostDetailsComponent {
     };
 
     this.selectedFile = event.target.files[0];
+alert(this.selectedFile);
   }
 
 
   async createNewPost() {
     console.log("Trying to create");
-    if (this.postDetailsForm.invalid || !this.selectedFile) {
+    alert(this.selectedFile);
+    if (!this.selectedFile) {
       console.log("Invalid");
       return;
     }

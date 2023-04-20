@@ -582,23 +582,6 @@ console.log(uId);
   }
 
 
-// @Action(BuyPost)
-// buyPost(ctx: StateContext<ProfileStateModel>, {post}: BuyPost) {
-// const state=ctx.getState();
-// let uId=' ';
-//   if(state.profile?.userId){
-//     uId=state.profile?.userId;
-//   }
-//   const postS =post;
-//   return this.profileApi.buyPost$(post,uId).pipe(
-//     tap((posts: IPostDetails[]) => ctx.patchState({ posts: posts })),
-//     catchError((error) => {
-//       ctx.dispatch(new SetError((error as Error).message));
-//       return of(null);
-//     })
-//   );
-// }
-
 @Action(BuyPost)
 buyPost(ctx: StateContext<ProfileStateModel>, { postId }: BuyPost) {
   const buyerId = ctx.getState().profile?.userId;
