@@ -18,7 +18,9 @@ import {
     IUpdatePersonalDetailsRequest,
     IUpdatePersonalDetailsResponse,
     ICreatePostResponse,
-    ICreatePostRequest
+    ICreatePostRequest,
+    ICommentOnPostResponse,
+    ICommentOnPostRequest
 } from '@mp/api/profiles/util';
 import { Observable, combineLatest, from, map } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
@@ -152,8 +154,18 @@ getUserPostsByHashtag$(hashtag: string): Observable<IPostDetails[]> {
     )(request);
   }
 
+  async CreateNewComment(request: ICommentOnPostRequest) {
+    console.log(JSON.stringify(request));
+    return await httpsCallable<
+    ICommentOnPostRequest,
+    ICommentOnPostResponse
+    >(
+      this.functions,
+      'createNewComment'
+    )(request);
+  }
+
   async addPostDetails(request: IAddPostRequest) {
-    console.log("profiles.api.addPostsDetails ");
     console.log(JSON.stringify(request));
     return await httpsCallable<
     IAddPostRequest,

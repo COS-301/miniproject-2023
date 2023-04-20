@@ -7,3 +7,4 @@ export * from './profile-created.event';
 export * from './post-created.event';
 export * from './post-added.event';
 export * from './profile-status-updated.event';
+export * from './comment-on-post.event'

@@ -1,4 +1,4 @@
-import { IProfile, IPostDetails } from '@mp/api/profiles/util';
+import { IProfile, IPostDetails, IComment, ICommentOnPostRequest} from '@mp/api/profiles/util';
 
 export class Logout {
   static readonly type = '[Profile] Logout';
@@ -65,4 +65,15 @@ this.postDetail=post;
 getPost(){
 return this.postDetail;
 }
+}
+
+export class CreateNewComment {
+
+  static readonly type = '[Comment] CreateNewComment';
+  constructor(public comment : ICommentOnPostRequest) {}
+}
+
+export class SetComment {
+  static readonly type = '[Commnent] setComment';
+  constructor(public comment: IComment) {}
 }

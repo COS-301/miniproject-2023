@@ -121,4 +121,18 @@ onPostAdded = (
   );
 };
 
+@Saga()
+onCommentCreated = (
+  events$: Observable<any>
+): Observable<ICommand> => {
+  return events$.pipe(
+    ofType(PostAddedEvent),
+    map(
+      (event: PostAddedEvent) =>
+        new UpdateProfileStatusCommand({ profile: event.profile })
+    )
+  );
+};
+
+
 };

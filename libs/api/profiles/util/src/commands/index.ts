@@ -7,3 +7,4 @@ export * from './update-occupation-details.command';
 export * from './update-personal-details.command';
 export * from './update-profile-status.command';
 export * from './add-post.command';
+export * from './comment-on-post.command';

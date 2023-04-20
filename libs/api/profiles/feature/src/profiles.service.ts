@@ -5,11 +5,14 @@ import {
     IUpdateAddressDetailsResponse,
     IUpdateContactDetailsRequest,
     IUpdateContactDetailsResponse,
+    ICommentOnPostRequest,
+    ICommentOnPostResponse,
     ICreatePostRequest,
     ICreatePostResponse,
     IAddPostRequest,
     IAddPostResponse,
     AddPostCommand,
+    CreateNewCommentCommand,
     IUpdateOccupationDetailsRequest,
     IUpdateOccupationDetailsResponse,
     IUpdatePersonalDetailsRequest,
@@ -91,4 +94,15 @@ export class ProfilesService {
     IAddPostResponse
     >(new AddPostCommand(request));
   }
+
+  async createNewComment(
+    request: ICommentOnPostRequest
+    ):Promise<ICommentOnPostResponse>{
+    console.log("profiles.service.createNewPost");
+    return await this.commandBus.execute<
+    CreateNewCommentCommand,
+    ICommentOnPostResponse
+    >(new CreateNewCommentCommand(request));
+  }
+
 }

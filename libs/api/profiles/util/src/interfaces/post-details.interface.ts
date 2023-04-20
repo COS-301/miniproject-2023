@@ -1,5 +1,6 @@
 import { Timestamp } from 'firebase-admin/firestore';
 import { Hashtag } from '../enums';
+import { IComment } from './comment.interface'
 
 export interface IPostDetails {
    postID?: string | null | undefined;
@@ -7,7 +8,7 @@ export interface IPostDetails {
    likes?: number | null | undefined; //fixed like left out
    ownedBy?: string | undefined | null;
    buyerID?: string | null | undefined;
-   comments?: string | null | undefined ;
+   comments?: IComment[] | null | undefined ;
    createdAt?: Timestamp | null | undefined;
    content?: string | null | undefined;
    hashtag?: Hashtag | null | undefined;

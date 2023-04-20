@@ -13,7 +13,9 @@ import {
   IUpdatePersonalDetailsRequest,
   ICreatePostRequest,
   IAddPostRequest,
-  IPostDetails
+  IPostDetails,
+  IComment,
+  ICommentOnPostRequest
 } from '@mp/api/profiles/util';
 import { AuthState } from '@mp/app/auth/data-access';
 import { Logout as AuthLogout } from '@mp/app/auth/util';
@@ -32,13 +34,16 @@ import {
   CreateNewPost,
   FetchUserPosts,
   GetAllPosts,
-  GetUserPostsByHashtag
+  GetUserPostsByHashtag,
+  SetComment,
+  CreateNewComment
 } from '@mp/app/profile/util';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import produce from 'immer';
 import { catchError, of, tap } from 'rxjs';
 import { ProfilesApi } from './profiles.api';
 import { Timestamp } from '@angular/fire/firestore';
+import { CommentModule } from '@mp/app/comment/feature';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ProfileStateModel {
@@ -112,6 +117,22 @@ posts:IPostDetails[];
     status: string;
     errors: object;
   };
+}
+
+export interface CommentStateModel {
+
+  comment: IComment | null;
+  commentDetails :{
+    model: {
+      userId?: string | null,
+      postId?: string | null;
+      commentId?: string | null
+      comment: string | null;
+    };
+    dirty: false;
+    status: string;
+    errors: object;
+  }
 }
 
 @State<ProfileStateModel>({
@@ -188,6 +209,27 @@ posts:IPostDetails[];
       errors: {},
     },
   },
+})
+
+
+@State<CommentStateModel>({
+   name: 'name',
+   defaults: {
+    comment: null,
+
+    commentDetails: {
+      model: {
+        userId: null,
+        postId: null,
+        comment: null,
+      },
+
+      dirty: false,
+      status: '',
+      errors: {},
+     }
+    }
+  
 })
 @Injectable()
 export class ProfileState {
@@ -459,7 +501,6 @@ export class ProfileState {
         content,
         hashtag,
         caption,
-
       }
 
       const request: IAddPostRequest = {
@@ -495,6 +536,12 @@ export class ProfileState {
   static searchPosts(state: ProfileStateModel): IPostDetails[] {
     return state.searchPosts;
   }
+
+  @Selector()
+  static comment(state: CommentStateModel) {
+    return state.comment;
+  }
+
 
   @Action(FetchUserPosts)
 fetchUserPosts(ctx: StateContext<ProfileStateModel>, { displayName }: FetchUserPosts) {
@@ -548,6 +595,49 @@ console.log(uId);
       catchError((error) => {
         ctx.dispatch(new SetError(error));
         return of(null);
+      })
+    );
+  }
+
+  @Action(CreateNewComment)
+  async createNewComment(ctx: StateContext<CommentStateModel>, action: IComment) {
+
+  const postId = action.postId;
+  const comment = action.comment;
+  const userId = action?.userId
+
+  const commentDetails: IComment = {
+    userId,
+    postId,
+    comment
+  };
+
+  const newComment: ICommentOnPostRequest = {
+    comment: commentDetails
+  };
+
+  if(comment == null || comment == '') {
+    return ctx.dispatch(
+      new SetError('Oops! You did not type anything.')
+    );
+  }
+  const responseRef = await this.profileApi.CreateNewComment(newComment);
+  const response = responseRef.data
+    if(response.comment) {
+      return ctx.dispatch(new SetComment(response.comment));
+    }
+    else {
+      return ctx.dispatch(new SetError("Error: Underfined"));
+    }
+  }
+
+  @Action(SetComment) 
+  
+  async setComment(ctx: StateContext<CommentStateModel>, action: IComment) {
+    const state = ctx.getState();
+    ctx.setState(
+      produce(state, (draft: CommentStateModel) => {
+        draft.comment = action;
       })
     );
   }

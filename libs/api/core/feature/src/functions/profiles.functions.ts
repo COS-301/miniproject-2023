@@ -14,7 +14,11 @@ import {
     ICreatePostResponse,
     IAddPostRequest,
     IAddPostResponse,
-    IPostDetails
+    IPostDetails,
+    ICommentOnPostRequest,
+    ICommentOnPostResponse,
+    IProfile,
+    IComment
 } from '@mp/api/profiles/util';
 import { NestFactory } from '@nestjs/core';
 import * as functions from 'firebase-functions';
@@ -117,6 +121,8 @@ console.log(posts);
   return { posts };
 });
 
+
+
 export const createPostDetails = functions.https.onCall(
   async (
     request: ICreatePostRequest
@@ -126,6 +132,66 @@ export const createPostDetails = functions.https.onCall(
     return service.createPostDetails(request);
   }
 );
+
+export const createNewComment = functions.https.onCall(async (data: IComment, context) => {
+  console.log("Hello")
+  try {
+    if (!context.auth) {
+      throw new functions.https.HttpsError('unauthenticated', 'You must be logged in to add a comment');
+    }
+    const { userId, postId, comment } = data;
+
+    // First, fetch the profile data
+    const profileDoc = await admin.firestore().collection('profiles').doc(userId).get();
+    const profileData = profileDoc.data() as IProfile;
+
+    // If profile doesn't exist, handle the error
+    if (!profileData) {
+      throw new functions.https.HttpsError('not-found', 'Profile not found');
+    }
+
+    // Add the post to the profile's posts array
+    if (!postId) {
+      throw new functions.https.HttpsError('invalid-argument', 'Post id not defined in comment');
+    }
+
+    const postRef = await admin.firestore().collection('profiles').doc(userId).collection('posts').doc(postId).get();
+    const postDetails = postRef.data() as IPostDetails;
+
+    if (!postDetails) {
+      throw new functions.https.HttpsError('not-found', 'Post not found');
+    }
+
+    if (!postDetails.comments) {
+      postDetails.comments = [];
+    }
+
+    const newComment: IComment = {
+      userId: userId,
+      postId: postId,
+      comment: comment,
+    }
+
+    postDetails.comments.push(newComment);
+
+    if (!profileData.posts) {
+      profileData.posts = [];
+      throw new functions.https.HttpsError('not-found', 'There are no posts');
+    }
+
+    const index = profileData.posts.findIndex((post) => post.postID === postDetails.postID);
+    if (index !== -1) {
+      profileData.posts.splice(index, 1, postDetails);
+      await admin.firestore().collection('profiles').doc(userId).set(profileData, { merge: true });
+    }
+
+    return newComment;
+  } catch (error) {
+    console.error(error);
+    throw new functions.https.HttpsError('internal', 'Error adding comment');
+  }
+});
+
 
 export const updateAddressDetails = functions.https.onCall(
   async (
