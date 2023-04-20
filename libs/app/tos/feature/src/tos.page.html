@@ -1,20 +1,85 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Terms of Service</ion-title>
+  <ion-toolbar color="secondary">
+    <ion-label (click)="toWelcomePage()" color="tertiary" style="font-size: 100%; font:bold">
+      <ion-icon name="arrow-back-outline" size="small"></ion-icon>Terms of Service</ion-label>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Terms of Service</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+
+  <h1 class="heading"><u>Terms of Service</u></h1>
+
+  <div class="textWrapper">
+    Welcome to Lapse! These Terms of Service ("TOS") outline the terms and conditions governing your use of the Lapse
+    mobile application ("App"). Please read these TOS carefully before using the App.
+
+    <ol>
+      <li>User Conduct
+        <br><br>
+        <div class="textContent">By using the App, you agree to comply with these TOS and all applicable laws and
+          regulations. You must not:
+          <ul class="unorderedList">
+            <li>post content that is illegal, harmful, or offensive;</li>
+            <li>harass, threaten, or bully other users;</li>
+            <li>impersonate another person or entity;</li>
+            <li>use the App to conduct any illegal activity.</li>
+          </ul>
+        </div>
+      </li>
+      <br>
+      <li>
+        Intellectual Property
+          <br><br>
+          <div class="textContent">
+          You retain ownership of the content you post on the App. By posting content on the App, you grant Lapse a
+          non-exclusive licence to use, distribute, and display that content.
+          <br><br>
+          Once your post has been purchased by another user, the ownership rights are subsequently transferred to them.
+          <br><br>
+          You must not post content that infringes on the intellectual property rights of others. If you believe that
+          your
+          intellectual property rights have been violated on the App, please contact us at [<a href="mailto:u21689432@tuks.co.za"><u>u21689432@tuks.co.za</u></a>].
+        </div>
+      </li>
+      <br>
+      <li>
+        Privacy and Data Protection
+          <br><br>
+          <div class="textContent">
+          We collect and store your data to provide the services of the App. By using the App, you consent to the
+          collection,
+          storage, and use of your data in accordance with our Privacy Policy.
+          <br><br>
+          We use your data to provide insights to you about your posts. We do not sell your data to third parties.
+        </div>
+      </li>
+      <br>
+      <li>
+        Liability and Disclaimers
+          <br><br>
+          <div class="textContent">
+          You use the App at your own risk. We are not liable for any damages or losses resulting from the use of the
+          App.
+          <br><br>
+          We do not guarantee the accuracy, completeness, or usefulness of any content posted on the App. We are not
+          responsible for the conduct of our users.
+        </div>
+      </li>
+      <br>
+      <li>
+        Changes to the TOS
+          <br><br>
+          <div class="textContent">
+          We reserve the right to modify these TOS at any time. We will notify you of any changes by posting the updated
+          TOS
+          on the App. Your continued use of the App after the updated TOS are posted constitutes your acceptance of the
+          updated TOS.
+        </div>
+      </li>
+    </ol>
+  </div>
 </ion-content>
 
-<ion-footer collapse="condense" class="ion-padding ion-text-center">
+<ion-footer collapse="condense" class="footer ion-padding ion-text-center">
   <ms-copyright-component></ms-copyright-component>
 </ion-footer>
