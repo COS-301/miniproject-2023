@@ -31,7 +31,7 @@ export class CreateProfileHandler
         displayName,
         email,
         photoURL,
-        status: ProfileStatus.INCOMPLETE,
+        //status: ProfileStatus.INCOMPLETE,
       },
       personalDetails: {
         age: null,

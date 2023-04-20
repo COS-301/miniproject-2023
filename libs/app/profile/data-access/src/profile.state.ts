@@ -58,7 +58,7 @@ export interface ProfileStateModel {
       bio: string | null;
     };
     dirty: false;
-    status: string;
+    //status: string;
     errors: object;
   };
   addressDetailsForm: {
@@ -135,7 +135,7 @@ export interface ProfileStateModel {
         bio: '',
       },
       dirty: false,
-      status: '',
+      //status: '',
       errors: {},
     },
     addressDetailsForm: {
