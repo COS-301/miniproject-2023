@@ -1,20 +1,108 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Privacy Policy</ion-title>
+  <ion-toolbar color="secondary">
+    <ion-label (click)="toWelcomePage()" color="tertiary" style="font-size: 100%; font:bold">
+      <ion-icon name="arrow-back-outline" size="small"></ion-icon>Privacy Policy</ion-label>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Privacy Policy</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <h1 class="heading"><u>Privacy Policy</u></h1>
+
+  <div class="textWrapper">
+    This privacy policy explains how Lapse collects, uses, and shares personal information when you use our mobile
+    application. We respect your privacy and are committed to protecting your personal information.
+    <ol>
+      <li>
+        Information We Collect
+        <br><br>
+        <div class="textContent">
+          We may collect personal information from you when you use the App. This information may include:
+          <ul>
+            <li>Name</li>
+            <li>Email address</li>
+          </ul>
+        </div>
+      </li>
+      <br>
+      <li>
+        Use of Information
+        <br><br>
+        <div class="textContent">
+          We may use your personal information for the following purposes:
+          <ul>
+            <li>To provide the App's services to you such as insights on posts.</li>
+            <li>To improve the App's functionality and performance.</li>
+            <li>To communicate with you about the App, including to provide updates and support.</li>
+          </ul>
+        </div>
+      </li>
+      <br>
+      <li>
+        Sharing of Information
+        <br><br>
+        <div class="textContent">
+          We may share your personal information with third-party service providers who help us provide the App's
+          services, such as hosting and analytics providers. We will only share your personal information with these
+          third
+          parties to the extent necessary for them to perform their services for us.
+          <br><br>
+          We may also share your personal information with our affiliates, business partners, or other third parties in
+          connection with a merger, acquisition, or other corporate transaction involving Lapse.
+        </div>
+      </li>
+      <br>
+      <li>
+        Security
+        <br><br>
+        <div class="textContent">
+        We take appropriate technical and organisational measures to protect your personal information against
+        unauthorised or unlawful processing and against accidental loss, destruction, or damage. We store your personal
+        information on a hosting service named Firebase which stores the data in a secure manner, as well as encrypting
+        sensitive data when it is transferred.
+        </div>
+      </li>
+      <br>
+      <li>
+        Your Rights
+        <br><br>
+        <div class="textContent">
+        You have the right to:
+        <ul>
+          <li>Request the correction or deletion of your personal information.</li>
+          <li>Object to the processing of your personal information.</li>
+          <li>Withdraw your consent to the processing of your personal information.</li>
+        </ul>
+        <br><br>
+        To exercise these rights, please contact us at [u21689432@tuks.co.za]. Please note that we may ask you to
+        provide additional information to verify your identity before processing your request.
+        </div>
+      </li>
+      <br>
+      <li>
+        Legal Basis for Processing
+        <br><br>
+        <div class="textContent">
+        We process your personal information based on your consent or our legitimate interests in providing the App's
+        services to you.
+        </div>
+      </li>
+      <br>
+      <li>
+        Changes to the Privacy Policy
+        <br><br>
+        <div class="textContent">
+        We reserve the right to modify this privacy policy at any time. We will post any changes to this policy on our
+        website and notify you by email or in the App. Your continued use of the App after we make changes to this
+        privacy policy constitutes your acceptance of those changes.
+        <br><br>
+        If we make any material changes to this privacy policy, we will notify you before the changes take effect and
+        give you an opportunity to review them.
+        </div>
+      </li>
+    </ol>
+  </div>
 </ion-content>
 
-<ion-footer collapse="condense" class="ion-padding ion-text-center">
+<ion-footer collapse="condense" class="footer ion-padding ion-text-center">
   <ms-copyright-component></ms-copyright-component>
 </ion-footer>
