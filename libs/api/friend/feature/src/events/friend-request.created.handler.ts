@@ -1,5 +1,5 @@
-import { FriendsRepository } from '@mp/api/friends/data-access';
-import { FriendRequestCreatedEvent } from '@mp/api/friends/util';
+import { FriendsRepository } from '@mp/api/friend/data-access';
+import { FriendRequestCreatedEvent } from '@mp/api/friend/util';
 import { EventsHandler, IEventHandler } from '@nestjs/cqrs';
 
 @EventsHandler(FriendRequestCreatedEvent)

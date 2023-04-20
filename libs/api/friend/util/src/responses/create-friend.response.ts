@@ -1,5 +1,5 @@
-import { IStatus } from '../interfaces';
+import { Status } from '../enums';
 
 export interface ICreateFriendResponse {
-  status: IStatus;
+  status: Status;
 }
