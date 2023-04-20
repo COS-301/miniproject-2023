@@ -133,30 +133,30 @@ export const createPostDetails = functions.https.onCall(
   }
 );
 
-export const createNewComment = functions.https.onCall(async (data: IComment, context) => {
+export const createNewComment = functions.https.onCall(async (data: ICommentOnPostRequest, context) => {
   console.log("Hello")
   try {
-    if (!context.auth) {
-      throw new functions.https.HttpsError('unauthenticated', 'You must be logged in to add a comment');
+      const { userId, postId, comment } = data.comment;
+    const profileRef = admin.firestore().collection('profiles').doc(userId);
+    
+  
+    const profileDoc = await profileRef.get();
+    if (!profileDoc) {
+      throw new functions.https.HttpsError('not-found', 'profileref');
     }
-    const { userId, postId, comment } = data;
-
-    // First, fetch the profile data
-    const profileDoc = await admin.firestore().collection('profiles').doc(userId).get();
     const profileData = profileDoc.data() as IProfile;
 
-    // If profile doesn't exist, handle the error
     if (!profileData) {
       throw new functions.https.HttpsError('not-found', 'Profile not found');
     }
 
-    // Add the post to the profile's posts array
     if (!postId) {
       throw new functions.https.HttpsError('invalid-argument', 'Post id not defined in comment');
     }
 
-    const postRef = await admin.firestore().collection('profiles').doc(userId).collection('posts').doc(postId).get();
-    const postDetails = postRef.data() as IPostDetails;
+    const postRef = profileRef.collection('posts').doc(postId);
+    const postDoc = await postRef.get();
+    const postDetails = postDoc.data() as IPostDetails;
 
     if (!postDetails) {
       throw new functions.https.HttpsError('not-found', 'Post not found');
@@ -182,7 +182,7 @@ export const createNewComment = functions.https.onCall(async (data: IComment, co
     const index = profileData.posts.findIndex((post) => post.postID === postDetails.postID);
     if (index !== -1) {
       profileData.posts.splice(index, 1, postDetails);
-      await admin.firestore().collection('profiles').doc(userId).set(profileData, { merge: true });
+      await profileRef.set(profileData, { merge: true });
     }
 
     return newComment;
