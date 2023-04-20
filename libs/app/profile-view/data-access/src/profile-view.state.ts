@@ -260,6 +260,6 @@ export class ProfileViewState {
 
         return this.profileViewApi
         .profileView$(user.uid)
-        .pipe(tap((profile: IProfile) => ctx.dispatch(new SetProfileView(profile))));
+        .pipe(tap((profile: IProfile) => ctx.dispatch(new SetProfileView(profile.userId, profile))));
     }
 }
