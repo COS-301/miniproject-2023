@@ -6,8 +6,8 @@ import {
     CreatePostCommand,
     AddPostCommand,
     CreateProfileCommand,
-    OccupationDetailsUpdatedEvent,
-    PersonalDetailsUpdatedEvent,
+    //OccupationDetailsUpdatedEvent,
+    //PersonalDetailsUpdatedEvent,
     UpdateProfileStatusCommand,
     PostAddedEvent
 } from '@mp/api/profiles/util';
@@ -81,7 +81,7 @@ export class ProfilesSagas {
     );
   };*/
 
-  @Saga()
+  /*@Saga()
   onPersonalDetailsUpdated = (
     events$: Observable<any>
   ): Observable<ICommand> => {
@@ -92,9 +92,9 @@ export class ProfilesSagas {
           new UpdateProfileStatusCommand({profile: event.profile})
       )
     );
-  };
+  };*/
 
-  @Saga()
+  /*@Saga()
   onOccupationDetailsUpdated = (
     events$: Observable<any>
   ): Observable<ICommand> => {
@@ -105,7 +105,7 @@ export class ProfilesSagas {
           new UpdateProfileStatusCommand({profile: event.profile})
       )
     );
-  };
+  };*/
 
 
   @Saga()

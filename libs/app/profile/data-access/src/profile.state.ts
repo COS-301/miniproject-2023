@@ -7,10 +7,10 @@ import {
   Hashtag,
   IProfile,
   IUpdateAccountDetailsRequest,
-  IUpdateAddressDetailsRequest,
-  IUpdateContactDetailsRequest,
-  IUpdateOccupationDetailsRequest,
-  IUpdatePersonalDetailsRequest,
+  //IUpdateAddressDetailsRequest,
+  //IUpdateContactDetailsRequest,
+  //IUpdateOccupationDetailsRequest,
+  //IUpdatePersonalDetailsRequest,
   ICreatePostRequest,
   IAddPostRequest,
   IPostDetails
@@ -23,10 +23,10 @@ import {
   SetProfile,
   SubscribeToProfile,
   UpdateAccountDetails,
-  UpdateAddressDetails,
-  UpdateContactDetails,
-  UpdateOccupationDetails,
-  UpdatePersonalDetails,
+  //UpdateAddressDetails,
+  //UpdateContactDetails,
+  //UpdateOccupationDetails,
+  //UpdatePersonalDetails,
   CreatePostDetails,
   AddPost,
   CreateNewPost,
@@ -78,7 +78,7 @@ export interface ProfileStateModel {
     status: string;
     errors: object;
   };*/
-  personalDetailsForm: {
+  /*personalDetailsForm: {
     model: {
       age: AgeGroup | null;
       gender: Gender | null;
@@ -87,7 +87,7 @@ export interface ProfileStateModel {
     dirty: false;
     status: string;
     errors: object;
-  };
+  };*/
   postDetailsForm: {
     model: {
       postID: string | null | undefined;
@@ -107,7 +107,7 @@ export interface ProfileStateModel {
     status: string;
     errors: object;
   };
-  occupationDetailsForm: {
+  /*occupationDetailsForm: {
     model: {
       householdIncome: HouseholdIncome | null;
       occupation: string | null;
@@ -115,7 +115,7 @@ export interface ProfileStateModel {
     dirty: false;
     status: string;
     errors: object;
-  };
+  };*/
 }
 
 @State<ProfileStateModel>({
@@ -155,7 +155,7 @@ export interface ProfileStateModel {
       status: '',
       errors: {},
     },*/
-    personalDetailsForm: {
+    /*personalDetailsForm: {
       model: {
         age: null,
         gender: null,
@@ -164,7 +164,7 @@ export interface ProfileStateModel {
       dirty: false,
       status: '',
       errors: {},
-    },
+    },*/
     postDetailsForm: {
       model: {
         postID: null,
@@ -184,7 +184,7 @@ export interface ProfileStateModel {
       status: '',
       errors: {},
     },
-    occupationDetailsForm: {
+    /*occupationDetailsForm: {
       model: {
         householdIncome: null,
         occupation: null,
@@ -192,7 +192,7 @@ export interface ProfileStateModel {
       dirty: false,
       status: '',
       errors: {},
-    },
+    },*/
   },
 })
 @Injectable()
@@ -370,7 +370,7 @@ export class ProfileState {
     }
   }*/
 
-  @Action(UpdatePersonalDetails)
+ /* @Action(UpdatePersonalDetails)
   async updatePersonalDetails(ctx: StateContext<ProfileStateModel>) {
     try {
       const state = ctx.getState();
@@ -400,9 +400,9 @@ export class ProfileState {
     } catch (error) {
       return ctx.dispatch(new SetError((error as Error).message));
     }
-  }
+  }*/
 
-  @Action(UpdateOccupationDetails)
+  /*@Action(UpdateOccupationDetails)
   async updateOccupationDetails(ctx: StateContext<ProfileStateModel>) {
     try {
       const state = ctx.getState();
@@ -432,7 +432,7 @@ export class ProfileState {
     } catch (error) {
       return ctx.dispatch(new SetError((error as Error).message));
     }
-  }
+  } */
 
   @Action(CreateNewPost)
   async addPost(ctx: StateContext<ProfileStateModel>, { post }: CreateNewPost) {

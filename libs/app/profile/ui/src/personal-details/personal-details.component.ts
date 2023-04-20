@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+// import { Component } from '@angular/core';
+/*import { FormBuilder, Validators } from '@angular/forms';
 import { IProfile } from '@mp/api/profiles/util';
 import { ProfileState } from '@mp/app/profile/data-access';
 import { UpdatePersonalDetails } from '@mp/app/profile/util';
@@ -77,3 +77,4 @@ export class PersonalDetailsComponent {
     this.store.dispatch(new UpdatePersonalDetails());
   }
 }
+*/

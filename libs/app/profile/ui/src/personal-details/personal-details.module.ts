@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+/*import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
@@ -13,10 +13,10 @@ import { PersonalDetailsComponent } from './personal-details.component';
     CommonModule,
     IonicModule,
     NgxSkeletonLoaderModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule,c
     NgxsFormPluginModule,
     ProfileModule,
   ],
   exports: [PersonalDetailsComponent],
 })
-export class PersonalDetailsModule {}
+export class PersonalDetailsModule {} */

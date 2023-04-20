@@ -33,12 +33,12 @@ export class CreateProfileHandler
         photoURL,
         //status: ProfileStatus.INCOMPLETE,
       },
-      personalDetails: {
+      /*personalDetails: {
         age: null,
         gender: null,
         ethnicity: null,
         status: ProfileStatus.INCOMPLETE,
-      },
+      },*/
       posts:[ {
         postID: userId,
         createdBy: userId,
@@ -62,11 +62,11 @@ export class CreateProfileHandler
         workArea: null,
         status: ProfileStatus.INCOMPLETE,
       },*/
-      occupationDetails: {
+      /*occupationDetails: {
         householdIncome: null,
         occupation: null,
         status: ProfileStatus.INCOMPLETE,
-      },
+      },*/
       status: ProfileStatus.INCOMPLETE,
       created: Timestamp.fromDate(new Date()),
     };

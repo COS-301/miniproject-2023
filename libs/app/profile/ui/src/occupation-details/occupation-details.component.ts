@@ -10,6 +10,7 @@ import {
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 
+/*
 @Component({
   selector: 'ms-profile-occupation-details-component',
   templateUrl: './occupation-details.component.html',
@@ -62,4 +63,4 @@ export class OccupationDetailsComponent {
   updateOccupationDetails() {
     this.store.dispatch(new UpdateOccupationDetails());
   }
-}
+} */
