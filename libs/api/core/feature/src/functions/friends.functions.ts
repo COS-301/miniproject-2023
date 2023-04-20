@@ -4,7 +4,7 @@ import { NestFactory } from '@nestjs/core';
 import * as functions from 'firebase-functions';
 import { CoreModule } from '../core.module';
 
-export const createFriend = functions.https.onCall(
+export const createFriendRequest = functions.https.onCall(
   async (request: ICreateFriendRequest): Promise<ICreateFriendResponse> => {
     const app = await NestFactory.createApplicationContext(CoreModule);
     const service = app.get(FriendsService);

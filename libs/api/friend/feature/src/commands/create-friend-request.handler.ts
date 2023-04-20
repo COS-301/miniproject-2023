@@ -11,7 +11,7 @@ import { FriendRequest } from '../models';
 import { Timestamp } from 'firebase-admin/firestore';
 
 @CommandHandler(CreateFriendRequestCommand)
-export class CreateFriendHandler implements ICommandHandler<CreateFriendRequestCommand, ICreateFriendResponse> {
+export class CreateFriendRequestHandler implements ICommandHandler<CreateFriendRequestCommand, ICreateFriendResponse> {
   constructor(
     private readonly publisher: EventPublisher,
     private readonly userRepository: UsersRepository

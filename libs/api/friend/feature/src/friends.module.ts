@@ -2,14 +2,14 @@ import { FriendsModule as FriendsDataAccessModule } from '@mp/api/friend/data-ac
 import { Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
 import {
-  CreateFriendHandler,
+  CreateFriendRequestHandler,
 } from './commands';
 import {
   FriendRequestCreatedHandler,
 } from './events';
 import { FriendsService } from './friends.service';
 export const CommandHandlers = [
-  CreateFriendHandler
+  CreateFriendRequestHandler
 ];
 export const EventHandlers = [
   FriendRequestCreatedHandler
