@@ -1,10 +1,12 @@
 # Lapse 
-> Mini-Project Group 3 2023
+Mini-Project Group 3 2023
 
 ## Description
 >Lapse is a unique social media platform that uses time as a currency to foster meaningful interactions between users. By creating a time-based economy, the platform aims to encourage users to engage with quality content and discourage mindless scrolling and poor content. Lapse will offer an engaging and user-friendly environment for users to connect, share, and invest in content.
 
 >Users can spend time engaging with content, and in return, they earn time by creating meaningful or engaging content. The platform also allows users to invest in the content they see potential in, further encouraging content creators.
+
+>To learn more about this project see our [Lapse Mini Project Wiki](https://github.com/LapseMP/lapse-grp3-2023/wiki/1.-Lapse-Mini-Project), view our documentation [here](https://github.com/LapseMP/lapse-grp3-2023/wiki/Documentation) 
 
 ## Requirements
 
@@ -69,6 +71,7 @@ Once the emulators are up, please go to http://localhost:5001 to see the Emulato
 
 ## Notes!!:
 
+- All contracts/interfaces can be viewed [here](https://github.com/LapseMP/lapse-grp3-2023/wiki/Contracts-%F0%9F%93%84) and [here](https://github.com/LapseMP/lapse-grp3-2023/wiki/API-(States-and-Client-API))
 - When creating your Firebase authentication, hosting, storage, functions. Make sure to use the same location throughout. (MAKE SURE TO SET "Default GCP resource location" in Project Settings in Firebase Console. If you do not do this, the app will not work)
 - The app is built to be a PWA. (See: So if you deploy it to prod, you can install the app on iOS by adding to home screen or using Android by installing through Chrome)
 
@@ -79,7 +82,7 @@ This social media app includes the following features:
 - Buying Posts: Users can use their time currency to purchase posts created by other users.
 - Viewing Profile: Users can view their own profile which displays all the posts they have created
 - Viewing Portfolio: Users can view their portfolios which displays all the posts they have bought.
-- Searching by User or hashtag: Users can search for other users's posts by username or search for posts by hashtag
+- Searching by User or Hashtag: Users can search for other users's posts by username or search for posts by hashtag
 
 ## Our Team
 
