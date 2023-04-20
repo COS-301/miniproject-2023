@@ -1,6 +1,6 @@
 import {
     AccountDetailsUpdatedEvent,
-    AddressDetailsUpdatedEvent,
+    //AddressDetailsUpdatedEvent,
     ContactDetailsUpdatedEvent,
     PostCreatedEvent,
     CreatePostCommand,
@@ -24,7 +24,7 @@ export class ProfilesSagas {
       ofType(UserCreatedEvent),
       map(
         (event: UserCreatedEvent) =>
-          new CreateProfileCommand({ user: event.user })
+          new CreateProfileCommand({user: event.user})
       )
     );
   };
@@ -37,7 +37,7 @@ export class ProfilesSagas {
       ofType(AccountDetailsUpdatedEvent),
       map(
         (event: AccountDetailsUpdatedEvent) =>
-          new UpdateProfileStatusCommand({ profile: event.profile })
+          new UpdateProfileStatusCommand({profile: event.profile})
       )
     );
   };
@@ -50,12 +50,12 @@ export class ProfilesSagas {
       ofType(PostCreatedEvent),
       map(
         (event: PostCreatedEvent) =>
-          new UpdateProfileStatusCommand({ profile: event.profile })
+          new UpdateProfileStatusCommand({profile: event.profile})
       )
     );
   };
 
-  @Saga()
+  /*@Saga()
   onAddressDetailsUpdated = (
     events$: Observable<any>
   ): Observable<ICommand> => {
@@ -66,7 +66,7 @@ export class ProfilesSagas {
           new UpdateProfileStatusCommand({ profile: event.profile })
       )
     );
-  };
+  };*/
 
   @Saga()
   onContactDetailsUpdated = (
@@ -76,7 +76,7 @@ export class ProfilesSagas {
       ofType(ContactDetailsUpdatedEvent),
       map(
         (event: ContactDetailsUpdatedEvent) =>
-          new UpdateProfileStatusCommand({ profile: event.profile })
+          new UpdateProfileStatusCommand({profile: event.profile})
       )
     );
   };
@@ -89,7 +89,7 @@ export class ProfilesSagas {
       ofType(PersonalDetailsUpdatedEvent),
       map(
         (event: PersonalDetailsUpdatedEvent) =>
-          new UpdateProfileStatusCommand({ profile: event.profile })
+          new UpdateProfileStatusCommand({profile: event.profile})
       )
     );
   };
@@ -102,23 +102,22 @@ export class ProfilesSagas {
       ofType(OccupationDetailsUpdatedEvent),
       map(
         (event: OccupationDetailsUpdatedEvent) =>
-          new UpdateProfileStatusCommand({ profile: event.profile })
+          new UpdateProfileStatusCommand({profile: event.profile})
       )
     );
   };
 
 
-@Saga()
-onPostAdded = (
-  events$: Observable<any>
-): Observable<ICommand> => {
-  return events$.pipe(
-    ofType(PostAddedEvent),
-    map(
-      (event: PostAddedEvent) =>
-        new UpdateProfileStatusCommand({ profile: event.profile })
-    )
-  );
-};
-
-};
+  @Saga()
+  onPostAdded = (
+    events$: Observable<any>
+  ): Observable<ICommand> => {
+    return events$.pipe(
+      ofType(PostAddedEvent),
+      map(
+        (event: PostAddedEvent) =>
+          new UpdateProfileStatusCommand({profile: event.profile})
+      )
+    );
+  };
+}

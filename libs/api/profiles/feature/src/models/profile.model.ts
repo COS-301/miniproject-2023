@@ -1,6 +1,6 @@
 import {
     AccountDetailsUpdatedEvent,
-    AddressDetailsUpdatedEvent,
+    //AddressDetailsUpdatedEvent,
     ContactDetailsUpdatedEvent,
     PostCreatedEvent,
     IAccountDetails,
@@ -25,7 +25,7 @@ export class Profile extends AggregateRoot implements IProfile {
     public accountDetails?: IAccountDetails | null | undefined,
     public personalDetails?: IPersonalDetails | null | undefined,
     public contactDetails?: IContactDetails | null | undefined,
-    public addressDetails?: IAddressDetails | null | undefined,
+    //public addressDetails?: IAddressDetails | null | undefined,
     public posts?: IPostDetails[] | null | undefined,
     public occupationDetails?: IOccupationDetails | null | undefined,
     public status?: ProfileStatus | null | undefined,
@@ -41,7 +41,7 @@ export class Profile extends AggregateRoot implements IProfile {
       profile.accountDetails,
       profile.personalDetails,
       profile.contactDetails,
-      profile.addressDetails,
+      //profile.addressDetails,
       profile.posts,
       profile.occupationDetails,
       profile.status,
@@ -54,7 +54,7 @@ export class Profile extends AggregateRoot implements IProfile {
     this.apply(new ProfileCreatedEvent(this.toJSON()));
   }
 
-  updateAddressDetails(addressDetails: IAddressDetails) {
+  /*updateAddressDetails(addressDetails: IAddressDetails) {
     if (!this.addressDetails) this.addressDetails = {};
     this.addressDetails.residentialArea = addressDetails.residentialArea
       ? addressDetails.residentialArea
@@ -63,7 +63,7 @@ export class Profile extends AggregateRoot implements IProfile {
       ? addressDetails.workArea
       : this.addressDetails.workArea;
     this.apply(new AddressDetailsUpdatedEvent(this.toJSON()));
-  }
+  }*/
 
 
   createPostDetails(postDetails: IPostDetails) {
@@ -143,7 +143,7 @@ export class Profile extends AggregateRoot implements IProfile {
     return;
   }
 
-  private updateAddressDetailsStatus() {
+  /*private updateAddressDetailsStatus() {
     if (!this.addressDetails) {
       this.addressDetails = {};
       this.addressDetails.status = ProfileStatus.INCOMPLETE;
@@ -159,7 +159,7 @@ export class Profile extends AggregateRoot implements IProfile {
 
     this.addressDetails.status = ProfileStatus.COMPLETE;
     return;
-  }
+  }*/
 
   private updateContactDetailsStatus() {
     if (!this.contactDetails) {
@@ -224,7 +224,7 @@ export class Profile extends AggregateRoot implements IProfile {
 
   updateStatus() {
     this.updateAccountDetailsStatus();
-    this.updateAddressDetailsStatus();
+    //this.updateAddressDetailsStatus();
     this.updateContactDetailsStatus();
     this.updatePersonalDetailsStatus();
     this.updateOccupationDetailsStatus();
@@ -249,7 +249,7 @@ time:this.time,
       accountDetails: this.accountDetails,
       personalDetails: this.personalDetails,
       contactDetails: this.contactDetails,
-      addressDetails: this.addressDetails,
+      //addressDetails: this.addressDetails,
       occupationDetails: this.occupationDetails,
       posts: this.posts,
       status: this.status,

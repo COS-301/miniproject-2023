@@ -21,7 +21,7 @@ export class CreateProfileHandler
     const displayName = request.user.email?.split("@")[0];
     const email = request.user.email;
     const photoURL = request.user.photoURL;
-    const cellphone = request.user.phoneNumber;
+    //const cellphone = request.user.phoneNumber;
     const time=100;
 
     const data: IProfile = {
@@ -54,14 +54,14 @@ export class CreateProfileHandler
         listing: null,
       }],
       contactDetails: {
-        cellphone,
+        //cellphone,
         status: ProfileStatus.INCOMPLETE,
       },
-      addressDetails: {
+      /*addressDetails: {
         residentialArea: null,
         workArea: null,
         status: ProfileStatus.INCOMPLETE,
-      },
+      },*/
       occupationDetails: {
         householdIncome: null,
         occupation: null,

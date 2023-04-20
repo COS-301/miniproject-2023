@@ -1,8 +1,8 @@
 import { ProfilesRepository } from '@mp/api/profiles/data-access';
-import { AddressDetailsUpdatedEvent } from '@mp/api/profiles/util';
+//import { AddressDetailsUpdatedEvent } from '@mp/api/profiles/util';
 import { EventsHandler, IEventHandler } from '@nestjs/cqrs';
 
-@EventsHandler(AddressDetailsUpdatedEvent)
+/*@EventsHandler(AddressDetailsUpdatedEvent)
 export class AddressDetailsUpdatedHandler
   implements IEventHandler<AddressDetailsUpdatedEvent>
 {
@@ -12,4 +12,4 @@ export class AddressDetailsUpdatedHandler
     console.log(`${AddressDetailsUpdatedHandler.name}`);
     await this.repository.updateProfile(event.profile);
   }
-}
+}*/

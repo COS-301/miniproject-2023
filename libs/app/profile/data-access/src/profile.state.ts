@@ -61,7 +61,7 @@ export interface ProfileStateModel {
     //status: string;
     errors: object;
   };
-  addressDetailsForm: {
+  /*addressDetailsForm: {
     model: {
       residentialArea: string | null;
       workArea: string | null;
@@ -69,7 +69,7 @@ export interface ProfileStateModel {
     dirty: false;
     status: string;
     errors: object;
-  };
+  };*/
   contactDetailsForm: {
     model: {
       cellphone: string | null;
@@ -138,7 +138,7 @@ export interface ProfileStateModel {
       //status: '',
       errors: {},
     },
-    addressDetailsForm: {
+    /*addressDetailsForm: {
       model: {
         residentialArea: null,
         workArea: null,
@@ -146,7 +146,7 @@ export interface ProfileStateModel {
       dirty: false,
       status: '',
       errors: {},
-    },
+    },*/
     contactDetailsForm: {
       model: {
         cellphone: null,
@@ -340,7 +340,7 @@ export class ProfileState {
     }
   }
 
-  @Action(UpdateAddressDetails)
+  /*@Action(UpdateAddressDetails)
   async updateAddressDetails(ctx: StateContext<ProfileStateModel>) {
     try {
       const state = ctx.getState();
@@ -356,7 +356,7 @@ export class ProfileState {
       const request: IUpdateAddressDetailsRequest = {
         profile: {
           userId,
-          addressDetails: {
+          /*addressDetails: {
             residentialArea,
             workArea,
           },
@@ -368,7 +368,7 @@ export class ProfileState {
     } catch (error) {
       return ctx.dispatch(new SetError((error as Error).message));
     }
-  }
+  }*/
 
   @Action(UpdatePersonalDetails)
   async updatePersonalDetails(ctx: StateContext<ProfileStateModel>) {

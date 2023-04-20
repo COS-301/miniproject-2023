@@ -4,7 +4,7 @@ import { CqrsModule } from '@nestjs/cqrs';
 import {
     CreateProfileHandler,
     UpdateAccountDetailsHandler,
-    UpdateAddressDetailsHandler,
+    //UpdateAddressDetailsHandler,
     UpdateContactDetailsHandler,
     UpdateOccupationDetailsHandler,
     UpdatePersonalDetailsHandler,
@@ -14,7 +14,7 @@ import {
 } from './commands';
 import {
     AccountDetailsUpdatedHandler,
-    AddressDetailsUpdatedHandler,
+    //AddressDetailsUpdatedHandler,
     ContactDetailsUpdatedHandler,
     OccupationDetailsUpdatedHandler,
     PersonalDetailsUpdatedHandler,
@@ -28,7 +28,7 @@ import { ProfilesService } from './profiles.service';
 export const CommandHandlers = [
   CreateProfileHandler,
   UpdateContactDetailsHandler,
-  UpdateAddressDetailsHandler,
+  //UpdateAddressDetailsHandler,
   UpdatePersonalDetailsHandler,
   UpdateOccupationDetailsHandler,
   UpdateAccountDetailsHandler,
@@ -39,7 +39,7 @@ export const CommandHandlers = [
 export const EventHandlers = [
   ProfileCreatedHandler,
   ContactDetailsUpdatedHandler,
-  AddressDetailsUpdatedHandler,
+  //AddressDetailsUpdatedHandler,
   PersonalDetailsUpdatedHandler,
   OccupationDetailsUpdatedHandler,
   AccountDetailsUpdatedHandler,
