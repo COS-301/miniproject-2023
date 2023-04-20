@@ -15,6 +15,7 @@ ion-button {
     border-top-width: thin;
     border-top-style:solid;
     border-radius: 1px;
+    height: 45px;
 }
 
 img
@@ -74,4 +75,9 @@ ion-card-content a,
 
 ion-card {
     --background: white;
+}
+
+ion-back-button{
+    color: white !important;
+    --color-hover: #0E8C00;
 }

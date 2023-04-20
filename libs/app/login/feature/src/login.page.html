@@ -8,12 +8,6 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Login</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <div class="container ion-text-center">
     <img src = "https://i.imgur.com/PCGUzLY.png">
   </div>
@@ -38,7 +32,7 @@
         color="danger">
         <small>{{ passwordError }}</small>
       </ion-text>
-      <ion-row class="ion-padding-top">
+      <ion-row>
         <ion-col class="ion-text-right off-white">
           <ion-nav-link routerLink="/forgot">
             <ion-text class="link">Forgot Password?</ion-text>
@@ -47,7 +41,7 @@
       </ion-row>
     </ion-list>
 
-    <ion-grid class="ion-padding">
+    <ion-grid >
       <ion-row>
         <ion-col>
           <ion-button expand="full" [disabled]="!this.loginForm.valid || (busy$ | async)" type="submit">
@@ -60,7 +54,7 @@
   </form>
 
   <!-- or -->
-  <ion-row class="ion-padding-top ion-padding-bottom">
+  <ion-row >
     <ion-col>
       <hr />
     </ion-col>
@@ -75,7 +69,7 @@
   <ion-row>
     <ion-col>
       <ion-nav-link>
-        <ion-button expand="block" fill="outline" (click)="continueWithGoogle()">
+        <ion-button expand="full" fill="outline" (click)="continueWithGoogle()">
           <ion-icon name="logo-google"></ion-icon>
           <ion-text style="padding-left: 5px">
             Continue with Google
@@ -87,7 +81,7 @@
   <ion-row>
     <ion-col>
       <ion-nav-link>
-        <ion-button expand="block" fill="outline" (click)="continueWithGoogle()">
+        <ion-button expand="full" fill="outline" (click)="continueWithGoogle()">
           <ion-icon name="logo-facebook"></ion-icon>
           <ion-text style="padding-left: 5px">
             Continue with Facebook
@@ -97,7 +91,7 @@
     </ion-col>
   </ion-row>
 
-  <ion-row class="ion-padding-top ion-padding-bottom">
+  <ion-row >
     <ion-col class="ion-text-center off-white">
       Don't have an account?
       <ion-nav-link routerLink="/register">
