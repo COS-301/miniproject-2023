@@ -8,9 +8,9 @@ const routes: Routes = [
     component: HomePage,
     children: [
       {
-        path: 'dashboard',
+        path: 'feed',
         loadChildren: () =>
-          import('@mp/app/dashboard/feature').then((m) => m.DashboardModule),
+          import('@mp/app/feed/feature').then((m) => m.FeedModule),
       },
       {
         path: 'profile',
@@ -35,7 +35,7 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: '/home/dashboard',
+        redirectTo: '/home/feed',
       },
       {
         path: 'post',
@@ -53,7 +53,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/home/dashboard',
+    redirectTo: '/home/feed',
   },
 ];
 

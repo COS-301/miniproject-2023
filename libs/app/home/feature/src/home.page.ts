@@ -38,8 +38,8 @@ export class HomePage {
     this.router.navigate(['/home/inbox']);
   }
 
-  goToDash() {
-    this.router.navigate(['/home/dashboard']);
+  goToFeed() {
+    this.router.navigate(['/home/feed']);
   }
 
   goToNotifications() {
