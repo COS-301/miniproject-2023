@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { AccountDetailsModule } from './account-details';
 //import { AddressDetailsModule } from './address-details';
-import { ContactDetailsModule } from './contact-details';
+//import { ContactDetailsModule } from './contact-details';
 import { OccupationDetailsModule } from './occupation-details';
 import { PersonalDetailsModule } from './personal-details';
 import { PostDetailsModule } from './post-details';
@@ -17,7 +17,7 @@ import { TimeBadgeModule } from './time-badge';
     IonicModule,
     AccountDetailsModule,
     //AddressDetailsModule,
-    ContactDetailsModule,
+    //ContactDetailsModule,
     OccupationDetailsModule,
     PersonalDetailsModule,
     PostDetailsModule,
@@ -28,7 +28,7 @@ import { TimeBadgeModule } from './time-badge';
   exports: [
     AccountDetailsModule,
     //AddressDetailsModule,
-    ContactDetailsModule,
+    //ContactDetailsModule,
     OccupationDetailsModule,
     PersonalDetailsModule,
     ProfileStatusModule,

@@ -5,8 +5,9 @@ import { IonicModule } from '@ionic/angular';
 import { ProfileModule } from '@mp/app/profile/data-access';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
-import { ContactDetailsComponent } from './contact-details.component';
+//import { ContactDetailsComponent } from './contact-details.component';
 
+/*
 @NgModule({
   declarations: [ContactDetailsComponent],
   imports: [
@@ -20,3 +21,4 @@ import { ContactDetailsComponent } from './contact-details.component';
   exports: [ContactDetailsComponent],
 })
 export class ContactDetailsModule {}
+*/

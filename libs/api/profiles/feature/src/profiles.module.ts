@@ -5,7 +5,7 @@ import {
     CreateProfileHandler,
     UpdateAccountDetailsHandler,
     //UpdateAddressDetailsHandler,
-    UpdateContactDetailsHandler,
+    //UpdateContactDetailsHandler,
     UpdateOccupationDetailsHandler,
     UpdatePersonalDetailsHandler,
     UpdateProfileStatusHandler,
@@ -15,7 +15,7 @@ import {
 import {
     AccountDetailsUpdatedHandler,
     //AddressDetailsUpdatedHandler,
-    ContactDetailsUpdatedHandler,
+    //ContactDetailsUpdatedHandler,
     OccupationDetailsUpdatedHandler,
     PersonalDetailsUpdatedHandler,
     ProfileCreatedHandler,
@@ -27,7 +27,7 @@ import { ProfilesSagas } from './profiles.sagas';
 import { ProfilesService } from './profiles.service';
 export const CommandHandlers = [
   CreateProfileHandler,
-  UpdateContactDetailsHandler,
+  //UpdateContactDetailsHandler,
   //UpdateAddressDetailsHandler,
   UpdatePersonalDetailsHandler,
   UpdateOccupationDetailsHandler,
@@ -38,7 +38,7 @@ export const CommandHandlers = [
 ];
 export const EventHandlers = [
   ProfileCreatedHandler,
-  ContactDetailsUpdatedHandler,
+  //ContactDetailsUpdatedHandler,
   //AddressDetailsUpdatedHandler,
   PersonalDetailsUpdatedHandler,
   OccupationDetailsUpdatedHandler,

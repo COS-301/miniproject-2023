@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+/*import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { IProfile } from '@mp/api/profiles/util';
 import { ProfileState } from '@mp/app/profile/data-access';
@@ -47,3 +47,4 @@ export class ContactDetailsComponent {
     this.store.dispatch(new UpdateContactDetails());
   }
 }
+*/

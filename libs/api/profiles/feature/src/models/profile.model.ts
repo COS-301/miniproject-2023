@@ -1,7 +1,7 @@
 import {
     AccountDetailsUpdatedEvent,
     //AddressDetailsUpdatedEvent,
-    ContactDetailsUpdatedEvent,
+    //ContactDetailsUpdatedEvent,
     PostCreatedEvent,
     IAccountDetails,
     IAddressDetails,
@@ -24,7 +24,7 @@ export class Profile extends AggregateRoot implements IProfile {
     public time?: number,
     public accountDetails?: IAccountDetails | null | undefined,
     public personalDetails?: IPersonalDetails | null | undefined,
-    public contactDetails?: IContactDetails | null | undefined,
+    //public contactDetails?: IContactDetails | null | undefined,
     //public addressDetails?: IAddressDetails | null | undefined,
     public posts?: IPostDetails[] | null | undefined,
     public occupationDetails?: IOccupationDetails | null | undefined,
@@ -40,7 +40,7 @@ export class Profile extends AggregateRoot implements IProfile {
       profile.time,
       profile.accountDetails,
       profile.personalDetails,
-      profile.contactDetails,
+      //profile.contactDetails,
       //profile.addressDetails,
       profile.posts,
       profile.occupationDetails,
@@ -75,13 +75,13 @@ export class Profile extends AggregateRoot implements IProfile {
   }
 
 
-  updateContactDetails(contactDetails: IContactDetails) {
+  /*updateContactDetails(contactDetails: IContactDetails) {
     if (!this.contactDetails) this.contactDetails = {};
     this.contactDetails.cellphone = contactDetails.cellphone
       ? contactDetails.cellphone
       : this.contactDetails.cellphone;
     this.apply(new ContactDetailsUpdatedEvent(this.toJSON()));
-  }
+  }*/
 
   updatePersonalDetails(personalDetails: IPersonalDetails) {
     if (!this.personalDetails) this.personalDetails = {};
@@ -161,7 +161,7 @@ export class Profile extends AggregateRoot implements IProfile {
     return;
   }*/
 
-  private updateContactDetailsStatus() {
+  /*private updateContactDetailsStatus() {
     if (!this.contactDetails) {
       this.contactDetails = {};
       this.contactDetails.status = ProfileStatus.INCOMPLETE;
@@ -177,7 +177,7 @@ export class Profile extends AggregateRoot implements IProfile {
 
     this.contactDetails.status = ProfileStatus.COMPLETE;
     return;
-  }
+  }*/
 
   private updatePersonalDetailsStatus() {
     if (!this.personalDetails) {
@@ -225,7 +225,7 @@ export class Profile extends AggregateRoot implements IProfile {
   updateStatus() {
     this.updateAccountDetailsStatus();
     //this.updateAddressDetailsStatus();
-    this.updateContactDetailsStatus();
+    //this.updateContactDetailsStatus();
     this.updatePersonalDetailsStatus();
     this.updateOccupationDetailsStatus();
 
@@ -248,7 +248,7 @@ export class Profile extends AggregateRoot implements IProfile {
 time:this.time,
       accountDetails: this.accountDetails,
       personalDetails: this.personalDetails,
-      contactDetails: this.contactDetails,
+      //contactDetails: this.contactDetails,
       //addressDetails: this.addressDetails,
       occupationDetails: this.occupationDetails,
       posts: this.posts,

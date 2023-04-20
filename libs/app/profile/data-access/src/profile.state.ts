@@ -70,14 +70,14 @@ export interface ProfileStateModel {
     status: string;
     errors: object;
   };*/
-  contactDetailsForm: {
+  /*contactDetailsForm: {
     model: {
       cellphone: string | null;
     };
     dirty: false;
     status: string;
     errors: object;
-  };
+  };*/
   personalDetailsForm: {
     model: {
       age: AgeGroup | null;
@@ -147,14 +147,14 @@ export interface ProfileStateModel {
       status: '',
       errors: {},
     },*/
-    contactDetailsForm: {
+    /*contactDetailsForm: {
       model: {
         cellphone: null,
       },
       dirty: false,
       status: '',
       errors: {},
-    },
+    },*/
     personalDetailsForm: {
       model: {
         age: null,
@@ -314,7 +314,7 @@ export class ProfileState {
     }
   }
 
-  @Action(UpdateContactDetails)
+  /*@Action(UpdateContactDetails)
   async updateContactDetails(ctx: StateContext<ProfileStateModel>) {
     try {
       const state = ctx.getState();
@@ -338,7 +338,7 @@ export class ProfileState {
     } catch (error) {
       return ctx.dispatch(new SetError((error as Error).message));
     }
-  }
+  }*/
 
   /*@Action(UpdateAddressDetails)
   async updateAddressDetails(ctx: StateContext<ProfileStateModel>) {

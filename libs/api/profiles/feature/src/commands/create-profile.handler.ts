@@ -53,10 +53,10 @@ export class CreateProfileHandler
         ownerGainedTime: null,
         listing: null,
       }],
-      contactDetails: {
+      /*contactDetails: {
         //cellphone,
         status: ProfileStatus.INCOMPLETE,
-      },
+      },*/
       /*addressDetails: {
         residentialArea: null,
         workArea: null,

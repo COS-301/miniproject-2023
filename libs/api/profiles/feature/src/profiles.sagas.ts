@@ -1,7 +1,7 @@
 import {
     AccountDetailsUpdatedEvent,
     //AddressDetailsUpdatedEvent,
-    ContactDetailsUpdatedEvent,
+    //ContactDetailsUpdatedEvent,
     PostCreatedEvent,
     CreatePostCommand,
     AddPostCommand,
@@ -68,7 +68,7 @@ export class ProfilesSagas {
     );
   };*/
 
-  @Saga()
+ /* @Saga()
   onContactDetailsUpdated = (
     events$: Observable<any>
   ): Observable<ICommand> => {
@@ -79,7 +79,7 @@ export class ProfilesSagas {
           new UpdateProfileStatusCommand({profile: event.profile})
       )
     );
-  };
+  };*/
 
   @Saga()
   onPersonalDetailsUpdated = (
