@@ -1,4 +1,5 @@
 import { FriendsModule as FriendsDataAccessModule } from '@mp/api/friend/data-access';
+import { UsersModule as UsersDataAccessModule } from '@mp/api/users/data-access';
 import { Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
 import {
@@ -16,7 +17,7 @@ export const EventHandlers = [
 ];
 
 @Module({
-  imports: [CqrsModule, FriendsDataAccessModule],
+  imports: [CqrsModule, FriendsDataAccessModule, UsersDataAccessModule],
   providers: [FriendsService, ...CommandHandlers, ...EventHandlers],
   exports: [FriendsService],
 })
