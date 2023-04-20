@@ -13,6 +13,11 @@ export class FetchUserPosts {
   constructor(public displayName: string) {}
 }
 
+export class FetchPortfolioPosts {
+  static readonly type = '[Profile] Fetch User Posts';
+  constructor(public userId: string) {}
+}
+
 export class BuyPost{
   static readonly type = '[Profile] BuyPost';
   constructor(public postId: string) {}

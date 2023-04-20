@@ -33,7 +33,8 @@ import {
   FetchUserPosts,
   GetAllPosts,
   GetUserPostsByHashtag,
-  BuyPost
+  BuyPost,
+  FetchPortfolioPosts
 } from '@mp/app/profile/util';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import produce from 'immer';
@@ -46,6 +47,7 @@ export interface ProfileStateModel {
   profile: IProfile | null;
   searchPosts: IPostDetails[];
   posts:IPostDetails[];
+  profilePosts:IPostDetails[];
   time: number | null;
   accountDetailsForm: {
     model: {
@@ -121,6 +123,7 @@ export interface ProfileStateModel {
   defaults: {
     profile: null,
     searchPosts: [],
+    profilePosts:[],
     posts:[],
     time: 0,
     accountDetailsForm: {
@@ -500,10 +503,32 @@ export class ProfileState {
     return state.searchPosts;
   }
 
+  @Selector()
+  static profilePosts(state: ProfileStateModel): IPostDetails[] {
+    return state.profilePosts;
+  }
+
   @Action(FetchUserPosts)
 fetchUserPosts(ctx: StateContext<ProfileStateModel>, { displayName }: FetchUserPosts) {
   return this.profileApi.getUserPostsFromFunction$(displayName).pipe(
     tap((posts: IPostDetails[]) => ctx.patchState({ searchPosts: posts })),
+    catchError((error) => {
+      ctx.dispatch(new SetError((error as Error).message));
+      return of(null);
+    })
+  );
+}
+
+@Action(FetchPortfolioPosts)
+fetchPortfolioPosts(ctx: StateContext<ProfileStateModel>, { userId }: FetchPortfolioPosts) {
+const vard=userId;
+const state=ctx.getState();
+let uId=' ';
+  if(state.profile?.userId){
+    uId=state.profile?.userId;
+  }
+  return this.profileApi.getPortfolioPostsFromFunction$(uId).pipe(
+    tap((posts: IPostDetails[]) => ctx.patchState({ profilePosts: posts })),
     catchError((error) => {
       ctx.dispatch(new SetError((error as Error).message));
       return of(null);

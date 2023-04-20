@@ -4,7 +4,7 @@ import { Select, Store } from '@ngxs/store';
 import { ProfileState } from '@mp/app/profile/data-access';
 import { Observable } from 'rxjs';
 import { IPostDetails, IProfile } from '@mp/api/profiles/util';
-import { getPortfolioPostsFromFunction } from '@mp/app/profile/util';
+import { FetchPortfolioPosts} from '@mp/app/profile/util';
 
 
 @Component({
@@ -16,18 +16,20 @@ export class PortfolioPage implements OnInit {
 
   constructor(private router: Router, private store: Store) { }
   @Select(ProfileState.profile) profile$!: Observable<IProfile | null>;
-  @Select(ProfileState.searchPosts) searchPosts$: Observable<IPostDetails[]> | undefined;
+  @Select(ProfileState.profilePosts) profilePosts$: Observable<IPostDetails[]> | undefined;
   userID = '';// need to find a way to get current user ID
 
   ngOnInit() {
-    this.store.dispatch(new getPortfolioPostsFromFunction(this.userID));
+    const userId='';
+    console.log("here");
+    this.store.dispatch(new FetchPortfolioPosts(userId));
    }
 
-   
+
   //  getThePosts()
   //  {
   //     return this.store.dispatch(new getPortfolioPostsFromFunction(this.userID));
-      
+
   //  }
 
   toHomePage() {

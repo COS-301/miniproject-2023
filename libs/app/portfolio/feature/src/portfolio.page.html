@@ -5,7 +5,52 @@
         <!-- <lapse-time-badge slot="end" [time]="(1000).valueOf()"></lapse-time-badge> -->
   </ion-toolbar>
 </ion-header>
+<div *ngFor="let post of profilePosts$ | async; let i = index" color=secondary>
 
+  <img class="postImage" alt="Post" [src]="post.content" />
+  <ion-toolbar color="secondary">
+    <ion-list lines = "none">
+
+      <ion-grid   >
+        <ion-row>
+          <ion-col size="6" > <ion-item style="font-size: small;"> {{ post.caption }}</ion-item></ion-col>
+          <ion-col size="6" >
+            <div>
+              <ion-item  style="font-size: smaller">  {{ post.hashtag }}</ion-item>
+            </div>
+            <div>
+              <ion-item  style="font-size: smaller"> {{ post.likes }} Likes</ion-item>
+            </div>
+            <ion-row>
+              <ion-item  style="font-size: smaller"> Price: {{post.listing}}</ion-item>
+            </ion-row>
+          </ion-col>
+
+          <!-- <ion-col size = "2"> <ion-item  style="font-size: 15px;">  {{ post.hashtag }}</ion-item></ion-col>
+          <ion-col size = "2"><ion-item  style="font-size: 15px;"> {{ post.likes }} Likes</ion-item></ion-col>
+          <ion-col size = "2"><ion-item  style="font-size: 15px;"> Price: {{post.listing}}</ion-item></ion-col> -->
+        </ion-row>
+      </ion-grid>
+    </ion-list>
+
+    <ion-buttons slot="end">
+
+      <!-- <ion-button expand="block" color="primary" (click)="like()">
+        <ion-icon name="thumbs-up-outline"></ion-icon>
+      </ion-button>
+
+      <ion-button expand="block" color="primary" (click)="comment()">
+        <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+      </ion-button>
+
+      <ion-button expand="block" color="primary" (click)="bid()">
+        <ion-icon name="cart-outline"></ion-icon>
+      </ion-button> -->
+
+    </ion-buttons>
+  </ion-toolbar>
+   <hr>
+</div>
 
 <!-- <ion-content>
   <ion-grid>
@@ -34,7 +79,7 @@
         </ion-row>
       </ion-col>
     </ion-row>
-  </ion-grid> 
+  </ion-grid>
 </ion-content> -->
 
   <!-- <div class="postWrapper">
