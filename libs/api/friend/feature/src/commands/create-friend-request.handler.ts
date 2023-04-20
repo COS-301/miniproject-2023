@@ -1,51 +1,55 @@
-import { FriendsRepository } from '@mp/api/friends/data-access';
 import { UsersRepository } from '@mp/api/users/data-access';
 import {
   ICreateFriendResponse,
   CreateFriendRequestCommand,
   FriendRequestStatus,
   IFriendRequest,
-} from '@mp/api/friends/util';
+  Status,
+} from '@mp/api/friend/util';
 import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs';
 import { FriendRequest } from '../models';
 import { Timestamp } from 'firebase-admin/firestore';
-import { IStatus } from '@mp/api/friend/util';
 
 @CommandHandler(CreateFriendRequestCommand)
-export class CreateFriendhandler implements ICommandHandler<CreateFriendRequestCommand, ICreateFriendResponse> {
-  constructor(private readonly publisher: EventPublisher, private readonly UserRepository: UsersRepository) {}
+export class CreateFriendHandler implements ICommandHandler<CreateFriendRequestCommand, ICreateFriendResponse> {
+  constructor(
+    private readonly publisher: EventPublisher,
+    private readonly userRepository: UsersRepository
+  ) {}
 
   async execute(command: CreateFriendRequestCommand) {
     console.log(`${CreateFriendRequestCommand.name}`);
 
     const request = command.request;
-    const userId1 = request.friendRequest.senderId;
-    const receiverUsername = request.friendRequest.receiverUsername;
 
-    let userId2 = '';
-    const userId2doc = await this.UserRepository.getUserId(receiverUsername || ' ');
+    if (!request.friendRequest.senderId || !request.friendRequest.receiverUsername)
+      throw new Error('Missing required fields');
 
-    if (userId2doc.docs.length == 0) throw 'no user in db';
-    else userId2 = userId2doc.docs[0].id;
+    const userDoc = await this.userRepository.findUser(request.friendRequest.senderId);
+
+    if (!userDoc.data())
+      throw new Error('User not found')
+
+    const receiverUserSnapshot = await this.userRepository.findUserWithUsername(request.friendRequest.receiverUsername);
+
+    if (receiverUserSnapshot.empty)
+      throw new Error('Receiver not found')
+
+    const receiverUserDoc = receiverUserSnapshot.docs[0];
 
     const friendData: IFriendRequest = {
-      senderId: userId1,
-      receiverId: userId2,
+      senderId: request.friendRequest.senderId,
+      receiverId: receiverUserDoc.id,
       status: FriendRequestStatus.PENDING,
       lastUpdated: Timestamp.now(),
       created: Timestamp.now(),
     };
 
-    const friend = this.publisher.mergeObjectContext(FriendRequest.fromData(friendData));
+    const friendRequest = this.publisher.mergeObjectContext(FriendRequest.fromData(friendData));
 
-    friend.create();
-    friend.commit();
+    friendRequest.create();
+    friendRequest.commit();
 
-    const status: IStatus = {
-      value: 'pending',
-    };
-
-    const response: ICreateFriendResponse = { status };
-    return response;
+    return { status: Status.SUCCESS };
   }
 }

@@ -6,7 +6,6 @@ export class FriendRequest extends AggregateRoot implements IFriendRequest {
   constructor(
     public senderId: string,
     public receiverId?: string | null | undefined,
-    public receiverUsername?: string | null | undefined,
     public status?: FriendRequestStatus | null | undefined,
     public lastUpdated?: Timestamp | null | undefined,
     public created?: Timestamp | null | undefined,
@@ -18,7 +17,6 @@ export class FriendRequest extends AggregateRoot implements IFriendRequest {
     const instance = new FriendRequest(
       friendRequest.senderId,
       friendRequest.receiverId,
-      friendRequest.receiverUsername,
       friendRequest.status,
       friendRequest.lastUpdated,
       friendRequest.created,
