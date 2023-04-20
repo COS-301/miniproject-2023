@@ -1,40 +1,46 @@
 <ion-content [fullscreen]="true">
   <div class="center-container ion-align-items-center">
+    <div class="login-login">
     <ion-grid>
       <ion-row>
         <ion-col offset="2" size="8">
-          <!-- <img
+          <img
             class="logo logo-light"
-            src="/assets/logos/schadre-logo-full.png" /> -->
-          <!-- <img
+            src="assets/logos/logo-light.jpg" />
+           <img
             class="logo logo-dark"
-            src="/assets/logos/schadre-logo-full-white.png"
-          /> -->
+            src="assets/logos/logo-light.jpg"
+          /> 
+          <div class="login-text-large">
+            <span class="login-text04 headlinemedium">
+              <span>Welcome to TimeHive</span>
+            </span>
+          </div>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
           <ion-nav-link [routerLink]="['login']">
-            <ion-button expand="block">Login</ion-button>
+            <ion-button class="front-button" expand="block">Login</ion-button>
           </ion-nav-link>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
           <ion-nav-link [routerLink]="['register']">
-            <ion-button expand="block">Register</ion-button>
+            <ion-button  class="front-button" expand="block">Register</ion-button>
           </ion-nav-link>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col class="ion-text-center">
-          <ion-text color="medium">or</ion-text>
+          <ion-text color="light">or</ion-text>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
           <ion-nav-link>
-            <ion-button
+            <ion-button class="front-button"
               expand="block"
               fill="outline"
               color="dark"
@@ -50,14 +56,15 @@
       <ion-row class="ion-padding-top">
         <ion-col style="display: flex" class="ion-justify-content-center">
           <ion-nav-link [routerLink]="['tos']">
-            <ion-button fill="clear"> Terms of Service </ion-button>
+            <ion-button color="medium" fill="clear"> Terms of Service </ion-button>
           </ion-nav-link>
           <ion-nav-link [routerLink]="['privacy']">
-            <ion-button fill="clear"> Privacy Policy </ion-button>
+            <ion-button color="medium" fill="clear"> Privacy Policy </ion-button>
           </ion-nav-link>
         </ion-col>
       </ion-row>
     </ion-grid>
+  </div>
   </div>
 </ion-content>
 

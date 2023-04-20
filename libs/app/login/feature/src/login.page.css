@@ -2,23 +2,42 @@
   min-height: 100vh;
 }
 
-.login-login {
-  width: 100%;
-  height: 844px;
-  display: flex;
-  overflow: hidden;
-  position: relative;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  align-items: flex-start;
-  flex-shrink: 0;
-  border-color: transparent;
-  border-radius: 40px;
-  background-image: linear-gradient(180deg, rgba(252, 163, 17, 1) 24%, rgba(255, 255, 255, 1) 100%);
+@media (prefers-color-scheme: light) {
+  .login-login {
+    width: 100%;
+    height: 915px;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    align-items: flex-start;
+    flex-shrink: 0;
+    border-color: transparent;
+    /* border-radius: 40px; */
+    background-image: linear-gradient(180deg, rgba(252, 163, 17, 1) 35%, #ffffff 100%);
+  }
 }
+
+@media (prefers-color-scheme: dark) {
+  .login-login {
+    width: 100%;
+    height: 915px;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    align-items: flex-start;
+    flex-shrink: 0;
+    border-color: transparent;
+    /* border-radius: 40px; */
+    background-image: linear-gradient(180deg, rgba(252, 163, 17, 1) 35%, #1a181e 100%);
+  }
+}
+
 
 .login-button {
   top: 632px;
-  left: 41px;
+  left: 54px;
   width: 308px;
   display: flex;
   padding: 16px 20px;
@@ -46,7 +65,7 @@
 
 .login-text-medium {
   top: 440px;
-  left: 16px;
+  left: 28px;
   width: 139px;
   display: flex;
   overflow: hidden;
@@ -55,6 +74,8 @@
   flex-shrink: 0;
   border-color: transparent;
   justify-content: center;
+  color: #000000;
+  margin-top: 20px;
 }
 
 .login-text02 {
@@ -66,6 +87,7 @@
   line-height: 20px;
   margin-right: 0;
   margin-bottom: 0;
+  
 }
 
 .login-text-large {
@@ -89,12 +111,13 @@
   text-align: left;
   line-height: 36px;
   margin-right: 0;
-  margin-bottom: 0;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .login-button1 {
   top: 714px;
-  left: 41px;
+  left: 54px;
   width: 308px;
   display: flex;
   padding: 16px 20px;
@@ -133,7 +156,7 @@
 
 .login-frame4 {
   top: 284px;
-  left: 16px;
+  left: 28px;
   width: 358px;
   height: 56px;
   display: flex;
@@ -141,6 +164,8 @@
   align-items: flex-start;
   flex-shrink: 0;
   border-color: transparent;
+  color: #000000;
+  margin-top: 30px;
 }
 
 .login-rectangle1 {
@@ -177,7 +202,7 @@
 
 .login-frame3 {
   top: 374px;
-  left: 16px;
+  left: 28px;
   width: 358px;
   height: 56px;
   display: flex;
@@ -185,6 +210,8 @@
   align-items: flex-start;
   flex-shrink: 0;
   border-color: transparent;
+  color: #000000;
+  margin-top: 20px;
 }
 
 .login-rectangle2 {
@@ -207,4 +234,11 @@
   margin-bottom: 0;
   white-space: nowrap;
   width: 308px;
+}
+
+.back-icon {
+  font-size: 20px;
+  position: absolute;
+  top:10px;
+  left:16px;
 }

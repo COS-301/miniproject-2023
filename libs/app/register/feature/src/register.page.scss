@@ -2,19 +2,42 @@
   min-height: 100vh;
 }
 
-.createaccount-createaccount {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  overflow: hidden;
-  position: relative;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  align-items: flex-start;
-  flex-shrink: 0;
-  border-color: transparent;
-  border-radius: 40px;
-  padding-top: 32px;
-  background-image: linear-gradient(180deg, rgba(252, 163, 17, 1) 24%, rgba(255, 255, 255, 1) 100%);
+
+
+
+
+@media (prefers-color-scheme: light) {
+  .createaccount-createaccount {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    align-items: flex-start;
+    flex-shrink: 0;
+    border-color: transparent;
+    // border-radius: 40px;
+    padding-top: 32px;
+    background-image: linear-gradient(180deg, rgba(252, 163, 17, 1) 24%, #ffffff 100%);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .createaccount-createaccount {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    align-items: flex-start;
+    flex-shrink: 0;
+    border-color: transparent;
+    // border-radius: 40px;
+    padding-top: 32px;
+    background-image: linear-gradient(180deg, rgba(252, 163, 17, 1) 24%, #1a181e 100%);
+  }
 }
 
 #create-account-button {
@@ -103,8 +126,8 @@
 
 .timehive-logo {
   left: 135px;
-  width: 120px;
-  height: 120px;
+  width: 170px;
+  height: 170px;
   border-color: transparent;
   border-radius: 50%;
   text-align: center;
@@ -320,7 +343,12 @@ logo_heading {
   position: relative;
   align-items: flex-start;
   flex-shrink: 0;
-  border-radius: 40px;
-  padding-top: 32px;
-  background-image: linear-gradient(180deg, rgba(252, 163, 17, 1) 24%, rgba(255, 255, 255, 1) 100%);
+
+}
+
+.back-icon {
+  font-size: 20px;
+  position: absolute;
+  top:10px;
+  left:16px;
 }
