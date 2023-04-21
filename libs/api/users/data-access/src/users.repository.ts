@@ -5,7 +5,6 @@ import * as admin from 'firebase-admin';
 @Injectable()
 export class UsersRepository {
   async createUser(user: IUser) {
-    console.log(user);
     return await admin.firestore().collection('users').doc().create(user);
   }
 
@@ -27,7 +26,7 @@ export class UsersRepository {
     return await admin
       .firestore()
       .collection('users')
-      .where("username", "==", username)
+      .where('username', '==', username)
       .withConverter<IUser>({
         fromFirestore: (snapshot) => {
           return snapshot.data() as IUser;
