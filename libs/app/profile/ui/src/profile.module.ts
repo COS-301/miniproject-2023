@@ -7,7 +7,7 @@ import { AccountDetailsModule } from './account-details';
 //import { OccupationDetailsModule } from './occupation-details';
 //import { PersonalDetailsModule } from './personal-details';
 import { PostDetailsModule } from './post-details';
-import { ProfileStatusModule } from './profile-status';
+// import { ProfileStatusModule } from './profile-status';
 import { ProfilePostsModule } from './profile-posts';
 import { TimeBadgeModule } from './time-badge';
 
@@ -21,7 +21,7 @@ import { TimeBadgeModule } from './time-badge';
     //OccupationDetailsModule,
     //PersonalDetailsModule,
     PostDetailsModule,
-    ProfileStatusModule,
+    // ProfileStatusModule,
     ProfilePostsModule,
     TimeBadgeModule
   ],
@@ -31,7 +31,7 @@ import { TimeBadgeModule } from './time-badge';
     //ContactDetailsModule,
     //OccupationDetailsModule,
     //PersonalDetailsModule,
-    ProfileStatusModule,
+    // ProfileStatusModule,
     PostDetailsModule,
     ProfilePostsModule,
     TimeBadgeModule
