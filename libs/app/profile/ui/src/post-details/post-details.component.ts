@@ -36,7 +36,7 @@ export class PostDetailsComponent {
   // }
   uploadImage(event: any) {
     console.log("Image Uploaded");
-alert("Change is called");
+    alert("Change is called");
     const file: File | null = event.target.files?.[0];
     if (!file) {
       return;
@@ -53,7 +53,7 @@ alert("Change is called");
     };
 
     this.selectedFile = event.target.files[0];
-alert(this.selectedFile);
+    alert(this.selectedFile);
   }
 
 
@@ -203,6 +203,19 @@ alert(this.selectedFile);
 
   setHashtag(hashtag: string) {
     this.postDetailsForm?.get('hashtag')?.setValue(hashtag);
+  }
+
+  changeForSale() {
+    // If the toggle is set to true, then make the component with id priceGrid visible, otherwise hide it
+    const priceGrid: HTMLElement = document.getElementById('priceGrid') as HTMLElement;
+    const toggle: HTMLIonToggleElement = document.getElementById('toggleSale') as HTMLIonToggleElement;
+    console.log(toggle.checked);
+    if (!toggle.checked) {
+      priceGrid.style.display = 'block';
+    }
+    else {
+      priceGrid.style.display = 'none';
+    }
   }
 
 
