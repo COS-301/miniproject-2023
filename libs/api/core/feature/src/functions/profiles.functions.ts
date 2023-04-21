@@ -135,15 +135,23 @@ export const createPostDetails = functions.https.onCall(
 
 export const createNewComment = functions.https.onCall(async (data: ICommentOnPostRequest, context) => {
   console.log("Hello")
+
   try {
-      const { userId, postId, comment } = data.comment;
-    const profileRef = admin.firestore().collection('profiles').doc(userId);
+
+    const { userId, postId, comment } = data.comment;
+    const createrId= data.userId
+    if (typeof createrId !== 'string' || createrId.trim() === '') {
+      throw new functions.https.HttpsError('invalid-argument', 'Invalid user ID');
+    }
+
+    const profileRef = admin.firestore().collection('profiles').doc(createrId);
     
-  
     const profileDoc = await profileRef.get();
+
     if (!profileDoc) {
       throw new functions.https.HttpsError('not-found', 'profileref');
     }
+
     const profileData = profileDoc.data() as IProfile;
 
     if (!profileData) {
@@ -155,42 +163,53 @@ export const createNewComment = functions.https.onCall(async (data: ICommentOnPo
     }
 
     const postRef = profileRef.collection('posts').doc(postId);
-    const postDoc = await postRef.get();
-    const postDetails = postDoc.data() as IPostDetails;
+const postDoc = await postRef.get();
 
-    if (!postDetails) {
-      throw new functions.https.HttpsError('not-found', 'Post not found');
-    }
+if (!postDoc.exists) {
+  throw new functions.https.HttpsError('not-found', 'Post not found');
+}
 
-    if (!postDetails.comments) {
-      postDetails.comments = [];
-    }
 
-    const newComment: IComment = {
-      userId: userId,
-      postId: postId,
-      comment: comment,
-    }
 
-    postDetails.comments.push(newComment);
-
-    if (!profileData.posts) {
-      profileData.posts = [];
-      throw new functions.https.HttpsError('not-found', 'There are no posts');
-    }
-
-    const index = profileData.posts.findIndex((post) => post.postID === postDetails.postID);
-    if (index !== -1) {
-      profileData.posts.splice(index, 1, postDetails);
-      await profileRef.set(profileData, { merge: true });
-    }
-
-    return newComment;
-  } catch (error) {
-    console.error(error);
-    throw new functions.https.HttpsError('internal', 'Error adding comment');
+  const postDetails = postDoc.data() as IPostDetails;
+  console.log("Hererererere: ", JSON.stringify(postDetails))
+  if (!postDetails.comments) {
+    postDetails.comments = [];
+    console.log("TTTTTTRRRRRRUUUUUUEEEEEEEEEE")
   }
-});
+
+  const newComment: IComment = {
+    userId: userId,
+    postId: postId,
+    comment: comment,
+  }
+
+  postDetails.comments.push(newComment);
+
+  postRef.update({comments : postDetails.comments});
+
+  if (!profileData.posts || profileData.posts.length === 0) {
+    throw new functions.https.HttpsError('not-found', 'There are no posts');
+  }
+
+  const index = profileData.posts.findIndex((post) => post.postID === postDetails.postID);
+  if (index !== -1) {
+    console.log("Post found: index: ", index)
+
+    profileData.posts.splice(index, 1, postDetails);
+    await profileRef.update({ posts: profileData.posts });
+  }
+  else {
+    console.log("Post NOT found: index: ", index)
+  }
+
+  console.log("comment: ", newComment);
+      return newComment;
+    } catch (error) { 
+      console.error(error);
+      throw new functions.https.HttpsError('internal', 'Error adding comment');
+    }
+  });
 
 
 export const updateAddressDetails = functions.https.onCall(

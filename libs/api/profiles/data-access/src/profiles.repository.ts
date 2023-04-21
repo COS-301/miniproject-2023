@@ -53,23 +53,25 @@ export class ProfilesRepository {
       throw new Error('Profile not found');
     }
 
+    
+    const postID = post.postID ? post.postID : '';
     // Add the post to the profile's posts array
     const postRef = await admin
     .firestore()
     .collection('profiles')
     .doc(profile.userId)
     .collection('posts')
-    .add(post);
-    
-    // Get the generated post ID and add it to the post object
-    post.postID = postRef.id;
+    .doc(postID)
+    .set(post);
 
+  
     // Update the profile's posts array
     if (!profileData.posts) {
       profileData.posts = [];
     }
     profileData.posts.push(post);
-
+    this.updateProfile(profileData);
+    
     return profileData;
   }
 

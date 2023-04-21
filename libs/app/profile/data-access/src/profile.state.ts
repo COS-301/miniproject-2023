@@ -481,7 +481,7 @@ export class ProfileState {
       const caption = state.postDetailsForm.model.caption;
       const hashtag = state.postDetailsForm.model.hashtag;
       const ownedBy = state.profile?.userId; // We can use 'createdBy' from the action payload
-      const postID = state.profile?.accountDetails?.displayName?.split("@")[0] + "-" + state.profile?.posts?.length;
+      const postID = state.profile?.accountDetails?.displayName?.split("@")[0] + "-" + state.profile?.posts?.length; // the post id must be a document id
       const likes = state.postDetailsForm.model.likes;
       const createdAt = Timestamp.now();
 
@@ -511,7 +511,7 @@ export class ProfileState {
 
       };
       const responseRef = await this.profileApi.addPostDetails(request);
-      console.log("API returned " + responseRef.data);
+      console.log("API returned ", JSON.stringify(responseRef.data));
       const response = responseRef.data;
       return ctx.setState(
         produce((draft) => {
@@ -600,19 +600,23 @@ console.log(uId);
   }
 
   @Action(CreateNewComment)
-  async createNewComment(ctx: StateContext<CommentStateModel>, action: IComment) {
+  async createNewComment(ctx: StateContext<CommentStateModel>, action: ICommentOnPostRequest) {
 
-  const postId = action.postId;
-  const comment = action.comment;
-  const userId = action?.userId
+  const createrID = action.comment.userId
+  const actionComment =  action.comment.comment
+  const stringActionComment = JSON.stringify(actionComment); 
+  const comment = JSON.parse(stringActionComment)
 
+  
+  
   const commentDetails: IComment = {
-    userId,
-    postId,
-    comment
+    userId: comment.userId,
+    postId: comment.postId,
+    comment: comment.comment
   };
 
   const newComment: ICommentOnPostRequest = {
+    userId: createrID,
     comment: commentDetails
   };
 
@@ -622,9 +626,10 @@ console.log(uId);
     );
   }
   const responseRef = await this.profileApi.CreateNewComment(newComment);
-  const response = responseRef.data
-    if(response.comment) {
-      return ctx.dispatch(new SetComment(response.comment));
+  console.log('results: ', responseRef)
+  // const response = responseRef.data
+    if(commentDetails) {
+      return ctx.dispatch(new SetComment(commentDetails));
     }
     else {
       return ctx.dispatch(new SetError("Error: Underfined"));

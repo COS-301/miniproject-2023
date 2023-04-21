@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute  } from '@angular/router';
-import { IComment, ICommentOnPostRequest } from '@mp/api/profiles/util';
+import { IComment, ICommentOnPostRequest, IPostDetails, IProfile } from '@mp/api/profiles/util';
 import { CreateNewComment } from '@mp/app/profile/util';
-import { Store } from '@ngxs/store'
+import { Store, Select } from '@ngxs/store'
+import { ProfileState } from '@mp/app/profile/data-access';;
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'mp-comment',
@@ -12,7 +14,14 @@ import { Store } from '@ngxs/store'
 export class CommentPage implements OnInit {
   postIdValue!: string;
   userIdValue!: string;
-  constructor(private router: Router, private store: Store, private activatedRoute: ActivatedRoute ) { }
+  commentText!: string;
+  userName!: string | null | undefined
+  createrId!: string | null | undefined; 
+  time = new Date();
+  comments: IComment[] | null | undefined = []
+  @Select(ProfileState.userPosts) userPosts$: Observable<IPostDetails[]> | undefined;
+  @Select(ProfileState.profile) profile$!: Observable<IProfile | null>;
+  constructor(private router: Router, private store: Store, private activatedRoute: ActivatedRoute ) {}
 
 
   ngOnInit() {
@@ -22,8 +31,19 @@ export class CommentPage implements OnInit {
       
       const userIdvalue = queryParams.get('userValueId');
       this.userIdValue = userIdvalue !== null ? userIdvalue : '';
+
+      this.userPosts$?.subscribe( (posts) => {
+        const post = posts.find(p => p.postID === this.postIdValue);
+        this.comments = post?.comments;
+        this.createrId = post?.createdBy;
+      })
+
+      console.log(JSON.stringify(this.comments))
+
+      this.profile$.subscribe((profile) => {
+        this.userName = profile?.accountDetails?.displayName
+      })
       
-     
     });
   }
 
@@ -38,26 +58,16 @@ export class CommentPage implements OnInit {
 
 
   send(){
-    // alert(this.commentValue) used this for testing purposes
-    //Todo: send comment to database
-    this.clear();
-    console.log("sent comment!");
-    /*ToDo:
-    1.  Dispatch the comment state
-    2. Ensure the dispacth; routing and stuff
-    */
-
-    const commentArea = document.getElementById("textBox") as HTMLTextAreaElement;
-    commentArea.value;
 
     const NewComment: IComment = {
-      comment: commentArea.value,
+      comment: this.commentText,
       postId: this.postIdValue,
       userId: this.userIdValue
     }
 
     const commentDetails: ICommentOnPostRequest = {
-        comment: NewComment
+        userId: this.createrId,
+        comment: NewComment,
     }
 
     this.store.dispatch( new CreateNewComment(commentDetails) )

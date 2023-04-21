@@ -101,38 +101,6 @@ getUserPostsByHashtag$(hashtag: string): Observable<IPostDetails[]> {
 }
 
 
-  // profile$(id: string) {
-  //   const profileDocRef = doc(
-  //     this.firestore,
-  //     `profiles/${id}`
-  //   ).withConverter<IProfile>({
-  //     fromFirestore: (snapshot) => {
-  //       return snapshot.data() as IProfile;
-  //     },
-  //     toFirestore: (it: IProfile) => it,
-  //   });
-
-  //   const postsCollectionRef = collection(
-  //     this.firestore,
-  //     `profiles/${id}/posts`
-  //   ).withConverter<IPostDetails>({
-  //     fromFirestore: (snapshot) => {
-  //       return snapshot.data() as IPostDetails;
-  //     },
-  //     toFirestore: (it: IPostDetails) => it,
-  //   });
-
-  //   return combineLatest([
-  //     docData(profileDocRef, { idField: 'id' }),
-  //     collectionData(postsCollectionRef, { idField: 'id' }),
-  //   ]).pipe(
-  //     map(([profile, posts]) => {
-  //       return { ...profile, posts } as IProfile;
-  //     })
-  //   );
-
-  // }
-
 
   async updateAccountDetails(request: IUpdateAccountDetailsRequest) {
     return await httpsCallable<

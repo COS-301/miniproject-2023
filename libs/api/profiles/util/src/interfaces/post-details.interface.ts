@@ -17,4 +17,5 @@ export interface IPostDetails {
    ownerGainedTime?: number | null | undefined;
    listing? : number | null | undefined;
    sold?: boolean | null | undefined;
+   uniqueID?: string | null | undefined;
 }

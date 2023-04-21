@@ -39,7 +39,7 @@ console.log("here");
   }
   async createNewPost() {
     console.log("Trying to create");
-    if (this.postDetailsForm.invalid || !this.selectedFile) {
+    if (!this.selectedFile) {
       console.log("Invalid");
       return;
     }
