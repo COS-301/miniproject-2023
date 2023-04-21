@@ -9,22 +9,185 @@
 
 <ion-content>
 
-    <h2 class="comment-heading">Comments</h2>
-    <div class="comment-wrapper" *ngFor="let comment of comments">
-
+    <div class="commentWrapper">
         <ion-grid>
             <ion-row>
-                <ion-avatar class="picture-wrapper" name="avatar">
+                <ion-avatar class="pictureWrapper" name="avatar">
                     <img class="picture" alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
                 </ion-avatar>
-                <ion-label class="username" for="avatar">@{{ userName }}</ion-label>
+                <ion-label class="username" for="avatar">@username</ion-label>
             </ion-row>
-            <ion-row class="comment-row">
-                <ion-textarea class="comment-text" [readonly]="true">{{ comment.comment }}</ion-textarea>
+            <ion-row>
+                <ion-textarea class="commentText" [readonly]="true" placeholder="Wow what an amazing post I hope you find great success in your lapse carreer!"></ion-textarea>
+            </ion-row>
+            <ion-row style="justify-content: flex-end;">
+                <ion-icon color="tertiary" (click)="like($event)" name="thumbs-up"></ion-icon>
+                <ion-label for="thumbs-up">90</ion-label>
             </ion-row>
         </ion-grid>
     </div>
 
+    <div class="commentWrapper2">
+        <ion-grid>
+            <ion-row>
+                <ion-avatar class="pictureWrapper" name="avatar">
+                    <img class="picture" alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                </ion-avatar>
+                <ion-label class="username" for="avatar">@username</ion-label>
+            </ion-row>
+            <ion-row>
+                <ion-textarea class="commentText" [readonly]="true" placeholder="Wow what an amazing post I hope you find great success in your lapse carreer!"></ion-textarea>
+            </ion-row>
+            <ion-row style="justify-content: flex-end;">
+                <ion-icon color="tertiary" (click)="like($event)" name="thumbs-up"></ion-icon>
+                <ion-label class="username" for="thumbs-up">90</ion-label>
+            </ion-row>
+        </ion-grid>
+    </div>
+
+    <div class="commentWrapper">
+        <ion-grid>
+            <ion-row>
+                <ion-avatar class="pictureWrapper" name="avatar">
+                    <img class="picture" alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                </ion-avatar>
+                <ion-label class="username" for="avatar">@username</ion-label>
+            </ion-row>
+            <ion-row>
+                <ion-textarea class="commentText" [readonly]="true" placeholder="Wow what an amazing post I hope you find great success in your lapse carreer!"></ion-textarea>
+            </ion-row>
+            <ion-row style="justify-content: flex-end;">
+                <ion-icon color="tertiary" (click)="like($event)" name="thumbs-up"></ion-icon>
+                <ion-label for="thumbs-up">90</ion-label>
+            </ion-row>
+        </ion-grid>
+    </div>
+
+    <div class="commentWrapper2">
+        <ion-grid>
+            <ion-row>
+                <ion-avatar class="pictureWrapper" name="avatar">
+                    <img class="picture" alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                </ion-avatar>
+                <ion-label class="username" for="avatar">@username</ion-label>
+            </ion-row>
+            <ion-row>
+                <ion-textarea class="commentText" [readonly]="true" placeholder="Wow what an amazing post I hope you find great success in your lapse carreer!"></ion-textarea>
+            </ion-row>
+            <ion-row style="justify-content: flex-end;">
+                <ion-icon color="tertiary" (click)="like($event)" name="thumbs-up"></ion-icon>
+                <ion-label class="username" for="thumbs-up">90</ion-label>
+            </ion-row>
+        </ion-grid>
+    </div>
+
+    <div class="commentWrapper">
+        <ion-grid>
+            <ion-row>
+                <ion-avatar class="pictureWrapper" name="avatar">
+                    <img class="picture" alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                </ion-avatar>
+                <ion-label class="username" for="avatar">@username</ion-label>
+            </ion-row>
+            <ion-row>
+                <ion-textarea class="commentText" [readonly]="true" placeholder="Wow what an amazing post I hope you find great success in your lapse carreer!"></ion-textarea>
+            </ion-row>
+            <ion-row style="justify-content: flex-end;">
+                <ion-icon color="tertiary" (click)="like($event)" name="thumbs-up"></ion-icon>
+                <ion-label for="thumbs-up">90</ion-label>
+            </ion-row>
+        </ion-grid>
+    </div>
+
+    <div class="commentWrapper2">
+        <ion-grid>
+            <ion-row>
+                <ion-avatar class="pictureWrapper" name="avatar">
+                    <img class="picture" alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                </ion-avatar>
+                <ion-label class="username" for="avatar">@username</ion-label>
+            </ion-row>
+            <ion-row>
+                <ion-textarea class="commentText" [readonly]="true" placeholder="Wow what an amazing post I hope you find great success in your lapse carreer!"></ion-textarea>
+            </ion-row>
+            <ion-row style="justify-content: flex-end;">
+                <ion-icon color="tertiary" (click)="like($event)" name="thumbs-up"></ion-icon>
+                <ion-label class="username" for="thumbs-up">90</ion-label>
+            </ion-row>
+        </ion-grid>
+    </div>
+
+    <div class="commentWrapper">
+        <ion-grid>
+            <ion-row>
+                <ion-avatar class="pictureWrapper" name="avatar">
+                    <img class="picture" alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                </ion-avatar>
+                <ion-label class="username" for="avatar">@username</ion-label>
+            </ion-row>
+            <ion-row>
+                <ion-textarea class="commentText" [readonly]="true" placeholder="Wow what an amazing post I hope you find great success in your lapse carreer!"></ion-textarea>
+            </ion-row>
+            <ion-row style="justify-content: flex-end;">
+                <ion-icon color="tertiary" (click)="like($event)" name="thumbs-up"></ion-icon>
+                <ion-label for="thumbs-up">90</ion-label>
+            </ion-row>
+        </ion-grid>
+    </div>
+
+    <div class="commentWrapper2">
+        <ion-grid>
+            <ion-row>
+                <ion-avatar class="pictureWrapper" name="avatar">
+                    <img class="picture" alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                </ion-avatar>
+                <ion-label class="username" for="avatar">@username</ion-label>
+            </ion-row>
+            <ion-row>
+                <ion-textarea class="commentText" [readonly]="true" placeholder="Wow what an amazing post I hope you find great success in your lapse carreer!"></ion-textarea>
+            </ion-row>
+            <ion-row style="justify-content: flex-end;">
+                <ion-icon color="tertiary" (click)="like($event)" name="thumbs-up"></ion-icon>
+                <ion-label class="username" for="thumbs-up">90</ion-label>
+            </ion-row>
+        </ion-grid>
+    </div>
+
+    <div class="commentWrapper">
+        <ion-grid>
+            <ion-row>
+                <ion-avatar class="pictureWrapper" name="avatar">
+                    <img class="picture" alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                </ion-avatar>
+                <ion-label class="username" for="avatar">@username</ion-label>
+            </ion-row>
+            <ion-row>
+                <ion-textarea class="commentText" [readonly]="true" placeholder="Wow what an amazing post I hope you find great success in your lapse carreer!"></ion-textarea>
+            </ion-row>
+            <ion-row style="justify-content: flex-end;">
+                <ion-icon color="tertiary" (click)="like($event)" name="thumbs-up"></ion-icon>
+                <ion-label for="thumbs-up">90</ion-label>
+            </ion-row>
+        </ion-grid>
+    </div>
+
+    <div class="commentWrapper2">
+        <ion-grid>
+            <ion-row>
+                <ion-avatar class="pictureWrapper" name="avatar">
+                    <img class="picture" alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                </ion-avatar>
+                <ion-label class="username" for="avatar">@username</ion-label>
+            </ion-row>
+            <ion-row>
+                <ion-textarea class="commentText" [readonly]="true" placeholder="Wow what an amazing post I hope you find great success in your lapse carreer!"></ion-textarea>
+            </ion-row>
+            <ion-row style="justify-content: flex-end;">
+                <ion-icon color="tertiary" (click)="like($event)" name="thumbs-up"></ion-icon>
+                <ion-label class="username" for="thumbs-up">90</ion-label>
+            </ion-row>
+        </ion-grid>
+    </div>
 
 </ion-content>
 

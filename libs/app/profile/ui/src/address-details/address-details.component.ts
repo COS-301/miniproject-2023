@@ -10,12 +10,12 @@ import {
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 
-@Component({
+/*@Component({
   selector: 'ms-profile-address-details-component',
   templateUrl: './address-details.component.html',
   styleUrls: ['./address-details.component.scss'],
 })
-export class AddressDetailsComponent {
+/*export class AddressDetailsComponent {
   @Select(ProfileState.profile) profile$!: Observable<IProfile | null>;
   @Select(actionsExecuting([UpdateAddressDetails]))
   busy$!: Observable<ActionsExecuting>;
@@ -62,4 +62,4 @@ export class AddressDetailsComponent {
   updateAddressDetails() {
     this.store.dispatch(new UpdateAddressDetails());
   }
-}
+}*/

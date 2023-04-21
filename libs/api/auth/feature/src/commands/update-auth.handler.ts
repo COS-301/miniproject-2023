@@ -16,7 +16,7 @@ export class UpdateAuthHandler implements ICommandHandler<UpdateAuthCommand> {
       email: request.auth.email,
       displayName: request.auth.displayName,
       photoURL: request.auth.photoURL,
-      phoneNumber: request.auth.phoneNumber,
+      //phoneNumber: request.auth.phoneNumber,
       password: request.auth.password,
       created: Timestamp.fromDate(new Date()),
     };

@@ -21,22 +21,24 @@ export class CreateProfileHandler
     const displayName = request.user.email?.split("@")[0];
     const email = request.user.email;
     const photoURL = request.user.photoURL;
-    const cellphone = request.user.phoneNumber;
+    //const cellphone = request.user.phoneNumber;
+    const time=100;
 
     const data: IProfile = {
       userId,
+      time,
       accountDetails: {
         displayName,
         email,
         photoURL,
-        status: ProfileStatus.INCOMPLETE,
+        //status: ProfileStatus.INCOMPLETE,
       },
-      personalDetails: {
+      /*personalDetails: {
         age: null,
         gender: null,
         ethnicity: null,
         status: ProfileStatus.INCOMPLETE,
-      },
+      },*/
       posts:[ {
         postID: userId,
         createdBy: userId,
@@ -51,20 +53,20 @@ export class CreateProfileHandler
         ownerGainedTime: null,
         listing: null,
       }],
-      contactDetails: {
-        cellphone,
+      /*contactDetails: {
+        //cellphone,
         status: ProfileStatus.INCOMPLETE,
-      },
-      addressDetails: {
+      },*/
+      /*addressDetails: {
         residentialArea: null,
         workArea: null,
         status: ProfileStatus.INCOMPLETE,
-      },
-      occupationDetails: {
+      },*/
+      /*occupationDetails: {
         householdIncome: null,
         occupation: null,
         status: ProfileStatus.INCOMPLETE,
-      },
+      },*/
       status: ProfileStatus.INCOMPLETE,
       created: Timestamp.fromDate(new Date()),
     };

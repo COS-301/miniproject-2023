@@ -59,27 +59,31 @@
   .categoryWrapper{
     box-shadow: 0 3px 2px 1px #eeeeee;
   }
+
+  .submitSearch{
+    font-size:25px;
+  }
   
   .nature{
-    --background:rgb(150,81,255);
+    --background:var(--nature);
   }
   
   .funny{
-    --background:rgb(177,45,45);
+    --background:var(--funny);
   }
   
   .opinion{
-    --background:rgb(184,219,99);
+    --background:var(--opinion);
   }
   
   .sports{
-    --background:rgb(50,0,219);
+    --background:var(--sports);
   }
   
   .music{
-    --background:rgb(228,137,60);
+    --background:var(--music);
   }
   
   .food{
-    --background:rgb(210,81,255);
+    --background:var(--food);
   }

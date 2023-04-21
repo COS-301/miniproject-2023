@@ -96,14 +96,13 @@
 
 
 
- <ion-content class="login" color="primary">
+<ion-content class="login" color="primary">
   <div
     style="
-      height: 100%;
+      height: 90vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: fixed;
       bottom: 5%;
       border-radius: 25%;
     "
@@ -177,7 +176,7 @@
           <ion-input type="password" placeholder="password"></ion-input>
         </ion-item> -->
 
-        <ion-toolbar color="secondary">
+        <!-- <ion-toolbar color="secondary">
           <ion-checkbox class = "checkbx"
             slot="start"
             size="small"
@@ -194,11 +193,9 @@
             >Forgot Password</ion-label
           >
          </ion-nav-link> 
-        </ion-toolbar>
+        </ion-toolbar> -->
 
-        <br />
-
-       
+        <!-- <br /> -->
       </ion-card-content>
     </ion-card>
     <br>
@@ -206,11 +203,13 @@
   
   </div>
  
-  <ion-header class="ion-no-border">
+  <!-- <ion-header class="ion-no-border"> -->
 
    
       <ion-toolbar class = "lapse" color = "rgba(15,15,15,0)" > 
+        <ion-nav-link [routerLink]="['/about']">
         <ion-button class = "lapsebtn" shape="round" > What is Lapse?</ion-button>
+      </ion-nav-link>
       </ion-toolbar>
     
   
@@ -225,7 +224,7 @@
           
         <!-- </ion-toolbar> -->
       
-</ion-header>
+<!-- </ion-header> -->
    
   
    <br>

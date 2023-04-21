@@ -57,6 +57,7 @@
         "libs/app/dashboard/data-access/src/index.ts"
       ],
       "@mp/app/dashboard/feature": ["libs/app/dashboard/feature/src/index.ts"],
+      "@mp/app/about/feature": ["libs/app/about/feature/src/index.ts"],
       "@mp/app/dashboard/util": ["libs/app/dashboard/util/src/index.ts"],
       "@mp/app/errors/data-access": [
         "libs/app/errors/data-access/src/index.ts"

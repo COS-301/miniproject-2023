@@ -5,12 +5,13 @@ import { IProfile, IPostDetails, stringToHashtag } from '@mp/api/profiles/util';
 import { ProfileState } from '@mp/app/profile/data-access';
 import { AddPost, CreatePostDetails, CreateNewPost } from '@mp/app/profile/util';
 import {
-    ActionsExecuting,
-    actionsExecuting
+  ActionsExecuting,
+  actionsExecuting
 } from '@ngxs-labs/actions-executing';
 import { Select, Store } from '@ngxs/store';
 import { UploadTaskSnapshot, ref } from 'firebase/storage';
 import { Observable, filter, finalize, tap } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ms-profile-post-details-component',
@@ -28,15 +29,34 @@ export class PostDetailsComponent {
     listing: [0]
   });
   showPassword = false;
-  selectedFile: File | null = null;
+  selectedFile!: File | null;
   // get content() {
   //   console.debug(this.postDetailsForm.get('content')?.value?.split(",")[1].slice(0,10));
   //   return this.postDetailsForm.get('content');
   // }
   uploadImage(event: any) {
-console.log("here");
+    console.log("Image Uploaded");
+    alert("Change is called");
+    const file: File | null = event.target.files?.[0];
+    if (!file) {
+      return;
+    }
+    const blob: Blob = new Blob([file], { type: file.type });
+    const formData: FormData = new FormData();
+    formData.append('image', blob, file.name);
+
+    const reader: FileReader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      const img: HTMLImageElement = document.getElementById('postImage') as HTMLImageElement;
+      img.src = reader.result as string;
+    };
+
     this.selectedFile = event.target.files[0];
+    alert(this.selectedFile);
   }
+
+
   async createNewPost() {
     console.log("Trying to create");
     if (!this.selectedFile) {
@@ -46,7 +66,7 @@ console.log("here");
 
     try {
       const url = await this.uploadImageAndReturnUrl(this.selectedFile);
-console.debug("CreateComponent"+url);
+      console.debug("CreateComponent" + url);
       const postDetails: IPostDetails = {
         content: url,
         caption: this.postDetailsForm.get('caption')?.value,
@@ -54,10 +74,27 @@ console.debug("CreateComponent"+url);
         listing: this.postDetailsForm.get('listing')?.value
       };
       this.store.dispatch(new CreateNewPost(postDetails));
+      this.clearForm();
+      this.router.navigate(["/profile"]);
     } catch (error) {
       console.error('Error uploading image:', error);
     }
   }
+
+  clearForm() {
+    const img: HTMLImageElement = document.getElementById('postImage') as HTMLImageElement;
+    const captionInput: HTMLIonTextareaElement = document.getElementById('captionInput') as HTMLIonTextareaElement;
+    const toggle: HTMLIonToggleElement = document.getElementById('toggleSale') as HTMLIonToggleElement;
+    const categoryInput: HTMLIonInputElement = document.getElementById('categoryInput') as HTMLIonInputElement;
+    const priceInput: HTMLIonInputElement = document.getElementById('numberInput') as HTMLIonInputElement;
+
+    img.src = "assets/icons/upload.png";
+    captionInput.value = "";
+    toggle.checked = false;
+    categoryInput.value = "";
+    priceInput.value = "";
+  }
+
   uploadImageAndReturnUrl(file: File): Promise<string> {
     const filePath = `posts/${new Date().getTime()}_${file.name}`;
     const fileRef = this.storage.ref(filePath);
@@ -161,10 +198,32 @@ console.debug("CreateComponent"+url);
       };
       reader.readAsDataURL(file);
     }
-  }
+  };
 
+  
   setHashtag(hashtag: string) {
+
+    const newHashtag: HTMLIonButtonElement = document.getElementById(hashtag.slice(1) + 'Button') as HTMLIonButtonElement;
+    const oldHashtag: HTMLIonButtonElement = document.getElementById( this.postDetailsForm?.get('hashtag')?.value?.slice(1) + 'Button') as HTMLIonButtonElement;
+
+    oldHashtag.style.filter = 'brightness(50%)';
+    newHashtag.style.filter = 'brightness(100%)';
+
     this.postDetailsForm?.get('hashtag')?.setValue(hashtag);
+  }
+  
+
+  changeForSale() {
+    // If the toggle is set to true, then make the component with id priceGrid visible, otherwise hide it
+    const priceGrid: HTMLElement = document.getElementById('priceGrid') as HTMLElement;
+    const toggle: HTMLIonToggleElement = document.getElementById('toggleSale') as HTMLIonToggleElement;
+    console.log(toggle.checked);
+    if (!toggle.checked) {
+      priceGrid.style.display = 'block';
+    }
+    else {
+      priceGrid.style.display = 'none';
+    }
   }
 
 
@@ -201,15 +260,16 @@ console.debug("CreateComponent"+url);
   constructor(
     private readonly fb: FormBuilder,
     private readonly store: Store,
-    private storage: AngularFireStorage
-  ) {}
+    private storage: AngularFireStorage,
+    private router: Router
+  ) { }
 
   createPostDetails() {
     console.log("here in component");
     this.store.dispatch(new CreatePostDetails());
   }
-  
-  setInsertionPoint(){
+
+  setInsertionPoint() {
     const x = document.getElementById("numberInput") as HTMLIonInputElement;
 
     x.setFocus();

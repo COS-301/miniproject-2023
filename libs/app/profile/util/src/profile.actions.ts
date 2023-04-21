@@ -13,6 +13,15 @@ export class FetchUserPosts {
   constructor(public displayName: string) {}
 }
 
+export class FetchPortfolioPosts {
+  static readonly type = '[Profile] Fetch User Posts';
+  constructor(public userId: string) {}
+}
+
+export class BuyPost{
+  static readonly type = '[Profile] BuyPost';
+  constructor(public postId: string) {}
+}
 export class GetAllPosts {
   static readonly type = '[Profile] Get All Posts';
   constructor(public userId: string) {}
@@ -20,6 +29,11 @@ export class GetAllPosts {
 
 export class GetUserPostsByHashtag {
   static readonly type = '[Profile] Get User Posts By Hashtag';
+  constructor(public hashtag: string) {}
+}
+
+export class getPortfolioPostsFromFunction {
+  static readonly type = '[Profile] get portfolio posts By ID';
   constructor(public hashtag: string) {}
 }
 

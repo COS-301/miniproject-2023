@@ -18,6 +18,11 @@ const routes: Routes = [
           import('@mp/app/profile/feature').then((m) => m.ProfileModule),
       },
       {
+        path: 'portfolio',
+        loadChildren: () =>
+          import('@mp/app/portfolio/feature').then((m) => m.PortfolioModule),
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: '/home/dashboard',

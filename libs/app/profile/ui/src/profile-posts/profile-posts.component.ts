@@ -9,6 +9,8 @@ import {
 } from '@ngxs-labs/actions-executing';
 import { Select, Store } from '@ngxs/store';
 import { Observable, map } from 'rxjs';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'ms-profile-posts-component',
@@ -19,7 +21,7 @@ export class ProfilePostsComponent {
 
 posts$: Observable<IPostDetails[] | null | undefined>;
 
-  constructor(private readonly fb: FormBuilder,private store: Store) {
+  constructor(private readonly fb: FormBuilder,private store: Store, private router: Router) {
     this.posts$ = this.store.select(ProfileState.profile).pipe(
       map(profile => profile?.posts)
     );
@@ -74,5 +76,14 @@ posts$: Observable<IPostDetails[] | null | undefined>;
 
   updateAccountDetails() {
     this.store.dispatch(new UpdateAccountDetails());
+  }
+  toNotificationsPage() {
+    this.router.navigate(["/notifications"]);
+  }
+  toSettingsPage() {
+    this.router.navigate(["/settings"]);
+  }
+  getSlicedHashtag(hashtag: string): string {
+    return hashtag.slice(1);
   }
 }

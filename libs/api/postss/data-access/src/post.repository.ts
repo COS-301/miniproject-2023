@@ -9,7 +9,7 @@ export class PostRepository {
       throw new Error('Method not implemented.');
   }
 
-  
+
   async findOne(post: IPost) {
     if(post.postID == ""){
       throw Error("No PostID");
@@ -72,7 +72,7 @@ export class PostRepository {
       .update({post : { likes: admin.firestore.FieldValue.increment(1)}});
 
   }
-  
+
   async updateComments(post: IPost) {
     return await admin
     .firestore()
@@ -108,38 +108,12 @@ export class PostRepository {
     });
     return { success: true };
   } catch (error) {
-    
+
     if(error instanceof Error)
     return { success: false, message: error.message };
     else {
       return { success: false, message: error };
     }
   }
-    }
-
-
-  
-  /*Examples from profile
-
-  async createProfile(profile: IPost) {
-    // Remove password field if present
-    // delete profile.accountDetails?.password;
-    return await admin
-      .firestore()
-      .collection('posts')
-      .doc(post.postID)
-      .create(post);
   }
-
-  /*
-  async updateProfile(profile: IPost) {
-    // Remove password field if present
-    delete profile.accountDetails?.password;
-    return await admin
-      .firestore()
-      .collection('profiles')
-      .doc(profile.userId)
-      .set(profile, { merge: true });
-  }
-  */
 }

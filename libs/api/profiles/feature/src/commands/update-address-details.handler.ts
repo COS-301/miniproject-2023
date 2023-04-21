@@ -29,10 +29,10 @@ export class UpdateAddressDetailsHandler
       Profile.fromData(profileData)
     );
 
-    if (!request.profile.addressDetails)
+    /*if (!request.profile.addressDetails)
       throw new Error('Profile address details not found');
     profile.updateAddressDetails(request.profile.addressDetails);
-    profile.commit();
+    profile.commit();*/
 
     const response: IUpdateAddressDetailsResponse = { profile };
     return response;

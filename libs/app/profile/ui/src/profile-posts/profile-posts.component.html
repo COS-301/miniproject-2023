@@ -1,62 +1,138 @@
-
 <br>
 <ng-container *ngIf="(profile$ | async) as profile;">
-<ion-content>
-<img class = "img1" src="assets/images/profilephoto.jpeg" alt="IMAGE" />
-<ion-grid >
-  <ion-row>
-    <ion-col ></ion-col>
-    <ion-col size = "4"style="text-align: center;"><ion-label style="color:black">{{profile?.accountDetails?.displayName}}</ion-label> </ion-col>
-    <ion-col></ion-col>
-  </ion-row>
-  <!-- <ion-row>
+  <ion-content>
+    <img class="img1" src="assets/images/profilephoto.jpeg" alt="IMAGE" />
+    <ion-grid>
+      <ion-row>
+        <ion-col></ion-col>
+        <ion-col size="4" style="text-align: center;"><ion-label
+            style="color:black">{{profile?.accountDetails?.displayName}}</ion-label> </ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+      <!-- <ion-row>
     <ion-col ></ion-col>
     <ion-col size = "6"style="text-align: center;"><ion-label style="color:black;font-size: small;" >123 Followers</ion-label> </ion-col>
     <ion-col></ion-col>
   </ion-row> -->
-</ion-grid>
-<form
-  [formGroup]="accountDetailsForm"
-  ngxsForm="profile.accountDetailsForm"
-  (submit)="updateAccountDetails()">
-<ion-list lines = "none">
-  <ion-item counter="true">
-    <ion-textarea [autoGrow]="true" maxlength="150" style =  "background-color: #ffffff; --padding-end: 10px; --padding-start: 10px; border:solid 1px rgb(53,107,89); border-radius: 25%; " formControlName="bio">
-    </ion-textarea>
-  </ion-item>
-  
-</ion-list>
-<ion-grid  >
-  <ion-row>
-    <ion-col size="3"></ion-col>
-    <ion-col ><ion-icon click="toNotificationsPage" name="mail-outline" color = "primary"></ion-icon></ion-col>
-    <ion-col > <ion-icon click="updateAccountDetails" name="create-outline" color = "primary"></ion-icon></ion-col>
-    <ion-col ><ion-icon click= "toSettingsPage" name="settings-outline" color = "primary" ></ion-icon></ion-col>
-    <ion-col size="3"></ion-col>
-  </ion-row> 
-</ion-grid>
-</form>
-<ion-grid >
-  <ion-row>
+    </ion-grid>
+    <form [formGroup]="accountDetailsForm" ngxsForm="profile.accountDetailsForm" (submit)="updateAccountDetails()">
+      <ion-list lines="none">
+        <ion-item counter="true">
+          <ion-textarea [autoGrow]="true" maxlength="150"
+            style="background-color: #ffffff; --padding-end: 10px; --padding-start: 10px; border:solid 1px rgb(53,107,89); border-radius: 25%; "
+            formControlName="bio">
+          </ion-textarea>
+        </ion-item>
 
-  </ion-row>
-</ion-grid>
-<!-- <ion-button
+      </ion-list>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="3"></ion-col>
+          <ion-col> <ion-icon (click)="updateAccountDetails()" name="create-outline"
+              color="primary"></ion-icon></ion-col>
+          <ion-col><ion-icon (click)="toSettingsPage()" name="settings-outline" color="primary"></ion-icon></ion-col>
+          <ion-col size="3"></ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+    <ion-grid>
+      <ion-row>
+
+      </ion-row>
+    </ion-grid>
+    <!-- <ion-button
         fill="clear"
         class="ion-float-left"
         type="button"
         (click)="logout()">
         Logout
       </ion-button> -->
-<ng-container *ngIf="posts$ | async as posts">
-  <div *ngFor="let post of posts" style="text-align: center;">
+    <ng-container *ngIf="posts$ | async as posts">
+
+      <div *ngFor="let post of posts" color=secondary>
+
+        <img class="postImage" alt="Post" [src]="post.content" />
+        <ion-toolbar color="secondary">
+          <ion-list lines="none">
+
+            <ion-grid>
+
+
+                <ion-row>
+                  <ion-col class="captionText" size="7.5">
+                    <ion-text lines="none"> {{ post.caption }}</ion-text>
+                  </ion-col>
+
+                  <ion-col size="4.5">
+                    <ion-row>
+                      <ion-col size="4">
+                        <ion-icon size="25px" color="primary" name="thumbs-up-outline"></ion-icon>
+                        <ion-text class="buttonText" lines="none"
+                          height="fit-content">0</ion-text><!-- {{post.likes}} goes here-->
+
+                      </ion-col>
+
+                      <ion-col size="4">
+                        <ion-icon size="25px" color="primary" name="chatbox-ellipses-outline"></ion-icon>
+                        <ion-text class="buttonText"
+                          lines="none">0</ion-text><!-- number of comments goes here or to be removed-->
+
+                      </ion-col>
+
+                      <ion-col size="4">
+                        <ion-icon size="25px" color="primary" name="cart-outline"></ion-icon>
+                        <ion-text *ngIf="post.listing; else notForSale" class="buttonText"
+                          lines="none">{{post.listing}}</ion-text>
+                        <ng-template #notForSale><ion-text class="buttonText"
+                            lines="none">not for sale</ion-text></ng-template>
+                      </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                      <ion-col>
+                        <ion-badge *ngIf="post.hashtag"
+                          style="--background: var(--{{ getSlicedHashtag(post.hashtag) }});">{{post.hashtag}}</ion-badge>
+                      </ion-col>
+                    </ion-row>
+
+                  </ion-col>
+                </ion-row>
+
+
+                <!-- <ion-col size = "2"> <ion-item  style="font-size: 15px;">  {{ post.hashtag }}</ion-item></ion-col>
+            <ion-col size = "2"><ion-item  style="font-size: 15px;"> {{ post.likes }} Likes</ion-item></ion-col>
+            <ion-col size = "2"><ion-item  style="font-size: 15px;"> Price: {{post.listing}}</ion-item></ion-col> -->
+            </ion-grid>
+          </ion-list>
+
+          <ion-buttons slot="end">
+
+            <!-- <ion-button expand="block" color="primary" (click)="like()">
+          <ion-icon name="thumbs-up-outline"></ion-icon>
+        </ion-button>
+
+        <ion-button expand="block" color="primary" (click)="comment()">
+          <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+        </ion-button>
+
+        <ion-button expand="block" color="primary" (click)="bid()">
+          <ion-icon name="cart-outline"></ion-icon>
+        </ion-button> -->
+
+          </ion-buttons>
+        </ion-toolbar>
+        <hr>
+      </div>
+
+      <!-- <div *ngFor="let post of posts" style="text-align: center;">
     <img [src]="post.content" alt="Post image" width="80%"   style="position:relative; border-radius: 25%;object-fit: cover;
     width: 300px;
     height: 300px;" />
     <p>{{ post.caption }}</p>
     <p>Hashtag: {{ post.hashtag }}</p>
     <p>Likes: {{ post.likes }}</p>
-  </div>
-</ng-container>
-</ion-content>
+    <p>Listing: {{post.listing}}</p>
+  </div> -->
+    </ng-container>
+  </ion-content>
 </ng-container>

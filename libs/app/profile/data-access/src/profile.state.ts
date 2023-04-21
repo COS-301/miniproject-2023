@@ -7,10 +7,10 @@ import {
   Hashtag,
   IProfile,
   IUpdateAccountDetailsRequest,
-  IUpdateAddressDetailsRequest,
-  IUpdateContactDetailsRequest,
-  IUpdateOccupationDetailsRequest,
-  IUpdatePersonalDetailsRequest,
+  //IUpdateAddressDetailsRequest,
+  //IUpdateContactDetailsRequest,
+  //IUpdateOccupationDetailsRequest,
+  //IUpdatePersonalDetailsRequest,
   ICreatePostRequest,
   IAddPostRequest,
   IPostDetails,
@@ -25,10 +25,10 @@ import {
   SetProfile,
   SubscribeToProfile,
   UpdateAccountDetails,
-  UpdateAddressDetails,
-  UpdateContactDetails,
-  UpdateOccupationDetails,
-  UpdatePersonalDetails,
+  //UpdateAddressDetails,
+  //UpdateContactDetails,
+  //UpdateOccupationDetails,
+  //UpdatePersonalDetails,
   CreatePostDetails,
   AddPost,
   CreateNewPost,
@@ -36,11 +36,13 @@ import {
   GetAllPosts,
   GetUserPostsByHashtag,
   SetComment,
-  CreateNewComment
+  CreateNewComment,
+  BuyPost,
+  FetchPortfolioPosts
 } from '@mp/app/profile/util';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import produce from 'immer';
-import { catchError, of, tap } from 'rxjs';
+import { catchError, of, tap, from } from 'rxjs';
 import { ProfilesApi } from './profiles.api';
 import { Timestamp } from '@angular/fire/firestore';
 import { CommentModule } from '@mp/app/comment/feature';
@@ -49,7 +51,9 @@ import { CommentModule } from '@mp/app/comment/feature';
 export interface ProfileStateModel {
   profile: IProfile | null;
   searchPosts: IPostDetails[];
-posts:IPostDetails[];
+  posts:IPostDetails[];
+  profilePosts:IPostDetails[];
+  time: number | null;
   accountDetailsForm: {
     model: {
       displayName: string | null;
@@ -59,10 +63,10 @@ posts:IPostDetails[];
       bio: string | null;
     };
     dirty: false;
-    status: string;
+    //status: string;
     errors: object;
   };
-  addressDetailsForm: {
+  /*addressDetailsForm: {
     model: {
       residentialArea: string | null;
       workArea: string | null;
@@ -70,16 +74,16 @@ posts:IPostDetails[];
     dirty: false;
     status: string;
     errors: object;
-  };
-  contactDetailsForm: {
+  };*/
+  /*contactDetailsForm: {
     model: {
       cellphone: string | null;
     };
     dirty: false;
     status: string;
     errors: object;
-  };
-  personalDetailsForm: {
+  };*/
+  /*personalDetailsForm: {
     model: {
       age: AgeGroup | null;
       gender: Gender | null;
@@ -88,7 +92,7 @@ posts:IPostDetails[];
     dirty: false;
     status: string;
     errors: object;
-  };
+  };*/
   postDetailsForm: {
     model: {
       postID: string | null | undefined;
@@ -108,7 +112,7 @@ posts:IPostDetails[];
     status: string;
     errors: object;
   };
-  occupationDetailsForm: {
+  /*occupationDetailsForm: {
     model: {
       householdIncome: HouseholdIncome | null;
       occupation: string | null;
@@ -116,7 +120,23 @@ posts:IPostDetails[];
     dirty: false;
     status: string;
     errors: object;
-  };
+  };*/
+}
+
+export interface CommentStateModel {
+
+  comment: IComment | null;
+  commentDetails :{
+    model: {
+      userId?: string | null,
+      postId?: string | null;
+      commentId?: string | null
+      comment: string | null;
+    };
+    dirty: false;
+    status: string;
+    errors: object;
+  }
 }
 
 export interface CommentStateModel {
@@ -140,7 +160,9 @@ export interface CommentStateModel {
   defaults: {
     profile: null,
     searchPosts: [],
+    profilePosts:[],
     posts:[],
+    time: 0,
     accountDetailsForm: {
       model: {
         displayName: null,
@@ -150,10 +172,10 @@ export interface CommentStateModel {
         bio: '',
       },
       dirty: false,
-      status: '',
+      //status: '',
       errors: {},
     },
-    addressDetailsForm: {
+    /*addressDetailsForm: {
       model: {
         residentialArea: null,
         workArea: null,
@@ -161,16 +183,16 @@ export interface CommentStateModel {
       dirty: false,
       status: '',
       errors: {},
-    },
-    contactDetailsForm: {
+    },*/
+    /*contactDetailsForm: {
       model: {
         cellphone: null,
       },
       dirty: false,
       status: '',
       errors: {},
-    },
-    personalDetailsForm: {
+    },*/
+    /*personalDetailsForm: {
       model: {
         age: null,
         gender: null,
@@ -179,7 +201,7 @@ export interface CommentStateModel {
       dirty: false,
       status: '',
       errors: {},
-    },
+    },*/
     postDetailsForm: {
       model: {
         postID: null,
@@ -191,15 +213,15 @@ export interface CommentStateModel {
         content: null,
         hashtag: null,
         caption: null,
-        totalTime: null,
-        ownerGainedTime: null,
+        totalTime: 0,
+        ownerGainedTime: 0,
         listing: null,
       },
       dirty: false,
       status: '',
       errors: {},
     },
-    occupationDetailsForm: {
+    /*occupationDetailsForm: {
       model: {
         householdIncome: null,
         occupation: null,
@@ -207,7 +229,7 @@ export interface CommentStateModel {
       dirty: false,
       status: '',
       errors: {},
-    },
+    },*/
   },
 })
 
@@ -350,7 +372,7 @@ export class ProfileState {
     }
   }
 
-  @Action(UpdateContactDetails)
+  /*@Action(UpdateContactDetails)
   async updateContactDetails(ctx: StateContext<ProfileStateModel>) {
     try {
       const state = ctx.getState();
@@ -374,9 +396,9 @@ export class ProfileState {
     } catch (error) {
       return ctx.dispatch(new SetError((error as Error).message));
     }
-  }
+  }*/
 
-  @Action(UpdateAddressDetails)
+  /*@Action(UpdateAddressDetails)
   async updateAddressDetails(ctx: StateContext<ProfileStateModel>) {
     try {
       const state = ctx.getState();
@@ -392,7 +414,7 @@ export class ProfileState {
       const request: IUpdateAddressDetailsRequest = {
         profile: {
           userId,
-          addressDetails: {
+          /*addressDetails: {
             residentialArea,
             workArea,
           },
@@ -404,9 +426,9 @@ export class ProfileState {
     } catch (error) {
       return ctx.dispatch(new SetError((error as Error).message));
     }
-  }
+  }*/
 
-  @Action(UpdatePersonalDetails)
+ /* @Action(UpdatePersonalDetails)
   async updatePersonalDetails(ctx: StateContext<ProfileStateModel>) {
     try {
       const state = ctx.getState();
@@ -436,9 +458,9 @@ export class ProfileState {
     } catch (error) {
       return ctx.dispatch(new SetError((error as Error).message));
     }
-  }
+  }*/
 
-  @Action(UpdateOccupationDetails)
+  /*@Action(UpdateOccupationDetails)
   async updateOccupationDetails(ctx: StateContext<ProfileStateModel>) {
     try {
       const state = ctx.getState();
@@ -468,7 +490,7 @@ export class ProfileState {
     } catch (error) {
       return ctx.dispatch(new SetError((error as Error).message));
     }
-  }
+  } */
 
   @Action(CreateNewPost)
   async addPost(ctx: StateContext<ProfileStateModel>, { post }: CreateNewPost) {
@@ -480,6 +502,7 @@ export class ProfileState {
       const createdBy = state.profile?.userId;
       const caption = state.postDetailsForm.model.caption;
       const hashtag = state.postDetailsForm.model.hashtag;
+      const listing = state.postDetailsForm.model.listing;
       const ownedBy = state.profile?.userId; // We can use 'createdBy' from the action payload
       const postID = state.profile?.accountDetails?.displayName?.split("@")[0] + "-" + state.profile?.posts?.length; // the post id must be a document id
       const likes = state.postDetailsForm.model.likes;
@@ -501,6 +524,7 @@ export class ProfileState {
         content,
         hashtag,
         caption,
+        listing,
       }
 
       const request: IAddPostRequest = {
@@ -543,10 +567,32 @@ export class ProfileState {
   }
 
 
+  @Selector()
+  static profilePosts(state: ProfileStateModel): IPostDetails[] {
+    return state.profilePosts;
+  }
+
   @Action(FetchUserPosts)
 fetchUserPosts(ctx: StateContext<ProfileStateModel>, { displayName }: FetchUserPosts) {
   return this.profileApi.getUserPostsFromFunction$(displayName).pipe(
     tap((posts: IPostDetails[]) => ctx.patchState({ searchPosts: posts })),
+    catchError((error) => {
+      ctx.dispatch(new SetError((error as Error).message));
+      return of(null);
+    })
+  );
+}
+
+@Action(FetchPortfolioPosts)
+fetchPortfolioPosts(ctx: StateContext<ProfileStateModel>, { userId }: FetchPortfolioPosts) {
+const vard=userId;
+const state=ctx.getState();
+let uId=' ';
+  if(state.profile?.userId){
+    uId=state.profile?.userId;
+  }
+  return this.profileApi.getPortfolioPostsFromFunction$(uId).pipe(
+    tap((posts: IPostDetails[]) => ctx.patchState({ profilePosts: posts })),
     catchError((error) => {
       ctx.dispatch(new SetError((error as Error).message));
       return of(null);
@@ -579,13 +625,13 @@ console.log(uId);
     action: GetUserPostsByHashtag
   ) {
     const state = ctx.getState();
-  
+
     return this.profileApi.getUserPostsByHashtag$(action.hashtag).pipe(
       tap((posts: IPostDetails[]) => {
         if (posts.length === 0) {
           throw new Error('No posts found with the given hashtag.');
         }
-  
+
         ctx.setState(
           produce(state, (draft: ProfileStateModel) => {
             draft.searchPosts = posts;
@@ -647,4 +693,32 @@ console.log(uId);
     );
   }
   
+
+
+@Action(BuyPost)
+buyPost(ctx: StateContext<ProfileStateModel>, { postId }: BuyPost) {
+  const buyerId = ctx.getState().profile?.userId;
+
+  if (!buyerId || !postId) {
+    return ctx.dispatch(
+      new SetError('BuyerId or PostId not set')
+    );
+  }
+
+  return from(
+    this.profileApi.functions2.httpsCallable('buyPosts')({ postId })
+  ).pipe(
+    tap(() => {
+      ctx.patchState({
+        posts: ctx.getState().posts.map((post) =>
+          post.postID === postId ? { ...post, ownedBy: buyerId } : post
+        ),
+      });
+    }),
+    catchError((error) => {
+      ctx.dispatch(new SetError((error as Error).message));
+      return of(null);
+    })
+  );
+}
 }
