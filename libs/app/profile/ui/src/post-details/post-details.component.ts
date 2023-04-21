@@ -203,35 +203,14 @@ export class PostDetailsComponent {
 
   
   setHashtag(hashtag: string) {
-    type ColorMap = {
-      [key: string]: string;
-    };
-    
-    const fColor: ColorMap = {
-      "#nature": "white",
-      "#funny": "black",
-      "#opinion": "white",
-      "#music": "white",
-      "#sports": "white",
-      "#food": "black",
-    };
-    const bColor: ColorMap = {
-      "#nature": "green",
-      "#funny": "yellow",
-      "#opinion": "blue",
-      "#music": "grey",
-      "#sports": "red",
-      "#food": "white",
-    };
-    const hashtagControl = this.postDetailsForm?.get('hashtag');
-    if (hashtagControl) {
-      hashtagControl.setValue(hashtag);
-      const inputEl = document.getElementById('categoryInput');
-      if (inputEl) {
-        inputEl.style.color = fColor[hashtag];
-        inputEl.style.backgroundColor = bColor[hashtag];
-      }
-    }
+
+    const newHashtag: HTMLIonButtonElement = document.getElementById(hashtag.slice(1) + 'Button') as HTMLIonButtonElement;
+    const oldHashtag: HTMLIonButtonElement = document.getElementById( this.postDetailsForm?.get('hashtag')?.value?.slice(1) + 'Button') as HTMLIonButtonElement;
+
+    oldHashtag.style.filter = 'brightness(50%)';
+    newHashtag.style.filter = 'brightness(100%)';
+
+    this.postDetailsForm?.get('hashtag')?.setValue(hashtag);
   }
   
 

@@ -22,3 +22,8 @@
     // border-radius: 10px;
     margin-left: 155px;
   }
+  .hashtagButton{
+    filter: brightness(50%);
+    --background-activated: --background;
+    width:70px;
+  }
