@@ -29,89 +29,146 @@
 </ion-content> -->
 
 <ng-container *ngIf="profile$ | async as profile">
-<ion-header class="ion-no-border">
-  <ion-toolbar color="black" style="border-color:rgba(0,0,0,0)">
+  <ion-header class="ion-no-border">
+    <ion-toolbar color="black" style="border-color:rgba(0,0,0,0)">
 
 
-    <ion-grid style="--background:rgba(0,0,0,0);">
-      <ion-row style="--background:rgba(0,0,0,0);">
-        <ion-col style="background-color:rgba(255,0,0,0);border-color:rgba(0,0,0,0)">
-          <div class="buttonContainer">
-            <ion-button id="followingButton" shape="round" fill="solid" (click)="following()" class="followingButton">
-              Following
-            </ion-button>
+      <ion-grid style="--background:rgba(0,0,0,0);">
+        <ion-row style="--background:rgba(0,0,0,0);">
+          <ion-col style="background-color:rgba(255,0,0,0);border-color:rgba(0,0,0,0)">
+            <div class="buttonContainer">
+              <ion-button id="followingButton" shape="round" fill="solid" (click)="following()" class="followingButton">
+                Following
+              </ion-button>
 
-            <ion-button id="trendingButton" shape="round" fill="solid" (click)="trending()" class="trendingButton">
-              Trending
-            </ion-button>
+              <ion-button id="trendingButton" shape="round" fill="solid" (click)="trending()" class="trendingButton">
+                Trending
+              </ion-button>
 
-          </div>
-        </ion-col>
-        <ion-col class="timerCol" size="auto">
+            </div>
+          </ion-col>
+          <ion-col class="timerCol" size="auto">
 
-          <ion-badge class="timer">{{profile.time}}</ion-badge>
+            <ion-badge class="timer">{{profile.time}}</ion-badge>
 
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
 
 
-  </ion-toolbar>
-</ion-header>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content color=secondary [fullscreen]="true">
-  <!-- <ion-list no-lines>
+  <ion-content color=secondary [fullscreen]="true">
+    <!-- <ion-list no-lines>
     <ion-item no-lines > -->
 
-  <!-- <ion-label>
+    <!-- <ion-label>
         <img [src]="post.content" alt="Post image" width="100%" />
         <h2>{{ post.caption }}</h2>
         <h1>{{post.listing}}</h1>
         <ion-button (click)="buyPost(i)">Buy Post</ion-button>
       </ion-label> -->
 
-      <div *ngIf="(userPosts$ | async)?.length; else noPosts">
-        <div *ngFor="let post of userPosts$ | async; let i = index" color=secondary>
-          <ion-toolbar color=secondary>
-            <ion-grid>
-              <ion-row>
-                <ion-avatar>
-                  <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-                </ion-avatar>
-                <ion-list lines="none"><ion-item>Created by: {{post.postID}}</ion-item></ion-list>
-              </ion-row>
-            </ion-grid>
-          </ion-toolbar>
-          <img class="postImage" alt="Post" [src]="post.content" />
-          <ion-toolbar color="secondary">
-            <ion-list lines="none"><ion-item> {{ post.caption }}</ion-item></ion-list>
-            <ion-buttons slot="end">
-              <ion-button expand="block" color="primary" (click)="like()">
-                <ion-icon name="thumbs-up-outline"></ion-icon>
-              </ion-button>
-              <ion-button expand="block" color="primary" (click)="comment()">
-                <ion-icon name="chatbox-ellipses-outline"></ion-icon>
-              </ion-button>
-              <ng-container *ngIf="post.ownedBy !== profile.userId">
-                <ion-button expand="block" color="primary" (click)="buyPost(i)">
-                  <ion-icon name="cart-outline"></ion-icon>
-                  <ion-item>{{post.listing}}</ion-item>
-                </ion-button>
-              </ng-container>
-            </ion-buttons>
-          </ion-toolbar>
-          <hr>
-        </div>
-      </div>
-      <ng-template #noPosts>
-      
-        <div class="noPosts">
-          <p>No posts available yet</p>
-        </div>
-      </ng-template>
+    <div *ngIf="(userPosts$ | async)?.length; else noPosts">
+      <div *ngFor="let post of userPosts$ | async; let i = index" color=secondary>
+        <ion-toolbar color=secondary>
+          <ion-grid>
+            <ion-row>
+              <ion-avatar>
+                <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+              </ion-avatar>
+              <ion-list lines="none"><ion-item>Created by: {{post.postID}}</ion-item></ion-list>
+            </ion-row>
+          </ion-grid>
+        </ion-toolbar>
+        <img class="postImage" alt="Post" [src]="post.content" />
+        <ion-grid slot="end">
 
-  <!-- Old post code without no post message -->
-  <!-- <div *ngFor="let post of userPosts$ | async; let i = index" color=secondary>
+          <ion-row>
+
+
+
+            <ng-container *ngIf="post.ownedBy !== profile.userId; else buyable">
+
+              <ion-col class="captionText" size="7.5">
+                <ion-text lines="none"> {{ post.caption }}</ion-text>
+              </ion-col>
+
+              <ion-col size="4.5">
+                <ion-row>
+                  <ion-col (click)="like()" size="4">
+                    <ion-icon size="25px" color="primary" name="thumbs-up-outline"></ion-icon>
+                    <ion-text class="buttonText" lines="none" height="fit-content">0</ion-text><!-- {{post.likes}} goes here-->
+                    
+                  </ion-col>
+
+                  <ion-col (click)="comment()" size="4">
+                    <ion-icon size="25px" color="primary" name="chatbox-ellipses-outline"></ion-icon>
+                    <ion-text class="buttonText" lines="none">0</ion-text><!-- number of comments goes here or to be removed-->
+                    
+                  </ion-col>
+
+                  <ion-col (click)="buyPost(i)" size="4">
+                    <ion-icon size="25px" color="primary" name="cart-outline"></ion-icon>
+                    <ion-text class="buttonText" lines="none">{{post.listing}}</ion-text>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row>
+                  <ion-col>
+                    <ion-badge class="funny">#funny</ion-badge>
+                  </ion-col>
+                </ion-row>
+
+              </ion-col>
+            </ng-container>
+
+            <ng-template #buyable>
+
+              <ion-col class="captionText" size="9">
+                <ion-text lines="none"> {{ post.caption }}</ion-text>
+              </ion-col>
+              <ion-col size="3">
+                <ion-row>
+                  <ion-col (click)="like()" size="6">
+                    <ion-icon size="25px" color="primary" name="thumbs-up-outline"></ion-icon>
+                    <ion-text class="buttonText" lines="none"
+                      height="fit-content">0</ion-text><!-- {{post.likes}} goes here-->
+                  </ion-col>
+
+                  <ion-col (click)="comment()" size="6">
+                    <ion-icon size="25px" color="primary" name="chatbox-ellipses-outline"></ion-icon>
+                    <ion-text class="buttonText"
+                      lines="none">0</ion-text><!-- number of comments goes here or to be removed-->
+                  </ion-col>
+                </ion-row>
+
+                <ion-row>
+                  <ion-col>
+                    <ion-badge class="funny">{{post.hashtag}}</ion-badge> 
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+
+            </ng-template>
+
+          </ion-row>
+
+        </ion-grid>
+
+        <hr>
+      </div>
+    </div>
+    <ng-template #noPosts>
+
+      <div class="noPosts">
+        <p>No posts available yet</p>
+      </div>
+    </ng-template>
+
+    <!-- Old post code without no post message -->
+    <!-- <div *ngFor="let post of userPosts$ | async; let i = index" color=secondary>
     <ion-toolbar color=secondary>
       <ion-grid>
         <ion-row>
@@ -146,11 +203,11 @@
     <hr>
   </div> -->
 
-  <!-- </ion-item>
+    <!-- </ion-item>
   </ion-list> -->
 
 
-  <!-- <div color=secondary>
+    <!-- <div color=secondary>
   <ion-toolbar color=secondary>
     <ion-grid>
       <ion-row>
@@ -186,5 +243,5 @@
 </div> -->
 
 
-</ion-content>
+  </ion-content>
 </ng-container>
