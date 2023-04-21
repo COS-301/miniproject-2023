@@ -6,10 +6,13 @@ import * as admin from 'firebase-admin';
 
 @Injectable()
 export class MemoriesRepository {
-  //TODO implement
-  async createMemory(memory: IMemory): Promise<null> {
-    return null;
+  async createMemory(memory: IMemory): Promise<admin.firestore.WriteResult> {
+    console.debug(`${MemoriesRepository.name}`)
+    const newMemoryRef = admin.firestore().collection('memories').doc();
+    memory.memoryId = newMemoryRef.id;
+    return await newMemoryRef.set(memory);
   }
+
   async findOne(memory: IMemory) {
     return await admin
       .firestore()
