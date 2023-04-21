@@ -1,12 +1,12 @@
 import { MemoriesRepository } from '@mp/api/memories/data-access';
 import { IGetCommentsResponse, GetCommentsQuery } from '@mp/api/memories/util';
-import { QueryHandler, EventPublisher, IQueryHandler } from '@nestjs/cqrs';
+import { QueryHandler, IQueryHandler } from '@nestjs/cqrs';
 
 @QueryHandler(GetCommentsQuery)
 export class GetCommentsHandler
   implements IQueryHandler<GetCommentsQuery, IGetCommentsResponse>
 {
-  constructor(private readonly publisher: EventPublisher, private readonly repository: MemoriesRepository) {}
+  constructor(private readonly repository: MemoriesRepository) {}
 
   async execute(query: GetCommentsQuery) {
     console.log(`${GetCommentsHandler.name}`);
@@ -21,7 +21,7 @@ export class GetCommentsHandler
       const response: IGetCommentsResponse = { comments: comments };
       return response;
     } catch (e) {
-      throw new Error('Could not retrieve comments') 
+      throw new Error('Could not retrieve comments');
     }
   }
 }
