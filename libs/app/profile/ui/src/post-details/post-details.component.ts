@@ -53,7 +53,6 @@ export class PostDetailsComponent {
     };
 
     this.selectedFile = event.target.files[0];
-    alert(this.selectedFile);
   }
 
 
@@ -202,14 +201,22 @@ export class PostDetailsComponent {
 
   
   setHashtag(hashtag: string) {
+    const newHashtag: HTMLIonButtonElement | null = document.getElementById(hashtag.slice(1) + 'Button') as HTMLIonButtonElement;
+    const oldHashtag: HTMLIonButtonElement | null = this.postDetailsForm?.get('hashtag')?.value ? 
+    document.getElementById(this.postDetailsForm?.get('hashtag')?.value?.slice(1) + 'Button') as HTMLIonButtonElement :
+    null;
 
-    const newHashtag: HTMLIonButtonElement = document.getElementById(hashtag.slice(1) + 'Button') as HTMLIonButtonElement;
-    const oldHashtag: HTMLIonButtonElement = document.getElementById( this.postDetailsForm?.get('hashtag')?.value?.slice(1) + 'Button') as HTMLIonButtonElement;
+    if (oldHashtag && oldHashtag.style) {
+      oldHashtag.style.filter = 'brightness(50%)';
+    }
 
-    oldHashtag.style.filter = 'brightness(50%)';
-    newHashtag.style.filter = 'brightness(100%)';
+    if (newHashtag && newHashtag.style) {
+      newHashtag.style.filter = 'brightness(100%)';
+    }
 
     this.postDetailsForm?.get('hashtag')?.setValue(hashtag);
+  
+    
   }
   
 

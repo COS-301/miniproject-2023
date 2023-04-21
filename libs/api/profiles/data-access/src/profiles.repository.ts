@@ -47,6 +47,7 @@ export class ProfilesRepository {
       .get();
 
     const profileData = profileDoc.data() as IProfile;
+    
 
     // If profile doesn't exist, handle the error
     if (!profileData) {
