@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { ModalController, PopoverController } from '@ionic/angular';
 import { ViewChild } from '@angular/core';
+import { MenuController } from '@ionic/angular';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class HomePage {
   @ViewChild('popover') popover!: PopoverController;
 
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private menuCtrl?: MenuController) {}
 
 
   ngOnInit() {
@@ -27,7 +28,7 @@ export class HomePage {
   }
 
   logout() {
-    this.popover.dismiss();
+    // this.popover.dismiss();
   }
 
   goToSearch() {
@@ -52,6 +53,38 @@ export class HomePage {
 
   goToChallenge() {
     this.router.navigate(['/home/challenge']);
+  }
+
+  goToSettings() {
+    if (this.menuCtrl) {
+      this.menuCtrl.close();
+  }
+    this.router.navigate(['/home/settings']);
+  }
+
+  goToProfile() {
+    if (this.menuCtrl) {
+      this.menuCtrl.close();
+  }
+    this.router.navigate(['/home/profile']);
+  }
+
+  checkFollowers() {
+    // this.router.navigate(['/home/challenge']);
+  }
+  checkFollowing() {
+    // this.router.navigate(['/home/challenge']);
+  }
+
+  goToLeaderboard() {
+    // this.router.navigate(['/home/challenge']);
+  }
+
+  goToMyProfile() {
+    if (this.menuCtrl) {
+      this.menuCtrl.close();
+  }
+    this.router.navigate(['/home/userprofile']);
   }
 
 

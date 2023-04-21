@@ -14,7 +14,8 @@ const routes: Routes = [
   },
   {
     path: 'account-settings',
-    component: AccountSettingsPageComponent
+    loadChildren: () =>
+      import('@mp/app/profile/feature').then((m) => m.ProfileModule),
   },
   {
     path: 'security-settings',

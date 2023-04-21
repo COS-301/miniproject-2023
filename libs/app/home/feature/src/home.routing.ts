@@ -13,11 +13,6 @@ const routes: Routes = [
           import('@mp/app/feed/feature').then((m) => m.FeedModule),
       },
       {
-        path: 'profile',
-        loadChildren: () =>
-          import('@mp/app/profile/feature').then((m) => m.ProfileModule),
-      },
-      {
         path: 'inbox',
         loadChildren: () =>
           import('@mp/app/inbox/feature').then((m) => m.InboxModule),
@@ -47,9 +42,24 @@ const routes: Routes = [
         loadChildren: () =>
           import('@mp/app/challenge/feature').then((m) => m.ChallengeModule),
       },
+      {
+        path: 'userprofile',
+        loadChildren: () =>
+          import('@mp/app/user-profile/feature').then((m) => m.UserProfileModule),
+      },
+     
     ],
   },
-  
+  {
+    path: 'settings',
+    loadChildren: () =>
+      import('@mp/app/settings/feature').then((m) => m.SettingsModule),
+  },
+  {
+    path: 'profile',
+    loadChildren: () =>
+      import('@mp/app/profile/feature').then((m) => m.ProfileModule),
+  },
   {
     path: '',
     pathMatch: 'full',

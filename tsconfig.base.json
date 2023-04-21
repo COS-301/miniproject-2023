@@ -82,10 +82,10 @@
       "@mp/app/notifications/feature": [
         "libs/app/notifications/feature/src/index.ts"
       ],
-      "@mp/app/post/data-access": ["libs/app/post/data-access/src/index.ts"],
       "@mp/app/notifications/util": [
         "libs/app/notifications/util/src/index.ts"
       ],
+      "@mp/app/post/data-access": ["libs/app/post/data-access/src/index.ts"],
       "@mp/app/post/feature": ["libs/app/post/feature/src/index.ts"],
       "@mp/app/post/pages/posts/feature": [
         "libs/app/post/pages/posts/feature/src/index.ts"
@@ -117,6 +117,9 @@
       ],
       "@mp/app/updates/feature": ["libs/app/updates/feature/src/index.ts"],
       "@mp/app/updates/util": ["libs/app/updates/util/src/index.ts"],
+      "@mp/app/user-profile/feature": [
+        "libs/app/user-profile/feature/src/index.ts"
+      ],
       "@mp/app/user/data-access": ["libs/app/user/data-access/src/index.ts"],
       "@mp/app/user/feature": ["libs/app/user/feature/src/index.ts"],
       "@mp/app/user/util": ["libs/app/user/util/src/index.ts"],

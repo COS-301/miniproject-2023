@@ -1,105 +1,103 @@
-<ion-header class="title-header">
+<ion-header>
   <ion-toolbar>
-    <!-- <img [src]="TimeHiveLogo.jpg"/> -->
-    <ion-toolbar>
-      <ion-title>Time Hive</ion-title>
-    </ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button fill="clear" id="popover">
-        <ion-icon slot="icon-only" name="menu-outline" color="black"></ion-icon>
-      </ion-button>
+
+    <ion-buttons slot="start" style="zoom: 1.2; margin-left: 10px;">
+      <ion-menu-button color="primary" autoHide="false"></ion-menu-button>
     </ion-buttons>
+    
+    
+    <ion-avatar slot="end" style="margin-right: 60px; margin-top: 10px; margin-bottom: 10px;">
+      <img
+        class="logo logo-light"
+        src="assets/logos/logo-trans.png" />
+      <img
+        class="logo logo-dark"
+        src="assets/logos/logo-dark.png"
+      />
+    </ion-avatar>
 
-    <!-- this needs to be changed into the settings menu-->
-    <ion-popover #popover trigger="popover" triggerAction="click">
-      <ng-template>
-        <ion-content class="ion-padding ion-text-center" (click)="logout()">
-          <ion-label color="danger">
-            <!-- <ion-icon slot="icon-only" name="log-out"></ion-icon> -->
-            LOGOUT
-          </ion-label>
-        </ion-content> 
-      </ng-template>
-    </ion-popover>
-  
+    <ion-button fill="clear" (click)="goToLeaderboard()" slot="end" style="margin-right: 10px;">
+      <ion-avatar >
+        <ion-icon color="primary" name="podium-outline" class="stats" ></ion-icon>
+      </ion-avatar>
+    </ion-button>
 
+    <!-- <ion-button fill="clear" (click)="checkFollowers()" slot="end" style="margin-right: 10px; height: auto;">
+      <ion-avatar >
+        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" style="width: 90%; height: auto;" />
+      </ion-avatar>
+    </ion-button> -->
 
-  <ion-content>
-    <ion-list>
-      <ion-item lines="none" text-end>
-        <ion-avatar slot="end">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ55xNIciu8yA_9IqA9TB3oPwEheZmo_gKWsg&usqp=CAU">
-        </ion-avatar>
-      </ion-item>
-    </ion-list>
-  </ion-content>
-</ion-toolbar>
-
-
-
-
+  </ion-toolbar>
 </ion-header>
 
-<ion-content color="light">
-  <!-- Chat home page will be displayed here -->
+<ion-menu contentId="main-content" menuId="menu">
+  <ion-header style="height: auto; margin-left: 10px;">
+
+    <ion-button fill="clear" (click)="goToMyProfile()" style="height: auto; margin-left: 0px;">
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" style="width: 20%; height: auto; border-radius: 50%; margin-left: 0px; margin-top: 10px; margin-bottom: 10px;" />
+      </div>
+    </ion-button>
+    
+      
+      <ion-title color="dark" id="name" style="margin-left: 68px;">James Nolan</ion-title>
+      <ion-title color="medium" id="username" style="margin-top: 5px; margin-bottom: 15px; margin-left: 60px;">@james-nolan</ion-title>
+
+  </ion-header>
+  
+  <ion-content>
+    <ion-list>
+      <ion-item>
+        <ion-button fill="clear" (click)="checkFollowers()" style="height: auto; margin-left: 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <ion-text color="primary" style="font-size: 1.5em; margin-left: 10px; text-transform: capitalize;">110</ion-text>
+            <ion-text color="dark" style="font-size: 1.5em; margin-left: 10px; text-transform: capitalize; margin-bottom: 10px;">Followers</ion-text>
+          </div>
+        </ion-button>
+        
+
+        <ion-button fill="clear" (click)="checkFollowing()" style="height: auto;margin-left: 10px;">
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <ion-text color="primary" style="font-size: 1.5em; margin-left: 10px; text-transform: capitalize;">30</ion-text>
+            <ion-text color="dark" style="font-size: 1.5em; margin-left: 10px; text-transform: capitalize; margin-bottom: 10px;">Following</ion-text>
+          </div>
+        </ion-button>
+        
+
+      </ion-item>
+
+
+      <ion-item>
+        <ion-button fill="clear" (click)="goToProfile()" style="height: auto;">
+          <ion-icon color="dark" name="person-circle-outline" size="large"></ion-icon>
+          <ion-text color="dark"  style="font-size: 1.5em; margin-left: 10px; text-transform: capitalize;">Profile</ion-text>
+        </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button fill="clear" (click)="goToSettings()" style="height: auto;">
+          <ion-icon color="dark" name="settings-outline" size="large"></ion-icon>
+          <ion-text color="dark" style="font-size: 1.5em; margin-left: 10px; text-transform: capitalize;">Settings</ion-text>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+
+    <ion-fab horizontal="end" vertical="bottom">
+      <ion-button fill="clear" (click)="logout()" size="large">
+        <ion-icon color="dark" name="log-out-outline" size="large" style="margin-bottom: 20px;"></ion-icon>
+      </ion-button>
+    </ion-fab>
+ 
+    
+  </ion-content>
+</ion-menu>
+
+<ion-content id="main-content">
   <router-outlet></router-outlet>
-  <!-- <ion-list *ngIf="segment === 'chats' && (chatRooms) as rooms">
-
-    <ion-list-header class="ion-padding-bottom">
-      Messages
-    </ion-list-header> -->
-
-    <!-- <ion-item 
-    *ngFor="let item of rooms"
-    (click)="getChat(item)"
-    [detail]="true">
-      <ion-avatar slot="start">
-        <img [src]="item?.photo"/>
-      </ion-avatar>
-      <ion-label>
-        {{item?.name}}
-        <p>
-          <ion-text>
-            message
-          </ion-text>
-        </p>
-      </ion-label>
-      <ion-text slot="end" color="medium">10:02 am</ion-text>
-    </ion-item>
-
-  </ion-list> -->
-
-  <!-- <ion-fab slot="fixed" horizontal="end" vertical="bottom">
-    <ion-fab-button (click)="newChat()">
-      <ion-icon name="chatbubbles"></ion-icon>
-    </ion-fab-button>
-  </ion-fab> -->
-
-  <!-- <ion-modal #new_chat [isOpen]="open_new_chat" (willDismiss)="onWillDismiss($event)">
-    <ng-template>
-      <ion-header>
-        <ion-toolbar color="primary">
-          <ion-title>New Chat</ion-title>
-          <ion-buttons slot="end">
-            <ion-button (click)="cancel()">Cancel</ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content color="light" *ngIf="users as user$">
-        <ion-list class="ion-margin-top" [style.background]="'transparent'" lines="none">
-          <app-user-list 
-          *ngFor="let item of user$"
-          [item]="item"
-          (onClick)="startChat($event)">
-        </app-user-list>
-        </ion-list>
-      </ion-content>
-    </ng-template>
-  </ion-modal> -->
-
 </ion-content>
 
 <ion-footer>
+<ion-toolbar>
   <ion-segment color="primary" value="homeButton">
     <ion-segment-button value="homeButton" (click)="goToFeed()">
       <ion-icon name="home-outline"></ion-icon>
@@ -132,4 +130,5 @@
       <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
     </ion-segment-button>
   </ion-segment>
+  </ion-toolbar>
 </ion-footer>
