@@ -206,20 +206,30 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-input
-        id="categoryInput"
-        class="textInput"
-        type="text"
-        display="none"
-        formControlName="hashtag"></ion-input>
+      <div class="hashtagContainer">
+        <div class="hashtagWrapper">
+          <ion-input
+            id="categoryInput"
+            class="textInput"
+            type="text"
+            display="none"
+            style="border-radius: 10px;"
+            formControlName="hashtag"></ion-input>
+        </div>
+      </div>
     </div>
 
     <ion-item>
       <ion-label>For Sale:</ion-label>
-      <ion-toggle id="toggleSale" (click)="changeForSale()" style="width: 20%; height: 50%"></ion-toggle>
+      <ion-toggle
+        id="toggleSale"
+        (click)="changeForSale()"
+        style="width: 20%; height: 50%"></ion-toggle>
     </ion-item>
 
-    <ion-grid id="priceGrid" style="position: relative; bottom: 2%; display:none">
+    <ion-grid
+      id="priceGrid"
+      style="position: relative; bottom: 2%; display: none">
       <ion-row style="height: 30%">
         <ion-col size="4">
           <ion-label color="tertiary" style="font-size: 105%; font: bold"

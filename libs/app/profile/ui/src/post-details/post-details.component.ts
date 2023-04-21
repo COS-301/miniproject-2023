@@ -199,11 +199,41 @@ export class PostDetailsComponent {
       };
       reader.readAsDataURL(file);
     }
-  }
+  };
 
+  
   setHashtag(hashtag: string) {
-    this.postDetailsForm?.get('hashtag')?.setValue(hashtag);
+    type ColorMap = {
+      [key: string]: string;
+    };
+    
+    const fColor: ColorMap = {
+      "#nature": "white",
+      "#funny": "black",
+      "#opinion": "white",
+      "#music": "white",
+      "#sports": "white",
+      "#food": "black",
+    };
+    const bColor: ColorMap = {
+      "#nature": "green",
+      "#funny": "yellow",
+      "#opinion": "blue",
+      "#music": "grey",
+      "#sports": "red",
+      "#food": "white",
+    };
+    const hashtagControl = this.postDetailsForm?.get('hashtag');
+    if (hashtagControl) {
+      hashtagControl.setValue(hashtag);
+      const inputEl = document.getElementById('categoryInput');
+      if (inputEl) {
+        inputEl.style.color = fColor[hashtag];
+        inputEl.style.backgroundColor = bColor[hashtag];
+      }
+    }
   }
+  
 
   changeForSale() {
     // If the toggle is set to true, then make the component with id priceGrid visible, otherwise hide it
