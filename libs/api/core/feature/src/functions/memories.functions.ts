@@ -6,6 +6,8 @@ import {
   ICreateCommentResponse,
   IGetCommentsRequest,
   IGetCommentsResponse,
+  IGetFeedMemoriesRequest,
+  IGetFeedMemoriesResponse,
 } from '@mp/api/memories/util';
 import { NestFactory } from '@nestjs/core';
 import * as functions from 'firebase-functions';
@@ -54,6 +56,28 @@ export const createComment = functions.https.onCall(
           throw new functions.https.HttpsError('not-found', error.message);
 
         if(error.message.includes('Missing required fields'))
+          throw new functions.https.HttpsError('invalid-argument', error.message);
+
+        throw new functions.https.HttpsError("internal", error.message)
+      }
+
+      throw new functions.https.HttpsError("unknown", "An unknown error occurred.");
+    }
+  },
+);
+
+export const getFeedMemories = functions.https.onCall(
+  async (request: IGetFeedMemoriesRequest): Promise<IGetFeedMemoriesResponse> => {
+    const app = await NestFactory.createApplicationContext(CoreModule);
+    const service = app.get(MemoriesService);
+    try {
+      return await service.getFeedMemories(request);
+    } catch (error) {
+      if (error instanceof Error) {
+        if(error.message.includes('not found'))
+          throw new functions.https.HttpsError('not-found', error.message);
+
+        if(error.message.includes('Missing required'))
           throw new functions.https.HttpsError('invalid-argument', error.message);
 
         throw new functions.https.HttpsError("internal", error.message)

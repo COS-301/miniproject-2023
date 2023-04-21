@@ -9,7 +9,8 @@ import {
   UpdateCommentHandler
 } from './commands';
 import {
-  GetCommentsHandler 
+  GetCommentsHandler,
+  GetFeedMemoriesHandler,
 } from './queries'
 import { 
   MemoryCreatedHandler,
@@ -25,7 +26,8 @@ export const CommandHandlers = [
   UpdateCommentHandler
 ];
 export const QueryHandlers = [
-  GetCommentsHandler
+  GetCommentsHandler,
+  GetFeedMemoriesHandler,
 ];
 export const EventHandlers = [
   MemoryCreatedHandler,

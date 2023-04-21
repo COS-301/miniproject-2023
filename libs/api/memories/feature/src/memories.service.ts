@@ -6,8 +6,11 @@ import {
   CreateMemoryCommand,
   CreateCommentCommand,
   GetCommentsQuery,
+  GetFeedMemoriesQuery,
   IGetCommentsRequest,
   IGetCommentsResponse,
+  IGetFeedMemoriesRequest,
+  IGetFeedMemoriesResponse,
 } from '@mp/api/memories/util';
 import { Injectable } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
@@ -22,6 +25,10 @@ export class MemoriesService {
 
   async getComments(request: IGetCommentsRequest): Promise<IGetCommentsResponse> {
     return await this.queryBus.execute<GetCommentsQuery, IGetCommentsResponse>(new GetCommentsQuery(request));
+  }
+
+  async getFeedMemories(request: IGetFeedMemoriesRequest): Promise<IGetFeedMemoriesResponse> {
+    return await this.queryBus.execute<GetFeedMemoriesQuery, IGetFeedMemoriesResponse>(new GetFeedMemoriesQuery(request));
   }
 
   async createComment(request: ICreateCommentRequest): Promise<ICreateCommentResponse> {
