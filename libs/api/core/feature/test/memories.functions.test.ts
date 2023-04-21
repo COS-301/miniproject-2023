@@ -3,7 +3,7 @@ import { describe, test } from '@jest/globals';
 const mockData = {
   //change according to seeded data
   userId: '0104fa66-5a7b-429c-aedd-acab833be72e',
-  username: 'Dessie.Lebsack@yahoo.com',
+  username: 'Dena52',
   title: 'Summer Holiday',
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
   imgUrl: 'https://bit.ly/3MCrcnB',
@@ -30,7 +30,7 @@ describe('Tesing Cloud Function: createMemory', () => {
     });
     const createMemoryResponse = (await res.json()).result.memory;
     console.debug("createMemoryResponse: ",createMemoryResponse);
-    expect(createMemoryResponse.userId).toBe(mockData.userId); 
+    expect(createMemoryResponse.username).toBe(mockData.username); 
     expect(createMemoryResponse.alive).toBe(true);
     expect(createMemoryResponse.remainingTime).toBe(86400);
     expect(createMemoryResponse.commentsCount).toBe(0);
