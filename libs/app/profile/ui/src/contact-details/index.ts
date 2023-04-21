@@ -1,2 +1,2 @@
 //export * from './contact-details.component';
-export * from './contact-details.module';
+//export * from './contact-details.module';
