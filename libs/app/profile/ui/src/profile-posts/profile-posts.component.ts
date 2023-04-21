@@ -83,4 +83,7 @@ posts$: Observable<IPostDetails[] | null | undefined>;
   toSettingsPage() {
     this.router.navigate(["/settings"]);
   }
+  getSlicedHashtag(hashtag: string): string {
+    return hashtag.slice(1);
+  }
 }

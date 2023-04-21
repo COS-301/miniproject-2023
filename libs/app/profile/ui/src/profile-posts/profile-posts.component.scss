@@ -34,3 +34,22 @@ hr {
   height: 2px;
   background-color: rgb(208,208,208);
   }
+
+  .buttonText{
+    --min-height:12px;
+    font-size: 12px;
+    text-align: center;
+    align-items: center;
+    display:flex;
+    width:-moz-fit-content;
+    width:fit-content;
+    margin:auto;
+    color:#000000;
+  }
+  
+  .captionText{
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    color: #000000;
+    text-align: left;
+  }
