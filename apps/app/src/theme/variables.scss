@@ -4,12 +4,12 @@
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
-  --ion-color-primary: rgb(53,107,89);
-  --ion-color-primary-rgb: 53,107,89;
+  --ion-color-primary: rgb(53, 107, 89);
+  --ion-color-primary-rgb: 53, 107, 89;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: rgb(49,161,143);
-  --ion-color-primary-tint: rgb(123,159,148);
+  --ion-color-primary-shade: rgb(49, 161, 143);
+  --ion-color-primary-tint: rgb(123, 159, 148);
 
   /** secondary **/
   --ion-color-secondary: #ffffff;
@@ -74,6 +74,14 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /** Colors **/
+  --nature: rgb(150, 81, 255);
+  --funny: rgb(177, 45, 45);
+  --opinion: rgb(184, 219, 99);
+  --sports: rgb(50, 0, 219);
+  --music: rgb(228, 137, 60);
+  --food: rgb(210, 81, 255);
 }
 
 // @media (prefers-color-scheme: dark) {

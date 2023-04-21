@@ -80,4 +80,8 @@ if(!this.userPosts$){
     this.router.navigate(["/search"]);
   }
 
+  getSlicedHashtag(hashtag: string): string {
+    return hashtag.slice(1);
+  }
+
 }

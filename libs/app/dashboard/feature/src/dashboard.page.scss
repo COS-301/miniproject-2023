@@ -1,4 +1,4 @@
-body {
+body{
   --ion-bottomNavBarBorderRadius: 15px;
 }
 
@@ -50,6 +50,7 @@ ion-item {
 }
 
 hr {
+  margin-top:0;
   width: 90%;
   height: 2px;
   background-color: rgb(208, 208, 208);
@@ -170,6 +171,7 @@ ion-item {
   text-align: center;
   align-items: center;
   display:flex;
+  width:-moz-fit-content;
   width:fit-content;
   margin:auto;
   color:#000000;
@@ -180,4 +182,10 @@ ion-item {
   word-wrap: break-word;
   color: #000000;
   text-align: left;
+}
+
+.pageHeading{
+  text-align: center;
+  font-size: large;
+  font-family: 'PT Sans', sans-serif;
 }

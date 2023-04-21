@@ -33,7 +33,7 @@
     <ion-toolbar color="black" style="border-color:rgba(0,0,0,0)">
 
 
-      <ion-grid style="--background:rgba(0,0,0,0);">
+      <!-- <ion-grid style="--background:rgba(0,0,0,0);">
         <ion-row style="--background:rgba(0,0,0,0);">
           <ion-col style="background-color:rgba(255,0,0,0);border-color:rgba(0,0,0,0)">
             <div class="buttonContainer">
@@ -49,12 +49,12 @@
           </ion-col>
           <ion-col class="timerCol" size="auto">
 
-            <ion-badge class="timer">{{profile.time}}</ion-badge>
 
           </ion-col>
         </ion-row>
-      </ion-grid>
-
+      </ion-grid> -->
+      <ion-title class="pageHeading" color="#000000">Dashboard</ion-title>
+      <ion-badge slot="end" class="timer">{{profile.time}}</ion-badge>
 
     </ion-toolbar>
   </ion-header>
@@ -71,7 +71,11 @@
       </ion-label> -->
 
     <div *ngIf="(userPosts$ | async)?.length; else noPosts">
+      <hr>
       <div *ngFor="let post of userPosts$ | async; let i = index" color=secondary>
+
+        <!-- <ng-container *ngIf="post.ownedBy!==profile.userId || post.createdBy!==profile.userId"> -->
+
         <ion-toolbar color=secondary>
           <ion-grid>
             <ion-row>
@@ -82,86 +86,91 @@
             </ion-row>
           </ion-grid>
         </ion-toolbar>
-        <img class="postImage" alt="Post" [src]="post.content" />
+        <ion-img class="postImage" alt="Post" [src]="post.content" fallbackSrc="assets/logos/logo.png" />
         <ion-grid slot="end">
 
           <ion-row>
 
 
 
-            <ng-container *ngIf="post.ownedBy !== profile.userId; else buyable">
+              <ng-container *ngIf="post.listing !== null; else buyable">
 
-              <ion-col class="captionText" size="7.5">
-                <ion-text lines="none"> {{ post.caption }}</ion-text>
-              </ion-col>
+                <ion-col class="captionText" size="7.5">
+                  <ion-text lines="none"> {{ post.caption }}</ion-text>
+                </ion-col>
 
-              <ion-col size="4.5">
-                <ion-row>
-                  <ion-col (click)="like()" size="4">
-                    <ion-icon size="25px" color="primary" name="thumbs-up-outline"></ion-icon>
-                    <ion-text class="buttonText" lines="none" height="fit-content">0</ion-text><!-- {{post.likes}} goes here-->
-                    
-                  </ion-col>
+                <ion-col size="4.5">
+                  <ion-row>
+                    <ion-col (click)="like()" size="4">
+                      <ion-icon size="25px" color="primary" name="thumbs-up-outline"></ion-icon>
+                      <ion-text class="buttonText" lines="none"
+                        height="fit-content">0</ion-text><!-- {{post.likes}} goes here-->
 
-                  <ion-col (click)="comment()" size="4">
-                    <ion-icon size="25px" color="primary" name="chatbox-ellipses-outline"></ion-icon>
-                    <ion-text class="buttonText" lines="none">0</ion-text><!-- number of comments goes here or to be removed-->
-                    
-                  </ion-col>
+                    </ion-col>
 
-                  <ion-col (click)="buyPost(i)" size="4">
-                    <ion-icon size="25px" color="primary" name="cart-outline"></ion-icon>
-                    <ion-text class="buttonText" lines="none">{{post.listing}}</ion-text>
-                  </ion-col>
-                </ion-row>
+                    <ion-col (click)="comment()" size="4">
+                      <ion-icon size="25px" color="primary" name="chatbox-ellipses-outline"></ion-icon>
+                      <ion-text class="buttonText"
+                        lines="none">0</ion-text><!-- number of comments goes here or to be removed-->
 
-                <ion-row>
-                  <ion-col>
-                    <ion-badge class="funny">#funny</ion-badge>
-                  </ion-col>
-                </ion-row>
+                    </ion-col>
 
-              </ion-col>
-            </ng-container>
+                    <ion-col (click)="buyPost(i)" size="4">
+                      <ion-icon size="25px" color="primary" name="cart-outline"></ion-icon>
+                      <ion-text class="buttonText" lines="none">{{post.listing}}</ion-text>
+                    </ion-col>
+                  </ion-row>
 
-            <ng-template #buyable>
+                  <ion-row>
+                    <ion-col>
+                      <ion-badge *ngIf="post.hashtag" style="--background: var(--{{ getSlicedHashtag(post.hashtag) }});">{{post.hashtag}}</ion-badge>
+                    </ion-col>
+                  </ion-row>
 
-              <ion-col class="captionText" size="9">
-                <ion-text lines="none"> {{ post.caption }}</ion-text>
-              </ion-col>
-              <ion-col size="3">
-                <ion-row>
-                  <ion-col (click)="like()" size="6">
-                    <ion-icon size="25px" color="primary" name="thumbs-up-outline"></ion-icon>
-                    <ion-text class="buttonText" lines="none"
-                      height="fit-content">0</ion-text><!-- {{post.likes}} goes here-->
-                  </ion-col>
+                </ion-col>
+              </ng-container>
 
-                  <ion-col (click)="comment()" size="6">
-                    <ion-icon size="25px" color="primary" name="chatbox-ellipses-outline"></ion-icon>
-                    <ion-text class="buttonText"
-                      lines="none">0</ion-text><!-- number of comments goes here or to be removed-->
-                  </ion-col>
-                </ion-row>
+              <ng-template #buyable>
 
-                <ion-row>
-                  <ion-col>
-                    <ion-badge class="funny">{{post.hashtag}}</ion-badge> 
-                  </ion-col>
-                </ion-row>
-              </ion-col>
+                <ion-col class="captionText" size="9">
+                  <ion-text lines="none"> {{ post.caption }}</ion-text>
+                </ion-col>
+                <ion-col size="3">
+                  <ion-row>
+                    <ion-col (click)="like()" size="6">
+                      <ion-icon size="25px" color="primary" name="thumbs-up-outline"></ion-icon>
+                      <ion-text class="buttonText" lines="none"
+                        height="fit-content">0</ion-text><!-- {{post.likes}} goes here-->
+                    </ion-col>
 
-            </ng-template>
+                    <ion-col (click)="comment()" size="6">
+                      <ion-icon size="25px" color="primary" name="chatbox-ellipses-outline"></ion-icon>
+                      <ion-text class="buttonText"
+                        lines="none">0</ion-text><!-- number of comments goes here or to be removed-->
+                    </ion-col>
+                  </ion-row>
 
-          </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      <ion-badge *ngIf="post.hashtag" style="--background: var(--{{ getSlicedHashtag(post.hashtag) }});">{{post.hashtag}}</ion-badge>
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
 
-        </ion-grid>
+              </ng-template>
 
-        <hr>
+              
+            </ion-row>
+            
+          </ion-grid>
+          
+          <hr>
+        
+        <!-- </ng-container> -->
+        </div>
       </div>
-    </div>
     <ng-template #noPosts>
-
+      <hr>
       <div class="noPosts">
         <p>No posts available yet</p>
       </div>
