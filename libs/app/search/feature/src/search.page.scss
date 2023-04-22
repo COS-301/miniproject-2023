@@ -42,19 +42,35 @@
   
     size: fit-content;
   }
+
+  
   .bottomBarButton {
     border-radius: var(--bottomNavBarBorderRadius) var(--bottomNavBarBorderRadius) 0 0;
   }
   
   .tabWrapper {
-    border-radius: var(--bottomNavBarBorderRadius) var(--bottomNavBarBorderRadius) 0 0;
-  
+    border-radius: 15px 15px 0 0;
+    //border-radius: var(--bottomNavBarBorderRadius) var(--bottomNavBarBorderRadius) 0 0;
+    //padding-top: 64px; 
   }
   
   .bottomToolbar {
-    border-radius: var(--bottomNavBarBorderRadius) var(--bottomNavBarBorderRadius) 0 0;
+    border-radius: 15px 15px0 0;
+    //box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   
   }
+
+  .bottomTabs{//
+    border-radius: 15px 15px 0 0;
+    //box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+  }
+
+  .toolbar{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 20px 20px 0 0;
+  }
+  
   
   .categoryWrapper{
     box-shadow: 0 3px 2px 1px #eeeeee;
