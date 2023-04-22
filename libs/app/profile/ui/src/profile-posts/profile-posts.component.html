@@ -17,11 +17,14 @@
     </ion-grid>
     <form [formGroup]="accountDetailsForm" ngxsForm="profile.accountDetailsForm" (submit)="updateAccountDetails()">
       <ion-list lines="none">
-        <ion-item counter="true">
-          <ion-textarea [autoGrow]="true" maxlength="150"
-            style="background-color: #ffffff; --padding-end: 10px; --padding-start: 10px; border:solid 1px rgb(53,107,89); border-radius: 25%; "
-            formControlName="bio">
-          </ion-textarea>
+        <ion-item counter="true" style="text-align: center; padding-left: 50px; padding-right: 50px; font-size: 12px; ">
+          
+            <ion-textarea [autoGrow]="true" maxlength="150"
+              style="font-size: 12px; background-color: #ffffff; padding-left:20px; padding-right: 20px; border:solid 1px rgb(53,107,89); border-radius: 20px; width:200px"
+              formControlName="bio">
+            </ion-textarea>
+          
+          
         </ion-item>
 
       </ion-list>

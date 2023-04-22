@@ -20,6 +20,15 @@ ion-col {
   font:bold;
 }
 
+.rounded-div{
+  display: block;
+  border-radius: 25px;
+  background-color: #ffffff; 
+  border:solid 1px rgb(53,107,89);
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .postImage{
   padding: 0;
   display: block;
