@@ -497,7 +497,6 @@ export class ProfileState {
     console.log("In state AddPost " + post.content);
     try {
       const state = ctx.getState();
-      alert(state.profile?.userId);
       const userId = state.profile?.userId;
       const content = post.content;
       const createdBy = state.profile?.userId;

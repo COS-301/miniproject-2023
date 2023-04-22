@@ -382,7 +382,6 @@ if (!postDoc.exists) {
     console.log("Post NOT found: index: ", index)
   }
 
-  console.log("comment: ", newComment);
       return newComment;
     } catch (error) { 
       console.error(error);
