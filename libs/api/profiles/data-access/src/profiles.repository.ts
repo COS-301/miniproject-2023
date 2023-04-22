@@ -44,10 +44,12 @@ export class ProfilesRepository {
       .firestore()
       .collection('profiles')
       .doc(profile.userId)
-      .get();
+      .get()
+
+      console.log("User id ",profile.userId)
 
     const profileData = profileDoc.data() as IProfile;
-    
+
 
     // If profile doesn't exist, handle the error
     if (!profileData) {

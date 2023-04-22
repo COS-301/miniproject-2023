@@ -351,10 +351,10 @@ if (!postDoc.exists) {
 
 
   const postDetails = postDoc.data() as IPostDetails;
-  console.log("Hererererere: ", JSON.stringify(postDetails))
+
   if (!postDetails.comments) {
     postDetails.comments = [];
-    console.log("TTTTTTRRRRRRUUUUUUEEEEEEEEEE")
+    console.log("Comment array is empty")
   }
 
   const newComment: IComment = {

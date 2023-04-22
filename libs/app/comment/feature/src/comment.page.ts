@@ -59,6 +59,8 @@ export class CommentPage implements OnInit {
 
   send(){
 
+    this.clear()
+
     const NewComment: IComment = {
       comment: this.commentText,
       postId: this.postIdValue,
