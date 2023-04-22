@@ -38,7 +38,6 @@ export class CommentPage implements OnInit {
         this.createrId = post?.createdBy;
       })
 
-      console.log(JSON.stringify(this.comments))
 
       this.profile$.subscribe((profile) => {
         this.userName = profile?.accountDetails?.displayName

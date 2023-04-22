@@ -36,7 +36,6 @@ export class PostDetailsComponent {
   // }
   uploadImage(event: any) {
     console.log("Image Uploaded");
-    alert("Change is called");
     const file: File | null = event.target.files?.[0];
     if (!file) {
       return;
