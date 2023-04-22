@@ -3,7 +3,7 @@ import { FriendRequestStatus } from '../enums';
 
 export interface IFriendRequest {
   senderId: string;
-  receiverId: string;
+  receiverId?: string;
   receiverUsername?: string | null | undefined;
   status?: FriendRequestStatus | null | undefined;
   lastUpdated?: Timestamp | null | undefined;

@@ -58,15 +58,6 @@ export class FriendsRepository {
     return await admin.firestore().collection('friends').doc().create(friend);
   }
 
-  async createFriend2(friend: IFriend) {
-    const newFriend = await admin.firestore().collection('friends').doc('zh53qLN1W1ABWxlIVby6');
-    return await newFriend.set({
-      userId1: friend.userId1,
-      userId2: friend.userId1,
-      created: friend.created,
-    });
-  }
-
   async deleteFriend(friendId: string) {
     return await admin.firestore().collection('friends').doc(friendId).delete();
   }

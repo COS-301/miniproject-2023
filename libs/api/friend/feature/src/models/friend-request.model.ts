@@ -11,7 +11,7 @@ import { Timestamp } from 'firebase-admin/firestore';
 export class FriendRequest extends AggregateRoot implements IFriendRequest {
   constructor(
     public senderId: string,
-    public receiverId: string,
+    public receiverId?: string,
     public status?: FriendRequestStatus | null | undefined,
     public lastUpdated?: Timestamp | null | undefined,
     public created?: Timestamp | null | undefined,

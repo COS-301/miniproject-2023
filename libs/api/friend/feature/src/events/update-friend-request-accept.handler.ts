@@ -11,7 +11,7 @@ export class UpdateAcceptFriendRequestHandler implements IEventHandler<UpdateAcc
 
     const currentFriendRequestsSnapshot = await this.repository.getCurrentFriendRequest(
       event.friendRequest.senderId,
-      event.friendRequest.receiverId,
+      event.friendRequest.receiverId || ' ',
     );
     const currentFriendRequestsDoc = currentFriendRequestsSnapshot.docs[0];
     const currentFriendRequestsId = currentFriendRequestsDoc.id;
