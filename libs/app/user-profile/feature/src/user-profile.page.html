@@ -1,1 +1,153 @@
-<p>hello</p>
+
+<ion-header>
+  <div style="position: relative;">
+    <img src="assets/images/placeholder.jpg" id="banner" style="width: 100%; height: 220px; object-fit: cover;">
+    <img src="https://ionicframework.com/docs/img/demos/avatar.svg" id="profile" style="height: 100px; border-radius: 50%; position: absolute; bottom: 0; left: 0; margin-bottom: 10px; border: 2px solid black; margin-left: 10px;">
+  </div>
+  
+  <ion-card class="profile">
+    <ion-card-header>
+      <ion-card-title id="prof-name">
+        James Nolan 
+        <ion-button fill="clear" size="medium" color="dark" class="edit-button" style="float: right;" [routerLink]="['/settings/account-settings']">
+          <ion-icon name="pencil" style="margin-right: 10px;"></ion-icon>
+          <ion-label>Edit</ion-label>
+        </ion-button>
+        
+      </ion-card-title>
+      <ion-card-subtitle id="prof-usrname" style="font-size: larger;">@james-nolan</ion-card-subtitle>
+      <ion-card-subtitle id="uni" color="dark" style="font-size: larger;">University of Pretoria</ion-card-subtitle>
+      <ion-card-subtitle id="dept" color="dark" style="font-size: larger;">Department of CS</ion-card-subtitle>
+    </ion-card-header>
+    
+    <ion-card-content style="font-size: larger;">
+      <p id="bio" style="font-size: 17px; text-align: center;">Here's a small text description for the bio content. Nothing more, nothing less.</p>
+
+      <ion-button fill="clear" style="height: auto; margin-left: 50px; margin-top: 20px;" (click)="checkFollowers()">
+        <div style="display: flex; flex-direction: column; align-items: center;">
+          <ion-text color="primary" style="font-size: 1.2em; margin-left: 10px; text-transform: capitalize;">110</ion-text>
+          <ion-text color="dark" style="font-size: 1.2em; margin-left: 10px; text-transform: capitalize; margin-bottom: 10px;">Followers</ion-text>
+        </div>
+      </ion-button>
+
+      <ion-button fill="clear" style="height: auto; margin-left: 20px; margin-top: 20px;" (click)="checkFollowing()">
+        <div style="display: flex; flex-direction: column; align-items: center;">
+          <ion-text color="primary" style="font-size: 1.2em; margin-left: 10px; text-transform: capitalize;">30</ion-text>
+          <ion-text color="dark" style="font-size: 1.2em; margin-left: 10px; text-transform: capitalize; margin-bottom: 10px;">Following</ion-text>
+        </div>
+      </ion-button>
+
+      <div style="display: flex; border-radius: 24px; border: 1px solid black; padding: 10px; background-color: var(--ion-color-warning-shade); margin-top: 15px; box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);" class="ion-text-center">
+        <div id="hrs" style="flex: 1; text-align: center; border-right: 1px solid black; color: black;">12 hrs</div>
+        <div id="mins" style="flex: 1; text-align: center; border-right: 1px solid black; color: black;">23 mins</div>
+        <div id="seconds" style="flex: 1; text-align: center; color: black;">36 s</div>
+      </div>
+      
+    </ion-card-content>
+  </ion-card>
+</ion-header>
+
+
+<ion-toolbar>
+  <ion-segment value="all">
+    <ion-segment-button value="posts">
+      <ion-label>Posts</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="comments">
+      <ion-label>Comments</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="liked">
+      <ion-label>Liked</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-toolbar>
+
+
+<!-- if this gets impelmented let Julianna know to change the post structure -->
+<ion-card>
+  <ion-item>
+    <ion-avatar slot="start" style="width: 70px; height: auto;">
+      <img src="https://ionicframework.com/docs/demos/api/avatar/avatar.svg">
+    </ion-avatar>
+    
+    <ion-card-header style="padding-left: 5px; padding-bottom: 10px;">
+      <ion-card-title id="post-name" style="margin-right: 0;">James Nolan</ion-card-title>
+      <div style="display: inline-block;">
+        <ion-card-subtitle id="post-username" style="font-size: larger;">@james-nolan</ion-card-subtitle>
+        <ion-card-subtitle id="post-date" style="font-size: small; margin-top: 3px;">5 Mar 23</ion-card-subtitle>
+      </div>
+    </ion-card-header>
+    
+    <ion-button fill="clear" size="medium" color="dark" style="float: right; margin-left: 70px;">
+      <ion-icon name="ellipsis-horizontal-outline" style="margin-right: 0px;"></ion-icon>
+    </ion-button>
+  </ion-item>
+  <ion-card-content style="background-color: var(--ion-item-background);">
+    <p id="post-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia placeat velit est itaque ipsa. Officiis quae voluptas ipsam sit non labore omnis, repellendus velit maiores numquam, adipisci esse minima facere!</p>
+  
+  <ion-item style="padding-left: 0px;">
+    <ion-buttons class="media">
+      <ion-button style="margin-right: 30px; padding-left: 0px; width: auto;">
+        <ion-icon slot="icon-only" name="thumbs-up-outline" ></ion-icon>
+        <ion-label style="margin-left: 5px;">7</ion-label>
+      </ion-button>
+      <ion-button style="margin-right: 30px; width: auto;">
+        <ion-icon slot="icon-only" name="thumbs-down-outline"></ion-icon>
+        <ion-label style="margin-left: 5px;">2</ion-label>
+      </ion-button>
+      <ion-button style="margin-right: 30px; width: auto;">
+        <ion-icon slot="icon-only" name="chatbubble-outline"></ion-icon>
+        <ion-label style="margin-left: 5px;">12</ion-label>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="share-social-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+</ion-card-content>
+</ion-card>
+
+
+<ion-card>
+  <ion-item>
+    <ion-avatar slot="start" style="width: 70px; height: auto;">
+      <img src="https://ionicframework.com/docs/demos/api/avatar/avatar.svg">
+    </ion-avatar>
+    
+    <ion-card-header style="padding-left: 5px; padding-bottom: 10px;">
+      <ion-card-title id="post-name" style="margin-right: 0;">James Nolan</ion-card-title>
+      <div style="display: inline-block;">
+        <ion-card-subtitle id="post-username" style="font-size: larger;">@james-nolan</ion-card-subtitle>
+        <ion-card-subtitle id="post-date" style="font-size: small; margin-top: 3px;">7 Apr 23</ion-card-subtitle>
+      </div>
+    </ion-card-header>
+    
+    <ion-button fill="clear" size="medium" color="dark" style="float: right; margin-left: 70px;">
+      <ion-icon name="ellipsis-horizontal-outline" style="margin-right: 0px;"></ion-icon>
+    </ion-button>
+  </ion-item>
+  <ion-card-content style="background-color: var(--ion-item-background);">
+    <p id="post-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia placeat velit est itaque ipsa. Officiis quae voluptas ipsam sit non labore omnis, repellendus velit maiores numquam, adipisci esse minima facere!</p>
+  
+  <ion-item style="padding-left: 0px;">
+    <ion-buttons class="media">
+      <ion-button style="margin-right: 30px; padding-left: 0px; width: auto;">
+        <ion-icon slot="icon-only" name="thumbs-up-outline" ></ion-icon>
+        <ion-label style="margin-left: 5px;">11</ion-label>
+      </ion-button>
+      <ion-button style="margin-right: 30px; width: auto;">
+        <ion-icon slot="icon-only" name="thumbs-down-outline"></ion-icon>
+        <ion-label style="margin-left: 5px;">2</ion-label>
+      </ion-button>
+      <ion-button style="margin-right: 30px; width: auto;">
+        <ion-icon slot="icon-only" name="chatbubble-outline"></ion-icon>
+        <ion-label style="margin-left: 5px;">11</ion-label>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="share-social-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+</ion-card-content>
+</ion-card>
+

@@ -12,5 +12,14 @@ export class UserProfilePageComponent {
   
   customCounterFormatter(inputLength: number, maxLength: number) {
     return `${maxLength - inputLength} characters remaining`;
+
+  }
+
+  checkFollowers(){
+    // this.router.navigate(['followers']);
+  }
+
+  checkFollowing(){
+    // this.router.navigate(['followers']);
   }
 }

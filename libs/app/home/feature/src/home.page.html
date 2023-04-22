@@ -36,7 +36,6 @@
       </div>
     </ion-button>
     
-      
       <ion-title color="dark" id="name" style="margin-left: 68px;">James Nolan</ion-title>
       <ion-title color="medium" id="username" style="margin-top: 5px; margin-bottom: 15px; margin-left: 60px;">@james-nolan</ion-title>
 
@@ -63,13 +62,14 @@
 
       </ion-item>
 
-
-      <ion-item>
-        <ion-button fill="clear" (click)="goToProfile()" style="height: auto;">
-          <ion-icon color="dark" name="person-circle-outline" size="large"></ion-icon>
-          <ion-text color="dark"  style="font-size: 1.5em; margin-left: 10px; text-transform: capitalize;">Profile</ion-text>
-        </ion-button>
+      <ion-item style="display: block; margin: 0; padding: 0; ">
+        <div style="width: auto; display: flex; border-radius: 24px; border: 1px solid black; padding: 10px; background-color: var(--ion-color-warning-shade); margin-top: 15px; box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3); width: 500px;" class="ion-text-center">
+          <div id="hrs" style="flex: 1; text-align: center; border-right: 1px solid black; color: black;">12 hrs</div>
+          <div id="mins" style="flex: 1; text-align: center; border-right: 1px solid black; color: black;">23 mins</div>
+          <div id="seconds" style="flex: 1; text-align: center; color: black;">36 s</div>
+        </div>
       </ion-item>
+      
       <ion-item>
         <ion-button fill="clear" (click)="goToSettings()" style="height: auto;">
           <ion-icon color="dark" name="settings-outline" size="large"></ion-icon>
