@@ -12,7 +12,7 @@ import { Timestamp } from 'firebase-admin/firestore';
 import { user } from '@angular/fire/auth';
 import { tap } from 'rxjs';
 import { SetViewedComments } from '@mp/app/view-comments/util';
-import { SetProfile } from '@mp/app/profile/util';
+import { SetUser } from '@mp/app/profile/util';
 import { IUser } from '@mp/api/users/util';
 
 export interface ProfileViewStateModel {
