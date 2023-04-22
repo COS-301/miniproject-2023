@@ -1,5 +1,5 @@
 import { IFriendRequest } from '../interfaces';
 
-export class FriendRequestCreatedEvent {
+export class UpdateAcceptFriendRequestEvent {
   constructor(public readonly friendRequest: IFriendRequest) {}
 }
