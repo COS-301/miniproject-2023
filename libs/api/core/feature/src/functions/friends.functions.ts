@@ -4,6 +4,8 @@ import {
   ICreateFriendResponse,
   IUpdateFriendRequest,
   IUpdateFriendResponse,
+  IDeleteFriendRequest,
+  IDeleteFriendResponse,
 } from '@mp/api/friend/util';
 import { NestFactory } from '@nestjs/core';
 import * as functions from 'firebase-functions';
@@ -36,19 +38,38 @@ export const updateFriendRequest = functions.https.onCall(
     const service = app.get(FriendsService);
     try {
       return await service.updateFriendRequest(request);
-    }
-    catch (error) {
+    } catch (error) {
       if (error instanceof Error) {
-        if(error.message.includes('not found'))
-          throw new functions.https.HttpsError('not-found', error.message);
+        if (error.message.includes('not found')) throw new functions.https.HttpsError('not-found', error.message);
 
-        if(error.message.includes('Missing required fields'))
+        if (error.message.includes('Missing required fields'))
           throw new functions.https.HttpsError('invalid-argument', error.message);
 
-        throw new functions.https.HttpsError("internal", error.message)
+        throw new functions.https.HttpsError('internal', error.message);
       }
 
-      throw new functions.https.HttpsError("unknown", "An unknown error occurred.");
+      throw new functions.https.HttpsError('unknown', 'An unknown error occurred.');
+    }
+  },
+);
+
+export const deleteFriendRequest = functions.https.onCall(
+  async (request: IDeleteFriendRequest): Promise<IDeleteFriendResponse> => {
+    const app = await NestFactory.createApplicationContext(CoreModule);
+    const service = app.get(FriendsService);
+    try {
+      return await service.deleteFriendRequest(request);
+    } catch (error) {
+      if (error instanceof Error) {
+        if (error.message.includes('not found')) throw new functions.https.HttpsError('not-found', error.message);
+
+        if (error.message.includes('Missing required fields'))
+          throw new functions.https.HttpsError('invalid-argument', error.message);
+
+        throw new functions.https.HttpsError('internal', error.message);
+      }
+
+      throw new functions.https.HttpsError('unknown', 'An unknown error occurred.');
     }
   },
 );
