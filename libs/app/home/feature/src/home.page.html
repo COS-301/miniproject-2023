@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header id="navbar">
   <ion-toolbar>
 
     <ion-buttons slot="start" style="zoom: 1.2; margin-left: 10px;">
@@ -9,11 +9,7 @@
     <ion-avatar slot="end" style="margin-right: 60px; margin-top: 10px; margin-bottom: 10px;">
       <img
         class="logo logo-light"
-        src="assets/logos/logo-trans.png" />
-      <img
-        class="logo logo-dark"
-        src="assets/logos/logo-dark.png"
-      />
+        src="assets/logos/logo-transp.png" />
     </ion-avatar>
 
     <ion-button fill="clear" (click)="goToLeaderboard()" slot="end" style="margin-right: 10px;">
@@ -110,16 +106,16 @@
     <ion-segment-button id="popover-button" value="addButton">
       <ion-icon name="duplicate-outline"></ion-icon>
     </ion-segment-button>
-    <ion-popover trigger="popover-button" [dismissOnSelect]="true">
+    <ion-popover trigger="popover-button" side="top" alignment="center" [dismissOnSelect]="true">
       <ng-template>
-        <ion-content>
-          <ion-list>
-            <ion-item [button]="true" [detail]="false" (click)="goToPost()">Create a Post</ion-item>
-            <ion-item [button]="true" [detail]="false" (click)="goToChallenge()">Create a Challenge</ion-item>
-          </ion-list>
+        <ion-content color="light">
+          <ion-button color="light" expand="full" (click)="goToPost()">Create a Post</ion-button>
+          <ion-button color="light" expand="full" (click)="goToChallenge()">Create a Challenge</ion-button>
         </ion-content>
       </ng-template>
     </ion-popover>
+    
+    
 
 
 

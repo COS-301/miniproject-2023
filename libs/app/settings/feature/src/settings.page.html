@@ -19,8 +19,10 @@
         <ion-icon name="notifications" aria-hidden="true" class="ion-padding-end"></ion-icon>
         <ion-label>Notifications</ion-label>
     </ion-item>
-    <ion-item routerLink="theme-settings">
+    <ion-item>
         <ion-icon name="moon" aria-hidden="true" class="ion-padding-end"></ion-icon>
-        <ion-label>Theme</ion-label>
-    </ion-item>
+        <ion-label>Dark Theme</ion-label>
+        <ion-toggle #myToggle (ionChange)="onToggleColorTheme($event)"></ion-toggle>
+      </ion-item>
+      
   </ion-list>

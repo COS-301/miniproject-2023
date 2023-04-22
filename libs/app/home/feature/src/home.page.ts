@@ -1,11 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { IProfile } from '@mp/api/profiles/util';
 import { ProfileState } from '@mp/app/profile/data-access';
 import { Select} from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { ModalController, PopoverController } from '@ionic/angular';
-import { ViewChild } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 
 
@@ -16,16 +14,19 @@ import { MenuController } from '@ionic/angular';
 })
 export class HomePage {
   @Select(ProfileState.profile) profile$!: Observable<IProfile | null>;
-  @ViewChild('new_chat') modal!: ModalController;
-  @ViewChild('popover') popover!: PopoverController;
 
 
-  constructor(private router: Router, private menuCtrl?: MenuController) {}
+  constructor(private router: Router, private renderer: Renderer2, private menuCtrl?: MenuController) {}
 
 
   ngOnInit() {
-    // console.log('');
+    const colorTheme = localStorage.getItem('color-theme');
+  
+    if (colorTheme) {
+      this.renderer.setAttribute(document.body, 'color-theme', colorTheme);
+    }
   }
+
 
   logout() {
     // this.popover.dismiss();

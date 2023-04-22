@@ -37,51 +37,15 @@ ion-header.title-header {
     margin-top: 30%;
 }
 
-@media (prefers-color-scheme: light) {
-    .logo-light {
-      display: block;
-    }
+
+
+ion-icon.burger {
+    font-size: 40px;
+//   color: #000;
+}
   
-    .logo-dark {
-      display: none;
-    }
 
-    .stats {
-        color: #000000;
-    }
-
-    ion-icon.burger {
-        font-size: 40px;
-        color: #000;
-      }
-
-
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .logo-light {
-      display: none;
-    }
-  
-    .logo-dark {
-      display: block;
-    }
-
-    .stats {
-        color: #ffffff;
-    }
-
-    ion-icon.burger {
-        font-size: 40px;
-        color: #fff;
-      }
-
-  }
-
-  .menu-button {
-    margin-top: 10px;
-  }
-  
+    
 
 ion-content {
     ion-list {
@@ -113,6 +77,7 @@ ion-toolbar {
     justify-content: space-between;
     align-items: center;
   }
+  
   
 
   

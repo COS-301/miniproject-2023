@@ -4,10 +4,10 @@
     --border-color: var(--ion-color-primary);
 }
 
-ion-buttons {
-    background-image: linear-gradient(#FC9C00, #F6CC86) !important;
-    border-radius: 10px;
-}
+// ion-buttons {
+//     background-image: linear-gradient(#FC9C00, #F6CC86) !important;
+//     border-radius: 10px;
+// }
 
 .settings-button {
     width: 40px;
@@ -39,13 +39,13 @@ ion-buttons {
     padding: 10px;
 }
 
-.notification-icon {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: auto;
-    padding: 10px;
-}
+// .notification-icon {
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     width: auto;
+//     padding: 10px;
+// }
 
 .notification-heading {
     position: absolute;
@@ -65,8 +65,8 @@ ion-buttons {
     margin-right: 6px;
     margin-left: 6px;
     margin-top: 12px;
-    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.30000001192092896);
-    --background: #ffffff;
+    box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.30000001192092896);
+    // --background: primary;
 }
 
 .notification-logo {

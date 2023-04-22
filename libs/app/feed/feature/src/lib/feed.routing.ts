@@ -8,6 +8,21 @@ const routes: Routes = [
     pathMatch: 'full',
     component: FeedPage,
   },
+  // {
+  //   path: 'profile',
+  //   loadChildren: () =>
+  //     import('@mp/app/profile/feature').then((m) => m.ProfileModule),
+  // },
+  // {
+  //   path: 'userprofile',
+  //   loadChildren: () =>
+  //     import('@mp/app/user-profile/feature').then((m) => m.UserProfileModule),
+  // },
+  // {
+  //   path: 'settings',
+  //   loadChildren: () =>
+  //     import('@mp/app/settings/feature').then((m) => m.SettingsModule),
+  // },
 ];
 
 @NgModule({
