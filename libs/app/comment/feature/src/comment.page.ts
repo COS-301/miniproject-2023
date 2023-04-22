@@ -27,6 +27,7 @@ export class CommentPage implements OnInit {
   ngOnInit() {
     this.activatedRoute.queryParamMap.subscribe(queryParams => {
       const value = queryParams.get('postValueId');
+      
       this.postIdValue = value !== null ? value : '';
       
       const userIdvalue = queryParams.get('userValueId');
@@ -65,6 +66,7 @@ export class CommentPage implements OnInit {
       postId: this.postIdValue,
       userId: this.userIdValue
     }
+
 
     const commentDetails: ICommentOnPostRequest = {
         userId: this.createrId,

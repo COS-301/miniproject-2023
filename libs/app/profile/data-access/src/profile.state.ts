@@ -652,7 +652,7 @@ console.log(uId);
   const actionComment =  action.comment.comment
   const stringActionComment = JSON.stringify(actionComment); 
   const comment = JSON.parse(stringActionComment)
-
+ 
   
   
   const commentDetails: IComment = {
