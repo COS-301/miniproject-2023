@@ -5,8 +5,15 @@ import * as admin from 'firebase-admin';
 @Injectable()
 export class UsersRepository {
   async createUser(user: IUser) {
-    console.log(user);
-    return await admin.firestore().collection('users').doc().create(user);
+    return await admin.firestore().collection('users').doc(user.userId).create(user);
+  }
+
+  async updateUser(user: IUser) {
+    return await admin
+      .firestore()
+      .collection('users')
+      .doc(user.userId)
+      .set(user, { merge: true });
   }
   
   async findUser(userId: string) {
@@ -22,7 +29,7 @@ export class UsersRepository {
       .doc(userId)
       .get();
   }
-  
+
   async findUserWithUsername(username: string) {
     return await admin
       .firestore()
@@ -34,6 +41,7 @@ export class UsersRepository {
         },
         toFirestore: (it: IUser) => it,
       })
+      .limit(1)
       .get();
   }
 }
