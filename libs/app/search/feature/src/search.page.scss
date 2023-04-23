@@ -46,7 +46,18 @@
   
   ion-img::part(image) {
     border-radius: 20px;
+    object-fit: cover;
+    width: min(28vw, 28vh);
+    height: min(28vw, 28vh);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    //border: 1px solid var(--ion-color-primary);
   }
+
+  .natureImg{
+    border: 5px solid var(--nature);
+  }
+
+
   
   .timer{
     --background: var(--ion-color-primary);
@@ -60,8 +71,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  
+    border-radius: 7px;
     size: fit-content;
+    font-family: var(--poppins);
+    font-weight: 600;
+    font-style: italic;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  }
+
+  
+  .hashtagBadge{
+    padding-top: 20px;
+    width: 13vw;
+    
+    
   }
 
   
@@ -76,7 +99,7 @@
   }
   
   .bottomToolbar {
-    border-radius: 15px 15px0 0;
+    border-radius: 15px 15px 0 0;
     //box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   
   }
@@ -94,9 +117,10 @@
   
   
   .categoryWrapper{
-    box-shadow: 0 3px 2px 1px #eeeeee;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   }
 
+  
   .submitSearch{
     font-size:25px;
   }
