@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
 export class SplashPage implements OnInit {
   constructor(private router: Router) { }
 
+  /* eslint-disable */
   ngOnInit() {}
+  /* eslint-enable */
 
   ionViewDidEnter() {
     setTimeout(()=>{
