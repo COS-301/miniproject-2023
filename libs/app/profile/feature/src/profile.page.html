@@ -7,7 +7,7 @@
 </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
 <ng-container *ngIf="(profile$ | async) as profile; else noProfile">
   <ms-profile-posts-component></ms-profile-posts-component>
 </ng-container>
