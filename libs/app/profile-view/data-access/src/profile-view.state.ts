@@ -245,42 +245,6 @@ export class ProfileViewState {
         }
     }
 
-    // @Action(CreateFriendRequest) 
-    // async createFriendRequest(ctx: StateContext<ProfileViewStateModel>, action: CreateFriendRequest) {
-    //     try{
-    //         const state = ctx.getState();
-
-    //         const request : IUser = { //data needs to be added
-    //             userId: '',
-    //         }
-
-    //         const responseRef = this.profileViewApi.createFriendRequest(request);
-    //         const response = response.data;
-    //         return ctx.dispatch(new SetProfileView(response.profile));
-    //     }
-    //     catch (error) {
-    //         return ctx.dispatch(new SetError((error as Error).message));
-    //     }
-    // }
-
-    // @Action(UpdateFriendRequest) 
-    // async updateFriendRequest(ctx: StateContext<ProfileViewStateModel>, action: UpdateFriendRequest) {
-    //     try{
-    //         const state = ctx.getState();
-
-    //         const request : IUser = { //data needs to be added
-    //             userId: '',
-    //         }
-
-    //         const responseRef = this.profileViewApi.updateFriendRequest(request);
-    //         const response = response.data;
-    //         return ctx.dispatch(new SetProfileView(response.profile));
-    //     }
-    //     catch (error) {
-    //         return ctx.dispatch(new SetError((error as Error).message));
-    //     }
-    // }
-
     @Action(SubscribeToProfile)
     subscribeToProfile(ctx: StateContext<ProfileViewStateModel>) {
         const user = this.store.selectSnapshot(AuthState.user);
