@@ -22,6 +22,11 @@ export class BuyPost{
   static readonly type = '[Profile] BuyPost';
   constructor(public postId: string) {}
 }
+
+export class LikePost{
+  static readonly type = '[Profile] LikePost';
+  constructor(public postId: string) {}
+}
 export class GetAllPosts {
   static readonly type = '[Profile] Get All Posts';
   constructor(public userId: string) {}

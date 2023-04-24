@@ -215,4 +215,10 @@ getUserPostsByHashtag$(hashtag: string): Observable<IPostDetails[]> {
       'updateOccupationDetails'
     )(request);
   }
+
+  likePost$(post:IPostDetails,liker:string): Observable<IPostDetails[]> {
+    const likePost = this.functions2.httpsCallable('likePost');
+    return from(likePost({ post,liker })).pipe(map(result => result.posts));
+  }
+
 }

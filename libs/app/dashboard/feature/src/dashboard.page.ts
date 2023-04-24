@@ -7,8 +7,8 @@ import { Select } from '@ngxs/store';
 import { Observable, concatMap, filter, map, of, throwError, Subscription, Subject } from 'rxjs';
 import { Router, NavigationExtras  } from '@angular/router';
 import { FetchUserPosts, GetAllPosts } from '@mp/app/profile/util';
-import { BuyPost } from '@mp/app/profile/util';
-import { takeUntil } from 'rxjs/operators';
+import { BuyPost, LikePost } from '@mp/app/profile/util';
+import { take, takeUntil, timeInterval } from 'rxjs/operators';
 
 @Component({
   selector: 'ms-dashboard-page',
@@ -19,8 +19,8 @@ export class DashboardPage {
   userId: string| null| undefined
   numberOfComments = 0;
   postIdValue = '';
-  constructor(private router: Router, private store: Store) { 
-   
+  constructor(private router: Router, private store: Store) {
+
   }
   @Select(ProfileState.userPosts) userPosts$: Observable<IPostDetails[]> | undefined;
 
@@ -30,6 +30,8 @@ export class DashboardPage {
     })
     const userId = ' '; // Replace this with the actual user ID
 console.log("here in dispatch");
+
+
     this.store.dispatch(new GetAllPosts(userId));
 console.log("we done in dispatch")
 
@@ -50,7 +52,7 @@ this.userPosts$?.subscribe( (posts) => {
   }
 
   comment(postId: string| null| undefined) {
-  
+
   this.postIdValue = postId ? postId: '';
 
     /**
@@ -68,8 +70,8 @@ this.userPosts$?.subscribe( (posts) => {
     this.router.navigate(["/comment"], navigationExtras);
   }
 
-buyPost(i:number){
-  this.getPostByIndex(i).subscribe((post) => {
+async buyPost(i:number){
+  const post = await this.getPostByIndex(i);
     if (post?.postID) {
       // Perform your action with the post object
 const postID = post.postID;
@@ -78,15 +80,30 @@ this.store.dispatch(new BuyPost(postID));
     } else {
       console.error('Invalid index');
     }
-  });
+
 }
-getPostByIndex(index: number): Observable<IPostDetails | undefined> {
-if(!this.userPosts$){
-  return throwError(new Error('userPosts$ is undefined'));
+
+async likePost(i: number){
+    const post = await this.getPostByIndex(i);
+    if (post?.postID) {
+      // Perform your action with the post object
+      const postID = post.postID;
+      console.log('Post:'+i);
+      this.store.dispatch(new LikePost(postID));
+    } else {
+      console.error('Invalid index');
+    }
+
 }
-  return this.userPosts$.pipe(
-    concatMap(posts => posts ? of(posts[index]) : of(undefined))
-  );
+async getPostByIndex(index: number): Promise<IPostDetails | undefined> {
+  if (!this.userPosts$) {
+    throw new Error('userPosts$ is undefined');
+  }
+
+  // Get the current value of userPosts$ without subscribing
+  const posts = await this.userPosts$.pipe(take(1)).toPromise();
+
+  return posts ? posts[index] : undefined;
 }
   trending() {
 

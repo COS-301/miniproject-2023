@@ -25,7 +25,8 @@ import {
   SetComment,
   CreateNewComment,
   BuyPost,
-  FetchPortfolioPosts
+  FetchPortfolioPosts,
+  LikePost
 } from '@mp/app/profile/util';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import produce from 'immer';
@@ -132,7 +133,7 @@ comments:IComment[]|null;
         postID: null,
         createdBy: null,
         ownedBy: null,
-        likes: null, //fixed like left out  before
+        likes: 0, //fixed like left out  before
         comments: null,
         createdAt: null,
         content: null,
@@ -512,6 +513,33 @@ buyPost(ctx: StateContext<ProfileStateModel>, { postId }: BuyPost) {
       ctx.patchState({
         posts: ctx.getState().posts.map((post) =>
           post.postID === postId ? { ...post, ownedBy: buyerId } : post
+        ),
+      });
+    }),
+    catchError((error) => {
+      ctx.dispatch(new SetError((error as Error).message));
+      return of(null);
+    })
+  );
+}
+
+@Action(LikePost)
+LikePost(ctx: StateContext<ProfileStateModel>, { postId }: LikePost) {
+  const likerId = ctx.getState().profile?.userId;
+
+  if (!likerId || !postId) {
+    return ctx.dispatch(
+      new SetError('LikerId or PostId not set')
+    );
+  }
+
+  return from(
+    this.profileApi.functions2.httpsCallable('likePost')({ postId })
+  ).pipe(
+    tap(() => {
+      ctx.patchState({
+        posts: ctx.getState().posts.map((post) =>
+          post.postID === postId ? { ...post, likedBy: likerId } : post
         ),
       });
     }),

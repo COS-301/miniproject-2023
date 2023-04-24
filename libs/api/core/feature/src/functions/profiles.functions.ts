@@ -170,7 +170,7 @@ if(!post){
   if (post['ownedBy'] === buyerId) {
     throw new functions.https.HttpsError(
       'failed-precondition',
-      'You already own this post.'
+      'Already own this post'
     );
   }
 
@@ -428,4 +428,120 @@ console.log(userId + "functions");
   });
 return{posts};
 
+});
+
+export const likePost = functions.https.onCall(async (data, context) => {
+  const likerId = context.auth?.uid;
+  const postName = data.postId;
+
+  if (!likerId || !postName) {
+    throw new functions.https.HttpsError(
+      'invalid-argument',
+      'The function must be called with a likerId and postName.'
+    );
+  }
+
+  const lockRef = admin.firestore().collection('locks').doc(`${likerId}_${postName}`);
+
+  const lockSnapshot = await lockRef.get();
+  if (lockSnapshot.exists) {
+    throw new functions.https.HttpsError(
+      'failed-precondition',
+      'Another buyPosts operation is already in progress for this buyer and post.'
+    );
+  }
+
+  // Create a lock document
+  await lockRef.set({ locked: true });
+
+  try {
+
+  const profilesRef = admin.firestore().collection('profiles');
+  let postRef;
+
+  const profilesSnapshot = await profilesRef.get();
+  for (const profileDoc of profilesSnapshot.docs) {
+    const profileId = profileDoc.id;
+    const postsRef = admin
+      .firestore()
+      .collection('profiles')
+      .doc(profileId)
+      .collection('posts');
+
+    const postsSnapshot = await postsRef.where('postID', '==', postName).get();
+    for (const postDoc of postsSnapshot.docs) {
+      postRef = postDoc.ref;
+      break;
+    }
+    if (postRef) {
+      break;
+    }
+  }
+
+  if (!postRef) {
+    throw new functions.https.HttpsError(
+      'not-found',
+      'The specified post does not exist.'
+    );
+  }
+
+  const postSnapshot = await postRef.get();
+if(!postSnapshot.data()){
+  throw new functions.https.HttpsError(
+    'not-found',
+    'The specified post does not exist.'
+  );
+}
+  const post = postSnapshot.data();
+if(!post){
+  throw new functions.https.HttpsError(
+    'not-found',
+    'The specified post does not exist.'
+  );
+}
+
+
+  const ownerRef = admin
+    .firestore()
+    .collection('profiles')
+    .doc(post['ownedBy']);
+  const likerRef = admin.firestore().collection('profiles').doc(likerId);
+
+  const ownerSnapshot = await ownerRef.get();
+  const likerSnapshot = await likerRef.get();
+
+  if (!ownerSnapshot.exists || !likerSnapshot.exists) {
+    throw new functions.https.HttpsError(
+      'not-found',
+      'One or both of the specified users do not exist.'
+    );
+  }
+
+  const ownerData = ownerSnapshot.data();
+  const likerData = likerSnapshot.data();
+
+  const batch = admin.firestore().batch();
+
+  // Add like to post
+  batch.update(postRef, { likes: post['likes']+1 });
+// Update owner's time
+if (ownerData) {
+  const updatedOldOwnerTime = ownerData['time'] + 1;
+  batch.update(ownerRef, { time: updatedOldOwnerTime });
+}
+
+// Update liker'stime
+if (likerData) {
+  const updatedLikerTime = likerData['time'] - 1;
+  batch.update(likerRef, { time: updatedLikerTime });
+}
+await batch.commit();
+  }catch (error) {
+    // Delete the lock document in case of any error
+    await lockRef.delete();
+    throw error;
+  }
+  // Delete the lock document after successful completion
+  await lockRef.delete();
+  return { message: 'Post successfully liked.' };
 });
