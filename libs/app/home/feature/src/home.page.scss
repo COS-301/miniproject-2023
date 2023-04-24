@@ -25,3 +25,22 @@
     //border-radius: var(--bottomNavBarBorderRadius) var(--bottomNavBarBorderRadius) 0 0;
     border-radius: 20px 20px 0 0;
   }
+
+
+.navLabel{
+  font-size: 8px;
+  color: var(--branding-dark-green);
+  font-family: var(--ion-font-family);
+  font-weight: 400;
+}
+
+.navIcon{
+  font-size:22px;
+  
+}
+
+.create{
+  font-size:35px;
+  padding-bottom: 5px;
+  
+}

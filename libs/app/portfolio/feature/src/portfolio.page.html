@@ -5,6 +5,7 @@
         <!-- <lapse-time-badge slot="end" [time]="(1000).valueOf()"></lapse-time-badge> -->
   </ion-toolbar>
 </ion-header>
+<ion-content fullscreen>
 <div *ngFor="let post of profilePosts$ | async; let i = index" color=secondary>
 
   <img class="postImage" alt="Post" [src]="post.content" />
@@ -48,10 +49,10 @@
       </ion-button> -->
 
     </ion-buttons>
-  </ion-toolbar>
+  </ion-toolbar>ssssss
    <hr>
 </div>
-
+</ion-content>
 <!-- <ion-content>
   <ion-grid>
     <ion-row *ngFor="let item of getPortfolioPostsFromFunction$">
@@ -121,23 +122,32 @@
     <ion-tab-bar class="bottomTabs" slot="bottom" color="secondary">
 
       <ion-tab-button class="bottomBarButton" (click)="toHomePage()">
-        <ion-icon name="home-outline" color="primary" size="small"></ion-icon>
+        <ion-icon src = "assets/icons/home.svg" class="navIcon"></ion-icon>
+        <ion-label class = "navLabel">Home</ion-label>
       </ion-tab-button>
 
       <ion-tab-button class="bottomBarButton" (click)="toSearchPage()">
-        <ion-icon name="search-outline" color="primary" size="small"></ion-icon>
+        <ion-icon src = "assets/icons/search.svg" class="navIcon"></ion-icon>
+        <ion-label class = "navLabel">Search</ion-label>
       </ion-tab-button>
 
       <ion-tab-button class="bottomBarButton" (click)="toCreatePage()">
-        <ion-icon name="add-circle" color="primary"></ion-icon>
+        <ion-icon src = "assets/icons/create.svg" color="primary" class="create"></ion-icon>
+        
       </ion-tab-button>
 
       <ion-tab-button class="bottomBarButton" (click)="toPortfolioPage()">
-        <ion-icon name="cash-outline" color="primary" size="small"></ion-icon>
+        
+          <ion-icon src = "assets/icons/portfolioSelected.svg" class = "navIcon"></ion-icon>
+        
+        <ion-label class = "navLabel">Portfolio</ion-label>
       </ion-tab-button>
 
       <ion-tab-button class="bottomBarButton" (click)="toProfilePage()">
-        <ion-icon name="person" color="primary" size="small"></ion-icon>
+        
+        <ion-icon src = "assets/icons/profile.svg" class = "navIcon" ></ion-icon>
+        
+        <ion-label class = "navLabel">Profile</ion-label>
       </ion-tab-button>
 
     </ion-tab-bar>
