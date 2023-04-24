@@ -68,14 +68,14 @@ ion-list {
 }
 
 .actionBlock ion-row {
-  margin-bottom: 0.5em; /* adjust the value to your preference */
+  margin-bottom: 0.5em; 
 }
 
 .actionGrid{
   --padding-top: 0px;
   --padding-bottom: 0px;
-  margin-bottom: -30px;
-  margin-top: -5px;
+  margin-bottom: -10px;
+  margin-top: 0px;
 }
 
 .postImage {
@@ -85,6 +85,8 @@ ion-list {
   width: 100%;
   max-width: 100%;
   max-height: auto;
+  object-fit: cover;
+  
 }
 
 hr {
@@ -93,6 +95,11 @@ hr {
   background-color: rgba(208, 208, 208, 100);
   padding-top: 0;
   padding-bottom: 0;
+}
+
+.postCard{
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
 }
 
 ion-badge {
@@ -104,12 +111,17 @@ ion-badge {
   font-family: var(--poppins);
   font-weight: 600;
   font-style: italic;
+  //padding-bottom: 20px;
 
 }
 
 ion-toolbar {
   --padding-top: 0.5em; /* adjust the value to your preference */
   --padding-bottom: 0.5em; /* adjust the value to your preference */
+}
+
+.cardAction{
+  padding:0px;
 }
 
 .buttonText {
@@ -153,7 +165,7 @@ ion-toolbar {
   font-family: var(--sourceSans);
   font-weight: 300;
   font-size: 14px;
-  padding-left: 20px;
+  padding-left: 15px;
   padding-top:20px;
   padding-bottom: 20px;
 }

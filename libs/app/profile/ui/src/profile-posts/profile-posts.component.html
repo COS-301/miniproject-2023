@@ -54,15 +54,15 @@
 
       <div *ngFor="let post of posts" color=secondary>
 
-        <ion-card color = "primary">
+        <ion-card class="postCard">
           <div color = "primary" style="height: 5%;">
 
           </div>
-          <img class="postImage" alt="Post" [src]="post.content" height="300px" width="300px"/>
+          <img class="postImage" alt="Post" [src]="post.content"/>
           
         
-          <ion-card-content>
-            <ion-toolbar color="secondary" class="actionToolBar">
+          <ion-card-content class = "cardAction">
+            <ion-toolbar class="actionToolBar">
               <ion-list lines="none" class="actionBlock">
     
                 <ion-grid class = "actionGrid" >
@@ -107,7 +107,7 @@
                           </ion-col>
                         </ion-row>
     
-                        <ion-row >
+                        <ion-row style="margin-top: -13px;">
                           <ion-col>
                             <ion-badge *ngIf="post.hashtag"
                               style="--background: var(--{{ getSlicedHashtag(post.hashtag) }});">{{post.hashtag}}</ion-badge>
@@ -205,8 +205,8 @@
         </ion-button>
 
           </ion-buttons>
-        </ion-toolbar> -->
-        <hr>
+        </ion-toolbar> 
+        <hr>-->
       </div>
 
       <!-- <div *ngFor="let post of posts" style="text-align: center;">
