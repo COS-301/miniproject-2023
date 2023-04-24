@@ -12,6 +12,9 @@ import {
     AddNewComment,
     DeleteFriendRequest
 } from '@mp/app/notification-page/util';
+import { FriendRequestStatus, IDeleteFriendRequest, IUpdateFriendRequest } from '@mp/api/friend/util';
+import { ProfileState } from '@mp/app/profile/data-access';
+import { ToastController } from '@ionic/angular';
 
 export interface NotificationPageStateModel {
     friendsRequests: IUser[] | null | undefined;
@@ -31,7 +34,8 @@ export class NotificationPageState {
     
     constructor(
         private readonly notificationPageApi: NotificationPageApi,
-        private readonly store: Store
+        private readonly store: Store,
+        private readonly toastController: ToastController
     ) {}
 
     @Selector()
@@ -54,34 +58,62 @@ export class NotificationPageState {
         );
     }
 
-    @Action(AddNewFriendRequest) 
-    async addNewFriendRequest(ctx: StateContext<NotificationPageStateModel>, { friend } : AddNewFriendRequest) {
-        try{
-            const state = ctx.getState();
+    // @Action(AddNewFriendRequest) 
+    // async addNewFriendRequest(ctx: StateContext<NotificationPageStateModel>, { friend } : AddNewFriendRequest) {
+    //     try{
+            // const user = this.store.selectSnapshot(ProfileState.user);
 
-            state.friendsRequests?.unshift(friend);
+            // if (!user || !user.userId) return this.store.dispatch(new SetError('User not set [Notification-page]'));
 
-            return ctx.dispatch(new SetNotificationPage(state.friendsRequests, state.commentNotifications));
-        }
-        catch (error) {
-            return ctx.dispatch(new SetError((error as Error).message));
-        }
-    }
+            // const request : IUpdateFriendRequest = {
+            //     friendRequest: {
+            //         senderId: user?.userId,
+            //         receiverUsername: friend.username
+            //     }
+            // }
+
+    //         const responseRef = this.notificationPageApi.createFriendRequest(request);
+
+    //         return ctx.dispatch(new SetNotificationPage(state.friendsRequests, state.commentNotifications));
+    //     }
+    //     catch (error) {
+    //         return ctx.dispatch(new SetError((error as Error).message));
+    //     }
+    // }
 
     @Action(UpdateFriendRequest) 
     async updateFriendRequest(ctx: StateContext<NotificationPageStateModel>, { friend } : UpdateFriendRequest) {
         try{
-            const state = ctx.getState();
+            const user = this.store.selectSnapshot(ProfileState.user);
 
-            state.friendsRequests = state.friendsRequests?.map((old_friend) => {
-                if (old_friend.userId === friend.userId) {
-                    return friend;
+            if (!user || !user.userId) return this.store.dispatch(new SetError('User not set [Notification-page]'));
+
+            const request : IUpdateFriendRequest = {
+                friendRequest: {
+                    senderId: user?.userId,
+                    receiverUsername: friend.username,
+                    status: FriendRequestStatus['ACCEPTED']
                 }
+            }
 
-                return old_friend;
-            })
+            const responseRef = await this.notificationPageApi.updateFriendRequest(request);
+            const response = responseRef.data;
 
-            return this.store.dispatch(new SetNotificationPage(state.friendsRequests, state.commentNotifications));
+            if (response.status === 'success') {
+                const toast = await this.toastController.create({
+                    message: friend.username + " is now your friend",
+                    color: 'success',
+                    duration: 1500,
+                    position: 'bottom',
+                });
+              
+                toast.present();
+
+                return this.store.dispatch(new DeleteFriendRequest(friend));
+            }  
+            else {
+                return this.store.dispatch(new SetError('Unable to accept friend request'));
+            }
         }
         catch (error) {
             return ctx.dispatch(new SetError((error as Error).message));
@@ -92,6 +124,18 @@ export class NotificationPageState {
     async DeleteFriendRequest(ctx: StateContext<NotificationPageStateModel>, { friend } : DeleteFriendRequest) {
         try{
             const state = ctx.getState();
+            const user = this.store.selectSnapshot(ProfileState.user);
+
+            if (!user || !user.userId) return this.store.dispatch(new SetError('User not set [Notification-page]'));
+
+            const request : IDeleteFriendRequest = {
+                friendRequest: {
+                    senderId: user?.userId,
+                    receiverUsername: friend.username
+                }
+            }
+
+            const responseRef = this.notificationPageApi.deleteFriendRequest(request);
 
             state.friendsRequests = state.friendsRequests?.filter((old_friend) => {
                 return old_friend.userId != friend.userId;
@@ -104,17 +148,17 @@ export class NotificationPageState {
         }
     }
 
-    @Action(AddNewComment) 
-    async addNewComment(ctx: StateContext<NotificationPageStateModel>, { comment } : AddNewComment) {
-        try{
-            const state = ctx.getState();
+    // @Action(AddNewComment) 
+    // async addNewComment(ctx: StateContext<NotificationPageStateModel>, { comment } : AddNewComment) {
+    //     try{
+    //         const state = ctx.getState();
 
-            state.commentNotifications?.unshift(comment);
+    //         state.commentNotifications?.unshift(comment);
 
-            return ctx.dispatch(new SetNotificationPage(state.friendsRequests, state.commentNotifications));
-        }
-        catch (error) {
-            return ctx.dispatch(new SetError((error as Error).message));
-        }
-    }
+    //         return ctx.dispatch(new SetNotificationPage(state.friendsRequests, state.commentNotifications));
+    //     }
+    //     catch (error) {
+    //         return ctx.dispatch(new SetError((error as Error).message));
+    //     }
+    // }
 }
