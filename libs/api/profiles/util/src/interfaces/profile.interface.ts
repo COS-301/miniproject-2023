@@ -16,6 +16,6 @@ export interface IProfile {
   //addressDetails?: IAddressDetails | null | undefined;
   //occupationDetails?: IOccupationDetails | null | undefined;
   posts? : IPostDetails[]| null | undefined;
-  status?: ProfileStatus | null | undefined;
+  //status?: ProfileStatus | null | undefined;
   created?: Timestamp | null | undefined;
 }

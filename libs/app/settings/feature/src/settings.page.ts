@@ -12,8 +12,9 @@ import {  Store } from '@ngxs/store';
 export class SettingsPage implements OnInit {
   constructor(private router: Router, private readonly store: Store) { }
 
-
+  /* eslint-disable */
   ngOnInit() {}
+  /* eslint-enable */
 
   toProfilePage() {
     this.router.navigate(["/profile"]);

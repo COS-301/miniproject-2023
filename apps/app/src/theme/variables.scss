@@ -12,6 +12,16 @@
   /** Fonts **/
   --sourceSans: 'Source Sans Pro', sans-serif;
   --poppins: 'Poppins', sans-serif;
+
+  /** Brand Colours **/
+  --branding-blue: rgba(0,96,208,255);
+  --branding-dark-green: rgba(49,107,88);
+  --branding-light-green: rgba(48,160,141);
+
+  --branding-blue-filter: invert(27%) sepia(98%) saturate(1367%) hue-rotate(194deg) brightness(91%) contrast(114%);
+  --branding-grey-filter: invert(82%) sepia(0%) saturate(95%) hue-rotate(147deg) brightness(84%) contrast(82%);
+  --branding-light-green: rgba(48,160,141);
+
   /** primary **/
   
   --ion-color-primary: rgb(53, 107, 89);

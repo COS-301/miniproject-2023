@@ -6,12 +6,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./notifications.page.scss'],
 })
 export class NotificationsPage implements OnInit {
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
-
+  /* eslint-disable */
   ngOnInit() {}
-
+  /* eslint-enable */
   toHomePage() {
-    this.router.navigate(["/profile"]);
+    this.router.navigate(['/profile']);
   }
 }

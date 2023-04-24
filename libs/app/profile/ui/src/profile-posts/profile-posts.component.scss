@@ -12,12 +12,70 @@
   margin-bottom: 5%;
 }
 
+
+.like{
+  font-size: 22px;
+  filter: var(--branding-grey-filter);
+}
+
+.buy{
+  font-size: 22px;
+
+  stroke:var(--branding-blue) !important;
+  stroke-linecap:round !important;
+  stroke-linejoin:round !important;
+  stroke-width:24.87px !important;
+  //padding-right:7px;
+}
+
+.noSaleBuy{
+  font-size: 22px;
+  //color: #c22424!important;
+  stroke:rgb(194, 36, 36) !important;
+  stroke-linecap:round !important;
+  stroke-linejoin:round !important;
+  stroke-width:24.87px !important;
+  padding-right:7px;
+
+}
+
+.comment{
+  font-size: 22px;
+
+}
+
+
 ion-col {
   background-color: #ffffff;
   border: solid 1px #fff;
   color: #fff;
   text-align: center;
   font: bold;
+}
+
+ion-list {
+  --ion-item-padding: 0px;
+}
+
+.actionBlock{
+  margin:0px;
+  padding:0px;
+}
+
+.actionToolBar{
+  --padding-top: 0px;
+  --padding-bottom: 0px;
+}
+
+.actionBlock ion-row {
+  margin-bottom: 0.5em; /* adjust the value to your preference */
+}
+
+.actionGrid{
+  --padding-top: 0px;
+  --padding-bottom: 0px;
+  margin-bottom: -30px;
+  margin-top: -5px;
 }
 
 .postImage {
@@ -32,27 +90,59 @@ ion-col {
 hr {
   width: 90%;
   height: 2px;
-  background-color: rgb(208, 208, 208);
+  background-color: rgba(208, 208, 208, 100);
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 ion-badge {
   display: flex;
   align-items: center;
   justify-content: center;
-
+  border-radius: 7px;
   size: fit-content;
+  font-family: var(--poppins);
+  font-weight: 600;
+  font-style: italic;
+
+}
+
+ion-toolbar {
+  --padding-top: 0.5em; /* adjust the value to your preference */
+  --padding-bottom: 0.5em; /* adjust the value to your preference */
 }
 
 .buttonText {
   --min-height: 12px;
   font-size: 12px;
+  font-family: var(--poppins);
+  font-weight: 600;
+  color: var(--branding-blue);
   text-align: center;
   align-items: center;
   display: flex;
   width: -moz-fit-content;
   width: fit-content;
   margin: auto;
-  color: #000000;
+  white-space: nowrap;
+  //color: #000000;
+}
+
+.buttonTextNoSale {
+  --min-height: 12px;
+  font-size: 12px;
+  font-family: var(--poppins);
+  font-weight: 600;
+  color: rgba(194, 36, 36, 1);
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  white-space: nowrap;
+  //color: #000000;
 }
 
 .captionText {
@@ -60,4 +150,10 @@ ion-badge {
   word-wrap: break-word;
   color: #000000;
   text-align: left;
+  font-family: var(--sourceSans);
+  font-weight: 300;
+  font-size: 14px;
+  padding-left: 20px;
+  padding-top:20px;
+  padding-bottom: 20px;
 }

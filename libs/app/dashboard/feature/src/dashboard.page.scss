@@ -37,12 +37,60 @@ body{
   margin-top: 50px;
 }
 
-ion-col {
-  background-color: #fff;
-  border: solid 1px #fff;
-  color: #fff;
-  text-align: center;
+.like{
+  font-size: 22px;
+  filter: var(--branding-grey-filter);
 }
+
+
+.noSaleBuy{
+  font-size: 22px;
+  //color: #c22424!important;
+  stroke:rgb(194, 36, 36) !important;
+  stroke-linecap:round !important;
+  stroke-linejoin:round !important;
+  stroke-width:24.87px !important;
+  padding-right:7px;
+
+}
+
+.buy{
+  font-size: 22px;
+
+  stroke:var(--branding-blue) !important;
+  stroke-linecap:round !important;
+  stroke-linejoin:round !important;
+  stroke-width:24.87px !important;
+  //padding-right:7px;
+}
+
+.comment{
+  font-size: 22px;
+
+}
+
+.actionBlock{
+  margin:0px;
+  padding:0px;
+}
+
+.actionToolBar{
+  --padding-top: 0px;
+  --padding-bottom: 0px;
+}
+
+.actionBlock ion-row {
+  margin-bottom: 0.5em; /* adjust the value to your preference */
+}
+
+.actionGrid{
+  --padding-top: 0px;
+  --padding-bottom: 0px;
+  margin-bottom: -30px;
+  margin-top: -5px;
+}
+
+
 
 ion-item {
   text-decoration: none;
@@ -50,10 +98,11 @@ ion-item {
 }
 
 hr {
-  margin-top:0;
   width: 90%;
   height: 2px;
   background-color: rgb(208, 208, 208);
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .postImage {
@@ -97,12 +146,6 @@ body {
   text-decoration: none;
 }
 
-ion-col {
-  background-color: var(--ion-color-secondary);
-  border: solid 1px var(--ion-color-secondary);
-  color: var(--ion-color-secondary);
-  text-align: center;
-}
 
 .timer {
   --background: var(--ion-color-primary);
@@ -116,8 +159,12 @@ ion-badge {
   display: flex;
   align-items: center;
   justify-content: center;
-
+  border-radius: 7px;
   size: fit-content;
+  font-family: var(--poppins);
+  font-weight: 600;
+  font-style: italic;
+
 }
 
 .timerCol {
@@ -165,27 +212,68 @@ ion-item {
   border-bottom: 0;
 }
 
-.buttonText{
-  --min-height:12px;
+.buttonText {
+  --min-height: 12px;
   font-size: 12px;
+  font-family: var(--poppins);
+  font-weight: 600;
+  color: var(--branding-blue);
   text-align: center;
   align-items: center;
-  display:flex;
-  width:-moz-fit-content;
-  width:fit-content;
-  margin:auto;
-  color:#000000;
+  display: flex;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  white-space: nowrap;
+  //color: #000000;
 }
 
-.captionText{
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  color: #000000;
-  text-align: left;
+
+ion-toolbar {
+  --padding-top: 0.5em; /* adjust the value to your preference */
+  --padding-bottom: 0.5em; /* adjust the value to your preference */
+}
+
+.buttonTextNoSale {
+  --min-height: 12px;
+  font-size: 12px;
+  font-family: var(--poppins);
+  font-weight: 600;
+  color: rgba(194, 36, 36, 1);
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  white-space: nowrap;
+  //color: #000000;
+}
+
+ion-col {
+  background-color: #ffffff;
+  border: solid 1px #fff;
+  color: #fff;
+  text-align: center;
+  font: bold;
 }
 
 .pageHeading{
   text-align: center;
   font-size: large;
   font-family: 'PT Sans', sans-serif;
+}
+
+.captionText {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  color: #000000;
+  text-align: left;
+  font-family: var(--poppins);
+  font-weight: 300;
+  font-size: 12px;
+  padding-left: 20px;
+  padding-top:20px;
+  padding-bottom: 20px;
 }
