@@ -16,7 +16,7 @@ export class CommentPage implements OnInit {
   userIdValue!: string;
   commentText!: string;
   userName!: string | null | undefined
-  createrId!: string | null | undefined; 
+  createrId!: string | null | undefined;
   time = new Date();
   comments: IComment[] | null | undefined = []
   @Select(ProfileState.userPosts) userPosts$: Observable<IPostDetails[]> | undefined;
@@ -27,9 +27,9 @@ export class CommentPage implements OnInit {
   ngOnInit() {
     this.activatedRoute.queryParamMap.subscribe(queryParams => {
       const value = queryParams.get('postValueId');
-      
+
       this.postIdValue = value !== null ? value : '';
-      
+
       const userIdvalue = queryParams.get('userValueId');
       this.userIdValue = userIdvalue !== null ? userIdvalue : '';
 
@@ -43,7 +43,7 @@ export class CommentPage implements OnInit {
       this.profile$.subscribe((profile) => {
         this.userName = profile?.accountDetails?.displayName
       })
-      
+
     });
   }
 
@@ -64,7 +64,7 @@ export class CommentPage implements OnInit {
     const NewComment: IComment = {
       comment: this.commentText,
       postId: this.postIdValue,
-      userId: this.userIdValue
+      userId: this.userName
     }
 
 

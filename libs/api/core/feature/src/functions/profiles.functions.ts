@@ -220,62 +220,6 @@ await batch.commit();
   return { message: 'Post successfully bought.' };
 });
 
-/*
-
-// exports.buyPost = functions.https.onCall(async (data, context) => {
-//   const post = data.post;
-//   const buyer = data.buyer;
-//   const seller = data.post.ownedBy;
-
-
-//   if (!post || !buyer || !seller) {
-//     throw new functions.https.HttpsError('invalid-argument', 'Post, buyer, and seller are required');
-//   }
-
-//   const listingPrice = post.listing;
-//   if (buyer.time < listingPrice) {
-//     throw new functions.https.HttpsError('failed-precondition', 'Buyer does not have enough time to buy the post');
-//   }
-
-//   // Start a batch for atomic updates
-//   const batch = admin.firestore().batch();
-
-//   // Update buyer's time
-//   const buyerRef = admin.firestore().doc(`profiles/${buyer}`);
-//   const buyerDocs = await buyerRef.get();
-
-//   batch.update(buyerRef, { time: buyerDocs.data()?.['time'] - listingPrice });
-
-//   // Update seller's time
-//   const sellerRef = admin.firestore().doc(`profiles/${seller}`);
-//   const sellerDocs = await sellerRef.get();
-//   batch.update(sellerRef, { time: sellerDocs.data()?.['time'] + listingPrice });
-
-//   // Copy post to buyer's collection and update ownerId and ownerGainedTime
-//   const postData = { ...post, ownerId: buyer, ownerGainedTime: 0 };
-//   const buyerPostsRef = admin.firestore().collection(`profiles/${buyer}/posts`);
-//   batch.set(buyerPostsRef.doc(post.id), postData);
-
-//   // Commit the batch
-//   await batch.commit();
-
-//   // Update ownerId for all occurrences of the post with the given postName
-//   const postName = post.postID;
-//   const allPostsSnapshot = await admin.firestore().collectionGroup('posts').where('postID', '==', postName).get();
-
-//   allPostsSnapshot.forEach((doc) => {
-//     doc.ref.update({ ownerId: buyer });
-//   });
-
-//   const querySnapshot = await admin.firestore().collection(`profiles/${buyer}/posts`).get();
-//     const posts: { id: string; }[] = [];
-//     querySnapshot.forEach((doc) => {
-//       posts.push({ id: doc.id, ...doc.data() });
-//     });
-// console.log(posts);
-//     return { posts };
-// });
-*/
 
 exports.getAllPosts = functions.https.onCall(async (data, context) => {
   const profilesRef = admin.firestore().collection('profiles');
@@ -318,15 +262,15 @@ export const createNewComment = functions.https.onCall(async (data: ICommentOnPo
   try {
 
     const { userId, postId, comment } = data.comment;
-    const createrId= data.userId
+    const createrId= data.userId;
     if (typeof createrId !== 'string' || createrId.trim() === '') {
       throw new functions.https.HttpsError('invalid-argument', 'Invalid user ID');
     }
 
     const profileRef = admin.firestore().collection('profiles').doc(createrId);
-    
-    const profileDoc = await profileRef.get();
 
+    const profileDoc = await profileRef.get();
+    console.log(profileDoc);
     if (!profileDoc) {
       throw new functions.https.HttpsError('not-found', 'profileref');
     }
@@ -335,7 +279,37 @@ export const createNewComment = functions.https.onCall(async (data: ICommentOnPo
 
     if (!profileData) {
       throw new functions.https.HttpsError('not-found', 'Profile not found');
+    }else if(profileData["time"]!=null){
+console.log("here " + profileData["time"]);
+      const newTime =profileData["time"]+2;
+
+      profileRef.update({time : newTime});
     }
+    const commenterId=data.comment.userId;
+console.log(commenterId);
+    if (typeof commenterId !== 'string' || commenterId.trim() === '') {
+      throw new functions.https.HttpsError('invalid-argument', 'Invalid user ID');
+    }
+    const profileRef1 = admin.firestore().collection('profiles').where("accountDetails.displayName", "==", userId);
+
+    const profileDoc1 = await profileRef1.get();
+
+    if (!profileDoc1) {
+      throw new functions.https.HttpsError('not-found', 'profileref');
+    }
+    for (const profileDoc of profileDoc1.docs) {
+      const userIdP = profileDoc.id;
+      const userPostsRef = admin.firestore().collection('profiles').doc(userIdP);
+      const userPostsSnapshot = await userPostsRef.get();
+      const profileData1=userPostsSnapshot.data();
+      if (!profileData1) {
+        throw new functions.https.HttpsError('not-found', 'Profile not found');
+      }else if(profileData1["time"]!=null){
+        const newTime =profileData1["time"]-2;
+        userPostsRef.update({time : newTime});
+      }
+    }
+
 
     if (!postId) {
       throw new functions.https.HttpsError('invalid-argument', 'Post id not defined in comment');
@@ -383,7 +357,7 @@ if (!postDoc.exists) {
   }
 
       return newComment;
-    } catch (error) { 
+    } catch (error) {
       console.error(error);
       throw new functions.https.HttpsError('internal', 'Error adding comment');
     }
