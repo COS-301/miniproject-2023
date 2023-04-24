@@ -77,8 +77,12 @@
 
                       <ion-col size="4">
                         <ion-icon class = "comment" size="30px" color="primary" src="assets/icons/comments.svg"></ion-icon>
-                        <ion-text class="buttonText"
-                          lines="none">0</ion-text><!-- number of comments goes here or to be removed-->
+                        <ion-text *ngIf="post.comments; else noComments" class="buttonText"
+                          lines="none">{{post.comments.length}}</ion-text><!-- number of comments goes here or to be removed-->
+                        <ng-template #noComments>
+                          <ion-text class="buttonText"
+                          lines="none">0</ion-text>
+                        </ng-template>
 
                       </ion-col>
 
