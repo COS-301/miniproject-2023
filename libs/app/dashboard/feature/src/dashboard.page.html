@@ -83,7 +83,7 @@
                                 <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
                             </ion-avatar>
                             <ion-list lines="none">
-                                <ion-item>Created by: {{post.postID}}</ion-item>
+                                <ion-item>Created by: {{post.postID?.split("-",1)}}</ion-item>
                             </ion-list>
                         </ion-row>
                     </ion-grid>
@@ -112,7 +112,7 @@
                               <ion-col size="4">
                                 <ion-icon (click)="comment(post.postID)" class = "comment" color="primary" src="assets/icons/comments.svg"></ion-icon>
                                 <ion-text class="buttonText"
-                                  lines="none">0</ion-text><!-- number of comments goes here or to be removed-->
+                                  lines="none">{{post.comments?.length}}</ion-text><!-- number of comments goes here or to be removed-->
         
                               </ion-col>
         
@@ -184,11 +184,11 @@
                                     <!--</ion-col>
 
                                     <ion-col (click)="comment(post.postID)" size="4">
-                                        <ion-icon class = "comment" size="30px" color="primary" src="assets/icons/comments.svg"></ion-icon>
-                                        <ion-text class="buttonText" lines="none">{{numberOfComments}}</ion-text>
-                                    --><!-- number of comments goes here or to be removed-->
+                                        <ion-icon size="25px" color="primary" name="chatbox-ellipses-outline"></ion-icon>
+                                        <ion-text class="buttonText" lines="none">{{post.comments?.length}}</ion-text>
+                                        
 
-                                    <!--</ion-col>
+                                    </ion-col>
 
                                     <ion-col (click)="buyPost(i)" size="4">
                                         <ion-icon class = "buy" size="30px" color="primary" src="assets/icons/buy.svg"></ion-icon>

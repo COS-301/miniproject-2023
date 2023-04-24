@@ -2,22 +2,22 @@
     <ion-toolbar color="secondary">
         <ion-label (click)="toHomePage()" color="tertiary" style="font-size: 100%; font:bold">
             <ion-icon name="arrow-back-outline" size="small"></ion-icon>Comment</ion-label>
-        <ion-badge slot="end" class="timer">134:20:00</ion-badge>
+            <ng-container *ngIf="profile$ | async as profile">
+        <ion-badge slot="end" class="timer">{{profile.time}}</ion-badge>
+            </ng-container>
     </ion-toolbar>
 </ion-header>
 
 
 <ion-content>
-
     <h2 class="comment-heading">Comments</h2>
     <div class="comment-wrapper" *ngFor="let comment of comments">
-
         <ion-grid>
             <ion-row>
                 <ion-avatar class="picture-wrapper" name="avatar">
                     <img class="picture" alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
                 </ion-avatar>
-                <ion-label class="username" for="avatar">@{{ userName }}</ion-label>
+                <ion-label class="username" for="avatar">@{{ comment.userId }}</ion-label>
             </ion-row>
             <ion-row class="comment-row">
                 <ion-textarea class="comment-text" [readonly]="true">{{ comment.comment }}</ion-textarea>
