@@ -67,7 +67,7 @@ export class CreateProfileHandler
         occupation: null,
         status: ProfileStatus.INCOMPLETE,
       },*/
-      status: ProfileStatus.INCOMPLETE,
+      //status: ProfileStatus.INCOMPLETE,
       created: Timestamp.fromDate(new Date()),
     };
     const profile = this.publisher.mergeObjectContext(Profile.fromData(data));
