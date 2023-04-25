@@ -31,8 +31,9 @@ export class FeedPageComponent {
     const { data } = await modal.onDidDismiss();
 
     if (data) {
-      this.feedMemories$.subscribe( (memories) => {
-        memories.unshift(data)});
+      this.feedMemories$.subscribe((memories) => {
+        memories.unshift(data);
+      });
     }
   }
 
@@ -53,7 +54,7 @@ export class FeedPageComponent {
   }
 
   //function to use timePosted to calculate how long ago the memory was posted
-  calculateHowLongAgo(timePosted: Timestamp | null | undefined ): string {
+  calculateHowLongAgo(timePosted: Timestamp | null | undefined): string {
     if (!timePosted) return 'Invalid Time';
 
     const date = new Date(timePosted?.seconds);

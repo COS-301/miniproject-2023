@@ -21,7 +21,7 @@ export class EditProfilePhotoPageComponent {
     public modalController: ModalController,
     private alertCtrl: AlertController,
     private profileImageService: ProfileImageService,
-    private store: Store
+    private store: Store,
   ) {
     this.previousUrl = '';
 
@@ -80,10 +80,10 @@ export class EditProfilePhotoPageComponent {
   setProfileImage(url: string) {
     this.profileImageService.imageUrl = url;
 
-    let id : string | null | undefined = '';
+    let id: string | null | undefined = '';
     this.user$.subscribe((user) => {
       id = user?.userId;
-    })
+    });
 
     this.store.dispatch(new SetEditProfileImagePhoto(url));
     this.store.dispatch(new ChangeProfileViewImage(url, id));

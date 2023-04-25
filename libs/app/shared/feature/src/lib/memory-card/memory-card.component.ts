@@ -16,8 +16,8 @@ import { IGetProfileRequest } from '@mp/api/profiles/util';
   templateUrl: './memory-card.component.html',
   styleUrls: ['./memory-card.component.scss'],
 })
-export class MemoryCardComponent implements OnInit{
-  @Select(MemoryCardState.memoryCard) memoryCard$ !: Observable<IMemory | null>;
+export class MemoryCardComponent implements OnInit {
+  @Select(MemoryCardState.memoryCard) memoryCard$!: Observable<IMemory | null>;
 
   @Input() memory!: IMemory;
   @Input() onUserProfile: boolean | undefined; //we use this to determine whether the memory card is displayed on the user's page or on the feed/search pages
@@ -26,16 +26,13 @@ export class MemoryCardComponent implements OnInit{
   previousPageName = '';
   addingNewComment = false;
   new_comment: string = '';
-  first_comment_text : string | null | undefined = '';
-  first_comment_username : string | null | undefined = '';
-  
-  constructor(
-    private navCtrl: NavController,
-    private store: Store
-  ) {}
+  first_comment_text: string | null | undefined = '';
+  first_comment_username: string | null | undefined = '';
+
+  constructor(private navCtrl: NavController, private store: Store) {}
 
   ngOnInit(): void {
-      this.store.dispatch(new SetMemoryCard(this.memory)); 
+    this.store.dispatch(new SetMemoryCard(this.memory));
   }
 
   setAddingNewComment() {
@@ -49,7 +46,7 @@ export class MemoryCardComponent implements OnInit{
   changeMemoryView() {
     this.showExpandedView = !this.showExpandedView;
 
-    if(this.showExpandedView) {      
+    if (this.showExpandedView) {
       this.store.dispatch(new GetCommentsRequest(this.memory)); //we only request the comments if we want to display them
     }
   }
@@ -96,29 +93,28 @@ export class MemoryCardComponent implements OnInit{
     const currentPosition = window.pageYOffset;
     this.navCtrl.navigateForward('/user-view', { state: { scrollPosition: currentPosition } });
 
-    let _userId :string | null | undefined = '';
-    let _username :string | null | undefined = '';
+    let _userId: string | null | undefined = '';
+    let _username: string | null | undefined = '';
 
     let request: IUser;
-    
+
     //we either want to navigate to the user's profile (i.e. the person who posted the memory)
     if (!(i_userId && i_username)) {
       this.memoryCard$.subscribe((user) => {
-        _userId = user?.userId,
-        _username = user?.username;
-      })
+        (_userId = user?.userId), (_username = user?.username);
+      });
 
       request = {
         userId: _userId,
-        username: _username
-      }
+        username: _username,
+      };
     }
     //or we want to open a user's - who commented - profile
     else {
       request = {
         userId: i_userId,
-        username: i_username
-      }
+        username: i_username,
+      };
     }
 
     this.store.dispatch(new GetUserProfileRequest(request));
