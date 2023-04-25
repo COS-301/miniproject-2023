@@ -10,6 +10,7 @@
     --padding-start: 0px;
     font-family: var(--poppins);
     font-weight: 600;
+    margin-inline: -140px;
     
   }
 
@@ -20,6 +21,29 @@
   //   // margin-left: 50%;
   //   border-radius: 10px;
   // }
+
+  .priceBlock{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    font-family: var(--poppins);
+    font-weight: 600;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--branding-blue);
+    background-color: var(--branding-blue);
+    border-radius: 20px;
+  }
+
+  ion-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
 
   ion-textarea.has-error {
     //border-bottom: 2px solid rgb(58, 21, 21);
