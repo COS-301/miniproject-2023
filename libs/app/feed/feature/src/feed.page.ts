@@ -106,5 +106,4 @@ export class FeedPageComponent {
  ngOnInit(): void { 
     this.store.dispatch(new GetFeedMemories());
  }
-
 }
