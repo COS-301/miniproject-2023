@@ -7,6 +7,10 @@
   .textInput{
     pointer-events: none;
     text-align: center;
+    --padding-start: 0px;
+    font-family: var(--poppins);
+    font-weight: 600;
+    
   }
 
   // .hashtagContainer {

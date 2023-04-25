@@ -1,7 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormBuilder, Validators } from '@angular/forms';
-import { IProfile, IPostDetails, stringToHashtag } from '@mp/api/profiles/util';
+import { IProfile, IPostDetails, stringToHashtag, Hashtag } from '@mp/api/profiles/util';
 import { ProfileState } from '@mp/app/profile/data-access';
 import { AddPost, CreatePostDetails, CreateNewPost } from '@mp/app/profile/util';
 import {
@@ -200,11 +200,13 @@ export class PostDetailsComponent {
 
   
   setHashtag(hashtag: string) {
-    const newHashtag: HTMLIonButtonElement | null = document.getElementById(hashtag.slice(1) + 'Button') as HTMLIonButtonElement;
+    
+    const newHashtag: HTMLIonButtonElement | null = document.getElementById(hashtag + 'Button') as HTMLIonButtonElement;
     const oldHashtag: HTMLIonButtonElement | null = this.postDetailsForm?.get('hashtag')?.value ? 
-    document.getElementById(this.postDetailsForm?.get('hashtag')?.value?.slice(1) + 'Button') as HTMLIonButtonElement :
+    document.getElementById(this.postDetailsForm?.get('hashtag')?.value?.slice(3, -3) + 'Button') as HTMLIonButtonElement :
     null;
-
+    console.log(this.postDetailsForm?.get('hashtag')?.value?.slice(3, -3) + 'Button');
+    console.log(newHashtag);
     if (oldHashtag && oldHashtag.style) {
       oldHashtag.style.filter = 'brightness(50%)';
     }
@@ -214,22 +216,22 @@ export class PostDetailsComponent {
     }
 
     let emoji = '';
-    if (hashtag.includes('#nature')) {
+    if (hashtag.includes('nature')) {
       emoji = '🌿';
-    } else if (hashtag.includes('#funny')) {
+    } else if (hashtag.includes('funny')) {
       emoji = '😂';
-    } else if (hashtag.includes('#opinion')) {
-      emoji = '💭';
-    } else if (hashtag.includes('#music')) {
+    } else if (hashtag.includes('opinion')) {
+      emoji = '💬';
+    } else if (hashtag.includes('music')) {
       emoji = '🎵';
-    } else if (hashtag.includes('#sports')) {
+    } else if (hashtag.includes('sports')) {
       emoji = '🏀';
-    } else if (hashtag.includes('#food')) {
+    } else if (hashtag.includes('food')) {
       emoji = '🍔';
     }
     
 
-    this.postDetailsForm?.get('hashtag')?.setValue(`${emoji}${hashtag}${emoji}`);
+    this.postDetailsForm?.get('hashtag')?.setValue(`${emoji} ${hashtag} ${emoji}`);
   
     
   }

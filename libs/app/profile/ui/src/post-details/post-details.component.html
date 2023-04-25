@@ -156,7 +156,7 @@
             outline
               size="small"
               style="--background: var(--nature);"
-              (click)="setHashtag('#nature')"
+              (click)="setHashtag('nature')"
               >#nature</ion-button
             >
           </ion-col>
@@ -167,7 +167,7 @@
             outline
               size="small"
               style="--background: var(--funny);"
-              (click)="setHashtag('#funny')"
+              (click)="setHashtag('funny')"
               >#funny</ion-button
             >
           </ion-col>
@@ -178,7 +178,7 @@
             outline
               size="small"
               style="--background: var(--opinion);"
-              (click)="setHashtag('#opinion')"
+              (click)="setHashtag('opinion')"
               >#opinion</ion-button
             >
           </ion-col>
@@ -191,7 +191,7 @@
             outline
               size="small"
               style="--background: var(--music);"
-              (click)="setHashtag('#music')"
+              (click)="setHashtag('music')"
               >#music</ion-button
             >
           </ion-col>
@@ -202,7 +202,7 @@
             outline
               size="small"
               style="--background: var(--sports);"
-              (click)="setHashtag('#sports')"
+              (click)="setHashtag('sports')"
               >#sports</ion-button
             >
           </ion-col>
@@ -213,7 +213,7 @@
             outline
               size="small"
               style="--background: var(--food);"
-              (click)="setHashtag('#food')"
+              (click)="setHashtag('food')"
               >#food</ion-button
             >
           </ion-col>
@@ -226,6 +226,7 @@
             class="textInput"
             type="text"
             display="none"
+            value = "No Hashtag Selected"
             style="border-radius: 10px;"
             formControlName="hashtag"></ion-input>
         </div>
