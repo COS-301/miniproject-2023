@@ -20,3 +20,9 @@
 .footer{
     border-top: 0.5px solid rgb(206, 206, 206);
 }
+
+.backButton {
+    --color: var(--ion-color-tertiary);
+    --icon-font-size: 25px;
+    --icon-padding-end: 6px;
+}

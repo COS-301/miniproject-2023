@@ -3,6 +3,21 @@
 }
 
 .textContent{
-    padding-left:1em;
+    // padding-left:1em;
     color:black;
+}
+
+.backButton {
+    --color: var(--ion-color-tertiary);
+    --icon-font-size: 25px;
+    --icon-padding-end: 6px;
+}
+
+.heading {
+    margin: 15px;
+    font-weight: bold;
+}
+
+.footer {
+    border-top: 0.5px solid rgb(206, 206, 206);
 }
