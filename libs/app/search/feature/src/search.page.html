@@ -10,7 +10,9 @@
           <ion-icon class="submitSearch" (click)="userSearch()" name="checkmark-outline" color="primary"></ion-icon>
         </ion-col>
         <ion-col size="auto">
-          <ion-badge class="timer">134:20:00</ion-badge>
+          <ng-container *ngIf="profile$ | async as profile">
+            <ion-badge class="timer">{{profile.time}}</ion-badge>
+          </ng-container>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -39,7 +41,7 @@
         <ion-col></ion-col>
 
       </ion-row>
-      
+
       <ion-row >
 
         <ion-col>
@@ -53,7 +55,7 @@
         </ion-col>
 
       </ion-row>
-      
+
     </ion-grid>
   </div>
 
@@ -71,9 +73,9 @@
       <ion-row>
 
         <ion-col>
-          
+
             <ion-img border-radius="15px" src="assets/images/funny1.jpg" class = "imgInDiv"></ion-img>
-          
+
         </ion-col>
         <ion-col>
           <ion-img border-radius="15px" src="assets/images/funny2.jpg"></ion-img>

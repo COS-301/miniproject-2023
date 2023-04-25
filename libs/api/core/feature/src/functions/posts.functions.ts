@@ -25,7 +25,7 @@ export const postTrendingGet = functions.https.onCall(
  * Function that
  */
 
-export const likePost = functions.https.onCall(
+export const likePostS = functions.https.onCall(
     async (
       request: ILikePostRequest
     ): Promise<ILikePostResponse> => {

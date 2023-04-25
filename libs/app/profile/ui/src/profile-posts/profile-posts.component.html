@@ -18,13 +18,13 @@
     <form [formGroup]="accountDetailsForm" ngxsForm="profile.accountDetailsForm" (submit)="updateAccountDetails()">
       <ion-list lines="none">
         <ion-item counter="true" style="text-align: center; padding-left: 50px; padding-right: 50px; font-size: 12px; ">
-          
+
             <ion-textarea [autoGrow]="true" maxlength="150"
               style="font-size: 12px; background-color: #ffffff; padding-left:20px; padding-right: 20px; border:solid 1px rgb(53,107,89); border-radius: 20px; width:200px"
               formControlName="bio">
             </ion-textarea>
-          
-          
+
+
         </ion-item>
 
       </ion-list>
@@ -59,28 +59,28 @@
 
           </div>
           <img class="postImage" alt="Post" [src]="post.content"/>
-          
-        
+
+
           <ion-card-content class = "cardAction">
             <ion-toolbar class="actionToolBar">
               <ion-list lines="none" class="actionBlock">
-    
+
                 <ion-grid class = "actionGrid" >
-    
+
                     <ion-row >
                       <ion-col class="captionText" size="6" >
                         <ion-text lines="none"> {{ post.caption }}</ion-text>
                       </ion-col>
-    
+
                       <ion-col size="6">
                         <ion-row>
                           <ion-col size="4">
                             <ion-icon class = "like" src="assets/icons/like.svg"></ion-icon>
                             <ion-text class="buttonText" lines="none"
-                              height="fit-content">0</ion-text> <!-- {{post.likes}} goes here -->
-    
+                              height="fit-content">{{post.likes}}</ion-text> <!-- {{post.likes}} goes here -->
+
                           </ion-col>
-    
+
                           <ion-col size="4">
                             <ion-icon class = "comment" size="30px" color="primary" src="assets/icons/comments.svg"></ion-icon>
                             <ion-text *ngIf="post.comments; else noComments" class="buttonText"
@@ -89,16 +89,16 @@
                               <ion-text class="buttonText"
                               lines="none">0</ion-text>
                             </ng-template>
-    
+
                           </ion-col>
-    
+
                           <ion-col size="4">
                             <ion-icon *ngIf="post.listing; else notForSaleIcon" class = "buy" size="30px" src="assets/icons/buy.svg"></ion-icon>
                             <ion-text *ngIf="post.listing; else notForSale" class="buttonText"
-                              lines="none">{{post.listing}} min</ion-text>
+                              lines="none">{{post.listing}}</ion-text>
                               <ng-template #notForSaleIcon>
                                 <ion-icon class = "noSaleBuy" size="30px" src="assets/icons/buy.svg"></ion-icon>
-                                
+
                               </ng-template>
                               <ng-template #notForSale>
                               <ion-text class="buttonTextNoSale"
@@ -106,24 +106,24 @@
                             </ng-template>
                           </ion-col>
                         </ion-row>
-    
+
                         <ion-row style="margin-top: -13px;">
                           <ion-col>
                             <ion-badge *ngIf="post.hashtag"
                               style="--background: var(--{{ getSlicedHashtag(post.hashtag) }});">{{post.hashtag}}</ion-badge>
                           </ion-col>
                         </ion-row>
-    
+
                       </ion-col>
                     </ion-row>
-    
-    
-                    
+
+
+
                 </ion-grid>
               </ion-list>
-    
-             
-            </ion-toolbar> 
+
+
+            </ion-toolbar>
           </ion-card-content>
         </ion-card>
 
@@ -164,7 +164,7 @@
                           lines="none">{{post.listing}} min</ion-text>
                           <ng-template #notForSaleIcon>
                             <ion-icon class = "noSaleBuy" size="30px" src="assets/icons/buy.svg"></ion-icon>
-                            
+
                           </ng-template>
                           <ng-template #notForSale>
                           <ion-text class="buttonTextNoSale"
@@ -205,7 +205,7 @@
         </ion-button>
 
           </ion-buttons>
-        </ion-toolbar> 
+        </ion-toolbar>
         <hr>-->
       </div>
 

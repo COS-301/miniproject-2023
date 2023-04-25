@@ -1,4 +1,6 @@
 import { Component, Input, OnInit} from '@angular/core';
+import { IProfile } from '@mp/api/profiles/util';
+import { ProfileState } from '@mp/app/profile/data-access';
 import { Select, Store } from '@ngxs/store';
 import { Observable, map } from 'rxjs';
 
@@ -9,11 +11,11 @@ import { Observable, map } from 'rxjs';
   styleUrls: ['./time-badge.component.scss'],
 })
 export class TimeBadgeComponent {
-
+  @Select(ProfileState.profile) profile$!: Observable<IProfile | null>;
   ngOnInit() {
     this.startTime();
    }
-  
+
   constructor(private store: Store) {}
   @Input() time= 1000;
 

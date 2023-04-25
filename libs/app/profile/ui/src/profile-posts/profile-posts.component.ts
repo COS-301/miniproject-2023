@@ -9,7 +9,7 @@ import {
 } from '@ngxs-labs/actions-executing';
 import { Select, Store } from '@ngxs/store';
 import { Observable, map } from 'rxjs';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 
 
 @Component({
@@ -38,7 +38,23 @@ posts$: Observable<IPostDetails[] | null | undefined>;
     return this.accountDetailsForm.get('bio');
   }
 
+  // comment(postId: string| null| undefined, profileId: string|null|undefined) {
 
+
+  //     /**
+  //      * The reason for the snippet below is to get the post id and persist it to the comment page
+  //      */
+  //     const navigationExtras: NavigationExtras = {
+  //       queryParams: {
+  //         postValueId: postId,
+  //         userValueId: profileId
+  //       }
+  //     };
+
+  //     //The persisting happens here
+
+  //     this.router.navigate(["/comment"], navigationExtras);
+  //   }
   // get ageError(): string {
   //   if (this.age?.errors?.['required']) return 'Age is required';
   //   if (this.age?.errors?.['minlength'])

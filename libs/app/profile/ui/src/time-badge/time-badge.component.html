@@ -1,1 +1,4 @@
-<ion-badge slot="end" class="timer" id="time">{{time}}</ion-badge>
+<ng-container *ngIf="profile$ | async as profile">
+  <ion-badge slot="end" class="timer" id="time">{{profile.time}}</ion-badge>
+</ng-container>
+

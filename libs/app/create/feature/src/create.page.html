@@ -3,7 +3,9 @@
   <ion-header>
     <ion-toolbar color="secondary">
       <ion-label (click)="toDashboard()" color="tertiary" style = "font-size: 100%; font:bold">  <ion-icon name="arrow-back-outline" size="small"></ion-icon>Create</ion-label>
-      <ion-badge slot="end" style="position:static">00:00</ion-badge>
+      <ng-container *ngIf="profile$ | async as profile">
+        <ion-badge slot="end" style="position:static">{{profile.time}}</ion-badge>
+      </ng-container>
   </ion-toolbar>
   </ion-header>
 
@@ -33,8 +35,8 @@ position: absolute; "></div>
     </ion-item>
   </ion-list>
 
-  
-  
+
+
 
     <div style = "
     margin: auto;
