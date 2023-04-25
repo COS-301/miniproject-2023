@@ -21,6 +21,36 @@
   //   border-radius: 10px;
   // }
 
+  ion-textarea.has-error {
+    //border-bottom: 2px solid rgb(58, 21, 21);
+    border:solid 1px rgb(233, 49, 49) !important; 
+
+  }
+
+  ion-item.item-interactive{
+    --show-full-highlight: 0 !important;
+  }
+
+  ion-item.item-highlight{
+    box-sizing: none !important;
+    width: 0px !important;
+  }
+
+  .saleText{
+    padding-left: 20px;
+    font-family: var(--sourceSans);
+    font-weight: 400;
+    font-size: 18px;
+    
+  }
+
+
+  
+
+  .item-interactive.ion-valid{
+    --highlight-width: 0px !important;
+  }
+
   .hashtagWrapper {
     text-align:center;
   }
