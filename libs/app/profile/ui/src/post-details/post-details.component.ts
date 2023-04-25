@@ -213,7 +213,23 @@ export class PostDetailsComponent {
       newHashtag.style.filter = 'brightness(100%)';
     }
 
-    this.postDetailsForm?.get('hashtag')?.setValue(hashtag);
+    let emoji = '';
+    if (hashtag.includes('#nature')) {
+      emoji = '🌿';
+    } else if (hashtag.includes('#funny')) {
+      emoji = '😂';
+    } else if (hashtag.includes('#opinion')) {
+      emoji = '💭';
+    } else if (hashtag.includes('#music')) {
+      emoji = '🎵';
+    } else if (hashtag.includes('#sports')) {
+      emoji = '🏀';
+    } else if (hashtag.includes('#food')) {
+      emoji = '🍔';
+    }
+    
+
+    this.postDetailsForm?.get('hashtag')?.setValue(`${emoji}${hashtag}${emoji}`);
   
     
   }
