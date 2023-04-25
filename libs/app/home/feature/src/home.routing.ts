@@ -5,7 +5,7 @@ import { HomePage } from './home.page';
 const routes: Routes = [
   {
     path: '',
-    component: HomePage,
+    // component: HomePage, // I commented this out so that the home html does not appear in the dashboard page
     children: [
       {
         path: 'dashboard',

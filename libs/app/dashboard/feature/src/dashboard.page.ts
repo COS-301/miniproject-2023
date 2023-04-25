@@ -132,4 +132,7 @@ async getPostByIndex(index: number): Promise<IPostDetails | undefined> {
     return hashtag.slice(1);
   }
 
+  toPage( name: string){
+    this.router.navigate([`/${name}`]);
+  }
 }
