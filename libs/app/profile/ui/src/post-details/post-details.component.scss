@@ -51,6 +51,17 @@
     --highlight-width: 0px !important;
   }
 
+  .input-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .emoji {
+    position: absolute;
+    right: 5px;
+  }
+  
   .hashtagWrapper {
     text-align:center;
   }
