@@ -94,28 +94,6 @@ export class ProfileViewState {
       return this.store.dispatch(new SetProfileView(state.profile));
     } catch (error) {
       return this.store.dispatch(new SetError('Unabled to add new memory to Profile View page.'));
-
-    @Action(GetProfileRequest)
-    async getProfileRequest(ctx: StateContext<ProfileViewStateModel>) {
-        try {
-            const state = ctx.getState();
-            const _userId = state.profile?.userId;
-            // window.alert(_userId);
-            const _username = state.profile?.accountDetails?.displayName;
-
-            const request: IGetProfileRequest = {
-                user: {
-                    userId: _userId,
-                    username: _username
-                }
-            }
-            const responseRef = await this.profileViewApi.getUserProfile(request);
-            const response = responseRef.data;
-            return ctx.dispatch(new SetProfileView(response.profile));
-        }
-        catch(error){
-            return ctx.dispatch(new SetError((error as Error).message));
-        }
     }
   }
 
