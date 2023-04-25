@@ -154,9 +154,6 @@ export class NotificationPage implements OnInit {
         this.comments$.subscribe((comments) => {
             if (!comments) return;
 
-            console.log('Inside getCommentsLength()');
-            console.log(comments.length);
-
             size = comments.length;
         })
 
