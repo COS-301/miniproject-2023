@@ -14,17 +14,17 @@ ion-badge {
 }
 
 .textBox {
-    margin: auto;
-    padding-left: 2%;
-    padding-right: 2%;
+    padding-left: 4%;
+    padding-right:4%;
     --background: var(--ion-color-secondary);
     border: solid 1px var(--ion-color-primary-shade);
     border-radius: 20px;
     --placeholder-opacity: 1;
     --placeholder-color: black;
     text-align: left;
-    font-size: 14px;
-    margin: auto;
+    font-size: 12px;
+  font-family: var(--poppins);
+  font-weight: 500;
 }
 
 .textArea {
@@ -63,6 +63,7 @@ ion-badge {
 .comment-row {
     margin-top: 10px;
     margin-bottom: 10px;
+
 }
 
 .comment-text {
@@ -88,4 +89,29 @@ ion-badge {
     font-size: 12px;
     font-weight: bold;
     margin-right: 10px;
+}
+
+.backButton {
+    --color: var(--ion-color-tertiary);
+    --icon-font-size: 25px;
+    --icon-padding-end: 6px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.cross{
+    font-size: 18px;
+    margin-left:3%;
+    margin-right:3%;
+}
+
+.send{
+    font-size: 22px;
+    margin-left:3%;
+    margin-right:3%;
 }

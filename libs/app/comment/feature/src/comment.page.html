@@ -1,10 +1,10 @@
 <ion-header>
     <ion-toolbar color="secondary">
-        <ion-label (click)="toHomePage()" color="tertiary" style="font-size: 100%; font:bold">
-            <ion-icon name="arrow-back-outline" size="small"></ion-icon>Comment</ion-label>
-            <ng-container *ngIf="profile$ | async as profile">
-        <ion-badge slot="end" class="timer">{{profile.time}}</ion-badge>
-            </ng-container>
+        <ion-back-button text="comment" class="backButton" slot="start" defaultHref="/"></ion-back-button>
+
+        <ng-container *ngIf="profile$ | async as profile">
+            <ion-badge slot="end" class="timer">{{profile.time}}</ion-badge>
+        </ng-container>
     </ion-toolbar>
 </ion-header>
 
@@ -15,7 +15,8 @@
         <ion-grid>
             <ion-row>
                 <ion-avatar class="picture-wrapper" name="avatar">
-                    <img class="picture" alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                    <img class="picture" alt="Silhouette of a person's head"
+                        src="https://ionicframework.com/docs/img/demos/avatar.svg" />
                 </ion-avatar>
                 <ion-label class="username" for="avatar">@{{ comment.userId }}</ion-label>
             </ion-row>
@@ -33,11 +34,13 @@
         <ion-grid>
             <ion-row class="row">
 
-                <ion-icon margin="auto" size="large" color="secondary" (click)="clear()" name="close"></ion-icon>
+                <ion-icon class="cross" color="secondary" (click)="clear()" src="assets/icons/whiteCross.svg"></ion-icon>
 
-                <ion-textarea [(ngModel)]="commentText" id="textBox" maxlength="150" (click)="activeTextArea()" auto-grow="true" class="textBox" placeholder="Type your reply here" rows="1" cols="40"></ion-textarea>
+                <ion-textarea [(ngModel)]="commentText" id="textBox" maxlength="150" (click)="activeTextArea()"
+                    auto-grow="true" class="textBox" placeholder="Type your reply here" rows="1"
+                    cols="40"></ion-textarea>
 
-                <ion-icon margin="auto" size="large" color="secondary" (click)="send()" name="send"></ion-icon>
+                <ion-icon class="send" color="secondary" (click)="send()" src="assets/icons/message.svg"></ion-icon>
 
             </ion-row>
         </ion-grid>

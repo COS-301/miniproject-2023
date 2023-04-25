@@ -7,6 +7,10 @@
   .textInput{
     pointer-events: none;
     text-align: center;
+    --padding-start: 0px;
+    font-family: var(--poppins);
+    font-weight: 600;
+    
   }
 
   // .hashtagContainer {
@@ -18,12 +22,26 @@
   // }
 
   .hashtagWrapper {
-    width:85px;
-    // border-radius: 10px;
-    margin-left: 155px;
+    text-align:center;
   }
   .hashtagButton{
     filter: brightness(50%);
     --background-activated: --background;
-    width:70px;
+    width:90px;
+    
+    font-family: var(--poppins);
+    font-weight: 600;
+    font-style: italic;
+  }
+
+  ion-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    size: fit-content;
+    font-family: var(--poppins);
+    font-weight: 600;
+    font-style: italic;
+  
   }
