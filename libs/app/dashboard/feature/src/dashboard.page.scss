@@ -82,6 +82,22 @@ body{
 .actionBlock ion-row {
   margin-bottom: 0.5em; /* adjust the value to your preference */
 }
+.like.clicked {
+  filter: var(--branding-blue-filter);
+  animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 
 .actionGrid{
   --padding-top: 0px;
