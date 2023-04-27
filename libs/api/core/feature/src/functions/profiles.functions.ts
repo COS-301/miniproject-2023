@@ -282,7 +282,6 @@ export const createNewComment = functions.https.onCall(async (data: ICommentOnPo
     }else if(profileData["time"]!=null){
 console.log("here " + profileData["time"]);
       const newTime =profileData["time"]+2;
-
       profileRef.update({time : newTime});
     }
     const commenterId=data.comment.userId;
@@ -524,6 +523,7 @@ if(!post){
 
   // Add like to post
   batch.update(postRef, { likes: post['likes']+1 });
+  batch.update(postRef, { ownerGainedTime: post['ownerGainedTime']+1 });
 // Update owner's time
 if (ownerData) {
   const updatedOldOwnerTime = ownerData['time'] + 1;

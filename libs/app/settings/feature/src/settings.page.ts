@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Logout } from '@mp/app/profile/util';
+import { Logout } from '@mp/app/auth/util';
 import {  Store } from '@ngxs/store';
 
 
