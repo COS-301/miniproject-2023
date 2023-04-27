@@ -2,12 +2,12 @@
   <ion-toolbar class="headerToolbar">
     <ion-grid>
       <ion-row>
-        <ion-col size="8">
+        <ion-col id="searchCol" size="8">
           <ion-searchbar [(ngModel)]="searchUser" search-icon="search-outline" class="searchBar" id="searchBar"
             placeholder="Search"></ion-searchbar>
         </ion-col>
         <ion-col size="1">
-          <ion-icon class="submitSearch" (click)="userSearch()" name="checkmark-outline" color="primary"></ion-icon>
+          <ion-icon id="submitIcon" class="submitSearch" (click)="userSearch()" name="checkmark-outline" color="primary"></ion-icon>
         </ion-col>
         <ion-col size="auto">
           <ng-container *ngIf="profile$ | async as profile">
@@ -20,6 +20,7 @@
 </ion-header>
 
 <ion-content fullscreen>
+  <div id="searchResults" class = "searchResults">
 
   <ion-list>
     <ion-item *ngFor="let post of searchPosts$ | async">
@@ -30,6 +31,8 @@
       </ion-label>
     </ion-item>
   </ion-list>
+</div>
+<div id="hashtagsContent" class = "hashtagsContent">
   <div class="categoryWrapper" (click)="fillBar('#nature')">
     <ion-grid>
       <ion-row>
@@ -195,7 +198,7 @@
       </ion-row>
     </ion-grid>
   </div>
-
+</div>
 </ion-content>
 
 <ion-toolbar class = "toolbar">

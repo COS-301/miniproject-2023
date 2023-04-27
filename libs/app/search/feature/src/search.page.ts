@@ -1,5 +1,6 @@
 
 import { Component } from '@angular/core';
+import { IonSearchbar } from '@ionic/angular';
 import { Store } from '@ngxs/store';
 import { IPostDetails, IProfile } from '@mp/api/profiles/util';
 import { ProfileState } from '@mp/app/profile/data-access';
@@ -26,14 +27,54 @@ export class SearchPage {
   errorMessage: string | null = null;
 
   userSearch() {
+
+    
+    const icon = document.getElementById('submitIcon') as HTMLElement;
+    if (icon && this.searchUser !== '') {
+      if(icon.getAttribute('name') === 'close-outline'){
+        icon.setAttribute('name', 'checkmark-outline');
+        icon.setAttribute('color', 'primary');
+        const search = document.getElementById('searchBar') as HTMLElement;
+        search.setAttribute("value", "");
+        const hashtags = document.getElementById('hashtagsContent') as HTMLElement;
+        hashtags.style.visibility = 'visible';
+        hashtags.style.height = "100%";
+        const results = document.getElementById('searchResults') as HTMLElement;
+        results.style.visibility = 'hidden';
+        results.style.height = "0px";
+      }else{
+        icon.setAttribute('name', 'close-outline');
+        icon.setAttribute('color', 'danger');
+        const hashtags = document.getElementById('hashtagsContent') as HTMLElement;
+        hashtags.style.visibility = 'hidden';
+        hashtags.style.height = "0px";
+        const results = document.getElementById('searchResults') as HTMLElement;
+        results.style.visibility = 'visible';
+        results.style.height = "fit-content";
+      }
+      
+    }else{
+      const search = document.getElementById('searchBar') as HTMLElement;
+      search.classList.add('shade');
+      setTimeout(() => {
+        search.classList.remove('shade');
+      }, 1000);
+      return;
+    }
+
+    
+
     if (this.searchUser.startsWith('#')) {
       this.searchByHashtag();
     } else {
       console.log(this.searchUser);
       this.store.dispatch(new FetchUserPosts(this.searchUser));
     }
+
   } //if the input starts with a hashtag, search by hashtag, else search by username
 
+
+  
   toHomePage(){
     this.router.navigate(["/home"]);
   }
