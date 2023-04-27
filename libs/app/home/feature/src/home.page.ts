@@ -8,7 +8,8 @@ import { Observable, Subscription } from 'rxjs';
 import { MenubarService } from '@mp/app/services/feature';
 import { NotificationPageState } from '@mp/app/notification-page/data-access';
 import { IComment } from '@mp/api/memories/util';
-import { SetCommentsNotificationAmount, SetNotificationPage } from '@mp/app/notification-page/util';
+import { SetCommentsNotificationAmount, SetNotificationPage, GetAllPendingFriendRequests } from '@mp/app/notification-page/util';
+
 
 @Component({
   selector: 'ms-home-page',
@@ -39,6 +40,11 @@ export class HomePage implements OnInit {
     this.noNotifications = false;
   }
 
+  // ngOnInit(): void {
+    // setInterval(() => {
+    //   this.store.dispatch(new GetAllPendingFriendRequests())
+    // },5000);
+  // }
   friendsRequests = [
     {
         userId: "1",

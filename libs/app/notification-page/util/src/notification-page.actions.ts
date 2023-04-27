@@ -29,6 +29,11 @@ export class AddNewComment {
     constructor(public readonly comment: IComment) {}
 }
 
+
+export class GetAllPendingFriendRequests {
+    static readonly type = '[MotificationPage] GetAllPendingFriendRequests';
+}
+
 export class SetNotificationAmount {
     static readonly type = '[NotificationPage] SetNotificationAmount';
     constructor(public readonly newAmount: number) {}

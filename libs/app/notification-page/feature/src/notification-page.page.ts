@@ -11,7 +11,8 @@ import {
     SetNotificationAmount,
     UpdateFriendRequest 
 } from "@mp/app/notification-page/util";
-import { ProfileState } from '@mp/app/profile/data-access';
+import { ProfileState } from "@mp/app/profile/data-access";
+import { CheckUserFriendStatus, GetUserProfileRequest } from "@mp/app/user-view/util";
 
 
 @Component({
@@ -50,7 +51,8 @@ export class NotificationPage {
     }
 
     constructor(
-        private store: Store
+        private store: Store,
+        private navCtrl: NavController
     ) {
         this.notificationAmount$.subscribe((value) => {
             this.notificationCount = value;
@@ -114,5 +116,35 @@ export class NotificationPage {
         })
 
         return this.friendRequestsCount;
+    }
+
+    openUserProfile(uid: string | null | undefined, uname: string | null | undefined) {
+        const user = this.store.selectSnapshot(ProfileState.user);
+
+        if(!uid || !uname) return;
+
+        if (user && user.userId && user.username) {
+            if (uid != user.userId && uname != user.name) {
+                const request_user : IUser = {
+                    userId: uid,
+                    username: uname
+                }
+                this.store.dispatch(new CheckUserFriendStatus(request_user));
+                this.store.dispatch(new GetUserProfileRequest(request_user));
+                this.navCtrl.navigateForward('/user-view');
+            }
+        }
+    }
+
+    checkForMyComment(uid: string | null | undefined) {
+        const user = this.store.selectSnapshot(ProfileState.user);
+
+        if(!uid) return;
+
+        if (uid === user?.userId) {
+            return "- You";
+        }
+
+        return '';
     }
 }
