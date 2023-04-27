@@ -6,7 +6,7 @@ import { IPostDetails, IProfile } from '@mp/api/profiles/util';
 import { ProfileState } from '@mp/app/profile/data-access';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FetchUserPosts, GetAllPosts, GetUserPostsByHashtag } from '@mp/app/profile/util';
 
 
@@ -16,7 +16,20 @@ import { FetchUserPosts, GetAllPosts, GetUserPostsByHashtag } from '@mp/app/prof
   styleUrls: ['./search.page.scss'],
 })
 export class SearchPage {
-  constructor(private router: Router, private store: Store) { }
+  constructor(private router: Router, private store: Store, private activatedRoute: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.activatedRoute.queryParamMap.subscribe(queryParams => {
+      const value = queryParams.get('searchFor');
+      if(value){
+        const search = document.getElementById('searchBar') as HTMLElement;
+        search.setAttribute("value", value);
+        this.searchUser = value;
+        this.userSearch();
+      }
+      });
+  }
+
   @Select(ProfileState.searchPosts) searchPosts$: Observable<IPostDetails[]> | undefined;
   @Select(ProfileState.profile) profile$!: Observable<IProfile | null>;
   searchUser='';
@@ -81,7 +94,6 @@ export class SearchPage {
   fillBar(category: string){
 
     this.searchUser=category;
-    console.log(category);
    document.getElementById("searchBar")?.setAttribute("value", category);
    this.userSearch();
   }
@@ -107,5 +119,8 @@ export class SearchPage {
   }
   toProfilePage() {
     this.router.navigate(["/profile"]);
+  }
+  getSlicedHashtag(hashtag: string): string {
+    return hashtag.slice(1);
   }
 }

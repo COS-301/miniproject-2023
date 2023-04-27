@@ -102,4 +102,14 @@ posts$: Observable<IPostDetails[] | null | undefined>;
   getSlicedHashtag(hashtag: string): string {
     return hashtag.slice(1);
   }
+  
+  toSearch(searchFor: string | null | undefined) {
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        searchFor: searchFor
+      }
+    };
+
+    this.router.navigate(["/search"], navigationExtras);
+  }
 }

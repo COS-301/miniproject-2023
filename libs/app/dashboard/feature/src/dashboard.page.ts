@@ -138,4 +138,13 @@ async getPostByIndex(index: number): Promise<IPostDetails | undefined> {
   toPage( name: string){
     this.router.navigate([`/${name}`]);
   }
+  toSearch(searchFor: string | null | undefined){
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        searchFor: searchFor
+      }
+    };
+
+    this.router.navigate(["/search"], navigationExtras);
+  }
 }

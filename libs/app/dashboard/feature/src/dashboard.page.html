@@ -78,7 +78,7 @@
 
         <ion-toolbar color=secondary>
           <ion-grid>
-            <ion-row>
+            <ion-row (click)="toSearch(post && post.postID && post.postID.split('-',1)[0])">
               <ion-avatar>
                 <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
               </ion-avatar>
@@ -139,6 +139,7 @@
                   <ion-row style="margin-top: -13px;">
                     <ion-col>
                       <ion-badge *ngIf="post.hashtag"
+                        (click)="toSearch(post.hashtag)"
                         style="--background: var(--{{ getSlicedHashtag(post.hashtag) }});">{{post.hashtag}}</ion-badge>
                     </ion-col>
                   </ion-row>
