@@ -51,9 +51,52 @@
   
 }
 
+ion-item{
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--branding-blue);
+  border-radius: 20px;
+  height: 100%;
+  width: 100%;
+}
+
+.portfolioIcon{
+  font-size: 20px !important;
+  margin-right: 5px;
+}
+
+.portfolioLabel{
+  font-size:10px;
+  font-family: var(--poppins);
+  font-weight: 300;
+  overflow: auto;
+  white-space: normal;
+  word-wrap: break-word;
+  width:100%;
+  
+}
+
 .create{
   font-size:35px;
   padding-bottom: 5px;
+  
+}
+
+.postCard{
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+}
+ 
+.postImage {
+  border-radius: 20px;
+  //padding: 10px;
   
 }
 

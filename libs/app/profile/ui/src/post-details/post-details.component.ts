@@ -85,12 +85,28 @@ export class PostDetailsComponent {
     const toggle: HTMLIonToggleElement = document.getElementById('toggleSale') as HTMLIonToggleElement;
     const categoryInput: HTMLIonInputElement = document.getElementById('categoryInput') as HTMLIonInputElement;
     const priceInput: HTMLIonInputElement = document.getElementById('numberInput') as HTMLIonInputElement;
+    const priceGrid: HTMLElement = document.getElementById('priceGrid') as HTMLElement;
+    const emoji1 = document.getElementById('emoji1');
+    const emoji2 = document.getElementById('emoji2');
 
+    const oldHashtag: HTMLIonButtonElement | null = this.postDetailsForm?.get('hashtag')?.value ? 
+    document.getElementById(this.postDetailsForm?.get('hashtag')?.value?.slice(1) + 'Button') as HTMLIonButtonElement :
+    null;
+
+    if (oldHashtag && oldHashtag.style) {
+      oldHashtag.style.filter = 'brightness(50%)';
+    }
+    
+    if(emoji1) {emoji1.textContent = "😢No Hashtag😔";}
+    if (emoji2) {emoji2.textContent = "😉Select One😊";}
+    this.postDetailsForm?.get('hashtag')?.setValue("");
+    priceGrid.style.display = 'none';
     img.src = "assets/icons/upload.png";
     captionInput.value = "";
     toggle.checked = false;
     categoryInput.value = "";
     priceInput.value = "";
+    //console.log("Cleared");
   }
 
   uploadImageAndReturnUrl(file: File): Promise<string> {
@@ -201,12 +217,12 @@ export class PostDetailsComponent {
   
   setHashtag(hashtag: string) {
     
-    const newHashtag: HTMLIonButtonElement | null = document.getElementById(hashtag + 'Button') as HTMLIonButtonElement;
+    const newHashtag: HTMLIonButtonElement | null = document.getElementById(hashtag.slice(1) + 'Button') as HTMLIonButtonElement;
+    
     const oldHashtag: HTMLIonButtonElement | null = this.postDetailsForm?.get('hashtag')?.value ? 
-    document.getElementById(this.postDetailsForm?.get('hashtag')?.value?.slice(3, -3) + 'Button') as HTMLIonButtonElement :
+    document.getElementById(this.postDetailsForm?.get('hashtag')?.value?.slice(1) + 'Button') as HTMLIonButtonElement :
     null;
-    console.log(this.postDetailsForm?.get('hashtag')?.value?.slice(3, -3) + 'Button');
-    console.log(newHashtag);
+
     if (oldHashtag && oldHashtag.style) {
       oldHashtag.style.filter = 'brightness(50%)';
     }
@@ -230,8 +246,13 @@ export class PostDetailsComponent {
       emoji = '🍔';
     }
     
+   
+    const emoji1 = document.getElementById('emoji1');
+    if (emoji1) {emoji1.textContent=emoji;}
+    const emoji2 = document.getElementById('emoji2');
+    if (emoji2) {emoji2.textContent=emoji;}
 
-    this.postDetailsForm?.get('hashtag')?.setValue(`${emoji} ${hashtag} ${emoji}`);
+    this.postDetailsForm?.get('hashtag')?.setValue(hashtag);
   
     
   }

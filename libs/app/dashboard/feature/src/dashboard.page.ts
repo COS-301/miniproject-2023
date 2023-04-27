@@ -90,9 +90,12 @@ async likePost(i: number){
       const postID = post.postID;
       console.log('Post:'+i);
       this.store.dispatch(new LikePost(postID));
+      const likeButton = document.getElementsByClassName('like')[i] as HTMLElement;
+      likeButton.classList.toggle('clicked');
     } else {
       console.error('Invalid index');
     }
+    
 
 }
 async getPostByIndex(index: number): Promise<IPostDetails | undefined> {

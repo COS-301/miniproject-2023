@@ -8,49 +8,72 @@
 <ion-content fullscreen>
 <div *ngFor="let post of profilePosts$ | async; let i = index" color=secondary>
 
-  <img class="postImage" alt="Post" [src]="post.content" />
-  <ion-toolbar color="secondary">
-    <ion-list lines = "none">
+  <ion-card class="postCard">
+    
+    
+    
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" >
+        <!--<div class="image-wrapper"> -->
+          <img class="postImage" alt="Post" [src]="post.content"/>
+        <!---</div>-->
+        </ion-col>
+      
+        <ion-col size="6">
+          <ion-list lines="none">
+            <ion-item>
+              <ion-icon slot="start" name="person" class = "portfolioIcon"></ion-icon>
+              <ion-label class = "portfolioLabel" >
+                
+                Created by {{post.postID?.split("-",1)}}</ion-label>
+              
+            </ion-item>
+            <ion-item>
+              <ion-icon slot="start" src="assets/icons/Hashtag.svg" class = "portfolioIcon"></ion-icon>
+              <ion-label class = "portfolioLabel" >
+                {{post.hashtag}}</ion-label>
+              
+            </ion-item>
+            <ion-item>
+              <ion-icon slot="start" src="assets/icons/income.svg" class = "portfolioIcon"></ion-icon>
+              <ion-label class = "portfolioLabel" >
+                {{post.ownerGainedTime}} minutes</ion-label>
+              
+            </ion-item>
+            
+            <ion-item>
+              <ion-icon slot="start" src="assets/icons/outcome.svg" class = "portfolioIcon"></ion-icon>
+              <ion-label class = "portfolioLabel" >
+                {{post.listing}} minutes</ion-label>
+              
+            </ion-item>
+            <ion-item>
+              
+              <ion-icon slot="start" src="assets/icons/comments.svg" class = "portfolioIcon"></ion-icon>
+              <ion-label *ngIf="post.comments; else noComments"  class = "portfolioLabel">
+                
+                {{post.comments.length}} comments</ion-label>
+              <ng-template #noComments>
+                <ion-label  class = "portfolioLabel">0 comments</ion-label>
+              </ng-template>
+            </ion-item>
+            <ion-item>
+              <ion-icon slot="start" src="assets/icons/likeBlue.svg" class = "portfolioIcon"></ion-icon>
+                      
+              <ion-label *ngIf="post.likes; else noLikes"  class = "portfolioLabel">
+                {{post.likes}} likes</ion-label>
+              <ng-template #noLikes>
+                <ion-label  class = "portfolioLabel">0 likes</ion-label>
+              </ng-template>
+            </ion-item>
+          </ion-list>
+        </ion-col>      
+      </ion-row>
 
-      <ion-grid   >
-        <ion-row>
-          <ion-col size="6" > <ion-item style="font-size: small;"> {{ post.caption }}</ion-item></ion-col>
-          <ion-col size="6" >
-            <div>
-              <ion-item  style="font-size: smaller">  {{ post.hashtag }}</ion-item>
-            </div>
-            <div>
-              <ion-item  style="font-size: smaller"> {{ post.likes }} Likes</ion-item>
-            </div>
-            <ion-row>
-              <ion-item  style="font-size: smaller"> Price: {{post.listing}}</ion-item>
-            </ion-row>
-          </ion-col>
-
-          <!-- <ion-col size = "2"> <ion-item  style="font-size: 15px;">  {{ post.hashtag }}</ion-item></ion-col>
-          <ion-col size = "2"><ion-item  style="font-size: 15px;"> {{ post.likes }} Likes</ion-item></ion-col>
-          <ion-col size = "2"><ion-item  style="font-size: 15px;"> Price: {{post.listing}}</ion-item></ion-col> -->
-        </ion-row>
-      </ion-grid>
-    </ion-list>
-
-    <ion-buttons slot="end">
-
-      <!-- <ion-button expand="block" color="primary" (click)="like()">
-        <ion-icon name="thumbs-up-outline"></ion-icon>
-      </ion-button>
-
-      <ion-button expand="block" color="primary" (click)="comment()">
-        <ion-icon name="chatbox-ellipses-outline"></ion-icon>
-      </ion-button>
-
-      <ion-button expand="block" color="primary" (click)="bid()">
-        <ion-icon name="cart-outline"></ion-icon>
-      </ion-button> -->
-
-    </ion-buttons>
-  </ion-toolbar>ssssss
-   <hr>
+    </ion-grid>
+    
+  </ion-card>
 </div>
 </ion-content>
 <!-- <ion-content>
