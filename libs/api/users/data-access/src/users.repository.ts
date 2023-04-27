@@ -20,6 +20,7 @@ export class UsersRepository {
     return await admin.firestore().collection('users').doc(user.userId).set(user, { merge: true });
   }
 
+
   async findUser(userId: string) {
     return await admin
       .firestore()
@@ -36,6 +37,12 @@ export class UsersRepository {
 
   async findUserById(userId: string) {
     return await admin.firestore().collection('users').doc(userId).get();
+  }
+
+  async updateFriendCount(userId1: string, newTime: number) {
+    return await admin.firestore().collection('users').doc(userId1).update({
+      friendCount: newTime,
+    });
   }
 
   async findUserWithUsername(username: string) {
