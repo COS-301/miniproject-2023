@@ -416,17 +416,24 @@ export const addPost = functions.https.onCall(
 );
 
 exports.getUserPortfolio = functions.https.onCall(async (data, context) => {
-  const userId = data.userId;
-console.log(userId + "functions");
-  const postsRef = admin.firestore().collectionGroup('posts').where("ownedBy", "==", userId);
-  const postsDocs = await postsRef.get();
-  const posts: { id: string; }[] = [];
+  const userId1 = data.userId;
+  const profilesRef = admin.firestore().collection('profiles');
+  const profileDocs = await profilesRef.get();
+console.log("here in functions");
 
-  postsDocs.forEach((doc) => {
-    posts.push({ id: doc.id, ...doc.data() });
-  });
-return{posts};
+const posts: { id: string; }[] = [];
 
+  for (const profileDoc of profileDocs.docs) {
+    const userId = profileDoc.id;
+    const userPostsRef = admin.firestore().collection(`profiles/${userId}/posts`).where("ownedBy","==",userId1);
+    const userPostsSnapshot = await userPostsRef.get();
+
+    userPostsSnapshot.forEach((doc) => {
+      posts.push({ id: doc.id, ...doc.data() });
+    });
+  }
+console.log(posts);
+  return { posts };
 });
 
 export const likePost = functions.https.onCall(async (data, context) => {
