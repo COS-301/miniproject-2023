@@ -1,6 +1,6 @@
 export * from './auth.functions';
 export * from './profiles.functions';
-export * from './posts.functions';
+//export * from './posts.functions';
 export * from './updateUserTime.functions';
 
 import * as functions from 'firebase-functions';
@@ -16,8 +16,8 @@ const decrementTime = async () => {
   const profilesSnapshot = await profilesRef.get();
 
   // Use the Firebase REST API to get loggedInUsers data
-  const databaseUrl = "http://localhost:5004" ;
-  const loggedInUsersUrl = `${databaseUrl}/loggedInUsers.json?ns=cos301-mp-grp3`;
+  const databaseUrl = "https://cos301-mp-grp3-default-rtdb.asia-southeast1.firebasedatabase.app";
+  const loggedInUsersUrl = `${databaseUrl}/loggedInUsers.json?ns=cos301-mp-grp3-default-rtdb`;
   //const loggedInUsersResponse = await axios.get(loggedInUsersUrl);
 //console.log(loggedInUsersResponse.data);
 let loggedInUsersResponse;
@@ -85,8 +85,8 @@ const adjustTime = async () => {
 
 exports.adjustTimeScheduled = functions.pubsub.schedule('every 24 hours').onRun(adjustTime);
 
-exports.adjustTimeHttp = functions.https.onRequest(async (req, res) => {
-  await adjustTime();
-  res.status(200).send('Time adjusted for all profiles');
-});
+// exports.adjustTimeHttp = functions.https.onRequest(async (req, res) => {
+//   await adjustTime();
+//   res.status(200).send('Time adjusted for all profiles');
+// });
 

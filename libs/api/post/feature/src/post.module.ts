@@ -1,4 +1,4 @@
-import { PostModule as PostDataAccessModule } from '@mp/api/post/data-access';
+//import { PostModule as PostDataAccessModule } from '@mp/api/post/data-access';
 import { Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
 import {
@@ -17,7 +17,7 @@ export const EventHandlers = [
 ];
 
 @Module({
-  imports: [CqrsModule, PostDataAccessModule],
+  imports: [CqrsModule],
   providers: [
     PostService,
     ...CommandHandlers,
