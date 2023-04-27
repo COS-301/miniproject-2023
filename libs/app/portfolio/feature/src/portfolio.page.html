@@ -14,37 +14,57 @@
     
     <ion-grid>
       <ion-row>
-        <ion-col size="6">
+        <ion-col size="6" >
+        <!--<div class="image-wrapper"> -->
           <img class="postImage" alt="Post" [src]="post.content"/>
+        <!---</div>-->
         </ion-col>
+      
         <ion-col size="6">
-          <ion-list>
+          <ion-list lines="none">
             <ion-item>
-              <ion-label position="stacked">Creator: {{post.postID?.split("-",1)}}</ion-label>
+              <ion-icon slot="start" name="person" class = "portfolioIcon"></ion-icon>
+              <ion-label class = "portfolioLabel" >
+                
+                Created by {{post.postID?.split("-",1)}}</ion-label>
               
             </ion-item>
             <ion-item>
-              <ion-label position="stacked">Hashtag: {{post.hashtag}}</ion-label>
+              <ion-icon slot="start" src="assets/icons/Hashtag.svg" class = "portfolioIcon"></ion-icon>
+              <ion-label class = "portfolioLabel" >
+                {{post.hashtag}}</ion-label>
               
             </ion-item>
             <ion-item>
-              <ion-label position="stacked">Owner Gained: {{post.ownerGainedTime}}</ion-label>
+              <ion-icon slot="start" src="assets/icons/income.svg" class = "portfolioIcon"></ion-icon>
+              <ion-label class = "portfolioLabel" >
+                {{post.ownerGainedTime}} minutes</ion-label>
+              
+            </ion-item>
+            
+            <ion-item>
+              <ion-icon slot="start" src="assets/icons/outcome.svg" class = "portfolioIcon"></ion-icon>
+              <ion-label class = "portfolioLabel" >
+                {{post.listing}} minutes</ion-label>
               
             </ion-item>
             <ion-item>
-              <ion-label position="stacked">Total Time:{{post.totalTime}}</ion-label>
               
-            </ion-item>
-            <ion-item>
-              <ion-label position="stacked">Listing: {{post.listing}}</ion-label>
-              
-            </ion-item>
-            <ion-item>
-              
-                      
-              <ion-label *ngIf="post.comments; else noComments" position="stacked">Comments: {{post.comments.length}}</ion-label>
+              <ion-icon slot="start" src="assets/icons/comments.svg" class = "portfolioIcon"></ion-icon>
+              <ion-label *ngIf="post.comments; else noComments"  class = "portfolioLabel">
+                
+                {{post.comments.length}} comments</ion-label>
               <ng-template #noComments>
-                <ion-label position="stacked">Comments: 0</ion-label>
+                <ion-label  class = "portfolioLabel">0 comments</ion-label>
+              </ng-template>
+            </ion-item>
+            <ion-item>
+              <ion-icon slot="start" src="assets/icons/likeBlue.svg" class = "portfolioIcon"></ion-icon>
+                      
+              <ion-label *ngIf="post.likes; else noLikes"  class = "portfolioLabel">
+                {{post.likes}} likes</ion-label>
+              <ng-template #noLikes>
+                <ion-label  class = "portfolioLabel">0 likes</ion-label>
               </ng-template>
             </ion-item>
           </ion-list>
