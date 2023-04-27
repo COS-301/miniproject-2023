@@ -14,7 +14,7 @@ jobs:
       - run: echo "${{ secrets.DOTENVFILE }}" > .env
       - run: echo "${{ secrets.DOTENVDOTPRODFILE }}" > .env.prod
       - run: echo "${{ secrets.DOTFIREBASERCFILE }}" > .firebaserc
-      - run: 'yarn install && yarn build:app:prod'
+      - run: 'yarn install'
       - run: 'yarn nx run-many --target=lint --all --parallel'
       - run: 'yarn nx run-many --target=build --all --parallel --configuration=production'
       - run: 'yarn nx run-many --target=test --all --parallel'
