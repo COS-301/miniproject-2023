@@ -1,5 +1,5 @@
 {
-  "name": "mystery-shopper",
+  "name": "lapse",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -24,8 +24,8 @@
     "deploy:api:dev": "firebase deploy --only=functions",
     "deploy:api:prod": "firebase deploy --only=functions",
     "shipit:prod": "yarn build:app:prod && yarn build:api:prod && yarn deploy:prod",
-    "generate:pwa:assets:icons": "pwa-asset-generator apps/app/src/assets/logos/schadre-logo-only.png apps/app/src/assets/pwa --favicon --icon-only --padding \"20px\" --mstile --maskable --manifest apps/app/src/manifest.webmanifest",
-    "generate:pwa:assets:splashes": "pwa-asset-generator apps/app/src/assets/logos/schadre-logo-only.png apps/app/src/assets/pwa --favicon --splash-only --padding \"150px\" --mstile --maskable --manifest apps/app/src/manifest.webmanifest",
+    "generate:pwa:assets:icons": "pwa-asset-generator apps/app/src/assets/logos/logo.png apps/app/src/assets/pwa --favicon --icon-only --padding \"20px\" --mstile --maskable --manifest apps/app/src/manifest.webmanifest",
+    "generate:pwa:assets:splashes": "pwa-asset-generator apps/app/src/assets/logos/logo.png apps/app/src/assets/pwa --favicon --splash-only --padding \"150px\" --mstile --maskable --manifest apps/app/src/manifest.webmanifest",
     "host:app": "http-server dist/apps/app"
   },
   "private": true,

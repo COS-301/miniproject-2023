@@ -1,7 +1,7 @@
 {
-  "name": "Mystery Shopper",
-  "short_name": "Mystery Shopper",
-  "theme_color": "#20265f",
+  "name": "Lapse",
+  "short_name": "Lapse",
+  "theme_color": "#356B59",
   "background_color": "#ffffff",
   "display": "standalone",
   "scope": "./",
@@ -10,12 +10,12 @@
   "capture_links": "existing_client_event",
   "url_handlers": [
     {
-      "origin": "https://mysteryshopapp.web.app/"
+      "origin": "https://cos301-mp-grp3.web.app/"
     }
   ],
   "protocol_handlers": [
     {
-      "protocol": "web+mysteryshopper",
+      "protocol": "web+lapse",
       "url": "/%s"
     }
   ],
