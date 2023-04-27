@@ -9,9 +9,9 @@
 <div *ngFor="let post of profilePosts$ | async; let i = index" color=secondary>
 
   <ion-card class="postCard">
-    
-    
-    
+
+
+
     <ion-grid>
       <ion-row>
         <ion-col size="6" >
@@ -19,40 +19,40 @@
           <img class="postImage" alt="Post" [src]="post.content"/>
         <!---</div>-->
         </ion-col>
-      
+
         <ion-col size="6">
           <ion-list lines="none">
             <ion-item>
               <ion-icon slot="start" name="person" class = "portfolioIcon"></ion-icon>
               <ion-label class = "portfolioLabel" >
-                
+
                 Created by {{post.postID?.split("-",1)}}</ion-label>
-              
+
             </ion-item>
             <ion-item>
               <ion-icon slot="start" src="assets/icons/Hashtag.svg" class = "portfolioIcon"></ion-icon>
               <ion-label class = "portfolioLabel" >
                 {{post.hashtag}}</ion-label>
-              
+
             </ion-item>
-            <ion-item>
+            <!-- <ion-item>
               <ion-icon slot="start" src="assets/icons/income.svg" class = "portfolioIcon"></ion-icon>
               <ion-label class = "portfolioLabel" >
                 {{post.ownerGainedTime}} minutes</ion-label>
-              
-            </ion-item>
-            
+
+            </ion-item> -->
+
             <ion-item>
               <ion-icon slot="start" src="assets/icons/outcome.svg" class = "portfolioIcon"></ion-icon>
               <ion-label class = "portfolioLabel" >
                 {{post.listing}} minutes</ion-label>
-              
+
             </ion-item>
             <ion-item>
-              
+
               <ion-icon slot="start" src="assets/icons/comments.svg" class = "portfolioIcon"></ion-icon>
               <ion-label *ngIf="post.comments; else noComments"  class = "portfolioLabel">
-                
+
                 {{post.comments.length}} comments</ion-label>
               <ng-template #noComments>
                 <ion-label  class = "portfolioLabel">0 comments</ion-label>
@@ -60,7 +60,7 @@
             </ion-item>
             <ion-item>
               <ion-icon slot="start" src="assets/icons/likeBlue.svg" class = "portfolioIcon"></ion-icon>
-                      
+
               <ion-label *ngIf="post.likes; else noLikes"  class = "portfolioLabel">
                 {{post.likes}} likes</ion-label>
               <ng-template #noLikes>
@@ -68,11 +68,11 @@
               </ng-template>
             </ion-item>
           </ion-list>
-        </ion-col>      
+        </ion-col>
       </ion-row>
 
     </ion-grid>
-    
+
   </ion-card>
 </div>
 </ion-content>
@@ -156,20 +156,20 @@
 
       <ion-tab-button class="bottomBarButton" (click)="toCreatePage()">
         <ion-icon src = "assets/icons/create.svg" color="primary" class="create"></ion-icon>
-        
+
       </ion-tab-button>
 
       <ion-tab-button class="bottomBarButton" (click)="toPortfolioPage()">
-        
+
           <ion-icon src = "assets/icons/portfolioSelected.svg" class = "navIcon"></ion-icon>
-        
+
         <ion-label class = "navLabel">Portfolio</ion-label>
       </ion-tab-button>
 
       <ion-tab-button class="bottomBarButton" (click)="toProfilePage()">
-        
+
         <ion-icon src = "assets/icons/profile.svg" class = "navIcon" ></ion-icon>
-        
+
         <ion-label class = "navLabel">Profile</ion-label>
       </ion-tab-button>
 

@@ -523,7 +523,6 @@ if(!post){
 
   // Add like to post
   batch.update(postRef, { likes: post['likes']+1 });
-  batch.update(postRef, { ownerGainedTime: post['ownerGainedTime']+1 });
 // Update owner's time
 if (ownerData) {
   const updatedOldOwnerTime = ownerData['time'] + 1;
