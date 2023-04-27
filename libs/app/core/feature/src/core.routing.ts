@@ -55,12 +55,6 @@ const routes: Routes = [
       import('@mp/app/portfolio/feature').then((m) => m.PortfolioModule),
   },
   {
-    path: 'post',
-    loadChildren: () => import('@mp/app/post/feature').then((m) => m.PostModule),
-
-
-  },
-  {
     path: 'search',
     loadChildren: () =>
       import('@mp/app/search/feature').then((m) => m.SearchModule),
