@@ -145,6 +145,17 @@ async getPostByIndex(index: number): Promise<IPostDetails | undefined> {
     return hashtag.slice(1);
   }
 
+  removeLastDash(username: string|null|undefined): string {
+    if (!username) {
+      return '';
+    }
+    const lastDashIndex = username.lastIndexOf("-");
+    if (lastDashIndex !== -1) {
+      return username.substring(0, lastDashIndex);
+    }
+    return username;
+  }
+
   toPage( name: string){
     this.router.navigate([`/${name}`]);
   }

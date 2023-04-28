@@ -78,12 +78,12 @@
 
         <ion-toolbar color=secondary>
           <ion-grid>
-            <ion-row (click)="toSearch(post && post.postID && post.postID.split('-',1)[0])">
+            <ion-row (click)="toSearch(post && post.postID && removeLastDash(post.postID))">
               <ion-avatar>
                 <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
               </ion-avatar>
               <ion-list lines="none">
-                <ion-item>Created by: {{post.postID?.split("-",1)}}</ion-item>
+                <ion-item>Created by: {{removeLastDash(post.postID)}}</ion-item>
               </ion-list>
             </ion-row>
           </ion-grid>
