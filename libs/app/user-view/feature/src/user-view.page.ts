@@ -11,7 +11,6 @@ import { Memory } from '@mp/app/shared/feature';
 import { IMemory } from '@mp/api/memories/util';
 import { IUser } from '@mp/api/users/util';
 
-
 @Component({
   selector: 'app-user-view',
   templateUrl: './user-view.page.html',
