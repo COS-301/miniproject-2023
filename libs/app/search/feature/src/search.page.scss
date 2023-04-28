@@ -15,7 +15,7 @@
     --clear-button-color: initial;
     --color: var(--ion-color-step-850, #262626);
     --icon-color: var(--ion-color-step-600, #666666);
-    padding-left: 8px;
+    padding-left: 0px;
     padding-right: 8px;
     padding-top: 8px;
     padding-bottom: 8px;
@@ -85,14 +85,19 @@
   }
 
   
-  .timer{
-    --background: var(--ion-color-primary);
-    border-radius:12px;
-    height:24px;
+  .timer {
+    --background: rgba(53, 107, 89, 0.8);
+    border-radius: 12px;
+    height: 24px;
     box-shadow: 4px #ccc;
-    margin:auto;
+    width: 80px;
+
   }
   
+  ion-badge.timer {
+    justify-content: center;
+    align-items: center;
+  }
   ion-badge {
     display: flex;
     align-items: center;

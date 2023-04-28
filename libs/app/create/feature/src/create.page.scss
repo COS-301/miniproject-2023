@@ -9,3 +9,18 @@
   --icon-font-size: 25px;
   --icon-padding-end: 6px;
 }
+
+.timer {
+  --background: rgba(53, 107, 89, 0.8);
+  border-radius: 12px;
+  height: 24px;
+  box-shadow: 4px #ccc;
+  margin-right: 20px;
+  width: 80px;
+
+}
+
+ion-badge.timer {
+  justify-content: center;
+  align-items: center;
+}

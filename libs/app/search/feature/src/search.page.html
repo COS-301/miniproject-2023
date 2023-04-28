@@ -1,17 +1,17 @@
 <ion-header no-border class="pageHeader">
   <ion-toolbar class="headerToolbar">
-    <ion-grid>
+    <ion-grid style = "padding-right: 20px; padding-left: 20px;">
       <ion-row>
-        <ion-col id="searchCol" size="8">
+        <ion-col id="searchCol" size="7.5">
           <ion-searchbar [(ngModel)]="searchUser" search-icon="search-outline" class="searchBar" id="searchBar"
             placeholder="Search"></ion-searchbar>
         </ion-col>
-        <ion-col size="1">
+        <ion-col size="1.5">
           <ion-icon id="submitIcon" class="submitSearch" (click)="userSearch()" name="checkmark-outline" color="primary"></ion-icon>
         </ion-col>
-        <ion-col size="auto">
+        <ion-col size="2" style="float: right;">
           <ng-container *ngIf="profile$ | async as profile">
-            <ion-badge class="timer">{{profile.time}}</ion-badge>
+            <ion-badge class="timer">{{profile.time}} min</ion-badge>
           </ng-container>
         </ion-col>
       </ion-row>
