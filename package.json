@@ -33,7 +33,8 @@
     "test":  "jest",
     "prepare": "husky install",
     "editorconfig": "editorconfig-checker",
-    "lint": "eslint --fix"
+    "lint": "eslint --fix",
+    "cypress:open": "cypress open"
   },
   "private": true,
   "dependencies": {
