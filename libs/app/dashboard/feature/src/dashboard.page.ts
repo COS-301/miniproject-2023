@@ -16,15 +16,22 @@ import { take, takeUntil, timeInterval } from 'rxjs/operators';
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage {
+
   userId: string| null| undefined
   numberOfComments = 0;
   postIdValue = '';
-  constructor(private router: Router, private store: Store) {
+  isLoading: boolean[] = [];
 
+  constructor(private router: Router, private store: Store) {
   }
   @Select(ProfileState.userPosts) userPosts$: Observable<IPostDetails[]> | undefined;
 
   ngOnInit() {
+
+    for (let i = 0; i < 100; i++) {
+      this.isLoading.push(true);
+    }
+
     this.profile$.subscribe( (profile) => {
       this.userId = profile?.userId
     })
@@ -41,6 +48,9 @@ this.userPosts$?.subscribe( (posts) => {
   const comments = post && post.comments ? post.comments : []
   this.numberOfComments = comments.length
   });
+
+
+
 }
   @Select(ProfileState.profile) profile$!: Observable<IProfile | null>;
 
@@ -147,4 +157,10 @@ async getPostByIndex(index: number): Promise<IPostDetails | undefined> {
 
     this.router.navigate(["/search"], navigationExtras);
   }
+
+
+  onImageLoad(i: number) {
+    this.isLoading[i] = false;
+  }
+
 }

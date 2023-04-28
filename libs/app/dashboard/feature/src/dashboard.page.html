@@ -88,7 +88,8 @@
             </ion-row>
           </ion-grid>
         </ion-toolbar>
-        <ion-img class="postImage" alt="Post" [src]="post.content" fallbackSrc="assets/logos/logo.png" />
+        <img class="postImage" alt="Post" [src]="post.content" (load)="onImageLoad(i)" [hidden]="isLoading[i]"/>
+        <img class="postImage" alt="Post" src="assets/loading/loadingWhiteBG.gif" [hidden]="!isLoading[i]"/>
         <ion-toolbar color="secondary" class="actionToolBar">
           <ion-list lines="none" class="actionBlock">
 
