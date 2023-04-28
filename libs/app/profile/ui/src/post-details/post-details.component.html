@@ -93,6 +93,11 @@
 
 <!-- ... -->
 
+<div id="error-message" class="hidden"></div>
+
+<div class="overlay" [hidden]="!isPosting">
+  <img class="postImage" alt="Post" src="assets/loading/loadingWhiteBG.gif" [hidden]="!isPosting" />
+</div>
 <ng-container *ngIf="profile$ | async as profile">
   <form
     [formGroup]="postDetailsForm"
@@ -122,6 +127,7 @@
         "
         color="secondary" />
       <input
+        id="fileInput"
         #fileInput
         type="file"
         (change)="uploadImage($event)"
