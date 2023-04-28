@@ -6,6 +6,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen>
+  <div *ngIf="(profilePosts$ | async)?.length; else noPosts">
 <div *ngFor="let post of profilePosts$ | async; let i = index" color=secondary>
 
   <ion-card class="postCard">
@@ -75,6 +76,12 @@
 
   </ion-card>
 </div>
+</div>
+<ng-template #noPosts>
+  <div class="noPosts">
+  <p>No posts available yet</p>
+</div>
+</ng-template>
 </ion-content>
 <!-- <ion-content>
   <ion-grid>
