@@ -123,9 +123,9 @@
                     </ion-col>
 
                     <ion-col size="4">
-                      <ion-icon (click)="buyPost(i)" *ngIf="post.listing; else notForSaleIcon" class="buy" size="30px"
+                      <ion-icon (click)="buyPost(i)" *ngIf="post.listing && post.createdBy == post.ownedBy; else notForSaleIcon" class="buy" size="30px"
                         src="assets/icons/buy.svg"></ion-icon>
-                      <ion-text *ngIf="post.listing; else notForSale" class="buttonText" lines="none">{{post.listing}}
+                      <ion-text *ngIf="post.listing && post.createdBy == post.ownedBy; else notForSale" class="buttonText" lines="none">{{post.listing}}
                         min</ion-text>
                       <ng-template #notForSaleIcon>
                         <ion-icon class="noSaleBuy" size="30px" src="assets/icons/buy.svg"></ion-icon>
