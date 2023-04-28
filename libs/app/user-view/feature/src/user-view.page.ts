@@ -8,7 +8,8 @@ import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { FriendRequestStatus } from '@mp/api/friend/util';
 import { Memory } from '@mp/app/shared/feature';
-import { StoreModule} from '@ngrx/store';
+import { IMemory } from '@mp/api/memories/util';
+import { IUser } from '@mp/api/users/util';
 
 
 @Component({
