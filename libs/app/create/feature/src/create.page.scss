@@ -1,5 +1,11 @@
-.back-button-wrapper{
+.back-button-wrapper {
 
-    margin:auto;
-    display: flex;
-  }
+  margin: auto;
+  display: flex;
+}
+
+.backButton {
+  --color: var(--ion-color-tertiary);
+  --icon-font-size: 25px;
+  --icon-padding-end: 6px;
+}

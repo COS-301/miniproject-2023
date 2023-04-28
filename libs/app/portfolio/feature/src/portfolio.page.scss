@@ -106,3 +106,8 @@ ion-item{
   margin-top: 50px;
 }
 
+.backButton {
+  --color: var(--ion-color-tertiary);
+  --icon-font-size: 25px;
+  --icon-padding-end: 6px;
+}

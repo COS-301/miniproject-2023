@@ -23,4 +23,8 @@ export class SettingsPage implements OnInit {
   logout() {
     this.store.dispatch(new Logout());
   }
+
+  toPage(page: string) {
+    this.router.navigate([page]);
+  }
 }
