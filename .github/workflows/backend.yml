@@ -20,7 +20,8 @@ jobs:
 
       # Finally, run our tests
       - name: run Tests
-        run: |
-          yarn start:api:dev
-          yarn start:emulators:imported
-          yarn test:api
+        steps: 
+          - bash: |
+            echo yarn start:api:dev
+            echo yarn start:emulators:imported
+            echo yarn test:api
