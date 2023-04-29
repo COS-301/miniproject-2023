@@ -35,6 +35,6 @@ jobs:
       # Finally, run our tests
       - name: run Tests
         run: |
-          yarn start api:dev
+          yarn start:api:dev
           yarn start:emulators:imported
           yarn test:api
