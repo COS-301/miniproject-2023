@@ -23,7 +23,7 @@ export class CreateFriendRequestHandler implements ICommandHandler<CreateFriendR
     console.log(`${CreateFriendRequestCommand.name}`);
 
     const request = command.request;
-
+    
     if (!request.friendRequest.senderId || !request.friendRequest.receiverUsername)
       throw new Error('Missing required fields');
 
@@ -31,11 +31,11 @@ export class CreateFriendRequestHandler implements ICommandHandler<CreateFriendR
 
     if (!userDoc.data()) throw new Error('User not found');
 
-    const receiverUserSnapshot = await this.userRepository.findUserWithUsername(request.friendRequest.receiverUsername);
+    const receiverSnapshot = await this.userRepository.findUserWithUsername(request.friendRequest.receiverUsername);
 
-    if (receiverUserSnapshot.empty) throw new Error('Receiver not found');
+    if (receiverSnapshot.empty) throw new Error('Receiver not found');
 
-    const receiverUserDoc = receiverUserSnapshot.docs[0];
+    const receiverUserDoc = receiverSnapshot.docs[0];
 
     //check that friend request not already sent by other user
     const possibleFriendRequestsSnapshot = await this.friendsRepository.getCurrentFriendRequest(

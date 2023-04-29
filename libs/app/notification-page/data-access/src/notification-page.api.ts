@@ -1,14 +1,18 @@
 import { Injectable } from "@angular/core";
-import { doc, docData, Firestore } from "@angular/fire/firestore";
+import { doc, docData, Firestore, collection, collectionChanges } from "@angular/fire/firestore";
 import { Functions, httpsCallable } from "@angular/fire/functions";
 import { 
   ICreateFriendRequest,
   ICreateFriendResponse,
   IDeleteFriendRequest,
   IDeleteFriendResponse,
+  IGetFriendsRequest,
+  IGetFriendsResponse,
   IUpdateFriendRequest,
   IUpdateFriendResponse 
 } from "@mp/api/friend/util";
+import { IFriendRequest } from "@mp/api/friend/util";
+import { from, map, Observable } from 'rxjs';
 
 @Injectable()
 export class NotificationPageApi {
@@ -46,4 +50,13 @@ export class NotificationPageApi {
       'deleteFriendRequest'
     )(request);
   }
+
+  async getAllPendingFriendRequests(request: IGetFriendsRequest) {
+    return await httpsCallable<IGetFriendsRequest, IGetFriendsResponse>(this.functions, 'getAllPendingFriendRequests')(request);
+  }
+
+  async getAllPendingFriendRequestsFor(request: IGetFriendsRequest) {
+    return await httpsCallable<IGetFriendsRequest, IGetFriendsResponse>(this.functions, 'getAllPendingFriendRequestsFor')(request);
+  }
+
 }

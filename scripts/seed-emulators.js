@@ -20,10 +20,12 @@ firestore.settings({
 
 async function seedData() {
     faker.seed(123)
-    // await seedUsers();
+    await seedUsers();
     await generateMemories(3, 5);
     await seedFriends();
-    await generateFriendsFor('qk29zJ5i8y5omsE9uYXTWPdWOMbP', 5);
+    await generateMemoriesFor('cpDFYwi6yVXktfuLooJWmM0p9z9r', 2, 2);
+    // await generateFriendsFor('qk29zJ5i8y5omsE9uYXTWPdWOMbP', 5);
+    await generateCommentsFor('9e03f66e-18f9-4c6a-8b35-b6f5ae92735d', 5);
 }
 
 // ============================================================================
@@ -50,6 +52,10 @@ async function seedUsers() {
 function generateUsers(numUsers) {
   const users = [];
 
+    const now = Timestamp.now();
+    const seconds = now.seconds + 24 * 60 * 60;
+    const nanoseconds = now.nanoseconds;
+
     for (let i = 0; i < numUsers; i++) {
         const name = faker.name.firstName();
         const surname = faker.name.lastName();
@@ -67,6 +73,7 @@ function generateUsers(numUsers) {
         lastOnline: Timestamp.now(),
         online: false,
         created: Timestamp.now(),
+        deathTime: new Timestamp(seconds, nanoseconds),
     };
 
     users.push(user);
@@ -76,7 +83,11 @@ function generateUsers(numUsers) {
 }
 
 async function generateMemories(numMemories, numComments) {
-  const usersSnapshot = await firestore.collection('users').get();
+    const usersSnapshot = await firestore.collection('users').get();
+
+    const now = Timestamp.now();
+    const seconds = now.seconds + 6 * 60 * 60;
+    const nanoseconds = now.nanoseconds;
 
     for (userDoc of usersSnapshot.docs) {
         const memories = [];
@@ -95,6 +106,7 @@ async function generateMemories(numMemories, numComments) {
                 commentsCount: numComments,
                 remainingTime: 3600,
                 alive: true,
+                deathTime: new Timestamp(seconds, nanoseconds),
                 comments: await generateComments(numComments, pickRandomElements(usersSnapshot.docs, 20)),
             };
 
@@ -124,6 +136,10 @@ async function generateMemoriesFor(userId, numMemories, numComments) {
     const memories = [];
     const user = userDoc.data();
 
+    const now = Timestamp.now();
+    const seconds = now.seconds + 6 * 60 * 60;
+    const nanoseconds = now.nanoseconds;
+
     for (let i = 0; i < numMemories; i++) {
         const memory = {
             userId: user.userId,
@@ -137,6 +153,7 @@ async function generateMemoriesFor(userId, numMemories, numComments) {
             commentsCount: numComments,
             remainingTime: 3600,
             alive: true,
+            deathTime: new Timestamp(seconds, nanoseconds),
             comments: await generateComments(numComments, pickRandomElements(usersSnapshot.docs, 20)),
         };
 
@@ -156,6 +173,17 @@ async function generateMemoriesFor(userId, numMemories, numComments) {
     }
 
     console.log(`Memories for ${user.username} seeded successfully.`);
+}
+
+async function generateCommentsFor(memoryId, numComments) {
+    const usersSnapshot = await firestore.collection('users').get();
+
+    const comments = await generateComments(numComments, pickRandomElements(usersSnapshot.docs, 20));
+
+    for (const comment of comments) {
+        const commentRef = admin.firestore().collection(`memories/${memoryId}/comments`).doc(comment.commentId);
+        await commentRef.set(comment);
+    }
 }
 
 async function generateComments(numComments, userDocs) {

@@ -25,11 +25,11 @@ export class DeleteFriendRequestHandler implements ICommandHandler<DeleteFriendR
 
     if (!userDoc.data()) throw new Error('User not found');
 
-    const receiverUserSnapshot = await this.userRepository.findUserWithUsername(request.friendRequest.receiverUsername);
+    const receiverSnapshot = await this.userRepository.findUserWithUsername(request.friendRequest.receiverUsername);
 
-    if (receiverUserSnapshot.empty) throw new Error('Receiver not found');
+    if (receiverSnapshot.empty) throw new Error('Receiver not found');
 
-    const receiverUserDoc = receiverUserSnapshot.docs[0];
+    const receiverUserDoc = receiverSnapshot.docs[0];
 
     //maks sure that the friend request exixts
     const possibleFriendRequestsSnapshot = await this.friendsRepository.getCurrentFriendRequest(

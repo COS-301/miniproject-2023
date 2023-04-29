@@ -25,11 +25,12 @@ export class UpdateFriendRequestHandler implements ICommandHandler<UpdateFriendR
 
     if (!userDoc.data()) throw new Error('User not found');
 
-    const receiverUserSnapshot = await this.userRepository.findUserWithUsername(request.friendRequest.receiverUsername);
+    const receiverSnapshot = await this.userRepository.findUserWithUsername(request.friendRequest.receiverUsername);
 
-    if (receiverUserSnapshot.empty) throw new Error('Receiver not found');
+    if (!receiverSnapshot) throw new Error('Receiver not found');
 
-    const receiverUserDoc = receiverUserSnapshot.docs[0];
+    const receiverUserDoc = receiverSnapshot.docs[0];
+
 
     //new status
     const newStatus = request.friendRequest.status;
@@ -38,6 +39,8 @@ export class UpdateFriendRequestHandler implements ICommandHandler<UpdateFriendR
     const receiverId = request.friendRequest.senderId;
     const senderId = receiverUserDoc.id;
 
+    console.log(senderId);
+    console.log(receiverId);
     //get current friendRequestsId
     const currentFriendRequestsSnapshot = await this.friendsRepository.getCurrentFriendRequest(senderId, receiverId);
     const currentFriendRequestsDoc = currentFriendRequestsSnapshot.docs[0];
@@ -50,6 +53,8 @@ export class UpdateFriendRequestHandler implements ICommandHandler<UpdateFriendR
       lastUpdated: Timestamp.now(),
       created: currentFriendRequestsDoc.data()['created'],
     };
+
+    console.log(friendData);
 
     const updatedFriendRequest = this.publisher.mergeObjectContext(FriendRequest.fromData(friendData));
 

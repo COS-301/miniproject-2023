@@ -91,6 +91,52 @@ export class MemoriesRepository {
       .get();
   }
 
+  async getFeedMemoriesWithComments(userId: string): Promise<IMemory[]> {
+    const db = admin.firestore();
+
+    const friendsRef = db.collection('friends');
+    const [querySnapshot1, querySnapshot2] = await Promise.all([
+      friendsRef.where('userId1', '==', userId).get(),
+      friendsRef.where('userId2', '==', userId).get(),
+    ]);
+
+    const friendDocs = [...querySnapshot1.docs, ...querySnapshot2.docs];
+
+    const friendIds = friendDocs.map((doc) => {
+      const friendData = doc.data() as IFriend;
+      return friendData.userId1 === userId ? friendData.userId2 : friendData.userId1;
+    });
+
+    if (!friendIds) throw new Error('Empty friends');
+
+    const memoriesSnapshot= await db
+      .collection('memories')
+      .where('userId', 'in', friendIds)
+      .where('alive', '==', true)
+      .orderBy('created', 'desc')
+      .get();
+    
+    const memories: IMemory[] = [];
+
+    for (const memoryDoc of memoriesSnapshot.docs) {
+      const memory = memoryDoc.data() as IMemory;
+      delete memory.userId;
+
+      const commentsSnapshot = await memoryDoc.ref.collection('comments').orderBy('created', 'desc').get();
+      memory.comments = [];
+
+      for (const commentDoc of commentsSnapshot.docs) {
+        const comment = commentDoc.data() as IComment;
+        delete comment.userId;
+        memory.comments?.push(comment);
+      }
+
+      memories.push(memory);
+    }
+
+    return memories;
+  }
+
   async createComment(comment: IComment) {
     if (!comment.commentId) throw Error('Missing commentId');
 
@@ -110,5 +156,56 @@ export class MemoriesRepository {
       alive: true,
       remainingTime: newTime,
     });
+  }
+
+
+  async IncreseMemoryTime(memoryId: string, newTime: number) {
+    return await admin.firestore().collection('memories').doc(memoryId).update({
+      remainingTime: newTime,
+    })
+  }
+
+  async updateMemories(user: IUser) {
+    const updateInfo = {
+      username: user.username,
+      profileImgUrl: user.profileImgUrl,
+    };
+
+    admin
+      .firestore()
+      .collection('memories')
+      .where('userId', '==', user.userId)
+      .get()
+      .then((response) => {
+        const batch = admin.firestore().batch();
+        response.docs.forEach((doc) => {
+          const docRef = admin.firestore().collection('memories').doc(doc.id);
+          batch.update(docRef, updateInfo);
+        });
+        batch.commit();
+      });
+    this.updateComment(user);
+  }
+
+  async updateComment(user: IUser) {
+    const updateInfo = {
+      username: user.username,
+      profileImgUrl: user.profileImgUrl,
+    };
+
+    admin
+      .firestore()
+      .collectionGroup('comments')
+      .where('userId', '==', user.userId)
+      .get()
+      .then((response) => {
+        const batch = admin.firestore().batch();
+        response.docs.forEach((doc) => {
+          const comment :IComment = doc.data as IComment;
+          const docref = admin.firestore().collection(`memories/${comment.memoryId}/comments`).doc(doc.id);
+          batch.update(docref, updateInfo);
+        });
+        batch.commit();
+      });
   }
 }

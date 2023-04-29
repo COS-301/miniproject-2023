@@ -17,7 +17,7 @@ export class GetPendingFriendsHandler implements IQueryHandler<GetPendingFriends
     const request = query.request;
     const friendIds = await this.frinedRepository.getPendingFriendIds(request.user.senderId);
 
-    let profiles: IProfile[] = [];
+    const profiles: IProfile[] = [];
 
     for (let i = 0; i < friendIds.length; ++i) {
       const user: IUser = {

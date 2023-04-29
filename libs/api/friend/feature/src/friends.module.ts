@@ -8,8 +8,10 @@ import {
   CreateFriendHandler,
   DeleteFriendRequestHandler,
   DeleteFriendHandler,
+  IncreaseFriendCountHandler,
+  ReduceFriendCountHandler,
 } from './commands';
-import { GetFriendsHandler, GetPendingFriendsHandler } from './queries';
+import { GetFriendsHandler, GetPendingFriendsHandler, GetPendingFriendRequestsForHandler } from './queries';
 import {
   FriendRequestCreatedHandler,
   UpdateAcceptFriendRequestHandler,
@@ -17,6 +19,8 @@ import {
   FriendCreatedEventHandler,
   DeleteFriendRequestEventHandler,
   DeleteFriendEventHandler,
+  IncreaseFriendCountEventHandler,
+  ReduceFriendCountEventHandler,
 } from './events';
 import { FriendsSagas } from './friends.sagas';
 import { FriendsService } from './friends.service';
@@ -26,8 +30,10 @@ export const CommandHandlers = [
   CreateFriendHandler,
   DeleteFriendRequestHandler,
   DeleteFriendHandler,
+  IncreaseFriendCountHandler,
+  ReduceFriendCountHandler,
 ];
-export const QueryHandlers = [GetFriendsHandler, GetPendingFriendsHandler];
+export const QueryHandlers = [GetFriendsHandler, GetPendingFriendsHandler, GetPendingFriendRequestsForHandler];
 export const EventHandlers = [
   FriendRequestCreatedHandler,
   UpdateAcceptFriendRequestHandler,
@@ -35,6 +41,8 @@ export const EventHandlers = [
   FriendCreatedEventHandler,
   DeleteFriendRequestEventHandler,
   DeleteFriendEventHandler,
+  IncreaseFriendCountEventHandler,
+  ReduceFriendCountEventHandler,
 ];
 
 @Module({
