@@ -21,6 +21,18 @@
 }
 
 ion-badge.timer {
-  justify-content: center;
+
+  display: flex;
+}
+
+ion-badge {
+  display: flex;
   align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  size: fit-content;
+  font-family: var(--poppins);
+  font-weight: 600;
+  font-style: italic;
+
 }
