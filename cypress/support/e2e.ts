@@ -1,1 +1,2 @@
-import './commands';
+import './login.command'
+import './register.command'

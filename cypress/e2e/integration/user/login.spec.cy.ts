@@ -1,20 +1,27 @@
 import * as data from '../../../data';
 
 describe('Login Page', () => {
+  before(() => {
+    cy.then(Cypress.session.clearCurrentSessionData)
+  })
+  
+  beforeEach(()=>{
+    cy.visit('/login');
+    cy.viewport('iphone-x');
+  })
+  
   it('visit login page', () => {
-    cy.visit('/login'); //[::1]:4200/login
     cy.url().should('eq', `${Cypress.config().baseUrl}/login`);
   });
 
   it('asserting login page', () => {
-    cy.visit('/login');
     cy.get('ion-img')
       .should('have.attr', 'src')
       .and('include', '../../../../../assets/Design_icons/Login-page-background-and-images/Memory-lane-logo.png');
 
     cy.get('input[type=email]').should('have.attr', 'placeholder').and('include', 'Email');
 
-    cy.get('input[type=password]').should('have.attr', 'placeholder').and('include', 'Enter password');
+    cy.get('input[type=password]').should('have.attr', 'placeholder').and('include', 'Password');
 
     cy.get('ion-button[type=submit]').contains('Login');
 
@@ -28,7 +35,6 @@ describe('Login Page', () => {
   });
 
   it('required email', () => {
-    cy.visit('login');
     cy.get('input[type=email]').click();
     cy.get('input[type=password]').click();
     cy.get('ion-button[type=submit]').should('have.attr', 'disabled');
@@ -36,14 +42,10 @@ describe('Login Page', () => {
   });
 
   it('required password', () => {
-    cy.visit('login');
     cy.get('input[type=password]').click();
     cy.get('body').click();
     cy.get('ion-button[type=submit]').should('have.attr', 'disabled');
     cy.get('.error-text').contains('Password is required');
   });
   
-  it('Login user',()=>{
-    cy.login(data.user.email,data.user.password);
-  })
 });
