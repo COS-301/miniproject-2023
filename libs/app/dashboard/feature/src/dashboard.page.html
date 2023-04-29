@@ -52,7 +52,7 @@
 
           </ion-col>
         </ion-row>
-      </ion-grid> 
+      </ion-grid>
       <ion-title class="pageHeading" color="#000000">Dashboard</ion-title>-->
       <ion-badge slot="end" class="timer">{{profile.time}} min</ion-badge>
 
@@ -80,7 +80,7 @@
           <ion-grid>
             <ion-row (click)="toSearch(post && post.postID && removeLastDash(post.postID))">
               <ion-avatar>
-                <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                <img alt="Silhouette of a person's head" [src]="post.photoURL" />
               </ion-avatar>
               <ion-list lines="none">
                 <ion-item>Created by: {{removeLastDash(post.postID)}}</ion-item>

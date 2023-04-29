@@ -224,21 +224,21 @@ await batch.commit();
 exports.getAllPosts = functions.https.onCall(async (data, context) => {
   const profilesRef = admin.firestore().collection('profiles');
   const profileDocs = await profilesRef.get();
-console.log("here in functions");
+  const posts: { id: string, photoURL: string }[] = [];
 
-const posts: { id: string; }[] = [];
 
   for (const profileDoc of profileDocs.docs) {
     const userId = profileDoc.id;
-console.log(userId);
-    if(userId != data.userId){
-    const userPostsRef = admin.firestore().collection(`profiles/${userId}/posts`);
-    const userPostsSnapshot = await userPostsRef.get();
 
-    userPostsSnapshot.forEach((doc) => {
-      posts.push({ id: doc.id, ...doc.data() });
-    });
-  }
+    if (userId != data.userId) {
+      const userPostsRef = admin.firestore().collection(`profiles/${userId}/posts`);
+      const userPostsSnapshot = await userPostsRef.get();
+      const photoURL = profileDoc.data()?.['accountDetails'].photoURL;
+
+      userPostsSnapshot.forEach((doc) => {
+        posts.push({ id: doc.id, photoURL, ...doc.data() });
+      });
+    }
   }
 console.log(posts);
   return { posts };
@@ -550,4 +550,54 @@ await batch.commit();
   // Delete the lock document after successful completion
   await lockRef.delete();
   return { message: 'Post successfully liked.' };
+});
+
+export const setPhoto = functions.https.onCall(async (data, context) => {
+  const userId = data.userId;
+  const photoURL = data.photoURL;
+
+  if (!userId || !photoURL) {
+    throw new functions.https.HttpsError(
+      'invalid-argument',
+      'The function must be called with a userId and photoURL.'
+    );
+  }
+
+  const profileRef = admin.firestore().collection('profiles').doc(userId);
+
+  const profileSnapshot = await profileRef.get();
+  if (!profileSnapshot.exists) {
+    throw new functions.https.HttpsError(
+      'not-found',
+      'The specified user does not exist.'
+    );
+  }
+
+  const profileData = profileSnapshot.data();
+  if (!profileData) {
+    throw new functions.https.HttpsError(
+      'not-found',
+      'The specified user does not exist.'
+    );
+  }
+
+  const accountDetails = profileData['accountDetails'] || {};
+console.log(accountDetails);
+  // Update photoUrl in accountDetails
+  accountDetails.photoURL = photoURL;
+console.log(accountDetails);
+  // Update profile with the new accountDetails
+  await profileRef.update({ accountDetails });
+
+  // Return the updated profile data
+  const updatedProfileSnapshot = await profileRef.get();
+  const updatedProfileData = updatedProfileSnapshot.data();
+  if (!updatedProfileData) {
+    throw new functions.https.HttpsError(
+      'not-found',
+      'The specified user does not exist.'
+    );
+  }
+
+  return { profile: updatedProfileData };
 });

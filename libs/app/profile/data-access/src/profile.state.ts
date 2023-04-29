@@ -26,7 +26,8 @@ import {
   CreateNewComment,
   BuyPost,
   FetchPortfolioPosts,
-  LikePost
+  LikePost,
+  SetPhoto
 } from '@mp/app/profile/util';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import produce from 'immer';
@@ -57,6 +58,7 @@ export interface ProfileStateModel {
   postDetailsForm: {
     model: {
       postID: string | null | undefined;
+      photoURL: string|null|undefined;
       createdBy: string | null | undefined;
       ownedBy: string | null | undefined;
       likes: number | null | undefined;
@@ -131,6 +133,7 @@ comments:IComment[]|null;
     postDetailsForm: {
       model: {
         postID: null,
+photoURL:null,
         createdBy: null,
         ownedBy: null,
         likes: 0, //fixed like left out  before
@@ -549,4 +552,33 @@ LikePost(ctx: StateContext<ProfileStateModel>, { postId }: LikePost) {
     })
   );
 }
+
+@Action(SetPhoto)
+setPhoto(ctx: StateContext<ProfileStateModel>, action: SetPhoto) {
+  const state = ctx.getState();
+  const userId = state.profile?.userId;
+
+  if (!userId) {
+    return ctx.dispatch(new SetError('User not set'));
+  }
+
+  return from(
+    this.profileApi.functions2.httpsCallable('setPhoto')({ userId, photoURL: action?.photoURL })
+  ).pipe(
+    tap((profile: IProfile) => {
+      ctx.patchState({
+        profile: {
+          ...state.profile,
+          ...profile,
+        },
+      });
+    }),
+    catchError((error) => {
+      ctx.dispatch(new SetError((error as Error).message));
+      return of(null);
+    })
+  );
+}
+
+
 }

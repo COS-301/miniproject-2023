@@ -1,7 +1,7 @@
 <br>
 <ng-container *ngIf="(profile$ | async) as profile;">
   <ion-content>
-    <img class="img1" src="assets/images/profilephoto.jpeg" alt="IMAGE" (click)="showAvatarMenu()"/>
+    <img class="img1" [src]="profile?.accountDetails?.photoURL" alt="IMAGE" (click)="showAvatarMenu()"/>
     <div id="avatar-menu" class="popup-menu">
       <ion-label class = "avatarLabel">Select a New Avatar</ion-label>
       <ion-grid>
@@ -75,7 +75,7 @@
       <div class="menu-buttons">
         <ion-button color="primary" size="small" fill="solid" (click)="confirmAvatar()">Confirm</ion-button>
         <ion-button color="danger" size="small" fill="solid" (click)="cancelAvatar()">Cancel</ion-button>
-        
+
       </div>
     </div>
     <ion-grid>
