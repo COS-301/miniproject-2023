@@ -24,6 +24,9 @@ import { NestFactory } from '@nestjs/core';
 import * as functions from 'firebase-functions';
 import { CoreModule } from '../core.module';
 import * as admin from 'firebase-admin';
+
+import cors from 'cors';
+const corsHandler = cors({origin: 'https://cos301-mp-grp3.firebaseapp.com'});
 export const updateAccountDetails = functions.https.onCall(
   async (
     request: IUpdateAccountDetailsRequest
@@ -256,11 +259,12 @@ export const createPostDetails = functions.https.onCall(
   }
 );
 
-export const createNewComment = functions.https.onCall(async (data: ICommentOnPostRequest, context) => {
+export const createNewComment1 = functions.https.onRequest((request, response) => {
+  corsHandler(request, response, async () => {
   console.log("Hello")
 
   try {
-
+const data=request.body;
     const { userId, postId, comment } = data.comment;
     const createrId= data.userId;
     if (typeof createrId !== 'string' || createrId.trim() === '') {
@@ -361,6 +365,7 @@ if (!postDoc.exists) {
       throw new functions.https.HttpsError('internal', 'Error adding comment');
     }
   });
+});
 
 
 export const updateAddressDetails = functions.https.onCall(

@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
 import { ProfileState } from '@mp/app/profile/data-access';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { IPostDetails, IProfile } from '@mp/api/profiles/util';
 import { FetchPortfolioPosts} from '@mp/app/profile/util';
+import { Logout } from '@mp/app/auth/util';
 
 
 @Component({
@@ -13,8 +14,21 @@ import { FetchPortfolioPosts} from '@mp/app/profile/util';
   styleUrls: ['./portfolio.page.scss'],
 })
 export class PortfolioPage implements OnInit {
+  private profileSubscription!: Subscription;
+  constructor(private router: Router, private store: Store) { this.profileSubscription = this.profile$.subscribe((profile) => {
+    if (profile && profile.time === 0) {
+      // User's time reached 0, log them out
+      this.store.dispatch(new Logout());
+    }
+  });
+}
 
-  constructor(private router: Router, private store: Store) { }
+ngOnDestroy() {
+  // Clean up the subscription when the component is destroyed
+  if (this.profileSubscription) {
+    this.profileSubscription.unsubscribe();
+  }
+}
   @Select(ProfileState.profile) profile$!: Observable<IProfile | null>;
   @Select(ProfileState.profilePosts) profilePosts$: Observable<IPostDetails[]> | undefined;
   userID = '';// need to find a way to get current user ID

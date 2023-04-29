@@ -161,7 +161,7 @@ getUserPostsByHashtag$(hashtag: string): Observable<IPostDetails[]> {
     ICommentOnPostResponse
     >(
       this.functions,
-      'createNewComment'
+      'createNewComment1'
     )(request);
   }
 

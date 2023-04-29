@@ -9,6 +9,7 @@ import { Router, NavigationExtras  } from '@angular/router';
 import { FetchUserPosts, GetAllPosts } from '@mp/app/profile/util';
 import { BuyPost, LikePost } from '@mp/app/profile/util';
 import { take, takeUntil, timeInterval } from 'rxjs/operators';
+import { Logout } from '@mp/app/auth/util';
 
 @Component({
   selector: 'ms-dashboard-page',
@@ -19,8 +20,22 @@ export class DashboardPage {
   userId: string| null| undefined
   numberOfComments = 0;
   postIdValue = '';
-  constructor(private router: Router, private store: Store) {
 
+  private profileSubscription!: Subscription;
+  constructor(private router: Router, private store: Store) {
+    this.profileSubscription = this.profile$.subscribe((profile) => {
+      if (profile && profile.time === 0) {
+        // User's time reached 0, log them out
+        this.store.dispatch(new Logout());
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    // Clean up the subscription when the component is destroyed
+    if (this.profileSubscription) {
+      this.profileSubscription.unsubscribe();
+    }
   }
   @Select(ProfileState.userPosts) userPosts$: Observable<IPostDetails[]> | undefined;
 
@@ -95,7 +110,7 @@ async likePost(i: number){
     } else {
       console.error('Invalid index');
     }
-    
+
 
 }
 async getPostByIndex(index: number): Promise<IPostDetails | undefined> {

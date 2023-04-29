@@ -2,14 +2,15 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { IPostDetails, IProfile} from '@mp/api/profiles/util';
 import { ProfileState } from '@mp/app/profile/data-access';
-import { UpdateAccountDetails, Logout } from '@mp/app/profile/util';
+import { UpdateAccountDetails } from '@mp/app/profile/util';
 import {
     ActionsExecuting,
     actionsExecuting
 } from '@ngxs-labs/actions-executing';
 import { Select, Store } from '@ngxs/store';
-import { Observable, map } from 'rxjs';
+import { Observable, Subscription, map } from 'rxjs';
 import { NavigationExtras, Router } from '@angular/router';
+import { Logout } from '@mp/app/auth/util';
 
 
 @Component({
@@ -20,11 +21,24 @@ import { NavigationExtras, Router } from '@angular/router';
 export class ProfilePostsComponent {
 
 posts$: Observable<IPostDetails[] | null | undefined>;
-
+private profileSubscription!: Subscription;
   constructor(private readonly fb: FormBuilder,private store: Store, private router: Router) {
     this.posts$ = this.store.select(ProfileState.profile).pipe(
       map(profile => profile?.posts)
     );
+    this.profileSubscription = this.profile$.subscribe((profile) => {
+      if (profile && profile.time === 0) {
+        // User's time reached 0, log them out
+        this.store.dispatch(new Logout());
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    // Clean up the subscription when the component is destroyed
+    if (this.profileSubscription) {
+      this.profileSubscription.unsubscribe();
+    }
   }
   @Select(ProfileState.profile) profile$!: Observable<IProfile | null>;
   @Select(actionsExecuting([UpdateAccountDetails]))

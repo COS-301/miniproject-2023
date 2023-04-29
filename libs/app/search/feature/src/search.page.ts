@@ -4,9 +4,10 @@ import { Store } from '@ngxs/store';
 import { IPostDetails, IProfile } from '@mp/api/profiles/util';
 import { ProfileState } from '@mp/app/profile/data-access';
 import { Select } from '@ngxs/store';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { FetchUserPosts, GetAllPosts, GetUserPostsByHashtag } from '@mp/app/profile/util';
+import { Logout } from '@mp/app/auth/util';
 
 
 @Component({
@@ -15,7 +16,21 @@ import { FetchUserPosts, GetAllPosts, GetUserPostsByHashtag } from '@mp/app/prof
   styleUrls: ['./search.page.scss'],
 })
 export class SearchPage {
-  constructor(private router: Router, private store: Store) { }
+  private profileSubscription!: Subscription;
+  constructor(private router: Router, private store: Store) { this.profileSubscription = this.profile$.subscribe((profile) => {
+    if (profile && profile.time === 0) {
+      // User's time reached 0, log them out
+      this.store.dispatch(new Logout());
+    }
+  });
+}
+
+ngOnDestroy() {
+  // Clean up the subscription when the component is destroyed
+  if (this.profileSubscription) {
+    this.profileSubscription.unsubscribe();
+  }
+}
   @Select(ProfileState.searchPosts) searchPosts$: Observable<IPostDetails[]> | undefined;
   @Select(ProfileState.profile) profile$!: Observable<IProfile | null>;
   searchUser='';

@@ -10,8 +10,9 @@ import {
 } from '@ngxs-labs/actions-executing';
 import { Select, Store } from '@ngxs/store';
 import { UploadTaskSnapshot, ref } from 'firebase/storage';
-import { Observable, filter, finalize, tap } from 'rxjs';
+import { Observable, Subscription, filter, finalize, tap } from 'rxjs';
 import { Router } from '@angular/router';
+import { Logout } from '@mp/app/auth/util';
 
 @Component({
   selector: 'ms-profile-post-details-component',
@@ -20,6 +21,7 @@ import { Router } from '@angular/router';
 })
 export class PostDetailsComponent {
   @Select(ProfileState.profile) profile$!: Observable<IProfile | null>;
+
   @Select(actionsExecuting([CreatePostDetails]))
   busy$!: Observable<ActionsExecuting>;
   postDetailsForm = this.fb.group({
@@ -89,14 +91,14 @@ export class PostDetailsComponent {
     const emoji1 = document.getElementById('emoji1');
     const emoji2 = document.getElementById('emoji2');
 
-    const oldHashtag: HTMLIonButtonElement | null = this.postDetailsForm?.get('hashtag')?.value ? 
+    const oldHashtag: HTMLIonButtonElement | null = this.postDetailsForm?.get('hashtag')?.value ?
     document.getElementById(this.postDetailsForm?.get('hashtag')?.value?.slice(1) + 'Button') as HTMLIonButtonElement :
     null;
 
     if (oldHashtag && oldHashtag.style) {
       oldHashtag.style.filter = 'brightness(50%)';
     }
-    
+
     if(emoji1) {emoji1.textContent = "😢No Hashtag😔";}
     if (emoji2) {emoji2.textContent = "😉Select One😊";}
     this.postDetailsForm?.get('hashtag')?.setValue("");
@@ -214,12 +216,12 @@ export class PostDetailsComponent {
     }
   };
 
-  
+
   setHashtag(hashtag: string) {
-    
+
     const newHashtag: HTMLIonButtonElement | null = document.getElementById(hashtag.slice(1) + 'Button') as HTMLIonButtonElement;
-    
-    const oldHashtag: HTMLIonButtonElement | null = this.postDetailsForm?.get('hashtag')?.value ? 
+
+    const oldHashtag: HTMLIonButtonElement | null = this.postDetailsForm?.get('hashtag')?.value ?
     document.getElementById(this.postDetailsForm?.get('hashtag')?.value?.slice(1) + 'Button') as HTMLIonButtonElement :
     null;
 
@@ -245,18 +247,18 @@ export class PostDetailsComponent {
     } else if (hashtag.includes('food')) {
       emoji = '🍔';
     }
-    
-   
+
+
     const emoji1 = document.getElementById('emoji1');
     if (emoji1) {emoji1.textContent=emoji;}
     const emoji2 = document.getElementById('emoji2');
     if (emoji2) {emoji2.textContent=emoji;}
 
     this.postDetailsForm?.get('hashtag')?.setValue(hashtag);
-  
-    
+
+
   }
-  
+
 
   changeForSale() {
     // If the toggle is set to true, then make the component with id priceGrid visible, otherwise hide it
@@ -301,13 +303,27 @@ export class PostDetailsComponent {
 
   //   return 'Ethnicity is invalid';
   // }
+  private profileSubscription!: Subscription;
 
   constructor(
     private readonly fb: FormBuilder,
     private readonly store: Store,
     private storage: AngularFireStorage,
     private router: Router
-  ) { }
+  ) {this.profileSubscription = this.profile$.subscribe((profile) => {
+    if (profile && profile.time === 0) {
+      // User's time reached 0, log them out
+      this.store.dispatch(new Logout());
+    }
+  });
+}
+
+ngOnDestroy() {
+  // Clean up the subscription when the component is destroyed
+  if (this.profileSubscription) {
+    this.profileSubscription.unsubscribe();
+  }
+}
 
   createPostDetails() {
     console.log("here in component");
