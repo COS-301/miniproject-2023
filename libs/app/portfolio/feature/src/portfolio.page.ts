@@ -32,6 +32,7 @@ export class PortfolioPage implements OnInit {
 
   //  }
 
+  
   toHomePage() {
     this.router.navigate(["/home"]);
   }

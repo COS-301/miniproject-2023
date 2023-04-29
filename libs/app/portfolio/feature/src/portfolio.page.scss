@@ -106,7 +106,17 @@ ion-item{
 .postImage {
   border-radius: 20px;
   //padding: 10px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
+
+.postImage {
+  border-radius: 20px;
+}
+
+
+
 
 .noPosts {
   color: rgb(73, 73, 73);
