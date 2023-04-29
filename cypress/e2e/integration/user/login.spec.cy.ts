@@ -1,3 +1,5 @@
+import * as data from '../../../data';
+
 describe('Login Page', () => {
   it('visit login page', () => {
     cy.visit('/login'); //[::1]:4200/login
@@ -10,7 +12,7 @@ describe('Login Page', () => {
       .should('have.attr', 'src')
       .and('include', '../../../../../assets/Design_icons/Login-page-background-and-images/Memory-lane-logo.png');
 
-    cy.get('input[type=email]').should('have.attr', 'placeholder').and('include', 'Enter email');
+    cy.get('input[type=email]').should('have.attr', 'placeholder').and('include', 'Email');
 
     cy.get('input[type=password]').should('have.attr', 'placeholder').and('include', 'Enter password');
 
@@ -40,4 +42,8 @@ describe('Login Page', () => {
     cy.get('ion-button[type=submit]').should('have.attr', 'disabled');
     cy.get('.error-text').contains('Password is required');
   });
+  
+  it('Login user',()=>{
+    cy.login(data.user.email,data.user.password);
+  })
 });

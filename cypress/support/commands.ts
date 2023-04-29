@@ -4,9 +4,9 @@ Cypress.Commands.add('login', (email: string, password: string) => {
   cy.get('input[type=password]').type(`${password}{enter}`);
   cy.get('ion-button[type=submit]').click();
   
-  // cy.url().should('eq', `${Cypress.config().baseUrl}/home/feed`);
-  // cy.get('ion-title')
-  // .contains('Memory Lane');
+  cy.url().should('eq', `${Cypress.config().baseUrl}/home/feed`);
+  cy.get('ion-title')
+  .contains('Memory Lane');
 });
 
 Cypress.Commands.add('register', (username: string, email: string, password: string) => {
