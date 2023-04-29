@@ -6,7 +6,7 @@ describe('Tesing Cloud Function: getUser', () => {
     const getUserRequest = {
       data: {
         user: {
-          userId: '0104fa66-5a7b-429c-aedd-acab833be72e',
+          userId: mockData.userId,
         },
       },
     };

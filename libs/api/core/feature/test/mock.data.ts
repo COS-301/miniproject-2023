@@ -5,6 +5,6 @@ export const mockData = {
     title: 'Summer Holiday',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
     imgUrl: 'https://bit.ly/3MCrcnB',
-    email: 'Maryjane_Maggio16',
+    email: 'Maryjane_Maggio16@gmail.com',
     profileImgUrl: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/448.jpg'
   };
