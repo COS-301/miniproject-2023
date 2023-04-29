@@ -11,6 +11,7 @@ import { state } from "@angular/animations";
 import { FeedApi, FeedStateModel } from "@mp/app/feed/data-access";
 import { AuthState } from "@mp/app/auth/data-access";
 import { serialize } from 'v8';
+import { ProfileState } from '@mp/app/profile/data-access'
 
 
 export interface SearchPageStateModel {
@@ -91,7 +92,8 @@ export class SearchPageState {
     @Action(GetSearchMemories)
     async getSearchMemories(ctx: StateContext<SearchPageStateModel>, { searchValue }: GetSearchMemories) {
       try {
-        const response = await this.searchPageApi.getSearchResults(searchValue);
+        const state = this.store.selectSnapshot(ProfileState)
+        const response = await this.searchPageApi.getSearchResults(searchValue, state.user.username);
         
         return ctx.patchState({ searchResults: response });
     } 
@@ -103,9 +105,11 @@ export class SearchPageState {
     @Action(GetSearchResults)
     async getSearchResults(ctx: StateContext<SearchPageStateModel>, { searchValue }: GetSearchResults) {
       try {
-          const response = await this.searchPageApi.getSearchResults(searchValue);
-          console.log('Response')
-          console.log(response)
+          if (!searchValue)
+            return;
+
+          const profileState = this.store.selectSnapshot(ProfileState);
+          const response = await this.searchPageApi.getSearchResults(searchValue, profileState.user.username);
           return ctx.patchState({ searchResults: response });
       } 
       catch(error){
