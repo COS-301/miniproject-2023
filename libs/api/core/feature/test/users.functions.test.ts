@@ -1,13 +1,5 @@
 import { describe, test } from '@jest/globals';
-
-const mockData = {
-  //change according to seeded data
-  userId: '0104fa66-5a7b-429c-aedd-acab833be72e',
-  username: 'Dena52',
-  surname: 'Champlin',
-  email: 'Dena_Champlin@gmail.com',
-  profileImgUrl: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/508.jpg',
-};
+import { mockData } from './mock.data';
 
 describe('Tesing Cloud Function: getUser', () => {
   test(`getting user with userId = ${mockData.userId} \n using endPoint`, async () => {

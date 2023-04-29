@@ -31,6 +31,7 @@
     "format": "prettier --write",
     "prettier": "prettier --check",
     "test": "jest",
+    "test:watch": "jest --watch",
     "prepare": "husky install",
     "editorconfig": "editorconfig-checker",
     "lint": "eslint --fix",
