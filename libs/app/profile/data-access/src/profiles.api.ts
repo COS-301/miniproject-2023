@@ -98,6 +98,12 @@ getUserPostsByHashtag$(hashtag: string): Observable<IPostDetails[]> {
   return from(getUserPostsByHashtag({ hashtag })).pipe(map(result => result.posts));
 }
 
+setPhoto$(userId: string, photoURL: string): Observable<IProfile> {
+  const setPhoto = this.functions2.httpsCallable('setPhoto');
+  return from(setPhoto({ userId, photoURL })).pipe(map(result => result.profile));
+}
+
+
 
   // profile$(id: string) {
   //   const profileDocRef = doc(

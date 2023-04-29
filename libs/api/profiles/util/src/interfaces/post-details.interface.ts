@@ -4,6 +4,7 @@ import { IComment } from './comment.interface'
 
 export interface IPostDetails {
    postID?: string | null | undefined;
+   photoURL?:string|null|undefined;
    createdBy?: string | null | undefined;
    likes?: number | null | undefined; //fixed like left out
    ownedBy?: string | undefined | null;

@@ -46,6 +46,7 @@ ngOnDestroy() {
 
   //  }
 
+  
   toHomePage() {
     this.router.navigate(["/home"]);
   }

@@ -52,9 +52,9 @@
 
           </ion-col>
         </ion-row>
-      </ion-grid> -->
-      <ion-title class="pageHeading" color="#000000">Dashboard</ion-title>
-      <ion-badge slot="end" class="timer">{{profile.time}}</ion-badge>
+      </ion-grid>
+      <ion-title class="pageHeading" color="#000000">Dashboard</ion-title>-->
+      <ion-badge slot="end" class="timer">{{profile.time}} min</ion-badge>
 
     </ion-toolbar>
   </ion-header>
@@ -78,17 +78,18 @@
 
         <ion-toolbar color=secondary>
           <ion-grid>
-            <ion-row>
+            <ion-row (click)="toSearch(post && post.postID && removeLastDash(post.postID))">
               <ion-avatar>
-                <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                <img alt="Silhouette of a person's head" [src]="post.photoURL" />
               </ion-avatar>
               <ion-list lines="none">
-                <ion-item>Created by: {{post.postID?.split("-",1)}}</ion-item>
+                <ion-item>Created by: {{removeLastDash(post.postID)}}</ion-item>
               </ion-list>
             </ion-row>
           </ion-grid>
         </ion-toolbar>
-        <ion-img class="postImage" alt="Post" [src]="post.content" fallbackSrc="assets/logos/logo.png" />
+        <img class="postImage" alt="Post" [src]="post.content" (load)="onImageLoad(i)" [hidden]="isLoading[i]"/>
+        <img class="postImage" alt="Post" src="assets/loading/loadingWhiteBG.gif" [hidden]="!isLoading[i]"/>
         <ion-toolbar color="secondary" class="actionToolBar">
           <ion-list lines="none" class="actionBlock">
 
@@ -122,9 +123,9 @@
                     </ion-col> -->
 
                     <ion-col size="4">
-                      <ion-icon (click)="buyPost(i)" *ngIf="post.listing; else notForSaleIcon" class="buy" size="30px"
+                      <ion-icon (click)="buyPost(i)" *ngIf="post.listing && post.createdBy == post.ownedBy; else notForSaleIcon" class="buy" size="30px"
                         src="assets/icons/buy.svg"></ion-icon>
-                      <ion-text *ngIf="post.listing; else notForSale" class="buttonText" lines="none">{{post.listing}}
+                      <ion-text *ngIf="post.listing && post.createdBy == post.ownedBy; else notForSale" class="buttonText" lines="none">{{post.listing}}
                         min</ion-text>
                       <ng-template #notForSaleIcon>
                         <ion-icon class="noSaleBuy" size="30px" src="assets/icons/buy.svg"></ion-icon>
@@ -139,6 +140,7 @@
                   <ion-row style="margin-top: -13px;">
                     <ion-col>
                       <ion-badge *ngIf="post.hashtag"
+                        (click)="toSearch(post.hashtag)"
                         style="--background: var(--{{ getSlicedHashtag(post.hashtag) }});">{{post.hashtag}}</ion-badge>
                     </ion-col>
                   </ion-row>

@@ -4,8 +4,8 @@
 
   <ion-header>
     <ion-toolbar color="secondary">
-      <ion-label (click)="toProfilePage()" color="tertiary" style = "font-size: 100%; font:bold">  <ion-icon name="arrow-back-outline" size="small"></ion-icon>Settings</ion-label>
-      <ion-badge slot="end" style="position:static">00:00</ion-badge>
+      <ion-back-button text="settings" class="backButton" slot="start" defaultHref="/"></ion-back-button>
+      <!--<ion-badge slot="end" style="position:static">00:00</ion-badge>-->
   </ion-toolbar>
   </ion-header>
 
@@ -34,6 +34,15 @@ position: absolute; "></div>
       <ion-icon slot= "end" name="create-outline"></ion-icon>
     </ion-item> -->
 <br>
+      <ion-button (click)="toPage('tos')" shape="round" expand="block">
+        <ion-label>Terms of Service</ion-label>
+      </ion-button>
+      <ion-button (click)="toPage('about')" shape="round" expand="block">
+        <ion-label>About Lapse</ion-label>
+      </ion-button>
+      <ion-button (click)="toPage('privacy')" shape="round" expand="block">
+        <ion-label>Privacy Policy</ion-label>
+      </ion-button>
       <ion-button (click)="logout()" shape="round" expand="block">
         <ion-label>Log Out</ion-label>
       </ion-button>
@@ -42,3 +51,7 @@ position: absolute; "></div>
  
 
 </ion-content>
+
+<ion-footer collapse="condense" class="footer ion-padding ion-text-center">
+  <ms-copyright-component></ms-copyright-component>
+</ion-footer>

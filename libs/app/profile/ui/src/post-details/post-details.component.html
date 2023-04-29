@@ -93,6 +93,11 @@
 
 <!-- ... -->
 
+<div id="error-message" class="hidden"></div>
+
+<div class="overlay" [hidden]="!isPosting">
+  <img class="postImage" alt="Post" src="assets/loading/loadingWhiteBG.gif" [hidden]="!isPosting" />
+</div>
 <ng-container *ngIf="profile$ | async as profile">
   <form
     [formGroup]="postDetailsForm"
@@ -122,6 +127,7 @@
         "
         color="secondary" />
       <input
+        id="fileInput"
         #fileInput
         type="file"
         (change)="uploadImage($event)"
@@ -263,7 +269,7 @@
             placeholder="100"
             type="number"
             color="secondary"
-            style="height: 50%; font-size: 200%"
+            style="height: 50%; font-size: 200%; text-align: center;"
             formControlName="listing"></ion-input
         ></ion-col>
         <ion-col size="4" style = "text-align: center;" class = "saleCol"

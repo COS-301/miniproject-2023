@@ -20,6 +20,8 @@ import { Logout } from '@mp/app/auth/util';
   styleUrls: ['./post-details.component.scss'],
 })
 export class PostDetailsComponent {
+  invalidPopup = true;
+  isPosting = false;
   @Select(ProfileState.profile) profile$!: Observable<IProfile | null>;
 
   @Select(actionsExecuting([CreatePostDetails]))
@@ -60,7 +62,12 @@ export class PostDetailsComponent {
   async createNewPost() {
     console.log("Trying to create");
     if (!this.selectedFile) {
-      console.log("Invalid");
+      this.showError("Missing post details");
+      return;
+    }
+
+    if (!this.isFormValid()) {
+      this.showError("Missing post details");
       return;
     }
 
@@ -75,10 +82,42 @@ export class PostDetailsComponent {
       };
       this.store.dispatch(new CreateNewPost(postDetails));
       this.clearForm();
+      this.isPosting = false;
       this.router.navigate(["/profile"]);
     } catch (error) {
       console.error('Error uploading image:', error);
     }
+  }
+
+  isFormValid(): boolean {
+    const img: HTMLImageElement = document.getElementById('postImage') as HTMLImageElement;
+    const captionInput: HTMLIonTextareaElement = document.getElementById('captionInput') as HTMLIonTextareaElement;
+    const toggle: HTMLIonToggleElement = document.getElementById('toggleSale') as HTMLIonToggleElement;
+    const categoryInput: HTMLIonInputElement = document.getElementById('categoryInput') as HTMLIonInputElement;
+    const priceInput: HTMLIonInputElement = document.getElementById('numberInput') as HTMLIonInputElement;
+    const fileInput: HTMLInputElement = document.getElementById('fileInput') as HTMLInputElement;
+
+    if (img.src == "assets/icons/upload.png") {
+      console.log("qqqqqqqqqqqqqqqqq1");
+      return false;
+    }
+    if ((captionInput.value?.length && captionInput.value?.length < 4)) {
+      console.log("qqqqqqqqqqqqqqqq2");
+      return false;
+    }
+    if (toggle.checked && priceInput.value == "") {
+      console.log("qqqqqqqqqqqqqqqqqqqqqq3");
+      return false;
+    }
+    if (categoryInput.value == "") {
+      console.log("qqqqqqqqqqqqqqqqqqqq4");
+      return false;
+    }
+    if (fileInput.value == "") {
+      console.log("qqqqqqqqqqqqqqqqqqqqqq5");
+      return false;
+    }
+    return true;
   }
 
   clearForm() {
@@ -88,6 +127,8 @@ export class PostDetailsComponent {
     const categoryInput: HTMLIonInputElement = document.getElementById('categoryInput') as HTMLIonInputElement;
     const priceInput: HTMLIonInputElement = document.getElementById('numberInput') as HTMLIonInputElement;
     const priceGrid: HTMLElement = document.getElementById('priceGrid') as HTMLElement;
+    const fileInput: HTMLInputElement = document.getElementById('fileInput') as HTMLInputElement;
+
     const emoji1 = document.getElementById('emoji1');
     const emoji2 = document.getElementById('emoji2');
 
@@ -108,10 +149,12 @@ export class PostDetailsComponent {
     toggle.checked = false;
     categoryInput.value = "";
     priceInput.value = "";
+    fileInput.value = "";
     //console.log("Cleared");
   }
 
   uploadImageAndReturnUrl(file: File): Promise<string> {
+    this.isPosting = true;
     const filePath = `posts/${new Date().getTime()}_${file.name}`;
     const fileRef = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
@@ -250,9 +293,9 @@ export class PostDetailsComponent {
 
 
     const emoji1 = document.getElementById('emoji1');
-    if (emoji1) {emoji1.textContent=emoji;}
+    if (emoji1) { emoji1.textContent = emoji; }
     const emoji2 = document.getElementById('emoji2');
-    if (emoji2) {emoji2.textContent=emoji;}
+    if (emoji2) { emoji2.textContent = emoji; }
 
     this.postDetailsForm?.get('hashtag')?.setValue(hashtag);
 
@@ -335,4 +378,22 @@ ngOnDestroy() {
 
     x.setFocus();
   }
+
+  showError(message: string) {
+    const errorMessage: HTMLDivElement = document.getElementById('error-message') as HTMLDivElement;
+    errorMessage.innerHTML = `Error: ${message}`;
+    errorMessage.classList.remove('hidden');
+    setTimeout(this.hideError, 2000); // Hide error message after 2 seconds
+  }
+
+  hideError() {
+    const errorMessage: HTMLDivElement = document.getElementById('error-message') as HTMLDivElement;
+    errorMessage.classList.remove('slide-up');
+    errorMessage.classList.add('slide-down');
+    setTimeout(() => {
+      errorMessage.classList.add('hidden');
+      errorMessage.classList.remove('slide-down');
+    }, 500);
+  }
+
 }
