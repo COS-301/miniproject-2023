@@ -19,8 +19,13 @@ jobs:
       #  run: yarn add nx
 
       # Finally, run our tests
+      
       - name: Start Emulator
-        run: yarn start:api:dev && yarn start:emulators:imported
-          
-      - name: run Tests
-        run: yarn test:api
+        run: |
+          yarn start:api:dev &
+          # Wait for the first emulator to be ready
+          while ! curl -s http://localhost:8080/health &> /dev/null; do sleep 5; done
+          yarn start:emulators:imported &
+          # Wait for the second emulator to be ready
+          while ! curl -s http://localhost:8081/health &> /dev/null; do sleep 5; done
+          yarn test:api
