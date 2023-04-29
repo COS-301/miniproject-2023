@@ -24,8 +24,8 @@ jobs:
         run: |
           yarn start:api:dev &
           # Wait for the first emulator to be ready
-          while ! curl -s http://localhost:8080/health &> /dev/null; do sleep 5; done
+          while ! curl -s http://localhost:5005/health &> /dev/null; do sleep 5; done
           yarn start:emulators:imported &
           # Wait for the second emulator to be ready
-          while ! curl -s http://localhost:8081/health &> /dev/null; do sleep 5; done
+          while ! curl -s http://localhost:5001/health &> /dev/null; do sleep 5; done
           yarn test:api
