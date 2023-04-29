@@ -22,6 +22,6 @@ jobs:
       - name: run Tests
         steps: 
           - bash: |
-            echo yarn start:api:dev
-            echo yarn start:emulators:imported
-            echo yarn test:api
+              echo yarn start:api:dev
+              echo yarn start:emulators:imported
+              echo yarn test:api
