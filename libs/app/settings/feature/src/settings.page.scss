@@ -1,6 +1,17 @@
 ion-col {
-    background-color: #ffffff;;
-    border: solid 1px #fff;
-    color: #fff;
-    text-align: center;
-  }
+  background-color: #ffffff;
+  ;
+  border: solid 1px #fff;
+  color: #fff;
+  text-align: center;
+}
+
+.backButton {
+  --color: var(--ion-color-tertiary);
+  --icon-font-size: 25px;
+  --icon-padding-end: 6px;
+}
+
+.footer {
+  border-top: 0.5px solid rgb(206, 206, 206);
+}

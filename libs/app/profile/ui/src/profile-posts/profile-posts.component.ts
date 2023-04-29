@@ -9,8 +9,8 @@ import {
 } from '@ngxs-labs/actions-executing';
 import { Select, Store } from '@ngxs/store';
 import { Observable, map } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { NavigationExtras, Router } from '@angular/router';
-
 
 @Component({
   selector: 'ms-profile-posts-component',
@@ -20,9 +20,15 @@ import { NavigationExtras, Router } from '@angular/router';
 export class ProfilePostsComponent {
 
 posts$: Observable<IPostDetails[] | null | undefined>;
+profileId: string | null = null;
 
   constructor(private readonly fb: FormBuilder,private store: Store, private router: Router) {
     this.posts$ = this.store.select(ProfileState.profile).pipe(
+      tap(profile => {
+        if (profile) {
+          this.profileId = profile.userId;
+        }
+      }),
       map(profile => profile?.posts)
     );
   }
@@ -37,6 +43,76 @@ posts$: Observable<IPostDetails[] | null | undefined>;
   get bio() {
     return this.accountDetailsForm.get('bio');
   }
+
+
+  // Store the selected avatar
+selectedAvatar = '';
+
+
+selectAvatar(avatar: string): void {
+  if(this.selectedAvatar != ''){
+    const parts1 = this.selectedAvatar.split(".");
+    const index1 = parseInt(parts1[0]);
+    const oldAvatar = document.getElementsByClassName('avatarPic')[index1-1] as HTMLElement;
+    oldAvatar.style.border = 'none';
+  }
+  this.selectedAvatar = avatar;
+  const parts = avatar.split(".");
+  const index = parseInt(parts[0]);
+
+  const selectedAvatar = document.getElementsByClassName('avatarPic')[index-1] as HTMLElement;
+  selectedAvatar.style.border = '3px solid var(--branding-light-green)';
+  selectedAvatar.animate([
+    { transform: 'scale(1)', boxShadow: 'none' },
+    { transform: 'scale(1.1)', boxShadow: '0px 0px 10px 5px rgba(0,0,0,0.1)' },
+    { transform: 'scale(1)', boxShadow: 'none' }
+  ], {
+    duration: 500,
+    easing: 'ease-in-out'
+  });
+}
+
+
+confirmAvatar(): void{
+
+  if(this.selectedAvatar == ''){
+    return;
+  }else{
+    const existingAvatar = "assets/avatars/"+this.selectedAvatar;
+    const newAvatar = "assets/selectedAvatars/" + this.profileId + ".jpg";
+    console.log("existingAvatar: " + existingAvatar);
+    console.log("newAvatar: " + newAvatar);
+
+    //TODO: copy existingAvatar into newAvatar location
+
+   
+  }
+  
+  //hide menu
+  const avatarMenu = document.getElementById('avatar-menu');
+  if(avatarMenu != null){
+
+    avatarMenu.style.display = 'none';
+  }
+}
+
+cancelAvatar(): void {
+  // Hide the avatar selection menu
+  const avatarMenu = document.getElementById('avatar-menu');
+  if(avatarMenu != null){
+
+    avatarMenu.style.display = 'none';
+  }
+}
+
+showAvatarMenu(): void {
+
+  const avatarMenu = document.getElementById('avatar-menu');
+  if(avatarMenu != null){
+    avatarMenu.style.display = 'block';
+  }
+
+}
 
   // comment(postId: string| null| undefined, profileId: string|null|undefined) {
 
@@ -101,5 +177,15 @@ posts$: Observable<IPostDetails[] | null | undefined>;
   }
   getSlicedHashtag(hashtag: string): string {
     return hashtag.slice(1);
+  }
+  
+  toSearch(searchFor: string | null | undefined) {
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        searchFor: searchFor
+      }
+    };
+
+    this.router.navigate(["/search"], navigationExtras);
   }
 }
