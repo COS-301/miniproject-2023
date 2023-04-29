@@ -19,9 +19,8 @@ jobs:
       #  run: yarn add nx
 
       # Finally, run our tests
+      - name: Start Emulator
+        run: yarn start:api:dev && yarn start:emulators:imported
+          
       - name: run Tests
-        steps: 
-          - bash: |
-              echo yarn start:api:dev
-              echo yarn start:emulators:imported
-              echo yarn test:api
+        run: yarn test:api
