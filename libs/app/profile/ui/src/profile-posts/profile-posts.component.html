@@ -1,7 +1,83 @@
 <br>
 <ng-container *ngIf="(profile$ | async) as profile;">
   <ion-content>
-    <img class="img1" src="assets/images/profilephoto.jpeg" alt="IMAGE" />
+    <img class="img1" src="assets/images/profilephoto.jpeg" alt="IMAGE" (click)="showAvatarMenu()"/>
+    <div id="avatar-menu" class="popup-menu">
+      <ion-label class = "avatarLabel">Select a New Avatar</ion-label>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <img src="assets/avatars/1.jpg" alt="Avatar 1" class = "avatarPic" (click)="selectAvatar('1.jpg')">
+          </ion-col>
+          <ion-col>
+            <img src="assets/avatars/2.jpg" alt="Avatar 2" class = "avatarPic" (click)="selectAvatar('2.jpg')">
+          </ion-col>
+          <ion-col>
+            <img src="assets/avatars/3.jpg" alt="Avatar 3" class = "avatarPic" (click)="selectAvatar('3.jpg')">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <img src="assets/avatars/4.jpg" alt="Avatar 4" class = "avatarPic" (click)="selectAvatar('4.jpg')">
+          </ion-col>
+          <ion-col>
+            <img src="assets/avatars/5.jpg" alt="Avatar 5" class = "avatarPic" (click)="selectAvatar('5.jpg')">
+          </ion-col>
+          <ion-col>
+            <img src="assets/avatars/6.jpg" alt="Avatar 6" class = "avatarPic" (click)="selectAvatar('6.jpg')">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <img src="assets/avatars/7.jpg" alt="Avatar 7" class = "avatarPic" (click)="selectAvatar('7.jpg')">
+          </ion-col>
+          <ion-col>
+            <img src="assets/avatars/8.jpg" alt="Avatar 8" class = "avatarPic" (click)="selectAvatar('8.jpg')">
+          </ion-col>
+          <ion-col>
+            <img src="assets/avatars/9.jpg" alt="Avatar 9" class = "avatarPic" (click)="selectAvatar('9.jpg')">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <img src="assets/avatars/10.jpg" alt="Avatar 10" class = "avatarPic" (click)="selectAvatar('10.jpg')">
+          </ion-col>
+          <ion-col>
+            <img src="assets/avatars/11.jpg" alt="Avatar 11" class = "avatarPic" (click)="selectAvatar('11.jpg')">
+          </ion-col>
+          <ion-col>
+            <img src="assets/avatars/12.jpg" alt="Avatar 12" class = "avatarPic" (click)="selectAvatar('12.jpg')">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <img src="assets/avatars/13.jpg" alt="Avatar 13" class = "avatarPic" (click)="selectAvatar('13.jpg')">
+          </ion-col>
+          <ion-col>
+            <img src="assets/avatars/14.jpg" alt="Avatar 14" class = "avatarPic" (click)="selectAvatar('14.jpg')">
+          </ion-col>
+          <ion-col>
+            <img src="assets/avatars/15.jpg" alt="Avatar 15" class = "avatarPic" (click)="selectAvatar('15.jpg')">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <img src="assets/avatars/16.jpg" alt="Avatar 16" class = "avatarPic" (click)="selectAvatar('16.jpg')">
+          </ion-col>
+          <ion-col>
+            <img src="assets/avatars/17.jpg" alt="Avatar 15" class = "avatarPic" (click)="selectAvatar('17.jpg')">
+          </ion-col>
+          <ion-col>
+            <img src="assets/avatars/18.jpg" alt="Avatar 15" class = "avatarPic" (click)="selectAvatar('18.jpg')">
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div class="menu-buttons">
+        <ion-button color="primary" size="small" fill="solid" (click)="confirmAvatar()">Confirm</ion-button>
+        <ion-button color="danger" size="small" fill="solid" (click)="cancelAvatar()">Cancel</ion-button>
+        
+      </div>
+    </div>
     <ion-grid>
       <ion-row>
         <ion-col></ion-col>

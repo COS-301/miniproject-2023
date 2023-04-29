@@ -46,9 +46,15 @@ ion-col {
 }
 
 .toolbar{
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) !important;
   //border-radius: var(--bottomNavBarBorderRadius) var(--bottomNavBarBorderRadius) 0 0;
-  border-radius: 20px 20px 0 0;
+  border-radius: 20px 20px 0 0 !important;
+}
+
+ion-toolbar{
+  --background: transparent !important;
+  --background-color: transparent !important;
+  --box-shadow: none !important;
 }
 
 
@@ -68,4 +74,11 @@ ion-col {
   font-size:35px;
   padding-bottom: 5px;
   
+}
+
+ion-header{
+  --background: transparent !important;
+  --background-color: transparent !important;
+  --box-shadow: none !important;
+  display: contents !important;
 }
