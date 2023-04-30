@@ -14,8 +14,8 @@ jobs:
       - run: echo "${{ secrets.DOTENVFILE }}" > .env
       - run: echo "${{ secrets.DOTENVDOTPRODFILE }}" > .env.prod
       - run: echo "${{ secrets.DOTFIREBASERCFILE }}" > .firebaserc
-      - run: echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}" >> ./.keys/key
-      - run: export GOOGLE_APPLICATION_CREDENTIALS=$(realpath ./.keys/key)
+      - run: echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}" >> ./.keys/key.json
+      - run: export GOOGLE_APPLICATION_CREDENTIALS=$(realpath ./.keys/key.json)
       - run: 'yarn install'
       - run: 'curl -sL https://firebase.tools | bash'
       - run: 'firebase use default'
