@@ -1,7 +1,15 @@
 <br>
 <ng-container *ngIf="(profile$ | async) as profile;">
-  <ion-content>
-    <img class="img1" [src]="profile?.accountDetails?.photoURL" alt="IMAGE" (click)="showAvatarMenu()"/>
+  <ion-content fullscreen>
+    <div style="display: flex; justify-content: center; padding-top: 40px;">
+        <div style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden;">
+          <img style="object-fit: cover; width: 100%; height: 100%;" *ngIf="profile?.accountDetails?.photoURL; else noAvatar" (click)="showAvatarMenu()" alt="User Avatar" [src]="profile?.accountDetails?.photoURL" />
+          <ng-template #noAvatar>
+            <img style="object-fit: cover; width: 100%; height: 100%;" alt="User Avatar" src="assets/avatars/default.jpg" (click)="showAvatarMenu()"/>
+          </ng-template>
+        </div>
+      </div>
+      
     <div id="avatar-menu" class="popup-menu">
       <ion-label class = "avatarLabel">Select a New Avatar</ion-label>
       <ion-grid>
@@ -80,10 +88,9 @@
     </div>
     <ion-grid>
       <ion-row>
-        <ion-col></ion-col>
-        <ion-col size="4" style="text-align: center;"><ion-label
-            style="color:black">{{profile?.accountDetails?.displayName}}</ion-label> </ion-col>
-        <ion-col></ion-col>
+        <ion-col size="2"></ion-col>
+        <ion-col size="8" style="text-align: center;"><ion-label class ="creatorText">{{profile?.accountDetails?.displayName}}</ion-label> </ion-col>
+        <ion-col size="2"></ion-col>
       </ion-row>
       <!-- <ion-row>
     <ion-col ></ion-col>
@@ -107,8 +114,8 @@
       <ion-grid>
         <ion-row>
           <ion-col size="3"></ion-col>
-          <ion-col> <ion-icon (click)="updateAccountDetails()" name="create-outline"
-              color="primary"></ion-icon></ion-col>
+          <ion-col> <ion-icon (click)="showAvatarMenu()" name="create-outline"
+              color="primary" size = "medium"></ion-icon></ion-col>
               <ion-col><ion-icon (click)="toSettingsPage()" name="settings-outline" color="primary"></ion-icon></ion-col>          <ion-col size="3"></ion-col>
         </ion-row>
       </ion-grid>

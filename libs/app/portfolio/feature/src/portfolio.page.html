@@ -23,7 +23,8 @@
                 <ion-item>
                   <ion-icon
                     slot="start"
-                    [src]="post.photoURL"></ion-icon>
+                    name="person"
+                    class="portfolioIcon"></ion-icon>
                   <ion-label class="portfolioLabel">
                     Created by {{post.postID?.split("-",1)}}</ion-label
                   >
@@ -40,12 +41,12 @@
                 <ion-item>
               <ion-icon slot="start" src="assets/icons/income.svg" class = "portfolioIcon"></ion-icon>
               <ion-label
-                    *ngIf="post.likes; else noIncome"
+                    *ngIf="post.likes && post.listing; else noIncome"
                     class="portfolioLabel">
-                    {{post.likes}} minutes</ion-label
+                    {{post.likes}} minutes earned</ion-label
                   >
                   <ng-template #noIncome>
-                    <ion-label class="portfolioLabel">0 minutes</ion-label>
+                    <ion-label class="portfolioLabel">0 minutes earned</ion-label>
                   </ng-template>
 
             </ion-item>
@@ -55,9 +56,11 @@
                     slot="start"
                     src="assets/icons/outcome.svg"
                     class="portfolioIcon"></ion-icon>
-                  <ion-label class="portfolioLabel">
-                    {{post.listing}} minutes</ion-label
-                  >
+                  <ion-label *ngIf = "post.listing; else noSale" class="portfolioLabel">
+                    {{post.listing}} minutes spent</ion-label>
+                  <ng-template #noSale>
+                    <ion-label class="portfolioLabel">not for sale</ion-label>
+                  </ng-template>
                 </ion-item>
                 <!--<ion-item>
                   <ion-icon

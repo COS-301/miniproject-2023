@@ -125,7 +125,6 @@ cancelAvatar(): void {
 }
 
 showAvatarMenu(): void {
-
   const avatarMenu = document.getElementById('avatar-menu');
   if(avatarMenu != null){
     avatarMenu.style.display = 'block';

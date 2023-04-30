@@ -196,6 +196,14 @@ ion-toolbar {
   //color: #000000;
 }
 
+.creatorText{
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--branding-dark-green);
+  font-family: var(--poppins);
+  font-style: italic;
+}
+
 .buttonTextNoSale {
   --min-height: 12px;
   font-size: 12px;

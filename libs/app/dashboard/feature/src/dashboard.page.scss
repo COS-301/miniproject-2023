@@ -319,6 +319,7 @@ ion-col {
   font-size: large;
   font-family: 'PT Sans', sans-serif;
   background-color: #ffffff;
+  display: sticky;
 }
 
 .captionText {
@@ -364,6 +365,15 @@ ion-col {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   //border-radius: var(--bottomNavBarBorderRadius) var(--bottomNavBarBorderRadius) 0 0;
   border-radius: 20px 20px 0 0;
+}
+
+.postUser{
+  background-color: var(--branding-blue);
+  width: 100%;
+  border-radius: 20px;
+  color: var(--branding-blue);
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 
