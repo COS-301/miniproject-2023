@@ -1,4 +1,8 @@
 import * as data from '../../../data';
+import * as fs from 'fs';
+
+const users = fs.readFileSync('../../../data/registered_users.json', 'utf-8');
+const user = JSON.parse(users).pop();
 
 describe('Login Page', () => {
   before(() => {
@@ -48,4 +52,11 @@ describe('Login Page', () => {
     cy.get('.error-text').contains('Password is required');
   });
   
+  it(`Login User with email=${user.email}`, () => {
+    cy.login(user.email, user.password);  
+    
+    cy.url().should('eq', `${Cypress.config().baseUrl}/home/feed`);
+    cy.get('ion-title')
+    .contains('Memory Lane');
+  });
 });

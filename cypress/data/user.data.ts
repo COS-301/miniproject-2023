@@ -1,7 +1,9 @@
 import { faker } from '@faker-js/faker'
+import { User } from './User.interface';
+
 const name = faker.name.firstName();
 const surname = faker.name.lastName();
-export const user = {
+export const user:User = {
   name: name,
   surname: surname,
   username: faker.internet.userName(name, surname),
