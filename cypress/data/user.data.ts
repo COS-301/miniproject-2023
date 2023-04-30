@@ -10,3 +10,8 @@ export const user:User = {
   email: faker.internet.email(name, surname),
   password: 'aVeryStr0ngP@swd_',
 };
+
+export const registredUser = {
+  email: 'Bridget33@hotmail.com',
+  password: 'aVeryStr0ngP@swd_',
+}
