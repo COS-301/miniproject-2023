@@ -52,8 +52,8 @@ describe('Login Page', () => {
     cy.get('.error-text').contains('Password is required');
   });
   
-  it(`Login User with email=${user.email}`, () => {
-    cy.login(user.email, user.password);  
+  it(`Login User with email=${data.registredUser.email}`, () => {
+    cy.login(data.registredUser.email, data.registredUser.password);  
     
     cy.url().should('eq', `${Cypress.config().baseUrl}/home/feed`);
     cy.get('ion-title')

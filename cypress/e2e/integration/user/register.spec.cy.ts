@@ -1,6 +1,6 @@
 import { User } from '../../../data/User.interface';
 import * as data from '../../../data/index';  
-import * as fs from 'fs';
+
 const filePath = '../../../data/registered_users.json';
 
 describe('Register Page', () => {
@@ -21,9 +21,9 @@ describe('Register Page', () => {
     cy.get('ion-img')
       .should('have.attr', 'src')
       .and('include', '/assets/Design_icons/Login-page-background-and-images/Memory-lane-logo.png');
-    cy.get('input[type=email]').should('have.attr', 'placeholder').and('include', 'Enter email');
+    cy.get('input[type=email]').should('have.attr', 'placeholder').and('include', 'Email');
 
-    cy.get('input[autocomplete=password]').should('have.attr', 'placeholder').and('include', 'Enter password');
+    cy.get('input[type=password]').should('have.attr', 'placeholder').and('include', 'Password');
 
     cy.get('ion-button[autocomplete=submit]').contains('Register');
 
@@ -34,8 +34,8 @@ describe('Register Page', () => {
   });
 
   it('required email', () => {
-    cy.get('input[autocomplete=email]').click();
-    cy.get('input[autocomplete=password]').click();
+    cy.get('input[type=email]').click();
+    cy.get('input[type=password]').click();
     cy.get('ion-button[autocomplete=submit]').should('have.attr', 'disabled');
     cy.get('.error-text').contains('Email is required');
   });
