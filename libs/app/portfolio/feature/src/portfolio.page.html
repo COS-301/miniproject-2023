@@ -23,8 +23,7 @@
                 <ion-item>
                   <ion-icon
                     slot="start"
-                    name="person"
-                    class="portfolioIcon"></ion-icon>
+                    [src]="post.photoURL"></ion-icon>
                   <ion-label class="portfolioLabel">
                     Created by {{post.postID?.split("-",1)}}</ion-label
                   >
@@ -38,12 +37,18 @@
                     {{post.hashtag}}</ion-label
                   >
                 </ion-item>
-                <!-- <ion-item>
+                <ion-item>
               <ion-icon slot="start" src="assets/icons/income.svg" class = "portfolioIcon"></ion-icon>
-              <ion-label class = "portfolioLabel" >
-                {{post.ownerGainedTime}} minutes</ion-label>
+              <ion-label
+                    *ngIf="post.likes; else noIncome"
+                    class="portfolioLabel">
+                    {{post.likes}} minutes</ion-label
+                  >
+                  <ng-template #noIncome>
+                    <ion-label class="portfolioLabel">0 minutes</ion-label>
+                  </ng-template>
 
-            </ion-item> -->
+            </ion-item>
 
                 <ion-item>
                   <ion-icon
@@ -54,7 +59,7 @@
                     {{post.listing}} minutes</ion-label
                   >
                 </ion-item>
-                <ion-item>
+                <!--<ion-item>
                   <ion-icon
                     slot="start"
                     src="assets/icons/comments.svg"
@@ -67,7 +72,7 @@
                   <ng-template #noComments>
                     <ion-label class="portfolioLabel">0 comments</ion-label>
                   </ng-template>
-                </ion-item>
+                </ion-item>-->
                 <ion-item>
                   <ion-icon
                     slot="start"
