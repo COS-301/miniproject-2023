@@ -5,7 +5,7 @@ import { HomePage } from './home.page';
 const routes: Routes = [
   {
     path: '',
-    component: HomePage,
+    component: HomePage, // I commented this out so that the home html does not appear in the dashboard page
     children: [
       {
         path: 'dashboard',
@@ -16,6 +16,11 @@ const routes: Routes = [
         path: 'profile',
         loadChildren: () =>
           import('@mp/app/profile/feature').then((m) => m.ProfileModule),
+      },
+      {
+        path: 'portfolio',
+        loadChildren: () =>
+          import('@mp/app/portfolio/feature').then((m) => m.PortfolioModule),
       },
       {
         path: '',

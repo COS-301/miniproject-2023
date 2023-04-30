@@ -9,7 +9,7 @@ export class AuthRepository {
       displayName: auth.displayName,
       email: auth.email ? auth.email : undefined,
       photoURL: auth.photoURL,
-      phoneNumber: auth.phoneNumber,
+      //phoneNumber: auth.phoneNumber,
       password: auth.password ? auth.password : undefined,
     });
   }

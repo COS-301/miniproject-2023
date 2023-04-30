@@ -1,0 +1,287 @@
+<!-- Old component -->
+<!-- <ng-container *ngIf="profile$ | async as profile; else loading">
+  <form
+  [formGroup]="postDetailsForm"
+  ngxsForm="profile.postDetailsForm"
+  (submit)="createNewPost()">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="ion-align-items-center">
+        Post Details
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item class="ion-no-padding">
+          <ion-label position="floating" class="required">Content</ion-label>
+          <ion-input
+            type="text"
+            minlength="4"
+            maxlength="64"
+            required="true"
+            formControlName="content"
+            placeholder="Enter content"></ion-input>
+        </ion-item>
+        <ion-item class="ion-no-padding">
+          <ion-label position="floating" class="required">Caption</ion-label>
+          <ion-input
+            type="text"
+            minlength="4"
+            maxlength="64"
+            required="true"
+            formControlName="caption"
+            placeholder="Enter caption"></ion-input>
+        </ion-item>
+        <ion-item class="ion-no-padding">
+          <ion-label position="floating" class="required">
+            Hashtag
+          </ion-label>
+          <ion-input
+            type="text"
+            minlength="4"
+            maxlength="64"
+            required="true"
+            formControlName="hashtag"
+            placeholder="Enter hashtag"></ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+    <ion-button fill="clear" class="ion-float-right" type="submit"
+      >Save</ion-button
+    >
+  </ion-card>
+</form>
+<ng-container *ngFor="let postDetails of profile.posts?.slice(1); let i = index">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Post {{ i + 1 }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label>
+            <strong>Content:</strong> {{ postDetails.content }}
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <strong>Caption:</strong> {{ postDetails.caption }}
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <strong>Hashtag:</strong> {{ postDetails.hashtag }}
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ng-container>
+</ng-container>
+<ng-template #loading>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ngx-skeleton-loader
+          count="1"
+          [theme]="{ height: '150px' }"
+          appearance="line"></ngx-skeleton-loader>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ng-template> -->
+
+<!-- ... -->
+
+<div id="error-message" class="hidden"></div>
+
+<div class="overlay" [hidden]="!isPosting">
+  <img class="postImage" alt="Post" src="assets/loading/loadingWhiteBG.gif" [hidden]="!isPosting" />
+</div>
+<ng-container *ngIf="profile$ | async as profile">
+  <form
+    [formGroup]="postDetailsForm"
+    ngxsForm="profile.postDetailsForm"
+    (submit)="createNewPost()">
+    <br />
+    <div
+      style="
+        border-radius: 5%;
+        margin: auto;
+        width: 80%;
+        height: 40%;
+        background-color: rgba(53, 107, 89, 0);
+        text-align: center;
+        position: relative;
+      ">
+      <img
+        id="postImage"
+        (click)="fileInput.click()"
+        alt=""
+        src="assets/icons/upload.png"
+        style="
+          font-size: 128px;
+          position: relative;
+          top: 25%;
+          border-radius: 10%;
+        "
+        color="secondary" />
+      <input
+        id="fileInput"
+        #fileInput
+        type="file"
+        (change)="uploadImage($event)"
+        style="display: none"
+        accept="image/*" />
+    </div>
+    <br />
+    <ion-list lines="none">
+      <ion-item helper = "Caption" class = "captionArea" counter="true" style = "padding-left: 20px; padding-right: 20px; font-size: 12px;">
+        <ion-textarea
+          id="captionInput"
+          [autoGrow]="true"
+          maxlength="100"
+
+          style="height:70px; font-size: 12px; background-color: #ffffff; padding-left:20px; padding-right: 20px; border:solid 1px var(--ion-color-success); border-radius: 20px; width:200px"
+          formControlName="caption"
+          [ngClass]="{'has-error': (postDetailsForm.get('caption')?.value?.length ?? 0) > 64 || (postDetailsForm.get('caption')?.value?.length ?? 0) < 4}"></ion-textarea>
+      </ion-item>
+    </ion-list>
+
+    <!-- ... -->
+    <!-- Rest of your form elements -->
+    <!-- ... -->
+
+    <div>
+      <ion-grid style = "margin-left: auto;
+      margin-right: auto;">
+        <ion-row>
+          <!-- Hashtag buttons with click event handlers to set the hashtag form control value -->
+          <ion-col size="4" style="text-align: center">
+            <ion-button
+            id="natureButton"
+            class="hashtagButton"
+            outline
+              size="small"
+              style="--background: var(--nature);"
+              (click)="setHashtag('#nature')"
+              >#nature</ion-button
+            >
+          </ion-col>
+          <ion-col size="4" style="text-align: center"
+            ><ion-button
+            id="funnyButton"
+            class="hashtagButton"
+            outline
+              size="small"
+              style="--background: var(--funny);"
+              (click)="setHashtag('#funny')"
+              >#funny</ion-button
+            >
+          </ion-col>
+          <ion-col size="4" style="text-align: center"
+            ><ion-button
+            id="opinionButton"
+            class="hashtagButton"
+            outline
+              size="small"
+              style="--background: var(--opinion);"
+              (click)="setHashtag('#opinion')"
+              >#opinion</ion-button
+            >
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4" style="text-align: center">
+            <ion-button
+            id="musicButton"
+            class="hashtagButton"
+            outline
+              size="small"
+              style="--background: var(--music);"
+              (click)="setHashtag('#music')"
+              >#music</ion-button
+            >
+          </ion-col>
+          <ion-col size="4" style="text-align: center"
+            ><ion-button
+            id="sportsButton"
+            class="hashtagButton"
+            outline
+              size="small"
+              style="--background: var(--sports);"
+              (click)="setHashtag('#sports')"
+              >#sports</ion-button
+            >
+          </ion-col>
+          <ion-col size="4" style="text-align: center"
+            ><ion-button
+            id="foodButton"
+            class="hashtagButton"
+            outline
+              size="small"
+              style="--background: var(--food);"
+              (click)="setHashtag('#food')"
+              >#food</ion-button
+            >
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div class="hashtagContainer">
+        <div class="hashtagWrapper">
+          <div id = "emoji1" style="display: inline-block; margin-right: 5px;">😢No Hashtag😔</div>
+          <ion-input
+            id="categoryInput"
+            class="textInput"
+            type="text"
+            display="none"
+            style="border-radius: 10px; display: inline-block;"
+            formControlName="hashtag"></ion-input>
+            <div id = "emoji2" style="display: inline-block; margin-left: 5px;">😉Select One😊</div>
+        </div>
+      </div>
+    </div>
+
+    
+    <ion-item lines="none">
+      
+        <ion-label color="tertiary"  class="saleText">For Sale</ion-label>
+        <ion-toggle
+          id="toggleSale"
+          (click)="changeForSale()"
+          color="tertiary"
+          style="width: 60px; height: 48%; padding-right:20px;"></ion-toggle>
+      
+    </ion-item>
+
+    <ion-grid class="priceBlock" lines="none"
+      id="priceGrid"
+      style="position: relative; bottom: 2%; display: none; width: 90%">
+      <ion-row style="height: 30%">
+        <ion-col size="4" style = "text-align: center; padding-right: 15px; font-style: normal; font-size: 18px;" class = "saleCol">
+          <ion-label color="secondary" 
+            >Price:</ion-label
+          ></ion-col
+        >
+        <ion-col (click)="setInsertionPoint()" size="4" class = "saleCol"
+          ><ion-input 
+            id="numberInput"
+            placeholder="100"
+            type="number"
+            color="secondary"
+            style="height: 50%; font-size: 200%; text-align: center;"
+            formControlName="listing"></ion-input
+        ></ion-col>
+        <ion-col size="4" style = "text-align: center;" class = "saleCol"
+          ><ion-label color="secondary" style="font-size: 105%; font: bold"
+            >Minutes</ion-label
+          ></ion-col
+        >
+      </ion-row>
+    </ion-grid>
+    <div style="text-align: center; position: relative; bottom: 5%; display: flex; justify-content: center; padding-top:15px; padding-bottom: 30px;">
+      <ion-button color = "tertiary" style = "width:90%;" expand="full" shape="round" type="submit">POST</ion-button>
+    </div>
+  </form>
+</ng-container>
+<!-- ... -->

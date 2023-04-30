@@ -1,0 +1,4 @@
+<ng-container *ngIf="profile$ | async as profile">
+  <ion-badge slot="end" class="timer">{{profile.time}} min</ion-badge>
+</ng-container>
+

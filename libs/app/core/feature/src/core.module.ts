@@ -50,6 +50,17 @@ import { NgxsModule } from '@ngxs/store';
 import { MomentModule } from 'ngx-moment';
 import { CoreRouting } from './core.routing';
 import { CoreShell } from './core.shell';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { HttpClientModule } from '@angular/common/http';
+import { onAuthStateChanged } from 'firebase/auth';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { ref, set, get, remove } from 'firebase/database';
+
+
+
+// import { PostModule } from '@mp/app/post/feature';
 
 let resolvePersistenceEnabled: (enabled: boolean) => void;
 
@@ -99,6 +110,25 @@ const FIREBASE_OPTIONS: FirebaseOptions = {
           disableWarnings: true,
         });
       }
+
+      const database = getDatabase();
+      let currentUserId: string | null = null;
+
+      onAuthStateChanged(auth, async (user) => {
+        const loggedInUsersRef = ref(database, 'loggedInUsers');
+        if (user) {
+          // User is logged in, add user to loggedInUsers
+          currentUserId = user.uid;
+          await set(ref(database, `loggedInUsers/${user.uid}`), true);
+        } else {
+          // User is logged out, remove user from loggedInUsers
+          if (currentUserId) {
+            await remove(ref(database, `loggedInUsers/${currentUserId}`));
+            currentUserId = null;
+          }
+        }
+      });
+
       return auth;
     }),
     provideFirebaseApp(() => initializeApp(FIREBASE_OPTIONS)),
@@ -157,6 +187,10 @@ const FIREBASE_OPTIONS: FirebaseOptions = {
     }),
     AuthModule,
     ErrorsModule,
+    AngularFireModule.initializeApp(FIREBASE_OPTIONS),
+    AngularFirestoreModule,
+    HttpClientModule,
+    AngularFireStorageModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [CoreShell],

@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import {
-    AuthGuard,
-    redirectLoggedInTo,
-    redirectUnauthorizedTo
+  AuthGuard,
+  redirectLoggedInTo,
+  redirectUnauthorizedTo
 } from '@angular/fire/auth-guard';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-
 const redirectLoggedOut = () => redirectUnauthorizedTo(['']);
 const redirectLoggedIn = () => redirectLoggedInTo(['home']);
 
@@ -16,7 +15,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { authGuardPipe: redirectLoggedIn },
     loadChildren: () =>
-      import('@mp/app/welcome/feature').then((m) => m.WelcomeModule),
+      import('@mp/app/splash/feature').then((m) => m.SplashModule),
   },
   // {
   //   path: 'response',
@@ -36,6 +35,41 @@ const routes: Routes = [
       import('@mp/app/home/feature').then((m) => m.HomeModule),
   },
   {
+    path: 'create',
+    loadChildren: () =>
+      import('@mp/app/create/feature').then((m) => m.CreateModule),
+  },
+  {
+    path: 'comment',
+    loadChildren: () =>
+      import('@mp/app/comment/feature').then((m) => m.CommentModule),
+  },
+  {
+    path: 'notifications',
+    loadChildren: () =>
+      import('@mp/app/notifications/feature').then((m) => m.NotificationsModule),
+  },
+  {
+    path: 'portfolio',
+    loadChildren: () =>
+      import('@mp/app/portfolio/feature').then((m) => m.PortfolioModule),
+  },
+  {
+    path: 'search',
+    loadChildren: () =>
+      import('@mp/app/search/feature').then((m) => m.SearchModule),
+  },
+  {
+    path: 'settings',
+    loadChildren: () =>
+      import('@mp/app/settings/feature').then((m) => m.SettingsModule),
+  },
+  {
+    path: 'splash',
+    loadChildren: () =>
+      import('@mp/app/splash/feature').then((m) => m.SplashModule),
+  },
+  {
     path: 'tos',
     loadChildren: () => import('@mp/app/tos/feature').then((m) => m.TosModule),
   },
@@ -43,6 +77,21 @@ const routes: Routes = [
     path: 'privacy',
     loadChildren: () =>
       import('@mp/app/privacy/feature').then((m) => m.PrivacyModule),
+  },
+  {
+    path: 'about',
+    loadChildren: () =>
+      import('@mp/app/about/feature').then((m) => m.AboutModule),
+  },
+  {
+    path: 'profile',
+    loadChildren: () =>
+      import('@mp/app/profile/feature').then((m) => m.ProfileModule),
+  },
+  {
+    path: 'welcome',
+    loadChildren: () =>
+      import('@mp/app/welcome/feature').then((m) => m.WelcomeModule),
   },
   // {
   //   path: 'verify',
@@ -92,4 +141,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class CoreRouting {}
+export class CoreRouting { }

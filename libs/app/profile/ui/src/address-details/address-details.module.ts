@@ -5,8 +5,8 @@ import { IonicModule } from '@ionic/angular';
 import { ProfileModule } from '@mp/app/profile/data-access';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
-import { AddressDetailsComponent } from './address-details.component';
-
+//import { AddressDetailsComponent } from './address-details.component';
+/*
 @NgModule({
   declarations: [AddressDetailsComponent],
   imports: [
@@ -20,3 +20,4 @@ import { AddressDetailsComponent } from './address-details.component';
   exports: [AddressDetailsComponent],
 })
 export class AddressDetailsModule {}
+*/

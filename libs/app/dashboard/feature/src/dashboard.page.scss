@@ -1,0 +1,396 @@
+body{
+  --ion-bottomNavBarBorderRadius: 15px;
+}
+
+#container {
+  text-align: center;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.cardAction{
+  padding:0px;
+}
+
+.postCard{
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #8c8c8c;
+
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+.noPosts {
+  color: rgb(73, 73, 73);
+  font-size: 20px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.like{
+  font-size: 22px;
+  filter: var(--branding-grey-filter);
+}
+
+
+.noSaleBuy{
+  font-size: 22px;
+  //color: #c22424!important;
+  stroke:rgb(194, 36, 36) !important;
+  stroke-linecap:round !important;
+  stroke-linejoin:round !important;
+  stroke-width:24.87px !important;
+  padding-right:7px;
+
+}
+
+.buy{
+  font-size: 22px;
+
+  stroke:var(--branding-blue) !important;
+  stroke-linecap:round !important;
+  stroke-linejoin:round !important;
+  stroke-width:24.87px !important;
+  //padding-right:7px;
+}
+
+.comment{
+  font-size: 22px;
+
+}
+
+.actionBlock{
+  margin:0px;
+  padding:0px;
+}
+
+.actionToolBar{
+  --padding-top: 0px;
+  --padding-bottom: 0px;
+}
+
+.actionBlock ion-row {
+  margin-bottom: 0.5em; /* adjust the value to your preference */
+}
+.like.clicked {
+  filter: var(--branding-blue-filter);
+  animation: pulse 0.5s ease-in-out;
+}
+
+.avatar{
+  width:35px !important;
+  height:35px !important;
+  scale:1.2;
+  
+}
+
+.centreAlign{
+  display: flex;
+  align-items: center;
+}
+
+.creatorText{
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--branding-blue);
+  font-family: var(--poppins);
+  font-style: italic;
+  margin-left:10px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.actionGrid{
+  --padding-top: 0px;
+  --padding-bottom: 0px;
+  margin-bottom: -10px;
+  margin-top: -5px;
+}
+
+
+
+ion-item {
+  text-decoration: none;
+  border-bottom: 0;
+}
+
+hr {
+  width: 90%;
+  height: 2px;
+  background-color: rgb(208, 208, 208);
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.postImage {
+  padding: 0;
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 100%;
+  max-height: auto;
+}
+
+body {
+  --ion-bottomNavBarBorderRadius: 15px;
+}
+
+#container {
+  text-align: center;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #8c8c8c;
+
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+
+.timer {
+  --background: rgba(53, 107, 89, 0.8);
+  border-radius: 12px;
+  height: 24px;
+  box-shadow: 4px #ccc;
+  margin-right: 20px;
+  width: 80px;
+  
+  
+
+}
+
+ion-badge.timer {
+  justify-content: center;
+  align-items: center;
+}
+
+ion-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  size: fit-content;
+  font-family: var(--poppins);
+  font-weight: 600;
+  font-style: italic;
+
+}
+
+.timerCol {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+}
+
+.followingButton {
+
+  background-color: var(--ion-color-primary);
+  --background: rgba(255, 255, 255, 0);
+  color: #fff;
+  padding: 0 0;
+  margin: auto;
+  border-radius: 12px;
+  height: 24px;
+}
+
+.trendingButton {
+  background-color: rgba(255, 255, 255, 0);
+  --background: rgba(255, 255, 255, 0);
+  color: #fff;
+  padding: 0 0;
+  margin: auto;
+  border-radius: 12px;
+  box-shadow: none;
+  border-color: rgba(255, 255, 255, 0);
+  height: 24px;
+}
+
+.buttonContainer {
+  border-color: rgba(255, 255, 255, 0);
+  box-shadow: none;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 24px;
+  padding: 0 0;
+  margin: auto;
+  border-radius: 40px;
+  background-color: var(--ion-color-primary-tint);
+}
+
+ion-item {
+  text-decoration: none;
+  border-bottom: 0;
+}
+
+.buttonText {
+  --min-height: 12px;
+  font-size: 12px;
+  font-family: var(--poppins);
+  font-weight: 600;
+  color: var(--branding-blue);
+  text-align: center;
+  align-items: center;
+  display: flex;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  white-space: nowrap;
+  //color: #000000;
+}
+
+
+ion-toolbar {
+  --padding-top: 0.5em; /* adjust the value to your preference */
+  --padding-bottom: 0.5em; /* adjust the value to your preference */
+}
+
+.buttonTextNoSale {
+  --min-height: 12px;
+  font-size: 12px;
+  font-family: var(--poppins);
+  font-weight: 600;
+  color: rgba(194, 36, 36, 1);
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  white-space: nowrap;
+  //color: #000000;
+}
+
+ion-col {
+  background-color: #ffffff;
+  border: solid 1px #fff;
+  color: #fff;
+  text-align: center;
+  font: bold;
+}
+
+.pageHeading{
+  text-align: center;
+  font-size: large;
+  font-family: 'PT Sans', sans-serif;
+  background-color: #ffffff;
+  display: sticky;
+}
+
+.captionText {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  color: #000000;
+  text-align: left;
+  font-family: var(--poppins);
+  font-weight: 300;
+  font-size: 12px;
+  padding-left: 20px;
+  padding-top:20px;
+  padding-bottom: 20px;
+}
+
+.bottomBarButton {
+  //
+  border-radius: var(--bottomNavBarBorderRadius) var(--bottomNavBarBorderRadius) 0 0;
+}
+
+.tabWrapper {
+  //
+  border-radius: var(--bottomNavBarBorderRadius) var(--bottomNavBarBorderRadius) 0 0;
+  //box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+}
+
+.bottomToolbar {
+  //
+  border-radius: var(--bottomNavBarBorderRadius) var(--bottomNavBarBorderRadius) 0 0;
+
+}
+
+.bottomTabs {
+  //
+  border-radius: 15px 15px 0 0;
+  //border-radius: var(--bottomNavBarBorderRadius) var(--bottomNavBarBorderRadius) 0 0;
+  //box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+}
+
+.toolbar {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  //border-radius: var(--bottomNavBarBorderRadius) var(--bottomNavBarBorderRadius) 0 0;
+  border-radius: 20px 20px 0 0;
+}
+
+.postUser{
+  background-color: var(--branding-blue);
+  width: 100%;
+  border-radius: 20px;
+  color: var(--branding-blue);
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+
+.navLabel {
+  font-size: 8px;
+  color: var(--branding-dark-green);
+  font-family: var(--ion-font-family);
+  font-weight: 400;
+}
+
+.navIcon {
+  font-size: 22px;
+
+}
+
+.create {
+  font-size: 35px;
+  padding-bottom: 5px;
+
+}

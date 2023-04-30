@@ -1,0 +1,26 @@
+ion-col {
+  background-color: #ffffff;
+  ;
+  border: solid 1px #fff;
+  color: #fff;
+  text-align: center;
+}
+
+.backButton {
+  --color: var(--ion-color-tertiary);
+  --icon-font-size: 25px;
+  --icon-padding-end: 6px ;
+}
+
+.button{
+  margin-top:20px;
+}
+
+.footer {
+  border-top: 0.5px solid rgb(206, 206, 206);
+}
+
+ion-button{
+  padding-left: 50px;
+  padding-right: 50px;
+}

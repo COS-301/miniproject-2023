@@ -16,8 +16,8 @@ export class CreateAuthHandler implements ICommandHandler<CreateAuthCommand> {
       email: request.userRecord.email,
       displayName: request.userRecord.displayName,
       photoURL: request.userRecord.photoURL,
-      phoneNumber: request.userRecord.phoneNumber,
-      customClaims: request.userRecord.customClaims,
+      //phoneNumber: request.userRecord.phoneNumber,
+      //customClaims: request.userRecord.customClaims,
       created: Timestamp.fromDate(new Date()),
     };
     const auth = this.publisher.mergeObjectContext(Auth.fromData(data));

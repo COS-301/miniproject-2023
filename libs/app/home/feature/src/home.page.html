@@ -1,4 +1,6 @@
-<ion-tabs>
+<!-- Old code of initial application -->
+
+<!-- <ion-tabs>
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="dashboard">
       <ion-icon name="home-outline"></ion-icon>
@@ -9,5 +11,51 @@
       <ion-icon name="person-circle-outline"></ion-icon>
       <ion-label>Profile</ion-label>
     </ion-tab-button>
+
+    <ion-tab-button tab="post">
+      <ion-icon name="person-circle-outline"></ion-icon>
+      <ion-label>Post</ion-label>
+    </ion-tab-button>
   </ion-tab-bar>
-</ion-tabs>
+</ion-tabs> -->
+
+<ion-tabs class="tabWrapper">
+      <ion-tab-bar class="bottomTabs" slot="bottom" color="secondary">
+
+        <ion-tab-button class="bottomBarButton" (click)="toHomePage()">
+          <ion-icon src = "assets/icons/homeSelected.svg" class="navIcon"></ion-icon>
+          <ion-label class = "navLabel">Home</ion-label>
+        </ion-tab-button>
+  
+        <ion-tab-button class="bottomBarButton" (click)="toSearchPage()">
+          <ion-icon src = "assets/icons/search.svg" class="navIcon"></ion-icon>
+          <ion-label class = "navLabel">Search</ion-label>
+        </ion-tab-button>
+  
+        <ion-tab-button class="bottomBarButton" (click)="toCreatePage()">
+          <ion-icon src = "assets/icons/create.svg" color="primary" class="create"></ion-icon>
+          
+        </ion-tab-button>
+  
+        <ion-tab-button class="bottomBarButton" (click)="toPortfolioPage()">
+          
+            <ion-icon src = "assets/icons/portfolio.svg" class = "navIcon"></ion-icon>
+          
+          <ion-label class = "navLabel">Portfolio</ion-label>
+        </ion-tab-button>
+  
+        <ion-tab-button class="bottomBarButton" (click)="toProfilePage()">
+          
+          <ion-icon src = "assets/icons/profile.svg" class = "navIcon" ></ion-icon>
+          
+          <ion-label class = "navLabel">Profile</ion-label>
+        </ion-tab-button>
+
+        <!-- 
+          Extra profile page button used for testing purposes
+          <ion-tab-button class="bottomBarButton" (click)="toPostPage()">
+          <ion-icon name="person" color="primary" size="small"></ion-icon>
+        </ion-tab-button> -->
+      </ion-tab-bar>
+    </ion-tabs>
+

@@ -1,0 +1,27 @@
+name: Deploy Test Branch to firebase hosting Test Channel
+'on':
+  pull_request:
+    branches:
+      - test
+  push:
+    branches:
+      - test
+jobs:
+  test_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo "${{ secrets.DOTENVFILE }}" > .env
+      - run: echo "${{ secrets.DOTENVDOTPRODFILE }}" > .env.prod
+      - run: echo "${{ secrets.DOTFIREBASERCFILE }}" > .firebaserc
+      - run: 'yarn install'
+      - run: 'yarn nx run-many --target=lint --all --parallel'
+      - run: 'yarn nx run-many --target=build --all --parallel --configuration=production'
+      - run: 'yarn nx run-many --target=test --all --parallel'
+      - run: 'yarn nx run-many --target=e2e  --all --parallel'
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+          projectId: '${{ secrets.PROJECT_ID }}'
+          channelId: test

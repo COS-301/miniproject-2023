@@ -1,0 +1,203 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+      <ion-back-button text="portfolio" class="backButton" slot="start" defaultHref="/"></ion-back-button>
+    <!-- <lapse-time-badge slot="end" [time]="(1000).valueOf()"></lapse-time-badge> -->
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <div *ngIf="(profilePosts$ | async)?.length; else noPosts">
+    <div
+      *ngFor="let post of profilePosts$ | async; let i = index"
+      color="secondary">
+      <ion-card class="postCard">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="6">
+              <!--<div class="image-wrapper"> -->
+              <img class="postImage" alt="Post" [src]="post.content" />
+              <!---</div>-->
+            </ion-col>
+
+            <ion-col size="6">
+              <ion-list lines="none">
+                <ion-item>
+                  <ion-icon
+                    slot="start"
+                    name="person"
+                    class="portfolioIcon"></ion-icon>
+                  <ion-label class="portfolioLabel">
+                    Created by {{post.postID?.split("-",1)}}</ion-label
+                  >
+                </ion-item>
+                <ion-item>
+                  <ion-icon
+                    slot="start"
+                    src="assets/icons/Hashtag.svg"
+                    class="portfolioIcon"></ion-icon>
+                  <ion-label class="portfolioLabel">
+                    {{post.hashtag}}</ion-label
+                  >
+                </ion-item>
+                <ion-item>
+              <ion-icon slot="start" src="assets/icons/income.svg" class = "portfolioIcon"></ion-icon>
+              <ion-label
+                    *ngIf="post.likes && post.listing; else noIncome"
+                    class="portfolioLabel">
+                    {{post.likes}} minutes earned</ion-label
+                  >
+                  <ng-template #noIncome>
+                    <ion-label class="portfolioLabel">0 minutes earned</ion-label>
+                  </ng-template>
+
+            </ion-item>
+
+                <ion-item>
+                  <ion-icon
+                    slot="start"
+                    src="assets/icons/outcome.svg"
+                    class="portfolioIcon"></ion-icon>
+                  <ion-label *ngIf = "post.listing; else noSale" class="portfolioLabel">
+                    {{post.listing}} minutes spent</ion-label>
+                  <ng-template #noSale>
+                    <ion-label class="portfolioLabel">not for sale</ion-label>
+                  </ng-template>
+                </ion-item>
+                <!--<ion-item>
+                  <ion-icon
+                    slot="start"
+                    src="assets/icons/comments.svg"
+                    class="portfolioIcon"></ion-icon>
+                  <ion-label
+                    *ngIf="post.comments; else noComments"
+                    class="portfolioLabel">
+                    {{post.comments.length}} comments</ion-label
+                  >
+                  <ng-template #noComments>
+                    <ion-label class="portfolioLabel">0 comments</ion-label>
+                  </ng-template>
+                </ion-item>-->
+                <ion-item>
+                  <ion-icon
+                    slot="start"
+                    src="assets/icons/likeBlue.svg"
+                    class="portfolioIcon"></ion-icon>
+
+                  <ion-label
+                    *ngIf="post.likes; else noLikes"
+                    class="portfolioLabel">
+                    {{post.likes}} likes</ion-label
+                  >
+                  <ng-template #noLikes>
+                    <ion-label class="portfolioLabel">0 likes</ion-label>
+                  </ng-template>
+                </ion-item>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+    </div>
+  </div>
+  <ng-template #noPosts>
+    <div class="noPosts">
+    <p>No posts available yet</p>
+  </div>
+  </ng-template>
+</ion-content>
+<!-- <ion-content>
+  <ion-grid>
+    <ion-row *ngFor="let item of getPortfolioPostsFromFunction$">
+      <ion-col size="5">
+        <ion-img [src]="item.imageUrl"></ion-img>
+      </ion-col>
+      <ion-col>
+        <ion-row>
+          <ion-avatar>
+            <img [src]="item.avatarUrl" />
+          </ion-avatar>
+          <ion-list lines="none"><ion-item>{{item.username}}</ion-item></ion-list>
+        </ion-row>
+        <ion-row>
+          <ion-col><ion-icon name="thumbs-up-outline"></ion-icon> {{item.likes}}</ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col><ion-icon name="timer-outline"></ion-icon> {{item.duration}}</ion-col>
+          <ion-col><ion-icon name="chatbubble-ellipses-outline"></ion-icon> {{item.comments}} Comments</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col><ion-icon name="cash-outline"></ion-icon> paid {{item.paidDuration}} min</ion-col>
+          <ion-col><ion-icon name="cash"></ion-icon> made {{item.madeDuration}} min</ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content> -->
+
+<!-- <div class="postWrapper">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="5">
+          <ion-img src="assets/images/dog.jpg"></ion-img>
+        </ion-col>
+        <ion-col>
+          <ion-row>
+            <ion-avatar>
+              <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+            </ion-avatar>
+            <ion-list lines="none"><ion-item>@username</ion-item></ion-list>
+          </ion-row>
+          <ion-row>
+            <ion-col><ion-icon name="thumbs-up-outline"></ion-icon> 500</ion-col>
+            <ion-col></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><ion-icon name="timer-outline"></ion-icon> 13min</ion-col>
+            <ion-col><ion-icon name="chatbubble-ellipses-outline"></ion-icon> 24 Comments</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><ion-icon name="cash-outline"></ion-icon> paid 45 min</ion-col>
+            <ion-col><ion-icon name="cash"></ion-icon> made 80 min</ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div> -->
+
+<ion-toolbar class="toolbar">
+  <ion-tabs class="tabWrapper">
+    <ion-tab-bar class="bottomTabs" slot="bottom" color="secondary">
+      <ion-tab-button class="bottomBarButton" (click)="toHomePage()">
+        <ion-icon src="assets/icons/home.svg" class="navIcon"></ion-icon>
+        <ion-label class="navLabel">Home</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button class="bottomBarButton" (click)="toSearchPage()">
+        <ion-icon src="assets/icons/search.svg" class="navIcon"></ion-icon>
+        <ion-label class="navLabel">Search</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button class="bottomBarButton" (click)="toCreatePage()">
+        <ion-icon
+          src="assets/icons/create.svg"
+          color="primary"
+          class="create"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button class="bottomBarButton" (click)="toPortfolioPage()">
+        <ion-icon
+          src="assets/icons/portfolioSelected.svg"
+          class="navIcon"></ion-icon>
+
+        <ion-label class="navLabel">Portfolio</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button class="bottomBarButton" (click)="toProfilePage()">
+        <ion-icon src="assets/icons/profile.svg" class="navIcon"></ion-icon>
+
+        <ion-label class="navLabel">Profile</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-toolbar>

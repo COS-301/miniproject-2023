@@ -19,6 +19,7 @@
       "@mp/api/auth/data-access": ["libs/api/auth/data-access/src/index.ts"],
       "@mp/api/auth/feature": ["libs/api/auth/feature/src/index.ts"],
       "@mp/api/auth/util": ["libs/api/auth/util/src/index.ts"],
+      "@mp/api/comments/util": ["libs/api/comments/util/src/index.ts"],
       "@mp/api/core/feature": ["libs/api/core/feature/src/index.ts"],
       "@mp/api/eventstore/data-access": [
         "libs/api/eventstore/data-access/src/index.ts"
@@ -32,6 +33,11 @@
       ],
       "@mp/api/history/feature": ["libs/api/history/feature/src/index.ts"],
       "@mp/api/history/util": ["libs/api/history/util/src/index.ts"],
+      "@mp/api/postss/data-access": [
+        "libs/api/postss/data-access/src/index.ts"
+      ],
+      "@mp/api/postss/feature": ["libs/api/postss/feature/src/index.ts"],
+      "@mp/api/postss/util": ["libs/api/postss/util/src/index.ts"],
       "@mp/api/profiles/data-access": [
         "libs/api/profiles/data-access/src/index.ts"
       ],
@@ -40,11 +46,14 @@
       "@mp/api/users/data-access": ["libs/api/users/data-access/src/index.ts"],
       "@mp/api/users/feature": ["libs/api/users/feature/src/index.ts"],
       "@mp/api/users/util": ["libs/api/users/util/src/index.ts"],
+      "@mp/app/about/feature": ["libs/app/about/feature/src/index.ts"],
       "@mp/app/auth/data-access": ["libs/app/auth/data-access/src/index.ts"],
       "@mp/app/auth/feature": ["libs/app/auth/feature/src/index.ts"],
       "@mp/app/auth/util": ["libs/app/auth/util/src/index.ts"],
+      "@mp/app/comment/feature": ["libs/app/comment/feature/src/index.ts"],
       "@mp/app/copyright/ui": ["libs/app/copyright/ui/src/index.ts"],
       "@mp/app/core/feature": ["libs/app/core/feature/src/index.ts"],
+      "@mp/app/create/feature": ["libs/app/create/feature/src/index.ts"],
       "@mp/app/dashboard/data-access": [
         "libs/app/dashboard/data-access/src/index.ts"
       ],
@@ -64,6 +73,19 @@
       "@mp/app/login/data-access": ["libs/app/login/data-access/src/index.ts"],
       "@mp/app/login/feature": ["libs/app/login/feature/src/index.ts"],
       "@mp/app/login/util": ["libs/app/login/util/src/index.ts"],
+      "@mp/app/notifications/feature": [
+        "libs/app/notifications/feature/src/index.ts"
+      ],
+      "@mp/app/portfolio/feature": ["libs/app/portfolio/feature/src/index.ts"],
+      "@mp/app/post/data-access": ["libs/app/post/data-access/src/index.ts"],
+      "@mp/app/post/feature": ["libs/app/post/feature/src/index.ts"],
+      "@mp/app/post/util": ["libs/app/post/util/src/index.ts"],
+      "@mp/app/postss/data-access": [
+        "libs/app/postss/data-access/src/index.ts"
+      ],
+      "@mp/app/postss/feature": ["libs/app/postss/feature/src/index.ts"],
+      "@mp/app/postss/ui": ["libs/app/postss/ui/src/index.ts"],
+      "@mp/app/postss/util": ["libs/app/postss/util/src/index.ts"],
       "@mp/app/privacy/feature": ["libs/app/privacy/feature/src/index.ts"],
       "@mp/app/profile/data-access": [
         "libs/app/profile/data-access/src/index.ts"
@@ -79,6 +101,9 @@
       "@mp/app/reset/data-access": ["libs/app/reset/data-access/src/index.ts"],
       "@mp/app/reset/feature": ["libs/app/reset/feature/src/index.ts"],
       "@mp/app/reset/util": ["libs/app/reset/util/src/index.ts"],
+      "@mp/app/search/feature": ["libs/app/search/feature/src/index.ts"],
+      "@mp/app/settings/feature": ["libs/app/settings/feature/src/index.ts"],
+      "@mp/app/splash/feature": ["libs/app/splash/feature/src/index.ts"],
       "@mp/app/tos/feature": ["libs/app/tos/feature/src/index.ts"],
       "@mp/app/updates/data-access": [
         "libs/app/updates/data-access/src/index.ts"
@@ -99,7 +124,9 @@
       ],
       "@mp/app/welcome/feature": ["libs/app/welcome/feature/src/index.ts"],
       "@mp/app/welcome/util": ["libs/app/welcome/util/src/index.ts"],
-      "@mp/cli/core/feature": ["libs/cli/core/feature/src/index.ts"]
+      "@mp/cli/core/feature": ["libs/cli/core/feature/src/index.ts"],
+      "@mp/data-access": ["libs/data-access/src/index.ts"],
+      "@mp/feature": ["libs/feature/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

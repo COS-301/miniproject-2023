@@ -1,0 +1,21 @@
+name: Deploy to live channel on PR merge
+on:
+    pull_request:
+      types: [closed]
+      branches:
+        - main
+
+jobs:
+  main_deploy:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo "${{ secrets.DOTENVFILE }}" > .env
+      - run: echo "${{ secrets.DOTENVDOTPRODFILE }}" > .env.prod
+      - run: echo "${{ secrets.DOTFIREBASERCFILE }}" > .firebaserc
+      - run: echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}" >> ./.keys/key
+      - run: export GOOGLE_APPLICATION_CREDENTIALS=$(realpath ./.keys/key)
+      - run: 'yarn install && yarn build:app:prod'
+      - run: 'yarn nx run-many --target=build --all --parallel --configuration=production'
+      - run: 'yarn shipit:prod --non-interactive -f'

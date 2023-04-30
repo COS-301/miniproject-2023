@@ -55,6 +55,12 @@ yarn nx generate @nrwl/js:library ui --unitTestRunner=jest --directory=app/profi
 yarn nx generate @nrwl/js:library data-access --unitTestRunner=jest --directory=app/profile --no-interactive
 yarn nx generate @nrwl/js:library util --unitTestRunner=jest --directory=app/profile --no-interactive
 
+# POST
+yarn nx generate @nrwl/js:library feature --unitTestRunner=jest --directory=app/postss --no-interactive
+yarn nx generate @nrwl/js:library ui --unitTestRunner=jest --directory=app/postss --no-interactive
+yarn nx generate @nrwl/js:library data-access --unitTestRunner=jest --directory=app/postss --no-interactive
+yarn nx generate @nrwl/js:library util --unitTestRunner=jest --directory=app/postss --no-interactive
+
 # UPDATES
 yarn nx generate @nrwl/js:library feature --unitTestRunner=jest --directory=app/updates --no-interactive
 yarn nx generate @nrwl/js:library data-access --unitTestRunner=jest --directory=app/updates --no-interactive

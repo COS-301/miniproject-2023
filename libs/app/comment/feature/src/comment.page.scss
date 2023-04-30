@@ -1,0 +1,125 @@
+.timer {
+    --background: rgba(53, 107, 89, 0.8);
+    border-radius: 12px;
+    height: 24px;
+    box-shadow: 4px #ccc;
+    margin-right: 20px;
+    width: 80px;
+    
+    
+  
+  }
+  
+  ion-badge.timer {
+    justify-content: center;
+    align-items: center;
+  }
+ion-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    size: fit-content;
+}
+
+.textBox {
+    padding-left: 4%;
+    padding-right:4%;
+    --background: var(--ion-color-secondary);
+    border: solid 1px var(--ion-color-primary-shade);
+    border-radius: 20px;
+    --placeholder-opacity: 1;
+    --placeholder-color: black;
+    text-align: left;
+    font-size: 12px;
+  font-family: var(--poppins);
+  font-weight: 500;
+}
+
+.textArea {
+    --background: var(--ion-color-tertiary);
+}
+
+.comment-wrapper {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.comment-heading {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.picture-wrapper {
+    margin-right: 10px;
+}
+
+.picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.username {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.comment-row {
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+.comment-text {
+    border: none;
+    resize: none;
+    font-size: 20px;
+    line-height: 1.2;
+    padding: 0;
+    margin: 0;
+}
+
+.like-row {
+    margin-top: 10px;
+}
+
+.like-icon {
+    font-size: 18px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.like-label {
+    font-size: 12px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.backButton {
+    --color: var(--ion-color-tertiary);
+    --icon-font-size: 25px;
+    --icon-padding-end: 6px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.cross{
+    font-size: 18px;
+    margin-left:3%;
+    margin-right:3%;
+}
+
+.send{
+    font-size: 22px;
+    margin-left:3%;
+    margin-right:3%;
+}

@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import { ProfileModule } from '@mp/app/profile/ui';
+import { ProfileModule as PUI } from '@mp/app/profile/ui';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import{ ProfileModule as PDA}from'@mp/app/profile/data-access';
 import { DashboardPage } from './dashboard.page';
 import { DashboardRouting } from './dashboard.routing';
 
@@ -11,7 +12,8 @@ import { DashboardRouting } from './dashboard.routing';
     CommonModule,
     IonicModule,
     DashboardRouting,
-    ProfileModule,
+    PUI,
+    PDA,
     NgxSkeletonLoaderModule,
   ],
   declarations: [DashboardPage],

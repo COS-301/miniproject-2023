@@ -1,0 +1,28 @@
+.timer {
+  --background: rgba(53, 107, 89, 0.8);
+  border-radius: 12px;
+  height: 24px;
+  box-shadow: 4px #ccc;
+  margin-right: 20px;
+  width: 80px;
+  
+  
+
+}
+
+ion-badge.timer {
+  justify-content: center;
+  align-items: center;
+}
+
+ion-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  size: fit-content;
+  font-family: var(--poppins);
+  font-weight: 600;
+  font-style: italic;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}

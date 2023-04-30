@@ -1,15 +1,84 @@
-ion-title {
-  display: flex;
+//Old code of original profile page
+
+// ion-title {
+//   display: flex;
+// }
+
+// ion-card-title {
+//   display: flex;
+// }
+
+// ion-card-title > ion-icon {
+//   margin-top: 0px;
+// }
+
+// ion-icon {
+//   padding-left: 5px;
+// }
+
+.img1{
+  border-radius: 50%;
+  width: 50%;
+  height: 30%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-ion-card-title {
-  display: flex;
+.img2{
+  border-radius: 5%;
+  margin-bottom: 5%;
 }
 
-ion-card-title > ion-icon {
-  margin-top: 0px;
+ion-col {
+  background-color: #ffffff;;
+  border: solid 1px #fff;
+  color: #fff;
+  text-align: center;
+  font:bold;
 }
 
-ion-icon {
-  padding-left: 5px;
+.bottomTabs{//
+  border-radius: 15px 15px 0 0;
+  //box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+.toolbar{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) !important;
+  //border-radius: var(--bottomNavBarBorderRadius) var(--bottomNavBarBorderRadius) 0 0;
+  border-radius: 20px 20px 0 0 !important;
+}
+
+ion-toolbar{
+  --background: transparent !important;
+  --background-color: transparent !important;
+  --box-shadow: none !important;
+}
+
+
+.navLabel{
+  font-size: 8px;
+  color: var(--branding-dark-green);
+  font-family: var(--ion-font-family);
+  font-weight: 400;
+}
+
+.navIcon{
+  font-size:22px;
+  
+}
+
+.create{
+  font-size:35px;
+  padding-bottom: 5px;
+  
+}
+
+ion-header{
+  --background: transparent !important;
+  --background-color: transparent !important;
+  --box-shadow: none !important;
+  display: contents !important;
 }

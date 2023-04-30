@@ -4,40 +4,48 @@ import { CqrsModule } from '@nestjs/cqrs';
 import {
     CreateProfileHandler,
     UpdateAccountDetailsHandler,
-    UpdateAddressDetailsHandler,
-    UpdateContactDetailsHandler,
-    UpdateOccupationDetailsHandler,
-    UpdatePersonalDetailsHandler,
-    UpdateProfileStatusHandler
+    //UpdateAddressDetailsHandler,
+    //UpdateContactDetailsHandler,
+    //UpdateOccupationDetailsHandler,
+    //UpdatePersonalDetailsHandler,
+    UpdateProfileStatusHandler,
+    CreatePostHandler,
+    AddPostHandler
 } from './commands';
 import {
     AccountDetailsUpdatedHandler,
-    AddressDetailsUpdatedHandler,
-    ContactDetailsUpdatedHandler,
-    OccupationDetailsUpdatedHandler,
-    PersonalDetailsUpdatedHandler,
+    //AddressDetailsUpdatedHandler,
+    //ContactDetailsUpdatedHandler,
+    //OccupationDetailsUpdatedHandler,
+    //PersonalDetailsUpdatedHandler,
     ProfileCreatedHandler,
-    ProfileStatusUpdatedHandler
+    ProfileStatusUpdatedHandler,
+    PostCreatedHandler,
+    PostAddedHandler
 } from './events';
 import { ProfilesSagas } from './profiles.sagas';
 import { ProfilesService } from './profiles.service';
 export const CommandHandlers = [
   CreateProfileHandler,
-  UpdateContactDetailsHandler,
-  UpdateAddressDetailsHandler,
-  UpdatePersonalDetailsHandler,
-  UpdateOccupationDetailsHandler,
+  //UpdateContactDetailsHandler,
+  //UpdateAddressDetailsHandler,
+  //UpdatePersonalDetailsHandler,
+  //UpdateOccupationDetailsHandler,
   UpdateAccountDetailsHandler,
   UpdateProfileStatusHandler,
+  CreatePostHandler,
+  AddPostHandler
 ];
 export const EventHandlers = [
   ProfileCreatedHandler,
-  ContactDetailsUpdatedHandler,
-  AddressDetailsUpdatedHandler,
-  PersonalDetailsUpdatedHandler,
-  OccupationDetailsUpdatedHandler,
+  //ContactDetailsUpdatedHandler,
+  //AddressDetailsUpdatedHandler,
+  //PersonalDetailsUpdatedHandler,
+  //OccupationDetailsUpdatedHandler,
   AccountDetailsUpdatedHandler,
   ProfileStatusUpdatedHandler,
+  PostCreatedHandler,
+  PostAddedHandler
 ];
 
 @Module({

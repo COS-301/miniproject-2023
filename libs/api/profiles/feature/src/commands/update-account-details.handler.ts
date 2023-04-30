@@ -21,6 +21,7 @@ export class UpdateAccountDetailsHandler
 
     const request = command.request;
     const profileDoc = await this.repository.findOne(request.profile);
+    console.debug("ProfileDoc in command handler " +  profileDoc.data());
     const profileData = profileDoc.data();
 
     if (!profileData) throw new Error('Profile not found');

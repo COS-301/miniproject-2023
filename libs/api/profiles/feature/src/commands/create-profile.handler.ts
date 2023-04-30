@@ -18,40 +18,56 @@ export class CreateProfileHandler
 
     const request = command.request;
     const userId = request.user.id;
-    const displayName = request.user.displayName;
+    const displayName = request.user.email?.split("@")[0];
     const email = request.user.email;
     const photoURL = request.user.photoURL;
-    const cellphone = request.user.phoneNumber;
+    //const cellphone = request.user.phoneNumber;
+    const time=100;
 
     const data: IProfile = {
       userId,
+      time,
       accountDetails: {
         displayName,
         email,
         photoURL,
-        status: ProfileStatus.INCOMPLETE,
+        //status: ProfileStatus.INCOMPLETE,
       },
-      personalDetails: {
+      /*personalDetails: {
         age: null,
         gender: null,
         ethnicity: null,
         status: ProfileStatus.INCOMPLETE,
-      },
-      contactDetails: {
-        cellphone,
+      },*/
+      posts:[ {
+        postID: userId,
+        createdBy: userId,
+        ownedBy: userId,
+        likes: null, //fixed like left out  before
+        comments: null,
+        createdAt: null,
+        content: null,
+        hashtag: null,
+        caption: null,
+        totalTime: null,
+        ownerGainedTime: null,
+        listing: null,
+      }],
+      /*contactDetails: {
+        //cellphone,
         status: ProfileStatus.INCOMPLETE,
-      },
-      addressDetails: {
+      },*/
+      /*addressDetails: {
         residentialArea: null,
         workArea: null,
         status: ProfileStatus.INCOMPLETE,
-      },
-      occupationDetails: {
+      },*/
+      /*occupationDetails: {
         householdIncome: null,
         occupation: null,
         status: ProfileStatus.INCOMPLETE,
-      },
-      status: ProfileStatus.INCOMPLETE,
+      },*/
+      //status: ProfileStatus.INCOMPLETE,
       created: Timestamp.fromDate(new Date()),
     };
     const profile = this.publisher.mergeObjectContext(Profile.fromData(data));
