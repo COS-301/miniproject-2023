@@ -17,6 +17,6 @@ jobs:
       - run: export GOOGLE_APPLICATION_CREDENTIALS=$(realpath ./.keys/key.json)
       - run: 'yarn install'
       - run: 'curl -sL https://firebase.tools | bash'
-      - run: 'firebase use default'
+      - run: firebase use default --token ${{ secrets.FIREBASE_TOKEN }}
       - run: 'yarn nx run-many --target=build --all --parallel --configuration=production --skip-nx-cache'
       - run: yarn shipit:prod --non-interactive -f --token ${{ secrets.FIREBASE_TOKEN }}
