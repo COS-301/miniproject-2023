@@ -79,7 +79,7 @@
         
         <ion-toolbar color=secondary>
           <ion-grid style = "padding-left: 20px;">
-            <ion-row>
+            <ion-row (click)="toSearch(post && post.postID && removeLastDash(post.postID))">
             <ion-col size="1.5" class="centreAlign">
               <ion-avatar class="avatar align-self-center">
                 <img style="object-fit: cover;" *ngIf="post.photoURL; else noAvatar" alt="User Avatar" [src]="post.photoURL" />
