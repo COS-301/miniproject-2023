@@ -12,6 +12,15 @@ body{
   transform: translateY(-50%);
 }
 
+.cardAction{
+  padding:0px;
+}
+
+.postCard{
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+}
+
 #container strong {
   font-size: 20px;
   line-height: 26px;
@@ -87,6 +96,27 @@ body{
   animation: pulse 0.5s ease-in-out;
 }
 
+.avatar{
+  width:35px !important;
+  height:35px !important;
+  scale:1.2;
+  
+}
+
+.centreAlign{
+  display: flex;
+  align-items: center;
+}
+
+.creatorText{
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--branding-blue);
+  font-family: var(--poppins);
+  font-style: italic;
+  margin-left:10px;
+}
+
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -102,7 +132,7 @@ body{
 .actionGrid{
   --padding-top: 0px;
   --padding-bottom: 0px;
-  margin-bottom: -30px;
+  margin-bottom: -10px;
   margin-top: -5px;
 }
 

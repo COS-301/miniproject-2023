@@ -71,25 +71,34 @@
       </ion-label> -->
 
     <div *ngIf="(userPosts$ | async)?.length; else noPosts">
-      <hr>
+      
       <div *ngFor="let post of userPosts$ | async; let i = index" color=secondary>
-
+        <ion-card class="postCard">
+          
         <!-- <ng-container *ngIf="post.ownedBy!==profile.userId || post.createdBy!==profile.userId"> -->
         
         <ion-toolbar color=secondary>
-          <ion-grid>
-            <ion-row (click)="toSearch(post && post.postID && removeLastDash(post.postID))">
-              <ion-avatar>
-                <img alt="User Avatar" [src]="post.photoURL" />
+          <ion-grid style = "padding-left: 20px;">
+            <ion-row>
+            <ion-col size="1.5" class="centreAlign">
+              <ion-avatar class="avatar align-self-center">
+                <img style="object-fit: cover;" *ngIf="post.photoURL; else noAvatar" alt="User Avatar" [src]="post.photoURL" />
+                <ng-template #noAvatar>
+                  <img style="object-fit: cover;" alt="User Avatar" src="assets/avatars/default.jpg" />
+                </ng-template>
               </ion-avatar>
-              <ion-list lines="none">
-                <ion-item>Created by: {{removeLastDash(post.postID)}}</ion-item>
+            </ion-col>
+            <ion-col size="4">
+              <ion-list lines="none" style = "text-align: left;">
+                <ion-label class="creatorText">{{removeLastDash(post.postID)}}</ion-label>
               </ion-list>
-            </ion-row>
+            </ion-col>
+          </ion-row>
           </ion-grid>
         </ion-toolbar>
         <img class="postImage" alt="Post" [src]="post.content" (load)="onImageLoad(i)" [hidden]="isLoading[i]"/>
         <img class="postImage" alt="Post" src="assets/loading/loadingWhiteBG.gif" [hidden]="!isLoading[i]"/>
+        <ion-card-content class = "cardAction">
         <ion-toolbar color="secondary" class="actionToolBar">
           <ion-list lines="none" class="actionBlock">
 
@@ -155,12 +164,9 @@
             </ion-grid>
           </ion-list>
 
-          <ion-buttons slot="end">
-
-
-
-          </ion-buttons>
         </ion-toolbar>
+        </ion-card-content>
+      </ion-card>
 
 
 
@@ -246,7 +252,7 @@
 
                 </ion-grid>-->
 
-        <hr>
+        
 
         <!-- </ng-container> -->
       </div>
