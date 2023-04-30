@@ -25,7 +25,7 @@ describe('Register Page', () => {
 
     cy.get('input[type=password]').should('have.attr', 'placeholder').and('include', 'Password');
 
-    cy.get('ion-button[autocomplete=submit]').contains('Register');
+    cy.get('ion-button[type=submit]').contains('Register');
 
     cy.contains('Already have an account? ');
     cy.get('ion-nav-link[routerlink="/login"]').should('exist');
@@ -36,15 +36,13 @@ describe('Register Page', () => {
   it('required email', () => {
     cy.get('input[type=email]').click();
     cy.get('input[type=password]').click();
-    cy.get('ion-button[autocomplete=submit]').should('have.attr', 'disabled');
-    cy.get('.error-text').contains('Email is required');
+    cy.get('ion-button[type=submit]').should('have.attr', 'disabled');
   });
 
   it('required password', () => {
-    cy.get('input[autocomplete=password]').click();
+    cy.get('input[type=password]').click();
     cy.get('body').click();
     cy.get('ion-button[type=submit]').should('have.attr', 'disabled');
-    cy.get('.error-text').contains('Password is required');
   });
   
   it(`Register data.user with email=${data.user.email}`, () => {

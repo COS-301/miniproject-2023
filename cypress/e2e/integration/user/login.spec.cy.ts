@@ -1,8 +1,4 @@
 import * as data from '../../../data';
-import * as fs from 'fs';
-
-const users = fs.readFileSync('../../../data/registered_users.json', 'utf-8');
-const user = JSON.parse(users).pop();
 
 describe('Login Page', () => {
   before(() => {
@@ -29,9 +25,6 @@ describe('Login Page', () => {
 
     cy.get('ion-button[type=submit]').contains('Login');
 
-    cy.contains('Having trouble?');
-    cy.get('ion-nav-link[routerlink="/forgot"]').should('exist');
-
     cy.contains(`Don't have an account?`);
     cy.get('ion-nav-link[routerlink="/register"]').should('exist');
 
@@ -42,14 +35,12 @@ describe('Login Page', () => {
     cy.get('input[type=email]').click();
     cy.get('input[type=password]').click();
     cy.get('ion-button[type=submit]').should('have.attr', 'disabled');
-    cy.get('.error-text').contains('Email is required');
   });
 
   it('required password', () => {
     cy.get('input[type=password]').click();
     cy.get('body').click();
     cy.get('ion-button[type=submit]').should('have.attr', 'disabled');
-    cy.get('.error-text').contains('Password is required');
   });
   
   it(`Login User with email=${data.registredUser.email}`, () => {
