@@ -160,7 +160,7 @@ This social media app includes the following features:
     </td>
     <td style="vertical-align: top; width: 70%;">
             <b>Daniel Bezuidenhout</b><br>
-Hi there, my name is Daniel Bezuidenhout! I'm currently in my 3rd year of undergraduate studies at the University of Pretoria, majoring in Computer Science. My main interests lie in Full Stack Development, Design and Databases. I love exploring the interplay between these fields and pushing the boundaries of what is possible.
+I'm currently in my 3rd year of undergraduate studies at the University of Pretoria, majoring in Computer Science. My main interests lie in Full Stack Development, Design and Databases. I love exploring the interplay between these fields and pushing the boundaries of what is possible.
       <br>
       <a href="https://github.com/Daniel-Bezuidenhout">
         <img src="https://img.icons8.com/material-rounded/24/000000/github.png" width="30" height="30"/>
@@ -282,7 +282,7 @@ I am a third year computer science student with an interest in visual design. Al
     </td>
     <td style="vertical-align: top; width: 70%;">
             <b>Mark Botros</b><br>
-Hi, I'm Mark. I am a third year Computer Science Student with a passion for Security, Data Science and APIs (some might know me as the API guy...)      <br>
+I am a third year Computer Science Student with a passion for Security, Data Science and APIs (some might know me as the API guy...)      <br>
       <a href="https://github.com/Mark-Botros">
         <img src="https://img.icons8.com/material-rounded/24/000000/github.png" width="30" height="30"/>
       </a>
@@ -295,7 +295,7 @@ Hi, I'm Mark. I am a third year Computer Science Student with a passion for Secu
     </td>
     <td style="vertical-align: top; width: 70%;">
             <b>Triumph Ndlovu</b><br>
-    I'm Triumph, a computer science student with a passion for problem-solving through elegant and efficient code. I'm excited to be part of the next generation of programmers who are pushing the boundaries of what's possible.
+    I'm a computer science student with a passion for problem-solving through elegant and efficient code. I'm excited to be part of the next generation of programmers who are pushing the boundaries of what's possible.
       <br>
       <a href="https://github.com/TriumphNdlovu">
         <img src="https://img.icons8.com/material-rounded/24/000000/github.png" width="30" height="30"/>
