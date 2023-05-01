@@ -54,3 +54,4 @@ pubsub-debug.log
 # Keys
 .keys/*.json
 .env.prod
+freeports.sh
