@@ -1,6 +1,5 @@
-import { describe, test } from '@jest/globals';
+import { describe, test, expect } from '@jest/globals';
 import { mockData } from './mock.data';
-
 
 describe('Tesing Cloud Function: createMemory', () => {
   test(`Creating Memory for userID = ${mockData.userId} \n using endPoint`, async () => {
