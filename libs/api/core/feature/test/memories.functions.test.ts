@@ -55,4 +55,26 @@ describe('Tesing Cloud Function: createMemory', () => {
     console.debug(createMemoryResponse);
     expect(createMemoryResponse).toEqual(errorResponse);
   });
+  
+  test('hitting endpoint with invalid request structure', async()=>{
+    const createMemoryRequest = {
+      structure:{
+        info: "this should return an error"
+      }
+    };
+    const errorResponse = {
+      error: {
+        message: 'Bad Request',
+        status: 'INVALID_ARGUMENT',
+      },
+    };
+    const res = await fetch('http://127.0.0.1:5005/demo-project/us-central1/createMemory', {
+      method: 'POST',
+      headers: new Headers({ 'content-type': 'application/json' }),
+      body: JSON.stringify(createMemoryRequest),
+    });
+    const createMemoryResponse = await res.json();
+    console.debug(createMemoryResponse);
+    expect(createMemoryResponse).toEqual(errorResponse);
+  })
 });
