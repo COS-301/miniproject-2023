@@ -263,7 +263,7 @@ This social media app includes the following features:
       <img src="https://user-images.githubusercontent.com/105363824/235460251-e0e76725-c3af-4543-9daa-e1221c6f1c85.png" width="150" height="auto">
     </td>
     <td style="vertical-align: top; width: 70%;">
-            <b>Lesedi Mokonyama</b><br>    This is a placeholder text description for the person. This is a placeholder. This is a placeholder. I'm making it long enough to wrap on two lines.
+            <b>Lesedi Mokonyama</b><br>I'm a final year BSc Information and Knowledge Systems student who has a knack for web development (more specifically backend development). Learning new technologies and dipping my feet in other aspects of programming is what keeps me going!
       <br>
       <a href="https://github.com/LesediMoko">
         <img src="https://img.icons8.com/material-rounded/24/000000/github.png" width="30" height="30"/>
