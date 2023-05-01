@@ -160,7 +160,7 @@ This social media app includes the following features:
     </td>
     <td style="vertical-align: top; width: 70%;">
             <b>Daniel Bezuidenhout</b><br>
-    This is a placeholder text description for the person. This is a placeholder. This is a placeholder. I'm making it long enough to wrap on two lines.
+Hi there, my name is Daniel Bezuidenhout! I'm currently in my 3rd year of undergraduate studies at the University of Pretoria, majoring in Computer Science. My main interests lie in Full Stack Development, Design and Databases. I love exploring the interplay between these fields and pushing the boundaries of what is possible.
       <br>
       <a href="https://github.com/Daniel-Bezuidenhout">
         <img src="https://img.icons8.com/material-rounded/24/000000/github.png" width="30" height="30"/>
@@ -216,8 +216,7 @@ This social media app includes the following features:
     </td>
     <td style="vertical-align: top; width: 70%;">
             <b>Julian Pienaar</b><br>
-    This is a placeholder text description for the person. This is a placeholder. This is a placeholder. I'm making it long enough to wrap on two lines.
-      <br>
+I am a third year computer science student with an interest in visual design. Although I have had success in creating backends, I find it more engaging to work on something that is visual. This project has been a great learning experience and even helped me to understand where my passions lie.      <br>
       <a href="https://github.com/JulianPienaar">
         <img src="https://img.icons8.com/material-rounded/24/000000/github.png" width="30" height="30"/>
       </a>
@@ -283,8 +282,7 @@ This social media app includes the following features:
     </td>
     <td style="vertical-align: top; width: 70%;">
             <b>Mark Botros</b><br>
-    This is a placeholder text description for the person. This is a placeholder. This is a placeholder. I'm making it long enough to wrap on two lines.
-      <br>
+Hi, I'm Mark. I am a third year Computer Science Student with a passion for Security, Data Science and APIs (some might know me as the API guy...)      <br>
       <a href="https://github.com/Mark-Botros">
         <img src="https://img.icons8.com/material-rounded/24/000000/github.png" width="30" height="30"/>
       </a>
