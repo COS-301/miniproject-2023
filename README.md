@@ -297,11 +297,13 @@ This social media app includes the following features:
     </td>
     <td style="vertical-align: top; width: 70%;">
             <b>Triumph Ndlovu</b><br>
-    This is a placeholder text description for the person. This is a placeholder. This is a placeholder. I'm making it long enough to wrap on two lines.
+    I'm Triumph, a computer science student with a passion for problem-solving through elegant and efficient code. I'm excited to be part of the next generation of programmers who are pushing the boundaries of what's possible.
       <br>
       <a href="https://github.com/TriumphNdlovu">
         <img src="https://img.icons8.com/material-rounded/24/000000/github.png" width="30" height="30"/>
       </a>
+      <a href="https://www.linkedin.com/in/triumph-ndlovu-425b73274/">
+  <img src="https://img.icons8.com/fluency/24/000000/linkedin.png"/>
 
       
   </tr>
