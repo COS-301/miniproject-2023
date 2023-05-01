@@ -37,7 +37,8 @@
     "lint": "eslint --fix",
     "cypress:open": "cypress open",
     "test:api": "jest libs/api",
-    "eslint:run": "eslint"
+    "eslint:run": "eslint",
+    "test:int:cloudFunctions":"jest libs/api/core/feature/test"
   },
   "private": true,
   "dependencies": {
