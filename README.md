@@ -241,8 +241,7 @@ I am a third year computer science student with an interest in visual design. Al
     </td>
     <td style="vertical-align: top; width: 70%;">
             <b>Paul Pilane</b><br>
-    This is a placeholder text description for the person. This is a placeholder. This is a placeholder. I'm making it long enough to wrap on two lines.
-      <br>
+I am a Final-Year Computer Science student, that aims to solve a class of problems throught the lenses of technological innovations.      <br>
       <a href="https://github.com/PaulPilane">
         <img src="https://img.icons8.com/material-rounded/24/000000/github.png" width="30" height="30"/>
       </a>
@@ -369,7 +368,7 @@ I am a third year Computer Science Student with a passion for Security, Data Sci
     </td>
     <td style="vertical-align: top; width: 70%;">
             <b>Stefan van der Merwe</b><br>
-      I am a 3rd Year computer science student who loves hiking.                                                                                                                                                                                           
+      I am a 3rd year computer science student who loves hiking. I love playing around with hardware, this includes everything from building my own computer to embedded devices like the ESP32-series chips. It was a great pleasure and experience working with this team!                                                                                                                                                                                           
       <br>
       <a href="https://github.com/Stefan-vdm">
         <img src="https://img.icons8.com/material-rounded/24/000000/github.png" width="30" height="30"/>
