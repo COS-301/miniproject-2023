@@ -50,7 +50,22 @@ Lapse is a unique social media platform that uses time as a currency to foster m
 
 Users can spend time engaging with content, and in return, they earn time by creating meaningful or engaging content. The platform also allows users to invest in the content they see potential in, further encouraging content creators.
 
-To learn more about this project see our [Lapse Mini Project Wiki](https://github.com/LapseMP/lapse-grp3-2023/wiki/1.-Lapse-Mini-Project), view our documentation [here](https://github.com/LapseMP/lapse-grp3-2023/wiki/Documentation) 
+To learn more about this project see our [Lapse Mini Project Wiki](https://github.com/LapseMP/lapse-grp3-2023/wiki/1.-Lapse-Mini-Project), view our documentation [here](https://github.com/LapseMP/lapse-grp3-2023/wiki/4.-Documentation) 
+
+
+## 📲Features
+This social media app includes the following features:
+
+- <b>Posting Posts:</b> Users can create and post content on the platform, which can be viewed by other users.
+- <b>Buying Posts:</b> Users can use their time currency to purchase posts created by other users.
+- <b>Viewing Profile:</b> Users can view their own profile which displays all the posts they have created
+- <b>Viewing Portfolio:</b> Users can view their portfolios which displays all the posts they have bought.
+- <b>Searching by User or Hashtag:</b> Users can search for other users's posts by username or search for posts by hashtag
+
+
+## 👀See it in action!
+
+https://user-images.githubusercontent.com/105363824/235509948-a36dd112-e0d3-4a12-92f9-f7eae11b120d.mp4
 
 
 
@@ -117,29 +132,20 @@ Once the emulators are up, please go to http://localhost:5001 to see the Emulato
 
 ## 🗒Notes:
 
-- All contracts/interfaces can be viewed [here](https://github.com/LapseMP/lapse-grp3-2023/wiki/Contracts-%F0%9F%93%84) and [here](https://github.com/LapseMP/lapse-grp3-2023/wiki/API-(States-and-Client-API))
+- All contracts/interfaces can be viewed [here](https://github.com/LapseMP/lapse-grp3-2023/wiki/3.-Contracts) and [here](https://github.com/LapseMP/lapse-grp3-2023/wiki/2.-Suggested-format-for-API-(States-and-Client-API))
 - When creating your Firebase authentication, hosting, storage, functions. Make sure to use the same location throughout. (MAKE SURE TO SET "Default GCP resource location" in Project Settings in Firebase Console. If you do not do this, the app will not work)
 - The app is built to be a PWA. (See: So if you deploy it to prod, you can install the app on iOS by adding to home screen or using Android by installing through Chrome)
-
-## 📲Features
-This social media app includes the following features:
-
-- Posting Posts: Users can create and post content on the platform, which can be viewed by other users.
-- Buying Posts: Users can use their time currency to purchase posts created by other users.
-- Viewing Profile: Users can view their own profile which displays all the posts they have created
-- Viewing Portfolio: Users can view their portfolios which displays all the posts they have bought.
-- Searching by User or Hashtag: Users can search for other users's posts by username or search for posts by hashtag
 
 ## 👥Our Team
 
 ### Project Manager
 
-<table style="border: none;">
-  <tr>
-    <td style="vertical-align: top; width: 30%;">
+<table style="border:0px;">
+  <tr style="border: 0px;">
+    <td style="vertical-align: top; width: 30%; border:0px;">
       <img src="https://user-images.githubusercontent.com/105363824/235456246-0b061b57-c797-4073-a4c8-051349d9facd.png" width="150" height="auto">
     </td>
-    <td style="vertical-align: top; width: 70%;">
+    <td style="vertical-align: top; width: 70%; border:0px;">
             <b>Inge Odendaal</b><br>
       I am a bit of a data nerd and love the point where statistics and computer science meets. I enjoy working with other people and integrating ideas to get        unimagined results.
       <br>
@@ -249,11 +255,15 @@ I am a third year computer science student with an interest in visual design. Al
     </td>
     <td style="vertical-align: top; width: 70%;">
             <b>Priyul Mahabeer</b><br>
-    This is a placeholder text description for the person. This is a placeholder. This is a placeholder. I'm making it long enough to wrap on two lines.
+    Passionate about space exploration, quantum computing, and AI, I'm an aspiring software engineer inspired by great minds in the field. Skilled in languages like C++, Java, and Python, I'm eager to push boundaries and innovate for a better future.
       <br>
       <a href="https://github.com/Priyul">
         <img src="https://img.icons8.com/material-rounded/24/000000/github.png" width="30" height="30"/>
       </a>
+      <a href="https://www.linkedin.com/in/priyul-mahabeer/">
+  <img src="https://img.icons8.com/fluency/24/000000/linkedin.png"/>
+</a>
+
 
       
   </tr>
@@ -359,7 +369,7 @@ I am a third year Computer Science Student with a passion for Security, Data Sci
     </td>
     <td style="vertical-align: top; width: 70%;">
             <b>Stefan van der Merwe</b><br>
-       This is a placeholder text description for the person. This is a placeholder. This is a placeholder. I'm making it long enough to wrap on two lines.
+      I am a 3rd Year computer science student who loves hiking.                                                                                                                                                                                           
       <br>
       <a href="https://github.com/Stefan-vdm">
         <img src="https://img.icons8.com/material-rounded/24/000000/github.png" width="30" height="30"/>
